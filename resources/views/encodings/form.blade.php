@@ -29,10 +29,13 @@
 
 <section class="px-2 my-4">
     <h1 class="font-semibold">
-        Mock Encoding 
+        Mock Encoding -- textbox is resiable as needed from bottom-right corner
     </h1>
 
-    {{ html()->hidden('mock_encoding')->attribute('id', 'mock_encoding') }}
-    <trix-editor input="mock_encoding"></trix-editor>
+
+    {{ html()->textarea('mock_encoding')
+        ->class(['w-full', 'block', 'border', 'border-2', 'border-black'])
+        ->attribute('id', 'mock_encoding')
+     }}
 </section>
 
