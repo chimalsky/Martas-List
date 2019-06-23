@@ -15,3 +15,24 @@
 
     {{ html()->text('encoder_assigned_id')->class(['form-input', 'mt-1', 'block', 'w-full']) }}
 </label>
+
+<section class="px-2 my-4">
+
+    <h1 class="font-semibold">
+        Encoding 
+    </h1>
+
+    {{ html()->hidden('encoding')->attribute('id', 'encoding') }}
+    <trix-editor input="encoding"></trix-editor>
+</section>
+
+
+<section class="px-2 my-4">
+    <h1 class="font-semibold">
+        Mock Encoding 
+    </h1>
+
+    {{ html()->hidden('mock_encoding')->attribute('id', 'mock_encoding') }}
+    <trix-editor input="mock_encoding"></trix-editor>
+</section>
+

@@ -17,6 +17,9 @@ class CreateEncodingsTable extends Migration
             $table->bigIncrements('id');
             $table->string('encoder_assigned_id');
 
+            $table->text('encoding')->nullable();
+            $table->text('mock_encoding')->nullable();
+
             
             $table->timestamps();
         });

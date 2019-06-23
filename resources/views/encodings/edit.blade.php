@@ -2,10 +2,16 @@
 
 @section('content')
 
-<header class="my-8">
-    <a class="btn btn-gray" href="{{ route('encodings.index') }}">
+<header class="my-8 flex justify-between">
+    <a class="btn btn-gray align-top" href="{{ route('encodings.index') }}">
         Return to my list of Encodings 
     </a>
+
+    {{ html()->form('DELETE', route('encodings.destroy', $encoding))->open() }}
+        <button class="btn btn-red align-top">
+            Delete
+        </button>
+    {{ html()->form()->close() }}
 </header>
 
 <section class="flex flex-wrap mb-8 p-4 border border-1 border-gray-600">
@@ -22,7 +28,11 @@
 
 <section class="flex flex-wrap">
     <h1 class="m-2 text-2xl w-full">
-        Existing Tags 
+        @if ($encoding->meta->count())
+            Existing Tags 
+        @else 
+            Add Some Tags to that Encoding!
+        @endif
     </h1>
 
     @foreach ($encoding->meta as $meta)

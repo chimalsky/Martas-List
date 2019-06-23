@@ -94,6 +94,10 @@ class EncodingsController extends Controller
      */
     public function destroy(Encoding $encoding)
     {
-        //
+        $encodingName = $encoding->name;
+        $encoding->delete();
+
+        return redirect()->route('encodings.index')
+            ->with('status', "Rest in Peace $encodingName");
     }
 }
