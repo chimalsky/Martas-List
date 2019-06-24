@@ -26,6 +26,22 @@
     {{ html()->closeModelForm() }}
 </section>
 
+
+<form action="{{ route('encoding.metas.store', $encoding) }}" method="post"
+    class="mt-8 bg-gray-300 p-4">
+    @csrf
+
+    <h1 class="m-2 font-semibold">
+        Add new tag 
+    </h1>
+
+    @include('encodings.meta.form')
+
+    <button class="btn btn-blue">
+        Add this tag to encoding {{ $encoding->encoder_assigned_id }}
+    </button>
+</form>
+
 <section class="flex flex-wrap">
     <h1 class="m-2 text-2xl w-full">
         @if ($encoding->meta->count())
@@ -60,19 +76,5 @@
     @endforeach
 </section>
 
-<form action="{{ route('encoding.metas.store', $encoding) }}" method="post"
-    class="mt-8 bg-gray-300 p-4">
-    @csrf
-
-    <h1 class="m-2 font-semibold">
-        Add new tag 
-    </h1>
-
-    @include('encodings.meta.form')
-
-    <button class="btn btn-blue">
-        Add this tag to encoding {{ $encoding->encoder_assigned_id }}
-    </button>
-</form>
 
 @endsection
