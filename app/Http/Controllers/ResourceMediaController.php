@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Encoding;
-use App\EncodingMeta;
+use App\Resource;
 use Illuminate\Http\Request;
 
-class EncodingMetasController extends Controller
+class ResourceMediaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,27 +30,30 @@ class EncodingMetasController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Encoding $encoding
      * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Resource  $resource
      * @return \Illuminate\Http\Response
      */
-    public function store(Encoding $encoding, Request $request)
-    {
-        $meta = new EncodingMeta($request->all());
-        $encoding->meta()->save($meta);
+    public function store(Request $request, Resource $resource)
+    {        
+        $request->validate([
+            'media' => 'required|file'
+        ]);
+        
+        $resource->addMediaFromRequest('media')
+            ->usingName($request->input('name') ?? 'unnamed')
+            ->toMediaCollection();
 
-        $metaKey = $request->input('key');
-
-        return back()->with('status', "Encoding Tag ($metaKey) was added! Good job, Marta!");    
+        return back()->with('status', "Media was attached to $resource->name.");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Encoding  $encoding
+     * @param  \App\Resource  $resource
      * @return \Illuminate\Http\Response
      */
-    public function show(Encoding $encoding)
+    public function show(Resource $resource)
     {
         //
     }
@@ -59,10 +61,10 @@ class EncodingMetasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Encoding  $encoding
+     * @param  \App\Resource  $resource
      * @return \Illuminate\Http\Response
      */
-    public function edit(Encoding $encoding)
+    public function edit(Resource $resource)
     {
         //
     }
@@ -71,26 +73,22 @@ class EncodingMetasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Encoding  $encoding
+     * @param  \App\Resource  $resource
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Encoding $encoding, EncodingMeta $meta)
+    public function update(Request $request, Resource $resource)
     {
-        $meta->update($request->all());
-        
-        return back()->with('status', "Encoding Tag ($meta->key) was updated! The world is now a cleaner place"); 
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Encoding  $encoding
+     * @param  \App\Resource  $resource
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Encoding $encoding, EncodingMeta $meta)
+    public function destroy(Resource $resource)
     {
-        $meta->delete();
-        
-        return back()->with('status', "Encoding Tag ($meta->key) was deleted! RIP the old, Welcome the new!"); 
+        //
     }
 }

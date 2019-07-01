@@ -18,3 +18,11 @@ Route::get('/', function() {
 Route::resource('encodings', 'EncodingsController');
 
 Route::resource('encoding.metas', 'EncodingMetasController');
+Route::resource('encoding.resources', 'EncodingResourcesController');
+
+Route::resource('resources', 'ResourcesController');
+Route::resource('resource-types', 'ResourceTypesController');
+
+Route::resource('resource.metas', 'ResourceMetasController');
+Route::resource('resource.media', 'ResourceMediaController');
+

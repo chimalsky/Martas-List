@@ -31,6 +31,38 @@
 </form>
 
 
+<form action="{{ route('encoding.resources.store', $encoding) }}" method="post"
+    data-controller="resource-types" 
+    data-resource-types-search-url="{{ route('resources.index') }}" 
+    class="mt-8 bg-red-200 p-4 mb-4">
+    @csrf
+
+    <h1 class="m-2 font-semibold">
+        Attach resources to {{ $encoding->encdoer_assigned_id }} 
+    </h1>
+
+    <select name="resource_type_id" data-action="resource-types#select">
+        <option>
+            Pick a resource type 
+        </option> 
+
+        @foreach (App\ResourceType::all() as $type)
+            <option value="{{ $type->id }}">
+                {{ $type->name }}
+            </option>
+        @endforeach
+    </select>
+
+    <div data-target="resource-types.results" class="my-8 flex flex-wrap">
+
+    </div>
+
+    <button class="btn btn-hollow">
+        Attach this resource to encoding {{ $encoding->encoder_assigned_id }}
+    </button>
+</form>
+
+
 <section class="flex flex-wrap mb-8 p-4 border border-1 border-gray-600">
     {{ html()->modelForm($encoding, 'PUT', route('encodings.update', $encoding))->open() }}
         @include('encodings.form')
@@ -43,7 +75,7 @@
     {{ html()->closeModelForm() }}
 </section>
 
-<section class="flex flex-wrap">
+<section class="flex flex-wrap my-4">
     <h1 class="m-2 text-2xl w-full">
         @if ($encoding->meta->count())
             Existing Tags 
@@ -52,7 +84,7 @@
         @endif
     </h1>
 
-    @foreach ($encoding->meta as $meta)
+    @foreach ($encoding->meta->reverse() as $meta)
         <article class="w-full border border-1 border-gray-400 mb-4 py-4">
             {{ html()->modelForm($meta, 'PUT', route('encoding.metas.update', [
                 'encoding' => $encoding, 
@@ -76,6 +108,38 @@
         </article>
     @endforeach
 </section>
+
+
+@foreach (App\ResourceType::all() as $type)
+    <section class="flex flex-wrap my-4">
+        <h1 class="m-2 text-2xl w-full">
+            @if ($encoding->resources->count())
+                Attached {{ $type->name }}
+            @else 
+                Attach some {{ $type->name }} to that Encoding!
+            @endif
+        </h1>
+
+        @foreach ($encoding->resources()->type($type->id)->get()->reverse() as $resource)
+            <article class="w-full border border-1 border-gray-400 mb-4 py-4">
+                <a href="{{ route('resources.edit', $resource) }}">
+                    {{ $resource->name }}
+                </a>
+
+                {{ html()->modelForm($resource, 'DELETE', route('encoding.resources.destroy', [
+                    'encoding' => $encoding,
+                    'resource' => $resource, 
+                ] ))->open() }}
+                    <div class="flex justify-end mr-4 mt-4">
+                        <button class="btn btn-red">
+                            Detach
+                        </button>
+                    </div>
+                {{ html()->closeModelForm() }}
+            </article>
+        @endforeach
+    </section>
+@endforeach
 
 
 @endsection

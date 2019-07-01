@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Encoding;
-use App\EncodingMeta;
+use App\Resource;
+use App\ResourceMeta;
 use Illuminate\Http\Request;
 
-class EncodingMetasController extends Controller
+class ResourceMetasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,27 +31,27 @@ class EncodingMetasController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Encoding $encoding
+     * @param \App\Resource $resource
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Encoding $encoding, Request $request)
+    public function store(Resource $resource, Request $request)
     {
-        $meta = new EncodingMeta($request->all());
-        $encoding->meta()->save($meta);
+        $meta = new ResourceMeta($request->all());
+        $resource->meta()->save($meta);
 
         $metaKey = $request->input('key');
 
-        return back()->with('status', "Encoding Tag ($metaKey) was added! Good job, Marta!");    
+        return back()->with('status', "Resource Tag ($metaKey) was added!");    
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Encoding  $encoding
+     * @param  \App\ResourceMeta  $resourceMeta
      * @return \Illuminate\Http\Response
      */
-    public function show(Encoding $encoding)
+    public function show(ResourceMeta $resourceMeta)
     {
         //
     }
@@ -59,10 +59,10 @@ class EncodingMetasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Encoding  $encoding
+     * @param  \App\ResourceMeta  $resourceMeta
      * @return \Illuminate\Http\Response
      */
-    public function edit(Encoding $encoding)
+    public function edit(ResourceMeta $resourceMeta)
     {
         //
     }
@@ -71,23 +71,24 @@ class EncodingMetasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Encoding  $encoding
+     * @param  \App\ResourceMeta  $meta
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Encoding $encoding, EncodingMeta $meta)
+    public function update(Request $request, Resource $resource, ResourceMeta $meta)
     {
         $meta->update($request->all());
         
-        return back()->with('status', "Encoding Tag ($meta->key) was updated! The world is now a cleaner place"); 
+        return back()->with('status', "Resource Tag ($meta->key) was updated! The world is now a better place"); 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Encoding  $encoding
+     * @param \App\Resource
+     * @param  \App\ResourceMeta  $resourceMeta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Encoding $encoding, EncodingMeta $meta)
+    public function destroy(Resource $resource, ResourceMeta $meta)
     {
         $meta->delete();
         

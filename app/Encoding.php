@@ -2,7 +2,9 @@
 
 namespace App;
 
+use App\Resource;
 use App\EncodingMeta;
+use App\EncodingResource;
 use Illuminate\Database\Eloquent\Model;
 
 class Encoding extends Model
@@ -12,5 +14,10 @@ class Encoding extends Model
     public function meta()
     {
         return $this->hasMany(EncodingMeta::class);
+    }
+
+    public function resources()
+    {
+        return $this->belongsToMany(Resource::class);
     }
 }
