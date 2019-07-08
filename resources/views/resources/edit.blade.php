@@ -3,9 +3,13 @@
 @section ('content')
 
 <header class="flex align-left mb-8">
-    <a class="btn btn-gray" href="{{ route('resource-types.edit', $resource->definition) }}">
+    <a class="btn btn-gray font-thin" href="{{ route('resource-types.edit', $resource->definition) }}">
         Return to {{ $resource->definition->name }} Page
-    </a>
+    </a> 
+
+    <p class="ml-4 font-bold"> 
+        {{ $resource->definition->name }} -- {{ $resource->name }} 
+    </p>
 </header>
 
 

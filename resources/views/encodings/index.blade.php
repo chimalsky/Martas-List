@@ -3,10 +3,6 @@
 
 @section('content')
     <header class="flex justify-end align-middle my-6 mx-2">
-        <h1 class="font-light mx-2">
-            Marta's List 
-        </h1>   
-
         <a href="{{ route('encodings.create') }}" 
             class="btn btn-blue mx-2">
             Add a new Encoding 

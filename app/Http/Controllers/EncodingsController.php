@@ -14,7 +14,7 @@ class EncodingsController extends Controller
      */
     public function index()
     {
-        $encodings = Encoding::all();
+        $encodings = Encoding::with('resources')->all();
         return view('encodings.index', compact('encodings'));
     }
 

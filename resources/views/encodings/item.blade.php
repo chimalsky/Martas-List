@@ -4,6 +4,22 @@
             {{ $encoding->encoder_assigned_id }}
         </a>
 
+        <ul class="w-full">
+            @if ($encoding->has('resources'))
+                @foreach ($encoding->resources as $resource)
+                    <li class="w-full font-semibold">
+                        <a href="{{ route('resources.edit', $resource) }}">
+                            {{ $resource->name }} 
+                        </a>
+                    </li>
+                @endforeach
+            @endif
+        </ul>
+
+        <p class="w-full my-4">
+            {!! $encoding->excerpt !!}
+        </p>
+
         <p class="mt-4 text-right">
             Created: 
                 <span data-controller="date" data-date-datetime="{{ $encoding->created_at }}">

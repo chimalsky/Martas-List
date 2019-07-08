@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Str;
 use App\Resource;
 use App\EncodingMeta;
 use App\EncodingResource;
@@ -19,5 +20,10 @@ class Encoding extends Model
     public function resources()
     {
         return $this->belongsToMany(Resource::class);
+    }
+
+    public function getExcerptAttribute()
+    {
+        return Str::limit($this->encoding, 100);
     }
 }

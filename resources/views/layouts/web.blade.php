@@ -15,8 +15,20 @@
         @stack('scripts')
     </head>
     <body data-controller="application">
-        <header class="web">
-            
+        <header class="web py-2 border border-1 border-gray mb-4">
+            <a href="{{ route('brochure.index') }}" class="font-light mx-2">
+                Home 
+            </a>   
+            <a href="{{ route('encodings.index') }}" class="font-light mx-2">
+                Archiver 
+            </a>   
+            <a href="{{ route('brochure.show') }}" class="font-light mx-2">
+                De-archived 
+            </a>
+            <a href="{{ route('blog.index') }}" class="font-light mx-2">
+                Blog 
+            </a>
+
             @yield('header')
         </header>
 
