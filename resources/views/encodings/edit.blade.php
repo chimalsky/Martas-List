@@ -85,7 +85,7 @@
     </h1>
 
     @foreach ($encoding->meta->reverse() as $meta)
-        <article class="w-full border border-1 border-gray-400 mb-4 py-4">
+        <article class="w-full md:w-1/2 lg:w-1/3 border border-1 border-gray-400 mb-4 p-2">
             {{ html()->modelForm($meta, 'PUT', route('encoding.metas.update', [
                 'encoding' => $encoding, 
                 'meta' => $meta
