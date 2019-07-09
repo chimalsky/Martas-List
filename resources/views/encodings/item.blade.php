@@ -1,4 +1,4 @@
-<div class="w-1/3 p-4">
+<div class="w-full md:w-1/2 lg:w-1/3 p-4">
     <article class="bg-green-200 p-4">
         <a href="{{ route('encodings.edit', $encoding) }}">
             {{ $encoding->encoder_assigned_id }}

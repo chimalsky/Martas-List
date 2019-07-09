@@ -121,7 +121,7 @@
         </h1>
 
         @foreach ($encoding->resources()->type($type->id)->get()->reverse() as $resource)
-            <article class="w-full border border-1 border-gray-400 mb-4 py-4">
+            <article class="w-full md:w-1/2 lg:w-1/3 border border-1 border-gray-400 mb-4 p-4">
                 <a href="{{ route('resources.edit', $resource) }}">
                     {{ $resource->name }}
                 </a>
