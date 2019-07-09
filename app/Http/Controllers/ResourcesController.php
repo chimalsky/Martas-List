@@ -23,7 +23,7 @@ class ResourcesController extends Controller
             return view('resources.list', compact('resources'));
         }
 
-        return view('resources.index', compact('resources'));
+        return view('resources.index', compact('resources', 'type'));
     }
 
     /**

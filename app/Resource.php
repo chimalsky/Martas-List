@@ -2,7 +2,9 @@
 
 namespace App;
 
+use App\Resource;
 use App\Encoding;
+use App\Connection;
 use App\ResourceType;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
@@ -21,7 +23,23 @@ class Resource extends Model implements HasMedia
 
     public function meta()
     {
-        return $this->hasMany(ResourceMeta::class);
+        return $this->hasMany(ResourceMeta::class)
+            ->orderBy('key', 'desc');
+    }
+
+    public function resources()
+    {
+        return $this->connections()->with(['resources' => function($query) {
+            $query->where('resource_id', '<>', $this->id);
+        }]); 
+
+        //return $this->belongsToMany(Resource::class, 'resource_resource', 'resource_a_id', 'resource_b_id')
+        //   ->orderBy('name', 'desc');
+    }
+
+    public function connections()
+    {
+        return $this->belongsToMany(Connection::class);
     }
 
     public function encodings()

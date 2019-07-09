@@ -94,11 +94,11 @@
 
 <section class="flex flex-wrap">
     <h1 class="m-2 text-2xl w-full">
-        {{ $resource->name }} is attached to {{ $resource->encodings->count() }} encodings
+        {{ $resource->name }} is connected to {{ $resource->resources->count() }} foobar
     </h1>
 
-    @foreach ($resource->encodings as $encoding) 
-        @include('encodings.item', ['encoding' => $encoding])
+    @foreach ($resource->resources as $connection) 
+        @include('resources.item', ['resource' => $connection->resources->first()])
     @endforeach
 </section>
 

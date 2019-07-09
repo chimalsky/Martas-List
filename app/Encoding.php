@@ -19,7 +19,8 @@ class Encoding extends Model
 
     public function resources()
     {
-        return $this->belongsToMany(Resource::class);
+        return $this->belongsToMany(Resource::class)
+            ->orderBy('name', 'desc');
     }
 
     public function getExcerptAttribute()

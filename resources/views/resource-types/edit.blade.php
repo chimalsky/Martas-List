@@ -45,10 +45,7 @@
 
     <section class="flex flex-wrap my-2">
         @foreach($resourceType->resources as $resource)
-            <a class="w-full md:w-1/2 lg:w-1/3 border border-2 border-gray-900 p-4"
-            href="{{ route('resources.edit', $resource) }}">
-                {{ $resource->name }}
-            </a>
+            @include('resources.item', ['resource' => $resource])
         @endforeach 
     </section>
 @endisset
