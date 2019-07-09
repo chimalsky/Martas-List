@@ -68,7 +68,7 @@
     </h1>
 
     @foreach ($resource->meta->reverse() as $meta)
-        <article class="w-full border border-1 border-gray-400 mb-4 py-4">
+        <article class="w-full md:w-1/2 lg:w-1/3 border border-1 border-gray-400 mb-4 py-4">
             {{ html()->modelForm($meta, 'PUT', route('resource.metas.update', [
                 'resource' => $resource, 
                 'meta' => $meta
