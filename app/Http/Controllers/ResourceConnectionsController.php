@@ -3,19 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Resource;
+use App\Connection;
 use Illuminate\Http\Request;
 
-class ResourceMediaController extends Controller
+class ResourceConnectionsController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * 
-     * @param  \App\Resource  $resource
+     *
+     * @param  \App\Resource   $resource
      * @return \Illuminate\Http\Response
      */
     public function index(Resource $resource)
     {
-        return view('resource.media.index', compact('resource'));
+        return view('resource.connections.index', compact('resource'));
     }
 
     /**
@@ -32,20 +33,18 @@ class ResourceMediaController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Resource  $resource
+     * @param  \App\Resource             $resource
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Resource $resource)
-    {        
-        $request->validate([
-            'media' => 'required|file'
-        ]);
-        
-        $resource->addMediaFromRequest('media')
-            ->usingName($request->input('name') ?? 'unnamed')
-            ->toMediaCollection();
+    {
+        collect($request->input('resources'))->each(function($connectedResourceId) use ($resource) {
+            $connection = $resource->connections()->create([]);
 
-        return back()->with('status', "Media was attached to $resource->name.");
+            $connection->resources()->attach($connectedResourceId);
+        });
+
+        return back()->with('status', "You've just enabled some crazy inter-linking between data. Let's hope the universe doesn't explode!");
     }
 
     /**
@@ -86,10 +85,15 @@ class ResourceMediaController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Resource  $resource
+     * @param  \App\Connection $connection
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Resource $resource)
+    public function destroy(Resource $resource, Connection $connection)
     {
-        //
+        $connectedResource = $connection->resource;
+
+        $connection->delete();
+
+        return back()->with('status', "$resource->name and $connectedResource->name were disconnected from each other. Nothing lasts forever...");
     }
 }

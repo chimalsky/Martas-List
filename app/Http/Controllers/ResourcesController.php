@@ -74,6 +74,7 @@ class ResourcesController extends Controller
      */
     public function edit(Resource $resource)
     {
+        
         return view('resources.edit', compact('resource'));
     }
 

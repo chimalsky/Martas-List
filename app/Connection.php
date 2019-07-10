@@ -11,4 +11,9 @@ class Connection extends Model
     {
         return $this->belongsToMany(Resource::class);
     }
+
+    public function getResourceAttribute()
+    {
+        return $this->resources->first();
+    }
 }

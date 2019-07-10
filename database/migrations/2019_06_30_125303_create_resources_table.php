@@ -18,7 +18,9 @@ class CreateResourcesTable extends Migration
 
             $table->string('name')->default("An Unnamed Resource");
 
-            $table->unsignedBigInteger('resource_type_id')
+            $table->unsignedBigInteger('resource_type_id');
+            
+            $table->foreign('resource_type_id')
                 ->references('id')
                 ->on('resource_types')
                 ->onDelete('cascade');

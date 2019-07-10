@@ -11,11 +11,12 @@ class ResourceMetasController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param \App\Resource $resource
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Resource $resource)
     {
-        //
+        return view('resource.metas.index', compact('resource'));
     }
 
     /**

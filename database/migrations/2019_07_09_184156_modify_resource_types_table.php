@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateConnectionResourceTable extends Migration
+class ModifyResourceTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateConnectionResourceTable extends Migration
      */
     public function up()
     {
-        Schema::create('connection_resource', function (Blueprint $table) {
-            $table->bigIncrements('id');
-
-            $table->unsignedBigInteger('connection_id');
-            $table->unsignedBigInteger('resource_id');
+        Schema::table('resource_types', function(Blueprint $table) {
+            $table->schemalessAttributes('extra_attributes');
         });
     }
 
@@ -28,6 +25,6 @@ class CreateConnectionResourceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resource_connection');
+        //
     }
 }

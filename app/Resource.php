@@ -26,20 +26,26 @@ class Resource extends Model implements HasMedia
         return $this->hasMany(ResourceMeta::class)
             ->orderBy('key', 'desc');
     }
-
-    public function resources()
-    {
-        return $this->connections()->with(['resources' => function($query) {
-            $query->where('resource_id', '<>', $this->id);
-        }]); 
-
-        //return $this->belongsToMany(Resource::class, 'resource_resource', 'resource_a_id', 'resource_b_id')
-        //   ->orderBy('name', 'desc');
-    }
-
+    
     public function connections()
     {
-        return $this->belongsToMany(Connection::class);
+        return $this->belongsToMany(Connection::class)->with(['resources' => function($query) {
+            $query->where('resource_id', '<>', $this->id);
+        }]);
+    }
+
+    public function getResourcesAttribute()
+    {
+        $connections = $this->connections()->with(['resources' => function($query) {
+            $query->where('resource_id', '<>', $this->id);
+        }]);
+
+        return $connections->get()->pluck('resources')->flatten();
+    } 
+
+    public function getConnectedTypesAttribute()
+    {
+        return ResourceType::whereIn('id', $this->resources->pluck('resource_type_id'))->get();
     }
 
     public function encodings()
