@@ -1,4 +1,4 @@
-@extends('layouts.web')
+@extends('layouts.brochure')
 
 @section('content')
     <h1 class="text-2xl text-center font-thin">   

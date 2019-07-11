@@ -1,25 +1,6 @@
-@extends ('layouts.web')
+@extends ('layouts.resources.edit')
 
 @section ('content')
-
-<header class="flex align-left mb-8">
-
-    <p class="ml-4 font-bold"> 
-        {{ $resource->definition->name }} -- {{ $resource->name }} 
-    </p>
-</header>
-
-<nav class="w-full flex align-left">
-    <a href="">
-        Tags
-    </a>
-    <a href="{{ route('resource.connections.index', ['resource' => $resource]) }}">
-        Connections
-    </a>
-    <a href="">
-        Media
-    </a>
-</nav>
 
 <form action="{{ route('resource.connections.store', $resource) }}" method="post"
     data-controller="resource-types" 

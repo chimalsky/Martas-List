@@ -16,7 +16,7 @@ Route::get('/', 'BrochureController@index')->name('brochure.index');
 Route::get('/dearchived', 'BrochureController@show')->name('brochure.show');
 
 Route::get('/home', function() {
-    return redirect()->route('encodings.index');
+    return redirect()->route('resources.index');
 })->name('home');
 
 Route::get('/blog', 'BlogController@index')->name('blog.index');

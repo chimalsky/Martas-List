@@ -1,33 +1,58 @@
 @extends ('layouts.web')
 
-@section ('content')
+@section ('header')
 
-<header class="flex align-left mb-8">
-    <a class="btn btn-gray font-thin" href="{{ route('resource-types.edit', $resource->definition) }}">
-        Return to {{ $resource->definition->name }} Page
-    </a> 
+<section class="web container mx-auto">
+    <header class="flex align-left mb-8">
+        <a href="{{ route('resources.index') }}">
+            Archiver Main Page
+        </a>
 
-    <p class="ml-4 font-bold"> 
-        {{ $resource->definition->name }} -- {{ $resource->name }} 
-    </p>
-</header>
+        <span class="mx-4">
+            >
+        </span>
 
-<nav class="w-full flex align-left">
-    <a href="{{ route('resource.metas.index', ['resource' => $resource]) }}">
-        Tags
-    </a>
-    <a href="{{ route('resource.connections.index', ['resource' => $resource]) }}">
-        Connections
-    </a>
-    <a href="{{ route('resource.media.index', ['resource' => $resource]) }}">
-        Media
-    </a>
-</nav>
+        <a href="{{ route('resource-types.index') }}">
+            Resources
+        </a>
 
-<main>
-    @yield('asdf')
-</main>
+        <span class="mx-4">
+            >
+        </span>
 
+        <a href="{{ route('resource-types.edit', $resource->definition) }}" class="mx-2">
+            {{ $resource->definition->name }}
+        </a>
+        
+        <span class="mx-4">
+            >
+        </span>
 
+        <a href="{{ route('resources.edit', $resource) }}" class="mx-2 font-bold underline"> 
+            {{ $resource->name }} 
+        </a>
+    </header>
+
+    <nav class="w-full flex align-left border border-1 border-gray-500 mb-4">
+        <a href="{{ route('resource.metas.index', ['resource' => $resource]) }}"
+            class="p-2 mx-2 
+            {{ (request()->is('resource/*/metas*')) ? 'bg-gray-700 text-gray-100' : '' }}
+            ">
+            Tags
+        </a>
+        <a href="{{ route('resource.connections.index', ['resource' => $resource]) }}"
+            class="p-2 mr-2
+            {{ (request()->is('resource/*/connections*')) ? 'bg-gray-700 text-gray-100' : '' }}
+            ">
+            Connections
+        </a>
+        <a href="{{ route('resource.media.index', ['resource' => $resource]) }}"
+            class="p-2 mr-2
+            {{ (request()->is('resource/*/media*')) ? 'bg-gray-700 text-gray-100' : '' }}
+            ">
+            Media
+        </a>
+    </nav>
+</section>
 
 @endsection

@@ -15,7 +15,7 @@ class ResourcesController extends Controller
      */
     public function index(Request $request)
     {
-        $type = ResourceType::find($request->query('type'));
+        $type = ResourceType::find($request->query('type')) ?? ResourceType::first();
 
         $resources = $type->resources;
 

@@ -22152,6 +22152,7 @@ application.load(Object(stimulus_webpack_helpers__WEBPACK_IMPORTED_MODULE_1__["d
 
 var map = {
 	"./date_controller.js": "./resources/js/controllers/date_controller.js",
+	"./history_controller.js": "./resources/js/controllers/history_controller.js",
 	"./resource_types_controller.js": "./resources/js/controllers/resource_types_controller.js"
 };
 
@@ -22238,6 +22239,132 @@ function (_Controller) {
 }(stimulus__WEBPACK_IMPORTED_MODULE_0__["Controller"]);
 
 
+
+/***/ }),
+
+/***/ "./resources/js/controllers/history_controller.js":
+/*!********************************************************!*\
+  !*** ./resources/js/controllers/history_controller.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _default; });
+/* harmony import */ var stimulus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! stimulus */ "./node_modules/stimulus/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var localSessionKey = "history.history";
+
+
+var _default =
+/*#__PURE__*/
+function (_Controller) {
+  _inherits(_default, _Controller);
+
+  function _default() {
+    _classCallCheck(this, _default);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(_default).apply(this, arguments));
+  }
+
+  _createClass(_default, [{
+    key: "initialize",
+    value: function initialize() {
+      // Listen for page changes
+      this.leavingPage = this.leavingPage.bind(this);
+      window.addEventListener("turbolinks:before-visit", this.leavingPage);
+      window.addEventListener("beforeunload", this.leavingPage); // Load history from session store
+
+      var historyValue = window.sessionStorage.getItem(localSessionKey);
+
+      if (historyValue) {
+        this.history = JSON.parse(historyValue);
+      } else {
+        this.history = [];
+      } // Used to prevent current page from being entered into the history list when going back
+
+
+      this.recordVisit = true;
+    }
+  }, {
+    key: "connect",
+    value: function connect() {
+      // Load in the history and display it on the page
+      var links = "";
+      this.history.forEach(function (historyEntry, historyLocation) {
+        links += linkHTML(historyEntry.title, historyEntry.path, historyLocation);
+      });
+      this.linksTarget.innerHTML = links;
+    }
+  }, {
+    key: "disconnect",
+    value: function disconnect() {
+      // Unload page change listener
+      window.removeEventListener("turbolinks:before-visit", this.leavingPage);
+      window.removeEventListener("beforeunload", this.leavingPage);
+    }
+  }, {
+    key: "visitPageInHistory",
+    value: function visitPageInHistory(event) {
+      // When going back to a page on our bread crumb list, remove items visited after desired page
+      var historyItemIndex = event.target.getAttribute('data-history-location');
+      this.history = this.history.slice(0, historyItemIndex);
+      this.recordVisit = false;
+    }
+  }, {
+    key: "leavingPage",
+    value: function leavingPage(event) {
+      // Record page into history when leaving
+      if (this.recordVisit) {
+        var lastVisitedItem = this.history[this.history.length - 1];
+
+        if (lastVisitedItem == null || lastVisitedItem.path != this.pagePath) {
+          this.history.push({
+            title: document.title,
+            path: this.pagePath
+          });
+        }
+      }
+
+      window.sessionStorage.setItem(localSessionKey, JSON.stringify(this.history));
+    }
+  }, {
+    key: "pagePath",
+    get: function get() {
+      return "".concat(window.location.pathname).concat(window.location.search);
+    }
+  }]);
+
+  return _default;
+}(stimulus__WEBPACK_IMPORTED_MODULE_0__["Controller"]);
+
+_defineProperty(_default, "targets", ["links"]);
+
+
+
+function linkHTML(historyItemTitle, historyItemPath, historyLocation) {
+  return "<li><a href=\"".concat(historyItemPath, "\" data-action=\"history#visitPageInHistory\" data-history-location=\"").concat(historyLocation, "\"> <strong>></strong> ").concat(historyItemTitle, "</a></li>");
+}
 
 /***/ }),
 

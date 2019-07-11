@@ -1,4 +1,4 @@
-@extends ('layouts.web')
+@extends ('layouts.brochure')
 
 @section ('content')
 <main class="justify-center flex flex-wrap ">
@@ -7,7 +7,7 @@
     </h1>
 
     <nav class="flex flex-wrap">
-        <a class="w-full my-2" href="{{ route('encodings.index') }}">
+        <a class="w-full my-2" href="{{ route('resources.index') }}">
             Archiver
         </a>
 

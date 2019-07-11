@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Resource;
 use Illuminate\Http\Request;
+use Spatie\MediaLibrary\Models\Media;
 
 class ResourceMediaController extends Controller
 {
@@ -75,21 +76,27 @@ class ResourceMediaController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Resource  $resource
+     * @param  \Spatie\MediaLibrary\Models\Media @medium
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Resource $resource)
+    public function update(Request $request, Resource $resource, Media $medium)
     {
-        //
+        $medium->name = $request->input('name');
+        $medium->save();
+
+        return back()->with('status', "Medium $medium->name was updated, bro!");
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Resource  $resource
+     * @param  \Spatie\MediaLibrary\Models\Media @medium
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Resource $resource)
+    public function destroy(Resource $resource, Media $medium)
     {
-        //
+        $medium->delete();
+        return back()->with('status', "Medium ($medium->name) was deleted! RIP the old, Welcome the new!"); 
     }
 }

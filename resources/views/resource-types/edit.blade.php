@@ -2,13 +2,27 @@
 
 @section ('content')
 
-<header class="flex justify-between mb-8">
-    <a class="btn btn-gray" href="{{ route('resource-types.index') }}">
-        Return to my list of resources
+<header class="flex align-left mb-8">
+    <a href="{{ route('resources.index') }}">
+        Archiver Main Page
     </a>
-    
-</header>
 
+    <span class="mx-4">
+        >
+    </span>
+
+    <a href="{{ route('resource-types.index') }}">
+        Resources
+    </a>
+
+    <span class="mx-4">
+        >
+    </span>
+
+    <a href="{{ route('resource-types.edit', $resourceType) }}" class="mx-2 font-bold underline">
+        {{ $resourceType->name }} 
+    </a>
+</header>
 
 
 <section class="flex flex-wrap mb-8">
@@ -38,7 +52,7 @@
     {{ html()->form()->close() }}
 </section>
 
-@isset($resourceType->resources)
+@if($resourceType->resources->count())
     <h1 class="text-xl">
         {{ $resourceType->name }} resources: 
     </h1>
@@ -48,6 +62,10 @@
             @include('resources.item', ['resource' => $resource])
         @endforeach 
     </section>
-@endisset
+@else 
+    <h1 class="text-xl">
+        No {{ $resourceType->name }} yet...  
+    </h1>
+@endif
 
 @endsection

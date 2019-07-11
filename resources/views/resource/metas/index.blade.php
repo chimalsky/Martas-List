@@ -1,25 +1,6 @@
-@extends ('layouts.web')
+@extends ('layouts.resources.edit')
 
 @section ('content')
-
-<header class="flex align-left mb-8">
-
-    <p class="ml-4 font-bold"> 
-        {{ $resource->definition->name }} -- {{ $resource->name }} 
-    </p>
-</header>
-
-<nav class="w-full flex align-left">
-    <a href="">
-        Tags
-    </a>
-    <a href="{{ route('resource.connections.index', ['resource' => $resource]) }}">
-        Connections
-    </a>
-    <a href="">
-        Media
-    </a>
-</nav>
 
 <form action="{{ route('resource.metas.store', $resource) }}" method="post"
     class="mt-8 bg-gray-300 p-4 mb-4">
@@ -29,7 +10,7 @@
         Add new tag 
     </h1>
 
-    @include('encodings.meta.form')
+    @include('resource.metas.form')
 
     <button class="btn btn-blue">
         Add this tag to {{ $resource->name }}
@@ -38,9 +19,9 @@
 
 
 <section class="flex flex-wrap">
-    <h1 class="m-2 text-2xl w-full">
+    <h1 class="m-2 font-semibold w-full">
         @if ($resource->meta->count())
-            {{ $resource->name }} Tags
+            {{ $resource->name }} has {{ $resource->meta->count() }} meta tags
         @else 
             Add Some Tags to {{ $resource->name }} !
         @endif

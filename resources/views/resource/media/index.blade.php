@@ -1,25 +1,7 @@
-@extends ('layouts.web')
+@extends ('layouts.resources.edit')
 
 @section ('content')
 
-<header class="flex align-left mb-8">
-
-    <p class="ml-4 font-bold"> 
-        {{ $resource->definition->name }} -- {{ $resource->name }} 
-    </p>
-</header>
-
-<nav class="w-full flex align-left">
-    <a href="">
-        Tags
-    </a>
-    <a href="{{ route('resource.connections.index', ['resource' => $resource]) }}">
-        Connections
-    </a>
-    <a href="">
-        Media
-    </a>
-</nav>
 
 <section class="flex flex-wrap mb-8">
     <div class="w-full bg-red-200 p-4">
@@ -27,7 +9,7 @@
             ->acceptsFiles()
             ->open() }}
 
-            @include('resources.media.form')
+            @include('resource.media.form')
 
             <footer class="py-4">
                 <button class="btn btn-hollow">
@@ -39,24 +21,56 @@
 </section>
 
 <section class="flex flex-wrap">
-    <h1 class="m-2 text-2xl w-full">
+    <h1 class="m-2 w-full font-semibold">
         {{ $resource->name }} has {{ $resource->getMedia()->count() }} media
     </h1>
 
-    @foreach ($resource->getMedia() as $media)
-        <article class="w-full md:w-1/2">
-            <p> {{ $media->name }} </p>
+    @foreach ($resource->getMedia() as $medium)
+        <article class="w-full md:w-1/2 lg:w-1/3 p-2">
+            <div class="border border-1 border-gray-600 p-4">
+                {{ html()->modelForm($medium, 'PUT', route('resource.media.update', 
+                    [
+                        'resource' => $resource,
+                        'medium' => $medium
+                    ]
+                    ))->open()
+                }}
+                    <label class="w-full"> 
+                        {{ html()->text('name')->class(['form-input']) }}
+                    </label>
 
-            @if (Str::contains($media->mime_type, 'image'))
-                <img src="{{ $media->getUrl() }}" />
-            @elseif (Str::contains($media->mime_type, 'audio'))
-                <audio
-                    controls
-                    src="{{ $media->getUrl() }}">
-                        Your browser does not support the
-                        <code>audio</code> element.
-                </audio>
-            @endif
+                    <button class="btn btn-hollow">
+                        Save Changes
+                    </button>
+
+                {{ html()->closeModelForm() }}
+
+                {{ html()->modelForm($medium, 'DELETE', route('resource.media.destroy', [
+                    'resource' => $resource, 
+                    'medium' => $medium
+                ] ))->open() }}
+                    <div class="flex mr-4 my-6">
+                        <button class="btn btn-red">
+                            Delete
+                        </button>
+                    </div>
+                {{ html()->closeModelForm() }}
+
+                
+
+                @if (Str::contains($medium->mime_type, 'image'))
+                    <img src="{{ $medium->getUrl() }}" />
+                @elseif (Str::contains($medium->mime_type, 'audio'))
+                    <audio
+                        controls
+                        src="{{ $medium->getUrl() }}">
+                            Your browser does not support the
+                            <code>audio</code> element.
+                    </audio>
+                @else 
+                    <a href="{{ $medium->getUrl() }}"" download>
+                @endif
+            </div>
         </article>
     @endforeach
 

@@ -4,8 +4,16 @@
 
 
 <header class="flex align-left mb-8">
-    <a class="btn btn-gray" href="{{ route('encodings.index') }}">
-        Return home
+    <a href="{{ route('resources.index') }}">
+        Archiver Main Page
+    </a>
+
+    <span class="mx-4">
+        >
+    </span>
+
+    <a href="{{ route('resource-types.index') }}" class="mx-2 font-bold underline">
+        Resources
     </a>
 </header>
 
