@@ -45,7 +45,7 @@
         </h1>
 
         @foreach ($resource->connections as $connection) 
-            @if ($connection->resource->definition->is($resourceType))
+            @if (isset($connection->resource) && $connection->resource->definition->is($resourceType))
                 @include('resource.connections.item', [
                     'resource' => $resource, 
                     'connection' => $connection
