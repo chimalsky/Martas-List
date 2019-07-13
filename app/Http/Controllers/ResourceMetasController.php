@@ -16,6 +16,8 @@ class ResourceMetasController extends Controller
      */
     public function index(Resource $resource)
     {
+        $resource->load(['meta']);
+
         return view('resource.metas.index', compact('resource'));
     }
 

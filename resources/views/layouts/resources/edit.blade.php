@@ -34,6 +34,12 @@
     </header>
 
     <nav class="w-full flex align-left border border-1 border-gray-500 mb-4">
+        <a href="{{ route('resources.edit', ['resource' => $resource]) }}"
+            class="p-2 mx-2 
+            {{ (request()->is('resources/*')) ? 'bg-gray-700 text-gray-100' : '' }}
+            ">
+            Main
+        </a>
         <a href="{{ route('resource.metas.index', ['resource' => $resource]) }}"
             class="p-2 mx-2 
             {{ (request()->is('resource/*/metas*')) ? 'bg-gray-700 text-gray-100' : '' }}

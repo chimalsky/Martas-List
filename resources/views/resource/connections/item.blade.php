@@ -3,6 +3,16 @@
         <a href="{{ route('resources.edit', $connection->resource) }}">
             {{ $connection->resource->name }}
         </a>
+
+        <aside class="w-full mt-2">
+            <div class="italic">
+                {!! $resource->excerpt !!}
+            </div>
+            
+            <section class="bg-gray-200 p-2">
+                @include('resource.connections.panel', ['resource' => $resource])
+            </section>
+        </aside>
         
         {{ html()->modelForm($resource, 'DELETE', route('resource.connections.destroy', [
             'resource' => $resource,

@@ -17,7 +17,7 @@ class ResourcesController extends Controller
     {
         $type = ResourceType::find($request->query('type')) ?? ResourceType::first();
 
-        $resources = $type->resources;
+        $resources = $type->resources()->with('mainMeta')->get();
 
         if ($request->wantsJson()) {
             return view('resources.list', compact('resources'));
@@ -74,7 +74,7 @@ class ResourcesController extends Controller
      */
     public function edit(Resource $resource)
     {
-        
+        $resource->load('mainMeta');
         return view('resources.edit', compact('resource'));
     }
 

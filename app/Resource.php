@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Str;
 use App\Resource;
 use App\Encoding;
 use App\Connection;
@@ -24,7 +25,14 @@ class Resource extends Model implements HasMedia
     public function meta()
     {
         return $this->hasMany(ResourceMeta::class)
+            ->whereNotIn('key', ['transcription', 'encoding'])
             ->orderBy('key', 'desc');
+    }
+
+    public function mainMeta()
+    {
+        return $this->hasMany(ResourceMeta::class)
+            ->whereIn('key', ['transcription', 'encoding']);
     }
     
     public function connections()
@@ -32,6 +40,27 @@ class Resource extends Model implements HasMedia
         return $this->belongsToMany(Connection::class)->with(['resources' => function($query) {
             $query->where('resource_id', '<>', $this->id);
         }]);
+    }
+
+    public function getExcerptAttribute()
+    {
+        $mainFields = $this->mainMeta;
+
+        if (! $mainFields->count()) {
+            return;
+        }
+
+        $mainField = $mainFields->first();
+
+        if ($mainField->type == 'rich-text') {
+            $html = $mainField->value;
+            $value = strip_tags($html);
+        } else {
+            $value = $mainField->value;
+        }
+
+    
+        return Str::limit($value, 70);
     }
 
     public function getResourcesAttribute()

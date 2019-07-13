@@ -47,7 +47,7 @@
         @include('resources.form', ['resourceType' => $resourceType])
         
         <button class="btn btn-blue my-2">
-            Add a new {{ $resourceType->name }} resource
+            Add a new {{ $resourceType->nameSingular }} resource
         </button>
     {{ html()->form()->close() }}
 </section>

@@ -13,16 +13,33 @@
         </footer>
     {{ html()->closeModelForm() }}
 
+    @foreach ($resource->mainMeta as $field)
+        <article class="w-full my-4 mb-16">
+            <h1 class="font-semibold"> 
+                {{ $field->key }}
+            </h1>
 
-    @if (strtolower($resource->definition->name) == 'poems')
-        
-        <h1 class="w-full">
-            The Magical Bobolink has hidden the encodings/mock-encodings editing portion for now. He will let 
-            you know when it is back online. Do not worry, all the encodings you've produced before are safe 
-            in the magical nest.
-        </h1>
+            {{ html()->modelForm($field, 'PUT', route('resource.metas.update', ['resource' => $resource, 'meta' => $field]))->open() }}
+                @if ($field->type == 'rich-text')
+                    {{ html()->hidden('value')->attribute('id', $field->key) }}
+                    <trix-editor input="{{ $field->key }}"></trix-editor>
+                @elseif ($field->type == 'encoding')
+                    <h1 class="font-semibold">
+                        Mock Encoding -- textbox is resizable as needed from bottom-right corner
+                    </h1>
 
-    @endif
+                    {{ html()->textarea('value')
+                        ->class(['w-full', 'block', 'border', 'border-2', 'border-black'])
+                        ->attribute('id', $field->key)
+                    }}
+                @endif
+
+                <button class="btn btn-blue">
+                    Save changes to {{ $field->key }}
+                </button>
+            {{ html()->closeModelForm() }}
+        </article>
+    @endforeach
 
 
 
