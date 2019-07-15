@@ -10,7 +10,7 @@
             </div>
             
             <section class="bg-gray-200 p-2">
-                @include('resource.connections.panel', ['resource' => $resource])
+                @include('resource.connections.panel', ['resource' => $connection->resource])
             </section>
         </aside>
         
