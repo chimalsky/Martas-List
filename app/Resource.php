@@ -25,21 +25,34 @@ class Resource extends Model implements HasMedia
     public function meta()
     {
         return $this->hasMany(ResourceMeta::class)
-            ->whereNotIn('key', ['transcription', 'encoding'])
             ->orderBy('key', 'desc');
     }
 
-    public function mainMeta()
+    public function getMetaTagsAttribute()
     {
-        return $this->hasMany(ResourceMeta::class)
-            ->whereIn('key', ['transcription', 'encoding']);
+        $keyNames = $this->mainAttributes->pluck('name')->toArray();
+
+        return $this->meta()->whereNotIn('key', $keyNames)->get();
     }
-    
+
+    public function getMainMetaAttribute()
+    {
+        $keyNames = $this->mainAttributes->pluck('name')->toArray();
+
+        return $this->meta()->whereIn('key', $keyNames)->get();
+    }
+
     public function connections()
     {
         return $this->belongsToMany(Connection::class)->with(['resources' => function($query) {
             $query->where('resource_id', '<>', $this->id);
         }]);
+    }
+
+    public function getMainAttributesAttribute()
+    {
+        $definition = $this->definition;
+        return $definition->mainAttributes;
     }
 
     public function getExcerptAttribute()

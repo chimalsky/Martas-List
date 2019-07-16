@@ -1,6 +1,7 @@
 <article class="w-full md:w-1/2 lg:w-1/3 p-2">
     <main class="m4 p-4 border border-2 border-gray-900">
-        <a href="{{ route('resources.edit', $connection->resource) }}">
+        <a href="{{ route('resources.edit', $connection->resource) }}"
+            class="font-semibold text-xl">
             {{ $connection->resource->name }}
         </a>
 

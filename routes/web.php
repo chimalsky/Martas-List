@@ -29,6 +29,8 @@ Route::middleware(['auth'])->group(function() {
 
     Route::resource('resources', 'ResourcesController');
     Route::resource('resource-types', 'ResourceTypesController');
+    Route::resource('resource-type.attributes', 'ResourceTypeAttributesController');
+
 
     Route::resource('resource.connections', 'ResourceConnectionsController');
     Route::resource('resource.metas', 'ResourceMetasController');

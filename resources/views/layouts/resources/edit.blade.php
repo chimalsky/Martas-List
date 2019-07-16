@@ -47,13 +47,14 @@
             Tags
         </a>
         <a href="{{ route('resource.connections.index', ['resource' => $resource]) }}"
-            class="p-2 mr-2
+            class="p-2 mx-2
             {{ (request()->is('resource/*/connections*')) ? 'bg-gray-700 text-gray-100' : '' }}
             ">
             Connections
         </a>
+      
         <a href="{{ route('resource.media.index', ['resource' => $resource]) }}"
-            class="p-2 mr-2
+            class="p-2 mx-2
             {{ (request()->is('resource/*/media*')) ? 'bg-gray-700 text-gray-100' : '' }}
             ">
             Media

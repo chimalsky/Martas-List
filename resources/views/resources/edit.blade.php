@@ -12,35 +12,60 @@
             </button>
         </footer>
     {{ html()->closeModelForm() }}
-
-    @foreach ($resource->mainMeta as $field)
+    
+    @foreach ($resource->definition->mainAttributes as $attribute) 
         <article class="w-full my-4 mb-16">
             <h1 class="font-semibold"> 
-                {{ $field->key }}
+                {{ $attribute->name }}
             </h1>
 
-            {{ html()->modelForm($field, 'PUT', route('resource.metas.update', ['resource' => $resource, 'meta' => $field]))->open() }}
-                @if ($field->type == 'rich-text')
-                    {{ html()->hidden('value')->attribute('id', $field->key) }}
-                    <trix-editor input="{{ $field->key }}"></trix-editor>
-                @elseif ($field->type == 'encoding')
-                    <h1 class="font-semibold">
-                        Mock Encoding -- textbox is resizable as needed from bottom-right corner
-                    </h1>
+            @if ($field = $resource->mainMeta->firstWhere('key', $attribute->name))
+                {{ html()->modelForm($field, 'PUT', route('resource.metas.update', ['resource' => $resource, 'meta' => $field, 'attribute' => true]))->open() }}
+                    @if ($field->type == 'rich-text')
+                        {{ html()->hidden('value')->attribute('id', $field->key) }}
+                        <trix-editor input="{{ $field->key }}"></trix-editor>
+                    @elseif ($field->type == 'encoding')
+                        <h1 class="font-semibold">
+                            Mock Encoding -- textbox is resizable as needed from bottom-right corner
+                        </h1>
 
-                    {{ html()->textarea('value')
-                        ->class(['w-full', 'block', 'border', 'border-2', 'border-black'])
-                        ->attribute('id', $field->key)
-                    }}
-                @endif
+                        {{ html()->textarea('value')
+                            ->class(['w-full', 'block', 'border', 'border-2', 'border-black'])
+                            ->attribute('id', $field->key)
+                        }}
+                    @else  
+                        @include('resource.attributes.field', ['attribute' => $field])
+                    @endif
 
-                <button class="btn btn-blue">
-                    Save changes to {{ $field->key }}
-                </button>
-            {{ html()->closeModelForm() }}
+                    <button class="btn btn-blue">
+                        Save changes to {{ $field->key }}
+                    </button>
+                {{ html()->closeModelForm() }}
+            @else 
+                {{ html()->modelForm($field, 'POST', route('resource.metas.store', ['resource' => $resource, 'attribute' => true]))->open() }}
+                    @if ($attribute->type == 'rich-text')
+                        {{ html()->hidden('value')->attribute('id', $field->key) }}
+                        <trix-editor input="{{ $field->key }}"></trix-editor>
+                    @elseif ($attribute->type == 'encoding')
+                        <h1 class="font-semibold">
+                            Mock Encoding -- textbox is resizable as needed from bottom-right corner
+                        </h1>
+
+                        {{ html()->textarea('value')
+                            ->class(['w-full', 'block', 'border', 'border-2', 'border-black'])
+                            ->attribute('id', $field->key)
+                        }}
+                    @else  
+                        @include('resource.attributes.field', ['attribute' => $attribute])
+                    @endif
+
+                    <button class="btn btn-blue my-2">
+                        Save changes to {{ $field->key ?? $attribute->name }}
+                    </button>
+                {{ html()->closeModelForm() }}
+            @endif
         </article>
     @endforeach
-
 
 
 </section>

@@ -74,7 +74,8 @@ class ResourcesController extends Controller
      */
     public function edit(Resource $resource)
     {
-        $resource->load('mainMeta');
+        $resource->load(['definition']);
+
         return view('resources.edit', compact('resource'));
     }
 

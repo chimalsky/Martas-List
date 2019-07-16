@@ -4,6 +4,7 @@ namespace App;
 
 use Str;
 use App\Resource;
+use App\ResourceAttribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Spatie\SchemalessAttributes\SchemalessAttributes;
@@ -20,6 +21,12 @@ class ResourceType extends Model
     public function resources()
     {
         return $this->hasMany(Resource::class, 'resource_type_id');
+    }
+
+    public function getMainAttributesAttribute()
+    {
+        $attributes = collect($this->extra_attributes->get('attributes', []));
+        return $attributes->mapInto(ResourceAttribute::class);
     }
 
     public function getNameSingularAttribute()

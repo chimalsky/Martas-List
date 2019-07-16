@@ -30,6 +30,20 @@
                     {{ session('status') }}
                 </div>
             @endif
+
+            @if ($errors->any())
+                <div class="bg-red-200 p-2 my-2">
+                    <h1 class="font-bold">
+                        Uh oh!
+                    </h1>
+                    
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
            
             @yield('content')
         </main>

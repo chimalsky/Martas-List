@@ -40,12 +40,18 @@ class ResourceMetasController extends Controller
      */
     public function store(Resource $resource, Request $request)
     {
-        $meta = new ResourceMeta($request->all());
+        $meta = new ResourceMeta($request->except('attribute'));
         $resource->meta()->save($meta);
 
         $metaKey = $request->input('key');
 
-        return back()->with('status', "Resource Tag ($metaKey) was added!");    
+        if ($request->query('attribute')) {
+            $status = "$metaKey Attribute saved";
+        } else {    
+            $status = "Resource Tag ($metaKey) was added!";
+        }
+
+        return back()->with('status', $status);    
     }
 
     /**
@@ -79,9 +85,15 @@ class ResourceMetasController extends Controller
      */
     public function update(Request $request, Resource $resource, ResourceMeta $meta)
     {
-        $meta->update($request->all());
+        $meta->update($request->except('attribute'));
+
+        if ($request->query('attribute')) {
+            $status = "$meta->key Attribute saved";
+        } else {    
+            $status = "Resource Tag ($meta->key) was updated! The world is now a better place";
+        }
         
-        return back()->with('status', "Resource Tag ($meta->key) was updated! The world is now a better place"); 
+        return back()->with('status', $status); 
     }
 
     /**

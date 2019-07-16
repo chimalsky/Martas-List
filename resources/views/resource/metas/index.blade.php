@@ -20,14 +20,14 @@
 
 <section class="flex flex-wrap">
     <h1 class="m-2 font-semibold w-full">
-        @if ($resource->meta->count())
+        @if ($resource->metaTags->count())
             {{ $resource->name }} has {{ $resource->meta->count() }} meta tags
         @else 
             Add Some Tags to {{ $resource->name }} !
         @endif
     </h1>
 
-    @foreach ($resource->meta->reverse() as $meta)
+    @foreach ($resource->metaTags->reverse() as $meta)
         <article class="w-full md:w-1/2 lg:w-1/3 border border-1 border-gray-400 mb-4 py-4">
             {{ html()->modelForm($meta, 'PUT', route('resource.metas.update', [
                 'resource' => $resource, 
