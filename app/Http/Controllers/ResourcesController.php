@@ -17,7 +17,7 @@ class ResourcesController extends Controller
     {
         $type = ResourceType::find($request->query('type')) ?? ResourceType::first();
 
-        $resources = $type->resources()->with('mainMeta')->get();
+        $resources = $type->resources()->get();
 
         if ($request->wantsJson()) {
             return view('resources.list', compact('resources'));
