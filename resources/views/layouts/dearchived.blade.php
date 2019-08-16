@@ -14,7 +14,7 @@
         <script src="{{ mix('js/app.js') }}" defer="true"></script>
         @stack('scripts')
     </head>
-    <body data-controller="application" class="bg-gray-800">
+    <body data-controller="application" class="bg-gray-900">
         @yield('header')
 
         <main class="web container mx-auto">

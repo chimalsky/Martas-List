@@ -6,8 +6,8 @@
     <article class="p-3">
         {{ $bird->name }}
 
-        <section class="p-2 text-gray-200">
-            <section data-controller="frame" class="w-1/2 max-h-screen"
+        <section class="p-2 text-gray-200 flex flex-wrap">
+            <section data-controller="frame" class="w-full md:w-1/2 max-h-screen"
                 data-target="frame.container" >
                 @foreach ($bird->resources as $poem)
                     @foreach ($bird->getMedia('', function($medium) { return Str::contains($medium->mime_type, 'audio'); }) as $audio)
