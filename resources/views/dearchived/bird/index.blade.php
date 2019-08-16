@@ -2,7 +2,7 @@
 
 @section('content')
 
-@foreach($birds->where('name', 'Bobolink') as $bird)
+@foreach($birds as $bird)
     <article class="p-3">
         {{ $bird->name }}
 
