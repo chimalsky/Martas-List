@@ -7,9 +7,9 @@ use App\Resource;
 use App\Encoding;
 use App\Connection;
 use App\ResourceType;
+use App\Traits\HasMediaTrait;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 class Resource extends Model implements HasMedia
 {

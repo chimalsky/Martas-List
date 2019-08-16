@@ -11,30 +11,30 @@
         <link href="{{ mix('css/app.css') }}" rel="stylesheet">
         @stack('stylesheets')
         
+        <script src="{{ mix('js/app.js') }}" defer="true"></script>
         @stack('scripts')
     </head>
     <body data-controller="application">
-        <header class="web py-2 border border-1 border-gray mb-12">
-            <a href="{{ route('brochure.index') }}" class="font-light mx-2">
-                Home 
-            </a>   
-            <a href="{{ route('resources.index') }}" class="font-light mx-2">
-                Archiver 
-            </a>   
-            <a href="{{ route('bird.show') }}" class="font-light mx-2">
-                De-archived 
-            </a>
-            <a href="{{ route('blog.index') }}" class="font-light mx-2">
-                Blog 
-            </a>
-        </header>
-
         @yield('header')
 
         <main class="web container mx-auto">
             @if (session('status'))
                 <div class="bg-green-200 p-8 text-center">
                     {{ session('status') }}
+                </div>
+            @endif
+
+            @if ($errors->any())
+                <div class="bg-red-200 p-2 my-2">
+                    <h1 class="font-bold">
+                        Uh oh!
+                    </h1>
+                    
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             @endif
            

@@ -11,7 +11,7 @@
             Archiver
         </a>
 
-        <a class="w-full my-2" href="{{ route('brochure.show') }}">
+        <a class="w-full my-2" href="{{ route('bird.show') }}">
             De-archived
         </a>
 

@@ -6,19 +6,13 @@ use App\Resource;
 use App\ResourceType;
 use Illuminate\Http\Request;
 
-class BrochureController extends Controller
+class BirdController extends Controller
 {
-    public function index() 
-    {
-        return view('brochure.index');
-    }
-
     public function show()
     {
         $birdResource = ResourceType::where('name', 'Bird Archive')->first();
         $birds = $birdResource->resources;
 
-        dd($birds, $birdResource);
-        return view('brochure.show');
+        return view('dearchived.bird.index', compact('birds'));
     }
 }
