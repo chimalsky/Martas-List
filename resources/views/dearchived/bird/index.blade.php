@@ -7,11 +7,19 @@
         {{ $bird->name }}
 
         <section class="bg-gray-300 p-2">
-            <audio controls
-              src="{{ $bird->getFirstMediaUrl() }}">
-                Your browser does not support the
-                <code>audio</code> element.
-            </audio>
+            @foreach ($bird->getMedia() as $medium)
+                <audio controls
+                src="{{ $medium->getUrl() }}">
+                    Your browser does not support the
+                    <code>audio</code> element.
+                </audio>
+            @endforeach
+
+            @foreach ($bird->resources as $poem)
+                @foreach ($poem->getMedia() as $medium)
+                    <img src="{{ $medium->getUrl() }}" />
+                @endforeach
+            @endforeach
         </section>
     </article>
 @endforeach
