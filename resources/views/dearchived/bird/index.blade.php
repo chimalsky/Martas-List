@@ -10,7 +10,7 @@
                     {{ $bird->name }}
 
                     
-                    @if ($audio = $bird->getMedia('', function($medium) { return Str::contains($medium->mime_type, 'audio'); })->first() ?? false)
+                    @if ($audio = $bird->getMedia('', function($medium) { return Str::contains($medium->mime_type, 'audio'); })->last() ?? false)
                         <audio controls
                         src="{{ $audio->getUrl() }}">
                             Your browser does not support the
