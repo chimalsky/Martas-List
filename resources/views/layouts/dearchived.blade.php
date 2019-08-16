@@ -17,7 +17,7 @@
     <body data-controller="application" class="bg-gray-900">
         @yield('header')
 
-        <main class="web container mx-auto">
+        <main class="web flex flex-wrap">
             @if (session('status'))
                 <div class="bg-green-200 p-8 text-center">
                     {{ session('status') }}

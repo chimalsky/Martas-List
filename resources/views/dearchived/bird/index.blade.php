@@ -31,4 +31,7 @@
     </article>
 @endforeach
 
+<nav class="fixed bottom-0 left-0 w-2/5 bg-gray-500 pb-8 pl-4 text-xl">
+    A time line is coming soon
+</nav>
 @endsection
