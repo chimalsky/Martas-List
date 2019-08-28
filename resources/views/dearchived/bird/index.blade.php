@@ -2,7 +2,7 @@
 
 @section('content')
 
-@foreach($birds as $bird)
+@foreach($birds->slice(0,5) as $bird)
     <article class="p-3 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 text-gray-200">
         <section class="p-2 flex flex-wrap">
             {{ $bird->name }}
