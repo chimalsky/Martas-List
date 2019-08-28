@@ -11,7 +11,7 @@
         <link href="{{ mix('css/app.css') }}" rel="stylesheet">
         @stack('stylesheets')
         
-        <script src="{{ mix('js/app.js') }}" defer="true"></script>
+        <script src="{{ mix('js/dearchived.js') }}" defer="true"></script>
         @stack('scripts')
     </head>
     <body data-controller="application" class="bg-gray-900">

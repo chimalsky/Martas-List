@@ -271,7 +271,7 @@ Frame.prototype.repositionImg = function(point, speed) {
 
   if (!speed) {
     this.$img.css('left', x).css('top', y)
-    this._center = this.getCenter()
+    this._center = thfis.getCenter()
     return
   }
 
