@@ -13,7 +13,9 @@
 
 Route::get('/', 'BrochureController@index')->name('brochure.index');
 
-Route::get('/dearchived', 'BirdController@show')->name('bird.show');
+Route::prefix('dearchived')->name('dearchived.')->namespace('Dearchived')->group(function () {
+    Route::get('/dearchived', 'BirdController@show')->name('bird.show');
+});
 
 Route::get('/home', function() {
     return redirect()->route('resources.index');
@@ -30,7 +32,6 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('resources', 'ResourcesController');
     Route::resource('resource-types', 'ResourceTypesController');
     Route::resource('resource-type.attributes', 'ResourceTypeAttributesController');
-
 
     Route::resource('resource.connections', 'ResourceConnectionsController');
     Route::resource('resource.metas', 'ResourceMetasController');

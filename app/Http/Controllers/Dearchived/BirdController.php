@@ -1,0 +1,44 @@
+<?php
+
+namespace App\Http\Controllers\Dearchived;
+
+use Str;
+use App\Resource;
+use App\ResourceType;
+use Illuminate\Http\Request;
+
+class BirdController
+{
+    public function show(Request $request)
+    {
+        $season = $request->query('season') ?? 'winter';
+
+        $seasonDictionary = collect([
+            'january', 'february', 'march',
+            'april', 'may', 'june',
+            'july', 'august', 'september',
+            'october', 'november', 'december'
+        ]);
+
+        $birdResource = ResourceType::where('name', 'like', 'Bird Archive')->first();
+        
+        $birds = Resource::with('connections.resources')
+            ->type($birdResource->id)
+            ->withSeason()
+            ->get();
+
+        $birds = $birds->filter(function($bird) use ($season) {
+            if (!$bird->season) {
+                return;
+            }
+
+            $value = strtolower($bird->season->value);
+
+            return Str::contains($value, $season) ||
+                $value == 'resident';
+        });
+
+
+        return view('dearchived.bird.index', compact('birds', 'season'));
+    }
+}

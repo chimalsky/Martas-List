@@ -21,7 +21,7 @@
             <a href="{{ route('resources.index') }}" class="font-light mx-2">
                 Archiver 
             </a>   
-            <a href="{{ route('bird.show') }}" class="font-light mx-2">
+            <a href="{{ route('dearchived.bird.show') }}" class="font-light mx-2">
                 De-archived 
             </a>
             <a href="{{ route('blog.index') }}" class="font-light mx-2">

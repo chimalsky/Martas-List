@@ -9,14 +9,43 @@ import 'jquery-ui/ui/widgets/draggable'
 import { Controller } from "stimulus"
 
 export default class extends Controller {  
-    static targets = ['container']
+    static targets = ['container', 'text']
  
     connect() {        
         this.zoom = 1
         this.center = undefined
         this.explorable = true
 
-        $(this.img).draggable()
+        let that = this
+
+        $(this.img).draggable({
+            start: function(ev) {
+                return that.start.call(that, ev)
+            },
+            drag: function(ev) {
+                return that.dragging.call(that, ev)
+            },
+            stop: function(ev) {
+                return that.stop.call(that, ev)
+            }
+        })
+    }
+
+
+    start(ev) {
+    }
+
+    dragging(ev) {
+    }
+
+    stop(ev) {
+        let text = this.textTarget
+        setTimeout(function() {
+            text.classList.remove('hidden')
+        }, 300)
+        setTimeout(function() {
+            text.classList.add('hidden')
+        }, 3000)
     }
 
     zoomImg(ev) {

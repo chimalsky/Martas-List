@@ -35917,7 +35917,35 @@ function (_Controller) {
       this.zoom = 1;
       this.center = undefined;
       this.explorable = true;
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.img).draggable();
+      var that = this;
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.img).draggable({
+        start: function start(ev) {
+          return that.start.call(that, ev);
+        },
+        drag: function drag(ev) {
+          return that.dragging.call(that, ev);
+        },
+        stop: function stop(ev) {
+          return that.stop.call(that, ev);
+        }
+      });
+    }
+  }, {
+    key: "start",
+    value: function start(ev) {}
+  }, {
+    key: "dragging",
+    value: function dragging(ev) {}
+  }, {
+    key: "stop",
+    value: function stop(ev) {
+      var text = this.textTarget;
+      setTimeout(function () {
+        text.classList.remove('hidden');
+      }, 300);
+      setTimeout(function () {
+        text.classList.add('hidden');
+      }, 3000);
     }
   }, {
     key: "zoomImg",
@@ -35970,7 +35998,7 @@ function (_Controller) {
   return _default;
 }(stimulus__WEBPACK_IMPORTED_MODULE_5__["Controller"]);
 
-_defineProperty(_default, "targets", ['container']);
+_defineProperty(_default, "targets", ['container', 'text']);
 
 
 

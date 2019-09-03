@@ -1494,6 +1494,25 @@ video {
   color: #f7fafc;
 }
 
+.season-winter {
+  background-color: #e2e8f0;
+}
+
+.season-spring {
+  background-color: #faf089;
+  color: #276749;
+}
+
+.season-summer {
+  background-color: #48bb78;
+  color: #f7fafc;
+}
+
+.season-fall {
+  background-color: #b7791f;
+  color: #fff;
+}
+
 .appearance-none{
   -webkit-appearance: none !important;
      -moz-appearance: none !important;

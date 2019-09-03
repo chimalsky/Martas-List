@@ -14,7 +14,7 @@
         <script src="{{ mix('js/dearchived.js') }}" defer="true"></script>
         @stack('scripts')
     </head>
-    <body data-controller="application" class="bg-gray-900">
+    <body data-controller="application" class="season-{{ $season }}">
         @yield('header')
 
         <main class="web flex flex-wrap">

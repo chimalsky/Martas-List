@@ -16,4 +16,5 @@ class Connection extends Model
     {
         return $this->resources->first();
     }
+
 }

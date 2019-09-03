@@ -7,13 +7,14 @@ use App\Resource;
 use App\Encoding;
 use App\Connection;
 use App\ResourceType;
+use App\Traits\IsSeasonal;
 use App\Traits\HasMediaTrait;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 
 class Resource extends Model implements HasMedia
 {
-    use HasMediaTrait;
+    use IsSeasonal, HasMediaTrait;
 
     protected $guarded = ['id'];
 
@@ -44,9 +45,10 @@ class Resource extends Model implements HasMedia
 
     public function connections()
     {
-        return $this->belongsToMany(Connection::class)->with(['resources' => function($query) {
-            $query->where('resource_id', '<>', $this->id);
-        }]);
+        return $this->belongsToMany(Connection::class)
+            ->with(['resources' => function($query) {
+                $query->where('resource_id', '<>', $this->id);
+            }]);
     }
 
     public function getMainAttributesAttribute()
