@@ -39,7 +39,7 @@ class ResourceMetasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Resource $resource, Request $request)
-    {
+    {        
         $meta = new ResourceMeta($request->except('attribute'));
         $resource->meta()->save($meta);
 

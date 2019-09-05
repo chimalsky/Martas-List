@@ -43,8 +43,9 @@
                 {{ html()->closeModelForm() }}
             @else 
                 {{ html()->modelForm($field, 'POST', route('resource.metas.store', ['resource' => $resource, 'attribute' => true]))->open() }}
+                    {{ html()->hidden('key', $attribute->name) }}
                     @if ($attribute->type == 'rich-text')
-                        {{ html()->hidden('value')->attribute('id', $field->key) }}
+                        {{ html()->hidden('value')->attribute('id', $field->key ?? null) }}
                         <trix-editor input="{{ $field->key }}"></trix-editor>
                     @elseif ($attribute->type == 'encoding')
                         <h1 class="font-semibold">
@@ -53,7 +54,7 @@
 
                         {{ html()->textarea('value')
                             ->class(['w-full', 'block', 'border', 'border-2', 'border-black'])
-                            ->attribute('id', $field->key)
+                            ->attribute('id', $field->key ?? null)
                         }}
                     @else  
                         @include('resource.attributes.field', ['attribute' => $attribute])

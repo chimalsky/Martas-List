@@ -28,6 +28,18 @@
     </section>
 </main> 
 
+<section class="p-4 w-full rounded-full fixed bottom-0 text-center mb-6 bg-green-200">
+    {{ html()->form('POST', route('resources.store'))->open() }}
+
+        @include('resources.form', ['resourceType' => $type])
+        
+        <button class="btn btn-blue my-2">
+            Add a new {{ $type->nameSingular }} resource
+        </button>
+
+    {{ html()->form()->close() }}
+</section>
+
 
 @endsection
 

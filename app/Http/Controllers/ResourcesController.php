@@ -51,7 +51,7 @@ class ResourcesController extends Controller
 
         $resource = Resource::create($validated);
         
-        return redirect()->route('resource-types.edit', ['resource_type' => $resource->definition->id])
+        return redirect()->route('resources.edit', $resource)
             ->with('status', "$resource->name was created!");
     }
 
