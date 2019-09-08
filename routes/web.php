@@ -36,6 +36,7 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('resource.connections', 'ResourceConnectionsController');
     Route::resource('resource.metas', 'ResourceMetasController');
     Route::resource('resource.media', 'ResourceMediaController');
+    Route::post('resource/{resource}/temporality', 'ResourceTemporalityController@update')->name('resource.temporality.update');
 });
 
 Auth::routes();

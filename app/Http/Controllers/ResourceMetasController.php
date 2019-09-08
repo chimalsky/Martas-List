@@ -40,6 +40,7 @@ class ResourceMetasController extends Controller
      */
     public function store(Resource $resource, Request $request)
     {        
+        dd($request);
         $meta = new ResourceMeta($request->except('attribute'));
         $resource->meta()->save($meta);
 

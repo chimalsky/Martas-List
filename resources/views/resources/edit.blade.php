@@ -19,56 +19,25 @@
                 {{ $attribute->name }}
             </h1>
 
+
             @if ($field = $resource->mainMeta->firstWhere('key', $attribute->name))
                 {{ html()->modelForm($field, 'PUT', route('resource.metas.update', ['resource' => $resource, 'meta' => $field, 'attribute' => true]))->open() }}
-                    @if ($field->type == 'rich-text')
-                        {{ html()->hidden('value')->attribute('id', $field->key) }}
-                        <trix-editor input="{{ $field->key }}"></trix-editor>
-                    @elseif ($field->type == 'encoding')
-                        <h1 class="font-semibold">
-                            Mock Encoding -- textbox is resizable as needed from bottom-right corner
-                        </h1>
-
-                        {{ html()->textarea('value')
-                            ->class(['w-full', 'block', 'border', 'border-2', 'border-black'])
-                            ->attribute('id', $field->key)
-                        }}
-                    @else  
-                        @include('resource.attributes.field', ['attribute' => $field])
-                    @endif
-
-                    <button class="btn btn-blue">
-                        Save changes to {{ $field->key }}
-                    </button>
-                {{ html()->closeModelForm() }}
+                    @include('resource.attributes.fields', ['attribute' => $field])
             @else 
                 {{ html()->modelForm($field, 'POST', route('resource.metas.store', ['resource' => $resource, 'attribute' => true]))->open() }}
-                    {{ html()->hidden('key', $attribute->name) }}
-                    @if ($attribute->type == 'rich-text')
-                        {{ html()->hidden('value')->attribute('id', $field->key ?? null) }}
-                        <trix-editor input="{{ $field->key }}"></trix-editor>
-                    @elseif ($attribute->type == 'encoding')
-                        <h1 class="font-semibold">
-                            Mock Encoding -- textbox is resizable as needed from bottom-right corner
-                        </h1>
-
-                        {{ html()->textarea('value')
-                            ->class(['w-full', 'block', 'border', 'border-2', 'border-black'])
-                            ->attribute('id', $field->key ?? null)
-                        }}
-                    @else  
-                        @include('resource.attributes.field', ['attribute' => $attribute])
-                    @endif
-
-                    <button class="btn btn-blue my-2">
-                        Save changes to {{ $field->key ?? $attribute->name }}
-                    </button>
-                {{ html()->closeModelForm() }}
+                    {{ html()->hidden('key', $attribute->key) }}
+                    @include('resource.attributes.fields', ['attribute' => $attribute])
             @endif
+                <button class="btn btn-blue my-2">
+                    Save changes to {{ $attribute->name }}
+                </button>
+            {{ html()->closeModelForm() }}
         </article>
     @endforeach
 
-
+    {{ html()->modelForm($resource, 'POST', route('resource.temporality.update', $resource))->open() }}
+        <button> as </button>
+    {{ html()->closeModelForm() }}
 </section>
 
 

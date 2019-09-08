@@ -8,13 +8,14 @@ use App\Encoding;
 use App\Connection;
 use App\ResourceType;
 use App\Traits\IsSeasonal;
+use App\Traits\IsTemporal;
 use App\Traits\HasMediaTrait;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 
 class Resource extends Model implements HasMedia
 {
-    use IsSeasonal, HasMediaTrait;
+    use IsSeasonal, IsTemporal, HasMediaTrait;
 
     protected $guarded = ['id'];
 

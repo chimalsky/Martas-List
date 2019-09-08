@@ -33,6 +33,7 @@
     },
     "dependencies": {
         "@shopify/draggable": "^1.0.0-beta.8",
+        "flatpickr": "^4.6.2",
         "trix": "^1.1.1",
         "turbolinks": "^5.2.0"
     }
