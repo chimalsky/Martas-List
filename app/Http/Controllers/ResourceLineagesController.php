@@ -18,18 +18,20 @@ class ResourceLineagesController extends Controller
             $resource->parent()->associate($request->input('parent'));
         }
 
-        if ($children = $request->input('children')) {
+        if ($request->query('children')) {
             $resource->children()->each(function($child) use ($resource) {
                 $child->parent_id = null;
                 $child->save();
             });
 
-            $children = Resource::whereIn('id', $children);
+            if ($children = $request->input('child')) {
+                $children = Resource::whereIn('id', $children);
 
-            $children->each(function($child) use ($resource) {
-                $child->parent()->associate($resource);
-                $child->save();
-            });
+                $children->each(function($child) use ($resource) {
+                    $child->parent()->associate($resource);
+                    $child->save();
+                });
+            }
         }
 
         $resource->save();

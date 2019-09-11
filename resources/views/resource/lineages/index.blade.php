@@ -30,11 +30,11 @@
         Add Children
     </h1>
    
-    {{ html()->form('POST', route('resource.lineages.store', $resource))->open() }}
+    {{ html()->form('POST', route('resource.lineages.store', ['resource' => $resource, 'children' => true]))->open() }}
         <section class="flex flex-wrap mb-8">
             @foreach($resource->definition->resources as $potentialChildren)
                 <label class="p-4">
-                    <input name="children[]" value="{{ $potentialChildren->id }}" type="checkbox" class="form-checkbox" 
+                    <input name="child[]" value="{{ $potentialChildren->id }}" type="checkbox" class="form-checkbox" 
                         @if ($resource->children->pluck('id')->contains($potentialChildren->id)) checked @endif />
                         {{ $potentialChildren->name }}
 
