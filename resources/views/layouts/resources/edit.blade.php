@@ -40,24 +40,40 @@
             ">
             Main
         </a>
+
         <a href="{{ route('resource.metas.index', ['resource' => $resource]) }}"
             class="p-2 mx-2 
             {{ (request()->is('resource/*/metas*')) ? 'bg-gray-700 text-gray-100' : '' }}
             ">
             Tags
         </a>
+
         <a href="{{ route('resource.connections.index', ['resource' => $resource]) }}"
             class="p-2 mx-2
             {{ (request()->is('resource/*/connections*')) ? 'bg-gray-700 text-gray-100' : '' }}
             ">
             Connections
         </a>
-      
+
+        <a href="{{ route('resource.lineages.index', ['resource' => $resource]) }}"
+            class="p-2 mx-2
+            {{ (request()->is('resource/*/lineages*')) ? 'bg-gray-700 text-gray-100' : '' }}
+            ">
+            Lineages
+        </a>
+
         <a href="{{ route('resource.media.index', ['resource' => $resource]) }}"
             class="p-2 mx-2
             {{ (request()->is('resource/*/media*')) ? 'bg-gray-700 text-gray-100' : '' }}
             ">
             Media
+        </a>
+
+        <a href="{{ route('resource.temporalities.index', ['resource' => $resource]) }}"
+            class="p-2 mx-2
+            {{ (request()->is('resource/*/temporalities*')) ? 'bg-gray-700 text-gray-100' : '' }}
+            ">
+            Temporalities
         </a>
     </nav>
 </section>

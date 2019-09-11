@@ -12,15 +12,14 @@
     }}
 @elseif ($attribute->type == 'temporality')
     <h1 class="text-semibold">
-        {{ $attribute-> }}
+        {{ $attribute->key }}
     </h1>
-    <input type="hidden" name="key" value="{{ $attribute->key }}" />
 
-    <input type="date" class="date-element" name="value" value="{{ $attribute->value }}" />
+    <div class="block">
+        <input type="date" class="date-element" name="value" value="{{ $attribute->value }}" />
+    </div>
 @else
-    <label class="w-4/5 px-2">
-        <input type="hidden" name="key" value="{{ $attribute->key }}" />
-        
+    <label class="w-4/5 px-2">        
         {{ html()->text('value')->class(['form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
     </label>
 @endif

@@ -8,8 +8,4 @@ class ResourceAttribute extends Model
 {
     protected $guarded = [];
 
-    public function getKeyAttribute($value)
-    {
-        return $value ?? $this->;
-    }
 }

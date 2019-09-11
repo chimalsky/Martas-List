@@ -54,8 +54,7 @@
                 {{ html()->select("type", [
                     null => 'Regular attribute type -- same as tags',
                     'rich-text' => 'Rich Text', 
-                    'encoding' => 'encoding',
-                    'temporality' => 'Temporality'
+                    'encoding' => 'encoding'
                     ])
                     ->class(['form-select', 'pl-2', 'w-1/3']) }}
             </label>
@@ -81,8 +80,7 @@
                 {{ html()->select("type", [
                     null => 'Regular attribute type -- same as tags',
                     'rich-text' => 'Rich Text', 
-                    'encoding' => 'encoding',
-                    'temporality' => 'Temporality'
+                    'encoding' => 'encoding'
                     ], $attribute->type)
                     ->class(['form-select', 'pl-2', 'w-1/3']) }}
             </label>

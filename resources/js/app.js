@@ -7,6 +7,7 @@ import trix from 'trix'
 import turbolinks from 'turbolinks'
 
 import flatpickr from "flatpickr"
+import 'flatpickr/dist/flatpickr.min.css'
 
 turbolinks.start()  
 
@@ -14,5 +15,10 @@ const application = new Application.start()
 const context = require.context("./controllers", true, /\.js$/)
 application.load(definitionsFromContext(context))
 
-flatpickr('input[type=date]', {mode: 'range'})
+document.addEventListener('turbolinks:load', bootstrap)
+
+function bootstrap() {
+    console.log('boots')
+    flatpickr('input[type=date]', {mode: 'range', inline: true, altInput: true, altFormat: 'F j, Y'})
+}
 

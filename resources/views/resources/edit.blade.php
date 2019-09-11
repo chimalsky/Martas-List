@@ -19,13 +19,13 @@
                 {{ $attribute->name }}
             </h1>
 
+            {{ html()->hidden('key', $attribute->key) }}
 
             @if ($field = $resource->mainMeta->firstWhere('key', $attribute->name))
                 {{ html()->modelForm($field, 'PUT', route('resource.metas.update', ['resource' => $resource, 'meta' => $field, 'attribute' => true]))->open() }}
                     @include('resource.attributes.fields', ['attribute' => $field])
             @else 
                 {{ html()->modelForm($field, 'POST', route('resource.metas.store', ['resource' => $resource, 'attribute' => true]))->open() }}
-                    {{ html()->hidden('key', $attribute->key) }}
                     @include('resource.attributes.fields', ['attribute' => $attribute])
             @endif
                 <button class="btn btn-blue my-2">
@@ -34,10 +34,6 @@
             {{ html()->closeModelForm() }}
         </article>
     @endforeach
-
-    {{ html()->modelForm($resource, 'POST', route('resource.temporality.update', $resource))->open() }}
-        <button> as </button>
-    {{ html()->closeModelForm() }}
 </section>
 
 

@@ -8,7 +8,6 @@
             {{ config('app.name') }}
         </title>
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
         <link href="{{ mix('css/app.css') }}" rel="stylesheet">
         @stack('stylesheets')
         
