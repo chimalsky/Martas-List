@@ -30,6 +30,7 @@ export default class extends Controller {
             }
         })
 
+        /*
                 
         $(this.img).off('mousewheel').on('mousewheel', function(ev) {   
             const direction = ev.originalEvent.deltaY < 0 ? 'down' : 'up'
@@ -45,7 +46,7 @@ export default class extends Controller {
                 that.zoomImg(zoom - .01)
             }
             ev.preventDefault()
-        })
+        }) */
 
         this.containImg()
     }

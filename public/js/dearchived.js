@@ -36044,21 +36044,21 @@ function (_Controller) {
         stop: function stop(ev) {//return that.stop.call(that, ev)
         }
       });
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.img).off('mousewheel').on('mousewheel', function (ev) {
-        var direction = ev.originalEvent.deltaY < 0 ? 'down' : 'up';
-        var zoom = that.getZoom();
-        console.log(direction, zoom, that);
+      /*
+              
+      $(this.img).off('mousewheel').on('mousewheel', function(ev) {   
+          const direction = ev.originalEvent.deltaY < 0 ? 'down' : 'up'
+          const zoom = that.getZoom()
+            console.log(direction, zoom, that)
+            if (direction == 'up') {
+              that.zoomImg(zoom + .02)
+          }
+            if (direction == 'down') {  
+              that.zoomImg(zoom - .01)
+          }
+          ev.preventDefault()
+      }) */
 
-        if (direction == 'up') {
-          that.zoomImg(zoom + .02);
-        }
-
-        if (direction == 'down') {
-          that.zoomImg(zoom - .01);
-        }
-
-        ev.preventDefault();
-      });
       this.containImg();
     }
   }, {
@@ -36394,7 +36394,7 @@ application.load(Object(stimulus_webpack_helpers__WEBPACK_IMPORTED_MODULE_1__["d
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/zdziarska/Sites/birds/resources/js/dearchived.js */"./resources/js/dearchived.js");
+module.exports = __webpack_require__(/*! /mnt/c/Users/linus/dev/birds/resources/js/dearchived.js */"./resources/js/dearchived.js");
 
 
 /***/ })
