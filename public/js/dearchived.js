@@ -36346,7 +36346,7 @@ application.load(Object(stimulus_webpack_helpers__WEBPACK_IMPORTED_MODULE_1__["d
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/zdziarska/Sites/birds/resources/js/dearchived.js */"./resources/js/dearchived.js");
+module.exports = __webpack_require__(/*! /mnt/c/Users/linus/dev/birds/resources/js/dearchived.js */"./resources/js/dearchived.js");
 
 
 /***/ })

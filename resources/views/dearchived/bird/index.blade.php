@@ -40,12 +40,20 @@
     </article>
 @endforeach
 
-<nav class="fixed bottom-0 left-0 w-full flex justify-center pb-8 pl-4 text-xl season-{{ $season }}">
-    {{ html()->form('GET', route('dearchived.bird.show'))->open() }}
-        <input type="submit" name="season" value="spring" class="bg-transparent p-2 rounded-full @if($season == 'spring') font-bold @endif">
-        <input type="submit" name="season" value="summer" class="bg-transparent p-2 rounded-full @if($season == 'summer') font-bold @endif">
-        <input type="submit" name="season" value="fall" class="bg-transparent p-2 rounded-full @if($season == 'fall') font-bold @endif">
-        <input type="submit" name="season" value="winter" class="bg-transparent p-2 rounded-full @if($season == 'winter') font-bold @endif">
-    {{ html()->form()->close() }}
+<nav class="fixed bottom-0 left-0 w-full pb-8 pl-4 text-xs">
+    <section class="block flex justify-center">
+        @foreach ($months as $m)
+        <a href="{{ route('dearchived.bird.show', ['month' => $m]) }}" 
+            class="tracking-wider capitalize p-2 @if($month == $m) font-bold @endif">
+            {{ substr($m, 0, 3) }}
+        </a>
+        @endforeach
+    </section>
+
+    <footer class="text-center block">
+        <a href="" class="text-xl">
+            1863
+        </a>
+    </footer>
 </nav>
 @endsection

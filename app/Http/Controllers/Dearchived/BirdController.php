@@ -11,9 +11,9 @@ class BirdController
 {
     public function show(Request $request)
     {
-        $season = $request->query('season') ?? 'winter';
+        $month = $request->query('month');
 
-        $seasonDictionary = collect([
+        $months = collect([
             'january', 'february', 'march',
             'april', 'may', 'june',
             'july', 'august', 'september',
@@ -27,18 +27,18 @@ class BirdController
             ->withSeason()
             ->get();
 
-        $birds = $birds->filter(function($bird) use ($season) {
+        $birds = $birds->filter(function($bird) use ($month) {
             if (!$bird->season) {
                 return;
             }
 
             $value = strtolower($bird->season->value);
 
-            return Str::contains($value, $season) ||
+            return Str::contains($value, $month) ||
                 $value == 'resident';
         });
 
 
-        return view('dearchived.bird.index', compact('birds', 'season'));
+        return view('dearchived.bird.index', compact('birds', 'month', 'months'));
     }
 }

@@ -39380,8 +39380,8 @@ _defineProperty(_default, "targets", ['results']);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/zdziarska/Sites/birds/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/zdziarska/Sites/birds/resources/less/app.less */"./resources/less/app.less");
+__webpack_require__(/*! /mnt/c/Users/linus/dev/birds/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /mnt/c/Users/linus/dev/birds/resources/less/app.less */"./resources/less/app.less");
 
 
 /***/ })

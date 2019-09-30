@@ -1513,6 +1513,66 @@ video {
   color: #fff;
 }
 
+.month-january {
+  background-color: #fff;
+  color: #718096;
+}
+
+.month-february {
+  background-color: #edf2f7;
+  color: #4a5568;
+}
+
+.month-march {
+  background-color: #a3bffa;
+  color: #2d3748;
+}
+
+.month-april {
+  background-color: #faf089;
+  color: #c53030;
+}
+
+.month-may {
+  background-color: #fbd38d;
+  color: #742a2a;
+}
+
+.month-june {
+  background-color: #c6f6d5;
+  color: #434190;
+}
+
+.month-july {
+  background-color: #48bb78;
+  color: #fff;
+}
+
+.month-august {
+  background-color: #276749;
+  color: #edf2f7;
+}
+
+.month-september {
+  background-color: #ed8936;
+  color: #fff;
+}
+
+.month-october {
+  background-color: #c05621;
+  color: #edf2f7;
+}
+
+.month-november {
+  background-color: #5a67d8;
+  color: #e2e8f0;
+}
+
+.month-december {
+  background-color: #90cdf4;
+  color: #2a4365;
+}
+
 .appearance-none{
   -webkit-appearance: none !important;
      -moz-appearance: none !important;
