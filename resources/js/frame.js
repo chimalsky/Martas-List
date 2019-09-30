@@ -137,7 +137,7 @@ Frame.prototype.loadImg = function(img) {
   var src = this.getImgSrc()
 
   if (this.$frame.find('div.img-container').length) {
-    var el = this.$frame.find('div.img-container').children('img')
+    var el = this.$f  rame.find('div.img-container').children('img')
     el.attr('src', src)
   } else {
     var containerHtml = "<div class='img-container'></div>"
