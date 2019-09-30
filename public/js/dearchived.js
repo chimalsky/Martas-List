@@ -35977,9 +35977,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -36001,9 +36001,30 @@ function (_Controller) {
   _inherits(_default, _Controller);
 
   function _default() {
+    var _getPrototypeOf2;
+
+    var _this;
+
     _classCallCheck(this, _default);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(_default).apply(this, arguments));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(_default)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "refresh", function () {
+      this.zoom = this.getZoom(); //this.center = this.getCenter()
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "getZoom", function () {
+      var $img = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.img);
+      var zoom = $img.prop('width') / $img.prop('naturalWidth');
+      this.zoom = zoom;
+      return zoom;
+    });
+
+    return _this;
   }
 
   _createClass(_default, [{
@@ -36020,10 +36041,25 @@ function (_Controller) {
         drag: function drag(ev) {
           return that.dragging.call(that, ev);
         },
-        stop: function stop(ev) {
-          return that.stop.call(that, ev);
+        stop: function stop(ev) {//return that.stop.call(that, ev)
         }
       });
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.img).off('mousewheel').on('mousewheel', function (ev) {
+        var direction = ev.originalEvent.deltaY < 0 ? 'down' : 'up';
+        var zoom = that.getZoom();
+        console.log(direction, zoom, that);
+
+        if (direction == 'up') {
+          that.zoomImg(zoom + .02);
+        }
+
+        if (direction == 'down') {
+          that.zoomImg(zoom - .01);
+        }
+
+        ev.preventDefault();
+      });
+      this.containImg();
     }
   }, {
     key: "start",
@@ -36044,12 +36080,24 @@ function (_Controller) {
     }
   }, {
     key: "zoomImg",
-    value: function zoomImg(ev) {
+    value: function zoomImg(zoom) {
       var $img = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.img);
-      var newWidth = $img.prop('naturalWidth') * (this.zoom * 1.1);
+      this.zoom = this.zoom * zoom;
+      var newWidth = $img.prop('naturalWidth') * this.zoom;
       $img.css('width', newWidth);
       console.log($img, $img.prop('naturalWidth'), $img.css('width'));
       var newHeight = $img.prop('height');
+    }
+  }, {
+    key: "containImg",
+    value: function containImg() {
+      if (!this.img) {
+        return;
+      }
+
+      var $img = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.img);
+      $img.attr('width', '100%').attr('left', 0).attr('top', 0);
+      this.refresh();
     }
   }, {
     key: "repositionImg",
@@ -36346,7 +36394,7 @@ application.load(Object(stimulus_webpack_helpers__WEBPACK_IMPORTED_MODULE_1__["d
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /mnt/c/Users/linus/dev/birds/resources/js/dearchived.js */"./resources/js/dearchived.js");
+module.exports = __webpack_require__(/*! /Users/zdziarska/Sites/birds/resources/js/dearchived.js */"./resources/js/dearchived.js");
 
 
 /***/ })

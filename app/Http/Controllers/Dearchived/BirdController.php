@@ -12,6 +12,11 @@ class BirdController
     public function show(Request $request)
     {
         $month = $request->query('month');
+        $year = $request->query('year');
+
+        if ($year == 2019) {
+            return 'All birds have gone extinct due to human activity and economic growth.';
+        }
 
         $months = collect([
             'january', 'february', 'march',

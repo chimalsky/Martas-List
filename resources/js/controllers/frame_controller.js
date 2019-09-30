@@ -26,9 +26,28 @@ export default class extends Controller {
                 return that.dragging.call(that, ev)
             },
             stop: function(ev) {
-                return that.stop.call(that, ev)
+                //return that.stop.call(that, ev)
             }
         })
+
+                
+        $(this.img).off('mousewheel').on('mousewheel', function(ev) {   
+            const direction = ev.originalEvent.deltaY < 0 ? 'down' : 'up'
+            const zoom = that.getZoom()
+
+            console.log(direction, zoom, that)
+
+            if (direction == 'up') {
+                that.zoomImg(zoom + .02)
+            }
+
+            if (direction == 'down') {  
+                that.zoomImg(zoom - .01)
+            }
+            ev.preventDefault()
+        })
+
+        this.containImg()
     }
 
 
@@ -48,15 +67,40 @@ export default class extends Controller {
         }, 3000)
     }
 
-    zoomImg(ev) {
+    zoomImg(zoom) {
         const $img = $(this.img)
-        const newWidth = $img.prop('naturalWidth') * (this.zoom * 1.1)
+        this.zoom = this.zoom * zoom
+        const newWidth = $img.prop('naturalWidth') * (this.zoom)
         $img.css('width', newWidth)
 
         console.log($img, $img.prop('naturalWidth'), $img.css('width'))
 
         const newHeight = $img.prop('height') 
 
+    }
+
+    refresh = function() {
+        this.zoom = this.getZoom()
+        //this.center = this.getCenter()
+    }
+
+
+    getZoom = function() {
+        const $img = $(this.img)
+        var zoom = $img.prop('width') / $img.prop('naturalWidth')
+        this.zoom = zoom
+        return zoom
+    }
+
+    containImg() {
+        if (!this.img) { return }
+        
+        const $img = $(this.img)
+        $img.attr('width', '100%')
+            .attr('left', 0)
+            .attr('top', 0);
+    
+        this.refresh()
     }
 
     repositionImg(point) {
