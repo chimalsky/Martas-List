@@ -14,10 +14,6 @@ class BirdController
         $month = $request->query('month');
         $year = $request->query('year');
 
-        if ($year == 2019) {
-            return 'All birds have gone extinct due to human activity and economic growth.';
-        }
-
         $months = collect([
             'january', 'february', 'march',
             'april', 'may', 'june',
@@ -44,6 +40,6 @@ class BirdController
         });
 
 
-        return view('dearchived.bird.index', compact('birds', 'month', 'months'));
+        return view('dearchived.bird.index', compact('birds', 'year', 'month', 'months'));
     }
 }
