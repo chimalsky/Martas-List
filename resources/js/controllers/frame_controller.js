@@ -15,6 +15,7 @@ export default class extends Controller {
         this.zoom = 1
         this.center = undefined
         this.explorable = true
+        this.exploring 
 
         let that = this
 
@@ -30,11 +31,10 @@ export default class extends Controller {
             }
         })
 
-        /*
                 
         $(this.img).off('mousewheel').on('mousewheel', function(ev) {   
             const direction = ev.originalEvent.deltaY < 0 ? 'down' : 'up'
-            const zoom = that.getZoom()
+            const zoom = that.zoom
 
             console.log(direction, zoom, that)
 
@@ -46,7 +46,7 @@ export default class extends Controller {
                 that.zoomImg(zoom - .01)
             }
             ev.preventDefault()
-        }) */
+        }) 
 
         this.containImg()
     }
@@ -70,7 +70,7 @@ export default class extends Controller {
 
     zoomImg(zoom) {
         const $img = $(this.img)
-        this.zoom = this.zoom * zoom
+        this.zoom = zoom
         const newWidth = $img.prop('naturalWidth') * (this.zoom)
         $img.css('width', newWidth)
 
@@ -89,7 +89,7 @@ export default class extends Controller {
     getZoom = function() {
         const $img = $(this.img)
         var zoom = $img.prop('width') / $img.prop('naturalWidth')
-        this.zoom = zoom
+
         return zoom
     }
 

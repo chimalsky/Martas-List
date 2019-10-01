@@ -20,11 +20,11 @@
 
                 @foreach ($bird->resources as $poem)
                     @foreach ($poem->getMedia('', function($medium) { return Str::contains($medium->mime_type, 'image'); }) as $manuscript)
-                        <div data-controller="draggable frame" data-draggable-media="{{ $bird->id }}"
+                        <div data-controller="draggable frame" data-draggable-media="{{ $bird->id }}" data-frame-media="{{ $bird->id }}"
                             class="my-16">
                             <nav class="draggable-handle bg-red-400 h-4 w-2 mx-auto cursor-move"></nav>
                             <section class="draggable-handle bg-red-400 rounded-full pt-4 cursor-move">
-                                <div class="rounded-full cursor-pointer overflow-hidden h-64 max-w-sm"
+                                <div class="rounded-full cursor-pointer overflow-hidden h-64 w-64"
                                     data-target="frame.container">
 
                                     <p data-target="frame.text" class="text-center hidden text-2xl mt-24 px-1">

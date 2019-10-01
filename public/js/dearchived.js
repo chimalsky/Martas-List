@@ -35885,6 +35885,7 @@ function (_Controller) {
       jquery__WEBPACK_IMPORTED_MODULE_1___default()(this.element).draggable({
         handle: '.draggable-handle',
         start: function start(ev) {
+          console.log('lets drag');
           return that.start.call(that, ev);
         },
         drag: function drag(ev) {
@@ -36020,7 +36021,6 @@ function (_Controller) {
     _defineProperty(_assertThisInitialized(_this), "getZoom", function () {
       var $img = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.img);
       var zoom = $img.prop('width') / $img.prop('naturalWidth');
-      this.zoom = zoom;
       return zoom;
     });
 
@@ -36033,6 +36033,7 @@ function (_Controller) {
       this.zoom = 1;
       this.center = undefined;
       this.explorable = true;
+      this.exploring;
       var that = this;
       jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.img).draggable({
         start: function start(ev) {
@@ -36044,21 +36045,21 @@ function (_Controller) {
         stop: function stop(ev) {//return that.stop.call(that, ev)
         }
       });
-      /*
-              
-      $(this.img).off('mousewheel').on('mousewheel', function(ev) {   
-          const direction = ev.originalEvent.deltaY < 0 ? 'down' : 'up'
-          const zoom = that.getZoom()
-            console.log(direction, zoom, that)
-            if (direction == 'up') {
-              that.zoomImg(zoom + .02)
-          }
-            if (direction == 'down') {  
-              that.zoomImg(zoom - .01)
-          }
-          ev.preventDefault()
-      }) */
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.img).off('mousewheel').on('mousewheel', function (ev) {
+        var direction = ev.originalEvent.deltaY < 0 ? 'down' : 'up';
+        var zoom = that.zoom;
+        console.log(direction, zoom, that);
 
+        if (direction == 'up') {
+          that.zoomImg(zoom + .02);
+        }
+
+        if (direction == 'down') {
+          that.zoomImg(zoom - .01);
+        }
+
+        ev.preventDefault();
+      });
       this.containImg();
     }
   }, {
@@ -36082,7 +36083,7 @@ function (_Controller) {
     key: "zoomImg",
     value: function zoomImg(zoom) {
       var $img = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.img);
-      this.zoom = this.zoom * zoom;
+      this.zoom = zoom;
       var newWidth = $img.prop('naturalWidth') * this.zoom;
       $img.css('width', newWidth);
       console.log($img, $img.prop('naturalWidth'), $img.css('width'));
@@ -36394,7 +36395,7 @@ application.load(Object(stimulus_webpack_helpers__WEBPACK_IMPORTED_MODULE_1__["d
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /mnt/c/Users/linus/dev/birds/resources/js/dearchived.js */"./resources/js/dearchived.js");
+module.exports = __webpack_require__(/*! /Users/zdziarska/Sites/birds/resources/js/dearchived.js */"./resources/js/dearchived.js");
 
 
 /***/ })
