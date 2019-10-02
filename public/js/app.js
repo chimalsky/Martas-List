@@ -38945,7 +38945,6 @@ function (_Controller) {
       jquery__WEBPACK_IMPORTED_MODULE_1___default()(this.element).draggable({
         handle: '.draggable-handle',
         start: function start(ev) {
-          console.log('lets drag');
           return that.start.call(that, ev);
         },
         drag: function drag(ev) {

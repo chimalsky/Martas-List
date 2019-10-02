@@ -35885,7 +35885,6 @@ function (_Controller) {
       jquery__WEBPACK_IMPORTED_MODULE_1___default()(this.element).draggable({
         handle: '.draggable-handle',
         start: function start(ev) {
-          console.log('lets drag');
           return that.start.call(that, ev);
         },
         drag: function drag(ev) {
@@ -36385,6 +36384,25 @@ var application = new stimulus__WEBPACK_IMPORTED_MODULE_0__["Application"].start
 var context = __webpack_require__("./resources/js/controllers sync recursive \\.js$");
 
 application.load(Object(stimulus_webpack_helpers__WEBPACK_IMPORTED_MODULE_1__["definitionsFromContext"])(context));
+var birds = document.querySelectorAll('.bird');
+jquery__WEBPACK_IMPORTED_MODULE_2___default()(document).ready(function () {
+  birds.forEach(function (el) {
+    var newq = makeNewPosition();
+    jquery__WEBPACK_IMPORTED_MODULE_2___default()(el).animate({
+      top: newq[0],
+      left: newq[1]
+    }, 5000, function () {});
+  });
+});
+
+function makeNewPosition() {
+  // Get viewport dimensions (remove the dimension of the div)
+  var h = jquery__WEBPACK_IMPORTED_MODULE_2___default()(window).height() - 50;
+  var w = jquery__WEBPACK_IMPORTED_MODULE_2___default()(window).width() - 50;
+  var nh = Math.floor(Math.random() * h);
+  var nw = Math.floor(Math.random() * w);
+  return [nh, nw];
+}
 
 /***/ }),
 
