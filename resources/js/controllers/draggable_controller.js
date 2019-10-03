@@ -14,7 +14,7 @@ const Draggable = class extends Controller {
 
         animateToPosition(this.element)
 
-        this.media.play()
+        this.mediaElement.play()
 
         $(this.element).draggable({
             handle: '.draggable-handle',
@@ -38,11 +38,11 @@ const Draggable = class extends Controller {
     dragging(ev) {
         this.duration++
 
-        this.media.play()
+        this.mediaElement.play()
     }
 
     stop(ev) {
-        let media = this.media
+        let media = this.mediaElement
         this.element.classList.remove('exploring')
 
         setTimeout(function() {
@@ -66,7 +66,7 @@ const Draggable = class extends Controller {
         this.data.set('duration', value)
     }
 
-    get media() {
+    get mediaElement() {
         let media = this.data.get('media')
         return document.querySelector('#birdsong-' + media)
     }
