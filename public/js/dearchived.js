@@ -35883,7 +35883,8 @@ function (_Controller) {
     value: function connect() {
       var that = this;
       animateToPosition(this.element);
-      this.mediaElement.play();
+      this.media.pause();
+      this.media.play();
       jquery__WEBPACK_IMPORTED_MODULE_1___default()(this.element).draggable({
         handle: '.draggable-handle',
         start: function start(ev) {
@@ -35907,12 +35908,12 @@ function (_Controller) {
     key: "dragging",
     value: function dragging(ev) {
       this.duration++;
-      this.mediaElement.play();
+      this.media.play();
     }
   }, {
     key: "stop",
     value: function stop(ev) {
-      var media = this.mediaElement;
+      var media = this.media;
       this.element.classList.remove('exploring');
       setTimeout(function () {
         media.pause();
@@ -35935,7 +35936,7 @@ function (_Controller) {
       this.data.set('duration', value);
     }
   }, {
-    key: "mediaElement",
+    key: "media",
     get: function get() {
       var media = this.data.get('media');
       return document.querySelector('#birdsong-' + media);
