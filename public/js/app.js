@@ -38942,7 +38942,7 @@ function (_Controller) {
     key: "connect",
     value: function connect() {
       var that = this;
-      animateToPosition(this.element, function () {});
+      animateToPosition(this.element);
       this.media.play();
       jquery__WEBPACK_IMPORTED_MODULE_1___default()(this.element).draggable({
         handle: '.draggable-handle',
@@ -39013,21 +39013,20 @@ function makeNewPosition() {
   return [nh, nw];
 }
 
-function animateToPosition(el, callback) {
+function animateToPosition(el) {
   if (el.classList.contains('exploring')) {
     return setTimeout(function () {
       animateToPosition(el);
     }, 5000);
   }
 
-  callback();
   var newq = makeNewPosition();
   var duration = Math.random() * (20000 - 1000) + 1000;
   jquery__WEBPACK_IMPORTED_MODULE_1___default()(el).animate({
     top: newq[0],
     left: newq[1]
   }, duration, function () {
-    animateToPosition(el, callback);
+    animateToPosition(el);
   });
 }
 
