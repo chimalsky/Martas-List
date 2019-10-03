@@ -35882,6 +35882,12 @@ function (_Controller) {
     key: "connect",
     value: function connect() {
       var that = this;
+      var newq = makeNewPosition();
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()(this.element).css({
+        'top': newq[0],
+        'left': newq[1]
+      });
+      this.element.classList.remove('hidden');
       animateToPosition(this.element, this.media);
       jquery__WEBPACK_IMPORTED_MODULE_1___default()(this.element).draggable({
         handle: '.draggable-handle',
@@ -35961,7 +35967,6 @@ function animateToPosition(el, media) {
 
   media.pause();
   media.play();
-  console.log(media, media.play());
   var newq = makeNewPosition();
   var duration = Math.random() * (20000 - 1000) + 1000;
   jquery__WEBPACK_IMPORTED_MODULE_1___default()(el).animate({
