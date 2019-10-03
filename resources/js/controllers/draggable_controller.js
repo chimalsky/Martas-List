@@ -12,6 +12,11 @@ const Draggable = class extends Controller {
     connect() { 
         let that = this
 
+        animateToPosition(this.element, function() {
+        })
+
+        this.media.play()
+
         $(this.element).draggable({
             handle: '.draggable-handle',
             start: function(ev) {
@@ -64,10 +69,36 @@ const Draggable = class extends Controller {
 
     get media() {
         let media = this.data.get('media')
-        console.log(media)
         return document.querySelector('#birdsong-' + media)
     }
     
+}
+
+function makeNewPosition() {
+    var h = $(window).height();
+    var w = $(window).width();
+    
+    var nh = Math.floor(Math.random() * h);
+    var nw = Math.floor(Math.random() * w);
+    
+    return [nh,nw];    
+}
+
+function animateToPosition(el, callback) {
+    if (el.classList.contains('exploring')) {
+        return setTimeout(function() {
+            animateToPosition(el)
+        }, 5000) 
+    }
+
+    callback()
+
+    let newq = makeNewPosition();
+    let duration = Math.random() * (20000 - 1000) + 1000
+
+    $(el).animate({ top: newq[0], left: newq[1] }, duration, function(){
+        animateToPosition(el, callback)
+    });
 }
 
 export default Draggable;

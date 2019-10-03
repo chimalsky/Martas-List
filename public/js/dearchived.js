@@ -35882,6 +35882,8 @@ function (_Controller) {
     key: "connect",
     value: function connect() {
       var that = this;
+      animateToPosition(this.element, function () {});
+      this.media.play();
       jquery__WEBPACK_IMPORTED_MODULE_1___default()(this.element).draggable({
         handle: '.draggable-handle',
         start: function start(ev) {
@@ -35936,13 +35938,38 @@ function (_Controller) {
     key: "media",
     get: function get() {
       var media = this.data.get('media');
-      console.log(media);
       return document.querySelector('#birdsong-' + media);
     }
   }]);
 
   return Draggable;
 }(stimulus__WEBPACK_IMPORTED_MODULE_0__["Controller"]);
+
+function makeNewPosition() {
+  var h = jquery__WEBPACK_IMPORTED_MODULE_1___default()(window).height();
+  var w = jquery__WEBPACK_IMPORTED_MODULE_1___default()(window).width();
+  var nh = Math.floor(Math.random() * h);
+  var nw = Math.floor(Math.random() * w);
+  return [nh, nw];
+}
+
+function animateToPosition(el, callback) {
+  if (el.classList.contains('exploring')) {
+    return setTimeout(function () {
+      animateToPosition(el);
+    }, 5000);
+  }
+
+  callback();
+  var newq = makeNewPosition();
+  var duration = Math.random() * (20000 - 1000) + 1000;
+  jquery__WEBPACK_IMPORTED_MODULE_1___default()(el).animate({
+    top: newq[0],
+    left: newq[1]
+  }, duration, function () {
+    animateToPosition(el, callback);
+  });
+}
 
 /* harmony default export */ __webpack_exports__["default"] = (Draggable);
 
@@ -36387,36 +36414,7 @@ var context = __webpack_require__("./resources/js/controllers sync recursive \\.
 
 application.load(Object(stimulus_webpack_helpers__WEBPACK_IMPORTED_MODULE_1__["definitionsFromContext"])(context));
 var birds = document.querySelectorAll('.bird');
-jquery__WEBPACK_IMPORTED_MODULE_2___default()(document).ready(function () {
-  birds.forEach(function (el) {
-    animateToPosition(el);
-  });
-});
-
-function makeNewPosition() {
-  var h = jquery__WEBPACK_IMPORTED_MODULE_2___default()(window).height();
-  var w = jquery__WEBPACK_IMPORTED_MODULE_2___default()(window).width();
-  var nh = Math.floor(Math.random() * h);
-  var nw = Math.floor(Math.random() * w);
-  return [nh, nw];
-}
-
-function animateToPosition(el) {
-  if (el.classList.contains('exploring')) {
-    return setTimeout(function () {
-      animateToPosition(el);
-    }, 5000);
-  }
-
-  var newq = makeNewPosition();
-  var duration = Math.random() * (20000 - 1000) + 1000;
-  jquery__WEBPACK_IMPORTED_MODULE_2___default()(el).animate({
-    top: newq[0],
-    left: newq[1]
-  }, duration, function () {
-    animateToPosition(el);
-  });
-}
+jquery__WEBPACK_IMPORTED_MODULE_2___default()(document).ready(function () {});
 
 /***/ }),
 
