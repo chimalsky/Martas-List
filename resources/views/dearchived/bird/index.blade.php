@@ -10,7 +10,7 @@
             <section class="p-2 flex flex-wrap">
                 @if ($audio = $bird->getMedia('', function($medium) { return Str::contains($medium->mime_type, 'audio'); })->random() ?? false)
                     <audio controls class="invisible" id="birdsong-{{ $bird->id }}"
-                    src="{{ $audio->getUrl() }}">
+                    src="{{ $audio->getUrl() }}" autoplay preload="auto">
                         Your browser does not support the
                         <code>audio</code> element.
                     </audio>

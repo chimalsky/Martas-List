@@ -12,10 +12,7 @@ const Draggable = class extends Controller {
     connect() { 
         let that = this
 
-        animateToPosition(this.element)
-
-        this.media.pause()
-        this.media.play()
+        animateToPosition(this.element, this.media)
 
         $(this.element).draggable({
             handle: '.draggable-handle',
@@ -84,18 +81,22 @@ function makeNewPosition() {
     return [nh,nw];    
 }
 
-function animateToPosition(el) {
+function animateToPosition(el, media) {
     if (el.classList.contains('exploring')) {
         return setTimeout(function() {
             animateToPosition(el)
         }, 5000) 
     }
+    
+    media.pause()
+    media.play()
+    console.log(media, media.play())
 
     let newq = makeNewPosition();
     let duration = Math.random() * (20000 - 1000) + 1000
 
     $(el).animate({ top: newq[0], left: newq[1] }, duration, function(){
-        animateToPosition(el)
+        animateToPosition(el, media)
     });
 }
 
