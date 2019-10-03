@@ -38959,6 +38959,7 @@ function (_Controller) {
     key: "start",
     value: function start(ev) {
       this.starts++;
+      this.element.classList.add('exploring');
     }
   }, {
     key: "dragging",
@@ -38970,6 +38971,7 @@ function (_Controller) {
     key: "stop",
     value: function stop(ev) {
       var media = this.media;
+      this.element.classList.remove('exploring');
       setTimeout(function () {
         media.pause();
       }, 3000);

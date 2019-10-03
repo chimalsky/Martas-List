@@ -11,8 +11,8 @@ class BirdController
 {
     public function show(Request $request)
     {
-        $month = $request->query('month');
-        $year = $request->query('year');
+        $month = $request->query('month') ?? 'january';
+        $year = $request->query('year') ?? 1863;
 
         $months = collect([
             'january', 'february', 'march',

@@ -35899,6 +35899,7 @@ function (_Controller) {
     key: "start",
     value: function start(ev) {
       this.starts++;
+      this.element.classList.add('exploring');
     }
   }, {
     key: "dragging",
@@ -35910,6 +35911,7 @@ function (_Controller) {
     key: "stop",
     value: function stop(ev) {
       var media = this.media;
+      this.element.classList.remove('exploring');
       setTimeout(function () {
         media.pause();
       }, 3000);
@@ -36387,21 +36389,33 @@ application.load(Object(stimulus_webpack_helpers__WEBPACK_IMPORTED_MODULE_1__["d
 var birds = document.querySelectorAll('.bird');
 jquery__WEBPACK_IMPORTED_MODULE_2___default()(document).ready(function () {
   birds.forEach(function (el) {
-    var newq = makeNewPosition();
-    jquery__WEBPACK_IMPORTED_MODULE_2___default()(el).animate({
-      top: newq[0],
-      left: newq[1]
-    }, 5000, function () {});
+    animateToPosition(el);
   });
 });
 
 function makeNewPosition() {
-  // Get viewport dimensions (remove the dimension of the div)
-  var h = jquery__WEBPACK_IMPORTED_MODULE_2___default()(window).height() - 50;
-  var w = jquery__WEBPACK_IMPORTED_MODULE_2___default()(window).width() - 50;
+  var h = jquery__WEBPACK_IMPORTED_MODULE_2___default()(window).height();
+  var w = jquery__WEBPACK_IMPORTED_MODULE_2___default()(window).width();
   var nh = Math.floor(Math.random() * h);
   var nw = Math.floor(Math.random() * w);
   return [nh, nw];
+}
+
+function animateToPosition(el) {
+  if (el.classList.contains('exploring')) {
+    return setTimeout(function () {
+      animateToPosition(el);
+    }, 5000);
+  }
+
+  var newq = makeNewPosition();
+  var duration = Math.random() * (20000 - 1000) + 1000;
+  jquery__WEBPACK_IMPORTED_MODULE_2___default()(el).animate({
+    top: newq[0],
+    left: newq[1]
+  }, duration, function () {
+    animateToPosition(el);
+  });
 }
 
 /***/ }),

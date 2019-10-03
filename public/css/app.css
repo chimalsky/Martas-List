@@ -1518,9 +1518,25 @@ video {
   color: #718096;
 }
 
+.month-january .timeline a.dot {
+  background-color: #c3dafe;
+}
+
+.month-january .timeline a.dot.active {
+  background-color: #718096;
+}
+
 .month-february {
   background-color: #edf2f7;
   color: #4a5568;
+}
+
+.month-february .timeline a.dot {
+  background-color: #bee3f8;
+}
+
+.month-february .timeline a.dot.active {
+  background-color: #4a5568;
 }
 
 .month-march {
@@ -1528,9 +1544,25 @@ video {
   color: #2d3748;
 }
 
+.month-march .timeline a.dot {
+  background-color: #ebf4ff;
+}
+
+.month-march .timeline a.dot.active {
+  background-color: #2d3748;
+}
+
 .month-april {
   background-color: #faf089;
   color: #c53030;
+}
+
+.month-april .timeline a.dot {
+  background-color: #fff;
+}
+
+.month-april .timeline a.dot.active {
+  background-color: #c53030;
 }
 
 .month-may {
@@ -1538,9 +1570,25 @@ video {
   color: #742a2a;
 }
 
+.month-may .timeline a.dot {
+  background-color: #fffaf0;
+}
+
+.month-may .timeline a.dot.active {
+  background-color: #742a2a;
+}
+
 .month-june {
   background-color: #c6f6d5;
   color: #434190;
+}
+
+.month-june .timeline a.dot {
+  background-color: #a3bffa;
+}
+
+.month-june .timeline a.dot.active {
+  background-color: #434190;
 }
 
 .month-july {
@@ -1548,9 +1596,25 @@ video {
   color: #fff;
 }
 
+.month-july .timeline a.dot {
+  background-color: #9ae6b4;
+}
+
+.month-july .timeline a.dot.active {
+  background-color: #fff;
+}
+
 .month-august {
   background-color: #276749;
   color: #edf2f7;
+}
+
+.month-august .timeline a.dot {
+  background-color: #38a169;
+}
+
+.month-august .timeline a.dot.active {
+  background-color: #edf2f7;
 }
 
 .month-september {
@@ -1558,9 +1622,25 @@ video {
   color: #fff;
 }
 
+.month-september .timeline a.dot {
+  background-color: #fbd38d;
+}
+
+.month-september .timeline a.dot.active {
+  background-color: #fff;
+}
+
 .month-october {
   background-color: #c05621;
   color: #edf2f7;
+}
+
+.month-october .timeline a.dot {
+  background-color: #ed8936;
+}
+
+.month-october .timeline a.dot.active {
+  background-color: #edf2f7;
 }
 
 .month-november {
@@ -1568,9 +1648,25 @@ video {
   color: #e2e8f0;
 }
 
+.month-november .timeline a.dot {
+  background-color: #7f9cf5;
+}
+
+.month-november .timeline a.dot.active {
+  background-color: #e2e8f0;
+}
+
 .month-december {
   background-color: #90cdf4;
   color: #2a4365;
+}
+
+.month-december .timeline a.dot {
+  background-color: #ebf8ff;
+}
+
+.month-december .timeline a.dot.active {
+  background-color: #2a4365;
 }
 
 .appearance-none{

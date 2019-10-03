@@ -28,6 +28,7 @@ const Draggable = class extends Controller {
 
     start(ev) {
         this.starts++
+        this.element.classList.add('exploring')
     }
 
     dragging(ev) {
@@ -38,6 +39,8 @@ const Draggable = class extends Controller {
 
     stop(ev) {
         let media = this.media
+        this.element.classList.remove('exploring')
+
         setTimeout(function() {
             media.pause()
         }, 3000)
