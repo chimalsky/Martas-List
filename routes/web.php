@@ -31,6 +31,16 @@ Route::middleware(['auth'])->group(function() {
 
     Route::resource('resources', 'ResourcesController');
     Route::resource('resource-types', 'ResourceTypesController');
+
+    Route::get('/resource-type/{resource_type}/resources/create', 'ResourceTypeResourcesController@create')
+        ->name('resource-type.resources.create');
+
+    Route::post('/resource-type/{resource_type}/resources', 'ResourceTypeResourcesController@store')
+        ->name('resource-type.resources.store');
+    
+    Route::put('/resource-type/{resource_type}/resources/{resource}', 'ResourceTypeResourcesController@update')
+        ->name('resource-type.resources.update');
+
     Route::resource('resource-type.attributes', 'ResourceTypeAttributesController');
 
     Route::resource('resource.connections', 'ResourceConnectionsController');

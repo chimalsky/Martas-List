@@ -4,14 +4,6 @@
 
 <section class="web container mx-auto">
     <header class="flex align-left mb-8">
-        <a href="{{ route('resources.index') }}">
-            Archiver Main Page
-        </a>
-
-        <span class="mx-4">
-            >
-        </span>
-
         <a href="{{ route('resource-types.index') }}">
             Resources
         </a>
@@ -20,7 +12,7 @@
             >
         </span>
 
-        <a href="{{ route('resource-types.edit', $resource->definition) }}" class="mx-2">
+        <a href="{{ route('resource-types.show', $resource->definition) }}" class="mx-2">
             {{ $resource->definition->name }}
         </a>
         
@@ -28,9 +20,9 @@
             >
         </span>
 
-        <a href="{{ route('resources.edit', $resource) }}" class="mx-2 font-bold underline"> 
+        <p class="mx-2 font-bold underline"> 
             {{ $resource->name }} 
-        </a>
+        </p>
     </header>
 
     <nav class="w-full flex align-left border border-1 border-gray-500 mb-4">
@@ -38,7 +30,7 @@
             class="p-2 mx-2 
             {{ (request()->is('resources/*')) ? 'bg-gray-700 text-gray-100' : '' }}
             ">
-            Main
+            Attributes
         </a>
 
         <a href="{{ route('resource.metas.index', ['resource' => $resource]) }}"

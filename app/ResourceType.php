@@ -20,7 +20,8 @@ class ResourceType extends Model
 
     public function resources()
     {
-        return $this->hasMany(Resource::class, 'resource_type_id');
+        return $this->hasMany(Resource::class, 'resource_type_id')
+            ->orderBy('name', 'asc');
     }
 
     public function getMainAttributesAttribute()

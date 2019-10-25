@@ -9,6 +9,8 @@ import turbolinks from 'turbolinks'
 import flatpickr from "flatpickr"
 import 'flatpickr/dist/flatpickr.min.css'
 
+import '@github/time-elements'
+
 turbolinks.start()  
 
 const application = new Application.start()

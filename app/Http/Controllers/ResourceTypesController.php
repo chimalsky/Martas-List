@@ -56,7 +56,7 @@ class ResourceTypesController extends Controller
      */
     public function show(ResourceType $resourceType)
     {
-        //
+        return view('resource-types.show', compact('resourceType'));
     }
 
     /**

@@ -3,14 +3,6 @@
 @section ('content')
 
 <header class="flex align-left mb-8">
-    <a href="{{ route('resources.index') }}">
-        Archiver Main Page
-    </a>
-
-    <span class="mx-4">
-        >
-    </span>
-
     <a href="{{ route('resource-types.index') }}">
         Resources
     </a>
@@ -19,9 +11,17 @@
         >
     </span>
 
-    <a href="{{ route('resource-types.edit', $resourceType) }}" class="mx-2 font-bold underline">
+    <a href="{{ route('resource-types.show', $resourceType) }}" class="mx-2">
         {{ $resourceType->name }} 
     </a>
+
+    <span class="mx-4">
+        >
+    </span>
+
+    <p class="mx-2 font-bold underline">
+        Editing {{ $resourceType->name }} 
+    </p>
 </header>
 
 
@@ -54,7 +54,8 @@
                 {{ html()->select("type", [
                     null => 'Regular attribute type -- same as tags',
                     'rich-text' => 'Rich Text', 
-                    'encoding' => 'encoding'
+                    'encoding' => 'encoding',
+                    'link' => 'Link to another Webpage'
                     ])
                     ->class(['form-select', 'pl-2', 'w-1/3']) }}
             </label>
@@ -80,7 +81,8 @@
                 {{ html()->select("type", [
                     null => 'Regular attribute type -- same as tags',
                     'rich-text' => 'Rich Text', 
-                    'encoding' => 'encoding'
+                    'encoding' => 'encoding',
+                    'link' => 'Link to another Webpage'
                     ], $attribute->type)
                     ->class(['form-select', 'pl-2', 'w-1/3']) }}
             </label>
@@ -107,35 +109,5 @@
     
 </section>
 
-
-<section class="border border-1 border-red-900 p-4 mb-4">
-    <h1 class="text-xl">
-        Add a new {{ $resourceType->nameSingular }} 
-    </h1>
-
-    {{ html()->form('POST', route('resources.store'))->open() }}
-        @include('resources.form', ['resourceType' => $resourceType])
-        
-        <button class="btn btn-blue my-2">
-            Add a new {{ $resourceType->nameSingular }} resource
-        </button>
-    {{ html()->form()->close() }}
-</section>
-
-@if($resourceType->resources->count())
-    <h1 class="text-xl">
-        {{ $resourceType->name }} resources: 
-    </h1>
-
-    <section class="flex flex-wrap my-2">
-        @foreach($resourceType->resources as $resource)
-            @include('resources.item', ['resource' => $resource])
-        @endforeach 
-    </section>
-@else 
-    <h1 class="text-xl">
-        No {{ $resourceType->name }} yet...  
-    </h1>
-@endif
 
 @endsection
