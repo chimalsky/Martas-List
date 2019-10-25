@@ -7,7 +7,7 @@
     </h1>
 
     <nav class="flex flex-wrap">
-        <a class="w-full my-2" href="{{ route('resources.index') }}">
+        <a class="w-full my-2" href="{{ route('resource-types.index') }}">
             Archiver
         </a>
 
