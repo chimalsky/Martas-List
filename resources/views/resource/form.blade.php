@@ -12,7 +12,7 @@
 
 @include('resource-type.attributes.form', 
     [
-        'attributes' => $resourceType->mainAttributes ?? $resource->definition->mainAttributes,
+        'attributes' => $resourceType->attributes ?? $resource->definition->attributes,
         'resource' => $resource ?? null
     ]
 )
