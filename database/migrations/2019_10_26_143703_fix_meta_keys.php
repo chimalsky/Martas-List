@@ -24,7 +24,7 @@ class FixMetaKeys extends Migration
 
         $meta = ResourceMeta::where('id', '>', 0)->get(); 
         $meta->each(function($m) {
-            $meta->save();
+            $m->save();
         });
     }
 
