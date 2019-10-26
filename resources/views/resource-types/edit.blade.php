@@ -71,9 +71,8 @@
         Existing Attributes: 
     </h1>
 
-    {{ $resourceType->mainAttributes }} 
-    @foreach($resourceType->mainAttributes as $attribute)
-        {{ html()->form('PUT', route('resource-type.attributes.update', ['resource-type' => $resourceType, 'attribute' => $attribute->key]))->open() }}
+    @foreach($resourceType->attributes as $attribute)
+        {{ html()->form('PUT', route('resource-type.attributes.update', ['resource-type' => $resourceType, 'attribute' => $attribute]))->open() }}
             <label class="w-1/2 mb-4 flex flex-wrap justify-between border border-4 border-gray-400 p-2">
                 <span class="text-gray-700 mb-2 w-full">Name</span>
                 
@@ -96,7 +95,7 @@
         
         {{ html()->form('DELETE', route('resource-type.attributes.destroy', [
             'resource-type' => $resourceType, 
-            'attribute' => $attribute->name
+            'attribute' => $attribute
         ] ))->open() }}
             <div class="flex justify-end mr-4 mt-4">
                 <button class="btn btn-red">

@@ -42,18 +42,10 @@ class ResourceTypeAttributesController extends Controller
             'type' => 'nullable',
         ]);
 
-        $attributes = $resourceType->extra_attributes->attributes;
-
-        $attribute = new ResourceAttribute([
-            'name' => $request->input('name'), 
+        $resourceType->attributes()->create([
+            'key' => $request->input('name'), 
             'type' => $request->input('type')
         ]);
-
-        $attributes[$request->input('name')] = $attribute->toArray();
-                            
-        $resourceType->extra_attributes->attributes = $attributes;
-        $resourceType->save();
-
         
         return back()->with('status', "Attributes saved for $resourceType->name resource");
     }
@@ -87,14 +79,13 @@ class ResourceTypeAttributesController extends Controller
      * @param  \App\ResourceAttribute  $resourceAttribute
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ResourceType $resourceType, String $name)
+    public function update(Request $request, ResourceType $resourceType, ResourceAttribute $resourceAttribute)
     {
-        $resourceAttribute = new ResourceAttribute(['name' => $request->input('name'), 'type' => $request->input('type')]);
-        
-        $newName = $request->input('name');
+        $resourceAttribute->update([
+            'key' => $request->input('name'),
+            'type' => $request->input('type')
+        ]);
 
-        $resourceType->extra_attributes->set("attributes.$newName", $resourceAttribute);
-        $resourceType->save();
 
         return back()->with('status', "$resourceAttribute->name was updated. Now you are more effecient. Good job, human! Now go become even more effecient!");
     }
@@ -105,17 +96,10 @@ class ResourceTypeAttributesController extends Controller
      * @param  \App\ResourceAttribute  $resourceAttribute
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ResourceType $resourceType, String $name)
+    public function destroy(ResourceType $resourceType, ResourceAttribute $resourceAttribute)
     {
-        $attributes = $resourceType->mainAttributes; 
-        $filtered = collect($attributes)->filter(function($item, $key) use ($name) {
-            return $key !== $name;
-        });
+        $resourceAttribute->delete();
 
-        $resourceType->extra_attributes->set("attributes", $filtered);
-
-        $resourceType->save();
-
-        return back()->with('status', "$name attribute removed. Now you are more effecient. Good job, human! Now go become even more effecient!");
+        return back()->with('status', "$resourceAttribute->name attribute removed. Now you are more effecient. Good job, human! Now go become even more effecient!");
     }
 }

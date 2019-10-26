@@ -7,20 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class ResourceAttribute extends Model
 {
+    protected $table = 'resource_type_attributes';
     protected $guarded = [];
 
-    /**
-     * Create a new Resource Attribute instance.
-     *
-     * @param  array  $params
-     * @return void
-     */
-    function __construct(array $params)
+    public static function boot()
     {
-        $this->key = Str::snake($params['name'] ?? $params['key']);
-        $this->type = $params['type'];
-    }
+        parent::boot();
 
+        static::saving(function ($attribute) {
+            $attribute->key = Str::snake($attribute->key);
+        });
+        
+    }
 
     public function getNameAttribute()
     {

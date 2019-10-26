@@ -24,6 +24,11 @@ class ResourceType extends Model
             ->orderBy('name', 'asc');
     }
 
+    public function attributes()
+    {
+        return $this->hasMany(ResourceAttribute::class);
+    }
+
     public function getMainAttributesAttribute()
     {
         $attributes = collect($this->extra_attributes->get('attributes', []));

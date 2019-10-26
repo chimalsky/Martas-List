@@ -15,12 +15,7 @@ class FixMetaKeys extends Migration
      */
     public function up()
     {
-        /*$transcriptionsArchive = ResourceType::find(4);
-        $transcriptions = $transcriptionsArchive->resources;
         
-        $transcriptions->each(function($t) {
-            var_dump($t->meta->pluck('key'));
-        }); */
 
         $meta = ResourceMeta::where('id', '>', 0)->get(); 
         $meta->each(function($m) {
