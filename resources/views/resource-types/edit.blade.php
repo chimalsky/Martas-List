@@ -71,11 +71,12 @@
         Existing Attributes: 
     </h1>
 
+    {{ $resourceType->mainAttributes }} 
     @foreach($resourceType->mainAttributes as $attribute)
-        {{ html()->form('PUT', route('resource-type.attributes.update', ['resource-type' => $resourceType, 'attribute' => $attribute->name]))->open() }}
+        {{ html()->form('PUT', route('resource-type.attributes.update', ['resource-type' => $resourceType, 'attribute' => $attribute->key]))->open() }}
             <label class="w-1/2 mb-4 flex flex-wrap justify-between border border-4 border-gray-400 p-2">
                 <span class="text-gray-700 mb-2 w-full">Name</span>
-
+                
                 {{ html()->text("name", $attribute->name)->class(['form-input', 'mt-1', 'w-1/3']) }}
 
                 {{ html()->select("type", [

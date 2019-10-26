@@ -44,8 +44,13 @@ class ResourceTypeAttributesController extends Controller
 
         $attributes = $resourceType->extra_attributes->attributes;
 
-        $attributes[$request->input('name')] = new ResourceAttribute(['name' => $request->input('name'), 'type' => $request->input('type')]);
-    
+        $attribute = new ResourceAttribute([
+            'name' => $request->input('name'), 
+            'type' => $request->input('type')
+        ]);
+
+        $attributes[$request->input('name')] = $attribute->toArray();
+                            
         $resourceType->extra_attributes->attributes = $attributes;
         $resourceType->save();
 

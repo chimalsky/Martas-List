@@ -17,7 +17,7 @@ class ResourceAttribute extends Model
      */
     function __construct(array $params)
     {
-        $this->key = Str::snake($params['name']);
+        $this->key = Str::snake($params['name'] ?? $params['key']);
         $this->type = $params['type'];
     }
 

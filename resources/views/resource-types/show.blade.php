@@ -22,7 +22,7 @@
         <p class="text-gray-700 text-xl">
             {{ $resourceType->name }} 
 
-            <span>
+            <span class="hidden">
                 <a href="{{ route('resource-types.edit', $resourceType) }}"
                     class="text-xs btn btn-hollow ml-2">
                     Edit 
