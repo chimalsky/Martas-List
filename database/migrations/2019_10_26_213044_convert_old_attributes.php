@@ -18,14 +18,12 @@ class ConvertOldAttributes extends Migration
 
         $resourceTypes->each(function($rt) {
             $rt->mainAttributes->each(function($a) use ($rt) {
-                $rt->attributes()->create([
+                $rt->attributes()->firstOrCreate([
                     'key' => $a->key,
                     'type' => $a->type ?? null
                 ]);
             });
         });
-
-        dd('hi');
     }
 
     /**
