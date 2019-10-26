@@ -1,6 +1,6 @@
 <section class="flex flex-wrap">
     @foreach ($attributes as $attribute)
-        <div class="w-1/2 p-2">
+        <div class="w-full lg:w-1/2 p-2">
             <div class="p-4 bg-gray-300">
                 <label>
                     <span class="block">

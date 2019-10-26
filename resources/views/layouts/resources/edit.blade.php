@@ -67,6 +67,14 @@
             ">
             Temporalities
         </a>
+
+        {{ html()->form('DELETE', route('resources.destroy', $resource))->open() }}
+            <section data-controller="form">
+                <button class="btn bg-red-500 text-white delete" data-action="form#delete">
+                    Delete
+                </button>
+            </section>
+        {{ html()->form()->close() }}
     </nav>
 </section>
 

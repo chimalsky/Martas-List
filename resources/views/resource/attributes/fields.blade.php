@@ -25,7 +25,7 @@
         {{ html()->text("attribute[" . $attribute->name . "]", $resource->mainMeta->firstWhere('key', $attribute->name)->value ?? null)
             ->class(['form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
 
-        @if ($resource->mainMeta->firstWhere('key', $attribute->name)->value)
+        @if ($resource->mainMeta->firstWhere('key', $attribute->name))
             <a href="{{ $resource->mainMeta->firstWhere('key', $attribute->name)->value }}"
                 class="text-right">
                 {{ $resource->mainMeta->firstWhere('key', $attribute->name)->value }}

@@ -24,7 +24,10 @@ class ResourceTypeResourcesController extends Controller
             'name' => $request->name
         ]);
         
-        $attributes = collect($request->attribute)->map(function($item, $key) {
+        $attributes = collect($request->attribute)->filter(function($value, $key) {
+            // TODO handle the null update value more resiliently
+            return $value;
+        })->map(function($item, $key) {
             return [
                 'key' => $key,
                 'value' => $item

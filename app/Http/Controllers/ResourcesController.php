@@ -107,6 +107,9 @@ class ResourcesController extends Controller
      */
     public function destroy(Resource $resource)
     {
-        //
+        $resource->delete();
+
+        return redirect()->route('resource-types.show', $resource->definition)
+            ->with('status', "Resource ($resource->name) was deleted! RIP the old..."); 
     }
 }
