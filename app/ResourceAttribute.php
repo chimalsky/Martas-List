@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class ResourceAttribute extends Model
@@ -16,8 +17,13 @@ class ResourceAttribute extends Model
      */
     function __construct(array $params)
     {
-        $this->name = $params['name'];
+        $this->key = Str::snake($params['name']);
         $this->type = $params['type'];
     }
 
+
+    public function getNameAttribute()
+    {
+        return str_replace('_', ' ', Str::title($this->key));
+    }
 }

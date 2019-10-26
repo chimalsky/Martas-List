@@ -56,6 +56,7 @@ class ResourceTypeResourcesController extends Controller
             $attribute = $resource->meta()->firstOrNew(['key' => $key]);
             $attribute->value = $value;
             $attribute->save();
+
         });
     
         return redirect()->route('resources.edit', $resource)

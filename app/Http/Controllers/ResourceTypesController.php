@@ -44,7 +44,7 @@ class ResourceTypesController extends Controller
 
         $resourceType = ResourceType::create($validated);
         
-        return redirect()->route('resource-types.index')
+        return redirect()->route('resource-types.show', $resourceType)
             ->with('status', "A new type of resource -- $resourceType->name -- was created.");
     }
 
@@ -86,7 +86,7 @@ class ResourceTypesController extends Controller
 
         $resourceType->update($validated);
         
-        return redirect()->route('resource-types.index')
+        return redirect()->route('resource-types.show', $resourceType)
             ->with('status', "An existing type of resource -- $resourceType->name -- was updated.");
     }
 

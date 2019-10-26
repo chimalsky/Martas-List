@@ -33,9 +33,9 @@
             </a>
         @endif
     @else
-        {{ html()->text("attribute[" . $attribute->name . "]", $resource->mainMeta->firstWhere('key', $attribute->name)->value ?? null)
+        {{ html()->text("attribute[" . $attribute->key . "]", $resource->mainMeta->firstWhere('key', $attribute->key)->value ?? null)
             ->class(['form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
-    @endif 
+    @endif
 @else
     @if ($attribute->type == 'rich-text')
         {{ html()->hidden("attribute[" . $attribute->name . "]")->attribute('id', $attribute->key) }}
@@ -59,7 +59,7 @@
             <input type="date" class="date-element" name="attribute[ {{ $attribute->name }} ]" value="{{ $attribute->value }}" />
         </div>
     @else
-        {{ html()->text("attribute[" . $attribute->name . "]")
+        {{ html()->text("attribute[" . $attribute->key . "]")
             ->class(['form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
     @endif
 @endif

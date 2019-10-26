@@ -49,7 +49,7 @@ class Resource extends Model implements HasMedia
 
     public function getMainMetaAttribute()
     {
-        $keyNames = $this->mainAttributes->pluck('name')->toArray();
+        $keyNames = $this->mainAttributes->pluck('key')->toArray();
 
         return $this->meta()->whereIn('key', $keyNames)->get();
     }
