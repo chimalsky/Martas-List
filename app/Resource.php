@@ -42,14 +42,14 @@ class Resource extends Model implements HasMedia
 
     public function getMetaTagsAttribute()
     {
-        $keyNames = $this->mainAttributes->pluck('name')->toArray();
+        $keyNames = $this->definition->attributes()->pluck('key')->toArray();
 
         return $this->meta()->whereNotIn('key', $keyNames)->get();
     }
 
     public function getMainMetaAttribute()
     {
-        $keyNames = $this->mainAttributes->pluck('key')->toArray();
+        $keyNames = $this->definition->attributes()->pluck('key')->toArray();
 
         return $this->meta()->whereIn('key', $keyNames)->get();
     }
@@ -65,7 +65,7 @@ class Resource extends Model implements HasMedia
     public function getMainAttributesAttribute()
     {
         $definition = $this->definition;
-        return $definition->mainAttributes;
+        return $definition->attributes;
     }
 
     public function getExcerptAttribute()
