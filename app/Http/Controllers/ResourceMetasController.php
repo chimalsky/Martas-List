@@ -40,7 +40,10 @@ class ResourceMetasController extends Controller
      */
     public function store(Resource $resource, Request $request)
     {        
-        dd($request);
+        $request->validate([
+            'value' => 'required'
+        ]);
+        
         $meta = new ResourceMeta($request->except('attribute'));
         $resource->meta()->save($meta);
 
