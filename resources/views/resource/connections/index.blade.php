@@ -39,6 +39,59 @@
         {{ $resource->connectedTypes->count() }} varieties
     </h1>
 
+    <section class="w-full max-w-4xl">
+        @foreach ($resource->connectedTypes as $resourceType)
+            <h1 class="m-2 mt-8 text-xl w-full">
+                {{ $resourceType->name }}
+            </h1>
+
+            <table class="table-auto w-full">
+                <thead>
+                    <tr>
+                        <th>
+                        </th>
+
+                        <th>
+
+                        </th>
+                        
+                    </tr>
+                </thead>
+                <tbody class="">
+                    @foreach ($resource->connections as $connection) 
+                        @if (isset($connection->resource) && $connection->resource->definition->is($resourceType))
+
+                            <tr class="w-full border-b border-gray-400 hover:bg-gray-200 hover:cursor-pointer">
+                                <td class="py-2 pl-2">
+                                    <a href="{{ route('resources.edit', $connection->resource) }}" class="text-blue-600">
+                                        {{ $connection->resource->name }}
+                                    </a>
+                                </td>
+
+                                <td class="pr-2">
+                                    {{ html()->modelForm($resource, 'DELETE', route('resource.connections.destroy', [
+                                        'resource' => $resource,
+                                        'connection' => $connection
+                                    ] ))->open() }}
+                                        <div class="flex justify-end mr-4 mt-4">
+                                            <button class="btn btn-red">
+                                                Disconnect
+                                            </button>
+                                        </div>
+                                    {{ html()->closeModelForm() }}
+                                </td>
+
+                            
+                            </tr>
+                        @endif
+                    @endforeach
+                </tbody>
+            </table>
+        @endforeach
+    </section>
+
+    
+
     @foreach ($resource->connectedTypes as $resourceType)
         <h1 class="m-2 mt-8 text-xl w-full">
             {{ $resourceType->name }}
