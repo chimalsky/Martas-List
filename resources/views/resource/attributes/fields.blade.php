@@ -33,7 +33,7 @@
             </a>
         @endif
     @else
-        {{ html()->text("attribute[" . $attribute->key . "]", $resource->mainMeta->firstWhere('key', $attribute->key)->value ?? null)
+        {{ html()->text("attribute[" . $attribute->key . "]", $resource->meta->firstWhere('key', $attribute->key)->value ?? null)
             ->class(['form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
     @endif
 @else

@@ -31,7 +31,7 @@
                 {{ html()->modelForm($medium, 'PUT', route('resource.media.update', 
                     [
                         'resource' => $resource,
-                        'medium' => $medium
+                        'media' => $medium
                     ]
                     ))->open()
                 }}
@@ -47,7 +47,7 @@
 
                 {{ html()->modelForm($medium, 'DELETE', route('resource.media.destroy', [
                     'resource' => $resource, 
-                    'medium' => $medium
+                    'media' => $medium
                 ] ))->open() }}
                     <div class="flex mr-4 my-6">
                         <button class="btn btn-red">

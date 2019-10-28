@@ -39,12 +39,22 @@ class ResourceMediaController extends Controller
     public function store(Request $request, Resource $resource)
     {        
         $request->validate([
-            'media' => 'required|file'
+            'media' => 'required|file',
+            'date' => 'nullable|date',
+            'time' => 'nullable',
+            'location' => 'nullable|string|max:255',
+            'background_sounds' => 'nullable|string|max:255'
         ]);
         
-        $resource->addMediaFromRequest('media')
+        $media = $resource->addMediaFromRequest('media')
             ->usingName($request->input('name') ?? 'unnamed')
             ->toMediaCollection();
+        
+        $media->date = $request->date;
+        $media->time = $request->time;
+        $media->location = $request->location;
+        $media->background_sounds = $request->background_sounds;
+        $media->save();
 
         return back()->with('status', "Media was attached to $resource->name.");
     }
@@ -79,12 +89,23 @@ class ResourceMediaController extends Controller
      * @param  \Spatie\MediaLibrary\Models\Media @medium
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Resource $resource, Media $medium)
+    public function update(Request $request, Resource $resource, Media $media)
     {
-        $medium->name = $request->input('name');
-        $medium->save();
+        $request->validate([
+            'date' => 'nullable|date',
+            'time' => 'nullable',
+            'location' => 'nullable|string|max:255',
+            'background_sounds' => 'nullable|string|max:255'
+        ]);
 
-        return back()->with('status', "Medium $medium->name was updated, bro!");
+        $media->name = $request->name;
+        $media->date = $request->date;
+        $media->time = $request->time;
+        $media->location = $request->location;
+        $media->background_sounds = $request->background_sounds;
+        $media->save();
+
+        return back()->with('status', "Media $media->name was updated, bro!");
     }
 
     /**
@@ -94,9 +115,9 @@ class ResourceMediaController extends Controller
      * @param  \Spatie\MediaLibrary\Models\Media @medium
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Resource $resource, Media $medium)
+    public function destroy(Resource $resource, Media $media)
     {
-        $medium->delete();
-        return back()->with('status', "Medium ($medium->name) was deleted! RIP the old, Welcome the new!"); 
+        $media->delete();
+        return back()->with('status', "Media ($media->name) was deleted! RIP the old, Welcome the new!"); 
     }
 }

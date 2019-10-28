@@ -48,21 +48,21 @@
         </a>
 
         <a href="{{ route('resource.lineages.index', ['resource' => $resource]) }}"
-            class="p-2 mx-2
+            class="p-2 mx-2 hidden
             {{ (request()->is('resource/*/lineages*')) ? 'bg-gray-700 text-gray-100' : '' }}
             ">
             Lineages
         </a>
 
         <a href="{{ route('resource.media.index', ['resource' => $resource]) }}"
-            class="p-2 mx-2
+            class="p-2 mx-2 hidden 
             {{ (request()->is('resource/*/media*')) ? 'bg-gray-700 text-gray-100' : '' }}
             ">
             Media
         </a>
 
         <a href="{{ route('resource.temporalities.index', ['resource' => $resource]) }}"
-            class="p-2 mx-2
+            class="p-2 mx-2 hidden
             {{ (request()->is('resource/*/temporalities*')) ? 'bg-gray-700 text-gray-100' : '' }}
             ">
             Temporalities

@@ -39515,7 +39515,6 @@ document.addEventListener('turbolinks:load', bootstrap);
 function bootstrap() {
   console.log('boots');
   flatpickr__WEBPACK_IMPORTED_MODULE_4___default()('input[type=date]', {
-    mode: 'range',
     inline: true,
     altInput: true,
     altFormat: 'F j, Y'

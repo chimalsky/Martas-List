@@ -56,10 +56,7 @@
                 <tr>
                     <th>
                     </th>
-                    <th>
-                    </th>
-                    <th>
-                    </th>
+                    
                 </tr>
             </thead>
             <tbody class="">
@@ -69,16 +66,6 @@
                             <a href="{{ route('resources.edit', $resource) }}" class="text-blue-600">
                                 {{ $resource->name }}
                             </a>
-                        </td>
-                        
-                        <td>
-                            {{ $resource->excerpt }}
-                        </td>
-                        
-                        <td class="text-right pr-2">
-                            <time-ago datetime="{{ $resource->updated_at }}">
-                                {{ $resource->updated_at }}
-                            </time-ago>
                         </td>
                     </tr>
                 @endforeach 

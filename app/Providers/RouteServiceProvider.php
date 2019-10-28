@@ -28,6 +28,8 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot();
 
         Route::model('attribute', \App\ResourceAttribute::class);
+        Route::model('medium', \Spatie\MediaLibrary\Models\Media::class);
+
     }
 
     /**
