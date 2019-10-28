@@ -43,7 +43,9 @@ class ResourceMediaController extends Controller
             'date' => 'nullable|date',
             'time' => 'nullable',
             'location' => 'nullable|string|max:255',
-            'background_sounds' => 'nullable|string|max:255'
+            'sound_type' => 'nullable|string|max:255',
+            'background_sounds' => 'nullable|string|max:255',
+            'citation' => 'nullable'
         ]);
         
         $media = $resource->addMediaFromRequest('media')
@@ -53,7 +55,10 @@ class ResourceMediaController extends Controller
         $media->date = $request->date;
         $media->time = $request->time;
         $media->location = $request->location;
+        $media->sound_type = $request->sound_type;
         $media->background_sounds = $request->background_sounds;
+        $media->citation = $request->citation;
+
         $media->save();
 
         return back()->with('status', "Media was attached to $resource->name.");
@@ -95,14 +100,19 @@ class ResourceMediaController extends Controller
             'date' => 'nullable|date',
             'time' => 'nullable',
             'location' => 'nullable|string|max:255',
-            'background_sounds' => 'nullable|string|max:255'
+            'sound_type' => 'nullable|string|max:255',
+            'background_sounds' => 'nullable|string|max:255',
+            'citation' => 'nullable'
         ]);
 
         $media->name = $request->name;
         $media->date = $request->date;
         $media->time = $request->time;
         $media->location = $request->location;
+        $media->sound_type = $request->sound_type;
         $media->background_sounds = $request->background_sounds;
+        $media->citation = $request->citation;
+
         $media->save();
 
         return back()->with('status', "Media $media->name was updated, bro!");

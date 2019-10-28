@@ -39519,6 +39519,11 @@ function bootstrap() {
     altInput: true,
     altFormat: 'F j, Y'
   });
+  flatpickr__WEBPACK_IMPORTED_MODULE_4___default()('input[type=time]', {
+    enableTime: true,
+    noCalendar: true,
+    dateFormat: "H:i"
+  });
 }
 
 /***/ }),

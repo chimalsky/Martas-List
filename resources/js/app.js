@@ -22,6 +22,10 @@ document.addEventListener('turbolinks:load', bootstrap)
 function bootstrap() {
     console.log('boots')
     flatpickr('input[type=date]', {inline: true, altInput: true, altFormat: 'F j, Y'})
+    flatpickr('input[type=time]', {enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",})
+
 
 }
 
