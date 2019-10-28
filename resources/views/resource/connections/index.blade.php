@@ -89,23 +89,6 @@
             </table>
         @endforeach
     </section>
-
-    
-
-    @foreach ($resource->connectedTypes as $resourceType)
-        <h1 class="m-2 mt-8 text-xl w-full">
-            {{ $resourceType->name }}
-        </h1>
-
-        @foreach ($resource->connections as $connection) 
-            @if (isset($connection->resource) && $connection->resource->definition->is($resourceType))
-                @include('resource.connections.item', [
-                    'resource' => $resource, 
-                    'connection' => $connection
-                ])
-            @endif
-        @endforeach
-    @endforeach
 </section>
 
 @endsection
