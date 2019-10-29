@@ -32,7 +32,7 @@ class ResourceType extends Model
     public function attributes()
     {
         return $this->hasMany(ResourceAttribute::class)
-            ->where('type', '!=', 'connection');
+            ->whereNotIn('type', ['connection']);
     }
 
     public function connections()

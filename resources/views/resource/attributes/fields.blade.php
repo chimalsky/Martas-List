@@ -33,7 +33,7 @@
                 {{ $resource->mainMeta->firstWhere('key', $attribute->key)->value }}
             </a>
         @endif
-    @else
+    @elseif ($attribute->type == 'default')
         {{ html()->text("attribute[" . $attribute->key . "]", $resource->meta->firstWhere('key', $attribute->key)->value ?? null)
             ->class(['form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
     @endif
@@ -59,7 +59,7 @@
         <div class="block">
             <input type="date" class="date-element" name="attribute[ {{ $attribute->name }} ]" value="{{ $attribute->value }}" />
         </div>
-    @else
+    @elseif ($attribute->type == 'default')
         {{ html()->text("attribute[" . $attribute->key . "]")
             ->class(['form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
     @endif

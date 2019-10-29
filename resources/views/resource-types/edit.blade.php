@@ -52,7 +52,7 @@
                 {{ html()->text("name")->class(['form-input', 'mt-1', 'w-1/3']) }}
 
                 {{ html()->select("type", [
-                    null => 'Regular attribute type -- same as tags',
+                    'default' => 'Regular attribute type -- same as tags',
                     'rich-text' => 'Rich Text', 
                     'encoding' => 'encoding',
                     'link' => 'Link to another Webpage'
@@ -79,7 +79,7 @@
                 {{ html()->text("name", $attribute->name)->class(['form-input', 'mt-1', 'w-full', 'mb-2']) }}
 
                 {{ html()->select("type", [
-                    null => 'Regular attribute type -- same as tags',
+                    'default' => 'Regular attribute type -- same as tags',
                     'rich-text' => 'Rich Text', 
                     'encoding' => 'encoding',
                     'link' => 'Link to another Webpage'

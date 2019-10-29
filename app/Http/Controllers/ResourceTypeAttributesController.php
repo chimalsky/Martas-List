@@ -39,7 +39,7 @@ class ResourceTypeAttributesController extends Controller
     {        
         $request->validate([
             'name' => 'required',
-            'type' => 'nullable',
+            'type' => 'required',
         ]);
 
         $resourceType->allAttributes()->create([
