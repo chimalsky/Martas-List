@@ -59,6 +59,10 @@
         <div class="block">
             <input type="date" class="date-element" name="attribute[ {{ $attribute->name }} ]" value="{{ $attribute->value }}" />
         </div>
+    @elseif ($attribute->type == 'link')
+        {{ html()->text("attribute[" . $attribute->name . "]")
+            ->class(['form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
+    
     @elseif ($attribute->type == 'default')
         {{ html()->text("attribute[" . $attribute->key . "]")
             ->class(['form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
