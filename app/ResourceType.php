@@ -24,9 +24,22 @@ class ResourceType extends Model
             ->orderBy('name', 'asc');
     }
 
-    public function attributes()
+    public function allAttributes()
     {
         return $this->hasMany(ResourceAttribute::class);
+    }
+
+    public function attributes()
+    {
+        return $this->hasMany(ResourceAttribute::class)
+            ->where('type', '!=', 'connection')
+            ->orWhereNull('type');
+    }
+
+    public function connections()
+    {
+        return $this->hasMany(ResourceAttribute::class)
+            ->where('type', 'connection');
     }
 
     public function getMainAttributesAttribute()

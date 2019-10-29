@@ -42,6 +42,9 @@ Route::middleware(['auth'])->group(function() {
     
     Route::put('/resource-type/{resource_type}/resources/{resource}', 'ResourceTypeResourcesController@update')
         ->name('resource-type.resources.update');
+    
+    Route::put('/resource-type/{resource_type}/connections', 'ResourceTypeConnectionsController@update')
+        ->name('resource-type.connections.update');
 
     Route::resource('resource.connections', 'ResourceConnectionsController');
     Route::resource('resource.metas', 'ResourceMetasController');

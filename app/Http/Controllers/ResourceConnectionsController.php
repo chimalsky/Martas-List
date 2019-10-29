@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Resource;
 use App\Connection;
+use App\ResourceType;
 use Illuminate\Http\Request;
 
 class ResourceConnectionsController extends Controller
@@ -24,9 +25,11 @@ class ResourceConnectionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request, Resource $resource)
     {
-        //
+        $connectingResource = ResourceType::find($request->query('connectingResource'));
+
+        return view('resource.connections.create', compact('resource', 'connectingResource'));
     }
 
     /**
@@ -44,7 +47,9 @@ class ResourceConnectionsController extends Controller
             $connection->resources()->attach($connectedResourceId);
         });
 
-        return back()->with('status', "You've just enabled some crazy inter-linking between data. Let's hope the universe doesn't explode!");
+        return redirect()
+            ->route('resources.edit', $resource)
+            ->with('status', "You've just enabled some crazy inter-linking between data. Let's hope the universe doesn't explode!");
     }
 
     /**

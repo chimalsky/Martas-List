@@ -23,13 +23,14 @@
             value="{{ $resource->mainMeta->firstWhere('key', $attribute->name)->value ?? null }}" />
         </div>
     @elseif ($attribute->type == 'link')
-        {{ html()->text("attribute[" . $attribute->name . "]", $resource->mainMeta->firstWhere('key', $attribute->name)->value ?? null)
+        {{ html()->text("attribute[" . $attribute->name . "]", $resource->mainMeta->firstWhere('key', $attribute->key)->value ?? null)
             ->class(['form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
-
-        @if ($resource->mainMeta->firstWhere('key', $attribute->name))
-            <a href="{{ $resource->mainMeta->firstWhere('key', $attribute->name)->value }}"
+        
+        @if ($resource->mainMeta->firstWhere('key', $attribute->key))
+            <a href="{{ $resource->mainMeta->firstWhere('key', $attribute->key)->value }}"
                 class="text-right">
-                {{ $resource->mainMeta->firstWhere('key', $attribute->name)->value }}
+            
+                {{ $resource->mainMeta->firstWhere('key', $attribute->key)->value }}
             </a>
         @endif
     @else

@@ -42,7 +42,7 @@ class ResourceTypeAttributesController extends Controller
             'type' => 'nullable',
         ]);
 
-        $resourceType->attributes()->create([
+        $resourceType->allAttributes()->create([
             'key' => $request->input('name'), 
             'type' => $request->input('type')
         ]);
