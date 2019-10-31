@@ -57,6 +57,8 @@
                     <th>
                     </th>
                     
+                    <th>
+                    </th>
                 </tr>
             </thead>
             <tbody class="">
@@ -66,6 +68,16 @@
                             <a href="{{ route('resources.edit', $resource) }}" class="text-blue-600">
                                 {{ $resource->name }}
                             </a>
+                        </td>
+
+                        <td>
+                            @foreach ($resource->resourcesGrouped as $key => $group)
+                                <div class="text-sm">
+                                    {{ $key }} Connections
+
+                                    {{ $group->count() }}
+                                </div>
+                            @endforeach
                         </td>
                     </tr>
                 @endforeach 

@@ -10,9 +10,15 @@
     {{ html()->text('name')->class(['form-input', 'mt-1', 'block', 'w-full']) }}
 </label>
 
-@include('resource-type.attributes.form', 
-    [
-        'attributes' => $resourceType->attributes ?? $resource->definition->attributes,
-        'resource' => $resource ?? null
-    ]
-)
+<section class="attributes">
+    @include('resource-type.attributes.form', 
+        [
+            'attributes' => $resourceType->attributes ?? $resource->definition->attributes,
+            'resource' => $resource ?? null
+        ]
+    )
+</section>
+
+<button class="btn btn-blue block mb-8" onclick="xenoPower()" type="button">
+    Xeno Power! 
+</button>

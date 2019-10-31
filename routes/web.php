@@ -24,6 +24,8 @@ Route::get('/home', function() {
 Route::get('/blog', 'BlogController@index')->name('blog.index');
 
 Route::middleware(['auth'])->group(function() {
+    Route::get('xeno-power', 'XenoController');
+    
     Route::resource('encodings', 'EncodingsController');
 
     Route::resource('encoding.metas', 'EncodingMetasController');

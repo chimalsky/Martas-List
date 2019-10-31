@@ -98,6 +98,13 @@ class Resource extends Model implements HasMedia
         return $connections->get()->pluck('resources')->flatten();
     } 
 
+    public function getResourcesGroupedAttribute()
+    {
+        return $this->resources->groupBy(function($r) {
+            return $r->definition->name;
+        });
+    }
+
     public function getConnectedTypesAttribute()
     {
         return ResourceType::whereIn('id', $this->resources->pluck('resource_type_id'))->get();

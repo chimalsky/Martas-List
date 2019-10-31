@@ -24,7 +24,8 @@
         </div>
     @elseif ($attribute->type == 'link')
         {{ html()->text("attribute[" . $attribute->name . "]", $resource->mainMeta->firstWhere('key', $attribute->key)->value ?? null)
-            ->class(['form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
+            ->attribute('data-target', 'link')
+            ->class(['attribute', 'form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
         
         @if ($resource->mainMeta->firstWhere('key', $attribute->key))
             <a href="{{ $resource->mainMeta->firstWhere('key', $attribute->key)->value }}"
@@ -35,7 +36,7 @@
         @endif
     @elseif ($attribute->type == 'default')
         {{ html()->text("attribute[" . $attribute->key . "]", $resource->meta->firstWhere('key', $attribute->key)->value ?? null)
-            ->class(['form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
+            ->class(['attribute', 'form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
     @endif
 @else
     @if ($attribute->type == 'rich-text')
@@ -61,10 +62,11 @@
         </div>
     @elseif ($attribute->type == 'link')
         {{ html()->text("attribute[" . $attribute->name . "]")
-            ->class(['form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
+            ->attribute('data-target', 'link')
+            ->class(['attribute', 'form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
     
     @elseif ($attribute->type == 'default')
         {{ html()->text("attribute[" . $attribute->key . "]")
-            ->class(['form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
+            ->class(['attribute', 'form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
     @endif
 @endif

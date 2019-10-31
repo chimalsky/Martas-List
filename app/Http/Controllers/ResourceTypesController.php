@@ -56,6 +56,7 @@ class ResourceTypesController extends Controller
      */
     public function show(ResourceType $resourceType)
     {
+        $resourceType->load('resources');
         return view('resource-types.show', compact('resourceType'));
     }
 

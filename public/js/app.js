@@ -39490,13 +39490,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var stimulus_webpack_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! stimulus/webpack-helpers */ "./node_modules/stimulus/webpack-helpers.js");
 /* harmony import */ var trix__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! trix */ "./node_modules/trix/dist/trix.js");
 /* harmony import */ var trix__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(trix__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var turbolinks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! turbolinks */ "./node_modules/turbolinks/dist/turbolinks.js");
-/* harmony import */ var turbolinks__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(turbolinks__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var flatpickr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! flatpickr */ "./node_modules/flatpickr/dist/flatpickr.js");
-/* harmony import */ var flatpickr__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(flatpickr__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var flatpickr_dist_flatpickr_min_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! flatpickr/dist/flatpickr.min.css */ "./node_modules/flatpickr/dist/flatpickr.min.css");
-/* harmony import */ var flatpickr_dist_flatpickr_min_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(flatpickr_dist_flatpickr_min_css__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _github_time_elements__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @github/time-elements */ "./node_modules/@github/time-elements/dist/time-elements.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var turbolinks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! turbolinks */ "./node_modules/turbolinks/dist/turbolinks.js");
+/* harmony import */ var turbolinks__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(turbolinks__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var flatpickr__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! flatpickr */ "./node_modules/flatpickr/dist/flatpickr.js");
+/* harmony import */ var flatpickr__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(flatpickr__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var flatpickr_dist_flatpickr_min_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! flatpickr/dist/flatpickr.min.css */ "./node_modules/flatpickr/dist/flatpickr.min.css");
+/* harmony import */ var flatpickr_dist_flatpickr_min_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(flatpickr_dist_flatpickr_min_css__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _github_time_elements__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @github/time-elements */ "./node_modules/@github/time-elements/dist/time-elements.js");
 
 
 
@@ -39504,7 +39506,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-turbolinks__WEBPACK_IMPORTED_MODULE_3___default.a.start();
+
+turbolinks__WEBPACK_IMPORTED_MODULE_4___default.a.start();
 var application = new stimulus__WEBPACK_IMPORTED_MODULE_0__["Application"].start();
 
 var context = __webpack_require__("./resources/js/controllers sync recursive \\.js$");
@@ -39513,17 +39516,48 @@ application.load(Object(stimulus_webpack_helpers__WEBPACK_IMPORTED_MODULE_1__["d
 document.addEventListener('turbolinks:load', bootstrap);
 
 function bootstrap() {
-  console.log('boots');
-  flatpickr__WEBPACK_IMPORTED_MODULE_4___default()('input[type=date]', {
+  flatpickr__WEBPACK_IMPORTED_MODULE_5___default()('input[type=date]', {
     inline: true,
     altInput: true,
     altFormat: 'F j, Y'
   });
-  flatpickr__WEBPACK_IMPORTED_MODULE_4___default()('input[type=time]', {
+  flatpickr__WEBPACK_IMPORTED_MODULE_5___default()('input[type=time]', {
     enableTime: true,
     noCalendar: true,
     dateFormat: "H:i"
   });
+
+  window.xenoPower = function () {
+    window.$ = jquery__WEBPACK_IMPORTED_MODULE_3___default.a;
+    var linkEl = document.querySelector("[data-target=link]");
+
+    if (!linkEl.value) {
+      return alert('That Xeno link is invalid');
+    }
+
+    jquery__WEBPACK_IMPORTED_MODULE_3___default.a.get('/xeno-power?url=' + linkEl.value, function (html) {
+      var dom = jquery__WEBPACK_IMPORTED_MODULE_3___default()(html);
+      var tr = dom.find('table.key-value tr');
+      var excludeIndex = [9, 10, 11, 12, 13];
+      var dictionary = tr.each(function (i, el) {
+        if (excludeIndex.includes(i)) {
+          return;
+        }
+
+        if (i > 13) {
+          i = i - 5;
+        }
+
+        var key = jquery__WEBPACK_IMPORTED_MODULE_3___default()(el).find('td:nth-child(1)')[0].textContent.trim(),
+            value = jquery__WEBPACK_IMPORTED_MODULE_3___default()(el).find('td:nth-child(2)')[0].textContent.trim();
+        var input = jquery__WEBPACK_IMPORTED_MODULE_3___default()("input.attribute")[i];
+        input.value = value;
+        console.log(i, input);
+      });
+      var citation = dom.find('#player > p')[5];
+      jquery__WEBPACK_IMPORTED_MODULE_3___default()('input.attribute').last()[0].value = citation.textContent;
+    });
+  };
 }
 
 /***/ }),

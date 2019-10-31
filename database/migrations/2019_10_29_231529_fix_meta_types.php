@@ -20,6 +20,7 @@ class FixMetaTypes extends Migration
 
         $rm->update(['type' => 'default']);
         $ra->update(['type' => 'default']);
+        
     }
 
     /**
