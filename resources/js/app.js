@@ -59,17 +59,16 @@ function bootstrap() {
                 let input = $("input.attribute")[i]
 
                 input.value = value
-                
-                console.log(i, input)
-
-
             });
 
+            let sonogram = 'https://xeno-canto.org/' + dom.find('a[download]')[2].getAttribute('href')
+
+            console.log(sonogram)
+
+            $('input[name="attribute[sonogram]"]')[0].value = sonogram 
+            $('img.sonogram').attr('src', sonogram)
+
             $('input[name=name]')[0].value = dom.find('h1[itemprop=name]')[0].textContent.trim()
-
-            let citation = dom.find('#player > p')[5]
-
-            $('input.attribute').last()[0].value = citation.textContent
 
         })
 

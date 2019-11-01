@@ -39552,11 +39552,12 @@ function bootstrap() {
             value = jquery__WEBPACK_IMPORTED_MODULE_3___default()(el).find('td:nth-child(2)')[0].textContent.trim();
         var input = jquery__WEBPACK_IMPORTED_MODULE_3___default()("input.attribute")[i];
         input.value = value;
-        console.log(i, input);
       });
+      var sonogram = 'https://xeno-canto.org/' + dom.find('a[download]')[2].getAttribute('href');
+      console.log(sonogram);
+      jquery__WEBPACK_IMPORTED_MODULE_3___default()('input[name="attribute[sonogram]"]')[0].value = sonogram;
+      jquery__WEBPACK_IMPORTED_MODULE_3___default()('img.sonogram').attr('src', sonogram);
       jquery__WEBPACK_IMPORTED_MODULE_3___default()('input[name=name]')[0].value = dom.find('h1[itemprop=name]')[0].textContent.trim();
-      var citation = dom.find('#player > p')[5];
-      jquery__WEBPACK_IMPORTED_MODULE_3___default()('input.attribute').last()[0].value = citation.textContent;
     });
   };
 }
