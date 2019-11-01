@@ -5,7 +5,7 @@
 <label class="w-full px-2 max-w-md">
     @if (isset($resource))
         <img src="{{ $resource->mainMeta->firstWhere('key', 'sonogram') ?  $resource->mainMeta->firstWhere('key', 'sonogram')->value : null }}" 
-            class="object-contain mb-2" />
+            class="object-none mb-2" />
     
         @if ( isset($resource->mainMeta->firstWhere('key', 'source_link')->value) )
             <audio controls class="my-2"
