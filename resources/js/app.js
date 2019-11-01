@@ -65,6 +65,8 @@ function bootstrap() {
 
             });
 
+            $('input[name=name]')[0].value = dom.find('h1[itemprop=name]')[0].textContent.trim()
+
             let citation = dom.find('#player > p')[5]
 
             $('input.attribute').last()[0].value = citation.textContent

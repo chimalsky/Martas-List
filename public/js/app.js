@@ -39554,6 +39554,7 @@ function bootstrap() {
         input.value = value;
         console.log(i, input);
       });
+      jquery__WEBPACK_IMPORTED_MODULE_3___default()('input[name=name]')[0].value = dom.find('h1[itemprop=name]')[0].textContent.trim();
       var citation = dom.find('#player > p')[5];
       jquery__WEBPACK_IMPORTED_MODULE_3___default()('input.attribute').last()[0].value = citation.textContent;
     });
