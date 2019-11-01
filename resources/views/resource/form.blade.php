@@ -4,7 +4,16 @@
 
 <label class="w-full px-2 max-w-md">
     @if (isset($resource))
-        <img src="{{ $resource->mainMeta->firstWhere('key', 'sonogram') ?  $resource->mainMeta->firstWhere('key', 'sonogram')->value : null }}" />
+        <img src="{{ $resource->mainMeta->firstWhere('key', 'sonogram') ?  $resource->mainMeta->firstWhere('key', 'sonogram')->value : null }}" 
+            class="object-contain mb-2" />
+    
+        @if ( isset($resource->mainMeta->firstWhere('key', 'source_link')->value) )
+            <audio controls class="my-2"
+                src="{{ $resource->mainMeta->firstWhere('key', 'source_link')->value }}/download">
+                    Your browser does not support the
+                    <code>audio</code> element.
+            </audio>
+        @endif
     @endif
 
     <span class="text-gray-700">
