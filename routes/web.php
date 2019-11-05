@@ -23,7 +23,6 @@ Route::get('/home', function() {
 
 Route::get('/blog', 'BlogController@index')->name('blog.index');
 
-Route::middleware(['auth'])->group(function() {
     Route::get('xeno-power', 'XenoController');
     
     Route::resource('encodings', 'EncodingsController');
@@ -54,6 +53,5 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('resource.temporalities', 'ResourceTemporalitiesController');
     Route::resource('resource.lineages', 'ResourceLineagesController');
 
-});
 
 Auth::routes();
