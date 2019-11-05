@@ -35,8 +35,6 @@
 <section class="sonogram">
     @unless (isset($resource))
         <img src="" class="sonogram"/>
-
-        {{ html()->hidden("attribute[sonogram]") }}
     @endunless
 </section>
 
