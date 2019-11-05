@@ -23,35 +23,35 @@ Route::get('/home', function() {
 
 Route::get('/blog', 'BlogController@index')->name('blog.index');
 
-    Route::get('xeno-power', 'XenoController');
-    
-    Route::resource('encodings', 'EncodingsController');
+Route::get('xeno-power', 'XenoController');
 
-    Route::resource('encoding.metas', 'EncodingMetasController');
-    Route::resource('encoding.resources', 'EncodingResourcesController');
+Route::resource('encodings', 'EncodingsController');
 
-    Route::resource('resources', 'ResourcesController');
-    Route::resource('resource-types', 'ResourceTypesController');
+Route::resource('encoding.metas', 'EncodingMetasController');
+Route::resource('encoding.resources', 'EncodingResourcesController');
 
-    Route::resource('resource-type.attributes', 'ResourceTypeAttributesController');
+Route::resource('resources', 'ResourcesController');
+Route::resource('resource-types', 'ResourceTypesController');
 
-    Route::get('/resource-type/{resource_type}/resources/create', 'ResourceTypeResourcesController@create')
-        ->name('resource-type.resources.create');
+Route::resource('resource-type.attributes', 'ResourceTypeAttributesController');
 
-    Route::post('/resource-type/{resource_type}/resources', 'ResourceTypeResourcesController@store')
-        ->name('resource-type.resources.store');
-    
-    Route::put('/resource-type/{resource_type}/resources/{resource}', 'ResourceTypeResourcesController@update')
-        ->name('resource-type.resources.update');
-    
-    Route::put('/resource-type/{resource_type}/connections', 'ResourceTypeConnectionsController@update')
-        ->name('resource-type.connections.update');
+Route::get('/resource-type/{resource_type}/resources/create', 'ResourceTypeResourcesController@create')
+    ->name('resource-type.resources.create');
 
-    Route::resource('resource.connections', 'ResourceConnectionsController');
-    Route::resource('resource.metas', 'ResourceMetasController');
-    Route::resource('resource.media', 'ResourceMediaController');
-    Route::resource('resource.temporalities', 'ResourceTemporalitiesController');
-    Route::resource('resource.lineages', 'ResourceLineagesController');
+Route::post('/resource-type/{resource_type}/resources', 'ResourceTypeResourcesController@store')
+    ->name('resource-type.resources.store');
+
+Route::put('/resource-type/{resource_type}/resources/{resource}', 'ResourceTypeResourcesController@update')
+    ->name('resource-type.resources.update');
+
+Route::put('/resource-type/{resource_type}/connections', 'ResourceTypeConnectionsController@update')
+    ->name('resource-type.connections.update');
+
+Route::resource('resource.connections', 'ResourceConnectionsController');
+Route::resource('resource.metas', 'ResourceMetasController');
+Route::resource('resource.media', 'ResourceMediaController');
+Route::resource('resource.temporalities', 'ResourceTemporalitiesController');
+Route::resource('resource.lineages', 'ResourceLineagesController');
 
 
 Auth::routes();
