@@ -10,7 +10,10 @@ class ResourceTypeResourcesController extends Controller
 {
     public function create(Request $request, ResourceType $resourceType)
     {
-        return view('resource-type.resources.create', compact('resourceType'));
+        $resource = new Resource;
+        $resource->definition()->associate($resourceType);
+        
+        return view('resource-type.resources.create', compact('resourceType', 'resource'));
     }
 
     public function store(Request $request, ResourceType $resourceType)

@@ -1,14 +1,9 @@
 <section class="flex flex-wrap">
     @foreach ($attributes as $attribute)
-        <div class="w-full lg:w-1/2 p-2">
-            <div class="p-4 bg-gray-300">
-                <label>
-                    <span class="block">
-                        {{ $attribute->name }}
-                    </span>
-                    @include('resource.attributes.fields', ['attribute' => $attribute])
-                </label>
-            </div>
-        </div>
+        @if ($attribute->type)
+            @includeIf('resource.attributes.field.' . $attribute->type, ['attribute' => $attribute])
+        @else 
+            @include('resource.attributes.field.default', ['attribute' => $attribute])
+        @endif
     @endforeach
 </section>

@@ -58,6 +58,8 @@ function bootstrap() {
                 
                 let input = $("input.attribute")[i]
 
+                console.log(input, key, value)
+
                 input.value = value
             });
 

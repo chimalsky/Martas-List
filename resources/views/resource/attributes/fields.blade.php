@@ -1,14 +1,14 @@
 @if ($resource) 
     @if ($attribute->type == 'rich-text')
-        {{ html()->hidden("attribute[" . $attribute->name . "]", $resource->mainMeta->firstWhere('key', $attribute->name)->value ?? null)->attribute('id', $attribute->name) }}
-        <trix-editor input="{{ $attribute->name }}"></trix-editor>
+        {{ html()->hidden("attribute[" . $attribute->key . "]", $resource->mainMeta->firstWhere('key', $attribute->key)->value ?? null)->attribute('id', $attribute->key) }}
+        <trix-editor input="{{ $attribute->key }}"></trix-editor>
 
     @elseif ($attribute->type == 'encoding')
         <h1 class="font-semibold">
             Mock Encoding -- textbox is resizable as needed from bottom-right corner
         </h1>
 
-        {{ html()->textarea("attribute[" . $attribute->name . "]", $resource->mainMeta->firstWhere('key', $attribute->name)->value ?? null)
+        {{ html()->textarea("attribute[" . $attribute->key . "]", $resource->mainMeta->firstWhere('key', $attribute->key)->value ?? null)
             ->class(['w-full', 'block', 'border', 'border-2', 'border-black'])
             ->attribute('id', $attribute->key)
         }}

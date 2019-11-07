@@ -39551,6 +39551,7 @@ function bootstrap() {
         var key = jquery__WEBPACK_IMPORTED_MODULE_3___default()(el).find('td:nth-child(1)')[0].textContent.trim(),
             value = jquery__WEBPACK_IMPORTED_MODULE_3___default()(el).find('td:nth-child(2)')[0].textContent.trim();
         var input = jquery__WEBPACK_IMPORTED_MODULE_3___default()("input.attribute")[i];
+        console.log(input, key, value);
         input.value = value;
       });
       var sonogram = 'https://xeno-canto.org/' + dom.find('a[download]')[2].getAttribute('href');
