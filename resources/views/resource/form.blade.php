@@ -2,7 +2,7 @@
 
 {{ html()->hidden('resource_type_id', $resource->definition->id ?? $resourceType->id) }}
 
-<label class="w-full px-2 max-w-md">
+<label class="w-full px-2">
     @if (isset($resource))
         <img src="{{ $resource->mainMeta->firstWhere('key', 'sonogram') ?  $resource->mainMeta->firstWhere('key', 'sonogram')->value : null }}" 
             class="object-none mb-2" />
@@ -23,10 +23,18 @@
     {{ html()->text('name')->class(['form-input', 'mt-1', 'block', 'w-full']) }}
 </label>
 
+<section class="mt-2 mb-4">
+    <label class="">
+        Citation: 
+        {{ html()->text('citation', $resource->citation->citation ?? null)
+            ->class(['form-input', 'mt-1', 'block', 'w-full']) }}
+    </label>
+</section>
+
 <section class="attributes">
     @include('resource-type.attributes.form', 
         [
-            'attributes' => $resourceType->attributes ?? $resource->definition->attributes,
+            'attributes' => $resource->definitionAttributes,
             'resource' => $resource ?? null
         ]
     )

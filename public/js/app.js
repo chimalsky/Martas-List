@@ -39556,7 +39556,7 @@ function bootstrap() {
       });
       var sonogram = 'https://xeno-canto.org/' + dom.find('a[download]')[2].getAttribute('href');
       console.log(sonogram);
-      jquery__WEBPACK_IMPORTED_MODULE_3___default()('input[name="attribute[sonogram]"]')[0].value = sonogram;
+      jquery__WEBPACK_IMPORTED_MODULE_3___default()('label.sonogram input')[0].value = sonogram;
       jquery__WEBPACK_IMPORTED_MODULE_3___default()('img.sonogram').attr('src', sonogram);
       jquery__WEBPACK_IMPORTED_MODULE_3___default()('input[name=name]')[0].value = dom.find('h1[itemprop=name]')[0].textContent.trim();
     });

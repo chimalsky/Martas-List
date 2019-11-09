@@ -33,13 +33,6 @@
             Attributes
         </a>
 
-        <a href="{{ route('resource.metas.index', ['resource' => $resource]) }}"
-            class="p-2 mx-2 
-            {{ (request()->is('resource/*/metas*')) ? 'bg-gray-700 text-gray-100' : '' }}
-            ">
-            Tags
-        </a>
-
         <a href="{{ route('resource.connections.index', ['resource' => $resource]) }}"
             class="p-2 mx-2
             {{ (request()->is('resource/*/connections*')) ? 'bg-gray-700 text-gray-100' : '' }}

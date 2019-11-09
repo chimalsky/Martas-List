@@ -4,18 +4,20 @@ namespace App;
 
 use Str;
 use App\Resource;
-use App\Encoding;
 use App\Connection;
 use App\ResourceType;
+use App\ResourceAttribute;
 use App\Traits\IsSeasonal;
 use App\Traits\IsTemporal;
+use App\Traits\HasCitations;
 use App\Traits\HasMediaTrait;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 
 class Resource extends Model implements HasMedia
 {
-    use IsSeasonal, IsTemporal, HasMediaTrait;
+    use IsSeasonal, IsTemporal, 
+        HasCitations, HasMediaTrait;
 
     protected $guarded = ['id'];
 
@@ -40,6 +42,11 @@ class Resource extends Model implements HasMedia
             ->orderBy('key', 'desc');
     }
 
+    public function definitionAttributes()
+    {
+        return $this->definition->attributes();
+    }
+
     public function getMetaTagsAttribute()
     {
         $keyNames = $this->definition->attributes()->pluck('key')->toArray();
@@ -51,7 +58,8 @@ class Resource extends Model implements HasMedia
     {
         $keyNames = $this->definition->attributes()->pluck('key')->toArray();
 
-        return $this->meta()->whereIn('key', $keyNames)->get();
+        return $this->meta()->whereIn('key', $keyNames)
+            ->get();
     }
 
     public function connections()
@@ -108,11 +116,6 @@ class Resource extends Model implements HasMedia
     public function getConnectedTypesAttribute()
     {
         return ResourceType::whereIn('id', $this->resources->pluck('resource_type_id'))->get();
-    }
-
-    public function encodings()
-    {
-        return $this->belongsToMany(Encoding::class);
     }
 
     public function scopeType($query, $type)

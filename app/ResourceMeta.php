@@ -25,6 +25,11 @@ class ResourceMeta extends Model
         return $this->belongsTo(Resource::class);
     }
 
+    public function resourceAttribute()
+    {
+        return $this->belongsTo(ResourceAttribute::class, 'resource_attribute_id');
+    }
+
     public function getNameAttribute()
     {
         return str_replace('_', ' ', Str::title($this->key));

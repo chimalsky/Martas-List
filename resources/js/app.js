@@ -67,7 +67,7 @@ function bootstrap() {
 
             console.log(sonogram)
 
-            $('input[name="attribute[sonogram]"]')[0].value = sonogram 
+            $('label.sonogram input')[0].value = sonogram 
             $('img.sonogram').attr('src', sonogram)
 
             $('input[name=name]')[0].value = dom.find('h1[itemprop=name]')[0].textContent.trim()
