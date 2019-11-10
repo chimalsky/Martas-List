@@ -4,12 +4,12 @@
 
 <label class="w-full px-2">
     @if (isset($resource))
-        <img src="{{ $resource->mainMeta->firstWhere('key', 'sonogram') ?  $resource->mainMeta->firstWhere('key', 'sonogram')->value : null }}" 
+        <img src="{{ $resource->meta->firstWhere('resource_attribute_id', 77)->value }}" 
             class="object-none mb-2" />
     
-        @if ( isset($resource->mainMeta->firstWhere('key', 'source_link')->value) )
+        @if ( isset($resource->meta->firstWhere('resource_attribute_id', 75)->value) )
             <audio controls class="my-2"
-                src="{{ $resource->mainMeta->firstWhere('key', 'source_link')->value }}/download">
+                src="{{ $resource->meta->firstWhere('resource_attribute_id', 75)->value }}/download">
                     Your browser does not support the
                     <code>audio</code> element.
             </audio>
