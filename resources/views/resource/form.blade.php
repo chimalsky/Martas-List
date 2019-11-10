@@ -25,7 +25,7 @@
     {{ html()->text('name')->class(['form-input', 'mt-1', 'block', 'w-full']) }}
 </label>
 
-<section class="mt-2 mb-4">
+<section class="mt-2 mb-4 px-2">
     <label class="">
         Citation: 
         {{ html()->text('citation', $resource->citation->citation ?? null)

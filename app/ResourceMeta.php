@@ -4,12 +4,14 @@ namespace App;
 
 use App\Resource;
 use Illuminate\Support\Str;
+use App\Traits\HasCitations;
 use Illuminate\Database\Eloquent\Model;
 
 class ResourceMeta extends Model
 {
+    use HasCitations;
+    
     protected $guarded = ['id'];
-
 
     public static function boot()
     {

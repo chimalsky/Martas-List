@@ -22,6 +22,6 @@
         {{ html()->text("newAttribute[id-" . $attribute->id . "]")
             ->placeholder('Add info!')
             ->attribute('data-target', 'link')
-            ->class(['attribute', 'form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
+            ->class(['attribute', 'form-input', 'mt-4', 'block', 'w-full', 'font-medium']) }}
     </label>
 </div>
