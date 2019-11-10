@@ -4,10 +4,12 @@
 
 <label class="w-full px-2">
     @if (isset($resource))
-        <img src="{{ $resource->meta->firstWhere('resource_attribute_id', 77)->value }}" 
-            class="object-none mb-2" />
+        @if ( $resource->meta()->where('resource_attribute_id', 77)->exists() )
+            <img src="{{ $resource->meta->firstWhere('resource_attribute_id', 77)->value }}" 
+                class="object-none mb-2" />
+        @endif
     
-        @if ( isset($resource->meta->firstWhere('resource_attribute_id', 75)->value) )
+        @if ( $resource->meta()->where('resource_attribute_id', 75)->exists() )
             <audio controls class="my-2"
                 src="{{ $resource->meta->firstWhere('resource_attribute_id', 75)->value }}/download">
                     Your browser does not support the
