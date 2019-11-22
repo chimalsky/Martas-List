@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0acf8cf28b927098ebcde99fa40884b8",
+    "content-hash": "0b1d482cc2679e41c42982331f35d55e",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2829,26 +2829,26 @@
         },
         {
             "name": "spatie/laravel-schemaless-attributes",
-            "version": "1.4.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-schemaless-attributes.git",
-                "reference": "99d36228973dcd84f3d983140eefcf6afcf50346"
+                "reference": "7bd66feab0bc5289c089c8c53201a929781797dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-schemaless-attributes/zipball/99d36228973dcd84f3d983140eefcf6afcf50346",
-                "reference": "99d36228973dcd84f3d983140eefcf6afcf50346",
+                "url": "https://api.github.com/repos/spatie/laravel-schemaless-attributes/zipball/7bd66feab0bc5289c089c8c53201a929781797dc",
+                "reference": "7bd66feab0bc5289c089c8c53201a929781797dc",
                 "shasum": ""
             },
             "require": {
-                "illuminate/database": "^5.6",
-                "illuminate/support": "^5.6",
+                "illuminate/database": "^5.6|^6.0",
+                "illuminate/support": "^5.6|^6.0",
                 "php": "^7.2"
             },
             "require-dev": {
                 "larapack/dd": "^1.0",
-                "orchestra/testbench": "^3.6",
+                "orchestra/testbench": "^3.6|^4.0",
                 "phpunit/phpunit": "^8.0"
             },
             "type": "library",
@@ -2882,7 +2882,7 @@
                 "laravel-schemaless-attributes",
                 "spatie"
             ],
-            "time": "2019-02-27T09:08:55+00:00"
+            "time": "2019-09-04T07:08:44+00:00"
         },
         {
             "name": "spatie/pdf-to-image",

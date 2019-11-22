@@ -81,9 +81,19 @@ class ResourceTypeAttributesController extends Controller
      */
     public function update(Request $request, ResourceType $resourceType, ResourceAttribute $resourceAttribute)
     {
+        $request->validate([
+            'name' => 'required',
+            'type' => 'required',
+            'options' => 'nullable | array'
+        ]);
+
+
         $resourceAttribute->update([
-            'key' => $request->input('name'),
-            'type' => $request->input('type')
+            'key' => $request->name,
+            'type' => $request->type,
+            'options' => collect($request->options)->filter(function($option) {
+                return $option;
+            })->toArray()
         ]);
 
 

@@ -2,13 +2,13 @@
     <main class="p-2 bg-gray-200">
         <label class="block p-3 {{ $attribute->key }}">
             <span class="block">
-                {{ $attribute->name }}
+                {{ $attribute->name }} 
             </span>
 
             @foreach ($resource->meta->where('resource_attribute_id', $attribute->id) as $meta)
-                <section class="mb-4 pb-2 border-b-2 border-black" data-controller="resource-meta">
-                    {{ html()->text("attribute[id-" . $meta->id . "]", $meta->value ?? null)
-                        ->class(['attribute', 'form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
+                <section class="mb-6" data-controller="resource-meta">
+                    {{ html()->select("attribute[id-" . $meta->id . "]", $attribute->optionsDropdown, $meta->value ?? null)
+                        ->class(['attribute', 'form-dropdown', 'mt-1', 'block', 'w-full', 'font-medium']) }}
 
                     <button class="mt-3" data-action="resource-meta#addCitation">
                         @unless ($meta->citation) 
@@ -27,17 +27,15 @@
             @endforeach
         </label>
     </main>
-    
     <footer class="p-2 bg-indigo-200" data-controller="resource-meta">
-
         <button class="mb-3" data-action="resource-meta#addNewAttribute">
             Add additional attribute
         </button>
 
         <section data-target="resource-meta.newAttribute" class="hidden">
-            {{ html()->text("newAttribute[id-" . $attribute->id . "]")
+            {{ html()->select("newAttribute[id-" . $attribute->id . "]", $attribute->optionsDropdown)
                 ->placeholder('Add Info!')
-                ->class(['attribute', 'form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
+                ->class(['attribute', 'form-dropdown', 'mt-1', 'block', 'w-full', 'font-medium']) }}
 
             {{ html()->text("newAttributeCitation[id-" . $attribute->id . "]")
                 ->placeholder('citation')

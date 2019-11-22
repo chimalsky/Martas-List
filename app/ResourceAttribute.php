@@ -13,6 +13,10 @@ class ResourceAttribute extends Model
     protected $table = 'resource_type_attributes';
     protected $guarded = [];
 
+    protected $casts = [
+        'options' => 'array'
+    ];
+
     public static function boot()
     {
         parent::boot();
@@ -36,5 +40,12 @@ class ResourceAttribute extends Model
     public function getNameAttribute()
     {
         return str_replace('_', ' ', Str::title($this->key));
+    }
+
+    public function getOptionsDropdownAttribute()
+    {
+        return collect($this->options)->mapWithKeys(function($option) {
+            return [$option => $option];
+        })->toArray();
     }
 }

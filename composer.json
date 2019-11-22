@@ -21,7 +21,7 @@
         "spatie/laravel-db-snapshots": "^1.2",
         "spatie/laravel-html": "^2.22",
         "spatie/laravel-medialibrary": "^7.6",
-        "spatie/laravel-schemaless-attributes": "^1.4",
+        "spatie/laravel-schemaless-attributes": "^1.6",
         "writingink/wink": "^0.0.13",
         "zoha/laravel-meta": "^1.6"
     },
