@@ -67,9 +67,10 @@ class ResourceTypeAttributesController extends Controller
      * @param  \App\ResourceAttribute  $resourceAttribute
      * @return \Illuminate\Http\Response
      */
-    public function edit(ResourceAttribute $resourceAttribute)
+    public function edit(ResourceType $resourceType, ResourceAttribute $resourceAttribute)
     {
-        //
+        $attribute = $resourceAttribute;
+        return view('resource-type.attributes.edit', compact('resourceType', 'attribute'));
     }
 
     /**
@@ -86,7 +87,6 @@ class ResourceTypeAttributesController extends Controller
             'type' => 'required',
             'options' => 'nullable | array'
         ]);
-
 
         $resourceAttribute->update([
             'key' => $request->name,
@@ -110,7 +110,9 @@ class ResourceTypeAttributesController extends Controller
     {
         $resourceAttribute->delete();
 
-        return back()->with('status', "$resourceAttribute->name attribute removed. Now you are more effecient. Good job, human! Now go become even more effecient!");
+        return redirect()
+            ->route('resource-types.edit', $resourceType)
+            ->with('status', "$resourceAttribute->name attribute removed. Now you are more effecient. Good job, human! Now go become even more effecient!");
     }
 
     public function sortIndex(Request $request, ResourceType $resourceType)

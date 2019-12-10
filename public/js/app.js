@@ -46552,6 +46552,10 @@ function bootstrap() {
     enableTime: true,
     noCalendar: true,
     dateFormat: "H:i"
+  }); // Sortable 
+
+  var sortable = new _shopify_draggable__WEBPACK_IMPORTED_MODULE_8__["Sortable"](document.querySelectorAll('.sortable'), {
+    draggable: 'article'
   });
 
   window.xenoPower = function () {
@@ -46588,24 +46592,7 @@ function bootstrap() {
       jquery__WEBPACK_IMPORTED_MODULE_3___default()('input[name=name]')[0].value = dom.find('h1[itemprop=name]')[0].textContent.trim();
     });
   };
-} // Sortable 
-
-
-var sortable = new _shopify_draggable__WEBPACK_IMPORTED_MODULE_8__["Sortable"](document.querySelectorAll('.sortable'), {
-  draggable: 'article'
-});
-sortable.on('sortable:start', function () {
-  return console.log('sortable:start');
-});
-sortable.on('sortable:sort', function () {
-  return console.log('sortable:sort');
-});
-sortable.on('sortable:sorted', function () {
-  return console.log('sortable:sorted');
-});
-sortable.on('sortable:stop', function () {
-  return console.log('sortable:stop');
-});
+}
 
 /***/ }),
 
@@ -47403,10 +47390,7 @@ function (_Controller) {
 
   _createClass(_default, [{
     key: "connect",
-    value: function connect() {
-      console.log(this.element, this.typeTarget.value);
-      this.refreshUi();
-    }
+    value: function connect() {}
   }, {
     key: "changeType",
     value: function changeType() {
@@ -47419,24 +47403,15 @@ function (_Controller) {
       var input = document.createElement('input');
       console.log(input);
       input.setAttribute('name', 'options[]');
-      input.setAttribute('class', 'form-input block');
+      input.setAttribute('class', 'form-input block border-gray-600 border-b');
       this.optionsTarget.appendChild(input);
-    }
-  }, {
-    key: "refreshUi",
-    value: function refreshUi() {
-      if (this.typeTarget.value == 'dropdown') {
-        return this.optionsTarget.classList.remove('hidden');
-      }
-
-      this.optionsTarget.classList.add('hidden');
     }
   }]);
 
   return _default;
 }(stimulus__WEBPACK_IMPORTED_MODULE_0__["Controller"]);
 
-_defineProperty(_default, "targets", ['type', 'options']);
+_defineProperty(_default, "targets", ['options']);
 
 
 

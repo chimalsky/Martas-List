@@ -1,11 +1,9 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {   
-    static targets = ['type', 'options']
+    static targets = ['options']
 
     connect() {
-        console.log(this.element, this.typeTarget.value)
-        this.refreshUi()
     }
 
     changeType() {
@@ -19,16 +17,8 @@ export default class extends Controller {
         console.log(input)
 
         input.setAttribute('name', 'options[]')
-        input.setAttribute('class', 'form-input block')
+        input.setAttribute('class', 'form-input block border-gray-600 border-b')
 
         this.optionsTarget.appendChild(input)
-    }
-
-    refreshUi() {
-        if (this.typeTarget.value == 'dropdown') {
-            return this.optionsTarget.classList.remove('hidden')
-        }
-
-        this.optionsTarget.classList.add('hidden')
     }
 }

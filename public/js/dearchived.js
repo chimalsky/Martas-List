@@ -36419,10 +36419,7 @@ function (_Controller) {
 
   _createClass(_default, [{
     key: "connect",
-    value: function connect() {
-      console.log(this.element, this.typeTarget.value);
-      this.refreshUi();
-    }
+    value: function connect() {}
   }, {
     key: "changeType",
     value: function changeType() {
@@ -36435,24 +36432,15 @@ function (_Controller) {
       var input = document.createElement('input');
       console.log(input);
       input.setAttribute('name', 'options[]');
-      input.setAttribute('class', 'form-input block');
+      input.setAttribute('class', 'form-input block border-gray-600 border-b');
       this.optionsTarget.appendChild(input);
-    }
-  }, {
-    key: "refreshUi",
-    value: function refreshUi() {
-      if (this.typeTarget.value == 'dropdown') {
-        return this.optionsTarget.classList.remove('hidden');
-      }
-
-      this.optionsTarget.classList.add('hidden');
     }
   }]);
 
   return _default;
 }(stimulus__WEBPACK_IMPORTED_MODULE_0__["Controller"]);
 
-_defineProperty(_default, "targets", ['type', 'options']);
+_defineProperty(_default, "targets", ['options']);
 
 
 

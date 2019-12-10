@@ -29,6 +29,15 @@ function bootstrap() {
         dateFormat: "H:i",})
 
         
+    // Sortable 
+
+
+    const sortable = new Sortable(document.querySelectorAll('.sortable'), {
+        draggable: 'article'
+    });
+
+
+        
     window.xenoPower = function() {
         window.$ = $
 
@@ -80,15 +89,4 @@ function bootstrap() {
 
 }
 
-// Sortable 
-
-
-const sortable = new Sortable(document.querySelectorAll('.sortable'), {
-    draggable: 'article'
-});
-
-sortable.on('sortable:start', () => console.log('sortable:start'));
-sortable.on('sortable:sort', () => console.log('sortable:sort'));
-sortable.on('sortable:sorted', () => console.log('sortable:sorted'));
-sortable.on('sortable:stop', () => console.log('sortable:stop'));
 

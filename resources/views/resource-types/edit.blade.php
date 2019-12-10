@@ -37,15 +37,41 @@
     {{ html()->closeModelForm() }}
 </section>
 
+{{ html()->form('put', route('resource-type.attributes.sort', $resourceType))->open() }}
+    <section class="sortable">
+        <h1 class="font-semibold mb-4 block">
+            Existing Attributes: 
+        </h1>
 
-<section class="p-4 my-4 bg-gray-300">
+        @foreach($resourceType->attributes as $attribute)
+            <article class="block mb-2 p-1 flex justify-between">
+                {{ $attribute->name }}
+
+                <input type="hidden" name="attributes[]" value="{{ $attribute->id }}" />
+
+                <a class="btn btn-gray" href="{{ route('resource-type.attributes.edit', ['resource-type' => $resourceType, 'attribute' => $attribute]) }}">
+                    Edit 
+                </a>
+            </article>
+        @endforeach
+    </section>
+
+    <button class="btn btn-blue mt-12">
+        Save changes to Attributes Ordering
+    </button>
+{{ html()->form()->close() }}
+
+<section class="p-4 mt-24 bg-gray-300">
+    <h1> 
+        Add a new Attribute 
+    </h1>
+
     {{ html()->form('POST', route('resource-type.attributes.store', $resourceType))->open() }}
         <div class="flex items-end">
-
             <label class="w-2/3 mb-4 flex flex-wrap justify-between p-2">
                 <span class="text-gray-700 mb-2 w-full">Name</span>
 
-                {{ html()->text("name")->class(['form-input', 'mt-1', 'w-1/3']) }}
+                {{ html()->text("name")->class(['form-input', 'mt-1', 'w-1/2']) }}
 
                 {{ html()->select("type", [
                     'default' => 'Regular attribute type -- same as tags',
@@ -59,86 +85,11 @@
         </div>
         
         <button class="btn btn-blue">
-            Add new Attribute
+            Add
         </button>
 
     {{ html()->closeModelForm() }}
 </section>
-
-<a href="{{ route('resource-type.attributes.sort-index', $resourceType) }}" class="btn btn-hollow mt-12 block">
-    Change Ordering of Attributes
-</a>
-
-<section class="flex flex-wrap bg-gray-200">
-    <h1 class="font-semibold mt-8 w-full m-2">
-        Existing Attributes: 
-    </h1>
-
-    @foreach($resourceType->attributes as $attribute)
-        <div class="w-1/2 p-4 border border-4 border-gray-400"
-            data-controller="resource-attribute">
-            {{ html()->form('PUT', route('resource-type.attributes.update', ['resource-type' => $resourceType, 'attribute' => $attribute]))->open() }}
-                <label class="block my-2">
-                    <span class="text-gray-700 mb-2 w-full">Name</span>
-                    
-                    {{ html()->text("name", $attribute->name)->class(['form-input', 'mt-1', 'w-full', 'mb-2']) }}
-                </label>
-
-                <label class="block my-2">
-                    <span class="block">
-                        Type: 
-                    </span>
-                    {{ html()->select("type", [
-                        'default' => 'Regular attribute type -- same as tags',
-                        'dropdown' => 'Dropdown List',
-                        'rich-text' => 'Rich Text', 
-                        'encoding' => 'encoding',
-                        'link' => 'Link to another Webpage'
-                        ], $attribute->type)
-                        ->attribute('data-target', 'resource-attribute.type')
-                        ->attribute('data-action', 'resource-attribute#changeType')
-                        ->class(['form-select', 'pl-2']) }}
-                </label>
-
-                <label data-target="resource-attribute.options" class="hidden block mt-8 mb-3">
-                    <span class="block">
-                        Options
-                    </span>
-
-                    @if ($attribute->options)
-                        @foreach ($attribute->options as $option) 
-                            {{ html()->text('options[]', $option)->class('form-input block') }}
-                        @endforeach
-                    @endif
-
-                </label>
-
-                <button class="btn btn-hollow" data-action="resource-attribute#addOption">
-                    Add another option 
-                </button>
-
-                <button class="btn btn-blue block mt-2">
-                    Update 
-                </button>
-            {{ html()->closeModelForm() }}
-
-            
-            {{ html()->form('DELETE', route('resource-type.attributes.destroy', [
-                'resource-type' => $resourceType, 
-                'attribute' => $attribute
-            ] ))->open() }}
-                <div class="block flex justify-end mr-8 mb-8">
-                    <button class="btn btn-red">
-                        Remove
-                    </button>
-                </div>
-            {{ html()->closeModelForm() }}
-        </div>
-
-    @endforeach
-    
-</section>
-
 
 <section class="p-4 my-4 bg-indigo-200">
     <h1 class="font-semibold">
