@@ -12,6 +12,7 @@ import flatpickr from "flatpickr"
 import 'flatpickr/dist/flatpickr.min.css'
 
 import '@github/time-elements'
+import { Sortable } from '@shopify/draggable'
 
 turbolinks.start()  
 
@@ -78,4 +79,16 @@ function bootstrap() {
 
 
 }
+
+// Sortable 
+
+
+const sortable = new Sortable(document.querySelectorAll('.sortable'), {
+    draggable: 'article'
+});
+
+sortable.on('sortable:start', () => console.log('sortable:start'));
+sortable.on('sortable:sort', () => console.log('sortable:sort'));
+sortable.on('sortable:sorted', () => console.log('sortable:sorted'));
+sortable.on('sortable:stop', () => console.log('sortable:stop'));
 

@@ -65,6 +65,10 @@
     {{ html()->closeModelForm() }}
 </section>
 
+<a href="{{ route('resource-type.attributes.sort-index', $resourceType) }}" class="btn btn-hollow mt-12 block">
+    Change Ordering of Attributes
+</a>
+
 <section class="flex flex-wrap bg-gray-200">
     <h1 class="font-semibold mt-8 w-full m-2">
         Existing Attributes: 

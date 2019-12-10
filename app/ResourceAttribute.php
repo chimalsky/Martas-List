@@ -6,12 +6,21 @@ use App\Resource;
 use App\ResourceMeta;
 use App\ResourceType;
 use Illuminate\Support\Str;
+use Spatie\EloquentSortable\Sortable;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\EloquentSortable\SortableTrait;
 
-class ResourceAttribute extends Model
+class ResourceAttribute extends Model implements Sortable
 {
+    use SortableTrait;
+    
     protected $table = 'resource_type_attributes';
     protected $guarded = [];
+
+    public $sortable = [
+        'order_column_name' => 'order',
+        'sort_when_creating' => true,
+    ];
 
     protected $casts = [
         'options' => 'array'

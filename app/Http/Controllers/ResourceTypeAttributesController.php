@@ -112,4 +112,16 @@ class ResourceTypeAttributesController extends Controller
 
         return back()->with('status', "$resourceAttribute->name attribute removed. Now you are more effecient. Good job, human! Now go become even more effecient!");
     }
+
+    public function sortIndex(Request $request, ResourceType $resourceType)
+    {
+        return view('resource-type.attributes.index', compact('resourceType'));
+    }
+
+    public function sort(Request $request, ResourceType $resourceType)
+    {
+        ResourceAttribute::setNewOrder($request->input('attributes'));
+
+        return back()->with('status', "Okay new order is here to stay!");
+    }
 }

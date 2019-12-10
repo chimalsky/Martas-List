@@ -33,6 +33,12 @@ Route::resource('encoding.resources', 'EncodingResourcesController');
 Route::resource('resources', 'ResourcesController');
 Route::resource('resource-types', 'ResourceTypesController');
 
+
+Route::get('/resource-type/{resource_type}/attributes/sort', 'ResourceTypeAttributesController@sortIndex')
+    ->name('resource-type.attributes.sort-index');
+Route::put('/resource-type/{resource_type}/attributes/sort', 'ResourceTypeAttributesController@sort')
+    ->name('resource-type.attributes.sort');
+
 Route::resource('resource-type.attributes', 'ResourceTypeAttributesController');
 
 Route::get('/resource-type/{resource_type}/resources/create', 'ResourceTypeResourcesController@create')
