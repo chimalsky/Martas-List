@@ -11,7 +11,7 @@
         @include('resource.form')
 
         <footer class="py-4">
-            <button class="btn btn-hollow">
+            <button class="btn bg-indigo-500 shadow-2xl text-white fixed text-2xl bottom-0 mb-8">
                 Save changes
             </button>
         </footer>

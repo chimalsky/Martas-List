@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c46e6cc0f77511658db57b192d4f749f",
+    "content-hash": "b06d856faef016c605df8d31755665cc",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1700,6 +1700,59 @@
                 "twitter"
             ],
             "time": "2016-08-17T00:36:58+00:00"
+        },
+        {
+            "name": "livewire/livewire",
+            "version": "v0.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/livewire/livewire.git",
+                "reference": "23f6c0b8158b5d7813ebcd6b6d080faf7c8837b5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/23f6c0b8158b5d7813ebcd6b6d080faf7c8837b5",
+                "reference": "23f6c0b8158b5d7813ebcd6b6d080faf7c8837b5",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.6|^6.0",
+                "illuminate/validation": "^5.6|^6.0"
+            },
+            "require-dev": {
+                "laravel/framework": "^5.6|^6.0",
+                "orchestra/testbench": "~4.0",
+                "phpunit/phpunit": "^8.3",
+                "psy/psysh": "@stable"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Livewire\\LivewireServiceProvider"
+                    ],
+                    "aliases": {
+                        "Livewire": "Livewire\\Livewire"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Livewire\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Caleb Porzio",
+                    "email": "calebporzio@gmail.com"
+                }
+            ],
+            "description": "Build and test rich client-side functionality: with only backend code.",
+            "time": "2019-12-11T22:08:39+00:00"
         },
         {
             "name": "maennchen/zipstream-php",

@@ -17,6 +17,7 @@
         "laravel/framework": "5.8.*",
         "laravel/socialite": "^4.1",
         "laravel/tinker": "^1.0",
+        "livewire/livewire": "^0.5.2",
         "paquettg/php-html-parser": "^2.1",
         "spatie/eloquent-sortable": "^3.7",
         "spatie/laravel-backup": "^6.3",

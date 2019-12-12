@@ -1464,6 +1464,10 @@ video {
   background-color: #2b6cb0;
 }
 
+[data-controller=resource-meta] > .citation {
+  display: none;
+}
+
 .btn-red {
   background-color: #f56565;
   color: #fff;

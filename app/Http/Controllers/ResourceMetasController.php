@@ -111,6 +111,6 @@ class ResourceMetasController extends Controller
     {
         $meta->delete();
         
-        return back()->with('status', "Encoding Tag ($meta->key) was deleted! RIP the old, Welcome the new!"); 
+        return back()->with('status', "Attribute information for ($meta->key) was deleted! RIP the old, Welcome the new!"); 
     }
 }

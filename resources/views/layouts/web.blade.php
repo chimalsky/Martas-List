@@ -10,6 +10,8 @@
 
         <link href="{{ mix('css/app.css') }}" rel="stylesheet">
         @stack('stylesheets')
+
+        @livewireAssets
         
         <script src="{{ mix('js/app.js') }}" defer="true"></script>
         @stack('scripts')

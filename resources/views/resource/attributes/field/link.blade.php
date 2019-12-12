@@ -1,6 +1,6 @@
 <div class="p-2 w-full md:w-1/2">
     <label class="bg-gray-200 block p-3 {{ $attribute->key }}">
-        <span class="block">
+        <span class="block text-xl mb-2">
             {{ $attribute->name }}
         </span>
 
@@ -16,6 +16,8 @@
                     {{ $meta->value }}
                 </a>
             @endif
+
+            @livewire('resource-attribute', $meta->id)
         @endforeach
 
 

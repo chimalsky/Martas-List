@@ -1,28 +1,16 @@
 <div class="p-2 w-full md:w-1/2">
     <main class="p-2 bg-gray-200">
         <label class="block p-3 {{ $attribute->key }}">
-            <span class="block">
+            <span class="block text-xl mb-2">
                 {{ $attribute->name }}
             </span>
 
             @foreach ($resource->meta->where('resource_attribute_id', $attribute->id) as $meta)
-                <section class="mb-4 pb-2 border-b-2 border-black" data-controller="resource-meta">
+                <section class="mb-4 pb-2" data-controller="resource-meta">
                     {{ html()->text("attribute[id-" . $meta->id . "]", $meta->value ?? null)
                         ->class(['attribute', 'form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
 
-                    <button class="mt-3" data-action="resource-meta#addCitation">
-                        @unless ($meta->citation) 
-                            Add Citation
-                        @else
-                            Citation 
-                        @endunless
-                    </button>
-                    
-                    {{ html()->text("attributeCitation[id-" . $meta->id . "]", $meta->citation->citation ?? null)
-                        ->placeholder('citation')
-                        ->attribute('data-target', 'resource-meta.citation')
-                        ->class(['citation', 'form-input', 'font-mono', 'border', 'border-black', 'mt-1',
-                            'bg-indigo-100', 'ml-4', 'block', 'w-11/12', 'font-medium', 'hidden']) }}
+                    @livewire('resource-attribute', $meta->id)
                 </section>
             @endforeach
         </label>
@@ -38,11 +26,6 @@
             {{ html()->text("newAttribute[id-" . $attribute->id . "]")
                 ->placeholder('Add Info!')
                 ->class(['attribute', 'form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
-
-            {{ html()->text("newAttributeCitation[id-" . $attribute->id . "]")
-                ->placeholder('citation')
-                ->class(['citation', 'form-input', 'font-mono', 'border', 'border-black', 'mt-1',
-                    'bg-indigo-100', 'ml-4', 'block', 'w-11/12', 'font-medium']) }}
         </section>
     </footer>
 </div>
