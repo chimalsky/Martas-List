@@ -39,7 +39,7 @@
             {{ $activity->description }}
         </td>
         <td>
-            {{ $activity->subject->value }}
+            {{ $activity->properties['attributes']['value'] }}
         </td>
 
         <td class="pl-4 text-right">
