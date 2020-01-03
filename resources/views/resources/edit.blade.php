@@ -40,13 +40,13 @@
             {{ $resource->name }} has {{ $resource->getMedia()->count() }} media
         </h1>
 
-        @foreach ($resource->getMedia() as $medium)
+        @foreach ($resource->getMedia() as $medium) 
             <article class="w-full md:w-1/2">
                 <div class="border border-1 border-gray-600 p-4">
                     {{ html()->modelForm($medium, 'PUT', route('resource.media.update', 
                         [
                             'resource' => $resource,
-                            'medium' => $medium
+                            'medium' => $medium->id
                         ]
                         ))->open()
                     }}

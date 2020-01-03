@@ -14,9 +14,9 @@ class ResourceTypeAttributesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ResourceType $resourceType)
     {
-        //
+        return view('resource-type.attributes.index', compact('resourceType'));
     }
 
     /**

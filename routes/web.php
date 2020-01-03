@@ -53,11 +53,15 @@ Route::put('/resource-type/{resource_type}/resources/{resource}', 'ResourceTypeR
 Route::put('/resource-type/{resource_type}/connections', 'ResourceTypeConnectionsController@update')
     ->name('resource-type.connections.update');
 
+Route::get('/resource-type/{resource_type}/activities', 'ResourceTypeActivitiesController@index')
+    ->name('resource-type.activities.index');
+
 Route::resource('resource.connections', 'ResourceConnectionsController');
 Route::resource('resource.metas', 'ResourceMetasController');
 Route::resource('resource.media', 'ResourceMediaController');
 Route::resource('resource.temporalities', 'ResourceTemporalitiesController');
 Route::resource('resource.lineages', 'ResourceLineagesController');
 
+Route::get('activities', 'ActivityController@index')->name('activity.index');
 
 Auth::routes();

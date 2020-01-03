@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Resource;
 use Illuminate\Http\Request;
-use Spatie\MediaLibrary\Models\Media;
+use App\ResourceMedia as Media;
 
 class ResourceMediaController extends Controller
 {
@@ -39,6 +39,7 @@ class ResourceMediaController extends Controller
     public function store(Request $request, Resource $resource)
     {        
         $request->validate([
+            'name' => 'nullable|string|max:255',
             'media' => 'required|file',
             'date' => 'nullable|date',
             'time' => 'nullable',
@@ -49,7 +50,7 @@ class ResourceMediaController extends Controller
         ]);
         
         $media = $resource->addMediaFromRequest('media')
-            ->usingName($request->input('name') ?? 'unnamed')
+            ->usingName($request->name ?? 'unnamed')
             ->toMediaCollection();
         
         $media->date = $request->date;
@@ -97,6 +98,7 @@ class ResourceMediaController extends Controller
     public function update(Request $request, Resource $resource, Media $media)
     {
         $request->validate([
+            'name' => 'nullable|string|max:255',
             'date' => 'nullable|date',
             'time' => 'nullable',
             'location' => 'nullable|string|max:255',
@@ -105,15 +107,17 @@ class ResourceMediaController extends Controller
             'citation' => 'nullable'
         ]);
 
-        $media->name = $request->name;
+        /*$media->name = $request->name;
         $media->date = $request->date;
         $media->time = $request->time;
         $media->location = $request->location;
         $media->sound_type = $request->sound_type;
         $media->background_sounds = $request->background_sounds;
-        $media->citation = $request->citation;
+        $media->citation = $request->citation; */
 
-        $media->save();
+        $media->update([
+            'name' => $request->name
+        ]);
 
         return back()->with('status', "Media $media->name was updated, bro!");
     }

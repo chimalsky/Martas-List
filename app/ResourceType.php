@@ -5,13 +5,15 @@ namespace App;
 use Str;
 use App\Resource;
 use App\ResourceAttribute;
+use Spatie\Activitylog\Models\Activity;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Spatie\SchemalessAttributes\SchemalessAttributes;
 
-
 class ResourceType extends Model
 {
+    use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
+
     protected $guarded = ['id'];
 
     public $casts = [
@@ -42,6 +44,23 @@ class ResourceType extends Model
             ->where('type', 'connection');
     }
 
+    public function metaActivities()
+    {
+        return $this->hasManyDeep(
+            Activity::class,
+            [Resource::class, ResourceMeta::class],
+            [null, null, ['subject_type', 'subject_id']]
+        );
+    }
+
+    public function mediaActivities()
+    {
+        return $this->hasManyDeep(
+            Activity::class,
+            [Resource::class, ResourceMedia::class],
+            [null, ['model_type', 'model_id'], ['subject_type', 'subject_id']]
+        );
+    }
     public function getMainAttributesAttribute()
     {
         $attributes = collect($this->extra_attributes->get('attributes', []));
