@@ -36,7 +36,7 @@
             {{ $activity->description }}
         </td>
         <td class="pl-4 text-right">
-            {{ $activity->causer->name }} -- {{ $activity->created_at }}
+            {{ $activity->causer->name ?? 'unknown stranger on the internet' }} -- {{ $activity->created_at }}
         </td>
     </tr> 
 @endforeach
