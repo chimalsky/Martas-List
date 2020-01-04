@@ -18,7 +18,7 @@ Route::prefix('dearchived')->name('dearchived.')->namespace('Dearchived')->group
 });
 
 Route::get('/home', function() {
-    return redirect()->route('resources.index');
+    return redirect()->route('resource-types.index');
 })->name('home');
 
 Route::get('/blog', 'BlogController@index')->name('blog.index');
