@@ -1,5 +1,4 @@
 <div class="w-full my-4">
-    <label>
         <h1 class="font-semibold">
             Mock Encoding -- textbox is resizable as needed from bottom-right corner
         </h1>
@@ -17,6 +16,4 @@
                 ->attribute('id', $attribute->key)
             }}
         @endif
-
-    </label>
 </div>

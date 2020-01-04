@@ -17,7 +17,7 @@
 
                 <input type="hidden" name="attributes[]" value="{{ $attribute->id }}" />
 
-                <a class="btn btn-gray" href="{{ route('resource-type.attributes.edit', ['resource-type' => $resourceType, 'attribute' => $attribute]) }}">
+                <a class="btn btn-gray" href="{{ route('resource-type.attributes.edit', [$resourceType, $attribute]) }}">
                     Edit 
                 </a>
             </article>

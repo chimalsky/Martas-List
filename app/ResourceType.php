@@ -50,7 +50,9 @@ class ResourceType extends Model
             Activity::class,
             [Resource::class, ResourceMeta::class],
             [null, null, ['subject_type', 'subject_id']]
-        );
+        )->with(['causer', 'subject.resource', 'subject.resourceAttribute'])
+        ->inLog('resource_meta')
+        ->orderBy('created_at', 'desc');
     }
 
     public function mediaActivities()
@@ -59,8 +61,11 @@ class ResourceType extends Model
             Activity::class,
             [Resource::class, ResourceMedia::class],
             [null, ['model_type', 'model_id'], ['subject_type', 'subject_id']]
-        );
+        )->with(['causer', 'subject.model'])
+        ->inLog('resource_media')
+        ->orderBy('created_at', 'desc');
     }
+
     public function getMainAttributesAttribute()
     {
         $attributes = collect($this->extra_attributes->get('attributes', []));

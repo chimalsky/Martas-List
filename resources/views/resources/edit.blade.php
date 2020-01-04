@@ -3,10 +3,7 @@
 @section ('content')
 
 <section class="flex flex-wrap mb-8 max-w-6xl">
-    {{ html()->modelForm($resource, 'PUT', route('resource-type.resources.update', [
-        'resource-type' => $resource->definition,
-        'resource' => $resource
-        ]))->open() }}
+    {{ html()->modelForm($resource, 'PUT', route('resources.update', $resource))->open() }}
 
         @include('resource.form')
 

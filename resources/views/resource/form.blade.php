@@ -49,7 +49,7 @@
 </section>
 
 @if ($resource->definition->id == 6)
-    <button class="btn btn-blue block mb-8" onclick="xenoPower()" type="button">
+    <button class="btn btn-blue hidden block mb-8" onclick="xenoPower()" type="button">
         Xeno Power! 
     </button>
 @endif

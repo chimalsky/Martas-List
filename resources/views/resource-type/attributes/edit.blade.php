@@ -33,7 +33,7 @@
 </header>
 
 <header class="max-w-lg">
-    {{ html()->form('PUT', route('resource-type.attributes.update', ['resource-type' => $resourceType, 'attribute' => $attribute]))->open() }}
+    {{ html()->form('PUT', route('resource-type.attributes.update', [$resourceType, $attribute]))->open() }}
         <label class="block my-2">
             <span class="text-gray-700 mb-2 w-full">Name</span>
             
@@ -68,7 +68,7 @@
             Options 
         </h1>
 
-        {{ html()->form('PUT', route('resource-type.attributes.update', ['resource-type' => $resourceType, 'attribute' => $attribute]))->open() }}
+        {{ html()->form('PUT', route('resource-type.attributes.update', [$resourceType, $attribute]))->open() }}
             {{ html()->hidden("name", $attribute->name) }}
             {{ html()->hidden("type", $attribute->type) }}
 
@@ -98,8 +98,8 @@
 
 <footer class="flex justify-end mt-8">
     {{ html()->form('DELETE', route('resource-type.attributes.destroy', [
-        'resource-type' => $resourceType, 
-        'attribute' => $attribute
+        $resourceType, 
+        $attribute
     ] ))->open() }}
         <div class="block flex justify-end mr-8 mb-8">
             <button class="btn btn-red">

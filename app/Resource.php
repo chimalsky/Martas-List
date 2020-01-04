@@ -70,6 +70,11 @@ class Resource extends Model implements HasMedia
             }]);
     }
 
+    public function metaByAttribute(ResourceAttribute $resourceAttribute)
+    {
+        return $this->meta()->where('resource_attribute_id', $resourceAttribute->id)->get();
+    }
+
     public function getMainAttributesAttribute()
     {
         $definition = $this->definition;
