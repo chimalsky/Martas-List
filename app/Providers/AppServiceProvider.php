@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\ServiceProvider;
 
@@ -31,5 +32,15 @@ class AppServiceProvider extends ServiceProvider
         
             return $this->selectSub($query->limit(1), $column);
         });        
+
+        Blade::directive('route', function ($expression) {
+            return "<?php echo route({$expression}) ?>";
+        });
+        Blade::directive('routeIs', function ($expression) {
+            return "<?php if (request()->routeIs({$expression})) : ?>";
+        });
+        Blade::directive('endrouteIs', function () {
+            return "<?php endif; ?>";
+        });
     }
 }

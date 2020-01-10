@@ -24,7 +24,7 @@
 @foreach ($activities as $activity)    
     <tr class="">
         <td class="pr-4 pb-3">
-            <a href="{{ route('resource-type.activities.index', [$activity->subject->resource->definition, 'filter' => $activity->subject->resourceAttribute->id]) }}"
+            <a href="{{ route('resource-type.activities.index', [$activity->subject->resource->definition, 'filter' => $activity->subject->resourceAttribute->id ?? null]) }}"
                 class="underline">
                 {{ $activity->subject->resourceAttribute->name ?? '' }}
             </a>

@@ -54,10 +54,13 @@ class ResourceTypesController extends Controller
      * @param  \App\ResourceType  $resourceType
      * @return \Illuminate\Http\Response
      */
-    public function show(ResourceType $resourceType)
+    public function show(ResourceType $resourceType, Request $request)
     {
         $resourceType->load('resources');
-        return view('resource-types.show', compact('resourceType'));
+        $resourceType->resources->load('meta');
+        $enabledAttributes = collect($request->query('attribute'))->keys();
+        
+        return view('resource-types.show', compact('resourceType', 'enabledAttributes'));
     }
 
     /**
