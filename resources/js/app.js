@@ -14,6 +14,8 @@ import 'flatpickr/dist/flatpickr.min.css'
 import '@github/time-elements'
 import { Sortable } from '@shopify/draggable'
 
+import Alpine from 'alpinejs'
+
 turbolinks.start()  
 
 const application = new Application.start()

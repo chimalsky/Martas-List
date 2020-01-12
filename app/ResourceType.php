@@ -22,8 +22,7 @@ class ResourceType extends Model
 
     public function resources()
     {
-        return $this->hasMany(Resource::class, 'resource_type_id')
-            ->orderBy('name', 'asc');
+        return $this->hasMany(Resource::class, 'resource_type_id');
     }
 
     public function allAttributes()

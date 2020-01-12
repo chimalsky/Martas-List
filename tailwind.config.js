@@ -19,6 +19,7 @@ module.exports = {
       opacity: ['responsive', 'hover']
     },
     plugins: [
-      require('@tailwindcss/custom-forms')
+      require('@tailwindcss/custom-forms'),
+      require('tailwindcss-plugins/pagination')
     ]
 }

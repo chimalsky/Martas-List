@@ -8,43 +8,48 @@
     </div>
 </header>
 
-<section class="bg-gray-100 py-2 px-4">
-    @if($resourceType->resources->count())
-        <section class="my-2 max-w-5xl flex justify-between">
-            <div>
-                <form action="@route('resource-types.show', $resourceType)" method="get">
-                    @foreach ($resourceType->attributes as $attribute)
-                        <label class="block">
-                            <input type="checkbox" 
-                                name="attribute[{{ $attribute->id }}]" 
-                                @if ($enabledAttributes->contains($attribute->id))
-                                    checked
-                                @endif
-                                /> 
-                                {{ $attribute->key }}
-                        </label>
-                    @endforeach
+<section class="py-2">
+    @if($resourceType->resources()->count())
+        <section class="block flex justify-between max-w-5xl bg-gray-200 px-2 py-4">
+            <section class="inline-block">
+                <div x-data="{ open: false}">
+                    <button @click="open = true" class="btn btn-hollow">
+                        <span x-show="!open">
+                            Open Filtering Options
+                        </span>
 
-                    <footer class="block mt-4">
-                        <button class="btn btn-hollow ">
-                            Filter
-                        </button>
-                    </footer>
-                </form>
-            </div>
+                        <span x-show="open">
+                            Close Filtering Options 
+                        </span>
+                    </button>
 
-            <div>
-                <p class="inline-block mr-2">
-                    <strong>
-                        {{ $resourceType->resources()->count() }}
-                    </strong>
-                    Resources
-                </p>
-                <a href="{{ route('resource-type.resources.create', $resourceType) }}"
-                    class="inline-block btn btn-blue">
-                    Add New {{ $resourceType->nameSingular }}
-                </a>
-            </div>
+                    <form action="@route('resource-types.show', $resourceType)" method="get"
+                        x-show="open"
+                        @click.away="open = false"
+                        class="mt-4">
+                        @foreach ($resourceType->attributes as $attribute)
+                            <label class="block">
+                                <input type="checkbox" 
+                                    name="attribute[{{ $attribute->id }}]" 
+                                    @if ($enabledAttributes->contains($attribute->id))
+                                        checked
+                                    @endif
+                                    /> 
+                                    {{ $attribute->key }}
+                            </label>
+                        @endforeach
+
+                        <footer class="block mt-4">
+                            <button class="btn btn-blue">
+                                Filter
+                            </button>
+                        </footer>
+                    </form>
+                </div>
+            </section>
+
+            <nav class="inline-block">
+            </nav>
         </section>
 
         <section class="mt-8">
@@ -52,18 +57,32 @@
                 <thead>
                     <tr>
                         <th class="text-left">
-                            Resource Name
+                            <a href="@route('resource-types.show', array_merge($_GET, 
+                                    [
+                                    $resourceType, 
+                                    'reverse' => !Request::query('reverse'),
+                                    'sortMeta' => false
+                                    ]))">
+                                    Resource Name
+                                </a>
                         </th>
                         
                         @foreach($enabledAttributes as $key)
                             <th>
-                                {{ $resourceType->attributes->firstWhere('id', $key)->name }}
+                                <a href="@route('resource-types.show', array_merge($_GET, 
+                                    [
+                                    $resourceType, 
+                                    'reverse' => !Request::query('reverse'),
+                                    'sortMeta' => $key
+                                    ]))">
+                                    {{ $resourceType->attributes->firstWhere('id', $key)->name }}
+                                </a>
                             </th>
                         @endforeach
                     </tr>
                 </thead>
                 <tbody class="">
-                    @foreach ($resourceType->resources as $resource)
+                    @foreach ($resources as $resource) 
                         <tr class="w-full border-b border-gray-400 hover:bg-gray-200 hover:cursor-pointer">
                             <td class="py-2 pl-2">
                                 <a href="{{ route('resources.edit', $resource) }}" class="text-blue-600">
@@ -71,13 +90,14 @@
                                 </a>
                             </td>
 
-                            @foreach ($resource->meta->whereIn('resource_attribute_id', $enabledAttributes) as $enabledAttribute)
+                            @foreach ($enabledAttributes as $attributeId)
                                 <td>
-                                    {{ $enabledAttribute->value }}
+                                    {{ $resource->meta->where('resource_attribute_id', $attributeId)->first()->value ?? null }}
                                 </td>
-                            @endforeach
+                            @endforeach 
                         </tr>
                     @endforeach 
+                
                 </tbody>
             </table>
         </section>
@@ -86,7 +106,6 @@
             No {{ $resourceType->name }} yet...  
         </h1>
     @endif
-
 </section>
 
 @endsection

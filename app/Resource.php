@@ -42,6 +42,11 @@ class Resource extends Model implements HasMedia
             ->orderBy('key', 'desc');
     }
 
+    public function queriedMeta()
+    {
+        return $this->belongsTo(ResourceMeta::class);
+    }
+
     public function definitionAttributes()
     {
         return $this->definition->attributes();

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Resource;
 use App\ResourceType;
+use App\ResourceMeta;
 use Illuminate\Http\Request;
 
 class ResourceTypesController extends Controller
@@ -56,11 +58,33 @@ class ResourceTypesController extends Controller
      */
     public function show(ResourceType $resourceType, Request $request)
     {
-        $resourceType->load('resources');
-        $resourceType->resources->load('meta');
         $enabledAttributes = collect($request->query('attribute'))->keys();
+
+        $reverse = $request->query('reverse') ? 'desc' : 'asc';
+        $sortMeta = $request->query('sortMeta') ?? $enabledAttributes[0] ?? null;
+        $sortName = $request->query('sortName') ?? null;
         
-        return view('resource-types.show', compact('resourceType', 'enabledAttributes'));
+        $resources = $resourceType->resources()
+            ->with(['meta' => function($query) use ($enabledAttributes) {
+                return $query->whereIn('resource_attribute_id', $enabledAttributes);
+            }]);
+
+        if ($sortMeta) {
+            $resources = $resources->addSelect(['queries_meta_value' => function($query) use ($sortMeta) {
+                $query->select('value')
+                    ->from('resource_metas')
+                    ->whereColumn('resource_id', 'resources.id')
+                    ->where('resource_attribute_id', $sortMeta)
+                    ->latest()->limit(1);
+            }])
+            ->orderBy('queries_meta_value', $reverse);
+        } else {
+            $resource = $resources->orderBy('name', $reverse);
+        }
+
+        $resources = $resources->get();
+
+        return view('resource-types.show', compact('resourceType', 'enabledAttributes', 'resources'));
     }
 
     /**
