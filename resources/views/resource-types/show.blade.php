@@ -83,7 +83,9 @@
                 </thead>
                 <tbody class="">
                     @foreach ($resources as $resource) 
-                        <tr class="w-full border-b border-gray-400 hover:bg-gray-200 hover:cursor-pointer">
+                        <tr class="w-full border-b border-gray-400 hover:bg-gray-200 hover:cursor-pointer
+                            @if ($loop->even) bg-indigo-100 @endif
+                        ">
                             <td class="py-2 pl-2">
                                 <a href="{{ route('resources.edit', $resource) }}" class="text-blue-600">
                                     {{ $resource->name }}
@@ -92,7 +94,13 @@
 
                             @foreach ($enabledAttributes as $attributeId)
                                 <td>
-                                    {{ $resource->meta->where('resource_attribute_id', $attributeId)->first()->value ?? null }}
+                                    @if ($resource->meta->where('resource_attribute_id', $attributeId)->first()->value ?? false) 
+                                        @foreach ($resource->meta->where('resource_attribute_id', $attributeId) as $attribute)
+                                            <div class="@if ($loop->even) pt-2 pb-6 @endif">
+                                                {{ $attribute->value }}
+                                            </div>
+                                        @endforeach
+                                    @endif
                                 </td>
                             @endforeach 
                         </tr>
