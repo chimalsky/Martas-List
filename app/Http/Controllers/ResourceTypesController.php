@@ -63,12 +63,20 @@ class ResourceTypesController extends Controller
         $reverse = $request->query('reverse') ? 'desc' : 'asc';
         $sortMeta = $request->query('sortMeta') ?? $enabledAttributes[0] ?? null;
         $sortName = $request->query('sortName') ?? null;
-        
-        $resources = $resourceType->resources()
-            ->with(['meta' => function($query) use ($enabledAttributes) {
-                return $query->whereIn('resource_attribute_id', $enabledAttributes);
-            }]);
+    
+        $resources = $resourceType->resources();
 
+        if (count($enabledAttributes)) {
+            $resources = $resources->whereHas('meta', function ($query) use ($enabledAttributes) {
+                return $query->whereIn('resource_attribute_id', $enabledAttributes);
+            });
+        }
+
+        $resources->with(['meta' => function($query) use ($enabledAttributes) {
+            return $query->whereNotNull('value')
+                ->whereIn('resource_attribute_id', $enabledAttributes);
+            }]);
+        
         if ($sortMeta) {
             $resources = $resources->addSelect(['queries_meta_value' => function($query) use ($sortMeta) {
                 $query->select('value')

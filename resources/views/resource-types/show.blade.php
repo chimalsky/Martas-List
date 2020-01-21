@@ -28,15 +28,21 @@
                         @click.away="open = false"
                         class="mt-4">
                         @foreach ($resourceType->attributes as $attribute)
-                            <label class="block">
-                                <input type="checkbox" 
-                                    name="attribute[{{ $attribute->id }}]" 
-                                    @if ($enabledAttributes->contains($attribute->id))
-                                        checked
-                                    @endif
-                                    /> 
-                                    {{ $attribute->key }}
-                            </label>
+                            <div class="block mb-2"
+                                x-data="{filterToggle: false }">
+                                <label class="inline-block">
+                                    <input type="checkbox" 
+                                        name="attribute[{{ $attribute->id }}]" 
+                                        @if ($enabledAttributes->contains($attribute->id))
+                                            checked
+                                        @endif
+                                        x-click="filterToggle = true"
+                                        /> 
+                                        {{ $attribute->key }}
+                                </label>
+
+                                
+                            </div>
                         @endforeach
 
                         <footer class="block mt-4">
@@ -83,8 +89,8 @@
                 </thead>
                 <tbody class="">
                     @foreach ($resources as $resource) 
-                        <tr class="w-full border-b border-gray-400 hover:bg-gray-200 hover:cursor-pointer
-                            @if ($loop->even) bg-indigo-100 @endif
+                        <tr class="w-full border-b border-gray-400 hover:bg-gray-300 hover:cursor-pointer
+                            @if ($loop->even) bg-gray-100 @endif
                         ">
                             <td class="py-2 pl-2">
                                 <a href="{{ route('resources.edit', $resource) }}" class="text-blue-600">
