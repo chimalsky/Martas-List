@@ -5,6 +5,7 @@ namespace App;
 use App\Resource;
 use Illuminate\Support\Str;
 use App\Traits\HasCitations;
+use Illuminate\Support\HtmlString;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 
@@ -44,5 +45,14 @@ class ResourceMeta extends Model
     public function getIsLongAttribute()
     {
         return strlen($this->value) > 100;
+    }
+
+    public function getValueAttribute($value)
+    {
+        if ($this->resourceAttribute->type == 'rich-text') {
+            return new HtmlString($value);
+        }
+
+        return $value;
     }
 }
