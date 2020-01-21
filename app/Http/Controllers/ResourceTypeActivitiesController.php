@@ -14,17 +14,17 @@ class ResourceTypeActivitiesController extends Controller
         $filter = $request->query('filter') ?? null;
 
         if ($type == 'resource_meta') {
-            $activities = $resourceType->metaActivities();
+            $activities = $resourceType->metaActivities()
+                ->paginate(25);
         } else {
-            $activities = $resourceType->mediaActivities();
+            $activities = $resourceType->mediaActivities()
+                ->paginate(10);
         }
 
         if ($filter) {
-            $activities = $activities->get()->filter(function($activity) use ($filter) {
+            $activities = $activities->filter(function($activity) use ($filter) {
                 return $filter == $activity->subject->resource_attribute_id;
             });
-        } else {
-            $activities = $activities->get();
         }
 
         return view('resource-type.activities.index', compact('resourceType', 'activities', 'type'));

@@ -10,8 +10,11 @@
         <th class="">
             Type of Action
         </th>
-        <th class="pl-4 text-right">
+        <th class="">
             By
+        </th>
+        <th class="pl-4 text-right">
+            Date
         </th>
     </tr>
 <thead>
@@ -35,8 +38,11 @@
         <td>
             {{ $activity->description }}
         </td>
-        <td class="pl-4 text-right">
-            {{ $activity->causer->name ?? 'unknown stranger on the internet' }} -- {{ $activity->created_at }}
+        <td class="pl-4">
+            {{ $activity->causer->name ?? 'unknown stranger on the internet' }}
+        </td>
+        <td class="pt-4 text-right">
+            {{ $activity->created_at }}
         </td>
     </tr> 
 @endforeach

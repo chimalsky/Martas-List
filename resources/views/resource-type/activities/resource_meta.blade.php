@@ -13,14 +13,17 @@
         <th>
             New Value
         </th>
-        <th class="pl-4 text-right">
+        <th>
             By
+        </th>
+        <th class="pl-4 text-right">
+            Date
         </th>
     </tr>
 <thead>
 </thead>
 
-<tbody>
+<tbody class="">
 @foreach ($activities as $activity)    
     <tr class="">
         <td class="pr-4 pb-3">
@@ -45,8 +48,12 @@
             {{ $activity->properties['attributes']['value'] }}
         </td>
 
+        <td>
+            {{ $activity->causer->name ?? 'unknown stranger on the internet' }}
+        </td>
+
         <td class="pl-4 text-right">
-            {{ $activity->causer->name ?? 'unknown stranger on the internet' }} -- {{ $activity->created_at }}
+            {{ $activity->created_at }}
         </td>
     </tr> 
 @endforeach
