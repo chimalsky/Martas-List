@@ -18,7 +18,7 @@
             <a href="{{ route('brochure.index') }}" class="font-light mx-2">
                 Home 
             </a>   
-            <a href="{{ route('resources.index') }}" class="font-light mx-2">
+            <a href="{{ route('resource-types.index') }}" class="font-light mx-2">
                 Archiver 
             </a>   
             <a href="{{ route('dearchived.bird.show') }}" class="font-light mx-2">

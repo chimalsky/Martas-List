@@ -11,6 +11,7 @@ class ResourceTypeResourcesController extends Controller
 {
     public function create(Request $request, ResourceType $resourceType)
     {
+        $this->authorize('update', $resourceType);
         $resource = new Resource;
         $resource->definition()->associate($resourceType);
         
