@@ -17,14 +17,17 @@
     </a>
 </nav>
 
+
+<nav class="block my-8">
+    {{ $activities->appends(['type' => $type])->links() }}
+</nav>
+
 <section class="block">
     @include('resource-type.activities.'.$type, ['activities' => $activities])
-
-
-    <nav class="block my-8">
-        {{ $activities->appends(['type' => $type])->links() }}
-    </nav>
-
 </section>
+
+<nav class="block my-8">
+    {{ $activities->appends(['type' => $type])->links() }}
+</nav>
 
 @endsection

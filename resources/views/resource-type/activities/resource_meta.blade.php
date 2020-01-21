@@ -1,5 +1,6 @@
 
 <table class="w-full text-left">
+<thead>
     <tr>
         <th class="pr-4">
             Resource Attribute Key/Name 
@@ -20,7 +21,6 @@
             Date
         </th>
     </tr>
-<thead>
 </thead>
 
 <tbody class="">
@@ -58,3 +58,4 @@
     </tr> 
 @endforeach
 </tbody>
+</table>

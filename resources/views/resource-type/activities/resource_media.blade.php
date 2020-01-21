@@ -1,5 +1,6 @@
 
 <table class="w-full text-left">
+<thead>
     <tr>
         <th class="pr-4">
             Media
@@ -17,7 +18,6 @@
             Date
         </th>
     </tr>
-<thead>
 </thead>
 
 <tbody>
@@ -47,3 +47,4 @@
     </tr> 
 @endforeach
 </tbody>
+</table>
