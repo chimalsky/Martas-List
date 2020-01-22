@@ -39,6 +39,7 @@ class Resource extends Model implements HasMedia
     public function meta()
     {
         return $this->hasMany(ResourceMeta::class)
+            ->with('resourceAttribute')
             ->orderBy('key', 'desc');
     }
 

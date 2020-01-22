@@ -76,9 +76,7 @@ class ResourceTypesController extends Controller
             return $query->whereNotNull('value')
                 ->whereIn('resource_attribute_id', $enabledAttributes);
             }]);
-        
-        $resources->with('meta.resourceAttribute');
-        
+                
         if ($sortMeta) {
             $resources = $resources->addSelect(['queries_meta_value' => function($query) use ($sortMeta) {
                 $query->select('value')

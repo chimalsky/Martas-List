@@ -47494,6 +47494,7 @@ function (_Controller) {
     value: function addNewAttribute(ev) {
       ev.preventDefault();
       this.newAttributeTarget.classList.remove('hidden');
+      this.newAttributeTarget.querySelector('input').focus();
     }
   }, {
     key: "refreshUi",

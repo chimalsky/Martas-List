@@ -18,6 +18,7 @@ export default class extends Controller {
         ev.preventDefault()
 
         this.newAttributeTarget.classList.remove('hidden')
+        this.newAttributeTarget.querySelector('input').focus()
     }
 
     refreshUi() {

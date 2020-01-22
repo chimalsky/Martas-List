@@ -20,6 +20,11 @@ class ResourceType extends Model
         'extra_attributes' => 'array',
     ];
 
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
+
     public function resources()
     {
         return $this->hasMany(Resource::class, 'resource_type_id');

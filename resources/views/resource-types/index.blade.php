@@ -23,24 +23,13 @@
         Resource Types 
     </h1>
 
-    <section class="my-4 flex flex-wrap">
+    <section class="my-4">
         @foreach ($resourceTypes as $resourceType)
-            <div class="w-1/3 p-4">
-                <article class="border border-1 border-gray-600 p-4">
+            <div class="block">
+                <article class="p-2">
                     <a href="{{ route('resource-types.show', $resourceType) }}">
-                        {{ $resourceType->name }}
+                        {{ $resourceType->name }} -- {{ $resourceType->resources()->count() }}
                     </a>
-
-                    <p class="mt-4 text-right">
-                        Created: {{ $resourceType->created_at }}
-                    </p>
-
-                    <aside class="flex justify-end mt-2">
-                        <a href="{{ route('resource-types.edit', $resourceType) }}"
-                            class="btn btn-hollow hidden">
-                            Edit
-                        </a>
-                    </aside>
                 </article>
             </div>
         @endforeach

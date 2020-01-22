@@ -21,15 +21,20 @@
         @endforeach
         
         <footer class="p-2 bg-indigo-200" data-controller="resource-meta">
-            <button class="mb-3" data-action="resource-meta#addNewAttribute">
-                @if ($resource->metaByAttribute($attribute)->count())
-                    Add additional attribute
-                @else 
-                    Add info 
-                @endif
-            </button>
+            @routeIs('resources.edit')
+                <button class="mb-3" data-action="resource-meta#addNewAttribute">
+                    @if ($resource->metaByAttribute($attribute)->count())
+                        Add additional attribute
+                    @else 
+                        Add info 
+                    @endif
+                </button>
+            @endrouteIs 
 
-            <section data-target="resource-meta.newAttribute" class="hidden">
+            <section data-target="resource-meta.newAttribute" 
+                @routeIs('resources.edit')
+                    class="hidden"
+                @endrouteIs>
                 {{ html()->text("newAttribute[id-" . $attribute->id . "]")
                     ->placeholder('Add info!')
                     ->attribute('data-target', 'link')

@@ -32,6 +32,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('encoding.metas', 'EncodingMetasController');
     Route::resource('encoding.resources', 'EncodingResourcesController');
 
+    Route::get('/projects', 'ProjectController@index')->name('project.index');
+    
     Route::resource('resources', 'ResourcesController');
     Route::resource('resource-types', 'ResourceTypesController');
 
