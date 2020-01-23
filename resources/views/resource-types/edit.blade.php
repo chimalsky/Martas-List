@@ -8,7 +8,7 @@
 
         <footer class="py-4">
             <button class="btn btn-hollow">
-                Save changes to this Resource Type 
+                Save changes to this Archive 
             </button>
         </footer>
     {{ html()->closeModelForm() }}

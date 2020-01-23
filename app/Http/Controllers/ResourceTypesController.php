@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Resource;
 use App\ResourceType;
 use App\ResourceMeta;
+use App\ResourceAttribute;
 use Illuminate\Http\Request;
 
 class ResourceTypesController extends Controller
@@ -60,21 +61,32 @@ class ResourceTypesController extends Controller
     {
         $enabledAttributes = collect($request->query('attribute'))->keys();
 
+        $enabledAttributes = ResourceAttribute::whereIn('id', $enabledAttributes)->get();
+        $filteredAttributeOptions = collect($request->query('attributeOption'));
+        
         $reverse = $request->query('reverse') ? 'desc' : 'asc';
         $sortMeta = $request->query('sortMeta') ?? $enabledAttributes[0] ?? null;
         $sortName = $request->query('sortName') ?? null;
-    
+
         $resources = $resourceType->resources();
 
-        if (count($enabledAttributes)) {
-            $resources = $resources->whereHas('meta', function ($query) use ($enabledAttributes) {
-                return $query->whereIn('resource_attribute_id', $enabledAttributes);
-            });
+        if ($enabledAttributes->count()) {
+            foreach ($enabledAttributes as $attribute) {
+                $resources = $resources->whereHas('meta', function ($query) use ($attribute, $filteredAttributeOptions) {
+                    $query = $query->where('resource_attribute_id', $attribute->id);
+
+                    if ($filteredAttributeOptions->keys()->contains($attribute->id)) {
+                        $query = $query->whereIn('value', array_keys($filteredAttributeOptions[$attribute->id]));
+                    }
+
+                    return $query;
+                });
+            }
         }
 
         $resources->with(['meta' => function($query) use ($enabledAttributes) {
             return $query->whereNotNull('value')
-                ->whereIn('resource_attribute_id', $enabledAttributes);
+                ->whereIn('resource_attribute_id', $enabledAttributes->pluck('id'));
             }]);
                 
         if ($sortMeta) {
@@ -92,7 +104,11 @@ class ResourceTypesController extends Controller
 
         $resources = $resources->get();
 
-        return view('resource-types.show', compact('resourceType', 'enabledAttributes', 'resources'));
+        return view('resource-types.show', compact('resourceType', 
+            'enabledAttributes',
+            'filteredAttributeOptions',
+            'resources'
+        ));
     }
 
     /**

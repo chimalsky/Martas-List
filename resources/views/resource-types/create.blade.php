@@ -10,7 +10,7 @@
 
         <footer class="py-4">
             <button class="btn btn-blue">
-                Create this Resource Type 
+                Create this Archive 
             </button>
         </footer>
     </form>
