@@ -19,7 +19,7 @@
 
 
 <nav class="block my-8">
-    {{ $activities->appends(['type' => $type])->links() }}
+    {{ $activities->appends($_GET)->links() }}
 </nav>
 
 <section class="block">
@@ -27,7 +27,7 @@
 </section>
 
 <nav class="block my-8">
-    {{ $activities->appends(['type' => $type])->links() }}
+    {{ $activities->appends($_GET)->links() }}
 </nav>
 
 @endsection

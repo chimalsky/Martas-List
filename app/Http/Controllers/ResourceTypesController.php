@@ -102,7 +102,8 @@ class ResourceTypesController extends Controller
             $resource = $resources->orderBy('name', $reverse);
         }
 
-        $resources = $resources->get();
+        $resources = $resources
+            ->paginate(40);
 
         return view('resource-types.show', compact('resourceType', 
             'enabledAttributes',

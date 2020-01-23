@@ -2,14 +2,14 @@
 <table class="w-full text-left">
 <thead>
     <tr>
-        <th class="pr-4">
-            Resource Attribute Key/Name 
-        </th>
         <th>
             Resource
         </th>
         <th class="">
             Type of Action
+        </th>
+        <th class="pr-4">
+            Resource Attribute Key/Name 
         </th>
         <th>
             New Value
@@ -26,15 +26,7 @@
 <tbody class="">
 @foreach ($activities as $activity)    
     <tr class="">
-        <td class="pr-4 pb-3">
-            <a href="{{ route('resource-type.activities.index', [$activity->subject->resource->definition, 'filter' => $activity->subject->resourceAttribute->id ?? null]) }}"
-                class="underline">
-                {{ $activity->subject->resourceAttribute->name ?? '' }}
-            </a>
-        </td>
-
         <td>
-            of 
             <a href="{{ route('resources.edit', $activity->subject->resource) }}"
                 class="underline">
                 {{ $activity->subject->resource->name }} 
@@ -44,6 +36,11 @@
         <td>
             {{ $activity->description }}
         </td>
+
+        <td class="pr-4 pb-3">
+            {{ $activity->subject->resourceAttribute->name ?? '' }}
+        </td>
+        
         <td>
             {{ $activity->properties['attributes']['value'] }}
         </td>

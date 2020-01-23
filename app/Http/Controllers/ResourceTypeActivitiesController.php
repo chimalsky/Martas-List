@@ -21,12 +21,6 @@ class ResourceTypeActivitiesController extends Controller
                 ->paginate(10);
         }
 
-        if ($filter) {
-            $activities = $activities->filter(function($activity) use ($filter) {
-                return $filter == $activity->subject->resource_attribute_id;
-            });
-        }
-
         return view('resource-type.activities.index', compact('resourceType', 'activities', 'type'));
     }
 }

@@ -35,7 +35,7 @@
     "dependencies": {
         "@github/time-elements": "^3.0.7",
         "@shopify/draggable": "^1.0.0-beta.8",
-        "alpinejs": "^1.7.0",
+        "alpinejs": "^1.9.5",
         "flatpickr": "^4.6.2",
         "trix": "^1.1.1",
         "turbolinks": "^5.2.0"
