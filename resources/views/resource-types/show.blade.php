@@ -74,15 +74,14 @@
                     </form>
                 </div>
             </section>
-
-            <nav class="inline-block">
-            </nav>
         </section>
 
         <section class="mt-8">
             @if ($resources->count())
                 <header class="block text-right mb-8">
-                    {{ $resources->total() }} {{ $resourceType->name }} matches your filters
+                    <span class="font-bold">
+                        {{ $resources->total() }}
+                    </span> {{ $resourceType->name }} matches your filters
 
                     <section class="flex justify-end mt-4">
                         {{ $resources->appends($_GET)->links() }}

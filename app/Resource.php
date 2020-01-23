@@ -12,6 +12,7 @@ use App\Traits\IsTemporal;
 use App\Traits\HasCitations;
 use App\Traits\HasMediaTrait;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 
 class Resource extends Model implements HasMedia
@@ -79,6 +80,13 @@ class Resource extends Model implements HasMedia
     public function metaByAttribute(ResourceAttribute $resourceAttribute)
     {
         return $this->meta()->where('resource_attribute_id', $resourceAttribute->id)->get();
+    }
+
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+              ->width(320)
+              ->sharpen(10);
     }
 
     public function getMainAttributesAttribute()
