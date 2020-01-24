@@ -75,7 +75,7 @@
                     
 
                     @if (Str::contains($medium->mime_type, 'image'))
-                        <img src="{{ $medium->getUrl() }}" />
+                        <img src="{{ $medium->getUrl('thumb') }}" />
                     @elseif (Str::contains($medium->mime_type, 'audio'))
                         <audio
                             controls

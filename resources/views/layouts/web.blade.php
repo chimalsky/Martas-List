@@ -17,16 +17,18 @@
         @stack('scripts')
     </head>
     <body data-controller="application">
-        <h1 class="w-full p-4 text-base text-gray-600 text-right"> 
+        <h1 class="hidden lg:block p-4 text-base text-gray-600 text-right"> 
             <span class="hidden">
                 {{ Artisan::call('inspire') }} 
             </span>
             {{ Artisan::output() }}
         </h1>
 
-        @yield('header')
+        <section class="px-2">
+            @yield('header')
+        </section>
 
-        <main class="web container mx-auto mb-24">
+        <main class="web container mx-auto mb-24 px-2">
             @if (session('status'))
                 <div class="bg-green-200 p-8 text-center">
                     {{ session('status') }}

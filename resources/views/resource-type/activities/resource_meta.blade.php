@@ -34,7 +34,15 @@
         </td>
 
         <td>
-            {{ $activity->description }}
+            <p class=" px-2
+                @if ($activity->description == 'created') 
+                    bg-green-300 
+                @elseif ($activity->description == 'updated')
+                    bg-yellow-300 
+                @endif
+            ">
+                {{ $activity->description }}
+            </p>
         </td>
 
         <td class="pr-4 pb-3">

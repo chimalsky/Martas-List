@@ -79,7 +79,7 @@ class Resource extends Model implements HasMedia
 
     public function metaByAttribute(ResourceAttribute $resourceAttribute)
     {
-        return $this->meta()->where('resource_attribute_id', $resourceAttribute->id)->get();
+        return $this->meta->where('resource_attribute_id', $resourceAttribute->id);
     }
 
     public function registerMediaConversions(Media $media = null)
