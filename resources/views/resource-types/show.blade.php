@@ -144,7 +144,7 @@
                                 <td>
                                     @foreach ($resource->getMedia() as $medium)
                                         @if (Str::contains($medium->mime_type, 'image'))
-                                            <img class="w-16" src="{{ $medium->getUrl('thumb') }}" />
+                                            <img class="w-16 inline-block" src="{{ $medium->getUrl('thumb') }}" />
                                         @elseif (Str::contains($medium->mime_type, 'audio'))
                                             <audio
                                                 controls
