@@ -142,8 +142,19 @@
                             </tr>
                             <tr>
                                 <td>
-                                    @foreach ($resource->getMedia() as $media)
-                                        <img src="{{ $media->getUrl('thumb') }}" />
+                                    @foreach ($resource->getMedia() as $medium)
+                                        @if (Str::contains($medium->mime_type, 'image'))
+                                            <img src="{{ $medium->getUrl('thumb') }}" />
+                                        @elseif (Str::contains($medium->mime_type, 'audio'))
+                                            <audio
+                                                controls
+                                                src="{{ $medium->getUrl() }}">
+                                                    Your browser does not support the
+                                                    <code>audio</code> element.
+                                            </audio>
+                                        @else 
+                                            <a href="{{ $medium->getUrl() }}"" download>
+                                        @endif
                                     @endforeach
                                 </td>
                             </tr>
