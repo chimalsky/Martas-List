@@ -5,19 +5,31 @@
         </span>
 
         @foreach ($resource->metaByAttribute($attribute) as $meta)
-            {{ html()->text("attribute[id-" . $meta->id . "]", $meta->value ?? null)
-                ->attribute('data-target', 'link')
-                ->class(['attribute', 'form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
+            <article data-meta-id="{{ $meta->id }}">
+                <div x-data="{ open: false }" class="block pb-2 flex align-top">
+                        {{ html()->text("attribute[id-" . $meta->id . "]", $meta->value ?? null)
+                            ->attribute('data-target', 'link')
+                            ->class(['attribute', 'form-input', 'mt-1', 'flex-auto', 'font-medium']) }}
 
-            @if ($meta->value)
-                <a href="{{ $meta->value }}"
-                    class="text-right">
-                
-                    {{ $meta->value }}
-                </a>
-            @endif
+                    <aside class="flex-none ml-2 relative">
+                        <button type="button" class="border-2 border-gray-500 p-2 relative"
+                            @click="open = !open">
+                            ---
+                        </button>
 
-            @livewire('resource-attribute', $meta->id)
+                        <section x-show="open" @click.away="open = false" class="absolute right-0 p-4 bg-indigo-100">
+                            @livewire('resource-attribute', $meta->id)
+                        </section>
+                    </aside>
+                </div>
+                @if ($meta->value)
+                    <a href="{{ $meta->value }}"
+                        class="block mb-2">
+                    
+                        {{ $meta->value }}
+                    </a>
+                @endif
+            </article>
         @endforeach
         
         <footer class="p-2 bg-indigo-200" data-controller="resource-meta">

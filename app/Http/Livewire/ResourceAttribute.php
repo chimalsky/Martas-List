@@ -27,8 +27,12 @@ class ResourceAttribute extends Component
     public function delete()
     {
         $resource = $this->meta->resource;
+        $meta = $this->meta;
+
+        $message = $meta->name . " was deleted.";
         $this->meta->delete();
 
-        return redirect()->route('resources.edit', $resource);
+        $eventLogView = view('event.show', compact('message'));
+        $this->emit('deleteMeta', $eventLogView->render(), $meta->id);
     }
 }

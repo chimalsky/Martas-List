@@ -39,6 +39,9 @@ class ResourceMeta extends Model
 
     public function getNameAttribute()
     {
+        if (!$this->key) {
+            return $this->resourceAttribute->name;
+        }
         return str_replace('_', ' ', Str::title($this->key));
     }
 

@@ -46557,6 +46557,16 @@ var context = __webpack_require__("./resources/js/controllers sync recursive \\.
 
 application.load(Object(stimulus_webpack_helpers__WEBPACK_IMPORTED_MODULE_1__["definitionsFromContext"])(context));
 document.addEventListener('turbolinks:load', bootstrap);
+var eventLog = document.querySelector('.event-log');
+window.livewire.on('deleteMeta', function (html, metaId) {
+  eventLog.innerHTML = html;
+  eventLog.classList.remove('hidden');
+  var deleted = document.querySelector('[data-meta-id="' + metaId + '"]');
+  deleted.remove();
+  setTimeout(function () {
+    eventLog.classList.add('hidden');
+  }, 3500);
+});
 
 function bootstrap() {
   flatpickr__WEBPACK_IMPORTED_MODULE_5___default()('input[type=date]', {

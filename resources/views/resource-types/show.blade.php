@@ -140,6 +140,13 @@
                                     </td>
                                 @endforeach 
                             </tr>
+                            <tr>
+                                <td>
+                                    @foreach ($resource->getMedia() as $media)
+                                        <img src="{{ $media->getUrl('thumb') }}" />
+                                    @endforeach
+                                </td>
+                            </tr>
                         @endforeach 
                     
                     </tbody>

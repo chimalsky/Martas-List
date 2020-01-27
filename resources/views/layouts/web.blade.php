@@ -57,6 +57,10 @@
             </footer>
 
             @yield('footer')
+
+            <section class="event-log hidden
+                bg-green-300 fixed bottom-0 right-0 p-4 w-full lg:max-w-md h-24">
+            </section>
         </footer>
     </body>
 </html>

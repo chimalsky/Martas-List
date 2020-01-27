@@ -24,6 +24,20 @@ application.load(definitionsFromContext(context))
 
 document.addEventListener('turbolinks:load', bootstrap)
 
+const eventLog = document.querySelector('.event-log')
+
+window.livewire.on('deleteMeta', function(html, metaId) {
+    eventLog.innerHTML = html
+    eventLog.classList.remove('hidden')
+    let deleted = document.querySelector('[data-meta-id="' + metaId + '"]')
+
+    deleted.remove()
+    
+    setTimeout(() => {
+        eventLog.classList.add('hidden')
+    }, 3500)
+})
+
 function bootstrap() {
     flatpickr('input[type=date]', {inline: true, altInput: true, altFormat: 'F j, Y'})
     flatpickr('input[type=time]', {enableTime: true,
