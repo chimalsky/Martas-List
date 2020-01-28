@@ -126,6 +126,23 @@
                                     <a href="{{ route('resources.edit', $resource) }}" class="text-blue-600 hover:underline">
                                         {{ $resource->name }}
                                     </a>
+                                    
+                                    <div>
+                                        @foreach ($resource->getMedia() as $medium)
+                                            @if (Str::contains($medium->mime_type, 'image'))
+                                                <img class="w-16 inline-block" src="{{ $medium->getUrl('thumb') }}" />
+                                            @elseif (Str::contains($medium->mime_type, 'audio'))
+                                                <audio
+                                                    controls
+                                                    src="{{ $medium->getUrl() }}">
+                                                        Your browser does not support the
+                                                        <code>audio</code> element.
+                                                </audio>
+                                            @else 
+                                                <a href="{{ $medium->getUrl() }}"" download>
+                                            @endif
+                                        @endforeach
+                                    </div>
                                 </td>
 
                                 @foreach ($enabledAttributes as $enabledAttribute)
@@ -139,24 +156,6 @@
                                         @endif
                                     </td>
                                 @endforeach 
-                            </tr>
-                            <tr>
-                                <td>
-                                    @foreach ($resource->getMedia() as $medium)
-                                        @if (Str::contains($medium->mime_type, 'image'))
-                                            <img class="w-16 inline-block" src="{{ $medium->getUrl('thumb') }}" />
-                                        @elseif (Str::contains($medium->mime_type, 'audio'))
-                                            <audio
-                                                controls
-                                                src="{{ $medium->getUrl() }}">
-                                                    Your browser does not support the
-                                                    <code>audio</code> element.
-                                            </audio>
-                                        @else 
-                                            <a href="{{ $medium->getUrl() }}"" download>
-                                        @endif
-                                    @endforeach
-                                </td>
                             </tr>
                         @endforeach 
                     

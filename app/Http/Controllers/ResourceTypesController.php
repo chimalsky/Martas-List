@@ -84,7 +84,7 @@ class ResourceTypesController extends Controller
             }
         }
 
-        $resources->with(['meta' => function($query) use ($enabledAttributes) {
+        $resources->with(['media', 'meta' => function($query) use ($enabledAttributes) {
             return $query->whereNotNull('value')
                 ->whereIn('resource_attribute_id', $enabledAttributes->pluck('id'));
             }]);
