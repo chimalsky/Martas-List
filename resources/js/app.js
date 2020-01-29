@@ -22,21 +22,12 @@ const application = new Application.start()
 const context = require.context("./controllers", true, /\.js$/)
 application.load(definitionsFromContext(context))
 
-document.addEventListener('turbolinks:load', bootstrap)
+document.addEventListener('turbolinks:load', () => {
+    window.livewire.rescan()
+    bootstrap()
+})
 
 const eventLog = document.querySelector('.event-log')
-
-window.livewire.on('deleteMeta', function(html, metaId) {
-    eventLog.innerHTML = html
-    eventLog.classList.remove('hidden')
-    let deleted = document.querySelector('[data-meta-id="' + metaId + '"]')
-
-    deleted.remove()
-    
-    setTimeout(() => {
-        eventLog.classList.add('hidden')
-    }, 3500)
-})
 
 function bootstrap() {
     flatpickr('input[type=date]', {inline: true, altInput: true, altFormat: 'F j, Y'})
@@ -45,9 +36,19 @@ function bootstrap() {
         dateFormat: "H:i",})
 
         
+    window.livewire.on('deleteMeta', function(html, metaId) {
+        eventLog.innerHTML = html
+        eventLog.classList.remove('hidden')
+        let deleted = document.querySelector('[data-meta-id="' + metaId + '"]')
+
+        deleted.remove()
+        
+        setTimeout(() => {
+            eventLog.classList.add('hidden')
+        }, 3500)
+    })
+
     // Sortable 
-
-
     const sortable = new Sortable(document.querySelectorAll('.sortable'), {
         draggable: 'article'
     });

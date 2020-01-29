@@ -1,11 +1,11 @@
 <div>
     <footer class="flex justify-end">
-        <a wire:click="delete" 
+        <button wire:click="delete" 
             wire:loading.class="opacity-50 cursor:not-allowed" 
             wire:loading.attr="disabled"
-            class="btn btn-red mt-1 cursor-pointer">
+            class="btn btn-red mt-1 cursor-pointer" type="button">
             Delete
-        </a>
+        </button>
 
         <div wire:loading wire:target="delete"
             class="mx-2">

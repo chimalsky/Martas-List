@@ -46556,17 +46556,11 @@ var application = new stimulus__WEBPACK_IMPORTED_MODULE_0__["Application"].start
 var context = __webpack_require__("./resources/js/controllers sync recursive \\.js$");
 
 application.load(Object(stimulus_webpack_helpers__WEBPACK_IMPORTED_MODULE_1__["definitionsFromContext"])(context));
-document.addEventListener('turbolinks:load', bootstrap);
-var eventLog = document.querySelector('.event-log');
-window.livewire.on('deleteMeta', function (html, metaId) {
-  eventLog.innerHTML = html;
-  eventLog.classList.remove('hidden');
-  var deleted = document.querySelector('[data-meta-id="' + metaId + '"]');
-  deleted.remove();
-  setTimeout(function () {
-    eventLog.classList.add('hidden');
-  }, 3500);
+document.addEventListener('turbolinks:load', function () {
+  window.livewire.rescan();
+  bootstrap();
 });
+var eventLog = document.querySelector('.event-log');
 
 function bootstrap() {
   flatpickr__WEBPACK_IMPORTED_MODULE_5___default()('input[type=date]', {
@@ -46578,6 +46572,15 @@ function bootstrap() {
     enableTime: true,
     noCalendar: true,
     dateFormat: "H:i"
+  });
+  window.livewire.on('deleteMeta', function (html, metaId) {
+    eventLog.innerHTML = html;
+    eventLog.classList.remove('hidden');
+    var deleted = document.querySelector('[data-meta-id="' + metaId + '"]');
+    deleted.remove();
+    setTimeout(function () {
+      eventLog.classList.add('hidden');
+    }, 3500);
   }); // Sortable 
 
   var sortable = new _shopify_draggable__WEBPACK_IMPORTED_MODULE_8__["Sortable"](document.querySelectorAll('.sortable'), {
