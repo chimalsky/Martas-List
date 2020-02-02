@@ -36,7 +36,7 @@
 <section class="attributes">
     @include('resource-type.attributes.form', 
         [
-            'attributes' => $resource->definitionAttributes,
+            'attributes' => $resource->definition->attributes,
             'resource' => $resource ?? null
         ]
     )

@@ -46576,8 +46576,7 @@ function bootstrap() {
   window.livewire.on('deleteMeta', function (html, metaId) {
     eventLog.innerHTML = html;
     eventLog.classList.remove('hidden');
-    var deleted = document.querySelector('[data-meta-id="' + metaId + '"]');
-    deleted.remove();
+    document.querySelector('body').click();
     setTimeout(function () {
       eventLog.classList.add('hidden');
     }, 3500);

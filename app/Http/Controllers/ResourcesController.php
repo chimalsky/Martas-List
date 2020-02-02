@@ -75,7 +75,7 @@ class ResourcesController extends Controller
      */
     public function edit(Resource $resource)
     {
-        $resource->load(['meta', 'definition']);
+        $resource->load(['meta.citations', 'definition']);
 
         return view('resources.edit', compact('resource'));
     }

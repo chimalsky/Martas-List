@@ -168,6 +168,7 @@ return [
 
         Spatie\Html\HtmlServiceProvider::class,
         Grimzy\LaravelMysqlSpatial\SpatialServiceProvider::class,
+        Calebporzio\AwesomeHelpers\AwesomeHelpersServiceProvider::class,
 
         /*
          * Application Service Providers...

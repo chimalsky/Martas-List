@@ -67,7 +67,7 @@ trait HasCitations
 
     public function getCitationAttribute()
     {
-        return $this->citations()->first();
+        return $this->citations->first();
     }
 
 

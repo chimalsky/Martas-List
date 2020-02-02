@@ -52,9 +52,7 @@ class ResourceMeta extends Model
 
     public function getValueAttribute($value)
     {
-        if ($this->resourceAttribute->type == 'rich-text') {
-            return new HtmlString($value);
-        }
+    
 
         return $value;
     }

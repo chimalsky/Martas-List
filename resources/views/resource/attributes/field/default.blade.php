@@ -6,24 +6,7 @@
             </span>
             
             @foreach ($resource->metaByAttribute($attribute) as $meta)
-                <div x-data="{ open: false }" data-meta-id="{{ $meta->id }}"
-                    class="block mb-4 pb-2 flex align-top">
-                    <section class="flex-auto" data-controller="resource-meta">
-                        {{ html()->text("attribute[id-" . $meta->id . "]", $meta->value ?? null)
-                            ->class(['attribute', 'form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
-                    </section>
-                    
-                    <aside class="flex-none ml-2 relative">
-                        <button type="button" class="border-2 border-gray-500 p-2 relative"
-                            @click="open = !open">
-                            ---
-                        </button>
-
-                        <section x-show="open" @click.away="open = false" class="absolute right-0 p-4 bg-indigo-100">
-                            @livewire('resource-attribute', $meta->id)
-                        </section>
-                    </aside>
-                </div>
+                @include('resource.attributes.field._base', ['meta' => $meta])
             @endforeach
         </div>
     </main>

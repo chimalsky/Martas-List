@@ -26,6 +26,7 @@ class ResourceAttribute extends Component
 
     public function delete()
     {
+        dd('hi');
         $resource = $this->meta->resource;
         $meta = $this->meta;
 
@@ -33,6 +34,6 @@ class ResourceAttribute extends Component
         $this->meta->delete();
 
         $eventLogView = view('event.show', compact('message'));
-        $this->emit('deleteMeta', $eventLogView->render(), $meta->id);
+        //$this->emit('deleteMeta', $eventLogView->render(), $meta->id);
     }
 }

@@ -49,11 +49,6 @@ class Resource extends Model implements HasMedia
         return $this->belongsTo(ResourceMeta::class);
     }
 
-    public function definitionAttributes()
-    {
-        return $this->definition->attributes();
-    }
-
     public function getMetaTagsAttribute()
     {
         $keyNames = $this->definition->attributes()->pluck('key')->toArray();

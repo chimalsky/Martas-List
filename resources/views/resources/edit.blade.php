@@ -5,7 +5,7 @@
 <section class="flex flex-wrap mb-8 max-w-6xl">
     {{ html()->modelForm($resource, 'PUT', route('resources.update', $resource))->open() }}
 
-        @include('resource.form')
+        @livewire('resource-form', $resource)
 
         <footer class="py-4">
             <button class="btn bg-indigo-500 shadow-2xl text-white fixed text-2xl bottom-0 mb-8">
