@@ -36,23 +36,24 @@
     </h1>
 
     {{ html()->form('POST', route('resource-type.attributes.store', $resourceType))->open() }}
-        <div class="flex items-end">
-            <label class="w-2/3 mb-4 flex flex-wrap justify-between p-2">
-                <span class="text-gray-700 mb-2 w-full">Name</span>
+        <main class="block mb-8">
+            <label class="block mb-4 p-2">
+                <span class="text-gray-700 mb-2 block">
+                    Name
+                </span>
 
                 {{ html()->text("name")->class(['form-input', 'mt-1', 'w-1/2']) }}
-
-                {{ html()->select("type", [
-                    'default' => 'Regular attribute type -- same as tags',
-                    'dropdown' => 'Dropdown List',
-                    'rich-text' => 'Rich Text', 
-                    'encoding' => 'encoding',
-                    'link' => 'Link to another Webpage'
-                    ])
-                    ->class(['form-select', 'pl-2', 'w-1/3']) }}
             </label>
-        </div>
-        
+
+
+            @foreach($resourceType->availableTypes as $key => $type)
+                <label class="block mb-4 cursor-pointer">
+                    {{ html()->radio('type')->value($key)->checked($loop->first) }}
+                    {{ $type }}
+                </label>
+            @endforeach
+        </main>
+            
         <button class="btn btn-blue">
             Add
         </button>

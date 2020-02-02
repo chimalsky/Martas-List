@@ -12,6 +12,15 @@
             {{ html()->text("attribute[id-" . $meta->id . "]", $meta->value ?? null)
                 ->attribute('data-target', 'link')
                 ->class(['attribute', 'form-input', 'mt-1', 'w-full', 'font-medium']) }}
+        @elseif ($meta->type == 'external-media__image')
+            <img src="{{ $meta->value }}" 
+                class="object-none mb-2" />
+        @elseif ($meta->type == 'external-media__audio')
+            <audio controls class="my-2"
+                src="{{ $meta->value }}">
+                    Your browser does not support the
+                    <code>audio</code> element.
+            </audio>
         @endif
 
         @if ($meta->citations()->exists())

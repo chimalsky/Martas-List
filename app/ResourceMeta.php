@@ -45,6 +45,11 @@ class ResourceMeta extends Model
         return str_replace('_', ' ', Str::title($this->key));
     }
 
+    public function getTypeAttribute()
+    {
+        return $this->resourceAttribute->type;
+    }
+
     public function getIsLongAttribute()
     {
         return strlen($this->value) > 100;
@@ -52,7 +57,6 @@ class ResourceMeta extends Model
 
     public function getValueAttribute($value)
     {
-    
 
         return $value;
     }

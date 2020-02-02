@@ -1,17 +1,18 @@
 <div class="p-2 w-full md:w-1/2">
     <main class="p-2 bg-gray-200">
         <div class="block p-3 {{ $attribute->key }}">
-            <span class="block text-xl mb-4">
-                {{ $attribute->name }} 
+            <span class="block text-xl mb-2">
+                {{ $attribute->name }}
             </span>
-
+            
             @foreach ($resource->metaByAttribute($attribute) as $meta)
                 @include('resource.attributes.field._base', ['meta' => $meta])
             @endforeach
         </div>
     </main>
+    
     <footer class="p-2 bg-indigo-200" data-controller="resource-meta">
-        
+
         @routeIs('resources.edit')
             <button class="mb-3" data-action="resource-meta#addNewAttribute">
                 @if ($resource->metaByAttribute($attribute)->count())
@@ -26,9 +27,9 @@
             @routeIs('resources.edit')
                 class="hidden"
             @endrouteIs>
-            {{ html()->select("newAttribute[id-" . $attribute->id . "]", $attribute->optionsDropdown)
-                ->placeholder('Add Info!')
-                ->class(['attribute', 'form-dropdown', 'mt-1', 'block', 'w-full', 'font-medium']) }}
+
+            @includeIf('resource.attributes.partials._'.$attribute->type)
         </section>
     </footer>
+
 </div>

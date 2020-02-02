@@ -33,13 +33,16 @@
     </label>
 </section>
 
-<section class="attributes">
-    @include('resource-type.attributes.form', 
-        [
-            'attributes' => $resource->definition->attributes,
-            'resource' => $resource ?? null
-        ]
-    )
+<section class="attributes flex flex-wrap">
+   
+    @foreach ($resource->definition->attributes as $attribute)
+        @if ($attribute->type == 'rich-text' || $attribute->type == 'encoding')
+            @include('resource.attributes.field.'.$attribute->type, ['attribute' => $attribute])
+        @else
+            @include('resource.attributes.partials._base', ['attribute' => $attribute])
+        @endif
+    @endforeach
+
 </section>
 
 <section class="sonogram">

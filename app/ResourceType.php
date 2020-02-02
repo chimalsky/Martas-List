@@ -20,6 +20,16 @@ class ResourceType extends Model
         'extra_attributes' => 'array',
     ];
 
+    public $availableTypes = [
+        'default' => 'Regular attribute type -- same as tags',
+        'dropdown' => 'Dropdown List',
+        'rich-text' => 'Rich Text', 
+        'encoding' => 'encoding',
+        'link' => 'Link to another Webpage',
+        'external-media__audio' => 'Audio on another Website',
+        'external-media__image' => 'Image on another Website'
+    ];
+
     public function project()
     {
         return $this->belongsTo(Project::class);

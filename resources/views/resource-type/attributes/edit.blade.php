@@ -44,16 +44,12 @@
             <span class="block">
                 Type: 
             </span>
-            {{ html()->select("type", [
-                'default' => 'Regular attribute type -- same as tags',
-                'dropdown' => 'Dropdown List',
-                'rich-text' => 'Rich Text', 
-                'encoding' => 'encoding',
-                'link' => 'Link to another Webpage'
-                ], $attribute->type)
-                ->attribute('data-target', 'resource-attribute.type')
-                ->attribute('data-action', 'resource-attribute#changeType')
-                ->class(['form-select', 'pl-2']) }}
+            @foreach($resourceType->availableTypes as $key => $type)
+                <label class="block mb-4 cursor-pointer">
+                    {{ html()->radio('type')->value($key)->checked($key === $attribute->type) }}
+                    {{ $type }}
+                </label>
+            @endforeach
         </label>
 
         <button class="btn btn-blue block mt-8">
