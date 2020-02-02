@@ -10,6 +10,21 @@
     <input class="form-input mt-1 block w-full" name="name" value="{{ $resource->name }}" />
 </label>
 
+<header class="block">
+    @if ( $resource->meta()->where('resource_attribute_id', 77)->exists() )
+        <img src="{{ $resource->meta->firstWhere('resource_attribute_id', 77)->value }}" 
+            class="object-none mb-2" />
+    @endif
+
+    @if ( $resource->meta()->where('resource_attribute_id', 75)->exists() )
+        <audio controls class="my-2"
+            src="{{ $resource->meta->firstWhere('resource_attribute_id', 75)->value }}/download">
+                Your browser does not support the
+                <code>audio</code> element.
+        </audio>
+    @endif
+</header>
+
 <section class="mt-2 mb-4 px-2">
     <label class="">
         Citation: 

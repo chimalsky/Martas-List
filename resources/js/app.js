@@ -35,7 +35,7 @@ function bootstrap() {
         noCalendar: true,
         dateFormat: "H:i",})
 
-    window.livewire.on('deleteMeta', function(html, metaId) {
+    window.livewire.on('deleteMeta', function(html) {
         eventLog.innerHTML = html
         eventLog.classList.remove('hidden')
         document.querySelector('body').click()
