@@ -41,7 +41,16 @@ class ResourceConnectionsController extends Controller
      */
     public function store(Request $request, Resource $resource)
     {
-        collect($request->input('resources'))->each(function($connectedResourceId) use ($resource) {
+        $existingConnectedResources = $resource->resources
+            ->where('resource_type_id', '!=', $resource->definition->id)
+            ->pluck('id');
+        
+        $filteredIds = collect($request->input('resources'))->filter(function($resourceId) 
+            use ($existingConnectedResources) {
+                return !$existingConnectedResources->contains($resourceId);
+        });
+
+        $filteredIds->each(function($connectedResourceId) use ($resource) {
             $connection = $resource->connections()->create([]);
 
             $connection->resources()->attach($connectedResourceId);

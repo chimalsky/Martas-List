@@ -5,7 +5,7 @@
 <form action="{{ route('resource.connections.store', $resource) }}" method="post"
     data-controller="resource-types" 
     data-resource-types-search-url="{{ route('resources.index') }}" 
-    class="mt-8 bg-red-200 p-4 mb-4">
+    class="mt-8 shadow p-4 mb-4">
     @csrf
 
     <h1 class="m-2 font-semibold">
@@ -13,8 +13,8 @@
     </h1>
 
     @foreach ($connectingResource->resources as $connecting) 
-        <article class="block mb-2 py-2">
-            <label>
+        <article class="block mb-4">
+            <label class="cursor-pointer hover:bg-gray-200 p-2">
                 <input type="checkbox" name="resources[]" value="{{ $connecting->id }}" /> 
                 {{ $connecting->name }} 
             </label>
