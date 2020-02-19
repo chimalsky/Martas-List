@@ -12,7 +12,7 @@
         Forge connections between {{ $resource->name }} and {{ $connectingResource->name }}
     </h1>
 
-    @foreach ($connectingResource->resources as $connecting) 
+    @foreach ($connectingResource->resources->sortBy('name') as $connecting) 
         <article class="block mb-4">
             <label class="cursor-pointer hover:bg-gray-200 p-2">
                 <input type="checkbox" name="resources[]" value="{{ $connecting->id }}" /> 
