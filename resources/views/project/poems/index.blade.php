@@ -2,7 +2,7 @@
 
 
 @section ('header')
-    @include('project._nav', ['title' => 'About the Project'])
+    @include('project._nav', ['title' => 'Poem Archive'])
 @endsection
 
 @section ('content')

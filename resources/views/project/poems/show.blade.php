@@ -2,7 +2,7 @@
 
 
 @section ('header')
-    @include('project._nav', ['title' => 'About the Project'])
+    @include('project._nav', ['title' => 'Poem Archive'])
 @endsection
 
 @section ('content')
@@ -25,11 +25,8 @@
         </div>
 
         <div class="w-2/3">
-            @foreach ($poem->getMedia() as $medium)
-                @if (Str::contains($medium->mime_type, 'image'))
-                    <img class="mb-1" src="{{ $medium->getUrl() }}" />
-                @endif
-            @endforeach
+            @livewire('project.media-viewer', $poem)
+            
         </div>
     </section>
 </main>

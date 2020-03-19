@@ -22,7 +22,8 @@ Route::prefix('project')->name('project.')->namespace('Project')->group(function
     Route::get('/about', 'AboutController')->name('about');
     Route::get('/poems', 'PoemsController@index')->name('poems.index');
     Route::get('/poems/{poem}', 'PoemsController@show')->name('poems.show');
-
+    
+   Route::get('/birds', 'BirdsController@index')->name('birds.index');
 });
 
 Route::group(['middleware' => 'auth'], function() {

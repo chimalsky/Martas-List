@@ -11,7 +11,8 @@ class PoemsController extends Controller
     public function index(Request $request)
     {
         $poems = Resource::with(['meta', 'connections'])
-            ->where('resource_type_id', 3)->get();
+            ->where('resource_type_id', 3)
+            ->get();
 
         return view('project.poems.index', compact('poems'));
     }
