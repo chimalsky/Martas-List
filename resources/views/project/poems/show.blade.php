@@ -2,29 +2,38 @@
 
 
 @section ('header')
-    @include('project._nav', ['title' => 'Poem Archive'])
+    @include('project._nav', ['title' => 'Poem Archive', 'breadcrumb' => @route('project.poems.index')])
 @endsection
 
 @section ('content')
 
 <main class="max-w-4xl mx-auto text-gray-700 text-lg">
-    <header>
-        <h1 class="text-4xl mb-4 text-center">
+    <header class="text-center">
+        <h1 class="text-4xl font-hairline b-4">
              {{ $poem->name }}
         </h1>
 
-        <p class="mt-18 text-center">
+        <p class="mt-18 text-gray-600">
             {{ $poem->meta->where('resource_attribute_id', 138)->first()->value ?? null }}
             {{ $poem->meta->where('resource_attribute_id', 131)->first()->value ?? null }}
+        </p>
+
+        <p class="mt-2 text-gray-600">
+            Copied in 
+            {{ $poem->meta->where('resource_attribute_id', 142)->first()->value ?? null }}
+            on 
+            {{ $poem->meta->where('resource_attribute_id', 87)->first()->value ?? null }},
+            bound into
+            {{ $poem->meta->where('resource_attribute_id', 3)->first()->value ?? null }}
         </p>
     </header>
 
     <section class="mt-12 flex flex-wrap">
-        <div class="w-1/3">
+        <div class="w-1/3 mt-16">
             {!! $poem->meta->where('resource_attribute_id', 78)->first()->value ?? null !!}
         </div>
 
-        <div class="w-2/3">
+        <div class="w-2/3 md:pl-4 lg:pl-8">
             @livewire('project.media-viewer', $poem)
             
         </div>

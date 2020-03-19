@@ -9,7 +9,13 @@
             <h1 class="pl-2">
                 @isset ($title)
                     <span class=text-2xl font-black text-gray-600">
-                        {{ $title }}
+                        @isset ($breadcrumb)
+                            <a href="{{ $breadcrumb }}" class="underline">
+                        @endisset
+                            {{ $title }}
+                        @isset ($breadcrumb)
+                            </a>
+                        @endisset
                     </span>
                 @else
                     Dickinson's Birds

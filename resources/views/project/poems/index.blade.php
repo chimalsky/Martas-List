@@ -11,7 +11,7 @@
     <section class="mt-12 flex flex-col">
 
         @foreach ($poems as $poem)
-            <article class="block mb-1 p-2 hover:bg-gray-200 cursor-pointer justify-between">
+            <article class="block mb-1 p-2 cursor-pointer justify-between">
                 <a href="@route('project.poems.show', $poem->id)">
                     @foreach ($poem->getMedia() as $medium)
                         @if (Str::contains($medium->mime_type, 'image'))
