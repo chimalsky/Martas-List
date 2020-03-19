@@ -11,8 +11,8 @@
             Archiver
         </a>
 
-        <a class="w-full my-2" href="{{ route('dearchived.bird.show') }}">
-            De-archived
+        <a class="w-full my-2" href="{{ route('project.index') }}">
+            Public Archive
         </a>
 
         <a class="w-full my-2" href="/blog" data-turbolinks="false">

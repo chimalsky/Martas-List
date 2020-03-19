@@ -17,7 +17,7 @@
         @stack('scripts')
     </head>
     <body data-controller="application">
-        <section class="px-2">
+        <section class="px-2 py-4 mb-12">
             @yield('header')
         </section>
 
@@ -45,15 +45,27 @@
             @yield('content')
         </main>
 
-        <footer class="web">
-            <footer class="web-layouts">
-            </footer>
-
+        <footer class="container mx-auto pt-4 pb-12 border-t-2 border-gray-400">
             @yield('footer')
 
-            <section class="event-log hidden
-                bg-green-300 fixed bottom-0 right-0 p-4 w-full lg:max-w-md h-24">
-            </section>
+            <div class="text-lg">
+                <p class="mb-1">
+                    Dickinson’s Birds: A Public Listening Project &#169; {{ carbon()->format('Y') }}
+                </p>
+                <p>
+                    Edited by Marta Werner, with Abraham Kim and Caroline McCraw
+                </p>
+            </div>
+
+            <div class="block mt-8">
+                <p class="block">
+                    Funding and Support provided by Loyola University, Office of Research
+                </p>
+
+                <p class="block text-gray-600">
+                    Licensed under Creative Commons Attribution 4.0 International License, 2020
+                </p>
+            </div>
         </footer>
     </body>
 </html>
