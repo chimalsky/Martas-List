@@ -17,4 +17,12 @@ class BirdsController extends Controller
 
         return view('project.birds.index', compact('birds'));
     }
+
+    public function show(Request $request, $birdId)
+    {
+        $bird = Resource::with(['meta', 'connections'])
+            ->find($birdId);
+
+        return view('project.birds.show', compact('bird'));
+    }
 }
