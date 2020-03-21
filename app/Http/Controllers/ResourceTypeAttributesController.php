@@ -90,12 +90,16 @@ class ResourceTypeAttributesController extends Controller
 
         $resourceAttribute->update([
             'key' => $request->name,
-            'type' => $request->type,
-            'options' => collect($request->options)->filter(function($option) {
-                return $option;
-            })->toArray()
+            'type' => $request->type
         ]);
 
+        if ($request->options) {
+            $resourceAttribute->options = collect($request->options)->filter(function($option) {
+                return $option;
+            })->toArray();
+
+            $resourceAttribute->save();
+        }
 
         return back()->with('status', "$resourceAttribute->name was updated. Now you are more effecient. Good job, human! Now go become even more effecient!");
     }
