@@ -26,6 +26,21 @@
             bound into
             {{ $poem->meta->where('resource_attribute_id', 3)->first()->value ?? null }}
         </p>
+
+        @if ($birds->count())
+            <div class="block mt-4">
+                <p>
+                    Mentions {{ $birds->count() }} 
+                    <a href="#birds">
+                        @if ($birds->count() === 1)
+                            Bird
+                        @else 
+                            Birds
+                        @endif
+                    </a>
+                </p>
+            </div>
+        @endif
     </header>
 
     <section class="mt-12 flex flex-wrap">
@@ -35,8 +50,21 @@
 
         <div class="w-2/3 md:pl-4 lg:pl-8">
             @livewire('project.media-viewer', $poem)
-            
         </div>
+    </section>
+
+    <section id="birds" class="mt-12 lg:mt-24">
+        <h1 class="text-2xl">
+            Birds in <span class="italic">{{ $poem->name }}</psan>
+        </h1>
+        
+        <main class="mt-4 flex flex-wrap">
+            @foreach ($birds as $bird)
+                <article class="w-full lg:w-1/2 lg:px-2 pb-10 lg:pb-16">
+                    @include('project.birds._single', $bird)
+                </article>
+            @endforeach
+        </main>
     </section>
 </main>
 @endsection

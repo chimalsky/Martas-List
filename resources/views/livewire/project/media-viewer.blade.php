@@ -14,7 +14,7 @@
             @endforeach
         </nav>
 
-        <div class="mt-4">
+        <div class="mt-4 shadow-2xl">
             {{ $media }}
         </div>
     </div>

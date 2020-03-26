@@ -21,7 +21,11 @@
             @yield('header')
         </section>
 
-        <main class="web container mx-auto mb-24 px-2">
+        <section class="">
+            @yield('before-content-stretch')
+        </section>
+
+        <main class="web mx-auto mb-24 px-2" style="max-width: 1700px">
             @if (session('status'))
                 <div class="bg-green-200 p-8 text-center">
                     {{ session('status') }}
@@ -45,7 +49,11 @@
             @yield('content')
         </main>
 
-        <footer class="container mx-auto pt-4 pb-12 border-t-2 border-gray-400">
+        <section class="">
+            @yield('after-content-stretch')
+        </section>
+
+        <footer class="container mx-auto pt-4 pb-12 border-t-4 border-gray-300">
             @yield('footer')
 
             <div class="text-lg">

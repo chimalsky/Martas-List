@@ -94,10 +94,11 @@ class ResourceTypeAttributesController extends Controller
         ]);
 
         if ($request->options) {
-            $resourceAttribute->options = collect($request->options)->filter(function($option) {
+            $optionsCollection = collect($request->options)->filter(function($option) {
                 return $option;
-            })->toArray();
+            });
 
+            $resourceAttribute->options = $optionsCollection->toArray();
             $resourceAttribute->save();
         }
 

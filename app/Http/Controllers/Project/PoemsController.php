@@ -13,7 +13,6 @@ class PoemsController extends Controller
         $poems = Resource::with(['meta', 'media'])
             ->where('resource_type_id', 3);
 
-
         $poems = $poems->addSelect(['queries_meta_value' => function($query)  {
             $query->select('value')
                 ->from('resource_metas')
@@ -32,6 +31,9 @@ class PoemsController extends Controller
         $poem = Resource::with(['meta', 'connections'])
             ->find($poemId);
 
-        return view('project.poems.show', compact('poem'));
+        $birds = $poem->resources->where('resource_type_id', 2);
+        $variants = $poem->resources->where('resource_type_id', 3);
+
+        return view('project.poems.show', compact('poem', 'birds', 'variants'));
     }
 }

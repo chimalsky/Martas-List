@@ -31,7 +31,7 @@ class ResourceAttribute extends Model implements Sortable
         parent::boot();
 
         static::saving(function ($attribute) {
-            $attribute->key = Str::snake($attribute->key);
+           // $attribute->key = Str::snake($attribute->key);
         });
         
     }
@@ -48,7 +48,7 @@ class ResourceAttribute extends Model implements Sortable
 
     public function getNameAttribute()
     {
-        return str_replace('_', ' ', Str::title($this->key));
+        return $this->key;
     }
 
     public function getOptionsDropdownAttribute()
