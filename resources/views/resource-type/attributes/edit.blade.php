@@ -19,14 +19,6 @@
         >
     </span>
 
-    <a href="{{ route('resource-types.edit', $resourceType) }}"  class="mx-2">
-        {{ $resourceType->name }} 
-    </a>
-
-    <span class="mx-4">
-        >
-    </span>
-
     <p class="mx-2 font-bold underline">
         {{ $attribute->name }} 
     </p>
@@ -59,7 +51,7 @@
 </header>
 
 @if ($attribute->type == 'dropdown')
-    <section class="max-w-lg mt-16" data-controller="resource-attribute">
+    <section class="max-w-4xl mt-16" data-controller="resource-attribute">
         <h1> 
             Options 
         </h1>
@@ -72,9 +64,11 @@
             <section class="block mt-8 mb-8" data-target="resource-attribute.options">
 
                 @if ($attribute->options)
-                    @foreach ($attribute->options as $option) 
-                        {{ html()->text('options[]', $option)->class('form-input block') }}
-                    @endforeach
+                    <section class="block">
+                        @foreach ($attribute->options as $option) 
+                            {{ html()->text('options[]', $option)->class('form-input w-full mb-4') }}
+                        @endforeach
+                    </section>
                 @else 
                     No Options for this dropdown yet
                 @endif
@@ -97,8 +91,9 @@
         $resourceType, 
         $attribute
     ] ))->open() }}
-        <div class="block flex justify-end mr-8 mb-8">
-            <button class="btn btn-red">
+        <div class="block flex justify-end mr-8 mb-8"
+            data-controller="form">
+            <button class="btn btn-red" data-action="form#delete">
                 Delete this Attribute
             </button>
         </div>

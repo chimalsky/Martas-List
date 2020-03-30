@@ -17,6 +17,16 @@ Route::prefix('dearchived')->name('dearchived.')->namespace('Dearchived')->group
     Route::get('/dearchived', 'BirdController@show')->name('bird.show');
 });
 
+Route::prefix('project')->name('project.')->namespace('Project')->group(function () {
+    Route::get('/', 'IndexController')->name('index');
+    Route::get('/about', 'AboutController')->name('about');
+    Route::get('/poems', 'PoemsController@index')->name('poems.index');
+    Route::get('/poems/{poem}', 'PoemsController@show')->name('poems.show');
+    
+    Route::get('/birds', 'BirdsController@index')->name('birds.index');
+    Route::get('/birds/{bird}', 'BirdsController@show')->name('birds.show');
+});
+
 Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/home', function() {
@@ -32,7 +42,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('encoding.metas', 'EncodingMetasController');
     Route::resource('encoding.resources', 'EncodingResourcesController');
 
-    Route::get('/projects', 'ProjectController@index')->name('project.index');
+    //Route::get('/projects', 'ProjectController@index')->name('project.index');
     
     Route::resource('resources', 'ResourcesController');
     Route::resource('resource-types', 'ResourceTypesController');
