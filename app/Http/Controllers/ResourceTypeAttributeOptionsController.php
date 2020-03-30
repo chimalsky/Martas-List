@@ -51,9 +51,10 @@ class ResourceTypeAttributeOptionsController extends Controller
             'value' => $newOption
         ]);
 
-        $newOptions = collect($attribute->options)
-            ->pull($option)
-            ->push($newOption);
+        $newOptions = collect($attribute->options)->filter(function($o) use ($option) {
+            return $o != $option;
+        });
+        $newOptions->push($newOption);
 
         $attribute->update([
             'options' => $newOptions->toArray()
