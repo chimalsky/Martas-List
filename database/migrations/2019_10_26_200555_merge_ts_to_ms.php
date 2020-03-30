@@ -14,6 +14,7 @@ class MergeTsToMs extends Migration
      */
     public function up()
     {
+        /* TODO DELETE THIS
         $transcriptionsArchive = ResourceType::find(4);
         $transcriptions = $transcriptionsArchive->resources;
 
@@ -34,6 +35,6 @@ class MergeTsToMs extends Migration
                 $manuscript->meta()->createMany($params);
             });
         });
-
+        */ 
     }
 }

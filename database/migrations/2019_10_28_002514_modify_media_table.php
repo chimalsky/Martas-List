@@ -13,12 +13,13 @@ class ModifyMediaTable extends Migration
      */
     public function up()
     {
+        /* TODO DELETE THIS
         Schema::table('media', function(Blueprint $table) {
             $table->date('date')->nullable();
             $table->time('time')->nullable();
             $table->string('location')->nullable();
             $table->string('background_sounds')->nullable();
-        });
+        }); */
     }
 
     /**
