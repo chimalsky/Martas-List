@@ -60,15 +60,19 @@
             {{ html()->hidden("name", $attribute->name) }}
             {{ html()->hidden("type", $attribute->type) }}
 
-
             <section class="block mt-8 mb-8" data-target="resource-attribute.options">
 
                 @if ($attribute->options)
-                    <section class="block">
-                        @foreach ($attribute->options as $option) 
-                            {{ html()->text('options[]', $option)->class('form-input w-full mb-4') }}
-                        @endforeach
-                    </section>
+                    @foreach (collect($attribute->options)->sort() as $option) 
+                        <a class="block text-xl mb-4 cursor-pointer"
+                            href="@route('resource-type.attribute.options.edit', [
+                                'resource_type' => $resourceType,
+                                'attribute' => $attribute,
+                                'option' => $option
+                            ])">
+                            {{ $option }}
+                        </a>
+                    @endforeach
                 @else 
                     No Options for this dropdown yet
                 @endif
