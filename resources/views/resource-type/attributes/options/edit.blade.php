@@ -75,4 +75,20 @@
     @endforeach
 </main>
 
+<footer class="flex justify-end mt-8">
+    {{ html()->form('DELETE', route('resource-type.attribute.options.destroy', [
+        $resourceType, 
+        $attribute
+    ] ))->open() }}
+        {{ html()->hidden('option', $option) }}
+
+        <div class="block flex justify-end mr-8 mb-8"
+            data-controller="form">
+            <button class="btn btn-red" data-action="form#delete">
+                Delete this Option
+            </button>
+        </div>
+    {{ html()->closeModelForm() }}
+</footer>
+
 @endsection

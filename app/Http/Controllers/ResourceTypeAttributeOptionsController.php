@@ -69,4 +69,43 @@ class ResourceTypeAttributeOptionsController extends Controller
                 ])
             ->with('status', 'You did it! Trump would be soooo proud!');
     }
+
+    public function destroy(Request $request, ResourceType $resourceType, ResourceAttribute $attribute)
+    {
+        $request->validate([
+            'option' => ['required', function($validatingAttribute, $value, $fail) use ($attribute) {
+                if (!collect($attribute->options)->contains($value)) {
+                    $fail('This is an invalid option for this attribute.');
+                }
+            }]
+        ]);
+
+        $option = $request->option;
+        
+        $optionsCollection = collect($attribute->options);
+        $index = $optionsCollection->search($option);
+        $optionsCollection->pull($index);
+
+        $attribute->update([
+            'options' => $optionsCollection->toArray()
+        ]);
+
+        return redirect()->route('resource-type.attributes.edit', [$resourceType, $attribute])
+            ->with('status', $option." was deleted. However, if there were duplicates, the ordering 
+                might have shifted so please double-check.");
+    }
+
+    public function sort(Request $request, ResourceType $resourceType, ResourceAttribute $attribute)
+    {
+        $request->validate([
+            'options' => 'required | array'
+        ]);
+
+        $attribute->update([
+            'options' => $request->options
+        ]);
+
+        return redirect()->route('resource-type.attributes.edit', [$resourceType, $attribute])
+            ->with('status', "The order of options has been changed!");    
+    }
 }
