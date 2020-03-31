@@ -19,6 +19,14 @@
         >
     </span>
 
+    <a href="{{ route('resource-type.attributes.index', $resourceType) }}" class="mx-2">
+        Attributes 
+    </a>
+
+    <span class="mx-4">
+        >
+    </span>
+
     <p class="mx-2 font-bold underline">
         {{ $attribute->name }} 
     </p>
@@ -36,13 +44,11 @@
             <span class="block">
                 Type: 
             </span>
-            @foreach($resourceType->availableTypes as $key => $type)
-                <label class="block mb-4 cursor-pointer">
-                    {{ html()->radio('type')->value($key)->checked($key === $attribute->type) }}
-                    {{ $type }}
-                </label>
-            @endforeach
+
+            {{ html()->select("type", $resourceType->availableTypes, $attribute->type)
+                ->class(['attribute', 'form-dropdown', 'mt-1', 'block', 'w-full', 'font-medium']) }}
         </label>
+        
 
         <button class="btn btn-blue block mt-8">
             Update 
@@ -63,8 +69,9 @@
             <section class="block mt-8 mb-8" data-target="resource-attribute.options">
 
                 @if ($attribute->options)
-                    @foreach (collect($attribute->options)->sort() as $option) 
-                        <a class="block text-xl mb-4 cursor-pointer"
+                    @foreach ($attribute->options as $option) 
+                        {{ html()->hidden('options[]', $option)->class('form-input w-full mb-4') }}
+                        <a class="block text-xl mb-1 cursor-pointer hover:bg-gray-200 py-1"
                             href="@route('resource-type.attribute.options.edit', [
                                 'resource_type' => $resourceType,
                                 'attribute' => $attribute,
@@ -76,7 +83,7 @@
                 @else 
                     No Options for this dropdown yet
                 @endif
-
+                                
             </section>
 
             <button class="btn btn-hollow mr-2" data-action="resource-attribute#addOption">

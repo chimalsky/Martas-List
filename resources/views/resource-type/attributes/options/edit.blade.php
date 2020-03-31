@@ -3,16 +3,16 @@
 @section ('content')
 
 <header class="flex align-left mb-8">
-    <a href="{{ route('resource-types.index') }}">
-        Resources
+    <a href="{{ route('resource-types.show', $resourceType) }}" class="mx-2">
+        {{ $resourceType->name }} 
     </a>
 
     <span class="mx-4">
         >
     </span>
 
-    <a href="{{ route('resource-types.show', $resourceType) }}" class="mx-2">
-        {{ $resourceType->name }} 
+    <a href="{{ route('resource-type.attributes.index', $resourceType) }}" class="mx-2">
+        Attributes 
     </a>
 
     <span class="mx-4">
@@ -62,15 +62,16 @@
 
 
     @foreach ($attributeValues as $value)
-        <article class="block mb-4">
-            <a class="font-semibold" href="@route('resources.edit', $value->resource)">
+        <a href="@route('resources.edit', $value->resource)"
+            class="block mb-1 py-1 hover:bg-gray-200">
+            <p class="font-semibold">
                 {{ $value->resource->name }}
-            </a>
+            </p>
 
             <p class="text-gray-700">
                 {{ $value->value }} 
             </p>
-        </article>
+        </a>
     @endforeach
 </main>
 

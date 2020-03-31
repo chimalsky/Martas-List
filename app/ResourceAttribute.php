@@ -53,7 +53,7 @@ class ResourceAttribute extends Model implements Sortable
 
     public function getOptionsDropdownAttribute()
     {
-        return collect($this->options)->sort()->mapWithKeys(function($option) {
+        return collect($this->options)->flatten()->mapWithKeys(function($option) {
             return [$option => $option];
         })->toArray();
     }
