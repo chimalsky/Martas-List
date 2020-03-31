@@ -1,4 +1,4 @@
-<div class="w-full my-4">
+<div id="{{ $attribute->id }}" class="w-full my-4">
         <h1 class="font-semibold">
             Mock Encoding -- textbox is resizable as needed from bottom-right corner
         </h1>

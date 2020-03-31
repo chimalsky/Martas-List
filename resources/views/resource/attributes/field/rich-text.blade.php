@@ -1,4 +1,4 @@
-<div class="w-full my-4">
+<div id="{{ $attribute->id }}" class="w-full my-4">
     <span class="block">
         {{ $attribute->name }}
     </span>

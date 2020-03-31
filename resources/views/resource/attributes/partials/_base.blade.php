@@ -1,4 +1,4 @@
-<div class="p-2 w-full md:w-1/2">
+<div id="{{ $attribute->id }}" class="p-2 w-full md:w-1/2">
     <main class="p-2 bg-gray-200">
         <div class="block p-3 {{ $attribute->key }}">
             <span class="block text-xl mb-2">

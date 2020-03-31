@@ -62,7 +62,7 @@
 
 
     @foreach ($attributeValues as $value)
-        <a href="@route('resources.edit', $value->resource)"
+        <a href="@route('resources.edit', $value->resource)#{{ $attribute->id }}"
             class="block mb-1 py-1 hover:bg-gray-200">
             <p class="font-semibold">
                 {{ $value->resource->name }}
