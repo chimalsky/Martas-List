@@ -13,11 +13,12 @@ class ModifyMediaTableTwo extends Migration
      */
     public function up()
     {
+        /* TODO DELETE THIS
         Schema::table('media', function(Blueprint $table) {
             $table->string('citation')->nullable();
             $table->string('sound_type')->nullable();
            
-        });
+        }); */
     }
 
     /**

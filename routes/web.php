@@ -54,6 +54,22 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::resource('resource-type.attributes', 'ResourceTypeAttributesController');
 
+    Route::get('resource-type/{resource_type}/attribute/{attribute}/options/edit', 
+        'ResourceTypeAttributeOptionsController@edit')
+        ->name('resource-type.attribute.options.edit');
+
+    Route::put('resource-type/{resource_type}/attribute/{attribute}/options', 
+        'ResourceTypeAttributeOptionsController@update')
+        ->name('resource-type.attribute.options.update');
+    
+    Route::delete('resource-type/{resource_type}/attribute/{attribute}/options', 
+        'ResourceTypeAttributeOptionsController@destroy')
+        ->name('resource-type.attribute.options.destroy');
+    
+    Route::post('resource-type/{resource_type}/attribute/{attribute}/options/sort', 
+        'ResourceTypeAttributeOptionsController@sort')
+        ->name('resource-type.attribute.options.sort');
+
     Route::get('/resource-type/{resource_type}/resources/create', 'ResourceTypeResourcesController@create')
         ->name('resource-type.resources.create');
 

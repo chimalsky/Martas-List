@@ -23,13 +23,13 @@ class AddForeignKeysToTables extends Migration
                 ->on('resources')
                 ->onDelete('cascade');
         });
-
+        /*
         Schema::table('resources', function (Blueprint $table) {
             $table->foreign('resource_type_id')
                 ->references('id')
                 ->on('resource_types')
                 ->onDelete('cascade');
-        });
+        }); */
 
         Schema::table('resource_metas', function (Blueprint $table) {
             $table->foreign('resource_id')

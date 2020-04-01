@@ -14,7 +14,7 @@ class ModifyResourceTypeAttributesTable extends Migration
     public function up()
     {
         Schema::table('resource_type_attributes', function (Blueprint $table) {
-            $table->text('options');
+            $table->text('options')->nullable();
         });
     }
 }

@@ -15,7 +15,7 @@ class ResourceAttribute extends Model implements Sortable
     use SortableTrait;
     
     protected $table = 'resource_type_attributes';
-    protected $guarded = [];
+    protected $guarded = ['id'];
 
     public $sortable = [
         'order_column_name' => 'order',
@@ -53,7 +53,7 @@ class ResourceAttribute extends Model implements Sortable
 
     public function getOptionsDropdownAttribute()
     {
-        return collect($this->options)->mapWithKeys(function($option) {
+        return collect($this->options)->flatten()->mapWithKeys(function($option) {
             return [$option => $option];
         })->toArray();
     }

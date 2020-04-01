@@ -47427,7 +47427,8 @@ var _default = /*#__PURE__*/function (_Controller) {
       var input = document.createElement('input');
       console.log(input);
       input.setAttribute('name', 'options[]');
-      input.setAttribute('class', 'form-input block border-gray-600 border-b');
+      input.setAttribute('placeholder', 'A new option awaits...');
+      input.setAttribute('class', 'form-input w-full block border-gray-600 border-b mb-2');
       this.optionsTarget.appendChild(input);
     }
   }]);
@@ -47615,8 +47616,8 @@ _defineProperty(_default, "targets", ['results']);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/zdziarska/Sites/birds/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/zdziarska/Sites/birds/resources/less/app.less */"./resources/less/app.less");
+__webpack_require__(/*! /Users/gucci/Sites/birds/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/gucci/Sites/birds/resources/less/app.less */"./resources/less/app.less");
 
 
 /***/ })
