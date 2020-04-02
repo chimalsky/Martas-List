@@ -13,7 +13,7 @@
     @endforeach 
 
     <footer class="flex justify-center">
-        @foreach ($bird->getMedia() as $audio)
+        @if ($audio = $bird->getFirstMedia())
             @if (Str::contains($audio->mime_type, 'audio'))
                 <audio class="mt-2" controls
                     src="{{ $audio->getUrl() }}">
@@ -21,6 +21,6 @@
                         <code>audio</code> element.
                 </audio>                    
             @endif
-        @endforeach
+        @endif
     </footer>
 </div>
