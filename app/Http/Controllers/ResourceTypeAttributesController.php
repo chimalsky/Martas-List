@@ -16,6 +16,8 @@ class ResourceTypeAttributesController extends Controller
      */
     public function index(ResourceType $resourceType)
     {
+        $resourceType->load('attributes');
+        $resourceType->attributes->loadCount('meta');
         return view('resource-type.attributes.index', compact('resourceType'));
     }
 

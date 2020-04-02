@@ -3,32 +3,26 @@
 @section ('content')
 
 
-{{ html()->form('put', route('resource-type.attributes.sort', $resourceType))->open() }}
-    <section class="sortable max-w-2xl">
-        <h1 class="font-semibold mb-4 block">
-            Existing Attributes: 
-        </h1>
+<section class="max-w-2xl"
+    x-data="{ open: false }">
+    @foreach($resourceType->attributes as $attribute)
+        <a href="{{ route('resource-type.attributes.edit', [$resourceType, $attribute]) }}"
+            class="block mb-1 p-1 pl-2 flex justify-between hover:bg-gray-200">
+            {{ $attribute->name }}
 
-        @foreach($resourceType->attributes as $attribute)
-            <article class="block mb-2 p-1 flex justify-between cursor-move">
-                {{ $attribute->name }}
+            ( {{ $attribute->type }} ) -- ({{ $attribute->meta_count }})
+        </a>
+    @endforeach
 
-                ( {{ $attribute->type }} )
+    <footer class="flex justify-end mt-4">
+        <button class="btn btn-hollow"
+            @click="open = true" >
+            Change ordering
+        </button>
+    </footer>
 
-                <input type="hidden" name="attributes[]" value="{{ $attribute->id }}" />
-
-                <a class="btn btn-gray" href="{{ route('resource-type.attributes.edit', [$resourceType, $attribute]) }}">
-                    Edit 
-                </a>
-            </article>
-        @endforeach
-    </section>
-
-    <button class="btn btn-blue mt-12">
-        Save changes to Attributes Ordering
-    </button>
-{{ html()->form()->close() }}
-
+    @include('resource-type.attributes._order-modal')
+</section>
 
 <section class="p-4 mt-24 bg-gray-300">
     <h1> 
