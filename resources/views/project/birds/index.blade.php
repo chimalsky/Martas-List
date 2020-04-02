@@ -54,7 +54,7 @@
             Bird Archive 
 
 
-            @if (!$poems->count())
+            @if (!$birds->count())
                 <h1 class="text-center text-lg mt-4">
                     No Birds matching your search 
                 </h1>
