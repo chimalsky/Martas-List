@@ -23,8 +23,6 @@ class PoemsController extends Controller
         $queryValue = $request->input('query_value');
         $queries = collect();
         
-        foreach ($request->input('query'))
-
         if ($queryAttribute && $queryValue) {
             $queries->push(
                 (object) [
