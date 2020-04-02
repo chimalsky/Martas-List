@@ -28,12 +28,37 @@
                     </svg>
                 </button>
             </div>
+
+            @if ($queries->count())
+            <section class="mt-4 px-2">
+                @foreach ($queries as $query)
+                    <input type="hidden" name="queries_key[]" 
+                        value="$query->query" />
+                    <input type="hidden" name="queries_values[]" 
+                        value="{{ $query->attribute->id }}" />
+
+                    <div class="block">
+                        {{ $query->attribute->name }} :
+                        <span class="p-2 bg-red-200">
+                            {{ $query->query }}
+                        </span>
+                    </div>
+                @endforeach
+            </section>
+            @endif
         </form>
     </aside>
         
     <main class="flex-1 text-gray-700 text-lg">
         <header class="text-center text-2xl block mb-16">
             Bird Archive 
+
+
+            @if (!$poems->count())
+                <h1 class="text-center text-lg mt-4">
+                    No Birds matching your search 
+                </h1>
+            @endif
         </header>
 
         <section class="flex flex-wrap items-start">

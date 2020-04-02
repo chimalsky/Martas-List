@@ -32,7 +32,7 @@ class BirdsController extends Controller
                 ]
             );
         } else {
-            $queryAttribute = $birdDefinition->attributes->first();
+            $queryAttribute = $birdDefinition   ->attributes->first();
         }
 
         if ($queryValue) {

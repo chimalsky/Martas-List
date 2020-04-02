@@ -22,6 +22,8 @@ class PoemsController extends Controller
         $queryAttribute = ResourceAttribute::find($request->input('query_key'));
         $queryValue = $request->input('query_value');
         $queries = collect();
+        
+        foreach ($request->input('query'))
 
         if ($queryAttribute && $queryValue) {
             $queries->push(
