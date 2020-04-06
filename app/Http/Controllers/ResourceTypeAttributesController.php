@@ -87,7 +87,7 @@ class ResourceTypeAttributesController extends Controller
         $request->validate([
             'name' => 'required',
             'type' => 'required',
-            'visibility' => 'required',
+            'visibility' => 'nullable',
             'options' => 'nullable | array'
         ]);
         
