@@ -3,32 +3,27 @@
 @section ('content')
 
 
-{{ html()->form('put', route('resource-type.attributes.sort', $resourceType))->open() }}
-    <section class="sortable max-w-2xl">
-        <h1 class="font-semibold mb-4 block">
-            Existing Attributes: 
-        </h1>
+<section class="max-w-2xl"
+    x-data="{ open: false }">
+    @foreach($resourceType->attributes as $attribute)
+        <a href="{{ route('resource-type.attributes.edit', [$resourceType, $attribute]) }}"
+            class="block mb-1 p-1 pl-2 flex justify-between hover:bg-gray-200
+                @if($attribute->visibility) font-bold @endif">
+            {{ $attribute->name }}
 
-        @foreach($resourceType->attributes as $attribute)
-            <article class="block mb-2 p-1 flex justify-between cursor-move">
-                {{ $attribute->name }}
+            ( {{ $attribute->type }} ) -- ({{ $attribute->meta_count }})
+        </a>
+    @endforeach
 
-                ( {{ $attribute->type }} )
+    <footer class="flex justify-end mt-4">
+        <button class="btn btn-hollow"
+            @click="open = true" >
+            Change ordering
+        </button>
+    </footer>
 
-                <input type="hidden" name="attributes[]" value="{{ $attribute->id }}" />
-
-                <a class="btn btn-gray" href="{{ route('resource-type.attributes.edit', [$resourceType, $attribute]) }}">
-                    Edit 
-                </a>
-            </article>
-        @endforeach
-    </section>
-
-    <button class="btn btn-blue mt-12">
-        Save changes to Attributes Ordering
-    </button>
-{{ html()->form()->close() }}
-
+    @include('resource-type.attributes._order-modal')
+</section>
 
 <section class="p-4 mt-24 bg-gray-300">
     <h1> 
@@ -52,6 +47,28 @@
                     {{ $type }}
                 </label>
             @endforeach
+
+            <section class="block my-8">
+                <header class="font-semibold mb-2">
+                    Visibility 
+                </header> 
+
+                <div class="flex items-center my-3">
+                    <input id="visibility_public" name="visibility" value="1"
+                        type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" />
+                    <label for="visibility_public" class="ml-3">
+                        <span class="block text-sm leading-5 font-medium text-gray-700">Public and Searchable</span>
+                    </label>
+                </div>
+
+                <div class="flex items-center my-3">
+                    <input id="visibility_private" name="visibility" value="0" checked
+                        type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" />
+                    <label for="visibility_private" class="ml-3">
+                        <span class="block text-sm leading-5 font-medium text-gray-700">Private</span>
+                    </label>
+                </div>
+            </section>
         </main>
             
         <button class="btn btn-blue">

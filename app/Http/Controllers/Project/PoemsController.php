@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Project;
 
 use App\Resource;
+use App\ResourceType;
+use App\ResourceAttribute;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -10,20 +12,42 @@ class PoemsController extends Controller
 { 
     public function index(Request $request)
     {
+        $poemId = 3;
+
         $poems = Resource::with(['meta', 'media'])
-            ->where('resource_type_id', 3);
+            ->where('resource_type_id', $poemId);
 
-        $poems = $poems->addSelect(['queries_meta_value' => function($query)  {
-            $query->select('value')
-                ->from('resource_metas')
-                ->whereColumn('resource_id', 'resources.id')
-                ->where('resource_attribute_id', 131)
-                ->latest()->limit(1);
-        }])
-        ->orderBy('queries_meta_value', 'asc')
-        ->get();
+        $poemDefinition = ResourceType::find($poemId);
+        
+        $queryAttribute = ResourceAttribute::find($request->input('query_key'));
+        $queryValue = $request->input('query_value');
+        $queries = collect();
+        
+        if ($queryAttribute && $queryValue) {
+            $queries->push(
+                (object) [
+                    'query' => $queryValue,
+                    'attribute' => $queryAttribute
+                ]
+            );
+        } else {
+            $queryAttribute = ResourceAttribute::find(131);
+        }
 
-        return view('project.poems.index', compact('poems'));
+        if ($queryValue) {
+            $poems = $poems->whereHas('meta', function ($query) use ($queryAttribute, $queryValue) {
+                $query = $query->where('resource_attribute_id', $queryAttribute->id)
+                    ->where('value', 'LIKE', "%{$queryValue}%");
+    
+                return $query;
+            });
+        }
+
+        $poems = $poems->get();
+
+        return view('project.poems.index', 
+            compact('poemDefinition', 'poems', 'queries')
+        );
     }
 
     public function show(Request $request, $poemId)
