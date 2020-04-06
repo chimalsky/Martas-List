@@ -48,8 +48,31 @@
             {{ html()->select("type", $resourceType->availableTypes, $attribute->type)
                 ->class(['attribute', 'form-dropdown', 'mt-1', 'block', 'w-full', 'font-medium']) }}
         </label>
-        
 
+        <section class="block my-8">
+            <header class="font-semibold mb-2">
+                Visibility 
+            </header> 
+
+            <div class="flex items-center my-3">
+                <input id="visibility_public" name="visibility" value="1"
+                    @if ($attribute->visibility) checked @endif
+                    type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" />
+                <label for="visibility_public" class="ml-3">
+                    <span class="block text-sm leading-5 font-medium text-gray-700">Public and Searchable</span>
+                </label>
+            </div>
+
+            <div class="flex items-center my-3">
+                <input id="visibility_private" name="visibility" value="0"
+                    @unless ($attribute->visibility) checked @endunless
+                    type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" />
+                <label for="visibility_private" class="ml-3">
+                    <span class="block text-sm leading-5 font-medium text-gray-700">Private</span>
+                </label>
+            </div>
+        </section>
+        
         <button class="btn btn-blue block mt-8">
             Update 
         </button>

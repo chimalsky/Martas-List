@@ -87,12 +87,14 @@ class ResourceTypeAttributesController extends Controller
         $request->validate([
             'name' => 'required',
             'type' => 'required',
+            'visibility' => 'required',
             'options' => 'nullable | array'
         ]);
-
+        
         $resourceAttribute->update([
             'key' => $request->name,
-            'type' => $request->type
+            'type' => $request->type,
+            'visibility' => $request->visibility
         ]);
 
         if ($request->options) {

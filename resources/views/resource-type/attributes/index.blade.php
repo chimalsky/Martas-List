@@ -7,7 +7,8 @@
     x-data="{ open: false }">
     @foreach($resourceType->attributes as $attribute)
         <a href="{{ route('resource-type.attributes.edit', [$resourceType, $attribute]) }}"
-            class="block mb-1 p-1 pl-2 flex justify-between hover:bg-gray-200">
+            class="block mb-1 p-1 pl-2 flex justify-between hover:bg-gray-200
+                @if($attribute->visibility) font-bold @endif">
             {{ $attribute->name }}
 
             ( {{ $attribute->type }} ) -- ({{ $attribute->meta_count }})
@@ -46,6 +47,28 @@
                     {{ $type }}
                 </label>
             @endforeach
+
+            <section class="block my-8">
+                <header class="font-semibold mb-2">
+                    Visibility 
+                </header> 
+
+                <div class="flex items-center my-3">
+                    <input id="visibility_public" name="visibility" value="1"
+                        type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" />
+                    <label for="visibility_public" class="ml-3">
+                        <span class="block text-sm leading-5 font-medium text-gray-700">Public and Searchable</span>
+                    </label>
+                </div>
+
+                <div class="flex items-center my-3">
+                    <input id="visibility_private" name="visibility" value="0" checked
+                        type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" />
+                    <label for="visibility_private" class="ml-3">
+                        <span class="block text-sm leading-5 font-medium text-gray-700">Private</span>
+                    </label>
+                </div>
+            </section>
         </main>
             
         <button class="btn btn-blue">
