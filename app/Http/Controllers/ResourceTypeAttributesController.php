@@ -91,11 +91,16 @@ class ResourceTypeAttributesController extends Controller
             'options' => 'nullable | array'
         ]);
         
-        $resourceAttribute->update([
+        $params = [
             'key' => $request->name,
             'type' => $request->type,
-            'visibility' => $request->visibility
-        ]);
+        ];
+
+        if ($request->has('visibility')) {
+            $params['visibility'] = $request->visibility;
+        }
+
+        $resourceAttribute->update($params);
 
         if ($request->options) {
             $optionsCollection = collect($request->options)->unique();
