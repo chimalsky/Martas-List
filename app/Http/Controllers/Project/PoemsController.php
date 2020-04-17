@@ -15,7 +15,8 @@ class PoemsController extends Controller
         $poemId = 3;
 
         $poems = Resource::with(['meta', 'media'])
-            ->where('resource_type_id', $poemId);
+            ->where('resource_type_id', $poemId)
+            ->limit(10);
 
         $poemDefinition = ResourceType::find($poemId);
         
@@ -45,8 +46,11 @@ class PoemsController extends Controller
 
         $poems = $poems->get();
 
+        $birds = Resource::where('resource_type_id', 2)
+            ->orderBy('name')->get();
+
         return view('project.poems.index', 
-            compact('poemDefinition', 'poems', 'queries')
+            compact('poemDefinition', 'poems', 'birds', 'queries')
         );
     }
 

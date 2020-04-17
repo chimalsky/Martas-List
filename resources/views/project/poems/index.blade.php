@@ -8,6 +8,76 @@
 @section ('content')
 <section class="flex flex-wrap justify-center">
     <aside class="w-full md:w-48 lg:w-64 pr-6">
+        <div x-data="{open:false}" class="my-4 pl-2 static">
+            <button @click="open = !open" class="bg-orange-700 text-white p-1 px-2">
+                Curate
+            </button>
+
+            <section 
+                    x-show="open"
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0 transform scale-90"
+                    x-transition:enter-end="opacity-100 transform scale-100"
+                    x-transition:leave="transition ease-in duration-300"
+                    x-transition:leave-start="opacity-100 transform scale-100"
+                    x-transition:leave-end="opacity-0 transform scale-90"
+                    class="mt-4 z-50 p-4 text-lg absolute w-4xl">
+                    <header class="bg-gray-300 p-3 italic">
+                        Order By--
+                    </header>
+                    <div class="bg-yellow-100 p-4 flex flex-wrap">
+                        @foreach($poemDefinition->attributes->where('visibility', 1) as $attribute)
+                            <label class="mb-4">
+                                <input type="radio" name="order" class="w-1/3 p-2" /> 
+                                <span>{{ $attribute->key }}</span>
+                            </label>
+                        @endforeach
+                    </div>
+                    <header class="bg-gray-300 p-3 italic">
+                        Curate By-- 
+                    </header>
+                    <main class="flex flex-wrap">
+                        <div class="bg-yellow-100 p-4 w-1/2">
+                            @foreach($poemDefinition->attributes->where('visibility', 1)->where('options') as $attribute)
+                                <h1 class="font-semibold text-xl">
+                                    {{ $attribute->key }}
+                                </h1>
+
+                                <div class="flex flex-wrap pl-8 pt-2">
+                                    @foreach ($attribute->options as $attributeOption)
+                                        <label
+                                            class="mb-2 font-thin w-1/4 cursor-pointer hover:underline">
+                                            <input type="checkbox" 
+                                                name="attributeOption[{{ $attribute->id }}][{{ $attributeOption }}]" 
+                                                
+                                                />
+                                            {{ $attributeOption }}
+                                        </label>
+                                    @endforeach
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="bg-green-100 p-4 w-1/2">
+                            <h1 class="font-semibold text-xl mb-2">
+                                Dickinson's Birds List
+                            </h1>
+
+                            <section class="flex flex-wrap">
+                                @foreach ($birds as $bird)
+                                    <div class="border border-indigo-600 p-2 w-1/4">
+                                        {{ $bird->name }} 
+                                    </div>
+                                @endforeach
+                            </section>
+
+                            <h1 class="font-semibold text-xl mt-4">
+                                Refers To
+                            </h1>
+                        </div>
+                    </main>
+            </section>
+        </div>
+
         <form action="@route('project.poems.index')" method="GET">
             <select name="query_key"
                 class="mb-3 pl-2 w-full">
