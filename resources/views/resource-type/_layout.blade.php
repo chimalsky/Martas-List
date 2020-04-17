@@ -47,6 +47,13 @@
                 Settings
             </a>
 
+            <a href="{{ route('resource-type.spreadsheetImport.show', $resourceType) }}"
+                class="p-2 mr-2 border-t-4
+                {{ (request()->is('resource-type/*/spreadsheet-import')) ? 'border-indigo-400 font-semibold' : 'border-transparent' }}
+                ">
+                Spreadsheet Import
+            </a>
+
             <a href="{{ route('resource-type.activities.index', $resourceType) }}"
                 class="p-2 mr-2 border-t-4
                 {{ (request()->is('resource-type/*/activities')) ? 'border-indigo-400 font-semibold' : 'border-transparent' }}

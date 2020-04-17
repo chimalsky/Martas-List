@@ -85,6 +85,11 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/resource-type/{resource_type}/activities', 'ResourceTypeActivitiesController@index')
         ->name('resource-type.activities.index');
 
+    Route::get('/resource-type/{resource_type}/spreadsheet-import', 'ResourceSpreadsheetImportController@show')
+        ->name('resource-type.spreadsheetImport.show');
+    Route::post('/resource-type/{resource_type}/spreadsheet-import', 'ResourceSpreadsheetImportController@store')
+        ->name('resource-type.spreadsheetImport.store');
+
     Route::resource('resource.connections', 'ResourceConnectionsController');
     Route::resource('resource.metas', 'ResourceMetasController');
     Route::resource('resource.media', 'ResourceMediaController');

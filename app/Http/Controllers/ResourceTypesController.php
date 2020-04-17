@@ -42,8 +42,10 @@ class ResourceTypesController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required',
-            'description' => 'nullable'
+            'description' => 'nullable',
         ]);
+
+        $validated['project_id'] = 0;
 
         $resourceType = ResourceType::create($validated);
         
