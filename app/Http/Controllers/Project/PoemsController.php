@@ -15,8 +15,7 @@ class PoemsController extends Controller
         $poemId = 3;
 
         $poems = Resource::with(['meta', 'media'])
-            ->where('resource_type_id', $poemId)
-            ->limit(10);
+            ->where('resource_type_id', $poemId);
 
         $poemDefinition = ResourceType::find($poemId);
         
