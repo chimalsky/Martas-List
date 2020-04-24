@@ -21,21 +21,5 @@
     </main>
 </section>
 
-   
-<script>
-    let toggle = document.querySelector('#menu-toggle')
-
-    demoToggle(800)
-    demoToggle(1400)
-    demoToggle(2000)
-    demoToggle(2800)
-
-    
-    function demoToggle(delay) {
-        setTimeout(function() {
-            toggle.click()
-        }, delay)
-    }
-</script>
 
 @endsection

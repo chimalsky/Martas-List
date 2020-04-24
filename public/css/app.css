@@ -1711,6 +1711,11 @@ video {
   background-color: #2a4365;
 }
 
+input[type="radio"] {
+  background-color: #48bb78;
+  padding: 1rem;
+}
+
 .sr-only{
   position: absolute !important;
   width: 1px !important;

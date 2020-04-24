@@ -9,76 +9,49 @@
 <section class="flex flex-wrap justify-center">
     <aside class="w-full md:w-48 lg:w-64 pr-6">
         <div x-data="{open:false}" class="my-4 pl-2 static">
-            <button @click="open = !open" class="bg-orange-700 text-white p-1 px-2">
-                Curate
+            <button @click="open = !open" class="bg-orange-300 text-gray-900 p-2 px-4 italic text-2xl">
+                curate poems
             </button>
 
-            <section 
-                    x-show="open"
-                    x-transition:enter="transition ease-out duration-300"
-                    x-transition:enter-start="opacity-0 transform scale-90"
-                    x-transition:enter-end="opacity-100 transform scale-100"
-                    x-transition:leave="transition ease-in duration-300"
-                    x-transition:leave-start="opacity-100 transform scale-100"
-                    x-transition:leave-end="opacity-0 transform scale-90"
-                    class="mt-4 z-50 p-4 text-lg absolute w-4xl">
-                    <header class="bg-gray-300 p-3 italic">
-                        Order By--
-                    </header>
-                    <div class="bg-yellow-100 p-4 flex flex-wrap">
-                        @foreach($poemDefinition->attributes->where('visibility', 1) as $attribute)
-                            <label class="mb-4">
-                                <input type="radio" name="order" class="w-1/3 p-2" /> 
-                                <span>{{ $attribute->key }}</span>
-                            </label>
-                        @endforeach
-                    </div>
-                    <header class="bg-gray-300 p-3 italic">
-                        Curate By-- 
-                    </header>
-                    <main class="flex flex-wrap">
-                        <div class="bg-yellow-100 p-4 w-1/2">
-                            @foreach($poemDefinition->attributes->where('visibility', 1)->where('options') as $attribute)
-                                <h1 class="font-semibold text-xl">
-                                    {{ $attribute->key }}
-                                </h1>
+            @include('project.poems._filter')
+        </div>
+        @if ($filteredAttributes->count())
+            @php 
+                function getColorClass($index) {
+                    $colorClass = [
+                        'bg-green-200 text-green-700',
+                        'bg-red-200 text-red-700',
+                        'bg-orange-200 text-orange-700',
+                        'bg-gray-200 text-gray-700'
+                    ];
 
-                                <div class="flex flex-wrap pl-8 pt-2">
-                                    @foreach ($attribute->options as $attributeOption)
-                                        <label
-                                            class="mb-2 font-thin w-1/4 cursor-pointer hover:underline">
-                                            <input type="checkbox" 
-                                                name="attributeOption[{{ $attribute->id }}][{{ $attributeOption }}]" 
-                                                
-                                                />
-                                            {{ $attributeOption }}
-                                        </label>
-                                    @endforeach
-                                </div>
+                    if ($index > (count($colorClass) - 1)) {
+                        $index = $index % 4;
+                    }
+
+                    return $colorClass[$index];
+                }
+            @endphp 
+
+            <section class="mt-4 px-2">
+                @foreach ($filteredAttributes as $attribute)
+                    <article x-data="{}" class="mb-4">
+                        <div class="block flex flex-wrap">
+                            <span class="italic">
+                                {{ $attribute->key }} 
+                            </span>
+                            @foreach ($filteredAttributeOptions[$attribute->id] as $optionKey => $optionValue)
+                                <span class="p-2 flex-1 {{ getColorClass($loop->index)  }}">
+                                    {{ $optionKey }} 
+                                </span>
                             @endforeach
                         </div>
-                        <div class="bg-green-100 p-4 w-1/2">
-                            <h1 class="font-semibold text-xl mb-2">
-                                Dickinson's Birds List
-                            </h1>
-
-                            <section class="flex flex-wrap">
-                                @foreach ($birds as $bird)
-                                    <div class="border border-indigo-600 p-2 w-1/4">
-                                        {{ $bird->name }} 
-                                    </div>
-                                @endforeach
-                            </section>
-
-                            <h1 class="font-semibold text-xl mt-4">
-                                Refers To
-                            </h1>
-                        </div>
-                    </main>
+                    </article>
+                @endforeach
             </section>
-        </div>
+        @endif
 
-        <form action="@route('project.poems.index')" method="GET">
+        <form class="hidden" action="@route('project.poems.index')" method="GET">
             <select name="query_key"
                 class="mb-3 pl-2 w-full">
                 @foreach ($poemDefinition->attributes as $attribute)
@@ -98,26 +71,6 @@
                     </svg>
                 </button>
             </div>
-
-            @if ($queries->count())
-            <section class="mt-4 px-2">
-                @foreach ($queries as $query)
-                    <article x-data="{}">
-                        <input type="hidden" name="query_values[]" 
-                            value="{{ $query->query }}" />
-                        <input type="hidden" name="query_keys[]" 
-                            value="{{ $query->attribute->id }}" />
-
-                        <div class="block">
-                            {{ $query->attribute->name }} :
-                            <span class="p-2 bg-red-200">
-                                {{ $query->query }}
-                            </span>
-                        </div>
-                    </article>
-                @endforeach
-            </section>
-            @endif
         </form>
     </aside>
 
@@ -131,14 +84,22 @@
                 </h1>
             @endif
         </header> 
+        @if ($poems->count())
 
-        <section class="flex flex-wrap">
-            @foreach ($poems as $poem)
-                <article class="pb-32 px-4 cursor-pointer w-1/3">
-                    @include('project.poems._single', $poem)
-                </article> 
+            @foreach ($poems as $key => $group)
+                <h1 class="text-3xl font-bold text-gray-500 block mb-8 text-center sticky top-0 bg-white">
+                    {{ $key }} 
+                </h1>
+
+                <section class="flex flex-wrap">
+                    @foreach($group as $poem) 
+                        <article class="pb-32 px-4 cursor-pointer w-1/3">
+                            @include('project.poems._single', $poem)
+                        </article> 
+                    @endforeach
+                </section>
             @endforeach
-        </section>
+        @endif
     </main>
 </section>
 
