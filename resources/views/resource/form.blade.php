@@ -18,7 +18,7 @@
         @endif
     @endif
 
-    <span class="text-gray-700">
+    <span class="">
         What should we name this {{ $resource->definition->nameSingular ?? $resourceType->nameSingular }}?
     </span>
 

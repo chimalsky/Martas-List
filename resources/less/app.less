@@ -18,13 +18,22 @@
     @apply hidden;
 }
 
+.form-input {
+    @apply bg-transparent;
+}
+
+.form-dropdown {
+    @apply bg-gray-800;
+    @apply border-4;
+    @apply border-dashed;
+}
 
 
 .btn-red {
-    @apply bg-red-500 text-white;
+    @apply bg-red-700 text-white;
 }
 .btn-red:hover {
-    @apply bg-red-700;
+    @apply bg-red-600;
 }
 
 
@@ -39,7 +48,7 @@
 
 
 .btn-hollow {
-    @apply bg-transparent border-2 border-gray-800 text-gray-800;
+    @apply bg-transparent border-2 border-gray-200 text-gray-200;
 }
 .btn-hollow:hover {
     @apply bg-gray-800 text-gray-100;
@@ -242,11 +251,6 @@
     }
 }
 
-
-input[type="radio"] {
-    @apply bg-green-500;
-    @apply p-4;
- }
 
 @tailwind utilities;
 

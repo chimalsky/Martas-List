@@ -11,32 +11,25 @@
         <link href="{{ mix('css/app.css') }}" rel="stylesheet">
         @stack('stylesheets')
 
-        @livewireAssets
-        
+        @livewireStyles   
+
         <script src="{{ mix('js/app.js') }}" defer="true"></script>
         @stack('scripts')
     </head>
-    <body data-controller="application">
-        <h1 class="hidden lg:block p-4 text-base text-gray-600 text-right"> 
-            <span class="hidden">
-                {{ Artisan::call('inspire') }} 
-            </span>
-            {{ Artisan::output() }}
-        </h1>
-
+    <body data-controller="application" class="bg-gray-800   text-gray-200 py-4">
         <section class="px-2">
             @yield('header')
         </section>
 
         <main class="web container mx-auto mb-24 px-2">
             @if (session('status'))
-                <div class="bg-green-200 p-8 text-center">
+                <div class="bg-green-200 text-black p-8 text-center">
                     {{ session('status') }}
                 </div>
             @endif
 
             @if ($errors->any())
-                <div class="bg-red-200 p-2 my-2">
+                <div class="bg-red-200 text-black p-2 my-2">
                     <h1 class="font-bold">
                         Uh oh!
                     </h1>
@@ -63,4 +56,6 @@
             </section>
         </footer>
     </body>
+
+    @livewireScripts
 </html>

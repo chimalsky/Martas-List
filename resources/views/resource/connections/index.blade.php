@@ -5,20 +5,20 @@
 <form action="{{ route('resource.connections.store', $resource) }}" method="post"
     data-controller="resource-types" 
     data-resource-types-search-url="{{ route('resources.index') }}" 
-    class="mt-8 bg-red-200 p-4 mb-4">
+    class="mt-8 p-4 mb-4">
     @csrf
 
     <h1 class="m-2 font-semibold">
         Forge connections between {{ $resource->name }} and other resources
     </h1>
 
-    <select name="resource_type_id" data-action="resource-types#select">
+    <select name="resource_type_id" class="form-input" data-action="resource-types#select">
         <option>
             Pick a resource type 
         </option> 
 
         @foreach (App\ResourceType::all() as $type)
-            <option value="{{ $type->id }}">
+            <option value="{{ $type->id }}" class="text-black">
                 {{ $type->name }}
             </option>
         @endforeach

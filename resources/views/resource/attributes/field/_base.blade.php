@@ -1,5 +1,5 @@
 <div x-data="{ open: false, openCitation: false }"
-    class="block mb-4 pb-2 flex align-top">
+    class="block pb-10 flex align-top">
     <section class="flex-auto" data-controller="resource-meta">
 
         @if ($meta->type == 'default' || !$meta->type)
@@ -24,7 +24,7 @@
         @endif
 
         @if ($meta->citations()->exists())
-            <div class="block ml-4">
+            <div class="block ml-4 font-mono">
                 -- {{ $meta->citations->first()->citation }} 
             </div>
         @endif
@@ -36,7 +36,7 @@
             ---
         </button>
 
-        <section x-show="open" @click.away="open = false" class="absolute right-0 p-4 bg-indigo-100 border-b border-r border-l border-indigo-300 z-50">
+        <section x-show="open" @click.away="open = false" class="absolute right-0 p-4 bg-gray-300 text-gray-900 z-50">
             <main class="mb-6">
                 @unless ($meta->citations()->exists())
                     <button type="button" class="border-2 border-gray-500 p-2 relative"
@@ -50,7 +50,7 @@
                     {{ html()->text("attributeCitation[id-" . $meta->id . "]", $meta->citation->citation ?? null)
                         ->placeholder('citation')
                         ->class(['citation', 'form-input', 'font-mono', 'border', 'border-black', 'mt-1', 'mb-4',
-                            'bg-indigo-100', 'block', 'font-medium']) }}
+                            'block', 'font-medium']) }}
 
                     <button class="btn btn-blue">
                         Save Citation 

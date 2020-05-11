@@ -58,8 +58,7 @@
             </button>
         {{ html()->form()->close() }}
 
-    </div>
-
+    </div>        
 
     @foreach ($attributeValues as $value)
         <a href="@route('resources.edit', $value->resource)#{{ $attribute->id }}"
@@ -76,6 +75,7 @@
 </main>
 
 <footer class="flex justify-end mt-8">
+
     {{ html()->form('DELETE', route('resource-type.attribute.options.destroy', [
         $resourceType, 
         $attribute

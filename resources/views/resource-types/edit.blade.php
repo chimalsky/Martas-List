@@ -14,7 +14,7 @@
     {{ html()->closeModelForm() }}
 </section>
 
-<section class="p-4 my-4 bg-indigo-200">
+<section class="p-4 my-4">
     <h1 class="font-semibold">
         Connections to other resources
     </h1>

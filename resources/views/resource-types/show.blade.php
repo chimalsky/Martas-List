@@ -29,7 +29,7 @@
                         x-transition:leave="transition ease-in duration-300"
                         x-transition:leave-start="opacity-100 transform scale-100"
                         x-transition:leave-end="opacity-0 transform scale-90"
-                        class="mt-4 bg-gray-200 p-4 text-lg">
+                        class="mt-4 p-4 text-lg">
                         @foreach ($resourceType->attributes as $attribute)
                             <div class="block mb-2"
                                 x-data="{filterToggle: false}" x-init="filterToggle = $refs.attribute.checked">
@@ -118,16 +118,16 @@
                     </thead>
                     <tbody class="">
                         @foreach ($resources as $resource) 
-                            <tr class="w-full border-b border-gray-400 hover:bg-gray-300 hover:cursor-pointer
+                            <tr class="w-full
                                 align-top 
-                                @if ($loop->even) bg-gray-100 @endif
+                                @if ($loop->even) bg-gray-900 @endif
                             ">
                                 <td class="py-2 pl-2 pt-2">
-                                    <a href="{{ route('resources.edit', $resource) }}" class="text-blue-600 hover:underline">
+                                    <a href="{{ route('resources.edit', $resource) }}" class="underline text-xl">
                                         {{ $resource->name }}
                                     </a>
                                     
-                                    <div>
+                                    <div class="mt-4">
                                         @foreach ($resource->getMedia() as $medium)
                                             @if (Str::contains($medium->mime_type, 'image'))
                                                 <img class="w-16 inline-block" src="{{ $medium->getUrl('thumb') }}" />

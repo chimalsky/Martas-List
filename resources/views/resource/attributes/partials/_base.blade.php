@@ -1,26 +1,30 @@
-<div id="{{ $attribute->id }}" class="p-2 w-full md:w-1/2">
-    <main class="p-2 bg-gray-200">
-        <div class="block p-3 {{ $attribute->key }}">
-            <span class="block text-xl mb-2">
+<div id="{{ $attribute->id }}" class="p-2 w-full md:w-1/2 mb-16">
+    <main class="p-2">
+        <div class="block {{ $attribute->key }}">
+            <span class="block text-2xl font-hairline mb-2">
                 {{ $attribute->name }}
             </span>
             
-            @foreach ($resource->metaByAttribute($attribute) as $meta)
-                @include('resource.attributes.field._base', ['meta' => $meta])
-            @endforeach
+            <section class="pl-6 pr-4">
+                @foreach ($resource->metaByAttribute($attribute) as $meta)
+                    @include('resource.attributes.field._base', ['meta' => $meta])
+                @endforeach
+            </section>
         </div>
     </main>
     
-    <footer class="p-2 bg-indigo-200" data-controller="resource-meta">
+    <footer class="p-2" data-controller="resource-meta">
 
         @routeIs('resources.edit')
-            <button class="mb-3" data-action="resource-meta#addNewAttribute">
-                @if ($resource->metaByAttribute($attribute)->count())
-                    Add additional attribute
-                @else 
-                    Add info 
-                @endif
-            </button>
+            <div class="flex justify-center">
+                <button class="mb-3 text-xs underline" data-action="resource-meta#addNewAttribute">
+                    @if ($resource->metaByAttribute($attribute)->count())
+                        Add another {{ $attribute->name }}
+                    @else 
+                        Add {{ $attribute->name }} 
+                    @endif
+                </button>
+            </div>
         @endrouteIs
 
         <section data-target="resource-meta.newAttribute" 

@@ -3,7 +3,7 @@
 {{ html()->hidden('resource_type_id', $resource->definition->id) }}
 
 <label class="w-full px-2">
-    <span class="text-gray-700">
+    <span class="">
         What should we name this {{ $resource->definition->nameSingular }}?
     </span>
 

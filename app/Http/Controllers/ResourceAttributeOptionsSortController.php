@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\ResourceAttribute;
+use Illuminate\Http\Request;
+
+class ResourceAttributeOptionsSortController extends Controller
+{
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function __invoke(Request $request, ResourceAttribute $attribute)
+    {
+        $request->validate([
+            'options' => 'required | array',
+            'optionBlocks' => 'array'
+        ]);
+
+        $currentOptions = collect($resourceAttribute->options);
+
+        dd($request->options);
+
+        $attribute->update([
+            'options' => $request->options
+        ]);
+
+        $resourceType = $attribute->resourceType;
+
+        return redirect()->route('resource-type.attributes.edit', [$resourceType, $attribute])
+            ->with('status', "The order of options has been changed!");    
+    }
+}

@@ -13,6 +13,7 @@ import 'flatpickr/dist/flatpickr.min.css'
 
 import '@github/time-elements'
 import { Sortable } from '@shopify/draggable'
+import { Droppable } from '@shopify/draggable'
 
 import Alpine from 'alpinejs'
 
@@ -50,6 +51,14 @@ function bootstrap() {
         draggable: 'article'
     });
 
+    // Droppable   
+    const droppable = new Droppable(document.querySelectorAll('.droppable'), {
+        draggable: 'article',
+        dropzone: '.dropzone'
+    });
+
+    droppable.on('droppable:dropped', () => console.log('droppable:dropped'));
+    droppable.on('droppable:returned', () => console.log('droppable:returned'));
 
         
     window.xenoPower = function() {

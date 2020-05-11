@@ -5,7 +5,7 @@
 <section class="flex flex-wrap mb-8 max-w-6xl">
     {{ html()->modelForm($resource, 'PUT', route('resources.update', $resource))->open() }}
 
-        @livewire('resource-form', $resource)
+        @livewire('resource-form', ['resource' => $resource])
 
         <footer class="py-4">
             <button class="btn bg-indigo-500 shadow-2xl text-white fixed text-2xl bottom-0 mb-8">
@@ -15,8 +15,8 @@
     {{ html()->closeModelForm() }}
 </section>
 
-<section class="flex flex-wrap my-8 ">
-    <div class="w-full bg-red-200 p-4">
+<section class="flex flex-wrap my-8 border-4 border-dashed border-gray-300">
+    <div class="w-full p-4">
         {{ html()->form('POST', route('resource.media.store', $resource))
             ->acceptsFiles()
             ->open() }}
@@ -97,7 +97,7 @@
 <section class="my-12">
 
     <section class="flex flex-wrap">
-        <section class="w-full max-w-4xl">
+        <section class="w-full max-w-3xl">
             @foreach (\App\ResourceType::find($resource->definition->connections->pluck('key')) as $resourceType)
                 <header class="m-2 mt-32 w-full flex justify-between">
                     <h1 class="text-xl">
@@ -126,9 +126,9 @@
                         @foreach ($resource->connections as $connection) 
                             @if (isset($connection->resource) && $connection->resource->definition->is($resourceType))
 
-                                <tr class="w-full border-b border-gray-400 hover:bg-gray-200 hover:cursor-pointer">
+                                <tr class="hover:cursor-pointer">
                                     <td class="py-2 pl-2">
-                                        <a href="{{ route('resources.edit', $connection->resource) }}" class="text-blue-600">
+                                        <a href="{{ route('resources.edit', $connection->resource) }}" class="text-2xl underline">
                                             {{ $connection->resource->name }}
                                         </a>
                                     </td>

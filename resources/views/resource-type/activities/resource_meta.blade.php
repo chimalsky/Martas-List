@@ -37,9 +37,9 @@
         <td>
             <p class=" px-2
                 @if ($activity->description == 'created') 
-                    bg-green-300 
+                    text-green-300 
                 @elseif ($activity->description == 'updated')
-                    bg-yellow-300 
+                    text-yellow-300 
                 @endif
             ">
                 {{ $activity->description }}

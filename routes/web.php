@@ -37,10 +37,10 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('xeno-power', 'XenoController');
 
-    Route::resource('encodings', 'EncodingsController');
+    /*Route::resource('encodings', 'EncodingsController');
 
     Route::resource('encoding.metas', 'EncodingMetasController');
-    Route::resource('encoding.resources', 'EncodingResourcesController');
+    Route::resource('encoding.resources', 'EncodingResourcesController');*/
 
     //Route::get('/projects', 'ProjectController@index')->name('project.index');
     
@@ -69,6 +69,10 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('resource-type/{resource_type}/attribute/{attribute}/options/sort', 
         'ResourceTypeAttributeOptionsController@sort')
         ->name('resource-type.attribute.options.sort');
+    
+    Route::post('/resource-type/{attribute}/options/sort', 
+        'ResourceAttributeOptionsSortController')
+        ->name('attribute.options.sort');
 
     Route::get('/resource-type/{resource_type}/resources/create', 'ResourceTypeResourcesController@create')
         ->name('resource-type.resources.create');
@@ -90,6 +94,12 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/resource-type/{resource_type}/spreadsheet-import', 'ResourceSpreadsheetImportController@store')
         ->name('resource-type.spreadsheetImport.store');
 
+    /**
+     *  Attribute Options
+     */
+    Route::post('/attribute/{attribute}/options/block', 'AttributeOptionsBlockStore')
+        ->name('attribute.options.block.store');
+        
     Route::resource('resource.connections', 'ResourceConnectionsController');
     Route::resource('resource.metas', 'ResourceMetasController');
     Route::resource('resource.media', 'ResourceMediaController');

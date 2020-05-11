@@ -1,13 +1,13 @@
 
 
-<label class="w-full px-2">
-    <span class="text-gray-700">Archive Name</span>
+<label class="w-full">
+    <span class="">Archive Name</span>
 
-    {{ html()->text('name')->class(['form-input', 'mt-1', 'block', 'w-full']) }}
+    {{ html()->text('name')->class(['form-input', 'mt-1', 'mb-8', 'block', 'w-full']) }}
 </label>
 
-<section class="px-2 my-4">
-    <h1 class="font-semibold">
+<section class="bg-gray-200 text-gray-700">
+    <h1 class="font-semibold px-2">
         Description of this Archive 
     </h1>
 

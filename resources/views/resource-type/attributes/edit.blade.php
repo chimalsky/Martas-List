@@ -35,7 +35,7 @@
 <header class="max-w-lg">
     {{ html()->form('PUT', route('resource-type.attributes.update', [$resourceType, $attribute]))->open() }}
         <label class="block my-2">
-            <span class="text-gray-700 mb-2 w-full">Name</span>
+            <span class="mb-2 w-full">Name</span>
             
             {{ html()->text("name", $attribute->name)->class(['form-input', 'mt-1', 'w-full', 'mb-2']) }}
         </label>
@@ -46,7 +46,7 @@
             </span>
 
             {{ html()->select("type", $resourceType->availableTypes, $attribute->type)
-                ->class(['attribute', 'form-dropdown', 'mt-1', 'block', 'w-full', 'font-medium']) }}
+                ->class(['attribute', 'form-dropdown', 'form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
         </label>
 
         <section class="block my-8">
@@ -59,7 +59,7 @@
                     @if ($attribute->visibility) checked @endif
                     type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" />
                 <label for="visibility_public" class="ml-3">
-                    <span class="block text-sm leading-5 font-medium text-gray-700">Public and Searchable</span>
+                    <span class="block text-sm leading-5 font-medium">Public and Searchable</span>
                 </label>
             </div>
 
@@ -68,7 +68,7 @@
                     @unless ($attribute->visibility) checked @endunless
                     type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" />
                 <label for="visibility_private" class="ml-3">
-                    <span class="block text-sm leading-5 font-medium text-gray-700">Private</span>
+                    <span class="block text-sm leading-5 font-mediumeeq">Private</span>
                 </label>
             </div>
         </section>
@@ -101,18 +101,36 @@
             {{ html()->hidden("type", $attribute->type) }}
 
             <section class="block mt-8 mb-8" data-target="resource-attribute.options">
-
                 @if ($attribute->options)
                     @foreach ($attribute->options as $option) 
-                        {{ html()->hidden('options[]', $option)->class('form-input w-full mb-4') }}
-                        <a class="block text-xl mb-1 cursor-pointer hover:bg-gray-200 py-1"
-                            href="@route('resource-type.attribute.options.edit', [
-                                'resource_type' => $resourceType,
-                                'attribute' => $attribute,
-                                'option' => $option
-                            ])">
-                            {{ $option }}
-                        </a>
+                        @if (is_array($option))
+                            <h1 class="font-bold text-2xl">
+                                {{ $option['_name'] }}
+                            </h1>
+
+                            @foreach ($option['_items'] as $item)
+                                {{ html()->hidden("optionBlocks[{$option['_name']}]", $item)->class('form-input w-full mb-4') }}
+                                <a class="block text-xl mb-1 cursor-pointer 200 py-1 underline"
+                                    href="@route('resource-type.attribute.options.edit', [
+                                        'resource_type' => $resourceType,
+                                        'attribute' => $attribute,
+                                        'option' => $option
+                                    ])">
+                                    {{ $option }}
+                                </a>
+                            @endforeach
+                        @else
+                            {{ html()->hidden('options[]', $option)->class('form-input w-full mb-4') }}
+                            <a class="block text-xl mb-1 cursor-pointer 200 py-1 underline"
+                                href="@route('resource-type.attribute.options.edit', [
+                                    'resource_type' => $resourceType,
+                                    'attribute' => $attribute,
+                                    'option' => $option
+                                ])">
+                                {{ $option }}
+                            </a>
+                        @endif
+
                     @endforeach
                 @else 
                     No Options for this dropdown yet
@@ -138,6 +156,34 @@
                 </button>
             </footer>
         {{ html()->closeModelForm() }}
+    </section>
+
+    <section class="block my-20">
+        <header class="text-2xl font-thin mb-2">
+            Option Blocks 
+        </header> 
+
+
+        <main class="mb-8">
+            @if ( collect($attribute->options)->count() == collect($attribute->options)->flatten()->count())
+                <p>No Blocks... All options are on the same hierarchical level</p>
+            @else 
+                <header>
+                    Blocks 
+                </header>
+            @endif
+        </main>
+
+        {{ html()->form('post', route('attribute.options.block.store', $attribute))->open() }}
+            <input class="form-input" type="text" name="block" />
+
+            <section class="block mt-8">
+                <button class="btn btn-blue">
+                    Add option block 
+                </button>
+            </section>
+        {{ html()->form()->close() }}
+
     </section>
 @endif
 

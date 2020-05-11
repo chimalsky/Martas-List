@@ -7,7 +7,7 @@
     x-data="{ open: false }">
     @foreach($resourceType->attributes as $attribute)
         <a href="{{ route('resource-type.attributes.edit', [$resourceType, $attribute]) }}"
-            class="block mb-1 p-1 pl-2 flex justify-between hover:bg-gray-200
+            class="block mb-1 py-2 pl-3 flex justify-between
                 @if($attribute->visibility) font-bold @endif">
             {{ $attribute->name }}
 
@@ -25,15 +25,15 @@
     @include('resource-type.attributes._order-modal')
 </section>
 
-<section class="p-4 mt-24 bg-gray-300">
-    <h1> 
+<section class="p-4 mt-24">
+    <h1 class="text-xl font-thin"> 
         Add a new Attribute 
     </h1>
 
     {{ html()->form('POST', route('resource-type.attributes.store', $resourceType))->open() }}
         <main class="block mb-8">
             <label class="block mb-4 p-2">
-                <span class="text-gray-700 mb-2 block">
+                <span class="mb-2 block">
                     Name
                 </span>
 
@@ -55,17 +55,17 @@
 
                 <div class="flex items-center my-3">
                     <input id="visibility_public" name="visibility" value="1"
-                        type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" />
+                        type="radio" class="form-radio h-4 w-4 transition duration-150 ease-in-out" />
                     <label for="visibility_public" class="ml-3">
-                        <span class="block text-sm leading-5 font-medium text-gray-700">Public and Searchable</span>
+                        <span class="block text-sm leading-5 font-medium ">Public and Searchable</span>
                     </label>
                 </div>
 
                 <div class="flex items-center my-3">
                     <input id="visibility_private" name="visibility" value="0" checked
-                        type="radio" class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" />
+                        type="radio" class="form-radio h-4 w-4 transition duration-150 ease-in-out" />
                     <label for="visibility_private" class="ml-3">
-                        <span class="block text-sm leading-5 font-medium text-gray-700">Private</span>
+                        <span class="block text-sm leading-5 font-medium ">Private</span>
                     </label>
                 </div>
             </section>

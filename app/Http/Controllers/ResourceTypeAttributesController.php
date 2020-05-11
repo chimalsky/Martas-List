@@ -72,6 +72,14 @@ class ResourceTypeAttributesController extends Controller
     public function edit(ResourceType $resourceType, ResourceAttribute $resourceAttribute)
     {
         $attribute = $resourceAttribute;
+        /*$m = collect($attribute->options)->filter(function($obj) {
+            return !is_array($obj);
+        });
+        $attribute->update([
+            'options' => $m->toArray()
+        ]);
+*/
+        //dd($attribute->options);
         return view('resource-type.attributes.edit', compact('resourceType', 'attribute'));
     }
 
@@ -88,7 +96,8 @@ class ResourceTypeAttributesController extends Controller
             'name' => 'required',
             'type' => 'required',
             'visibility' => 'nullable',
-            'options' => 'nullable | array'
+            'options' => 'nullable | array',
+            'optionBlocks' => 'nullable | array'
         ]);
         
         $params = [

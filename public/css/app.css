@@ -1506,13 +1506,23 @@ video {
   display: none;
 }
 
+.form-input {
+  background-color: transparent;
+}
+
+.form-dropdown {
+  background-color: #2d3748;
+  border-width: 4px;
+  border-style: dashed;
+}
+
 .btn-red {
-  background-color: #f56565;
+  background-color: #c53030;
   color: #fff;
 }
 
 .btn-red:hover {
-  background-color: #c53030;
+  background-color: #e53e3e;
 }
 
 .btn-gray {
@@ -1527,8 +1537,8 @@ video {
 .btn-hollow {
   background-color: transparent;
   border-width: 2px;
-  border-color: #2d3748;
-  color: #2d3748;
+  border-color: #edf2f7;
+  color: #edf2f7;
 }
 
 .btn-hollow:hover {
@@ -1709,11 +1719,6 @@ video {
 
 .month-december .timeline a.dot.active {
   background-color: #2a4365;
-}
-
-input[type="radio"] {
-  background-color: #48bb78;
-  padding: 1rem;
 }
 
 .sr-only{

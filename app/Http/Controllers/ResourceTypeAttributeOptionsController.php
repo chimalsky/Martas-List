@@ -44,6 +44,8 @@ class ResourceTypeAttributeOptionsController extends Controller
         $option = $request->option;
         $newOption = $request->new_option;
 
+        dd($newOption);
+
         $attributeValues = ResourceMeta::where('resource_attribute_id', $attribute->id)
             ->where('value', $option);
 
@@ -98,7 +100,8 @@ class ResourceTypeAttributeOptionsController extends Controller
     public function sort(Request $request, ResourceType $resourceType, ResourceAttribute $attribute)
     {
         $request->validate([
-            'options' => 'required | array'
+            'options' => 'required | array',
+            'options.*' => 'array'
         ]);
 
         $attribute->update([

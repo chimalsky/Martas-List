@@ -8,11 +8,11 @@
 
 <nav class="inline-block mb-8">
     <a href="{{ route('resource-type.activities.index', ['resource_type' => $resourceType, 'type' => 'resource_meta']) }}"
-        class="border mx-2 p-4 border-gray-500 @if ($type == 'resource_meta') font-bold bg-gray-300 @endif">
+        class="border mx-2 p-4 border-gray-500 @if ($type == 'resource_meta') font-bold bg-green-300 text-gray-700 @endif">
         Meta
     </a>
     <a href="{{ route('resource-type.activities.index', ['resource_type' => $resourceType, 'type' => 'resource_media']) }}"
-        class="border mx-2 p-4 border-gray-500 @if ($type == 'resource_media') font-bold bg-gray-300 @endif">
+        class="border mx-2 p-4 border-gray-500 @if ($type == 'resource_media') font-bold bg-green-300 text-gray-700 @endif">
         Media
     </a>
 </nav>
