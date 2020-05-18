@@ -27,19 +27,19 @@ class ResourcesImport implements ToCollection, WithHeadingRow
                     ['key' => $key],
                     ['type' => 'default']
                 );
-        });        
-
+        });     
+        
         $attributes = $resourceType->attributes()
             ->whereIn('key', $keys)->get();
 
         foreach ($rows as $index => $row) 
         {
-            if (is_null($row['name_common'])) {
+            if (is_null($row['in_clark_1887'])) {
                 continue;
             }
 
             $resource = $resourceType->resources()->firstOrCreate([
-                'name' => $row['name_common']
+                'name' => $row['c_1887_name_common']
             ]);
 
             foreach ($row as $header => $column) {
