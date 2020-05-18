@@ -4,6 +4,7 @@ namespace App\Imports;
 
 use App\Resource;
 use App\ResourceType;
+use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -17,14 +18,16 @@ class ResourcesImport implements ToCollection, WithHeadingRow
         $resourceType = $this->resourceType; 
 
         $keys = collect($rows[0])->keys()->filter(function($key) { 
-            return !is_null($key); 
+            return !is_null($key) && $key;
         });
+
+        dd($keys);
 
         $keys->each(function($key) use ($resourceType) {
             $resourceType
                 ->attributes()
                 ->firstOrCreate(
-                    ['key' => $key],
+                    ['key' => Str::limit($key, 200)],
                     ['type' => 'default']
                 );
         });     
