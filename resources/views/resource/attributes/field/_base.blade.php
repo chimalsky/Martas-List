@@ -1,8 +1,6 @@
 <div x-data="{ open: false, openCitation: false }"
     class="block pb-10 flex align-top">
     <section class="flex-auto" data-controller="resource-meta">
-        weofij
-
         @if ($meta->type == 'default' || !$meta->type)
             {{ html()->text("attribute[id-" . $meta->id . "]", $meta->value ?? null)
                 ->class(['attribute', 'form-input', 'mt-1', 'block', 'w-full', 'font-medium']) }}
