@@ -16,7 +16,9 @@ class ResourcesImport implements ToCollection, WithHeadingRow
     {
         $resourceType = $this->resourceType; 
 
-        $keys = collect($rows[0])->keys()->filter(function($key) { return $key; });
+        $keys = collect($rows[0])->keys()->filter(function($key) { 
+            return !is_null($key); 
+        });
 
         $keys->each(function($key) use ($resourceType) {
             $resourceType
@@ -27,17 +29,33 @@ class ResourcesImport implements ToCollection, WithHeadingRow
                 );
         });        
 
-        $attributes = $resourceType->attributes;
+        $attributes = $resourceType->attributes()
+            ->whereIn('key', $keys)->get();
 
         foreach ($rows as $index => $row) 
         {
-            if (!$row['name_common']) {
+            if (is_null($row['name_common'])) {
                 continue;
             }
 
             $resource = $resourceType->resources()->firstOrCreate([
                 'name' => $row['name_common']
             ]);
+
+            foreach ($row as $header => $column) {
+                if (is_null($column)) {
+                    continue;
+                }
+                $resource->meta()->firstOrCreate(
+                    ['key' => $header],
+                    [
+                        'value' => $column,
+                        'resource_attribute_id' => $attributes->firstWhere('key', $header)->id
+                    ]
+                );
+            }
+
+            
         }
     }
 }
