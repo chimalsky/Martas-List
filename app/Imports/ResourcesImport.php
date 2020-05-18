@@ -21,13 +21,11 @@ class ResourcesImport implements ToCollection, WithHeadingRow
             return !is_null($key) && $key;
         });
 
-        dd($keys);
-
         $keys->each(function($key) use ($resourceType) {
             $resourceType
                 ->attributes()
                 ->firstOrCreate(
-                    ['key' => Str::limit($key, 200)],
+                    ['key' => $key] ,
                     ['type' => 'default']
                 );
         });     
