@@ -40,6 +40,13 @@
                 Attributes
             </a>
 
+            <a href="{{ route('resource.categories.index', $resourceType) }}"
+                class="p-2 mr-2 border-t-4 border-transparent
+                {{ (request()->is('resource-type/*/categories')) ? 'border-indigo-400 font-semibold' : '' }}
+                ">
+                Categories
+            </a>
+
             <a href="{{ route('resource-types.edit', $resourceType) }}"
                 class="p-2 mr-2 border-t-4
                 {{ (request()->is('resource-types/*/edit')) ? 'border-indigo-400 font-semibold' : 'border-transparent' }}

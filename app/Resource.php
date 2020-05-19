@@ -132,6 +132,11 @@ class Resource extends Model implements HasMedia
         return ResourceType::whereIn('id', $this->resources->pluck('resource_type_id'))->get();
     }
 
+    public function getCategoryIdAttribute()
+    {
+        return $this->resource_category_id;
+    }
+
     public function scopeType($query, $type)
     {
         return $query->where('resource_type_id', $type);

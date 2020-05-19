@@ -43,6 +43,15 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('encoding.resources', 'EncodingResourcesController');*/
 
     //Route::get('/projects', 'ProjectController@index')->name('project.index');
+
+    /**
+     *  Resource Category Routes
+     */
+
+    Route::get('/resource-type/{resource_type}/categories', 'ResourceCategoriesController@index')
+        ->name('resource.categories.index');
+    Route::post('/resource-type/{resource_type}/category', 'ResourceCategoriesController@store')
+        ->name('resource.categories.store');
     
     Route::resource('resources', 'ResourcesController');
     Route::resource('resource-types', 'ResourceTypesController');

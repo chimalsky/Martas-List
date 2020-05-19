@@ -40,6 +40,11 @@ class ResourceType extends Model
         return $this->hasMany(Resource::class, 'resource_type_id');
     }
 
+    public function categories()
+    {
+        return $this->hasMany(ResourceCategory::class);
+    }
+
     public function allAttributes()
     {
         return $this->hasMany(ResourceAttribute::class);

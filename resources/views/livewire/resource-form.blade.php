@@ -2,12 +2,30 @@
 
 {{ html()->hidden('resource_type_id', $resource->definition->id) }}
 
-<label class="w-full px-2">
+<label class="block my-2">
     <span class="">
         What should we name this {{ $resource->definition->nameSingular }}?
     </span>
 
     <input class="form-input mt-1 block w-full" name="name" value="{{ $resource->name }}" />
+</label>
+
+
+<label class="block my-4">
+    <select class="form-input form-dropdown" name="resource_category_id">
+        <option @if(is_null($resource->category_id)) selected @endif>
+            --- Select a Category
+        </option>
+        @foreach($resource->definition->categories as $category)
+            <option value="{{ $category->id }}"
+                @if($resource->category_id == $category->id)
+                    selected 
+                @endif
+                > 
+                {{ $category->name }}
+            </option>
+        @endforeach
+    </select>
 </label>
 
 <header class="block">
@@ -25,7 +43,7 @@
     @endif
 </header>
 
-<section class="mt-2 mb-4 px-2">
+<section class="mt-2 mb-4">
     <label class="">
         Citation: 
         {{ html()->text('citation', $resource->citation->citation ?? null)

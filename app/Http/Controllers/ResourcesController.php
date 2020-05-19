@@ -80,31 +80,12 @@ class ResourcesController extends Controller
         return view('resources.edit', compact('resource'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Resource  $resource
-     * @return \Illuminate\Http\Response
-     */
-    public function updateFoobar(Request $request, Resource $resource)
-    {
-        $validated = $request->validate([
-            'name' => 'required',
-            'resource_type_id' => 'exists:resource_types,id'
-        ]);
-
-        $resource->update($validated);
-        
-        return redirect()->route('resource-types.edit', ['resource_type' => $resource->definition->id]) 
-            ->with('status', "$resource->name was updated!");
-    }
-
     public function update(Request $request, Resource $resource)
     {
         $request->validate([
             'name' => 'required | string | max:255',
             'citation' => 'nullable | max:255',
+            'resource_category_id' => 'nullable | exists:resource_categories,id',
             'attribute' => 'nullable | max:255',
             'attributeCitation' => 'nullable | max:255',
             'newAttribute' => 'nullable',
@@ -112,6 +93,7 @@ class ResourcesController extends Controller
         ]);
         
         $resource->update($request->except('attribute', 'attributeCitation', 'newAttribute', 'newAttributeCitation'));
+        
 
         $attributes = collect($request->attribute)->filter(function($value, $key) {
             // TODO handle the null update value more resiliently
