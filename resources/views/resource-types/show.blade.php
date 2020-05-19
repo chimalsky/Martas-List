@@ -124,8 +124,14 @@
                             ">
                                 <td class="py-2 pl-2 pt-2">
                                     <a href="{{ route('resources.edit', $resource) }}" class="underline text-xl">
-                                        {{ $resource->name }}
+                                        {{ $resource->name }} 
                                     </a>
+
+                                    @isset($resource->category) 
+                                        <span class="ml-4 font-hairline">
+                                            {{ $resource->category->name }}
+                                        </span>
+                                    @endisset
                                     
                                     <div class="mt-4">
                                         @foreach ($resource->getMedia() as $medium)

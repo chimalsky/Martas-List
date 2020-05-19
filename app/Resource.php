@@ -32,6 +32,11 @@ class Resource extends Model implements HasMedia
         return $this->belongsTo(Resource::class, 'parent_id');
     }
 
+    public function category()
+    {
+        return $this->belongsTo(ResourceCategory::class);
+    }
+
     public function children()
     {
         return $this->hasMany(Resource::class, 'parent_id');
