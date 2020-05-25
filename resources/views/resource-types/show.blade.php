@@ -47,20 +47,22 @@
 
                                 @if ($attribute->options)
                                     <div class="flex flex-wrap pl-8 pt-2">
-                                        @foreach ($attribute->options as $attributeOption)
-                                            <label x-show="filterToggle" 
-                                                class="mr-6 mb-2 cursor-pointer hover:underline">
-                                                <input type="checkbox" 
-                                                    name="attributeOption[{{ $attribute->id }}][{{ $attributeOption }}]" 
-                                                    @if ($filteredAttributeOptions->keys()->contains($attribute->id))
-                                                        @if (collect($filteredAttributeOptions[$attribute->id])->keys()->contains($attributeOption))
-                                                            checked
+                                        @if(false)
+                                            @foreach ($attribute->options as $attributeOption)
+                                                <label x-show="filterToggle" 
+                                                    class="mr-6 mb-2 cursor-pointer hover:underline">
+                                                    <input type="checkbox" 
+                                                        name="attributeOption[{{ $attribute->id }}][{{ $attributeOption }}]" 
+                                                        @if ($filteredAttributeOptions->keys()->contains($attribute->id))
+                                                            @if (collect($filteredAttributeOptions[$attribute->id])->keys()->contains($attributeOption))
+                                                                checked
+                                                            @endif
                                                         @endif
-                                                    @endif
-                                                    />
-                                                {{ $attributeOption }}
-                                            </label>
-                                        @endforeach
+                                                        />
+                                                    {{ $attributeOption }}
+                                                </label>
+                                            @endforeach
+                                        @endif
                                     </div>
                                 @endif
                             </div>

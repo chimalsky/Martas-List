@@ -9,36 +9,39 @@
         {{ html()->form('POST', route('attribute.options.sort', $attribute))->open() }}
         <div class="bg-black px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div class="sm:flex sm:items-start">
-                
-                <section class="sortable mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left flex flex-wrap ">
+                <section class="sortable mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left flex flex-wrap">
                     @if ($attribute->options)
                         @foreach ($attribute->options as $index => $option) 
                             @if (is_array($option))
-                                <div class="block my-2 mx-2 cursor-move hover:bg-indigo-900 p-1"
-                                    x-data="{ depth: {{ $loop->depth }} }">
+                                <header class="draggable sortable attribute-block w-full my-2 mx-2 cursor-move hover:bg-indigo-900 border border-white p-1"
+                                    id="block-{{ $index }}"
+                                    data-block-name="{{ $option['_name'] }}">
+
                                     <h1 class="font-bold text-2xl">
                                         {{ $option['_name'] }}
                                     </h1>
 
-                                    {{ html()->hidden('optionBlocks[]', $option['_name']) }}
-
-                                    <span class="text-gray-500">
-                                        {{ $index + 1 }}
-                                    </span>
+                                    {{ html()->hidden("optionBlocks[block-{$index}]", $option['_name'])->id("attribute-option-block-{$option['_name']}") }}
                                  
-                                    @foreach ($option['_items'] as $item)
-                                        {{ html()->hidden("optionBlocks[{$option['_name']}]", $item)
-                                            ->class('form-input w-full mb-4') }}
+                                    <section class="">
                                         
-                                        {{ $item }}
-                                    @endforeach
-                                </div>
+                                        @foreach ($option['_items'] as $item)
+                                            <article class="draggable attribute-option block my-2 mx-2 cursor-move hover:bg-indigo-900 py-1">
+                                                <span class="text-gray-500">
+                                                    {{ $index + 1 }}
+                                                </span>
+                                                {{ html()->hidden("options[block-{$index}][]", $item)->id("attribute-option-{$index}") }}
+                                                {{ $item }}
+                                            </article>
+                                        @endforeach
+                                    </section>
+                                </header>
                             @else
-                                <article class="block my-2 mx-2 cursor-move hover:bg-indigo-900 py-1">
+                                <article class="draggable attribute-option block my-2 mx-2 cursor-move hover:bg-indigo-900 py-1">
                                     <span class="text-gray-500">
                                         {{ $index + 1 }}
                                     </span>
-                                    {{ html()->hidden('options[]', $option) }}
+                                    {{ html()->hidden('options[]', $option)->id("attribute-option-{$index}") }}
                                     {{ $option }}
                                 </article>
                             @endif
@@ -52,7 +55,11 @@
         </div>
         <div class="bg-gray-900 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
             <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-                <button class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+                <button class="inline-flex justify-center w-full rounded-md border border-transparent
+                    px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white 
+                    shadow-sm hover:bg-green-500 focus:outline-none focus:border-red-700 
+                    focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+                     >
                     Change order
                 </button>
             </span>

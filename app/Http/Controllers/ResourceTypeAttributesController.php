@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Str;
+use DB;
+use App\ResourceMeta;
 use App\ResourceType;
 use App\ResourceAttribute;
 use Illuminate\Http\Request;
@@ -18,6 +20,7 @@ class ResourceTypeAttributesController extends Controller
     {
         $resourceType->load('attributes');
         $resourceType->attributes->loadCount('meta');
+
         return view('resource-type.attributes.index', compact('resourceType'));
     }
 
@@ -72,6 +75,32 @@ class ResourceTypeAttributesController extends Controller
     public function edit(ResourceType $resourceType, ResourceAttribute $resourceAttribute)
     {
         $attribute = $resourceAttribute;
+        $attributeValues = ResourceMeta::select('id', 'value')
+            ->where('resource_attribute_id', $attribute->id);
+
+        $uniqueValues = $attributeValues->get()->unique('value');
+
+        $aggregate = DB::table('resource_metas')
+            ->where('resource_attribute_id', $attribute->id)
+            ->selectRaw('count(*) as total');
+
+        foreach ($uniqueValues as $value) {
+            $id = $value->id;
+            $value = addslashes($value->value);
+
+            $aggregate = $aggregate
+             ->selectRaw("count(case when value = '{$value}' then 1 end) as c_{$id}");
+        }
+
+        $aggregate= $aggregate->first();
+
+        $uniqueValues = $uniqueValues->map(function($value) use ($aggregate) {
+            $property = "c_".$value->id;
+            $value->resources_count = $aggregate->$property;
+            return $value;
+        });
+
+    
         /*$m = collect($attribute->options)->filter(function($obj) {
             return !is_array($obj);
         });
@@ -80,7 +109,7 @@ class ResourceTypeAttributesController extends Controller
         ]);
 */
         //dd($attribute->options);
-        return view('resource-type.attributes.edit', compact('resourceType', 'attribute'));
+        return view('resource-type.attributes.edit', compact('resourceType', 'attribute', 'uniqueValues', 'aggregate'));
     }
 
     /**

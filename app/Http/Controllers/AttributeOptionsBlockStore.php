@@ -12,7 +12,7 @@ class AttributeOptionsBlockStore extends Controller
         $currentOptions = collect($resourceAttribute->options);
 
         $request->validate([
-            'block' => ['required', 'string', 'between:0,255', function ($attribute, $value, $fail) use ($currentOptions) {
+            'block' => ['required', 'string', 'between:1,255', function ($attribute, $value, $fail) use ($currentOptions) {
                 if ($currentOptions->contains($value)) {
                     $fail($attribute.' already exists.');
                 }

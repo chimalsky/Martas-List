@@ -8,9 +8,6 @@ import $ from 'jquery'
 
 import turbolinks from 'turbolinks'
 
-import flatpickr from "flatpickr"
-import 'flatpickr/dist/flatpickr.min.css'
-
 import '@github/time-elements'
 import { Sortable } from '@shopify/draggable'
 import { Droppable } from '@shopify/draggable'
@@ -31,10 +28,6 @@ document.addEventListener('turbolinks:load', () => {
 const eventLog = document.querySelector('.event-log')
 
 function bootstrap() {
-    flatpickr('input[type=date]', {inline: true, altInput: true, altFormat: 'F j, Y'})
-    flatpickr('input[type=time]', {enableTime: true,
-        noCalendar: true,
-        dateFormat: "H:i",})
 
     window.livewire.on('deleteMeta', function(html) {
         eventLog.innerHTML = html
@@ -48,18 +41,34 @@ function bootstrap() {
 
     // Sortable 
     const sortable = new Sortable(document.querySelectorAll('.sortable'), {
-        draggable: 'article'
+        draggable: '.draggable'
     });
+    /*const sortableHeader = new Sortable(document.querySelectorAll('.sortable'), {
+        draggable: 'header.sortable'
+    });*/
 
-    // Droppable   
-    const droppable = new Droppable(document.querySelectorAll('.droppable'), {
-        draggable: 'article',
-        dropzone: '.dropzone'
+    sortable.on('sortable:stop', (e) => {
+        let container = e.data.newContainer
+        let target = e.dragEvent.data.source
+
+        let inputId = target.querySelector('input').getAttribute('id')
+
+        let input = document.getElementById(inputId)
+
+        if (container.tagName.toLowerCase() == "header" && target.tagName.toLowerCase() == 'article') {
+            let blockName = container.getAttribute('id')
+            input.setAttribute('name', `options[${blockName}][]`)
+            //let input = e.newContainer.querySelector(sourceInput)
+            //let blockName = e.newContainer.getAttribute('data-block-name')
+
+           // input.setAttribute('name', `options[${blockName}]`)
+            //.setAttribute('foobar', 'options[Pen]')
+        } else {
+            if (target.tagName.toLowerCase() == 'article') {
+                input.setAttribute('name', 'options[]')
+            }
+        }
     });
-
-    droppable.on('droppable:dropped', () => console.log('droppable:dropped'));
-    droppable.on('droppable:returned', () => console.log('droppable:returned'));
-
         
     window.xenoPower = function() {
         window.$ = $

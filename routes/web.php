@@ -79,7 +79,7 @@ Route::group(['middleware' => 'auth'], function() {
         'ResourceTypeAttributeOptionsController@sort')
         ->name('resource-type.attribute.options.sort');
     
-    Route::post('/resource-type/{attribute}/options/sort', 
+    Route::post('/resource-attribute/{attribute}/options/sort', 
         'ResourceAttributeOptionsSortController')
         ->name('attribute.options.sort');
 

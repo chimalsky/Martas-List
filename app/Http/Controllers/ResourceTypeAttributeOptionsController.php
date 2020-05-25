@@ -44,8 +44,6 @@ class ResourceTypeAttributeOptionsController extends Controller
         $option = $request->option;
         $newOption = $request->new_option;
 
-        dd($newOption);
-
         $attributeValues = ResourceMeta::where('resource_attribute_id', $attribute->id)
             ->where('value', $option);
 

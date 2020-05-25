@@ -79,6 +79,20 @@
     {{ html()->closeModelForm() }}
 </header>
 
+<section class="my-12">
+    <p class="mb-2 font-bold">
+        Total: {{ $aggregate->total }}
+    </p>
+    <ul class="">
+        @foreach ($uniqueValues->sortByDesc('resources_count') as $value)
+            <li>
+                {{ $value->value }} -- {{ $value->resources_count }}
+            </li>
+        @endforeach
+    </ul>
+</section>
+
+
 @if ($attribute->type == 'dropdown')
     <section class="max-w-4xl mt-24" data-controller="resource-attribute"
         x-data="{ open: false }">
@@ -110,13 +124,13 @@
 
                             @foreach ($option['_items'] as $item)
                                 {{ html()->hidden("optionBlocks[{$option['_name']}]", $item)->class('form-input w-full mb-4') }}
-                                <a class="block text-xl mb-1 cursor-pointer 200 py-1 underline"
+                                <a class="block text-xl mb-1 ml-4 cursor-pointer 200 py-1 underline"
                                     href="@route('resource-type.attribute.options.edit', [
                                         'resource_type' => $resourceType,
                                         'attribute' => $attribute,
                                         'option' => $option
                                     ])">
-                                    {{ $option }}
+                                    {{ $item }}
                                 </a>
                             @endforeach
                         @else

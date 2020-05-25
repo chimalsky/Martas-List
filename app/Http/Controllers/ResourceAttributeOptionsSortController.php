@@ -17,15 +17,36 @@ class ResourceAttributeOptionsSortController extends Controller
     {
         $request->validate([
             'options' => 'required | array',
-            'optionBlocks' => 'array'
+            'optionBlocks' => 'array',
+            'optionBlocks.*' => 'string'
         ]);
 
-        $currentOptions = collect($resourceAttribute->options);
+        $currentOptions = collect($attribute->options);
 
-        dd($request->options);
+        $optionBlocks = $request->optionBlocks;
+        $options = collect($request->options);
+
+        $newOptions = collect();
+        
+        foreach ($request->options as $key => $option) {
+            if (is_array($option)) {
+                $block = [
+                    '_name' => $optionBlocks[$key],
+                    '_items' => []
+                ];
+
+                foreach ($option as $item) {
+                    $block['_items'][] = $item;
+                }
+
+                $newOptions->push($block);
+            } else {
+                $newOptions->push($option);
+            }
+        }
 
         $attribute->update([
-            'options' => $request->options
+            'options' => $newOptions
         ]);
 
         $resourceType = $attribute->resourceType;
