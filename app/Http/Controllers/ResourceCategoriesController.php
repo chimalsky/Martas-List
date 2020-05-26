@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ResourceType;
+use App\ResourceCategory;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -33,5 +34,12 @@ class ResourceCategoriesController extends Controller
         ]);
 
         return back()->with('status', "{$category->name} category was created");
+    }
+
+    public function show(Request $request, ResourceCategory $category)
+    {
+        $resourceType = $category->resourceType;
+
+        return view('resource-categories.show', compact('resourceType', 'category'));
     }
 }

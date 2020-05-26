@@ -52,6 +52,10 @@ Route::group(['middleware' => 'auth'], function() {
         ->name('resource.categories.index');
     Route::post('/resource-type/{resource_type}/category', 'ResourceCategoriesController@store')
         ->name('resource.categories.store');
+    Route::get('/resource-category/{resource_category}', 'ResourceCategoriesController@show')
+        ->name('resource.category.show');
+    Route::post('/resource-category/{resource_category}/resource', 'AttachResourceToCategoryController')
+        ->name('resourceCategory.attach.resource');
     
     Route::resource('resources', 'ResourcesController');
     Route::resource('resource-types', 'ResourceTypesController');

@@ -29,7 +29,7 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::model('attribute', \App\ResourceAttribute::class);
         Route::model('medium', \App\ResourceMedia::class);
-
+        Route::model('resource_category', \App\ResourceCategory::class);
     }
 
     /**

@@ -5,7 +5,9 @@
 <ul class="block mt-12 text-xl"> 
     @foreach ($categories as $category)
         <li class="block mb-2">
-            {{ $category->name }} <span class="text-sm">{{ $category->resources_count }}</span>
+            <a href="@route('resource.category.show', $category)">
+                {{ $category->name }} <span class="text-sm">{{ $category->resources_count }}</span>
+            </a>
         </li>
     @endforeach
 </ul>
