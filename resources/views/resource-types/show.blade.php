@@ -47,8 +47,8 @@
 
                                 @if ($attribute->options)
                                     <div class="flex flex-wrap pl-8 pt-2">
-                                        @if(false)
-                                            @foreach ($attribute->options as $attributeOption)
+                                        @foreach ($attribute->options as $attributeOption)
+                                            @unless(is_array($attributeOption))
                                                 <label x-show="filterToggle" 
                                                     class="mr-6 mb-2 cursor-pointer hover:underline">
                                                     <input type="checkbox" 
@@ -61,8 +61,8 @@
                                                         />
                                                     {{ $attributeOption }}
                                                 </label>
-                                            @endforeach
-                                        @endif
+                                            @endunless
+                                        @endforeach
                                     </div>
                                 @endif
                             </div>
