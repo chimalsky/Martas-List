@@ -15,6 +15,8 @@ class MediaViewer extends Component
     public function mount(Resource $resource)
     {
         $this->resource = $resource; 
+        $this->media == $resource->getFirstMedia();
+
     }
 
     public function setMedia($media)
@@ -24,9 +26,6 @@ class MediaViewer extends Component
 
     public function render()
     {
-        $resource = $this->resource;
-        $media = $this->media ?? $resource->getFirstMedia();
-
-        return view('livewire.project.media-viewer', compact('resource', 'media'));
+        return view('livewire.project.media-viewer');
     }
 }
