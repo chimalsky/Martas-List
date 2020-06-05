@@ -76,7 +76,21 @@
 
     <main class="flex-1 text-gray-700 text-lg">
         <header class="text-center text-2xl block mb-32">
-            Poem Archive 
+            <h1 class="italic text-3xl font-serif mb-6">
+                Poem Archive
+            </h1> 
+
+            <section class="flex justify-center text-sm ">
+                <div class="mr-4">
+                    <img class="w-8 inline-block" src="/img/coming-soon.jpg" />
+                    <span>= manuscript lost or destroyed</span>
+                </div>
+
+                <div class="ml-4">
+                    <img class="w-10 inline-block" src="/img/lost-or-destroyed.png" />
+                    <span>= manuscript lost or destroyed</span>
+                </div>
+            </section>
 
             @if (!$poems->count())
                 <h1 class="text-center text-lg mt-4">

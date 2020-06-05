@@ -93,6 +93,13 @@
 </section>
 
 
+<section class="border border-white p-2 hidden">
+
+@livewire('sortable-category-options', ['categories' => $attribute->categories])
+
+</section>
+
+
 @if ($attribute->type == 'dropdown')
     <section class="max-w-4xl mt-24" data-controller="resource-attribute"
         x-data="{ open: false }">

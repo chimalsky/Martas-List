@@ -28,7 +28,7 @@ class PoemsController extends Controller
         $poemDefinition = ResourceType::find($poemId);
         $queries = collect();
         
-       /* $queryAttribute = ResourceAttribute::find($request->input('query_key'));
+        $queryAttribute = ResourceAttribute::find($request->input('query_key'));
 
         $queryValue = $request->input('query_value');
         $queries = collect();
@@ -43,7 +43,7 @@ class PoemsController extends Controller
         } else {
             $queryAttribute = ResourceAttribute::find(131);
         }
-        */
+        
 
         if ($filteredAttributes->count()) {
             foreach ($filteredAttributes as $attribute) {

@@ -46,6 +46,17 @@ class ResourceAttribute extends Model implements Sortable
         return $this->hasMany(ResourceMeta::class, 'resource_attribute_id');
     }
 
+    public function categories()
+    {
+        return $this->hasMany(OptionCategory::class, 'attribute_id');
+    }
+
+    public function optionsObjects()
+    {
+        return $this->hasMany(AttributeOption::class, 'attribute_id')
+            ->whereNull('category_id');
+    }
+
     public function getNameAttribute()
     {
         return $this->key;

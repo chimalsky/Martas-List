@@ -1484,6 +1484,24 @@ video {
   color: #8795a1;
 }
 
+.project-filter input[type=checkbox] + label {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  flex: 1 1 0%;
+  line-height: 1.25rem;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+
+.project-filter input[type=checkbox]:checked + label {
+  background-color: #a3bffa;
+  font-weight: 700;
+  border-width: 4px;
+  border-color: #000;
+}
+
 .btn {
   font-weight: 700;
   padding-top: 0.5rem;

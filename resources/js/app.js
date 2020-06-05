@@ -12,6 +12,8 @@ import '@github/time-elements'
 import { Sortable } from '@shopify/draggable'
 import { Droppable } from '@shopify/draggable'
 
+import 'livewire-sortable'
+
 import Alpine from 'alpinejs'
 
 turbolinks.start()  

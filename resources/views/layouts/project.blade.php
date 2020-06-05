@@ -11,7 +11,7 @@
         <link href="{{ mix('css/app.css') }}" rel="stylesheet">
         @stack('stylesheets')
 
-        @livewireAssets
+        @livewireStyles
         
         <script src="{{ mix('js/app.js') }}" defer="true"></script>
         @stack('scripts')
@@ -75,5 +75,7 @@
                 </p>
             </div>
         </footer>
+
+        @livewireScripts
     </body>
 </html>

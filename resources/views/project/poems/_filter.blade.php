@@ -6,7 +6,7 @@
     x-transition:leave="transition ease-in duration-300"
     x-transition:leave-start="opacity-100 transform scale-100"
     x-transition:leave-end="opacity-0 transform scale-90"
-    class="mt-4 z-50 p-4 text-lg absolute w-4xl">
+    class="mt-4 z-50 p-4 text-lg absolute max-w-6xl project-filter">
     <header class="bg-gray-300 p-3 italic">
         Order By--
     </header>
@@ -24,47 +24,50 @@
         Curate By-- 
     </header>
     <main class="flex flex-wrap">
-        <div class="bg-orange-200 p-4 w-1/2">
+        <div class="bg-orange-200 p-4 w-3/5">
             @foreach($poemDefinition->attributes->where('visibility', 1)->where('options') as $attribute)
-                <h1 class="font-semibold text-xl">
-                    {{ $attribute->key }}
-                </h1>
+                <section class="block mb-12">
+                    <h1 class="text-2xl">
+                        {{ $attribute->key }} 
+                        <button type="button" data-attribute-id="{{ $attribute->id }}" 
+                            class="js-expand-options border border-gray-500 p-1">V</span>
+                    </h1>
 
-                <div class="flex flex-wrap pl-8 pt-2">
-                    @foreach ($attribute->options as $attributeOption)
-                        <label
-                            class="mb-2 font-thin w-1/4 cursor-pointer hover:underline">
-                            <input type="checkbox" 
-                                name="attributeOptions[{{ $attribute->id }}][{{ $attributeOption }}]" 
-                                @if ($filteredAttributeOptions->keys()->contains($attribute->id))
-                                    @if (collect($filteredAttributeOptions[$attribute->id])->keys()->contains($attributeOption))
-                                        checked
-                                    @endif
-                                @endif
-                                />
-                                
-                            {{ $attributeOption }}
-                        </label>
-                    @endforeach
+                    <div data-attribute-options="{{ $attribute->id }}" class="grid hidden grid-cols-5 pl-8 pt-2">
+                        @foreach ($attribute->options as $attributeOption)
+                            @unless(is_array($attributeOption))
+                                <label class="mb-2 col-span-1 font-thin cursor-pointer hover:underline">
+                                    <input type="checkbox" id="meta-{{ $attribute->id }}-{{ $attributeOption }}"
+                                        name="attributeOptions[{{ $attribute->id }}][{{ $attributeOption }}]" 
+                                        @if ($filteredAttributeOptions->keys()->contains($attribute->id))
+                                            @if (collect($filteredAttributeOptions[$attribute->id])->keys()->contains($attributeOption))
+                                                checked
+                                            @endif
+                                        @endif/>
+                                    {{ $attributeOption }}
+                                </label>  
+                            @endunless
+                        @endforeach
 
-                </div>
+                    </div>
+                </section>
             @endforeach
         </div>
-        <div class="bg-green-100 p-4 w-1/2">
+        <div class="bg-green-100 p-4 w-2/5">
             <h1 class="font-semibold text-xl mb-2">
                 Dickinson's Birds List
             </h1>
 
-            <section class="flex flex-wrap">
+            <section class="grid grid-cols-4">
                 @foreach ($birds as $bird)
-                    <label class="border border-indigo-600 p-2 w-1/4 
-                        hover:bg-indigo-100 cursor-pointer" >
+                    <input type="checkbox" name="birds[{{ $bird->id }}]" 
+                        id="bird-{{ $bird->id }}"
+                        class="hidden"
+                        />
+                    <label for="bird-{{ $bird->id }}" class="col-span-1
+                        border border-indigo-400
+                         cursor-pointer" >
                         {{ $bird->name }} 
-
-                        <input type="checkbox" name="birds[{{ $bird->id}}]" 
-                            id="bird-{{ $bird->id }}"
-                            class=""
-                            />
                     </label>
                 @endforeach
             </section>
@@ -81,3 +84,15 @@
         </button>
     </footer>
 </form>
+
+<script>
+
+    document.querySelectorAll('.js-expand-options').forEach(function(button) {
+        button.addEventListener('click', expandOptions)
+    })
+
+    function expandOptions(ev) {
+        let attr = ev.target.getAttribute('data-attribute-id')
+        document.querySelector(`[data-attribute-options="${attr}"]`).classList.toggle('hidden')
+    }
+</script>
