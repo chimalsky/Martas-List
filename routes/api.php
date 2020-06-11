@@ -17,6 +17,93 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+
+
+
+
+
+
+
+
+Route::get('/map-data', function(Request $request) {
+    $row = [
+        'recipient' => [
+            'name' => 'John Smith',
+            'address' => '123123 fork',
+            'gps_coordinates' => [
+                'lat' => 123123123,
+                'lng' => 123124324
+            ]
+        ],
+        'sender' => [
+            'name' => 'John Smith',
+            'address' => '123 shore lane',
+            'gps_coordinates' => [
+                'lat' => 123123123,
+                'lng' => 123124324
+            ]
+        ],
+        'sent' => 'date',
+        'manuscript' => [
+            'id' => '13123oij',
+            'facsimile_thumbnails' => [
+                'img src 1',
+                'img src 2'
+            ]
+        ],
+        'notes' => 'text'
+    ];
+
+    $row2 = [
+        'recipient' => 'Jane Name',
+        'address' => '123 Northbrook',
+        'date_sent' => 'date',
+        'facsimile_thumbnail' => 'img src',
+        'gps_coordinates' => [
+            'lat' => 323123,
+            'lng' => 123124324
+        ],
+        'notes' => 'text'
+    ];
+
+    $data = [$row, $row2];
+
+    return $data;
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::get('/caroline', function (Request $request) {
     $manuscripts = \App\Resource::with(['meta', 'connections'])->where('resource_type_id', 3)
         ->get();
