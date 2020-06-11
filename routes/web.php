@@ -22,6 +22,15 @@ Route::prefix('project')->name('project.')->namespace('Project')->group(function
     Route::get('/about', 'AboutController')->name('about');
     Route::get('/poems', 'PoemsController@index')->name('poems.index');
     Route::get('/poems/{poem}', 'PoemsController@show')->name('poems.show');
+    Route::post('/poems/get', 'PoemsController@index')->name('poems.indexAsync');
+
+    Route::get('/partials/poems', function() {
+        $poems = App\Resource::where('resource_type_id', 3)
+            ->get()
+            ->groupBy('queries_meta_value');
+
+        return view('project.poems._index', ['poems' => $poems]);
+    });
     
     Route::get('/birds', 'BirdsController@index')->name('birds.index');
     Route::get('/birds/{bird}', 'BirdsController@show')->name('birds.show');

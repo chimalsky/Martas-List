@@ -52,6 +52,7 @@
                 @if ($poem->media()->exists())
                     @livewire('project.media-viewer', ['resource' => $poem])
                 @endif
+
             </div>
         </section>
 

@@ -13,7 +13,10 @@
                 curate poems
             </button>
 
-            @include('project.poems._filter')
+            <form action="@route('project.poems.index')" method="get"
+                id='js-filter-form'>
+                @include('project.poems._filter')
+            </form>
         </div>
         @if ($filteredAttributes->count())
             @php 
@@ -99,22 +102,43 @@
             @endif
         </header> 
         @if ($poems->count())
+            <main id="js-poems-list">
+                @foreach ($poems as $key => $group)
+                    <h1 class="text-3xl font-bold text-gray-500 block mb-8 text-center sticky top-0 bg-white">
+                        {{ $key }} 
+                    </h1>
 
-            @foreach ($poems as $key => $group)
-                <h1 class="text-3xl font-bold text-gray-500 block mb-8 text-center sticky top-0 bg-white">
-                    {{ $key }} 
-                </h1>
-
-                <section class="flex flex-wrap">
-                    @foreach($group as $poem) 
-                        <article class="pb-32 px-4 cursor-pointer w-1/3">
-                            @include('project.poems._single', $poem)
-                        </article> 
-                    @endforeach
-                </section>
-            @endforeach
+                    <section class="flex flex-wrap">
+                        @foreach($group as $poem) 
+                            <article class="pb-32 px-4 cursor-pointer w-1/3">
+                                @include('project.poems._single', $poem)
+                            </article> 
+                        @endforeach
+                    </section>
+                @endforeach
+            </main>
         @endif
     </main>
 </section>
+
+<script>    
+    const form = document.querySelector('#js-filter-form')
+
+    function fetchPoems() {
+        let formdata = new FormData(form)
+
+        fetch('/project/poems/get', {
+            method: 'post',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: formdata
+        })
+            .then(response => response.text())
+            .then(html => {
+                document.querySelector('#js-poems-list').innerHTML = html
+            })
+    }
+</script>
 
 @endsection

@@ -1,4 +1,4 @@
-<form action="@route('project.poems.index')" method="get" 
+<section
     x-show="open"
     x-transition:enter="transition ease-out duration-300"
     x-transition:enter-start="opacity-0 transform scale-90"
@@ -14,6 +14,7 @@
         @foreach($poemDefinition->attributes->where('visibility', 1) as $attribute)
             <label class="mb-4 pr-4 cursor-pointer">
                 <input type="radio" name="order" class="text-red-500" value="{{ $attribute->id }}" 
+                    onchange="fetchPoems()"
                     @if($sortedAttribute == $attribute->id) checked @endif
                 /> 
                 <span class="mr-4">{{ $attribute->key }}</span>
@@ -38,6 +39,7 @@
                             @unless(is_array($attributeOption))
                                 <label class="mb-2 col-span-1 font-thin cursor-pointer hover:underline">
                                     <input type="checkbox" id="meta-{{ $attribute->id }}-{{ $attributeOption }}"
+                                        onchange="fetchPoems()"
                                         name="attributeOptions[{{ $attribute->id }}][{{ $attributeOption }}]" 
                                         @if ($filteredAttributeOptions->keys()->contains($attribute->id))
                                             @if (collect($filteredAttributeOptions[$attribute->id])->keys()->contains($attributeOption))
@@ -83,7 +85,7 @@
             Curate
         </button>
     </footer>
-</form>
+</section>
 
 <script>
 

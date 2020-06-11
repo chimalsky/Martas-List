@@ -13,16 +13,25 @@ class PoemsController extends Controller
     public function index(Request $request)
     {
         $poemId = 3;
-        //dd($request);
 
-        $filteredAttributeOptions = collect($request->query('attributeOptions'));
+        $filteredAttributeOptions = collect($request->input('attributeOptions'));
         $filteredAttributes = ResourceAttribute::whereIn('id', $filteredAttributeOptions->keys())->get();
 
-        $sortedAttribute = $request->query('order');
+        $sortedAttribute = $request->input('order');
 
-        $filteredBirds = collect($request->query('birds'));
+        $filteredBirds = collect($request->input('birds'));
         
-        $poems = Resource::with(['meta', 'media'])
+        $poems = Resource::with(['media', 'meta' => function($query) use ($filteredAttributes) {
+            // 84 == first line 
+            // 149 == needs placeholder image for facs?
+            $attributeIds = [84, 149];
+
+            foreach ($filteredAttributes as $a) {
+                $attributeIds[] = $a->id;
+            }
+            
+            $query->whereIn('resource_attribute_id', $attributeIds);
+        }])
             ->where('resource_type_id', $poemId);
 
         $poemDefinition = ResourceType::find($poemId);
@@ -43,7 +52,6 @@ class PoemsController extends Controller
         } else {
             $queryAttribute = ResourceAttribute::find(131);
         }
-        
 
         if ($filteredAttributes->count()) {
             foreach ($filteredAttributes as $attribute) {
@@ -74,13 +82,21 @@ class PoemsController extends Controller
 
         $poems = $poems->groupBy('queries_meta_value');
 
-
         $birds = Resource::where('resource_type_id', 2)
             ->orderBy('name')->get();
 
-        return view('project.poems.index', 
-            compact('poemDefinition', 'filteredAttributes', 'filteredAttributeOptions', 'poems', 'birds', 'sortedAttribute', 'queries')
-        );
+        if ($request->method() == 'GET') {
+            return view('project.poems.index', 
+                compact('poemDefinition', 'filteredAttributes', 'filteredAttributeOptions', 'poems', 'birds', 'sortedAttribute', 'queries')
+            );
+        } else {
+            return view('project.poems._index', compact('poems'));
+        }
+    }
+
+    public function indexAsync(Request $request)
+    {
+
     }
 
     public function show(Request $request, $poemId)
