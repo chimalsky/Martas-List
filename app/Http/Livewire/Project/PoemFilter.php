@@ -87,13 +87,7 @@ class PoemFilter extends Component
 
     public function inputChanged($attributeId, $option)
     {
-        if ( $attribute = $this->filteredAttributes->firstWhere('id', $attribute->id)) ) {
-            $attribute->
-        } else {    
-            $attribute = ResourceAttribute::find($attributeId);
-        }
-
-        dd($attribute)
+        
     }
 
     public function resetAttributeProperties()
