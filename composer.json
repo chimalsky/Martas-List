@@ -12,6 +12,7 @@
         "calebporzio/awesome-helpers": "^2.4",
         "doctrine/dbal": "^2.10",
         "fideloper/proxy": "^4.2",
+        "fruitcake/laravel-cors": "^2.0",
         "grimzy/laravel-mysql-spatial": "^2.2",
         "guzzlehttp/guzzle": "~6.0",
         "laravel/framework": "^7.0",
