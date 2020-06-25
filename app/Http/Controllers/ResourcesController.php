@@ -93,7 +93,6 @@ class ResourcesController extends Controller
         ]);
         
         $resource->update($request->except('attribute', 'attributeCitation', 'newAttribute', 'newAttributeCitation'));
-        
 
         $attributes = collect($request->attribute)->filter(function($value, $key) {
             // TODO handle the null update value more resiliently

@@ -42,5 +42,10 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('endrouteIs', function () {
             return "<?php endif; ?>";
         });
+
+        //BladeX::component('mailcoach::app.components.form.formButton', 'form-button');
+
+
+        //Blade::component('components.attribute.field', 'resource.attribute.field');
     }
 }

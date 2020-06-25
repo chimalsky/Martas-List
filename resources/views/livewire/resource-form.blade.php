@@ -1,4 +1,4 @@
-<div>
+<div class="">
 
 {{ html()->hidden('resource_type_id', $resource->definition->id) }}
 
@@ -13,7 +13,7 @@
 
 <label class="block my-4">
     <select class="form-input form-dropdown" name="resource_category_id">
-        <option @if(is_null($resource->category_id)) selected @endif>
+        <option value="" @if (is_null($resource->category_id)) selected @endif >
             --- Select a Category
         </option>
         @foreach($resource->definition->categories as $category)
