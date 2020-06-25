@@ -19,6 +19,69 @@
     {{ html()->closeModelForm() }}
 </section>
 
+
+<section class="my-12">
+
+    <section class="flex flex-wrap">
+        <section class="w-full max-w-3xl">
+            @foreach (\App\ResourceType::find($resource->definition->connections->pluck('key')) as $resourceType)
+                <header class="m-2 mt-32 w-full flex justify-between">
+                    <h1 class="text-xl">
+                        {{ $resourceType->name }} Connections
+                    </h1>
+
+                    <a href="{{ route('resource.connections.create', ['resource' => $resource, 'connectingResource' => $resourceType]) }}" 
+                        class="btn btn-hollow">
+                        Add another connected {{ $resourceType->name }}
+                    </a>
+                </header>
+
+                <table class="table-auto w-full">
+                    <thead>
+                        <tr>
+                            <th>
+                            </th>
+
+                            <th>
+
+                            </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody class="">
+                        @foreach ($resource->connections as $connection) 
+                            @if (isset($connection->resource) && $connection->resource->definition->is($resourceType))
+
+                                <tr class="hover:cursor-pointer">
+                                    <td class="py-2 pl-2">
+                                        <a href="{{ route('resources.edit', $connection->resource) }}" class="text-2xl underline">
+                                            {{ $connection->resource->name }}
+                                        </a>
+                                    </td>
+
+                                    <td class="pr-2">
+                                        {{ html()->modelForm($resource, 'DELETE', route('resource.connections.destroy', [
+                                            'resource' => $resource,
+                                            'connection' => $connection
+                                        ] ))->open() }}
+                                            <div class="flex justify-end mr-4 mt-4">
+                                                <button class="btn btn-red">
+                                                    Disconnect
+                                                </button>
+                                            </div>
+                                        {{ html()->closeModelForm() }}
+                                    </td>
+
+                                
+                                </tr>
+                            @endif
+                        @endforeach
+                    </tbody>
+                </table>
+            @endforeach
+        </section>
+    </section>
+
 <section class="flex flex-wrap my-8 border-4 border-dashed border-gray-300">
     <div class="w-full p-4">
         {{ html()->form('POST', route('resource.media.store', $resource))
@@ -96,69 +159,6 @@
     </section>
 </section>
 
-
-
-<section class="my-12">
-
-    <section class="flex flex-wrap">
-        <section class="w-full max-w-3xl">
-            @foreach (\App\ResourceType::find($resource->definition->connections->pluck('key')) as $resourceType)
-                <header class="m-2 mt-32 w-full flex justify-between">
-                    <h1 class="text-xl">
-                        {{ $resourceType->name }} Connections
-                    </h1>
-
-                    <a href="{{ route('resource.connections.create', ['resource' => $resource, 'connectingResource' => $resourceType]) }}" 
-                        class="btn btn-hollow">
-                        Add another connected {{ $resourceType->name }}
-                    </a>
-                </header>
-
-                <table class="table-auto w-full">
-                    <thead>
-                        <tr>
-                            <th>
-                            </th>
-
-                            <th>
-
-                            </th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody class="">
-                        @foreach ($resource->connections as $connection) 
-                            @if (isset($connection->resource) && $connection->resource->definition->is($resourceType))
-
-                                <tr class="hover:cursor-pointer">
-                                    <td class="py-2 pl-2">
-                                        <a href="{{ route('resources.edit', $connection->resource) }}" class="text-2xl underline">
-                                            {{ $connection->resource->name }}
-                                        </a>
-                                    </td>
-
-                                    <td class="pr-2">
-                                        {{ html()->modelForm($resource, 'DELETE', route('resource.connections.destroy', [
-                                            'resource' => $resource,
-                                            'connection' => $connection
-                                        ] ))->open() }}
-                                            <div class="flex justify-end mr-4 mt-4">
-                                                <button class="btn btn-red">
-                                                    Disconnect
-                                                </button>
-                                            </div>
-                                        {{ html()->closeModelForm() }}
-                                    </td>
-
-                                
-                                </tr>
-                            @endif
-                        @endforeach
-                    </tbody>
-                </table>
-            @endforeach
-        </section>
-    </section>
 </section>
 
 @endsection
