@@ -3,7 +3,7 @@
 @section ('content')
 
 <section class="flex flex-wrap mb-8 max-w-6xl">
-    {{ html()->modelForm($resource, 'PUT', route('resources.update', $resource))->open() }}
+    {{ html()->modelForm($resource, 'PUT', route('resources.update', $resource))->class('w-full')->open() }}
         @unless(true)
             @livewire('resource.header', ['resource' => $resource])
             @livewire('resource.body', ['resource' => $resource]) 
