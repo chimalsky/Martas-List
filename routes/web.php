@@ -123,6 +123,7 @@ Route::group(['middleware' => 'auth'], function() {
         ->name('attribute.options.block.store');
         
     Route::resource('resource.connections', 'ResourceConnectionsController');
+    
     Route::resource('resource.metas', 'ResourceMetasController');
     Route::resource('resource.media', 'ResourceMediaController');
     Route::resource('resource.temporalities', 'ResourceTemporalitiesController');

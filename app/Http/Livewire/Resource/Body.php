@@ -12,17 +12,20 @@ class Body extends Component
     public $definition;
     public $attributes;
 
+    public $metas;
+
     public function mount(Resource $resource)
     {
         $this->resource = $resource;
         $this->definition = $resource->definition;
         $this->attributes = $this->definition->attributes;
 
+        $this->metas = $this->resource->meta;
+
     }
 
-    public function emitChange()
+    public function emitChange($metaId, $value)
     {
-        dd('hi');
     }
 
     public function render()

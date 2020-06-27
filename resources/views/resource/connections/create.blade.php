@@ -2,6 +2,8 @@
 
 @section ('content')
 
+@livewire('resource.connections-query', ['resource' => $resource, 'queryable' => $connectingResource])
+
 <form action="{{ route('resource.connections.store', $resource) }}" method="post"
     data-controller="resource-types" 
     data-resource-types-search-url="{{ route('resources.index') }}" 

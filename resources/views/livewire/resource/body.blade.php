@@ -2,13 +2,14 @@
     
 <section class="attributes flex flex-wrap">
     @foreach ($attributes as $attribute)
-        @unless(true)
+        @unless(false)
             @switch ($attribute->type)
                 @case('default') 
-                    <x-resource.attribute.field :attribute="$attribute" />
+                    <x-resource.attribute.field :resource="$resource" :attribute="$attribute" 
+                        :metas="$metas->where('resource_attribute_id', $attribute->id)" />
                     @break
                 @case('dropdown')
-                    <x-resource.attribute.dropdown :attribute="$attribute" />
+                    <x-resource.attribute.dropdown :resource="$resource" :attribute="$attribute" />
                     @break
             @endswitch 
         @endunless

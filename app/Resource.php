@@ -13,12 +13,14 @@ use App\Traits\HasCitations;
 use App\Traits\HasMediaTrait;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\Models\Media;
+use Illuminate\Database\Eloquent\Builder;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 
 class Resource extends Model implements HasMedia
 {
     use IsSeasonal, IsTemporal, 
-        HasCitations, HasMediaTrait;
+        HasCitations, HasMediaTrait,
+        \Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
     protected $guarded = ['id'];
 
@@ -125,6 +127,11 @@ class Resource extends Model implements HasMedia
         return $connections->get()->pluck('resources')->flatten();
     } 
 
+    public function getConnectedResourcesIdsAttribute()
+    {
+        return $this->connections->pluck('resources')->flatten()->pluck('id');
+    }
+
     public function getResourcesGroupedAttribute()
     {
         return $this->resources->groupBy(function($r) {
@@ -140,6 +147,40 @@ class Resource extends Model implements HasMedia
     public function getCategoryIdAttribute()
     {
         return $this->resource_category_id;
+    }
+
+    /**
+     *  Methods 
+     */
+
+    public function syncConnectionWithResource(Resource $otherResource)
+    {
+        if ($this->getConnectionWithResource($otherResource)) {
+            return $this->disconnectFromResource($otherResource);
+        }
+
+        $this->connectWithResource($otherResource);
+    }
+
+    public function getConnectionWithResource(Resource $otherResource)
+    {
+        return $this->connections()->whereHas('resources', function(Builder $query) use ($otherResource) {
+            $query->where('resource_id', $otherResource->id);
+        })->first();
+    }
+
+    public function connectWithResource(Resource $otherResource)
+    {
+        $connection = $this->connections()->create([]);
+
+        $connection->resources()->attach($otherResource);
+    }
+
+    public function disconnectFromResource(Resource $otherResource)
+    {
+        $connection = $this->getConnectionWithResource($otherResource);
+
+        $connection->delete();
     }
 
     public function scopeType($query, $type)

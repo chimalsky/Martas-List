@@ -21,8 +21,9 @@
 
 
 <section class="my-12">
+    @livewire('resource.connections-query', ['resource' => $resource])
 
-    <section class="flex flex-wrap">
+    <section class="flex flex-wrap hidden">
         <section class="w-full max-w-3xl">
             @foreach (\App\ResourceType::find($resource->definition->connections->pluck('key')) as $resourceType)
                 <header class="m-2 mt-32 w-full flex justify-between">
