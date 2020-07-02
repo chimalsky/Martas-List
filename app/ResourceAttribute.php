@@ -36,6 +36,11 @@ class ResourceAttribute extends Model implements Sortable
         
     }
 
+    public function buildSortQuery()
+    {
+        return static::query()->where('resource_type_id', $this->resource_type_id);
+    }
+
     public function resourceType()
     {
         return $this->belongsTo(ResourceType::class);
