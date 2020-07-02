@@ -13,6 +13,8 @@ class ResourcesImport implements ToCollection, WithHeadingRow
 {
     public $resourceType;
 
+    protected $resourceNameColumn;
+
     public function collection(Collection $rows)
     {
         $resourceType = $this->resourceType; 
@@ -25,22 +27,24 @@ class ResourcesImport implements ToCollection, WithHeadingRow
             $resourceType
                 ->attributes()
                 ->firstOrCreate(
-                    ['key' => $key] ,
+                    ['key' => $key],
                     ['type' => 'default']
                 );
         });     
+
+        $this->resourceNameColumn = $keys[1];
         
         $attributes = $resourceType->attributes()
             ->whereIn('key', $keys)->get();
 
         foreach ($rows as $index => $row) 
         {
-            if (is_null($row['in_clark_1887'])) {
+            if (is_null($row[$this->resourceNameColumn])) {
                 continue;
             }
 
             $resource = $resourceType->resources()->firstOrCreate([
-                'name' => $row['c_1887_name_common']
+                'name' => $row[$this->resourceNameColumn]
             ]);
 
             foreach ($row as $header => $column) {

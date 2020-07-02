@@ -6,7 +6,15 @@
 @endsection
 
 @section ('content')
-<section class="flex flex-wrap justify-center">
+<section>
+
+    @livewire('project.poems-index')
+
+</section>
+
+@unless(true)
+
+<section class="flex flex-wrap justify-center hidden">
     <aside class="w-full md:w-48 lg:w-64 pr-6">
         <div x-data="{open:false}" class="my-4 pl-2 static">
             <button @click="open = !open" class="bg-orange-300 text-gray-900 p-2 px-4 italic text-2xl">
@@ -120,7 +128,8 @@
         @endif
     </main>
 </section>
-
+@endunless 
+                
 <script>    
     const form = document.querySelector('#js-filter-form')
 

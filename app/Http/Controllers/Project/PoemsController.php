@@ -14,7 +14,7 @@ class PoemsController extends Controller
     {
         $poemId = 3;
 
-        $filteredAttributeOptions = collect($request->input('attributeOptions'));
+        /*$filteredAttributeOptions = collect($request->input('attributeOptions'));
         $filteredAttributes = ResourceAttribute::whereIn('id', $filteredAttributeOptions->keys())->get();
 
         $sortedAttribute = $request->input('order');
@@ -84,19 +84,15 @@ class PoemsController extends Controller
 
         $birds = Resource::where('resource_type_id', 2)
             ->orderBy('name')->get();
-
+        
         if ($request->method() == 'GET') {
             return view('project.poems.index', 
                 compact('poemDefinition', 'filteredAttributes', 'filteredAttributeOptions', 'poems', 'birds', 'sortedAttribute', 'queries')
             );
         } else {
             return view('project.poems._index', compact('poems'));
-        }
-    }
-
-    public function indexAsync(Request $request)
-    {
-
+        }*/
+        return view('project.poems.index');
     }
 
     public function show(Request $request, $poemId)

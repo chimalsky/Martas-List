@@ -56,6 +56,11 @@ class Resource extends Model implements HasMedia
         return $this->belongsTo(ResourceMeta::class);
     }
 
+    public function queryableMeta()
+    {
+        return $this->belongsTo(ResourceMeta::class, 'queryable_meta_id');
+    }
+
     public function getMetaTagsAttribute()
     {
         $keyNames = $this->definition->attributes()->pluck('key')->toArray();
@@ -186,5 +191,28 @@ class Resource extends Model implements HasMedia
     public function scopeType($query, $type)
     {
         return $query->where('resource_type_id', $type);
+    }
+
+    public function scopeWithQueryableMeta($query, $queryableId)
+    {
+        return $query->addSelect(['queryable_meta_id' => function($subQuery) use ($queryableId) {
+            $subQuery->select('id')
+                ->from('resource_metas')
+                ->whereColumn('resource_id', 'resources.id')
+                ->where('resource_attribute_id', $queryableId)
+                ->latest()->take(1);
+            }])
+            ->with('queryableMeta');
+    }
+
+    public function scopeWithQueryableMetaValue($query, $queryableId)
+    {
+        return $query->addSelect(['queryable_meta_value' => function($subQuery) use ($queryableId) {
+            $subQuery->select('value')
+                ->from('resource_metas')
+                ->whereColumn('resource_id', 'resources.id')
+                ->where('resource_attribute_id', $queryableId)
+                ->latest()->take(1);
+            }]);
     }
 }
