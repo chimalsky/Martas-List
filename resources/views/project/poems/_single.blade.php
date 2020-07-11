@@ -1,7 +1,7 @@
 <div>
     <a href="@route('project.poems.show', $poem->id)">
         <p class="text-center mb-2">
-            {{ $poem->meta->where('resource_attribute_id', 84)->first()->value ?? null }}
+            {{ $poem->name }}
         </p>
 
         @if($placeholderMeta = $poem->meta->firstWhere('resource_attribute_id', 149))

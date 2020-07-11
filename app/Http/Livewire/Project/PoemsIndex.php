@@ -19,43 +19,86 @@ class PoemsIndex extends Component
     public $orderables;
     public $orderable;
 
+    public $filterables;
+
     protected $activePoems;
+
+    protected $listeners = ['filterable-attribute.activeOptions.changed' => 'filter'];
 
     public function mount()
     {
         $this->filterOpened = false;
         $this->poemDefinition = ResourceType::find(3);
         $this->orderables = $this->poemDefinition->attributes->where('visibility', 1);
-
-        $this->activePoems = $this->poemDefinition->resources()->take(10);
+    
+        $this->filterables = $this->orderables->where('options');
     }
 
-    public function sort($attributeId)
+    public function hydrate()
     {
-        $this->orderable = ResourceAttribute::find($attributeId);
-        $orderableId = $this->orderable->id;
+        $this->sort();
+    }
 
-        $this->activePoems = $this->poemDefinition->resources()
-            ->with(['meta' => function($query) use ($orderableId) {
-                $query->where('resource_attribute_id', $orderableId);
-            }])
+    public function toggleFilter()
+    {
+        $this->filterOpened = ($this->filterOpened) ? false : true;
+    }
+
+    public function sort($attributeId = null)
+    {        
+        $this->resetPage();
+
+        if ($attributeId) {
+            $this->orderable = ResourceAttribute::find($attributeId);
+        } else {
+           $this->orderable = $this->orderables->first();
+           $attributeId = $this->orderable->id;
+        }
+
+        $activePoems = $this->poemDefinition->resources()
+            ->with(['meta' => function($query) use ($attributeId) {
+                $query->where('resource_attribute_id', $attributeId);
+            }, 'media'])
+            ->withQueryableMetaValue($attributeId)
+            ->orderBy('queryable_meta_value', 'asc');
+
+        $this->activePoems = $activePoems;
+    }
+
+    public function filter($attributeId, $optionValues)
+    {        
+        $this->resetPage();
+
+        $orderableId = $this->orderable->id ?? $this->orderables->first()->id;
+
+        $activePoems = $this->poemDefinition->resources()
+            ->whereHas('meta', function ($query) use ($attributeId, $optionValues) {
+                $query = $query->where('resource_attribute_id', $attributeId);
+        
+                $query = $query->whereIn('value', $optionValues);
+            })
+            ->with(['meta' , 'media'])
             ->withQueryableMetaValue($orderableId)
             ->orderBy('queryable_meta_value', 'asc');
 
         //$this->activePoems = $this->activePoems->load('media');
 
-        $this->resetPage();
+        $this->activePoems =  $activePoems;
     }
 
-    public function filter($attributeId, $value)
+    public function getPoemsProperty()
     {
+        if (!$this->activePoems || !$this->activePoems->exists()) {
+            return collect([]);
+        }
 
+        return $this->activePoems->paginate(30);
     }
 
     public function render()
     {
-        //dd($this->activePoems);
-        $activePoems = $this->activePoems->paginate(30);
-        return view('livewire.project.poems-index', compact('activePoems'));
+        $poems = ['poems' => $this->poems];
+        
+        return view('livewire.project.poems-index', $poems);
     }
 }
