@@ -4,7 +4,7 @@
             {{ $poem->name }}
         </p>
 
-        @if($placeholderMeta = $poem->meta->firstWhere('resource_attribute_id', 149))
+        @if($placeholderMeta = $poem->meta()->firstWhere('resource_attribute_id', 149))
             <section class="flex justify-center">
                 @if ($placeholderMeta->value == 'placeholder for LOST or DESTROYED MS')
                     <img class="w-16 inline-block" src="/img/coming-soon.jpg" />
@@ -43,5 +43,9 @@
                 @endforelse
             </section>
         @endif
+
+        <p class="text-center text-2xl">
+            {{ $poem->queryable_meta_value }}
+        </p>
     </a>
 </div>

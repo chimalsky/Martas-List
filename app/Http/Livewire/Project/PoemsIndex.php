@@ -18,25 +18,35 @@ class PoemsIndex extends Component
 
     public $orderables;
     public $orderable;
+    public $orderDirection = 'asc';
 
     public $filterables;
+    public $activeFilterables = [];
 
     protected $activePoems;
 
-    protected $listeners = ['filterable-attribute.activeOptions.changed' => 'filter'];
+    protected $casts = [
+        'activeFilterables' => 'collection'
+    ];
+
+    protected $listeners = ['filterable-attribute.activeOptions.changed' => 'filterByAttribute'];
 
     public function mount()
     {
         $this->filterOpened = false;
         $this->poemDefinition = ResourceType::find(3);
         $this->orderables = $this->poemDefinition->attributes->where('visibility', 1);
+        $this->orderable = $this->orderables->first()->id ?? null;
     
         $this->filterables = $this->orderables->where('options');
+
+        $this->activeFilterables = collect([]);
     }
 
     public function hydrate()
     {
         $this->sort();
+        $this->filter();
     }
 
     public function toggleFilter()
@@ -46,44 +56,68 @@ class PoemsIndex extends Component
 
     public function sort($attributeId = null)
     {        
-        $this->resetPage();
-
-        if ($attributeId) {
-            $this->orderable = ResourceAttribute::find($attributeId);
-        } else {
-           $this->orderable = $this->orderables->first();
-           $attributeId = $this->orderable->id;
-        }
+        if ($attributeId) {            
+            if ($this->orderable == $attributeId) {
+                $this->toggleOrderDirection();
+            } else {
+                $this->orderable = ResourceAttribute::find($attributeId)->id;
+            }
+        } 
 
         $activePoems = $this->poemDefinition->resources()
-            ->with(['meta' => function($query) use ($attributeId) {
-                $query->where('resource_attribute_id', $attributeId);
-            }, 'media'])
-            ->withQueryableMetaValue($attributeId)
-            ->orderBy('queryable_meta_value', 'asc');
+            ->withQueryableMetaValue($attributeId);
 
         $this->activePoems = $activePoems;
     }
 
-    public function filter($attributeId, $optionValues)
+    public function filter()
+    {
+        $orderableId = $this->orderable ?? $this->orderables->first()->id;
+
+        $activePoems = $this->poemDefinition->resources();
+
+        foreach ($this->activeFilterables as $filterable) {
+            $activePoems = $activePoems->whereHas('meta', function ($query) use ($filterable) {
+                $query = $query->where('resource_attribute_id', $filterable['id']);
+
+                if ($filterable['activeValues']) {
+                    $query = $query->whereIn('value', $filterable['activeValues']);
+                }
+            });
+        }
+        $activePoems = $activePoems->withQueryableMetaValue($orderableId);
+
+        $this->activePoems =  $activePoems;
+    }
+
+    public function filterByAttribute($attributeId, $optionValues)
     {        
         $this->resetPage();
 
-        $orderableId = $this->orderable->id ?? $this->orderables->first()->id;
+        if (! $this->activeFilterables->where('id', $attributeId)->count() ) {
+            $this->activeFilterables->push(
+                [ 
+                    'id' => $attributeId,
+                    'activeValues' => $optionValues
+                ]
+            );
+        } else {
+            $index = $this->activeFilterables->search(function($item, $key) use ($attributeId) {
+                return $item['id'] == $attributeId;
+            });
 
-        $activePoems = $this->poemDefinition->resources()
-            ->whereHas('meta', function ($query) use ($attributeId, $optionValues) {
-                $query = $query->where('resource_attribute_id', $attributeId);
-        
-                $query = $query->whereIn('value', $optionValues);
-            })
-            ->with(['meta' , 'media'])
-            ->withQueryableMetaValue($orderableId)
-            ->orderBy('queryable_meta_value', 'asc');
+            $this->activeFilterables[$index] = [
+                'id' => $attributeId,
+                'activeValues' => $optionValues
+            ];
+        }
 
-        //$this->activePoems = $this->activePoems->load('media');
+        $this->filter();
+    }
 
-        $this->activePoems =  $activePoems;
+    public function toggleOrderDirection()
+    {
+        $this->orderDirection = ($this->orderDirection === 'asc') ? 'desc' : 'asc';
     }
 
     public function getPoemsProperty()
@@ -91,6 +125,9 @@ class PoemsIndex extends Component
         if (!$this->activePoems || !$this->activePoems->exists()) {
             return collect([]);
         }
+
+        $this->activePoems = $this->activePoems//->with(['meta', 'media'])
+            ->orderBy('queryable_meta_value', $this->orderDirection);
 
         return $this->activePoems->paginate(30);
     }
