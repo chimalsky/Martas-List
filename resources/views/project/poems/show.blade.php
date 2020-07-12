@@ -23,7 +23,7 @@
             {{ $setting }}, {{ $circulation }}
         </p>
 
-        <p class="mt-2 text-gray-600">
+        <p class="mt-2 text-gray-600 hidden">
 
             Copied in 
             {{ $poem->meta->where('resource_attribute_id', 142)->first()->value ?? null }}
@@ -33,20 +33,6 @@
             {{ $poem->meta->where('resource_attribute_id', 3)->first()->value ?? null }}
         </p>
 
-        @if ($birds->count())
-            <div class="block mt-4">
-                <p>
-                    Mentions {{ $birds->count() }} 
-                    <a href="#birds">
-                        @if ($birds->count() === 1)
-                            Bird
-                        @else 
-                            Birds
-                        @endif
-                    </a>
-                </p>
-            </div>
-        @endif
     </header>
 
     <section class="mt-12 flex flex-wrap">
