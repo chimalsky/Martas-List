@@ -9,16 +9,22 @@
 
 <main class="max-w-4xl mx-auto text-gray-700 text-lg">
     <header class="text-center">
-        <h1 class="text-4xl font-hairline b-4">
-             {{ $poem->name }}
+        <h1 class="text-4xl font-hairline mb-8">
+             {{ $firstline }}
         </h1>
 
-        <p class="mt-18 text-gray-600">
-            {{ $poem->meta->where('resource_attribute_id', 138)->first()->value ?? null }}
-            {{ $poem->meta->where('resource_attribute_id', 131)->first()->value ?? null }}
+        <p class="mt-18 text-black text-lg">
+            {{ $season }} {{ $year }}
+        </p>
+
+        <p class="text-base text-gray-600">
+            {{ $state }}
+            <br/>
+            {{ $setting }}, {{ $circulation }}
         </p>
 
         <p class="mt-2 text-gray-600">
+
             Copied in 
             {{ $poem->meta->where('resource_attribute_id', 142)->first()->value ?? null }}
             on 
@@ -52,7 +58,6 @@
                 @if ($poem->media()->exists())
                     @livewire('project.media-viewer', ['resource' => $poem])
                 @endif
-
             </div>
         </section>
 

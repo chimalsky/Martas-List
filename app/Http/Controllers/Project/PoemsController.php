@@ -102,7 +102,20 @@ class PoemsController extends Controller
 
         $birds = $poem->resources->where('resource_type_id', 2);
         $variants = $poem->resources->where('resource_type_id', 3);
+        $firstline = $poem->meta->firstWhere('resource_attribute_id', 84)->value ?? null;
+        $year = $poem->meta->firstWhere('resource_attribute_id', 131)->value ?? null;
+        $season = $poem->meta->firstWhere('resource_attribute_id', 138)->value ?? null;
 
-        return view('project.poems.show', compact('poem', 'birds', 'variants'));
+        $state = $poem->meta->firstWhere('resource_attribute_id', 89)->value ?? null;
+        $setting = $poem->meta->firstWhere('resource_attribute_id', 103)->value ?? null;
+        $circulation = $poem->meta->firstWhere('resource_attribute_id', 113)->value ?? null;
+
+        return view('project.poems.show', 
+            compact(
+                'poem', 'birds', 'variants', 
+                'firstline', 'year', 'season',
+                'state', 'setting', 'circulation'
+            )
+        );
     }
 }

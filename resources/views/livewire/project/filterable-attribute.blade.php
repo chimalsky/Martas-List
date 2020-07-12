@@ -20,7 +20,7 @@
         ">
         @foreach ($options as $option)
             @unless(is_array($option))
-                <label class="mb-2 col-span-1 font-thin cursor-pointer hover:underline">
+                <label class="mb-2 col-span-1 text-lg cursor-pointer hover:underline">
                     <input type="checkbox" wire:change="syncOptions('{{ $option }}')" 
                         @if ($activeOptions->contains($option))
                             checked 

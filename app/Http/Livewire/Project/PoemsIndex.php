@@ -61,11 +61,6 @@ class PoemsIndex extends Component
     {
         $this->sort();
         $this->filter();
-
-        if ($query = $this->query) {
-            $this->activePoems = $this->activePoems->where('name', 'like', "%$query%");
-            $this->resetPage();
-        }
     }
 
     public function toggleFilter()
@@ -169,7 +164,12 @@ class PoemsIndex extends Component
             return collect([]);
         }
 
-        $this->activePoems = $this->activePoems//->with(['meta', 'media'])
+        if ($query = $this->query) {
+            $this->activePoems = $this->activePoems->where('name', 'like', "%$query%");
+        }
+
+        $this->activePoems = $this->activePoems
+            ->with(['meta', 'media'])
             ->orderBy('queryable_meta_value', $this->orderDirection);
 
         return $this->activePoems->paginate(30);
@@ -181,8 +181,7 @@ class PoemsIndex extends Component
 
         return $birds->map(function($bird) {
             return $bird->connectedResourcesIds;
-        })
-            ->flatten()
+        }) ->flatten()
             ->unique()
             ->toArray();
     }
