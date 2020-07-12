@@ -1,6 +1,6 @@
 <div>
     <a href="@route('project.birds.show', $bird)" 
-                    class="block text-md text-center hover:underline mb-3">
+                    class="block text-md text-center hover:underline mb-3 text-red-800 font-serif">
         {{ $bird->name }}
     </a>
 
