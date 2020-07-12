@@ -1881,6 +1881,33 @@ video {
   background-color: rgba(42, 67, 101, var(--bg-opacity));
 }
 
+.slick-carousel button.slick-arrow {
+  position: absolute;
+  top: 50%;
+  display: block;
+  cursor: pointer;
+  --text-opacity: 1;
+  color: #a0aec0;
+  color: rgba(160, 174, 192, var(--text-opacity));
+  font-size: 3rem;
+  font-weight: 200;
+}
+
+.slick-carousel button.previous {
+  margin-left: -2.5rem;
+  transform: translate(0, -50%);
+}
+
+.slick-carousel button.next {
+  right: 0;
+  margin-right: -2.5rem;
+  transform: translate(0, -50%);
+}
+
+.slick-dots li button::before {
+  font-size: 12px;
+}
+
 .space-y-0 > :not(template) ~ :not(template){
   --space-y-reverse: 0 !important;
   margin-top: calc(0px * calc(1 - var(--space-y-reverse))) !important;

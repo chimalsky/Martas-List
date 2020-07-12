@@ -57,7 +57,7 @@
             @foreach ($birds as $bird)
                 <!--<article class="w-full lg:w-1/3 lg:px-2 pb-10 lg:pb-16 border-2 border-gray-400 shadow-lg rounded-lg">-->
                 <div class="p-4">
-                    <article class="border-2 border-gray-400 shadow-lg rounded-lg p-2">
+                    <article class="border-2 border-gray-400 shadow-lg rounded-lg pt-2 pb-6 px-4">
                         @include('project.birds._single', $bird)
                     </article>
                 </div>

@@ -265,6 +265,32 @@
     }
 }
 
+.slick-carousel button.slick-arrow {
+    position: absolute;
+    top: 50%;
+    display: block;
+    cursor: pointer;
+    @apply text-gray-500;
+    @apply text-5xl;
+    @apply font-thin;
+}
+
+.slick-carousel button.previous {
+    @apply -ml-10;
+    transform: translate(0, -50%);
+}
+
+
+.slick-carousel button.next {
+    right:0;
+    @apply -mr-10;
+    transform: translate(0, -50%);
+}
+
+.slick-dots li button::before {
+    font-size: 12px;
+}
+
 
 @tailwind utilities;
 

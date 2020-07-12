@@ -9,13 +9,15 @@
             Dickinson's Birds
         </title>
 
+
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
         <link href="{{ mix('css/app.css') }}" rel="stylesheet">
         @stack('stylesheets')
 
         @livewireStyles
-        
+
         <script src="{{ mix('js/app.js') }}" defer="true"></script>
         @stack('scripts')
     </head>

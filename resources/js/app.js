@@ -75,10 +75,16 @@ function bootstrap() {
     });
 
     $('.slick-carousel').slick({
+        centerMode: true,
+        centerPadding: '120px',
+        dots: true,
+        arrows: true,
         slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000,
+        prevArrow: '<button type="button" class="previous"><</button>',
+        nextArrow: '<button type="button" class="next">></button>'
     });
         
     window.xenoPower = function() {
