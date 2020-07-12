@@ -1881,6 +1881,11 @@ video {
   background-color: rgba(42, 67, 101, var(--bg-opacity));
 }
 
+.slick-track {
+  display: flex;
+  align-items: center;
+}
+
 .slick-carousel button.slick-arrow {
   position: absolute;
   top: 50%;
@@ -1902,6 +1907,23 @@ video {
   right: 0;
   margin-right: -2.5rem;
   transform: translate(0, -50%);
+}
+
+article.bird {
+  border-width: 2px;
+  --border-opacity: 1;
+  border-color: #cbd5e0;
+  border-color: rgba(203, 213, 224, var(--border-opacity));
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.slick-center article.bird {
+  padding: 4rem;
 }
 
 .slick-dots li button::before {

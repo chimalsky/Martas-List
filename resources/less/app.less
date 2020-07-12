@@ -265,6 +265,10 @@
     }
 }
 
+.slick-track {
+    @apply flex items-center;
+}
+
 .slick-carousel button.slick-arrow {
     position: absolute;
     top: 50%;
@@ -285,6 +289,14 @@
     right:0;
     @apply -mr-10;
     transform: translate(0, -50%);
+}
+
+article.bird {
+    @apply border-2 border-gray-400 shadow-lg rounded-lg pt-2 pb-6 px-4;
+}
+
+.slick-center article.bird {
+    @apply p-16;
 }
 
 .slick-dots li button::before {
