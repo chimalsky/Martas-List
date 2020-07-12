@@ -6,12 +6,9 @@
 @endsection
 
 @section ('content')
-<section>
 
-    @livewire('project.poems-index')
-
-</section>
-
+@livewire('project.poems-index')
+    
 @unless(true)
 
 <section class="flex flex-wrap justify-center hidden">

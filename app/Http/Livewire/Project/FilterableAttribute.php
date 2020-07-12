@@ -13,12 +13,18 @@ class FilterableAttribute extends Component
 
     public $activeOptions;
 
-    public $expanded = false;
+    public $expanded;
 
-    public function mount(ResourceAttribute $attribute)
+    protected $casts = [
+        'activeOptions' => 'collection'
+    ];
+
+    public function mount(ResourceAttribute $attribute, $expanded = false)
     {
         $this->attribute = $attribute;
         $this->options = $attribute->options;
+        $this->activeOptions = collect([]);
+        $this->expanded = $expanded; 
     }
 
     public function toggleDropdown()
@@ -28,7 +34,7 @@ class FilterableAttribute extends Component
 
     public function syncOptions($option)
     {
-        $options = collect($this->activeOptions);
+        $options = $this->activeOptions;
 
         if ($options->contains($option)) {
             $options = $options->reject(function($value) use ($option) {
@@ -38,9 +44,21 @@ class FilterableAttribute extends Component
             $options->push($option);
         }
 
-        $this->activeOptions = $options->toArray();
+        $this->activeOptions = $options;
 
-        $this->emitUp('filterable-attribute.activeOptions.changed', $this->attribute->id, $this->activeOptions);
+        $this->emitUp('filterable-attribute.activeOptions.changed', $this->attribute->id, $this->activeOptions->toArray());
+    }
+
+    public function resetOptions()
+    {
+        $this->activeOptions = collect([]);
+
+        $this->emitUp('filterable-attribute.activeOptions.resetOptions', $this->attribute->id, []);
+    }
+
+    public function getIsActiveProperty()
+    {
+        return $this->activeOptions->count();
     }
 
     public function render()

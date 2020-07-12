@@ -13,8 +13,11 @@ class PoemsIndex extends Component
 {
     use WithPagination;
 
+    public $query;
+
     public $filterOpened;
     public $poemDefinition;
+    public $birdDefinition;
 
     public $orderables;
     public $orderable;
@@ -23,30 +26,46 @@ class PoemsIndex extends Component
     public $filterables;
     public $activeFilterables = [];
 
+    public $birds;
+    public $activeBirds = [];
+
     protected $activePoems;
 
     protected $casts = [
-        'activeFilterables' => 'collection'
+        'activeFilterables' => 'collection',
+        'activeBirds' => 'collection'
     ];
 
-    protected $listeners = ['filterable-attribute.activeOptions.changed' => 'filterByAttribute'];
+    protected $listeners = [
+        'filterable-attribute.activeOptions.changed' => 'filterByAttribute',
+        'filterable-attribute.activeOptions.resetOptions' => 'filterByAttribute',
+    ];
 
     public function mount()
     {
         $this->filterOpened = false;
         $this->poemDefinition = ResourceType::find(3);
+        $this->birdDefinition = ResourceType::find(2);
+
         $this->orderables = $this->poemDefinition->attributes->where('visibility', 1);
         $this->orderable = $this->orderables->first()->id ?? null;
     
         $this->filterables = $this->orderables->where('options');
-
         $this->activeFilterables = collect([]);
+
+        $this->birds = ResourceType::find(2)->resources;
+        $this->activeBirds = collect([]);
     }
 
     public function hydrate()
     {
         $this->sort();
         $this->filter();
+
+        if ($query = $this->query) {
+            $this->activePoems = $this->activePoems->where('name', 'like', "%$query%");
+            $this->resetPage();
+        }
     }
 
     public function toggleFilter()
@@ -68,6 +87,7 @@ class PoemsIndex extends Component
             ->withQueryableMetaValue($attributeId);
 
         $this->activePoems = $activePoems;
+        $this->filter();
     }
 
     public function filter()
@@ -75,6 +95,10 @@ class PoemsIndex extends Component
         $orderableId = $this->orderable ?? $this->orderables->first()->id;
 
         $activePoems = $this->poemDefinition->resources();
+
+        if ($this->activeBirds && $this->activeBirds->count()) {
+            $activePoems = $activePoems->whereIn('id', $this->birdConnectedPoemsIds);
+        }
 
         foreach ($this->activeFilterables as $filterable) {
             $activePoems = $activePoems->whereHas('meta', function ($query) use ($filterable) {
@@ -88,6 +112,21 @@ class PoemsIndex extends Component
         $activePoems = $activePoems->withQueryableMetaValue($orderableId);
 
         $this->activePoems =  $activePoems;
+    }
+
+    public function filterByBird($birdId)
+    {       
+        if (! $this->activeBirds->contains($birdId) ) {
+            $this->activeBirds->push(
+                $birdId
+            );
+        } else {
+            $index = $this->activeBirds->search($birdId);
+
+            $this->activeBirds->splice($index, 1);
+        }
+
+        $this->filter();
     }
 
     public function filterByAttribute($attributeId, $optionValues)
@@ -106,10 +145,14 @@ class PoemsIndex extends Component
                 return $item['id'] == $attributeId;
             });
 
-            $this->activeFilterables[$index] = [
-                'id' => $attributeId,
-                'activeValues' => $optionValues
-            ];
+            if (count($optionValues)) {
+                $this->activeFilterables[$index] = [
+                    'id' => $attributeId,
+                    'activeValues' => $optionValues
+                ];
+            } else {
+                $this->activeFilterables->splice($index, 1);
+            }
         }
 
         $this->filter();
@@ -130,6 +173,18 @@ class PoemsIndex extends Component
             ->orderBy('queryable_meta_value', $this->orderDirection);
 
         return $this->activePoems->paginate(30);
+    }
+
+    public function getBirdConnectedPoemsIdsProperty()
+    {
+        $birds = $this->birdDefinition->resources->whereIn('id', $this->activeBirds->toArray());
+
+        return $birds->map(function($bird) {
+            return $bird->connectedResourcesIds;
+        })
+            ->flatten()
+            ->unique()
+            ->toArray();
     }
 
     public function render()
