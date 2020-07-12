@@ -16,6 +16,8 @@ import 'livewire-sortable'
 
 import Alpine from 'alpinejs'
 
+import 'slick-carousel'
+
 turbolinks.start()  
 
 const application = new Application.start()
@@ -70,6 +72,13 @@ function bootstrap() {
                 input.setAttribute('name', 'options[]')
             }
         }
+    });
+
+    $('.slick-carousel').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
     });
         
     window.xenoPower = function() {
