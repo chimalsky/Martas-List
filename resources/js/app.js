@@ -76,9 +76,9 @@ function bootstrap() {
 
     $('.slick-carousel').slick({
         centerMode: true,
-        centerPadding: '120px',
         dots: true,
         arrows: true,
+        variableWidth: true,
         slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
