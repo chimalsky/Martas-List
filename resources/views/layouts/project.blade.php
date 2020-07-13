@@ -19,6 +19,8 @@
         @livewireStyles
 
         <script src="{{ mix('js/app.js') }}" defer="true"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" defer="true"></script>
+        
         @stack('scripts')
     </head>
     <body data-controller="application">

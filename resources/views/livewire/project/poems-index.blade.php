@@ -9,7 +9,7 @@
         </button>
     </aside>
 
-    <section x-show="open">
+    <section x-show="open" @click.away="open = false">
         <div class="max-w-6xl absolute bg-white shadow-lg flex flex-wrap">
             <header class="bg-gray-100 w-full">
                 <h1 class="bg-gray-300 p-3 italic flex justify-between">
@@ -85,7 +85,7 @@
     @if ($poems->count())
         @foreach ($poems as $poem)
             <article class="pb-32 px-4 cursor-pointer w-1/3">
-                @include('project.poems._single', $poem)
+                @include('project.poems._single', ['poem' => $poem, 'query' => $query])
             </article> 
         @endforeach
 
@@ -93,9 +93,44 @@
             {{ $poems->links() }}
         </nav>
     @else 
-        <div class="items-center flex mx-auto text-center text-3xl text-gray-500 font-semibold">
-            No poems matching your curation
+        <div class="items-center justify-center w-full text-center text-gray-500 font-semibold">
+            @unless ($query || $activeFilterables)
+                <p class="block text-2xl mb-12 text-gray-800">
+                    Search and Curate Manuscripts
+                </p>
+            @else 
+                <p class="block text-2xl mb-12">
+                    No poems match your curation
+                </p>
+            @endunless
+
+            @if ($query)
+                <p class="block flex-1 mb-10 text-black text-3xl">
+                    <span class="text-gray-500">transcription text query--</span> 
+                    <br/>
+                    {{ $query }}
+                </p>
+            @endif
+
+            @if ($activeFilterables)
+                @foreach ($activeFilterables as $filterable)
+                    <div class="block mb-5 text-xl">
+                        <p class="text-gray-500">
+                            {{ \App\ResourceAttribute::find($filterable['id'])->name }} that are within:
+                        </p>
+
+                        <ul>
+                            @foreach($filterable['activeValues'] as $value)
+                                <li class="text-black">
+                                    {{ $value }}
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endforeach
+            @endif
         </div>
     @endif
 </section>
+
 </div>
