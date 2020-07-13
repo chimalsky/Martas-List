@@ -1,8 +1,8 @@
 <div>
     <a href="@route('project.poems.show', $poem->id)">
-        <p class="text-center mb-2">
-            {{ $poem->name }}
-        </p>
+        <header class="text-center mb-2 text-xl font-thin">
+            {{ $poem->headline_value ?? $poem->name }}
+        </header>
 
         @if($placeholderMeta = $poem->meta()->firstWhere('resource_attribute_id', 149))
             <section class="flex justify-center">
@@ -44,8 +44,10 @@
             </section>
         @endif
 
-        <p class="text-center text-2xl">
-            {{ $poem->queryable_meta_value }}
-        </p>
+        @unless ($poem->headline_value == $poem->queryable_meta_value)
+            <p class="text-center text-2xl">
+                {{ $poem->queryable_meta_value }}
+            </p>
+        @endunless
     </a>
 </div>

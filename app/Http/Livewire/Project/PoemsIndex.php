@@ -78,8 +78,8 @@ class PoemsIndex extends Component
             }
         } 
 
-        $activePoems = $this->poemDefinition->resources()
-            ->withQueryableMetaValue($attributeId);
+        $activePoems = $this->poemDefinition->resources();
+           // ->withQueryableMetaValue($attributeId);
 
         $this->activePoems = $activePoems;
         $this->filter();
@@ -104,7 +104,6 @@ class PoemsIndex extends Component
                 }
             });
         }
-        $activePoems = $activePoems->withQueryableMetaValue($orderableId);
 
         $this->activePoems =  $activePoems;
     }
@@ -170,10 +169,16 @@ class PoemsIndex extends Component
         }
         
         if ($query) {
-            $this->activePoems = $this->activePoems->where('name', 'like', "%$query%");
+            $this->activePoems = $this->activePoems
+                ->with('transcription')
+                ->whereHas('transcription', function($transcriptionQuery) use ($query) {
+                    $transcriptionQuery->where('value', 'like', "%$query%");
+                });
         }
 
         $this->activePoems = $this->activePoems
+            ->withHeadlineValue($this->orderables->First()->id)
+            ->withQueryableMetaValue($this->orderable)
             ->with(['meta', 'media'])
             ->orderBy('queryable_meta_value', $this->orderDirection);
 

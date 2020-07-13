@@ -51,6 +51,13 @@ class Resource extends Model implements HasMedia
             ->orderBy('key', 'desc');
     }
 
+    // TODO : figure out how to do this dynamically
+    public function transcription()
+    {
+        return $this->hasOne(ResourceMeta::class)
+            ->where('resource_attribute_id', 78);
+    } 
+
     public function queriedMeta()
     {
         return $this->belongsTo(ResourceMeta::class);
@@ -191,6 +198,28 @@ class Resource extends Model implements HasMedia
     public function scopeType($query, $type)
     {
         return $query->where('resource_type_id', $type);
+    }
+
+    public function scopeWithHeadlineValue($query, $metaId)
+    {
+        return $query->addSelect(['headline_value' => function($subQuery) use ($metaId) {
+            $subQuery->select('value')
+                ->from('resource_metas')
+                ->whereColumn('resource_id', 'resources.id')
+                ->where('resource_attribute_id', $metaId)
+                ->latest()->take(1);
+            }]);
+    }
+
+    public function scopeWithDynamicValue($query, $metaId, $keyName)
+    {
+        return $query->addSelect([$keyName => function($subQuery) use ($metaId) {
+            $subQuery->select('value')
+                ->from('resource_metas')
+                ->whereColumn('resource_id', 'resources.id')
+                ->where('resource_attribute_id', $metaId)
+                ->latest()->take(1);
+            }]);
     }
 
     public function scopeWithQueryableMeta($query, $queryableId)
