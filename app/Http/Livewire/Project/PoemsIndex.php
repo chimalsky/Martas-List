@@ -160,11 +160,16 @@ class PoemsIndex extends Component
 
     public function getPoemsProperty()
     {
-        if (!$this->activePoems || !$this->activePoems->exists()) {
-            return collect([]);
-        }
+        $query = $this->query;
 
-        if ($query = $this->query) {
+        if (!$this->activePoems || !$this->activePoems->exists()) {
+            if (!$query) {
+                return collect([]);
+            }
+            $this->activePoems = $this->poemDefinition->resources();
+        }
+        
+        if ($query) {
             $this->activePoems = $this->activePoems->where('name', 'like', "%$query%");
         }
 
