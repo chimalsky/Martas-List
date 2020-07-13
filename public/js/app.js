@@ -48979,7 +48979,7 @@ function bootstrap() {
     variableWidth: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: true,
+    //autoplay: true,
     autoplaySpeed: 2000,
     prevArrow: '<button type="button" class="previous"><</button>',
     nextArrow: '<button type="button" class="next">></button>'

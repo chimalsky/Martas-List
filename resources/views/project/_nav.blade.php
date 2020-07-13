@@ -2,7 +2,7 @@
     <span class="flex-1">
         <span class="rounded-md shadow-sm flex items-center">
             <button @click="open = !open" type="button" id="menu-toggle"
-            class="h-12 w-12 text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150">
+            class="h-6 w-6 text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150">
                 <img src="{{ asset('img/bird-icon-round.png') }}" />
             </button>
             

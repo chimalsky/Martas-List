@@ -1,9 +1,10 @@
 <div class="flex justify between">
 <section x-data="{open: false}">
-    <aside>
-        <input wire:model.debounce.900ms="query" class="block mb-4 border border-black rounded-lg p-2" /> 
+    <aside class="max-w-xs">
+        <input wire:model.debounce.900ms="query" placeholder="search by first line"
+            class="block mb-4 border-4 border-gray-700 rounded-full pl-4 p-2 placeholder-gray-800" /> 
 
-        <button @click="open = !open" class="bg-yellow-800 rounded-md text-gray-100 p-2 px-4 italic text-lg w-40">
+        <button @click="open = !open" class="bg-gray-500 rounded-md text-white p-2 px-6 italic text-lg">
             Curate
         </button>
     </aside>
@@ -81,10 +82,6 @@
 </section>
 
 <section class="flex flex-wrap w-full">
-    <h1 class='italic mx-auto text-4xl font-serif text-center w-full mb-10'>
-        Poem Archive
-    </h1>
-
     @if ($poems->count())
         @foreach ($poems as $poem)
             <article class="pb-32 px-4 cursor-pointer w-1/3">
@@ -92,9 +89,11 @@
             </article> 
         @endforeach
 
-        {{ $poems->links() }}
+        <nav class="w-full">
+            {{ $poems->links() }}
+        </nav>
     @else 
-        <div class="h-screen items-center flex mx-auto text-center text-3xl text-gray-500 font-semibold">
+        <div class="items-center flex mx-auto text-center text-3xl text-gray-500 font-semibold">
             No poems matching your curation
         </div>
     @endif
