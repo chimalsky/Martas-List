@@ -3,9 +3,6 @@
         <h1 class="font-serif text-xl -mb-3 tracking-wide flex">
             @include('project._nav')
         </h1>
-        <h1 class="font-serif text-xl text-yellow-700 tracking-wide italic">
-            A Public Listening Project 
-        </h1>
     </section>
 
     <section class="flex-1 flex-wrap">
@@ -16,7 +13,7 @@
         </aside>
 
         <section class="w-full -ml-24">
-            <h1 class='italic flex-1 text-4xl text-center font-serif'>
+            <h1 class='italic flex-1 text-3xl text-center font-serif'>
                 <a href="@route('project.poems.index')">
                     Poem Archive
                 </a>

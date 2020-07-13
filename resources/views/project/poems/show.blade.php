@@ -10,7 +10,16 @@
     <main class="max-w-5xl text-gray-700 text-lg">
         <header class="text-center">
             <h1 class="text-4xl font-hairline mb-8 pl-5">
-                {{ $firstline }}
+                {{ $firstline }} | 
+                @if($poem->category) 
+                    <a class="text-black underline italic" href="">
+                        Poem Constellation
+                    </a>
+                @else 
+                    <span class="text-gray-500 italic">
+                        Poem Constellation
+                    </span>
+                @endif
             </h1>
 
             <p class="mt-18 text-black text-lg">

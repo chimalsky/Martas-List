@@ -1,7 +1,7 @@
 <div class="flex justify between">
 <section x-data="{open: false}">
     <aside class="max-w-xs">
-        <input wire:model.debounce.900ms="query" placeholder="search by first line"
+        <input wire:model.debounce.300ms="query" placeholder="search by poem text"
             class="block mb-4 border-4 border-gray-700 rounded-full pl-4 p-2 placeholder-gray-800" /> 
 
         <button @click="open = !open" class="bg-gray-500 rounded-md text-white p-2 px-6 italic text-lg">
