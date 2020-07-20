@@ -1,100 +1,75 @@
-<section
-    x-show="open"
-    x-transition:enter="transition ease-out duration-300"
-    x-transition:enter-start="opacity-0 transform scale-90"
-    x-transition:enter-end="opacity-100 transform scale-100"
-    x-transition:leave="transition ease-in duration-300"
-    x-transition:leave-start="opacity-100 transform scale-100"
-    x-transition:leave-end="opacity-0 transform scale-90"
-    class="mt-4 z-50 p-4 text-lg absolute max-w-6xl project-filter">
-    <header class="bg-gray-300 p-3 italic">
-        Order By--
-    </header>
-    <div class="bg-yellow-100 p-4 flex flex-wrap">
-        @foreach($poemDefinition->attributes->where('visibility', 1) as $attribute)
-            <label class="mb-4 pr-4 cursor-pointer">
-                <input type="radio" name="order" class="text-red-500" value="{{ $attribute->id }}" 
-                    onchange="fetchPoems()"
-                    @if($sortedAttribute == $attribute->id) checked @endif
-                /> 
-                <span class="mr-4">{{ $attribute->key }}</span>
-            </label>
-        @endforeach
-    </div>
-    <header class="bg-gray-300 p-3 italic">
-        Curate By-- 
-    </header>
-    <main class="flex flex-wrap">
-        <div class="bg-orange-200 p-4 w-3/5">
-            @foreach($poemDefinition->attributes->where('visibility', 1)->where('options') as $attribute)
-                <section class="block mb-12">
-                    <h1 class="text-2xl">
-                        {{ $attribute->key }} 
-                        <button type="button" data-attribute-id="{{ $attribute->id }}" 
-                            class="js-expand-options border border-gray-500 p-1">V</span>
-                    </h1>
+<div class="relative w-full bg-white shadow-lg flex flex-wrap">
+    <header class="bg-gray-100 w-full">
+        <h1 class="bg-orange-700 text-white font-thin text-xl p-3 italic shadow-xl flex justify-between">
+            Order By--
 
-                    <div data-attribute-options="{{ $attribute->id }}" class="grid hidden grid-cols-5 pl-8 pt-2">
-                        @foreach ($attribute->options as $attributeOption)
-                            @unless(is_array($attributeOption))
-                                <label class="mb-2 col-span-1 font-thin cursor-pointer hover:underline">
-                                    <input type="checkbox" id="meta-{{ $attribute->id }}-{{ $attributeOption }}"
-                                        onchange="fetchPoems()"
-                                        name="attributeOptions[{{ $attribute->id }}][{{ $attributeOption }}]" 
-                                        @if ($filteredAttributeOptions->keys()->contains($attribute->id))
-                                            @if (collect($filteredAttributeOptions[$attribute->id])->keys()->contains($attributeOption))
-                                                checked
-                                            @endif
-                                        @endif/>
-                                    {{ $attributeOption }}
-                                </label>  
-                            @endunless
-                        @endforeach
+            <button @click="open = false">
+                X
+            </button>
+        </h1>
 
-                    </div>
-                </section>
+        <div class=" p-4 flex flex-wrap w-full">
+            @foreach($orderables as $orderable)
+                <label class="mb-4 pr-4 cursor-pointer">
+                    <input type="radio" name="order" class="text-red-500" value="{{ $orderable->id }}" 
+                        wire:model="orderable"
+                        wire:click="sort( {{ $orderable->id  }} )"
+                        /> 
+                    <span class="mr-4">{{ $orderable->key }}</span>
+                </label>
             @endforeach
-        </div>
-        <div class="bg-green-100 p-4 w-2/5">
-            <h1 class="font-semibold text-xl mb-2">
-                Dickinson's Birds List
-            </h1>
 
-            <section class="grid grid-cols-4">
-                @foreach ($birds as $bird)
-                    <input type="checkbox" name="birds[{{ $bird->id }}]" 
-                        id="bird-{{ $bird->id }}"
-                        class="hidden"
-                        />
-                    <label for="bird-{{ $bird->id }}" class="col-span-1
-                        border border-indigo-400
-                         cursor-pointer" >
-                        {{ $bird->name }} 
-                    </label>
+        </div>
+    </header>
+
+    <main class="w-full">
+        <h1 class="bg-orange-700 text-white font-thin text-xl p-3 italic shadow-xl">
+            Curate by--
+        </h1>
+
+        <section class="flex flex-wrap bg-yellow-100">
+
+            <div class="text-xs w-3/5 pt-4">
+                @foreach($filterables as $key => $filterable)
+                    <section class="block mb-12">
+                        @php 
+                            // Only expand the first two Filterables
+                            $expanded = $key < 2;
+                        @endphp
+
+                        <livewire:project.filterable-attribute :attribute="$filterable" :key="$key"
+                            :expanded="$expanded" />
+                    </section>
                 @endforeach
+            </div>
+
+
+            <section class="w-2/5 pt-4 bg-green-100">
+                <header class="block mb-2 text-xl">
+                    Dickinson's Bird List
+                </header>
+
+                <main class="mx-auto grid grid-cols-4 bg-yellow-100">
+                    @foreach ($dickinsonsBirds as $bird)
+                        <label wire:click="filterByBird({{ $bird->id }})"
+                            for="bird-{{ $bird->id }}" class="col-span-1
+                            border border-orange-500 p-3
+                            cursor-pointer
+                            @if ($activeBirds->contains($bird->id))
+                                bg-yellow-400 font-bold
+                            @endif
+                                " >
+                            {{ $bird->name }} 
+                        </label>
+                    @endforeach
+                </main>
+
+                <footer class="flex justify-center mt-4">
+                    <button wire:click='resetBirds' class="bg-green-500 shadow-2xl text-white py-2 px-4">
+                        Unselect All
+                    </button>
+                </footer>
             </section>
-
-            <h1 class="font-semibold text-xl mt-4">
-                Refers To
-            </h1>
-        </div>
+        </section>
     </main>
-
-    <footer class="flex justify-center p-2 bg-yellow-200">
-        <button class="p-3 text-2xl font-semibold border border-black">
-            Curate
-        </button>
-    </footer>
-</section>
-
-<script>
-
-    document.querySelectorAll('.js-expand-options').forEach(function(button) {
-        button.addEventListener('click', expandOptions)
-    })
-
-    function expandOptions(ev) {
-        let attr = ev.target.getAttribute('data-attribute-id')
-        document.querySelector(`[data-attribute-options="${attr}"]`).classList.toggle('hidden')
-    }
-</script>
+</div>

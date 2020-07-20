@@ -4,15 +4,15 @@
             font-bold 
         @endif
     ">
-        {{ $attribute->key }} 
         <button type="button" wire:click="toggleDropdown"
-            class="border border-gray-500 p-1">
+            class="border-2 border-gray-700 py-1 px-3">
             @if ($expanded) 
                 ^ 
             @else 
                 V 
             @endif
         </button>
+        {{ $attribute->key }} 
     </h1>
 
     <div class="grid grid-cols-5 pl-8 pt-2
@@ -21,7 +21,8 @@
         @foreach ($options as $option)
             @unless(is_array($option))
                 <label class="mb-2 col-span-1 text-lg cursor-pointer hover:underline">
-                    <input type="checkbox" wire:change="syncOptions('{{ $option }}')" 
+                    <input type="checkbox" wire:change="syncOptions('{{ $option }}')"
+                        autocomplete="off" 
                         @if ($activeOptions->contains($option))
                             checked 
                         @endif

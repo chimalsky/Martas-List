@@ -1,136 +1,104 @@
-<div class="flex justify between">
-<section x-data="{open: false}">
-    <aside class="max-w-xs">
-        <input wire:model.debounce.300ms="query" placeholder="search by poem text"
-            class="block mb-4 border-4 border-gray-700 rounded-full pl-4 p-2 placeholder-gray-800" /> 
+<div x-data="{open: false}">
 
-        <button @click="open = !open" class="bg-gray-500 rounded-md text-white p-2 px-6 italic text-lg">
-            Curate
-        </button>
-    </aside>
-
+<section class="w-full">
     <section x-show="open" @click.away="open = false">
-        <div class="max-w-6xl absolute bg-white shadow-lg flex flex-wrap">
-            <header class="bg-gray-100 w-full">
-                <h1 class="bg-gray-300 p-3 italic flex justify-between">
-                    Order By--
-
-                    <button @click="open = false">
-                        X
-                    </button>
-                </h1>
-
-                <div class=" p-4 flex flex-wrap w-full">
-                    @foreach($orderables as $orderable)
-                        <label class="mb-4 pr-4 cursor-pointer">
-                            <input type="radio" name="order" class="text-red-500" value="{{ $orderable->id }}" 
-                                wire:model="orderable"
-                                wire:click="sort( {{ $orderable->id  }} )"
-                                /> 
-                            <span class="mr-4">{{ $orderable->key }}</span>
-                        </label>
-                    @endforeach
-
-                </div>
-            </header>
-
-            <main>
-                <h1 class="bg-gray-300 p-3 italic">
-                    Curate By--
-                </h1>
-
-                <section class="flex flex-wrap bg-yellow-100">
-
-                    <div class="text-xs w-3/5 pt-4">
-                        @foreach($filterables as $key => $filterable)
-                            <section class="block mb-12">
-                                @php 
-                                    $expanded = $key < 2;
-                                @endphp
-
-                                <livewire:project.filterable-attribute :attribute="$filterable" :key="$key"
-                                    :expanded="$expanded" />
-                            </section>
-                        @endforeach
-                    </div>
-
-
-                    <section class="w-2/5 pt-4 bg-green-100">
-                        <header class="block mb-2 text-xl">
-                            Dickinson's Bird List
-                        </header>
-
-                        <main class="p-4 mx-auto grid grid-cols-4">
-                            @foreach ($birds as $bird)
-                                <label wire:click="filterByBird({{ $bird->id }})"
-                                    for="bird-{{ $bird->id }}" class="col-span-1
-                                    border border-indigo-400 p-3
-                                    cursor-pointer
-                                    @if ($activeBirds->contains($bird->id))
-                                        bg-indigo-700 text-white
-                                    @endif
-                                        " >
-                                    {{ $bird->name }} 
-                                </label>
-                            @endforeach
-                        </main>
-                    </section>
-                </section>
-            </main>
-        </div>
+        @include('project.poems._filter')
     </section>
 </section>
 
-<section class="flex flex-wrap w-full">
-    @if ($poems->count())
-        @foreach ($poems as $poem)
-            <article class="pb-32 px-4 cursor-pointer w-1/3">
-                @include('project.poems._single', ['poem' => $poem, 'query' => $query])
-            </article> 
-        @endforeach
+<section class="flex justify between">
+    @if ($this->isCurating)
+        <aside class="max-w-xs">
+            <button @click="open = !open" class="bg-orange-700 rounded-md text-white p-2 px-6 italic text-lg mb-6">
+                Curate
+            </button>
 
-        <nav class="w-full">
-            {{ $poems->links() }}
-        </nav>
-    @else 
-        <div class="items-center justify-center w-full text-center text-gray-500 font-semibold">
-            @unless ($query || $activeFilterables)
-                <p class="block text-2xl mb-12 text-gray-800">
-                    Search and Curate Manuscripts
-                </p>
-            @else 
-                <p class="block text-2xl mb-12">
-                    No poems match your curation
-                </p>
-            @endunless
+            <input wire:model.debounce.200ms="query" placeholder="search by poem text"
+                class="block mb-4 border-4 border-gray-700 rounded-full pl-4 p-2 placeholder-gray-800" /> 
+        </aside>
+    @endif
 
-            @if ($query)
-                <p class="block flex-1 mb-10 text-black text-3xl">
-                    <span class="text-gray-500">transcription text query--</span> 
-                    <br/>
-                    {{ $query }}
-                </p>
-            @endif
+    <section class="flex flex-wrap w-full">
+        @if ($poems->count())
+            @foreach ($poems as $poem)
+                <article class="pb-32 px-4 cursor-pointer w-1/3">
+                    @include('project.poems._single', ['poem' => $poem, 'query' => $query])
+                </article> 
+            @endforeach
 
-            @if ($activeFilterables)
-                @foreach ($activeFilterables as $filterable)
-                    <div class="block mb-5 text-xl">
-                        <p class="text-gray-500">
-                            {{ \App\ResourceAttribute::find($filterable['id'])->name }} that are within:
+            <nav class="w-full">
+                {{ $poems->links() }}
+            </nav>
+        @else 
+            <div class="items-center justify-center w-full text-gray-500 font-semibold">
+                <section class="max-w-2xl mx-auto">
+                    @unless ($this->isCurating)
+                        <p class="block text-2xl block mb-4 text-left">
+                            Explore Dickinson's Bird Manuscripts by text...
                         </p>
 
-                        <ul>
-                            @foreach($filterable['activeValues'] as $value)
-                                <li class="text-black">
-                                    {{ $value }}
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endforeach
-            @endif
-        </div>
-    @endif
+                        <input wire:model.debounce.500ms="query"
+                            class="block mb-16 border-4 border-gray-600 text-gray-800 rounded-full pl-4 p-2 placeholder-gray-800 mx-auto w-full" /> 
+
+                        <p class="block text-2xl text-left mb-4">
+                            Or curate Manuscripts by a variety of attributes.
+                        </p>
+
+                        <button @click="open = !open" class="bg-orange-700 rounded-md text-white p-2 px-6 italic text-lg mb-6 float-left">
+                            Curate
+                        </button>
+                    @else
+                        @unless ($query || $activeFilterables)
+                            <p class="block text-2xl mb-12 text-gray-800">
+                                Search and Curate Manuscripts
+                            </p>
+                        @else 
+                            <p class="block text-xl mb-12 text-left text-gray-800">
+                                No poems match your curation
+                            </p>
+                        @endunless
+                    @endunless
+
+                    @if ($query)
+                        <p class="block flex-1 mb-16 text-black text-3xl text-left">
+                            <span class="text-gray-500">transcription text query--</span> 
+                            <br/>
+                            {{ $query }}
+                        </p>
+                    @endif
+
+                    @if ($activeFilterables->count())
+                        <h1 class="text-gray-800 mb-4">
+                            Manuscript Attributes filtered for--
+                        </h1>
+                        @foreach ($activeFilterables as $filterable)
+                            <div class="block mb-5 text-xl">
+                                <p class="text-gray-500">
+                                    {{ \App\ResourceAttribute::find($filterable['id'])->name }} that are within--
+                                </p>
+
+                                <ul>
+                                    @foreach($filterable['activeValues'] as $value)
+                                        <li class="text-black">
+                                            {{ $value }}
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endforeach
+                    @endif
+                </section>
+            </div>
+        @endif
+    </section>
 </section>
+
+@if ($this->isCurating)
+    <footer class="flex fixed w-full bottom-0 mb-4 justify-center">
+        <button wire:click="resetAll" class="bg-green-500 border-2 text-white py-2 px-4 border-green-600 shadow-2xl">
+            Reset All Filters
+        </button>
+    </footer>
+@endif
 
 </div>

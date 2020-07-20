@@ -27,6 +27,7 @@ class PoemsIndex extends Component
     public $activeFilterables = [];
 
     public $birds;
+    public $dickinsonsBirds;
     public $activeBirds = [];
 
     protected $activePoems;
@@ -48,12 +49,13 @@ class PoemsIndex extends Component
         $this->birdDefinition = ResourceType::find(2);
 
         $this->orderables = $this->poemDefinition->attributes->where('visibility', 1);
-        $this->orderable = $this->orderables->first()->id ?? null;
+        //$this->orderable = $this->orderables->first()->id ?? null;
     
         $this->filterables = $this->orderables->where('options');
         $this->activeFilterables = collect([]);
 
         $this->birds = ResourceType::find(2)->resources;
+        $this->dickinsonsBirds = $this->birdDefinition->categories;
         $this->activeBirds = collect([]);
     }
 
@@ -187,13 +189,43 @@ class PoemsIndex extends Component
 
     public function getBirdConnectedPoemsIdsProperty()
     {
-        $birds = $this->birdDefinition->resources->whereIn('id', $this->activeBirds->toArray());
+        //$birds = $this->birdDefinition->resources->whereIn('id', $this->activeBirds->toArray());
+        $birds = $this->birdDefinition->resources->whereIn('resource_category_id', $this->activeBirds->toArray());
 
         return $birds->map(function($bird) {
             return $bird->connectedResourcesIds;
         }) ->flatten()
             ->unique()
             ->toArray();
+    }
+
+    public function getIsCuratingProperty()
+    {
+        if ($this->query) {
+            return true;
+        }
+
+        if (! $this->query ) {
+            return $this->activeFilterables->count() 
+                || $this->activeBirds->count()
+                || $this->orderable
+                || $this->activePoems;
+        }
+
+    }
+
+    public function resetBirds()
+    {
+        $this->activeBirds = collect([]);
+    }
+
+    public function resetAll()
+    {
+        $this->orderable = null;
+        $this->activeFilterables = collect([]);
+        $this->resetBirds();
+        $this->activePoems = null;
+        $this->query = null;
     }
 
     public function render()

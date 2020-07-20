@@ -51,7 +51,7 @@
         @endunless
 
         @if($query)
-            <p id="transcription-{{ $poem->id }}" class="transcription mt-2">
+            <p id="transcription-{{ $poem->id }}" class="transcription mt-2 text-gray-600">
                 @php 
                     $stripped = strip_tags($poem->transcription->value);
 
