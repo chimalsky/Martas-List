@@ -15,7 +15,6 @@ class PoemsIndex extends Component
 
     public $query;
 
-    public $filterOpened;
     public $poemDefinition;
     public $birdDefinition;
 
@@ -28,13 +27,13 @@ class PoemsIndex extends Component
 
     public $birds;
     public $dickinsonsBirds;
-    public $activeBirds = [];
+    public $activeBirdCategories = [];
 
     protected $activePoems;
 
     protected $casts = [
         'activeFilterables' => 'collection',
-        'activeBirds' => 'collection'
+        'activeBirdCategories' => 'collection'
     ];
 
     protected $listeners = [
@@ -49,25 +48,14 @@ class PoemsIndex extends Component
         $this->birdDefinition = ResourceType::find(2);
 
         $this->orderables = $this->poemDefinition->attributes->where('visibility', 1);
-        //$this->orderable = $this->orderables->first()->id ?? null;
+        $this->orderable = $this->orderables->first()->id ?? null;
     
         $this->filterables = $this->orderables->where('options');
         $this->activeFilterables = collect([]);
 
         $this->birds = ResourceType::find(2)->resources;
         $this->dickinsonsBirds = $this->birdDefinition->categories;
-        $this->activeBirds = collect([]);
-    }
-
-    public function hydrate()
-    {
-        $this->sort();
-        $this->filter();
-    }
-
-    public function toggleFilter()
-    {
-        $this->filterOpened = ($this->filterOpened) ? false : true;
+        $this->activeBirdCategories = collect([]);
     }
 
     public function sort($attributeId = null)
@@ -81,10 +69,8 @@ class PoemsIndex extends Component
         } 
 
         $activePoems = $this->poemDefinition->resources();
-           // ->withQueryableMetaValue($attributeId);
 
         $this->activePoems = $activePoems;
-        $this->filter();
     }
 
     public function filter()
@@ -93,8 +79,9 @@ class PoemsIndex extends Component
 
         $activePoems = $this->poemDefinition->resources();
 
-        if ($this->activeBirds && $this->activeBirds->count()) {
-            $activePoems = $activePoems->whereIn('id', $this->birdConnectedPoemsIds);
+        if ($this->activeBirdCategories && $this->activeBirdCategories->count()) {
+            $connectedPoemsIds = $this->birdConnectedPoemsIds;
+            $activePoems = $activePoems->whereIn('id', $connectedPoemsIds);
         }
 
         foreach ($this->activeFilterables as $filterable) {
@@ -105,24 +92,22 @@ class PoemsIndex extends Component
                     $query = $query->whereIn('value', $filterable['activeValues']);
                 }
             });
-        }
+        } 
 
-        $this->activePoems =  $activePoems;
+        $this->activePoems = $activePoems;
     }
 
     public function filterByBird($birdId)
     {       
-        if (! $this->activeBirds->contains($birdId) ) {
-            $this->activeBirds->push(
+        if (! $this->activeBirdCategories->contains($birdId) ) {
+            $this->activeBirdCategories->push(
                 $birdId
             );
         } else {
-            $index = $this->activeBirds->search($birdId);
+            $index = $this->activeBirdCategories->search($birdId);
 
-            $this->activeBirds->splice($index, 1);
+            $this->activeBirdCategories->splice($index, 1);
         }
-
-        $this->filter();
     }
 
     public function filterByAttribute($attributeId, $optionValues)
@@ -150,8 +135,6 @@ class PoemsIndex extends Component
                 $this->activeFilterables->splice($index, 1);
             }
         }
-
-        $this->filter();
     }
 
     public function toggleOrderDirection()
@@ -161,6 +144,11 @@ class PoemsIndex extends Component
 
     public function getPoemsProperty()
     {
+        if ($this->isCurating) {
+            $this->sort();
+            $this->filter();
+        }
+
         $query = $this->query;
 
         if (!$this->activePoems || !$this->activePoems->exists()) {
@@ -190,11 +178,11 @@ class PoemsIndex extends Component
     public function getBirdConnectedPoemsIdsProperty()
     {
         //$birds = $this->birdDefinition->resources->whereIn('id', $this->activeBirds->toArray());
-        $birds = $this->birdDefinition->resources->whereIn('resource_category_id', $this->activeBirds->toArray());
+        $birds = $this->birdDefinition->resources->whereIn('resource_category_id', $this->activeBirdCategories->toArray());
 
         return $birds->map(function($bird) {
             return $bird->connectedResourcesIds;
-        }) ->flatten()
+        })->flatten()
             ->unique()
             ->toArray();
     }
@@ -207,8 +195,7 @@ class PoemsIndex extends Component
 
         if (! $this->query ) {
             return $this->activeFilterables->count() 
-                || $this->activeBirds->count()
-                || $this->orderable
+                || $this->activeBirdCategories->count()
                 || $this->activePoems;
         }
 
@@ -216,12 +203,11 @@ class PoemsIndex extends Component
 
     public function resetBirds()
     {
-        $this->activeBirds = collect([]);
+        $this->activeBirdCategories = collect([]);
     }
 
     public function resetAll()
     {
-        $this->orderable = null;
         $this->activeFilterables = collect([]);
         $this->resetBirds();
         $this->activePoems = null;

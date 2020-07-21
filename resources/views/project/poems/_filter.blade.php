@@ -50,12 +50,12 @@
                 </header>
 
                 <main class="mx-auto grid grid-cols-4 bg-yellow-100">
-                    @foreach ($dickinsonsBirds as $bird)
+                    @foreach ($dickinsonsBirds->sortBy('name') as $bird)
                         <label wire:click="filterByBird({{ $bird->id }})"
-                            for="bird-{{ $bird->id }}" class="col-span-1
+                            class="col-span-1
                             border border-orange-500 p-3
                             cursor-pointer
-                            @if ($activeBirds->contains($bird->id))
+                            @if ($activeBirdCategories->contains($bird->id))
                                 bg-yellow-400 font-bold
                             @endif
                                 " >

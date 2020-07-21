@@ -67,6 +67,27 @@
                         </p>
                     @endif
 
+                    @if($activeBirdCategories)
+                        <section class="mb-10">
+                            <header class="text-gray-800 mb-4">
+                                Manuscripts mentioning birds--
+                            </header>
+                            @foreach ($activeBirdCategories as $activeBirdCategory)
+                                <div class="border-l-4 border-red-400 pl-4 mb-2">
+                                    @php $birdC = \App\ResourceCategory::find($activeBirdCategory) @endphp
+
+                                    <header class="font-bold text-gray-800">
+                                        {{ $birdC->name }}
+                                    </header>
+
+                                    @foreach( $birdC->resources as $resource )
+                                        {{ $resource->name }} @unless($loop->last),@endunless
+                                    @endforeach
+                                </div>
+                            @endforeach
+                        </section>
+                    @endif 
+
                     @if ($activeFilterables->count())
                         <h1 class="text-gray-800 mb-4">
                             Manuscript Attributes filtered for--
