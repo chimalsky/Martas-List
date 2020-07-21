@@ -2,8 +2,9 @@ module.exports = {
   important: true,
     theme: {
       fontFamily: {
+        'serif': ['"Cormorant Garamond"', 'Georgia', 'Cambria'],
         display: ['Gilroy', 'sans-serif'],
-        body: ['Graphik', 'sans-serif'],
+        body: ['Cormorant', 'sans-serif'],
       },
       extend: {
         colors: {
@@ -19,7 +20,6 @@ module.exports = {
       opacity: ['responsive', 'hover']
     },
     plugins: [
-      require('@tailwindcss/custom-forms'),
       require('tailwindcss-plugins/pagination')
     ]
 }

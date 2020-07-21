@@ -1,6 +1,6 @@
 <div>
     <a href="@route('project.poems.show', $poem->id)">
-        <header class="text-center mb-2 text-xl font-thin">
+        <header class="text-center mb-2 text-2xl text-black">
             {{ $poem->headline_value ?? $poem->name }}
         </header>
 
@@ -49,45 +49,5 @@
                 {{ $poem->queryable_meta_value }}
             </p>
         @endunless
-
-        @if($query)
-            <p id="transcription-{{ $poem->id }}" class="transcription mt-2 text-gray-600">
-                @php 
-                    $stripped = strip_tags($poem->transcription->value);
-
-                    $strpos = stripos($stripped, $query);
-                    
-
-                    if ($strpos < 50) {
-                        $start = 0;
-                    } else {
-                        $start = $strpos - 50;
-                    }
-
-                    $end = $start + 50;
-
-                    if ($end + 50 > strlen($stripped)) {
-                        $end = strlen($stripped);
-                    }
-                @endphp
-
-                {{ substr($stripped, $start, $end) }}
-            </p>
-
-            <script>
-                
-                var markInstance = new Mark(document.querySelector("#transcription-{{ $poem->id }}"));
-
-                var keyword = '{{ $query }}';
-
-                
-                // Remove previous marked elements and mark
-                // the new keyword inside the context
-              
-                markInstance.mark(keyword, {});
-                    
-            </script>
-
-        @endif
     </a>
 </div>

@@ -13,9 +13,9 @@
         </aside>
 
         <section class="w-full -ml-24">
-            <h1 class='italic flex-1 text-3xl text-center font-serif'>
+            <h1 class='flex-1 text-2xl text-center font-serif'>
                 <a href="@route('project.poems.index')">
-                    Poem Archive
+                    <span class="text-4xl">P</span>OEM <span class="text-4xl">A</span>RCHIVE
                 </a>
             </h1>
         </section>

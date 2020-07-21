@@ -1,7 +1,7 @@
 <div>
-    <h1 class="text-lg
+    <h1 class="text-2xl font-semibold font-serif text-gray-700
         @if ($this->isActive)
-            font-bold 
+            font-black text-black
         @endif
     ">
         <button type="button" wire:click="toggleDropdown"
@@ -20,7 +20,7 @@
         ">
         @foreach ($options as $option)
             @unless(is_array($option))
-                <label class="mb-2 col-span-1 text-lg cursor-pointer hover:underline">
+                <label class="mb-2 col-span-1 text-2xl cursor-pointer hover:underline">
                     <input type="checkbox" wire:change="syncOptions('{{ $option }}')"
                         autocomplete="off" 
                         @if ($activeOptions->contains($option))

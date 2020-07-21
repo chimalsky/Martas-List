@@ -11,8 +11,8 @@
         </h1>
 
         <h2 class="mt-4 text-gray-700 text-lg tracking-wide">
-            Edited by Marta Werner, <br/>
-            with Abraham Kim and Caroline McCraw
+            Edited by Marta Werner<br/>
+            and Abraham Kim and Caroline McCraw
         </h2>
     </header>
 

@@ -9,12 +9,12 @@
 <section class="flex justify between">
     @if ($this->isCurating)
         <aside class="max-w-xs">
-            <button @click="open = !open" class="bg-orange-700 rounded-md text-white p-2 px-6 italic text-lg mb-6">
+            <button @click="open = !open" class="bg-orange-700 rounded-md text-white p-2 px-6 italic text-xl font-bold font-serif mb-6">
                 Curate
             </button>
 
             <input wire:model.debounce.200ms="query" placeholder="search by poem text"
-                class="block mb-4 border-4 border-gray-700 rounded-full pl-4 p-2 placeholder-gray-800" /> 
+                class="block mb-4 border-4 border-gray-700 text-black rounded-full pl-4 p-2 placeholder-gray-800" /> 
         </aside>
     @endif
 
@@ -23,6 +23,46 @@
             @foreach ($poems as $poem)
                 <article class="pb-32 px-4 cursor-pointer w-1/3">
                     @include('project.poems._single', ['poem' => $poem, 'query' => $query])
+
+                    @if($query)
+                        <p id="transcription-{{ $poem->id }}" class="transcription mt-2 text-black text-xl">
+                            @php 
+                                $stripped = strip_tags($poem->transcription->value);
+
+                                $strpos = stripos($stripped, $query);
+                                
+
+                                if ($strpos < 50) {
+                                    $start = 0;
+                                } else {
+                                    $start = $strpos - 50;
+                                }
+
+                                $end = $start + 50;
+
+                                if ($end + 50 > strlen($stripped)) {
+                                    $end = strlen($stripped);
+                                }
+                            @endphp
+
+                            {{ substr($stripped, $start, $end) }}
+                        </p>
+
+                        <script>
+                            
+                            var markInstance = new Mark(document.querySelector("#transcription-{{ $poem->id }}"));
+
+                            var keyword = '{{ $query }}';
+
+                            
+                            // Remove previous marked elements and mark
+                            // the new keyword inside the context
+                        
+                            markInstance.mark(keyword, {});
+                                
+                        </script>
+
+                    @endif
                 </article> 
             @endforeach
 
@@ -30,7 +70,7 @@
                 {{ $poems->links() }}
             </nav>
         @else 
-            <div class="items-center justify-center w-full text-gray-500 font-semibold">
+            <div class="items-center justify-center w-full text-gray-700 font-semibold">
                 <section class="max-w-2xl mx-auto">
                     @unless ($this->isCurating)
                         <p class="block text-2xl block mb-4 text-left">
@@ -61,7 +101,7 @@
 
                     @if ($query)
                         <p class="block flex-1 mb-16 text-black text-3xl text-left">
-                            <span class="text-gray-500">transcription text query--</span> 
+                            <span class="text-gray-600">transcription text query--</span> 
                             <br/>
                             {{ $query }}
                         </p>
