@@ -67,7 +67,7 @@
                         </p>
                     @endif
 
-                    @if($activeBirdCategories)
+                    @if($activeBirdCategories && $activeBirdCategories->count())
                         <section class="mb-10">
                             <header class="text-gray-800 mb-4">
                                 Manuscripts mentioning birds--
