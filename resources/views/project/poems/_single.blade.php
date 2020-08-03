@@ -1,6 +1,6 @@
 <div>
     <a href="@route('project.poems.show', $poem->id)">
-        <header class="text-center mb-2 text-2xl text-black">
+        <header class="text-center mb-2 text-xl text-black">
             {{ $poem->headline_value ?? $poem->name }}
         </header>
 
@@ -45,7 +45,7 @@
         @endif
 
         @unless ($poem->headline_value == $poem->queryable_meta_value)
-            <p class="text-center text-2xl">
+            <p class="text-center text-xl">
                 {{ $poem->queryable_meta_value }}
             </p>
         @endunless

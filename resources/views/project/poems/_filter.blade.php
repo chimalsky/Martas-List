@@ -48,14 +48,14 @@
 
 
             <section class="w-2/5 pt-4 bg-green-100">
-                <header class="block mb-2 font-serif font-bold text-2xl">
+                <header class="block mb-2 font-serif font-bold text-xl">
                     Dickinson's Bird List
                 </header>
 
                 <main class="mx-auto grid grid-cols-4 bg-yellow-100">
                     @foreach ($dickinsonsBirds->sortBy('name') as $bird)
                         <label wire:click="filterByBird({{ $bird->id }})"
-                            class="col-span-1 text-xl
+                            class="col-span-1
                             border border-orange-500 p-2
                             cursor-pointer
                             @if ($activeBirdCategories->contains($bird->id))
@@ -68,7 +68,7 @@
                 </main>
 
                 <footer class="flex justify-center mt-4">
-                    <button wire:click='resetBirds' class="font-serif font-bold bg-green-500 shadow-2xl text-white py-2 px-4">
+                    <button wire:click='resetBirds' class="font-serif font-bold bg-green-600 shadow-2xl text-white py-2 px-4">
                         Unselect All
                     </button>
                 </footer>

@@ -1,5 +1,5 @@
 <div>
-    <h1 class="text-2xl font-semibold font-serif text-gray-700
+    <h1 class="text-xl font-semibold font-serif text-gray-700
         @if ($this->isActive)
             font-black text-black
         @endif
@@ -20,7 +20,7 @@
         ">
         @foreach ($options as $option)
             @unless(is_array($option))
-                <label class="mb-2 col-span-1 text-2xl cursor-pointer hover:underline">
+                <label class="mb-2 text-base col-span-1 cursor-pointer hover:underline">
                     <input type="checkbox" wire:change="syncOptions('{{ $option }}')"
                         autocomplete="off" 
                         @if ($activeOptions->contains($option))

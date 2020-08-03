@@ -172,7 +172,7 @@ class PoemsIndex extends Component
             ->with(['meta', 'media'])
             ->orderBy('queryable_meta_value', $this->orderDirection);
 
-        return $this->activePoems->paginate(30);
+        return $this->activePoems->get();//->paginate(30);
     }
 
     public function getBirdConnectedPoemsIdsProperty()
@@ -204,6 +204,7 @@ class PoemsIndex extends Component
     public function resetBirds()
     {
         $this->activeBirdCategories = collect([]);
+        $this->resetPage();
     }
 
     public function resetAll()
