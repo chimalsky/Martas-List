@@ -1,4 +1,4 @@
-<div class="relative w-full bg-white shadow-lg flex flex-wrap">
+<div id="js-poems-filter" class="relative w-full bg-white shadow-lg flex flex-wrap">
     <header class="bg-gray-100 w-full">
         <h1 class="font-serif text-2xl bg-orange-700 text-white font-garamond font-thin p-3 italic shadow-xl flex justify-between">
             Order By--

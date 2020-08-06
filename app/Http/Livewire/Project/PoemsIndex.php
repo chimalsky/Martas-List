@@ -29,6 +29,8 @@ class PoemsIndex extends Component
     public $dickinsonsBirds;
     public $activeBirdCategories = [];
 
+    public $modifiedByUser = false;
+
     protected $activePoems;
 
     protected $casts = [
@@ -56,6 +58,8 @@ class PoemsIndex extends Component
         $this->birds = ResourceType::find(2)->resources;
         $this->dickinsonsBirds = $this->birdDefinition->categories;
         $this->activeBirdCategories = collect([]);
+
+        $this->activePoems = $this->poemDefinition->resources();
     }
 
     public function sort($attributeId = null)
@@ -68,9 +72,7 @@ class PoemsIndex extends Component
             }
         } 
 
-        $activePoems = $this->poemDefinition->resources();
-
-        $this->activePoems = $activePoems;
+        $this->activePoems = $this->poemDefinition->resources();
     }
 
     public function filter()
@@ -150,13 +152,6 @@ class PoemsIndex extends Component
         }
 
         $query = $this->query;
-
-        if (!$this->activePoems || !$this->activePoems->exists()) {
-            if (!$query) {
-                return collect([]);
-            }
-            $this->activePoems = $this->poemDefinition->resources();
-        }
         
         if ($query) {
             $this->activePoems = $this->activePoems
@@ -166,13 +161,22 @@ class PoemsIndex extends Component
                 });
         }
 
-        $this->activePoems = $this->activePoems
-            ->withHeadlineValue($this->orderables->First()->id)
-            ->withQueryableMetaValue($this->orderable)
-            ->with(['meta', 'media'])
-            ->orderBy('queryable_meta_value', $this->orderDirection);
+        if ($this->activePoems) {
+            $this->activePoems = $this->activePoems
+                ->withHeadlineValue($this->orderables->First()->id)
+                ->withQueryableMetaValue($this->orderable)
+                ->with(['meta', 'media'])
+                ->orderBy('queryable_meta_value', $this->orderDirection);
+        } else {
+            $this->activePoems = $this->poemDefinition->resources();
+        }
 
-        return $this->activePoems->get();//->paginate(30);
+        return $this->activePoems;
+    }
+
+    public function getActivePoemsProperty()
+    {
+        return $this->activePoems;
     }
 
     public function getBirdConnectedPoemsIdsProperty()
@@ -191,14 +195,10 @@ class PoemsIndex extends Component
     {
         if ($this->query) {
             return true;
-        }
-
-        if (! $this->query ) {
-            return $this->activeFilterables->count() 
-                || $this->activeBirdCategories->count()
-                || $this->activePoems;
-        }
-
+        }   
+    
+        return $this->activeFilterables->count() 
+            || $this->activeBirdCategories->count();
     }
 
     public function resetBirds()
@@ -216,9 +216,7 @@ class PoemsIndex extends Component
     }
 
     public function render()
-    {
-        $poems = ['poems' => $this->poems];
-        
-        return view('livewire.project.poems-index', $poems);
+    {        
+        return view('livewire.project.poems-index');
     }
 }

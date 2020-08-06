@@ -6,6 +6,12 @@
 @endsection
 
 @section ('content')
+
+<div>
+    <livewire:load-more :resourceType="2" :page="1" :perPage="5" />
+</div>
+
+@if(false)
 <section class="flex flex-wrap justify-center">
     <aside class="pr-6 hidden md:inline-flex md:w-64">
         <form action="@route('project.birds.index')" method="GET">
@@ -70,4 +76,5 @@
         </section>
     </main>
 </section>
+@endif
 @endsection

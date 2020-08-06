@@ -1,6 +1,6 @@
-<div>
-    <a href="@route('project.poems.show', $poem->id)">
-        <header class="text-center mb-2 text-xl text-black">
+    <div>
+    <a href="@route('project.poems.show', $poem)">
+        <header class="text-center mb-2 text-xl text-black cursor-pointer">
             {{ $poem->headline_value ?? $poem->name }}
         </header>
 
@@ -30,13 +30,13 @@
                 ">
                 @forelse ($poem->getMedia() as $medium)
                     @if (Str::contains($medium->mime_type, 'image'))
-                        <div class="flex justify-center">
+                        <div class="flex justify-center cursor-pointer">
                             <img class="w-24 px-1 shadow-lg" 
                             src="{{ $medium->getUrl('thumb') }}" />
                         </div>
                     @endif
                 @empty 
-                    <div class="flex justify-center">
+                    <div class="flex justify-center cursor-pointer">
                         <div class="w-24 h-40 border-4 border-gray-300">
                         </div>
                     </div>
@@ -50,4 +50,44 @@
             </p>
         @endunless
     </a>
+
+    @if($query)
+        <p id="transcription-{{ $poem->id }}" class="transcription mt-12 text-black font-display">
+            @php 
+                $stripped = strip_tags($poem->transcription->value);
+
+                $strpos = stripos($stripped, $query);
+                
+
+                if ($strpos < 50) {
+                    $start = 0;
+                } else {
+                    $start = $strpos - 50;
+                }
+
+                $end = $start + 50;
+
+                if ($end + 50 > strlen($stripped)) {
+                    $end = strlen($stripped);
+                }
+            @endphp
+
+            {{ substr($stripped, $start, $end) }}
+        </p>
+
+        <script>
+            
+            var markInstance = new Mark(document.querySelector("#transcription-{{ $poem->id }}"));
+
+            var keyword = '{{ $query }}';
+
+            
+            // Remove previous marked elements and mark
+            // the new keyword inside the context
+        
+            markInstance.mark(keyword, {});
+                
+        </script>
+
+    @endif
 </div>
