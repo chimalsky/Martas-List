@@ -11,6 +11,23 @@
     <livewire:load-more :resourceType="2" :page="1" :perPage="5" />
 </div>
 
+<div id="birds-list"></div>
+            
+<script>    
+    function fetchBirds() {
+        fetch('/project/partials/birds', {
+            method: 'get',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+        })
+            .then(response => response.text())
+            .then(html => {
+                document.querySelector('#birds-list').innerHTML = html
+            })
+    }
+</script>
+
 @if(false)
 <section class="flex flex-wrap justify-center">
     <aside class="pr-6 hidden md:inline-flex md:w-64">

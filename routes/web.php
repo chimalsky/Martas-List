@@ -29,7 +29,15 @@ Route::prefix('project')->name('project.')->namespace('Project')->group(function
             ->get()
             ->groupBy('queries_meta_value');
 
-        return view('project.poems._index', ['poems' => $poems]);
+        return view('project.poems._list', ['poems' => $poems, 'query' => request()->query('query')]);
+    });
+
+    Route::get('/partials/birds', function() {
+        $birds = App\Resource::where('resource_type_id', 2)
+            ->get()
+            ->groupBy('queries_meta_value');
+
+        return view('project.birds._index', ['birds' => $birds]);
     });
     
     Route::get('/birds', 'BirdsController@index')->name('birds.index');

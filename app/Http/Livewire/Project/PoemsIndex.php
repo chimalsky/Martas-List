@@ -13,6 +13,9 @@ class PoemsIndex extends Component
 {
     use WithPagination;
 
+    public $paginationPage;
+    public $perPage = 30;
+
     public $query;
 
     public $poemDefinition;
@@ -28,8 +31,6 @@ class PoemsIndex extends Component
     public $birds;
     public $dickinsonsBirds;
     public $activeBirdCategories = [];
-
-    public $modifiedByUser = false;
 
     protected $activePoems;
 
@@ -174,9 +175,9 @@ class PoemsIndex extends Component
         return $this->activePoems;
     }
 
-    public function getActivePoemsProperty()
+    public function getPoemsPaginatedProperty()
     {
-        return $this->activePoems;
+        return $this->poems->paginate($this->perPage);
     }
 
     public function getBirdConnectedPoemsIdsProperty()

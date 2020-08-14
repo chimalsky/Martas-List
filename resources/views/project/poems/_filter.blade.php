@@ -75,4 +75,12 @@
             </section>
         </section>
     </main>
+
+    @if ($this->isCurating)
+        <footer class="justify-center flex w-full sticky bottom-0 py-5">
+            <button wire:click="resetAll" class="bg-green-700 border-2 text-white py-2 px-4 border-green-600 shadow-2xl">
+                Reset All Filters
+            </button>
+        </footer>
+    @endif
 </div>
