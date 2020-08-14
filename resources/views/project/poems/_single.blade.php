@@ -51,7 +51,7 @@
         @endunless
     </a>
 
-    @if($query)
+    @if(isset($query))
         <p id="transcription-{{ $poem->id }}" class="transcription mt-12 text-black font-display">
             @php 
                 $stripped = strip_tags($poem->transcription->value);
