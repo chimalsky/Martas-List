@@ -13,10 +13,9 @@ class MigrateOverExistingOptions extends Migration
      */
     public function up()
     {
-        $attributes = \App\ResourceAttribute::select('id', 'options')->whereNotNull('options')
-            ->get();
+        $ddAttributes = \App\ResourceAttribute::where('type', 'dropdown')->get();
 
-        $attributes->each(function($attribute) {
+        $ddAttributes->each(function($attribute) {
             if (is_array($attribute->options)) {
                 foreach ($attribute->options as $option) {
                     if (is_array($option)) {
@@ -36,10 +35,13 @@ class MigrateOverExistingOptions extends Migration
                             continue;
                         }
 
-                        \App\AttributeOption::firstOrCreate(
+                        $attributeOption = \App\AttributeOption::firstOrCreate(
                             ['value' => $option, 'attribute_id' => $attribute->id]
                         );
-                       // dump($option);
+                        
+                        $metas = \App\ResourceMeta::where('value', $attributeOption->value)
+                                ->update(['attribute_option_id' => $attributeOption->id]);
+                        
                     }
                     //dump($attribute->id); dump($option);
                 }

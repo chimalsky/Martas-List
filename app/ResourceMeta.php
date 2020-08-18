@@ -7,6 +7,8 @@ use Illuminate\Support\Str;
 use App\Traits\HasCitations;
 use Illuminate\Support\HtmlString;
 use Illuminate\Database\Eloquent\Model;
+use App\Scopes\AttributeOptionValueScope;
+use Illuminate\Database\Eloquent\Builder;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class ResourceMeta extends Model
@@ -26,6 +28,12 @@ class ResourceMeta extends Model
             $meta->key = Str::snake($meta->key);
         });
     }
+
+    protected static function booted()
+    {
+        // This causes a connection refused error
+        //static::addGlobalScope(new AttributeOptionValueScope);
+    }
     
     public function resource()
     {
@@ -35,6 +43,11 @@ class ResourceMeta extends Model
     public function resourceAttribute()
     {
         return $this->belongsTo(ResourceAttribute::class, 'resource_attribute_id');
+    }
+
+    public function attributeOption()
+    {
+        return $this->belongsTo(AttributeOption::class);
     }
 
     public function getNameAttribute()
@@ -52,7 +65,10 @@ class ResourceMeta extends Model
 
     public function getValueAttribute($value)
     {
-
+        if ($this->attribute_option_value) {
+            return $this->attribute_option_value;
+        }
+        
         return $value;
     }
 }
