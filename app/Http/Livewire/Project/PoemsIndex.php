@@ -63,6 +63,10 @@ class PoemsIndex extends Component
         $this->activePoems = $this->poemDefinition->resources();
     }
 
+    public function updated($field, $value)
+    {
+    }
+
     public function sort($attributeId = null)
     {        
         if ($attributeId) {            
@@ -147,10 +151,10 @@ class PoemsIndex extends Component
 
     public function getPoemsProperty()
     {
-        if ($this->isCurating) {
+       // if ($this->isCurating) {
             $this->sort();
             $this->filter();
-        }
+        //}
 
         $query = $this->query;
         
@@ -182,7 +186,6 @@ class PoemsIndex extends Component
 
     public function getBirdConnectedPoemsIdsProperty()
     {
-        //$birds = $this->birdDefinition->resources->whereIn('id', $this->activeBirds->toArray());
         $birds = $this->birdDefinition->resources->whereIn('resource_category_id', $this->activeBirdCategories->toArray());
 
         return $birds->map(function($bird) {
@@ -218,6 +221,8 @@ class PoemsIndex extends Component
 
     public function render()
     {        
+        $this->emit('filterUpdated', $this->poems->pluck('id'));
+
         return view('livewire.project.poems-index');
     }
 }

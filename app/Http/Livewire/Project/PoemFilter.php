@@ -14,9 +14,7 @@ class PoemFilter extends Component
     public $sortedAttribute;
     public $filteredAttributeOptions;
     public $filteredAttributes;
-
-    public $foobar;
-
+    
     public $poems;
     public $birds;
 

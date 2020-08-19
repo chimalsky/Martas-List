@@ -4,7 +4,7 @@
             Order By--
 
             <button @click="open = false">
-                X
+                <x-heroicon-o-x class="w-8" />
             </button>
         </h1>
 

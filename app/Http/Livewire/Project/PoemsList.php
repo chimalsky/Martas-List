@@ -3,33 +3,61 @@
 namespace App\Http\Livewire\Project;
 
 use App\Resource;
+use App\ResourceType;
 use Livewire\Component;
 
 class PoemsList extends Component
 {
     protected $poems;
 
-    protected $listeners = ['renderingPoemsIndex' => 'renderPoemsList'];
+    public $poemDefinition;
 
-    public function mount($poems) {
-        $this->poems = 'asdf'; //poems ? $poems->paginate(30) : collect([]);
+    public $poemIds = [];
+
+    public $perPage;
+    public $page;
+
+    protected $listeners = [
+        'filterUpdated'
+    ];
+
+    protected $casts = [
+        'poemIds' => 'collection'
+    ];
+
+    public function mount($poemIds = null, $perPage = 18, $page = 1) {
+        $this->poemDefinition = ResourceType::find(3);
+        $this->perPage = $perPage;
+        $this->page = $page;
+        
+        if ($poemIds) {
+            $this->poems = $this->poemDefinition->resources()->whereIn('id', $poemIds);
+            $this->poemIds = collect($poemIds);
+        } else {    
+            $this->poems = $this->poemDefinition->resources();
+            $this->poemIds = $this->poems->pluck('id');
+        }
     }
 
-    public function renderPoemsList($poems)
-    {
-        dd(collect($poems['data'])->mapInto(Resource::class));
-        $this->poems = $poems;
+    public function filterUpdated($poemIds) {
+        $this->poems = $this->poemDefinition->resources()->whereIn('id', $poemIds);
+        $this->poemIds = collect($poemIds);
     }
 
-    public function getPoemsProperty()
+    public function getPoemsPaginatedProperty()
     {
-        return $this->poems;
+        return $this->poems->paginate($this->perPage, ['*'], null, $this->page);
+    }
+
+    public function getPoemIdsProperty()
+    {
+        return $this->poemIds;
     }
 
     public function render()
     {
-        //dd($this);
+        $poems = $this->poemsPaginated;
 
-        return view('livewire.project.poems-list');
+        return view('livewire.project.poems-list', compact('poems'));
     }
 }
