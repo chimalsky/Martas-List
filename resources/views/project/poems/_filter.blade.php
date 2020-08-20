@@ -114,17 +114,19 @@
                     @endforeach
                 </main>
 
-                <footer class="flex justify-center mt-4">
-                    <button wire:click='resetBirds' class="font-serif font-bold bg-green-600 shadow-2xl text-white py-2 px-4">
-                        Unselect All
-                    </button>
-                </footer>
+                @if ($activeBirdCategories->count() > 0)
+                    <footer class="flex justify-center mt-4">
+                        <button wire:click='resetBirds' class="font-serif font-bold bg-green-600 shadow-2xl text-white py-2 px-4">
+                            Unselect All
+                        </button>
+                    </footer>
+                @endif
             </section>
         </section>
     </main>
 
     @if ($this->isCurating)
-        <footer class="justify-center flex w-full sticky bottom-0 py-5">
+        <footer class="justify-center flex w-full  py-5">
             <button wire:click="resetAll" class="bg-green-700 border-2 text-white py-2 px-4 border-green-600 shadow-2xl">
                 Reset All Filters
             </button>

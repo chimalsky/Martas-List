@@ -18,6 +18,10 @@
             window.addEventListener('scroll', function(e) {
                 let loadMoreButton = document.querySelector('#js-load-more')
 
+                if (!loadMoreButton) {
+                    return
+                }
+
                 if (loadMoreButton.getAttribute('loading')) {
                     return
                 }

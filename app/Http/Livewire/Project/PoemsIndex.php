@@ -217,6 +217,8 @@ class PoemsIndex extends Component
         $this->resetBirds();
         $this->activePoems = null;
         $this->query = null;
+
+        $this->emit('filterCleared');
     }
 
     public function render()

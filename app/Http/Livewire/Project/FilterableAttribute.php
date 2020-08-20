@@ -19,6 +19,10 @@ class FilterableAttribute extends Component
         'activeOptions' => 'collection'
     ];
 
+    protected $listeners = [
+        'filterCleared'
+    ];
+
     public function mount(ResourceAttribute $attribute, $expanded = false)
     {
         $this->attribute = $attribute;
@@ -54,6 +58,11 @@ class FilterableAttribute extends Component
         $this->activeOptions = collect([]);
 
         $this->emitUp('filterable-attribute.activeOptions.resetOptions', $this->attribute->id, []);
+    }
+
+    public function filterCleared()
+    {
+        $this->activeOptions = collect([]);
     }
 
     public function getIsActiveProperty()

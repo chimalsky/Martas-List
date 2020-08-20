@@ -37,7 +37,7 @@
 
                 <ul>
                     @foreach($filterable['activeValues'] as $value)
-                        <li class="text-black">
+                        <li class="text-black pl-2">
                             {{ $value }}
                         </li>
                     @endforeach
@@ -61,20 +61,15 @@
 
         <div class="items-center justify-center w-full text-gray-700 font-semibold">
             <section class="max-w-2xl mx-auto">
-                @unless ($this->isCurating)
-                @else
-                    @unless ($query || $activeFilterables)
-                        <p class="block text-xl mb-12 text-gray-800">
-                            Search and Curate Manuscripts
-                        </p>
-                    @else
-                        @unless ($this->poems->count())
-                            <p class="block text-xl mb-12 text-left text-gray-800">
-                                No poems match your curation
-                            </p>
-                        @endunless
-                    @endunless
-                @endunless
+
+                <header class="mb-10">
+                    @if ($this->poemsPaginated->total())
+                        <span class="text-4xl text-gray-400">{{ $this->poemsPaginated->total() }} </span>
+                        Manuscripts
+                    @else 
+                        No Manuscripts matched your curation
+                    @endif
+                </header>
 
                 @if ($query)
                     <div class="block flex-1 mb-16">
