@@ -9,7 +9,7 @@
         </main>
 
         @if ($poems->hasMorePages())
-            <livewire:project.load-more :poemIds="$this->poemIds" :perPage="15" :page="$page+1" />
+            <livewire:project.load-more :poemIds="$this->poemIds" :perPage="18" :page="$page" />
         @endif
     @endif
 </div>

@@ -26,11 +26,11 @@ class LoadMore extends Component
         'loadMore'
     ];
 
-    public function mount($poemIds = null, $page =  1, $perPage = 15)
+    public function mount($poemIds = null, $page, $perPage = 15)
     {
         $this->poemDefinition = ResourceType::find(3);
         $this->perPage = $perPage;
-        $this->page = $page;
+        $this->page = $page + 1;
                 
         if ($poemIds) {
             $this->poems = $this->poemDefinition->resources()->whereIn('id', $poemIds);

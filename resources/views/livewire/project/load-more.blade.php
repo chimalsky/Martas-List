@@ -1,5 +1,5 @@
 <div>
-    @if ($poems->hasMorePages())
+    @if ($poems->currentPage() <= $poems->lastPage())
         <div class="justify-center flex">
             <svg class="animate-spin -ml-1 mr-3 h-10 w-10 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -11,7 +11,6 @@
             Load More {{ $this->poemsRemaining }} Manuscripts Remaining
         </button>
     @endif 
-
 
     @if ($poems->hasMorePages())
         <script>
