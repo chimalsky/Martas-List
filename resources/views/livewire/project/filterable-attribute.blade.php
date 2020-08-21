@@ -7,9 +7,9 @@
         <button type="button" wire:click="toggleDropdown"
             class="border-4 border-gray-500 p-2">
             @if ($expanded) 
-                <x-heroicon-o-arrow-up class="w-4" />
+                <x-heroicon-o-chevron-up class="w-4" />
             @else 
-                <x-heroicon-o-arrow-down class="w-4" />
+                <x-heroicon-o-chevron-down class="w-4" />
             @endif
         </button>
         {{ $attribute->key }} 

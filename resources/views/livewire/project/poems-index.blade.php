@@ -9,7 +9,8 @@
 <section class="flex justify between">
     <aside class="hidden md:block sticky max-w-xs h-full top-0 pt-16">
         <button x-show="!open" @click="open = !open; scrollToFilter();" 
-            class="bg-orange-700 rounded-md text-white p-2 px-6 italic text-xl font-bold font-serif mb-6">
+            style="background: #B45F06"
+            class="rounded-md text-white p-2 px-6 italic text-xl font-bold font-serif mb-6">
             Curate
         </button>
 
@@ -28,6 +29,14 @@
 
         <input wire:model.debounce.200ms="query" placeholder="search by poem text"
             class="block mb-4 border-4 border-gray-700 text-black rounded-full pl-4 p-2 placeholder-gray-800" />
+
+        <div class="block mb-5">
+            @if ($this->poemsPaginated->total() === 1)
+                1 Manuscript 
+            @elseif ($this->poemsPaginated->total() > 1)
+                {{ $this->poemsPaginated->total() }} Manuscripts 
+            @endif
+        </div>
             
         @foreach ($activeFilterables as $filterable)
             <div class="block mb-5">
@@ -106,14 +115,18 @@
                         Manuscript Attributes filtered for--
                     </h1>
                     @foreach ($activeFilterables as $filterable)
+                        @php
+                            $activeValues = $filterable['activeValues'];
+                            $filterableAttribute = \App\ResourceAttribute::find($filterable['id']);
+                        @endphp
                         <div class="block mb-5 text-xl">
                             <p class="text-gray-500">
-                                {{ \App\ResourceAttribute::find($filterable['id'])->name }} that are within--
+                                {{ $filterableAttribute->name }} that are within--
                             </p>
 
                             <ul>
-                                @foreach($filterable['activeValues'] as $value)
-                                    <li class="text-black">
+                                @foreach($activeValues as $value)
+                                    <li class="text-black" wire:click="$emitTo('project.filterable-attribute', 'foobar', '{{ $filterableAttribute->id }}', '{{ $value }}' )">
                                         {{ $value }}
                                     </li>
                                 @endforeach

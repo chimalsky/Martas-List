@@ -20,7 +20,8 @@ class FilterableAttribute extends Component
     ];
 
     protected $listeners = [
-        'filterCleared'
+        'filterCleared',
+        'foobar'
     ];
 
     public function mount(ResourceAttribute $attribute, $expanded = false)
@@ -68,6 +69,19 @@ class FilterableAttribute extends Component
     public function getIsActiveProperty()
     {
         return $this->activeOptions->count();
+    }
+
+    public function foobar($attributeId, $value)
+    {
+        if ($attributeId == $this->attribute->id) {
+            $options = $this->activeOptions->reject(function($activeOption) use ($value) {
+                return $activeOption == $value;
+            });
+    
+            $this->activeOptions = $options; 
+    
+            $this->emitUp('filterable-attribute.activeOptions.changed', $this->attribute->id, $this->activeOptions->toArray());
+        }
     }
 
     public function render()

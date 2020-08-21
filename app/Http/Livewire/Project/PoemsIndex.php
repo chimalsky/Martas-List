@@ -224,6 +224,7 @@ class PoemsIndex extends Component
     public function render()
     {        
         $this->emit('filterUpdated', $this->poems->pluck('id'));
+        //dd($this->poems->count(), $this->poems->pluck('name'));
 
         return view('livewire.project.poems-index');
     }
