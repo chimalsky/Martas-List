@@ -2,23 +2,24 @@
 
 @section ('content')
 <section class="container mx-auto">
-    <header class="mt-12 max-w-2xl">
-        <h1 class="font-serif text-4xl text-yellow-700 -mb-3 tracking-wide flex">
-            @include('project._nav')
-        </h1>
-        <h1 class="font-serif text-4xl tracking-wide italic">
-            A Public Listening Project 
-        </h1>
+    <header class="mt-12 max-w-2xl mx-auto">
+        @include('project._nav')
 
-        <h2 class="mt-4 text-gray-700 text-lg tracking-wide">
+        <h2 class="mt-4 text-gray-700 text-lg tracking-wide pl-2">
             Edited by Marta Werner<br/>
             and Abraham Kim and Caroline McCraw
         </h2>
     </header>
+</section>
 
+<section>
     <main class="block my-12 max-w-2xl mx-auto">
         <img src="{{ asset('img/map-ma.png') }}" />
     </main>
+</section>
+
+<section class="max-w-2xl mx-auto text-2xl space-y-4">
+    @include('project._nav-items')
 </section>
 
 
