@@ -51,7 +51,7 @@
 
                 <div class="w-2/3 md:pl-4 lg:pl-8">
                     @if ($poem->media()->exists())
-                        @livewire('project.media-viewer', ['resource' => $poem])
+                        <livewire:project.media-viewer :resource="$poem" />
                     @endif
                 </div>
         </section>

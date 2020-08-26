@@ -11,10 +11,12 @@ class MediaViewer extends Component
 {
     public $resource;
     public $media;
+    public $medias;
 
     public function mount(Resource $resource)
     {
         $this->resource = $resource; 
+        $this->medias = $resource->media;
         $this->media = $resource->getFirstMedia();
     }
 
