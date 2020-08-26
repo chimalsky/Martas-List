@@ -1,23 +1,24 @@
-<div>
+<div x-data="{expanded: false}">
     <h1 class="text-xl font-semibold font-serif text-gray-700
         @if ($this->isActive)
             font-black text-black
         @endif
     ">
-        <button type="button" wire:click="toggleDropdown"
+        <button type="button" @click="expanded = !expanded"
             class="border-4 border-gray-500 p-2">
-            @if ($expanded) 
-                <x-heroicon-o-chevron-up class="w-4" />
-            @else 
-                <x-heroicon-o-chevron-down class="w-4" />
-            @endif
+            <x-heroicon-o-chevron-up class="w-4" x-show="expanded" />
+            <x-heroicon-o-chevron-down class="w-4" x-show="!expanded" />
         </button>
         {{ $attribute->key }} 
     </h1>
 
-    <div class="pl-8 pt-2
-        @unless($expanded) hidden @endunless
-        ">
+    <div class="pl-8 pt-2" x-show="expanded"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 transform scale-90 -translate-y-full -translate-x-full"
+        x-transition:enter-end="opacity-100 transform scale-100"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100 transform scale-100"
+        x-transition:leave-end="opacity-0 transform scale-90 -translate-y-full -translate-x-full">
         <main class="grid grid-cols-5">
             @foreach ($options as $option)
                 @unless(is_array($option))
