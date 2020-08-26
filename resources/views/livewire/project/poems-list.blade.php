@@ -1,6 +1,5 @@
 <div class="w-full">
-    <section style="animation-duration: 900ms;
-                animation-name: slidein;">
+    <section style="animation-duration: 900ms; animation-name: slidein;">
         @if ($poems->count())
             <main class="flex flex-wrap w-full pt-12">
                 @foreach ($poems as $poem)
@@ -15,22 +14,4 @@
             @endif
         @endif
     </section>
-
-    <style>
-        @keyframes slidein {
-            from {
-                margin-top: 100%;
-                margin-left: 100%;
-                height: 300%; 
-                width: 100%;
-            }
-
-            to {
-                margin-top: 0%;
-                margin-left: 0%;
-                height: 100%;
-                width: 100%;
-            }
-        }
-    </style>
 </div>

@@ -6,10 +6,13 @@
                 <img src="{{ asset('img/bird-icon-round.png') }}" />
             </button>
             
-            <h1 class="pl-2">
+            <h1 class="ml-1" style="font-family: 'IM Fell Double Pica', serif; color: #707A5E; font-size: 22pt;">
                 Dickinson's Birds
             </h1>
         </span>
+        <h2 class="block ml-3 font-serif italic" style="font-size: 19.5pt;">
+            A Public Listening Project
+        </h2>
     </span>
     <span x-show="open" 
         x-transition:enter="transition ease-out duration-300" 

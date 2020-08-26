@@ -2,11 +2,13 @@
 
 
 @section ('header')
-    @include('project.poems._header')
+    <header class="">
+        @include('project.poems._header')
+    </header>
 @endsection
 
 @section ('content')
 
-<livewire:project.poems-index />
+    <livewire:project.poems-index />
 
 @endsection

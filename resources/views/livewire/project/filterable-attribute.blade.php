@@ -14,11 +14,11 @@
 
     <div class="pl-8 pt-2" x-show="expanded"
         x-transition:enter="transition ease-out duration-300"
-        x-transition:enter-start="opacity-0 transform scale-90 -translate-y-full -translate-x-full"
+        x-transition:enter-start="opacity-0 transform scale-50 -translate-y-full -translate-x-full"
         x-transition:enter-end="opacity-100 transform scale-100"
         x-transition:leave="transition ease-in duration-300"
         x-transition:leave-start="opacity-100 transform scale-100"
-        x-transition:leave-end="opacity-0 transform scale-90 -translate-y-full -translate-x-full">
+        x-transition:leave-end="opacity-0 transform scale-50 -translate-y-full -translate-x-full">
         <main class="grid grid-cols-5">
             @foreach ($options as $option)
                 @unless(is_array($option))

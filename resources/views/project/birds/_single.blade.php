@@ -1,8 +1,7 @@
 <div>
-    <a href="@route('project.birds.show', $bird)" 
-                    class="block text-md text-center hover:underline mb-3 text-red-800 font-serif">
+    <header class="block text-md text-center hover:underline mb-3 text-red-800 font-serif">
         {{ $bird->name }}
-    </a>
+    </header>
 
     @foreach ($bird->getMedia() as $sonogram)
         @if (Str::contains($sonogram->mime_type, 'image'))

@@ -1,23 +1,31 @@
 <header class="mt-8 flex flex-wrap">
     <section class="flex-shrink">
-        <h1 class="font-serif text-xl -mb-3 tracking-wide flex">
+        <h1 class="text-xl -mb-3 tracking-wide flex">
             @include('project._nav')
         </h1>
     </section>
 
-    <section class="flex-1 flex-wrap">
-        <aside class="w-full flex justify-center mb-10 -ml-24">
-            <div class="h-16 w-16 bg-yellow-300 rounded-full mr-4"></div>
-            <div class="h-16 w-16 bg-orange-300 rounded-full"></div>
-            <div class="h-16 w-16 bg-green-400 rounded-full ml-4"></div>
-        </aside>
+    <h1 class='flex-1 text-2xl text-right font-serif pr-24'>
+        <a href="@route('project.poems.index')">
+            <span class="text-4xl">P</span>OEM <span class="text-4xl">A</span>RCHIVE
+        </a>
+    </h1>
 
-        <section class="w-full -ml-24">
-            <h1 class='flex-1 text-2xl text-center font-serif'>
-                <a href="@route('project.poems.index')">
-                    <span class="text-4xl">P</span>OEM <span class="text-4xl">A</span>RCHIVE
-                </a>
-            </h1>
-        </section>
-    </section>
+    <style>
+        @keyframes slidein {
+            from {
+                margin-top: 100%;
+                margin-left: 100%;
+                height: 300%; 
+                width: 100%;
+            }
+
+            to {
+                margin-top: 0%;
+                margin-left: 0%;
+                height: 100%;
+                width: 100%;
+            }
+        }
+    </style>
 </header>

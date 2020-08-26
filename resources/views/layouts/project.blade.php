@@ -21,12 +21,11 @@
         <script src="{{ mix('js/app.js') }}" defer="true"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" defer="true"></script>
 
-        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"> 
-        
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap&family=IM+Fell+Double+Pica&display=swap" rel="stylesheet"> 
         @stack('scripts')
     </head>
     <body data-controller="application">
-        <section class="px-2 py-4 mb-12">
+        <section class="px-2 py-4 mb-12 mx-auto" style="max-width: 1700px">
             @yield('header')
         </section>
 
