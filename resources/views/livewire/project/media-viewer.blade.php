@@ -5,10 +5,10 @@
                 @if (Str::contains($medium->mime_type, 'image'))
                     <button 
                         wire:click="setMedia({{ $medium->id }})"
-                        class="bg-green-200 hover:bg-indigo-100 border-b-2 border-transparent pb-2
+                        class="w-20 hover:bg-indigo-100 border-b-2 border-transparent pb-2
                             @if ($media->id == $medium->id) border-indigo-500 @endif
                             hover:border-gray-300 focus:text-gray-700 ">
-                            <img src="{{ $medium->getUrl('thumb') }}" />
+                            <img class="object-contain" src="{{ $medium->getUrl('thumb') }}" />
                     </button>
                 @endif
             @endforeach
