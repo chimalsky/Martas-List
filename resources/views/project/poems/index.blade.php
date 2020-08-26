@@ -8,7 +8,5 @@
 @endsection
 
 @section ('content')
-
     <livewire:project.poems-index />
-
 @endsection
