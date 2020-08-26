@@ -15,11 +15,11 @@
         </nav>
 
         <main class="mt-4 shadow-2xl">
-            <div wire.loading.remove>
+            <div wire:loading.remove>
                 {{ $media }}
             </div>
 
-            <div wire.loading>
+            <div wire:loading>
                 Loading
             </div>
         </main>
