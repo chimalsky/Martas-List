@@ -14,8 +14,14 @@
             @endforeach
         </nav>
 
-        <div class="mt-4 shadow-2xl">
-            {{ $media }}
-        </div>
+        <main class="mt-4 shadow-2xl">
+            <div wire.loading.remove>
+                {{ $media }}
+            </div>
+
+            <div wire.loading>
+                Loading
+            </div>
+        </main>
     </div>
 </div>
