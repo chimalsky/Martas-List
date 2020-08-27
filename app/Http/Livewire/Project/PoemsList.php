@@ -58,6 +58,10 @@ class PoemsList extends Component
     {
         $poems = $this->poemsPaginated;
 
+        if (! $poems->hasMorePages()) {
+            $this->emit('poems-list.end', $this->page);
+        }
+
         return view('livewire.project.poems-list', compact('poems'));
     }
 }

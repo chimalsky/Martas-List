@@ -21,7 +21,7 @@ class FilterableAttribute extends Component
 
     protected $listeners = [
         'filterCleared',
-        'foobar'
+        'activeAttributeRemoved'
     ];
 
     public function mount(ResourceAttribute $attribute, $expanded = false)
@@ -71,7 +71,7 @@ class FilterableAttribute extends Component
         return $this->activeOptions->count();
     }
 
-    public function foobar($attributeId, $value)
+    public function activeAttributeRemoved($attributeId, $value)
     {
         if ($attributeId == $this->attribute->id) {
             $options = $this->activeOptions->reject(function($activeOption) use ($value) {

@@ -79,7 +79,7 @@
 
         <section class="flex flex-wrap" style="background: #f4eee9;">
 
-            <div class="text-xs w-3/5 pt-4">
+            <div class="text-xs w-3/5 pt-4 pl-4">
                 @foreach($filterables as $key => $filterable)
                     <section class="block mb-12">
                         @php 

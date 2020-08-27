@@ -46,8 +46,19 @@
 
                 <ul>
                     @foreach($filterable['activeValues'] as $value)
-                        <li class="text-black pl-2">
-                            {{ $value }}
+                        @php 
+                            $filterableId = $filterable['id'];
+                        @endphp
+                        <li class="text-black pl-2" x-data="{expanded: false}">
+                            <span @click="expanded = !expanded">
+                                {{ $value }}
+                            </span>
+
+                            <span x-show="expanded">
+                                <button wire:click="$emitTo('project.filterable-attribute', 'activeAttributeRemoved', '{{ $filterableId }}', '{{ $value }}' )">
+                                    <x-heroicon-o-x-circle class="w-4" />
+                                </button>
+                            </span>
                         </li>
                     @endforeach
                 </ul>
@@ -68,13 +79,17 @@
     <section class="flex flex-wrap w-full pt-12">
         <livewire:project.poems-list :perPage="18" :page="1" />
 
-        <div class="items-center justify-center w-full text-gray-700 font-semibold">
+        <div id="js-show-at-end-of-list" class="items-center justify-center w-full text-gray-700 font-semibold hidden">
             <section class="max-w-2xl mx-auto">
 
                 <header class="mb-10">
                     @if ($this->poemsPaginated->total())
                         <span class="text-4xl text-gray-400">{{ $this->poemsPaginated->total() }} </span>
-                        Manuscripts
+                        @if ($this->poemsPaginated->total() === 1) 
+                            Manuscript -- how unique!
+                        @else 
+                            Manuscripts 
+                        @endif
                     @else 
                         No Manuscripts matched your curation
                     @endif
@@ -126,8 +141,16 @@
 
                             <ul>
                                 @foreach($activeValues as $value)
-                                    <li class="text-black" wire:click="$emitTo('project.filterable-attribute', 'foobar', '{{ $filterableAttribute->id }}', '{{ $value }}' )">
-                                        {{ $value }}
+                                    <li class="text-black" x-data="{expanded: false}">
+                                        <span x-click="expanded = !expanded">
+                                            {{ $value }}
+                                        </span>
+
+                                        <span x-show="expanded">
+                                            <button wire:click="$emitTo('project.filterable-attribute', 'activeAttributeRemoved', '{{ $filterableAttribute->id }}', '{{ $value }}' )">
+                                                Xfwojfojij
+                                            </button>
+                                        </span>
                                     </li>
                                 @endforeach
                             </ul>
@@ -145,6 +168,20 @@
                 @endif
             </section>
         </div>
+
+        <script>
+            
+
+            document.addEventListener('DOMContentLoaded', function() {
+                window.livewire.on('poems-list.end', page => {
+                    let curationDetails = document.querySelector('#js-show-at-end-of-list');
+
+                    curationDetails.classList.remove('hidden');
+                    console.log('ended', curationDetails);
+                })
+            });
+            
+        </script>
     </section>
 </section>
 

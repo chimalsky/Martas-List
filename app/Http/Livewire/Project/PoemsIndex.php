@@ -14,7 +14,8 @@ class PoemsIndex extends Component
     use WithPagination;
 
     public $paginationPage;
-    public $perPage = 30;
+    public $perPage = 18;
+    public $latestPage;
 
     public $query;
 

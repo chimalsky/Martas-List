@@ -18,7 +18,7 @@
     </main>
 </section>
 
-<section class="max-w-2xl mx-auto text-2xl space-y-4">
+<section class="max-w-2xl mx-auto text-2xl space-y-4 text-center">
     @include('project._nav-items')
 </section>
 
