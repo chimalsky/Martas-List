@@ -12,7 +12,7 @@
     <main class="max-w-5xl text-gray-700 text-lg">
         <header class="text-center">
             <h1 class="text-4xl font-hairline mb-8 pl-5">
-                {{ $poems->first()->name }} | 
+                {{ $firstline }} | 
                 <a class="text-black underline italic">
                     Affiliated Manuscripts
                 </a>
@@ -65,19 +65,23 @@
                 </a>
 
                 <div class="text-center mt-4">
-                    {{ $poem->name }}
+                    {{ $firstline }}
 
                     <p>
-                        {{ $poem->firstMetaByAttribute(138)->value }}
+                        
+                    </p>
+
+                    <p>
+                        {{ $poem->firstMetaByAttribute(138)->value ?? null }}
                     </p>
                     <p>
-                        {{ $poem->firstMetaByAttribute(131)->value }}
+                        {{ $poem->firstMetaByAttribute(131)->value ?? null }}
                     </p>
                     <p>
-                        {{ $poem->firstMetaByAttribute(103)->value }}
+                        {{ $poem->firstMetaByAttribute(103)->value ?? null }}
                     </p>
                     <p>
-                        {{ $poem->firstMetaByAttribute(142)->value }}
+                        {{ $poem->firstMetaByAttribute(142)->value ?? null }}
                     </p>
                 </div>
             </article> 
