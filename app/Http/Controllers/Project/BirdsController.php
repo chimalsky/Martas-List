@@ -54,7 +54,13 @@ class BirdsController extends Controller
         $bird = Resource::with(['meta', 'connections'])
             ->find($birdId);
 
-        $poems = $bird->resources->where('resource_type_id', 3);
+        $birdCategory = $bird->category;
+        
+        $connectedPoemsIds = $birdCategory->connections->pluck('id');
+
+        $poems = Resource::with('media')->whereIn('id', $connectedPoemsIds)->get();
+
+        //$poems = $bird->resources->where('resource_type_id', 3);
 
         return view('project.birds.show', compact('bird', 'poems'));
     }

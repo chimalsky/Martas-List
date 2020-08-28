@@ -91,9 +91,17 @@ class Resource extends Model implements HasMedia
             }]);
     }
 
-    public function metaByAttribute(ResourceAttribute $resourceAttribute)
+    public function categories()
     {
-        return $this->meta->where('resource_attribute_id', $resourceAttribute->id);
+        return $this->belongsToMany(ResourceCategory::class, 'category_connections', 'resource_id', 'category_id')
+            ->using(CategoryConnection::class);
+    }
+
+    public function metaByAttribute($resourceAttribute)
+    {
+        $attributeId = is_int($resourceAttribute) ? $resourceAttribute : $resourceAttribute->id;
+
+        return $this->meta->where('resource_attribute_id', $attributeId);
     }
 
     public function registerMediaConversions(Media $media = null)

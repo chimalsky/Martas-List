@@ -100,7 +100,9 @@ class PoemsController extends Controller
         $poem = Resource::with(['meta', 'connections'])
             ->find($poemId);
 
-        $birds = $poem->resources->where('resource_type_id', 2);
+        $birdCategories = $poem->categories()->where('resource_type_id', 19)->get();
+        $birds = $birdCategories->pluck('resources')->flatten();
+        //$birds = $poem->resources->where('resource_type_id', 2);
         $variants = $poem->resources->where('resource_type_id', 3);
         $firstline = $poem->meta->firstWhere('resource_attribute_id', 84)->value ?? null;
         $year = $poem->meta->firstWhere('resource_attribute_id', 131)->value ?? null;

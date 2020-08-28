@@ -3,23 +3,12 @@
         {{ $bird->name }}
     </header>
 
-    @foreach ($bird->getMedia() as $sonogram)
-        @if (Str::contains($sonogram->mime_type, 'image'))
-            <div class="bg-cover bg-center w-full h-24" 
-                style="background-image: url('{{ $sonogram->getUrl('thumb') }}')">
-            </div>
-        @endif
-    @endforeach 
+    @php 
+        $xc_citation = $bird->metaByAttribute(502)->first()->value;
+        $url = Str::afterLast($xc_citation, ' ');
+        $url = Str::beforeLast($url, '.');
+        $url = 'https://'.trim($url);
+    @endphp
 
-    <footer class="flex justify-center">
-        @if ($audio = $bird->getFirstMedia())
-            @if (Str::contains($audio->mime_type, 'audio'))
-                <audio class="mt-2" controls
-                    src="{{ $audio->getUrl() }}">
-                        Your browser does not support the
-                        <code>audio</code> element.
-                </audio>                    
-            @endif
-        @endif
-    </footer>
+    <iframe src='{{ $url }}/embed' scrolling='no' frameborder='0' width='340' height='220'></iframe>
 </div>
