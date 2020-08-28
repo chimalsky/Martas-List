@@ -12,12 +12,12 @@
             <h1 class="text-4xl font-hairline mb-8 pl-5">
                 {{ $firstline }} | 
                 @if($poem->category) 
-                    <a class="text-black underline italic" href="">
-                        Poem Constellation
+                    <a class="text-black underline italic" href="@route('project.affiliated.poems', $poem)">
+                        Affiliated Manuscripts
                     </a>
                 @else 
                     <span class="text-gray-500 italic">
-                        Poem Constellation
+                        Affiliated Manuscripts
                     </span>
                 @endif
             </h1>

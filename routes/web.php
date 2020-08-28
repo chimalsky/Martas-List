@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'BrochureController@index')->name('brochure.index');
+Route::get('/', 'Project\IndexController')->name('brochure.index');
 
 Route::prefix('dearchived')->name('dearchived.')->namespace('Dearchived')->group(function () {
     Route::get('/dearchived', 'BirdController@show')->name('bird.show');
@@ -23,6 +23,8 @@ Route::prefix('project')->name('project.')->namespace('Project')->group(function
     Route::get('/poems', 'PoemsController@index')->name('poems.index');
     Route::get('/poems/{poem}', 'PoemsController@show')->name('poems.show');
     Route::post('/poems/get', 'PoemsController@index')->name('poems.indexAsync');
+
+    Route::get('/poems/{poem}/affiliated', 'AffiliatedPoemsController')->name('affiliated.poems');
 
     Route::get('/partials/poems', function() {
         $poems = App\Resource::where('resource_type_id', 3)

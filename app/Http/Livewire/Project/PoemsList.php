@@ -60,6 +60,8 @@ class PoemsList extends Component
 
         if (! $poems->hasMorePages()) {
             $this->emit('poems-list.end', $this->page);
+        } else {
+            $this->emit('poems-list.continues', $this->page);
         }
 
         return view('livewire.project.poems-list', compact('poems'));

@@ -87,7 +87,7 @@
     <section class="flex flex-wrap w-full pt-12">
         <livewire:project.poems-list :perPage="18" :page="1" />
 
-        <div id="js-show-at-end-of-list" class="items-center justify-center w-full text-gray-700 font-semibold hidden">
+        <div id="js-show-at-end-of-list" class="items-center justify-center w-full text-gray-700 font-semibold mt-10">
             <section class="max-w-2xl mx-auto">
 
                 <header class="mb-10">
@@ -121,8 +121,15 @@
                             <div class="border-l-4 border-red-400 pl-4 mb-2">
                                 @php $birdC = \App\ResourceCategory::find($activeBirdCategory) @endphp
 
-                                <header class="font-bold text-gray-800">
-                                    {{ $birdC->name }}
+                                <header class="font-bold text-gray-800" x-data="{expanded: false}">
+                                    <span @click="expanded = !expanded">
+                                        {{ $birdC->name }}
+                                    </span>
+                                    <span x-show="expanded">
+                                        <button wire:click="filterByBird('{{$activeBirdCategory}}')">
+                                            <x-heroicon-o-x-circle class="w-4" />
+                                        </button>
+                                    </span>
                                 </header>
 
                                 @foreach( $birdC->resources as $resource )
@@ -137,6 +144,7 @@
                     <h1 class="text-gray-800 mb-4">
                         Manuscript Attributes filtered for--
                     </h1>
+
                     @foreach ($activeFilterables as $filterable)
                         @php
                             $activeValues = $filterable['activeValues'];
@@ -150,13 +158,13 @@
                             <ul>
                                 @foreach($activeValues as $value)
                                     <li class="text-black" x-data="{expanded: false}">
-                                        <span x-click="expanded = !expanded">
+                                        <span @click="expanded = !expanded">
                                             {{ $value }}
                                         </span>
 
                                         <span x-show="expanded">
-                                            <button wire:click="$emitTo('project.filterable-attribute', 'activeAttributeRemoved', '{{ $filterableAttribute->id }}', '{{ $value }}' )">
-                                                Xfwojfojij
+                                            <button wire:click="$emitTo('project.filterable-attribute', 'activeAttributeRemoved', '{{ $filterableId }}', '{{ $value }}' )">
+                                                <x-heroicon-o-x-circle class="w-4" />
                                             </button>
                                         </span>
                                     </li>
@@ -176,20 +184,6 @@
                 @endif
             </section>
         </div>
-
-        <script>
-            
-
-            document.addEventListener('DOMContentLoaded', function() {
-                window.livewire.on('poems-list.end', page => {
-                    let curationDetails = document.querySelector('#js-show-at-end-of-list');
-
-                    curationDetails.classList.remove('hidden');
-                    console.log('ended', curationDetails);
-                })
-            });
-            
-        </script>
     </section>
 </section>
 

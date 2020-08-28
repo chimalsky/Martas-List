@@ -104,6 +104,13 @@ class Resource extends Model implements HasMedia
         return $this->meta->where('resource_attribute_id', $attributeId);
     }
 
+    public function firstMetaByAttribute($resourceAttribute)
+    {
+        $attributeId = is_int($resourceAttribute) ? $resourceAttribute : $resourceAttribute->id;
+
+        return $this->meta->firstWhere('resource_attribute_id', $attributeId);
+    }
+
     public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')
