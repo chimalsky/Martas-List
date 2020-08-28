@@ -17,4 +17,10 @@ class ResourceCategory extends Model
     {
         return $this->hasMany(Resource::class);
     }
+
+    public function connections()
+    {
+        return $this->belongstoMany(Resource::class, 'category_connections', 'category_id')
+            ->using(CategoryConnection::class);
+    }
 }

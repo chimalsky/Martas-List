@@ -31,7 +31,7 @@ class PoemsIndex extends Component
 
     public $birds;
     public $dickinsonsBirds;
-    public $activeBirdCategories = [];
+    public $activeBirdCategories;
 
     protected $activePoems;
 
@@ -49,7 +49,7 @@ class PoemsIndex extends Component
     {
         $this->filterOpened = false;
         $this->poemDefinition = ResourceType::find(3);
-        $this->birdDefinition = ResourceType::find(2);
+        $this->birdDefinition = ResourceType::find(19);
 
         $this->orderables = $this->poemDefinition->attributes->where('visibility', 1);
         $this->orderable = $this->orderables->first()->id ?? null;
@@ -57,7 +57,7 @@ class PoemsIndex extends Component
         $this->filterables = $this->orderables->where('options');
         $this->activeFilterables = collect([]);
 
-        $this->birds = ResourceType::find(2)->resources;
+        $this->birds = $this->birdDefinition->resources;
         $this->dickinsonsBirds = $this->birdDefinition->categories;
         $this->activeBirdCategories = collect([]);
 
@@ -88,7 +88,12 @@ class PoemsIndex extends Component
         $activePoems = $this->poemDefinition->resources();
 
         if ($this->activeBirdCategories && $this->activeBirdCategories->count()) {
-            $connectedPoemsIds = $this->birdConnectedPoemsIds;
+            //$connectedPoemsIds = $this->birdConnectedPoemsIds;
+            $activeBirdCategories = $this->dickinsonsBirds->whereIn('id', $this->activeBirdCategories);
+
+            // TODO filter by resource type on connection
+            $connectedPoemsIds = $activeBirdCategories->pluck('connections')->flatten()->pluck('id');
+
             $activePoems = $activePoems->whereIn('id', $connectedPoemsIds);
         }
 

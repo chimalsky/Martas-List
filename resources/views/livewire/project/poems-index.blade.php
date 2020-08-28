@@ -66,11 +66,19 @@
         @endforeach
 
         @foreach ($activeBirdCategories as $activeBirdCategory)
-            <div class="border-l-4 border-red-400 pl-4 mb-2">
+            <div x-data="{expanded: false}" class="border-l-4 border-red-400 pl-4 mb-2">
                 @php $birdC = \App\ResourceCategory::find($activeBirdCategory) @endphp
 
                 <header class="font-bold text-gray-800">
-                    {{ $birdC->name }}
+                    <span @click="expanded = !expanded">
+                        {{ $birdC->name }}
+                    </span>
+
+                    <span x-show="expanded">
+                        <button wire:click="filterByBird('{{$activeBirdCategory}}')">
+                            <x-heroicon-o-x-circle class="w-4" />
+                        </button>
+                    </span>
                 </header>
             </div>
         @endforeach
