@@ -6,7 +6,7 @@
 @endsection
 
 @section ('content')
-<section class="flex justify-center">
+<section class="flex justify-center ml-48">
     <main class="max-w-5xl text-gray-700 text-lg">
         <header class="text-center">
             <h1 class="text-4xl font-hairline mb-8 pl-5">
