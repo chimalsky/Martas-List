@@ -5,11 +5,37 @@
         </h1>
     </section>
 
-    <h1 class='flex-1 text-2xl text-right font-serif pr-24'>
-        <a href="@route('project.poems.index')">
-            <span class="text-4xl">P</span>OEM <span class="text-4xl">A</span>RCHIVE
+    <section class='flex-1'>
+        <div class="flex justify-center space-x-4 max-w-xs mx-auto pr-10">
+            <img class="object-cover w-16 h-16 rounded-full" src="{{ asset('img/do-1.jpg') }}" />
+            <img class="object-cover w-16 h-16 rounded-full" src="{{ asset('img/do-2.jpg') }}" />
+            <img class="object-cover w-16 h-16 rounded-full" src="{{ asset('img/do-3.png') }}" />
+        </div>
+
+        <a href="@route('project.poems.index')" class='text-2xl text-cener flex justify-center font-serif pr-12 mt-16'>
+            <div>
+                <span class="text-4xl">P</span>OEM 
+
+                <span class="text-4xl">A</span>RCHIVE
+            </div>
         </a>
-    </h1>
+
+        <section class="flex justify-center space-x-4 max-w-md mx-auto mt-8">
+            <div class="inline-block">
+                <img class="w-8 inline-block" src="{{ asset('img/lost-or-destroyed.png') }}" />
+                <span>
+                    = manuscript lost or destroyed
+                </span>
+            </div>
+
+            <div class="inline-block">
+                <img class="w-6 inline-block" src="{{ asset('img/coming-soon.jpg') }}" />
+                <span>
+                    = manuscript coming soon
+                </span>
+            </div>
+        </section>
+    </section>
 
     <style>
         @keyframes slidein {
