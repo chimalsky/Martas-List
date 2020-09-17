@@ -1,9 +1,7 @@
 <div>
-    <a href="">
-        <header class="block text-2xl text-center hover:underline mb-3">
-            {{ $bird->name }}
-        </header>
-    </a>
+    <header class="block text-2xl text-center hover:underline mb-3">
+        {{ $bird->name }}
+    </header>
 
     @php 
         $xc_citation = $bird->metaByAttribute(502)->first();
