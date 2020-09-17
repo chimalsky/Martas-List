@@ -5,9 +5,9 @@
         @endif
     ">
         <button type="button" @click="expanded = !expanded"
-            class="border-4 border-gray-500 p-2">
-            <x-heroicon-o-chevron-up class="w-4" x-show="expanded" />
-            <x-heroicon-o-chevron-down class="w-4" x-show="!expanded" />
+            class="border-2 border-gray-500 p-1">
+            <x-heroicon-o-chevron-up class="w-3" x-show="expanded" />
+            <x-heroicon-o-chevron-down class="w-3" x-show="!expanded" />
         </button>
         {{ $attribute->key }} 
     </h1>
@@ -22,20 +22,22 @@
         <main class="grid grid-cols-5">
             @foreach ($options as $option)
                 @unless(is_array($option))
-                    <label class="mb-2 container relative text-base col-span-1 cursor-pointer hover:underline">
-                        <input type="checkbox" wire:change="syncOptions('{{ $option }}')"
-                            class=""
-                            autocomplete="off" 
-                            @if ($activeOptions->contains($option))
-                                checked 
-                            @endif
-                                />
-                        <span class="checkmark border-2 border-gray-500"></span>
+                    @unless(is_null($option))
+                        <label class="mb-2 container relative text-base col-span-1 cursor-pointer hover:underline">
+                            <input type="checkbox" wire:change="syncOptions('{{ $option }}')"
+                                class=""
+                                autocomplete="off" 
+                                @if ($activeOptions->contains($option))
+                                    checked 
+                                @endif
+                                    />
+                            <span class="checkmark border-2 border-gray-500"></span>
 
-                        <span class="pl-6">
-                            {{ $option }}
-                        </span>
-                    </label> 
+                            <span class="pl-6">
+                                {{ $option }}
+                            </span>
+                        </label> 
+                    @endunless
                 @endunless 
             @endforeach
         </main>
