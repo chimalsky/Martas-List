@@ -16,6 +16,8 @@ class BirdsDataController extends Controller
      */
     public function __invoke(Request $request, Resource $bird)
     {
-        return view('project.birds.data', compact('bird'));
+        $birdLists = $bird->resources->pluck('definition');
+        
+        return view('project.birds.data', compact('bird', 'birdLists'));
     }
 }
