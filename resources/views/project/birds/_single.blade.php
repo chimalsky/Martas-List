@@ -15,6 +15,8 @@
             $url = 'https://'.trim($url);
         @endphp
 
-        <iframe src='{{ $url }}/embed' scrolling='no' frameborder='0' width='340' height='220'></iframe>
+        <div class="flex justify-center">
+            <iframe src='{{ $url }}/embed' scrolling='no' frameborder='0' width='340' height='220'></iframe>
+        </div>
     @endif
 </div>
