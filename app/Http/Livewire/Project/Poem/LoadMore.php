@@ -7,8 +7,6 @@ use Livewire\Component;
 
 class LoadMore extends Component
 {
-    protected $poems;
-
     public $poemDefinition;
 
     public $poemIds;
@@ -26,13 +24,13 @@ class LoadMore extends Component
         'loadMore'
     ];
 
-    public function mount($poems = [], $page, $perPage = 15)
+    public function mount($poemIds = [], $page, $perPage = 15)
     {
+        $this->poemIds = $poemIds;
+
         $this->poemDefinition = ResourceType::find(3);
         $this->perPage = $perPage;
-        $this->page = $page + 1;
-                
-        $this->poemIds = $poems->pluck('id');
+        $this->page = $page;
     }
 
     public function loadMore()
@@ -42,7 +40,7 @@ class LoadMore extends Component
 
     public function getPoemsPaginatedProperty()
     {
-        return $this->poemDefinition->resources()->whereIn('id', $this->poemIds)->paginate($this->perPage, ['*'], null, $this->page);
+        return $this->poemDefinition->resources()->whereIn('id', $this->poemIds ?? [])->paginate($this->perPage, ['*'], null, $this->page);
     }
 
     public function getPoemsRemainingProperty()

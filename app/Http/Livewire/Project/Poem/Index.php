@@ -13,7 +13,7 @@ class Index extends Component
 {
     public $poemDefinition;
     public $poems;
-    public $perPage = 10;
+    public $perPage = 12;
     public $titleMeta = 84;
 
     public $filterQuery;
@@ -68,7 +68,7 @@ class Index extends Component
 
         $poems = $poems->withHeadlineValue($this->titleMeta)
             ->withQueryableMetaValue($this->filterOrderable->id)
-            ->orderBy('queryable_meta_value', $this->filterOrderableDirection);
+            ->orderBy('id', $this->filterOrderableDirection);
 
         return $poems;
     }

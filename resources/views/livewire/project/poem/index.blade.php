@@ -10,13 +10,14 @@
     
     @foreach (collect($poems)->take($perPage) as $poem)
     <article class="pb-32 px-4 w-full lg:w-1/2 xl:w-1/3">
+        <h1 class="text-2xl">{{ $poem->id }}</h1>
         @include('project.poems._single', ['poem' => $poem])
     </article> 
     @endforeach
 
     @if ($readyToLoad)
         @if ($poems->count() > $perPage)
-        <livewire:project.poem.load-more :poems="$poems" :perPage="$perPage" :page="2" />  
+        <livewire:project.poem.load-more wire:key="2" :poemIds="$poems->pluck('id')" :perPage="$perPage" :page="2" />  
         @endif
     @endif 
 </main>

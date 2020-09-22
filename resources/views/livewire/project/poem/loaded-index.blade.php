@@ -18,8 +18,7 @@
             </main>
 
             @if ($poems->hasMorePages())
-                <h1 class="text-4xl">has more pages</h1>
-                <livewire:project.load-more :poemIds="$this->poemIds" :perPage="18" :page="$page" />  
+                <livewire:project.poem.load-more wire:key="{{ $page + 1 }}" :poemIds="$poemIds" :perPage="$perPage" :page="$page + 1" />  
             @endif 
         @endif
     </section>

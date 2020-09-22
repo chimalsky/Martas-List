@@ -1,5 +1,6 @@
 <div>
 
+
 @if ($poems->currentPage() <= $poems->lastPage())
 <div class="justify-center flex">
     <div class="animate-ping h-12 w-12 text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150">
@@ -7,7 +8,7 @@
     </div>
 </div>
 
-<button wire:click="loadMore" id="js-load-more" class="invisible">
+<button wire:click="loadMore" id="js-load-more" class="">
     Load More {{ $this->poemsRemaining }} Manuscripts Remaining
 </button>
 @endif 
@@ -37,10 +38,11 @@
 
             setTimeout(function() {
                 loadMoreButton.click()
-            }, 1000)
+            }, 1200)
         }
     })
 </script>
 @endif
 
 </div>
+
