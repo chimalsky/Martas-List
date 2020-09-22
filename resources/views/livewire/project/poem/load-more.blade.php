@@ -8,7 +8,7 @@
     </div>
 </div>
 
-<button wire:click="loadMore" id="js-load-more" class="">
+<button wire:click="loadMore" id="js-load-more" class="invisible">
     Load More {{ $this->poemsRemaining }} Manuscripts Remaining
 </button>
 @endif 
