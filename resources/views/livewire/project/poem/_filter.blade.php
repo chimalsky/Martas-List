@@ -76,6 +76,20 @@
         </h1>
 
         <section class="flex flex-wrap" style="background: #f4eee9;">
+            <div class="text-xs w-3/5 pt-4 pl-4">
+                @foreach($filterables as $key => $filterable)
+                    <section class="block mb-12">
+                        @php 
+                            // Only expand the first two Filterables
+                            $expanded = $key < 2;
+                        @endphp
+
+                        <livewire:project.filterable-attribute :attribute="$filterable" :key="$key"
+                            :expanded="$expanded" />
+                    </section>
+                @endforeach
+            </div>
+
 
             <section class="w-2/5 pt-4" style="background: #d9e3d2">
                 <header class="block ml-6 mb-2 font-serif font-bold text-xl">
@@ -89,12 +103,12 @@
                                 class="col-span-1
                                 border border-orange-500 p-2
                                 cursor-pointer
-                                @if ($activeBirdCategories->contains($bird->id))
+                                @if (optional($activeBirdCategories)->contains($bird->id))
                                    font-bold
                                 @endif
                                     "
                                 style="
-                                    @unless ($activeBirdCategories->contains($bird->id))
+                                    @unless (optional($activeBirdCategories)->contains($bird->id))
                                         background: #efefef;
                                     @else
                                         background: #CC9A00;
@@ -106,6 +120,14 @@
                         @endforeach
                     </main>
                 </div>
+
+                @if ($activeBirdCategories->count() > 0)
+                    <footer class="flex justify-center mt-4">
+                        <button wire:click='resetBirds' style="background: #6D8159" class="font-serif font-bold shadow-2xl text-white py-2 px-4">
+                            Unselect All
+                        </button>   
+                    </footer>
+                @endif
             </section>
         </section>
     </main>

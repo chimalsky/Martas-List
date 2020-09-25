@@ -84,7 +84,7 @@
         @endforeach
     </main>
     @else 
-        <h1 class="text-4xl text-orange-700">
+        <h1 class="text-xl text-orange-700">
             {{ $firstline }} mentions no birds
         </h1>
     @endif

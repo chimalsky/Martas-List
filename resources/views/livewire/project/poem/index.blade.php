@@ -26,10 +26,10 @@
 <footer class="max-w-lg mx-auto">
     @if ($readyToLoad)
     <header class="mb-10">
-        @if ($poems->count() > $perPage)
+        @if ($poems->count() > 0)
             <span class="text-4xl text-gray-400">{{ $poems->count() }} </span>
             @if ($poems->count() === 1) 
-                Manuscript -- how unique!
+                Manuscript
             @else 
                 Manuscripts 
             @endif
@@ -60,7 +60,7 @@
                             {{ $birdC->name }}
                         </span>
                         <span x-show="expanded">
-                            <button>
+                            <button wire:click="$emitTo('project.poem.filter', 'activeBirdRemoved', {{ $birdC->id }})">
                                 <x-heroicon-o-x-circle class="w-4" />
                             </button>
                         </span>
@@ -70,9 +70,52 @@
                         {{ $resource->name }} @unless($loop->last),@endunless
                     @endforeach
                 </div>
+
             @endforeach
         </section>
     @endif 
+
+    @if ($filterFilterables && $filterFilterables->count())
+        <h1 class="text-gray-800 mb-4">
+            Manuscript Attributes filtered for--
+        </h1>
+
+        @foreach ($filterFilterables as $filterable)
+            @php
+                $activeValues = $filterable['activeValues'];
+                $filterableAttribute = \App\ResourceAttribute::find($filterable['id']);
+            @endphp
+            <div class="block mb-5 text-xl">
+                <p class="text-gray-500">
+                    {{ $filterableAttribute->name }} that are within--
+                </p>
+
+                <ul>
+                    @foreach($activeValues as $value)
+                        <li class="text-black" x-data="{expanded: false}">
+                            <span @click="expanded = !expanded">
+                                {{ $value }}
+                            </span>
+
+                            <span x-show="expanded">
+                                <button wire:click="$emitTo('project.filterable-attribute', 'activeAttributeRemoved', '{{ $filterableAttribute->id }}', '{{ $value }}' )">
+                                    <x-heroicon-o-x-circle class="w-4" />
+                                </button>
+                            </span>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endforeach
+    @endif
+
+    @if (optional($filterFilterables)->count() || $filterQuery || optional($filterCategoryBirds)->count())
+        <footer class="justify-center">
+            <button wire:click="resetAllFilters" class="bg-green-700 border-2 text-white py-2 px-4 border-green-600 shadow-2xl">
+                Reset All Filters
+            </button>
+        </footer>
+    @endif
 
 </footer>
 

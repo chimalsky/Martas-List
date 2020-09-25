@@ -1,4 +1,12 @@
-<div x-data="{expanded: false}">
+@php
+    $expanded = $expanded ?? false;
+@endphp
+
+<div @if($expanded) 
+        x-data="{expanded: true}"
+    @else 
+        x-data="{expanded: false}"
+    @endif>
     <h1 class="text-xl font-semibold font-serif text-gray-700
         @if ($this->isActive)
             font-black text-black

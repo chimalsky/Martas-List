@@ -1,6 +1,5 @@
 <div>
 
-
 @if ($poems->currentPage() <= $poems->lastPage())
 <div class="justify-center flex">
     <div class="animate-ping h-12 w-12 text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150">

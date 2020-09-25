@@ -1,17 +1,26 @@
-@extends ('layouts.project')
+@extends ('layouts.project-shifted')
+
+@section('header-anchor')
+<a href="@route('project.birds.index')" class=''>
+    <div>
+        <span class="text-4xl">B</span>IRD 
+
+        <span class="text-4xl">A</span>RCHIVE
+    </div>
+</a>
+@endsection 
 
 
-@section ('header')
-    <header class="">
-        @include('project.birds._header')
-    </header>
+@section('sticky-aside')
+<livewire:project.bird.filter />
 @endsection
+
 
 
 @section ('content')
 
 <div>
-    <livewire:project.birds-index />
+    <livewire:project.bird.index />
 </div>
 
 

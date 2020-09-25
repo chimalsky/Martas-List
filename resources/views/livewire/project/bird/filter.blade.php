@@ -1,7 +1,7 @@
 <div x-data="{open: false}" class="mt-40">
 
     <x-project.modal>
-        @include('livewire.project.poem._filter')
+        @include('livewire.project.bird._filter')
     </x-project.modal>
 
 

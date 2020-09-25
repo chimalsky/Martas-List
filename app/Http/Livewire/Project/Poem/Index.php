@@ -13,19 +13,23 @@ class Index extends Component
 {
     public $poemDefinition;
     public $poems;
-    public $perPage = 12;
+    public $poemIds;
+    public $perPage = 18;
     public $titleMeta = 84;
 
     public $filterQuery;
     public $filterOrderable;
     public $filterOrderableDirection = 'asc';
     public $filterCategoryBirds;
+    public $filterFilterables;
+
     public $readyToLoad = false;
 
     protected $listeners = [
         'poem.filter:query-updated' => 'updatePoemsByQuery',
         'poem.filter:orderable-updated' => 'updatePoemsByOrderable',
-        'poem.filter:bird-updated' => 'updatePoemsByBirds'
+        'poem.filter:bird-updated' => 'updatePoemsByBirds',
+        'poem.filter:filterable-updated' => 'updatePoemsByFilterables'
     ];
 
     public function mount()
@@ -59,6 +63,18 @@ class Index extends Component
             $poems = $this->potentialPoems->whereIn('id', $connectedPoemsIds);
         }
 
+        if ($this->filterFilterables && $this->filterFilterables->count()) {
+            foreach ($this->filterFilterables as $filterable) {
+                $poems = $poems->whereHas('meta', function ($query) use ($filterable) {
+                    $query = $query->where('resource_attribute_id', $filterable['id']);
+    
+                    if ($filterable['activeValues']) {
+                        $query = $query->whereIn('value', $filterable['activeValues']);
+                    }
+                });
+            } 
+        }
+
         if ($this->filterQuery) {
             $query = $this->filterQuery;
             $poems = $poems->whereHas('transcription', function($transcriptionQuery) use ($query) {
@@ -68,7 +84,7 @@ class Index extends Component
 
         $poems = $poems->withHeadlineValue($this->titleMeta)
             ->withQueryableMetaValue($this->filterOrderable->id)
-            ->orderBy('id', $this->filterOrderableDirection);
+            ->orderBy('queryable_meta_value', $this->filterOrderableDirection);
 
         return $poems;
     }
@@ -97,14 +113,6 @@ class Index extends Component
         }
 
         $this->filterQuery = $query;
-
-        /*
-        $this->poems = $this->potentialPoems
-            ->whereHas('transcription', function($transcriptionQuery) use ($query) {
-                $transcriptionQuery->where('value', 'like', "%$query%");
-            })
-            ->get();
-        */
     }
 
     public function updatePoemsByOrderable($orderableId)
@@ -122,23 +130,21 @@ class Index extends Component
     
     public function updatePoemsByBirds(array $activeBirds)
     {
-        $validator = Validator::make([
-            'query' => $activeBirds
-        ], [
-            'query' => ['required', 'array']
-        ]);
+        $this->filterCategoryBirds = ResourceCategory::whereIn('id', $activeBirds)->get();
+    }
 
-        if ($validator->fails()) {
-        }
+    public function updatePoemsByFilterables(array $filterables)
+    {
+        $this->filterFilterables = collect($filterables);
+    }
 
-        // TODO : restrict CategoryConnections to resource_types
-        $activeBirdCategories = ResourceCategory::whereIn('id', $activeBirds)->get();
+    public function resetAllFilters()
+    {
+        $this->reset('filterCategoryBirds');
+        $this->reset('filterQuery');
+        $this->reset('filterFilterables');
 
-        //$connectedPoemsIds = $activeBirdCategories->pluck('connections')->flatten()->pluck('id');
-
-        //$this->poems = $this->potentialPoems->whereIn('id', $connectedPoemsIds);
-
-        $this->filterCategoryBirds = $activeBirdCategories;
+        $this->emit('poem.index:resetted');
     }
 
     public function render()
@@ -148,6 +154,12 @@ class Index extends Component
         } else {
             $this->poems = [];
         }
+
+        $this->poemIds = $this->poems 
+            ? $this->poems->pluck('id')
+            : [];
+
+        $this->emit('poem.index:rendering', $this->poemIds);
 
         return view('livewire.project.poem.index');
     }

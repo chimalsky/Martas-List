@@ -21,7 +21,8 @@ class LoadMore extends Component
     ];
 
     protected $listeners = [
-        'loadMore'
+        'loadMore',
+        'poem.index:rendering' => 'refreshPoemIds'
     ];
 
     public function mount($poemIds = [], $page, $perPage = 15)
@@ -31,6 +32,11 @@ class LoadMore extends Component
         $this->poemDefinition = ResourceType::find(3);
         $this->perPage = $perPage;
         $this->page = $page;
+    }
+
+    public function refreshPoemIds($poemIds = [])
+    {
+        $this->poemIds = $poemIds;
     }
 
     public function loadMore()

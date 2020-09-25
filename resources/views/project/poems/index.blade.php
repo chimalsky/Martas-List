@@ -26,6 +26,22 @@
         </span>
     </div>
 </section>
+
+<x-project.archive-notes>
+    <article>
+        +  For information on the guiding editorial principles for the Poem Archive, see 
+        <a href="">
+            Introduction.
+        </a>
+    </article>
+    <article>
+        +  For details about sources, see 
+        <a href="">
+            Primary Sources.
+        </a>
+    </article>
+</x-project.archive-notes>
+
 @endsection
 
 @section('sticky-aside')
