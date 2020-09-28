@@ -60,6 +60,15 @@
 
 @section('content')
 
+@php
+    $nineteenthBird = $bird->resources->firstWhere('resource_type_id', 8);
+    $twentyfirstBird = $bird->resources->firstWhere('resource_type_id', 15);
+
+    $migrationMapLink = $bird->firstMetaByAttribute(506)
+@endphp
+
+
+@if ($bird->category)
 <main class="relative hidden xl:block ml-48">
     <img src="{{ asset('img/bird-notebook.png') }}" />
     <section class="absolute inset-0 flex flex-wrap py-32 pl-24 pr-48 pl-64">
@@ -72,11 +81,6 @@
             </header>
 
             <main class="mt-6 text-lg">
-                @php
-                    $nineteenthBird = $bird->resources->firstWhere('resource_type_id', 8);
-                    $twentyfirstBird = $bird->resources->firstWhere('resource_type_id', 15);
-                @endphp
-
                 @if ($nineteenthBird)
                     @php
                         $presence = $nineteenthBird->firstMetaByAttribute(538);
@@ -122,7 +126,7 @@
                 <span class="text-3xl">H</span>ABITAT
             </header>
             <main class="pl-6 italic text-lg">
-                {{ $bird->firstMetaByATtribute(504)->value }}
+                {{ optional($bird->firstMetaByATtribute(504))->value }}
             </main>
 
             <header class="text-xl mt-16 mb-6">
@@ -137,7 +141,6 @@
 
         <div class="w-1/2 px-8">
             @php 
-                $migrationMapLink = $bird->firstMetaByAttribute(506);
                 $fieldNotes = $nineteenthBird  
                     ? $nineteenthBird->firstMetaByAttribute(590)
                     : null;
@@ -178,27 +181,30 @@
                 {{ $bird->firstMetaByAttribute(510)->value ?? null }}
             </main>
 
-            <header class="text-xl mt-16">
-                <span class="text-3xl">M</span>IGRATION
-                <span class="text-3xl">R</span>ANGE
-                <span class="text-3xl">M</span>AP
-            </header>
-            <main class="pl-6 italic text-lg">
-                <a href="{{ $migrationMapLink->value }}">
-                    {{ $migrationMapLink->value }}
-                </a>
-            </main>
+            @if ($migrationMapLink)
+                <header class="text-xl mt-16">
+                    <span class="text-3xl">M</span>IGRATION
+                    <span class="text-3xl">R</span>ANGE
+                    <span class="text-3xl">M</span>AP
+                </header>
+                <main class="pl-6 italic text-lg">
+                    <a href="{{ $migrationMapLink }}">
+                        {{ $migrationMapLink }}
+                    </a>
+                </main>
+            @endif
         </div>
     </section>
 </main>
+@endif
 
-<main class="block xl:hidden ml-48">
+<main class="block ml-48">
     <section class="text-center">
         <p class="text-2xl font-hairline">
             Habitat 
         </p>
         <p>
-            {{ $bird->firstMetaByATtribute(504)->value }}
+            {{ optional($bird->firstMetaByATtribute(504))->value ?? 'Unknown' }}
         </p>
 
         <p class="text-2xl font-hairline mt-6">
@@ -266,6 +272,7 @@
         </div>
         
 
+        @if($migrationMapLink)
         <p class="">
             Migration Range: 
 
@@ -275,6 +282,7 @@
                 link
             </a>
         </p>
+        @endif
 
         <p class="text-2xl font-hairline mt-6">
             Conservation Status

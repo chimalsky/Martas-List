@@ -1,4 +1,5 @@
 <div>
+<a href="@route('project.birds.show', $bird)">
     <header class="block text-2xl text-center hover:underline mb-3">
         {{ $bird->name }}
     </header>
@@ -19,4 +20,5 @@
             <iframe src='{{ $url }}/embed' scrolling='no' frameborder='0' width='340' height='220'></iframe>
         </div>
     @endif
+</a>
 </div>

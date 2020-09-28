@@ -54,7 +54,6 @@ class LoadMore extends Component
         return $this->poemsPaginated->total() - ($this->poemsPaginated->perPage() * $this->poemsPaginated->currentPage() - $this->poemsPaginated->perPage());
     }
 
-
     public function render()
     {
         $poems = $this->poemsPaginated;

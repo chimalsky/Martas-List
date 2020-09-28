@@ -5,7 +5,6 @@ namespace App\Http\Livewire\Project\Poem;
 use App\ResourceType;
 use App\ResourceCategory;
 use App\ResourceAttribute;
-use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 
@@ -38,7 +37,7 @@ class Index extends Component
         $this->filterOrderable = $this->poemDefinition->attributes->where('visibility', 1)->first();
     }
 
-    public function loadPoems()
+    public function loadResources()
     {
         $this->readyToLoad = true;
     }

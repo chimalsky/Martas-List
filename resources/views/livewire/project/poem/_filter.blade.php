@@ -8,53 +8,6 @@
             </button>
         </h1>
 
-        <style>
-
-            /* Hide the browser's default checkbox */
-            .container input {
-                opacity: 0;
-                cursor: pointer;
-                height: 0;
-                width: 0;
-            }
-
-            /* Create a custom checkbox */
-            .checkmark {
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 25px;
-                width: 25px;
-                background-color: transparent;
-            }
-
-            /* Create the checkmark/indicator (hidden when not checked) */
-            .checkmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-            }
-
-            /* Show the checkmark when checked */
-            .container input:checked ~ .checkmark:after {
-            display: block;
-            }
-
-            /* Style the checkmark/indicator */
-            .container .checkmark:after {
-            left: 9px;
-            bottom: 3px;
-            width: 12px;
-            height: 25px;
-            border: solid green;
-            border-width: 0 4px 4px 0;
-            -webkit-transform: rotate(45deg);
-            -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
-            }
-        </style>
-
-
         <div class="p-4 flex flex-wrap w-full">            
             @foreach($orderables as $orderable)
             @if ($loop->index < 3)
@@ -92,42 +45,7 @@
 
 
             <section class="w-2/5 pt-4" style="background: #d9e3d2">
-                <header class="block ml-6 mb-2 font-serif font-bold text-xl">
-                    Dickinson's Bird List
-                </header>
-
-                <div class="flex flex-wrap">
-                    <main class="mx-auto w-11/12 grid grid-cols-4 bg-yellow-100">
-                        @foreach ($dickinsonsBirds->sortBy('name') as $bird)
-                            <label wire:click="updateSelectedBird({{ $bird->id }})"
-                                class="col-span-1
-                                border border-orange-500 p-2
-                                cursor-pointer
-                                @if (optional($activeBirdCategories)->contains($bird->id))
-                                   font-bold
-                                @endif
-                                    "
-                                style="
-                                    @unless (optional($activeBirdCategories)->contains($bird->id))
-                                        background: #efefef;
-                                    @else
-                                        background: #CC9A00;
-                                        color: white;
-                                    @endunless
-                                ">
-                                {{ $bird->name }} 
-                            </label>
-                        @endforeach
-                    </main>
-                </div>
-
-                @if ($activeBirdCategories->count() > 0)
-                    <footer class="flex justify-center mt-4">
-                        <button wire:click='resetBirds' style="background: #6D8159" class="font-serif font-bold shadow-2xl text-white py-2 px-4">
-                            Unselect All
-                        </button>   
-                    </footer>
-                @endif
+                <x-project.filter.dickinsons-birds :dickinsonsBirds="$dickinsonsBirds" :activeBirdCategories="$activeBirdCategories" />
             </section>
         </section>
     </main>

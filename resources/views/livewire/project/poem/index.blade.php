@@ -1,5 +1,5 @@
 <div>
-<main wire:init="loadPoems" class="flex flex-wrap w-full pt-12">
+<main wire:init="loadResources" class="flex flex-wrap w-full pt-12">
     <div wire:loading class="w-full flex justify-center">
         <div wire:loading class="animate-ping h-12 w-12 text-gray-700 hover:text-gray-500 focus:outline-none 
             focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 
@@ -23,7 +23,7 @@
     @endif 
 </main>
 
-<footer class="max-w-lg mx-auto">
+<footer class="max-w-lg mx-auto mb-10">
     @if ($readyToLoad)
     <header class="mb-10">
         @if ($poems->count() > 0)
@@ -48,30 +48,9 @@
     </div>
     @endif
 
-    @if($filterCategoryBirds && $filterCategoryBirds->count())
+    @if(optional($filterCategoryBirds)->count())
         <section class="mb-10">
-            <header class="text-gray-800 mb-4">
-                Manuscripts mentioning birds--
-            </header>
-            @foreach ($filterCategoryBirds as $birdC)
-                <div class="border-l-4 border-red-400 pl-4 mb-2">
-                    <header class="font-bold text-gray-800" x-data="{expanded: false}">
-                        <span @click="expanded = !expanded">
-                            {{ $birdC->name }}
-                        </span>
-                        <span x-show="expanded">
-                            <button wire:click="$emitTo('project.poem.filter', 'activeBirdRemoved', {{ $birdC->id }})">
-                                <x-heroicon-o-x-circle class="w-4" />
-                            </button>
-                        </span>
-                    </header>
-
-                    @foreach( $birdC->resources as $resource )
-                        {{ $resource->name }} @unless($loop->last),@endunless
-                    @endforeach
-                </div>
-
-            @endforeach
+            <x-project.audit.dickinsons-birds :dickinsonsBirds="$filterCategoryBirds" />
         </section>
     @endif 
 

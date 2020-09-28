@@ -106,7 +106,9 @@ class Resource extends Model implements HasMedia
 
     public function firstMetaByAttribute($resourceAttribute)
     {
-        $attributeId = is_int($resourceAttribute) ? $resourceAttribute : $resourceAttribute->id;
+        $attributeId = is_int($resourceAttribute) 
+            ? $resourceAttribute 
+            : $resourceAttribute->id;
 
         return $this->meta->firstWhere('resource_attribute_id', $attributeId);
     }
