@@ -14,7 +14,7 @@ class ChronoBird extends Bird
     protected static function booted()
     {
         static::addGlobalScope('resource_type', function (Builder $builder) {
-            //$builder->whereIn('resource_type_id', self::resource_type_ids);
+            $builder->where('resource_type_id', '<>', Bird::resource_type_id);
         });
     }
 

@@ -25,9 +25,12 @@ class ChronoConnection extends Model
 
     public function scopeWithBirdId($query)
     {
+        // Foobar: The latest('resource_id') only works because the primary bird 
+        // archive was added first. This is not a permanent solution.
+
         return $query->addSelect(['bird_id' =>  ChronoConnectionPivot::select('resource_id')
                 ->whereColumn('connection_id', 'connections.id')
-                ->latest('id')->take(1)
+                ->latest('resource_id')->take(1)
             ]);
     }
 }

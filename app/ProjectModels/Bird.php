@@ -28,10 +28,7 @@ class Bird extends ResourceModel
     {
         return $this->belongsToMany(
             ChronoConnection::class, 'connection_resource', 'resource_id', 'connection_id'
-        )->withBirdId();
-        /*->with(['birds' => function($query) {
-            //$query->where('resource_id', '<>', $this->id);
-        }]); */
+        )->withBirdId()->with('otherBird');
     }
 
     public function getSeasonAttribute()
