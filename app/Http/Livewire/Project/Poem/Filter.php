@@ -22,6 +22,8 @@ class Filter extends Component
     public $filterables;
     public $activeFilterables;
 
+    public $renderCount;
+
     protected $rules = [
     ];
 
@@ -29,6 +31,7 @@ class Filter extends Component
         'filterable-attribute:resetted' => 'filterByAttribute',
         'filterable-attribute:activeOptionsUpdated' => 'filterByAttribute',
         'poem.index:resetted' => 'resetAll',
+        'poem.index:rendering' => 'indexRendering',
         'activeBirdRemoved' => 'updateSelectedBird'
     ];
 
@@ -111,6 +114,11 @@ class Filter extends Component
     {
         $this->activeBirdCategories = collect([]);
         $this->emit('poem.filter:bird-updated', $this->activeBirdCategories);
+    }
+
+    public function indexRendering($resourceIds)
+    {
+        $this->renderCount = collect($resourceIds)->count();
     }
 
     public function render()

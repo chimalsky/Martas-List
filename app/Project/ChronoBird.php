@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ProjectModels;
+namespace App\Project;
 
 use App\ResourceMeta;
 use Illuminate\Database\Eloquent\Builder;
@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 class ChronoBird extends Bird
 {
     const resource_type_ids = [8];
+    const presence_meta_ids = [538, 565, 574];
 
     protected $table = 'resources';
 
@@ -25,5 +26,9 @@ class ChronoBird extends Bird
             ->orderBy('key', 'desc');
     }
 
-
+    public function presenceMeta()
+    {
+        return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->whereIn('resource_attribute_id', ChronoBird::presence_meta_ids);
+    }
 }

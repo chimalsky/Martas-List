@@ -22,24 +22,19 @@
 
             <main class="grid grid-cols-3">
                 @php 
-                    $seasons = [
-                        'Permanent Resident',
-                        'Winter',
-                        'Spring',
-                        'Summer',
-                        'Fall'
-                    ];
+                    $seasons = \App\Project\SeasonEnum::getConstants();
                 @endphp 
                 <section class="col-span-1">
-                    @foreach ($seasons as $season)
+                    @foreach ($seasons as $key => $season)
                         <label class="mb-2 block container relative text-base cursor-pointer hover:underline">
-                            <input type="checkbox"
+                            <input wire:click="updateSeason({{ $key }})"
+                                type="checkbox"
                                 class=""
                                 autocomplete="off" />
                             <span class="checkmark border-2 border-gray-500"></span>
 
                             <span class="pl-6">
-                                {{ $season }}
+                                {{ Str::title($key) }}
                             </span>
                         </label> 
                     @endforeach
@@ -47,27 +42,28 @@
 
                 @php
                     $months1 = [
-                        'January',
-                        'February',
-                        'March',
-                        'April',
-                        'May',
-                        'June'
+                        1 => 'January',
+                        2 => 'February',
+                        3 => 'March',
+                        4 => 'April',
+                        5 => 'May',
+                        6 => 'June'
                     ];
 
                     $months2 = [
-                        'July',
-                        'August',
-                        'September',
-                        'October',
-                        'November',
-                        'December'
+                        7 => 'July',
+                        8 => 'August',
+                        9 => 'September',
+                        10 => 'October',
+                        11 => 'November',
+                        12 => 'December'
                     ];
                 @endphp
                 <section class="col-span-1">
-                    @foreach ($months1 as $month)
+                    @foreach ($months1 as $key => $month)
                         <label class="mb-2 block container relative text-base cursor-pointer hover:underline">
-                            <input type="checkbox"
+                            <input wire:click="updateMonth('{{ $key }}')"
+                                type="checkbox"
                                 class=""
                                 autocomplete="off" />
                             <span class="checkmark border-2 border-gray-500"></span>
@@ -81,8 +77,9 @@
                 <section class="col-span-1">
                     @foreach ($months2 as $month)
                         <label class="mb-2 block container relative text-base cursor-pointer hover:underline">
-                            <input type="checkbox"
-                                class=""
+                            <input wire:click="updateMonth('{{ $key }}')"
+                                type="checkbox"
+                                class="""
                                 autocomplete="off" />
                             <span class="checkmark border-2 border-gray-500"></span>
 

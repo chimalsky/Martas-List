@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ProjectModels;
+namespace App\Project;
 
 use App\Resource;
 use App\CategoryConnection;

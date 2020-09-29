@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ProjectModels;
+namespace App\Project;
 
 use App\Resource as ResourceModel;
 use App\ResourceMeta;
@@ -24,17 +24,13 @@ class Bird extends ResourceModel
         return $this->belongsTo(DickinsonsBird::class, 'resource_category_id');
     }
 
-    public function chronoBirds()
+    public function chronoConnections()
     {
         return $this->belongsToMany(
             ChronoConnection::class, 'connection_resource', 'resource_id', 'connection_id'
-        )->withBirdId()->with('otherBird');
-    }
-
-    public function getSeasonAttribute()
-    {
-        return ResourceMeta::whereIn('resource_attribute_id', [538])
-            ->whereIn('resource_id', $this->chronoBirds->pluck('resources')->flatten()->pluck('id'));
+        )->withOtherBirdId()
+            ->withPrimaryBirdId()
+            ->with('otherBird');
     }
 
     public function meta()
@@ -44,6 +40,32 @@ class Bird extends ResourceModel
             ->orderBy('key', 'desc');
     }
 
+    public function presenceMetas()
+    {
+        $chronoBirds = $this->chronoConnections->pluck('otherBird');
+
+        return $this->meta()
+            ->whereIn('resource_attribute_id', ChronoBird::presence_meta_ids)
+            ->whereIn('resource_id', $chronoBirds->pluck('id'));
+
+        /*return ResourceMeta::whereIn('resource_attribute_id', ChronoBird::presence_meta_ids)
+            ->whereIn('resource_id', $chronoBirds->pluck('id'));*/
+    }
+
+    public function nineteenthCenturyPresence()
+    {
+        return $this->belongsTo(ResourceMeta::class, 'nineteenth_century_presence_id');
+    }
+
+    public function scopeWithNineteenthCenturyPresence($query)
+    {
+        return $query->addSelect(['nineteenth_century_presence_id' =>  ResourceMeta::select('id')
+            ->whereIn('resource_id', 'resources.id')
+            ->where('resource_attribute_id', 538)
+            ->latest()->take(1)
+        ]);
+    }
+
     public function firstMetaByAttribute($resourceAttribute)
     {
         $attributeId = is_int($resourceAttribute) 
@@ -51,10 +73,5 @@ class Bird extends ResourceModel
             : $resourceAttribute->id;
 
         return $this->meta->firstWhere('resource_attribute_id', $attributeId);
-    }
-
-    public function scopeSeasonal($query)
-    {
-        return $query->whereHas('season');
     }
 }
