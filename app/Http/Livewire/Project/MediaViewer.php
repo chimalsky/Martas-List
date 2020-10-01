@@ -22,7 +22,11 @@ class MediaViewer extends Component
 
     public function setMedia($media)
     {
-        $this->media = Media::find($media);
+        $this->media = $this->medias->firstWhere('id', $media);
+
+        $mediaIndex = $this->medias->pluck('id')->search($media);
+
+        $this->emit('media-viewer:pageChanged', $mediaIndex);
     }
 
     public function render()

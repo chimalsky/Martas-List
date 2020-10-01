@@ -3,8 +3,7 @@
         <nav class="-mb-px space-x-4">
             @foreach ($medias as $medium)
                 @if (Str::contains($medium->mime_type, 'image'))
-                    <button 
-                        wire:click="setMedia({{ $medium->id }})"
+                    <button wire:click="setMedia({{ $medium->id }})"
                         class="w-20 hover:bg-indigo-100 border-b-2 border-transparent pb-2
                             @if ($media->id == $medium->id) border-indigo-500 @endif
                             hover:shadow-lg">
