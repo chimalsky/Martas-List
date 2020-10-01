@@ -1,34 +1,39 @@
-@extends ('layouts.project')
+@extends ('layouts.project-shifted')
 
+@section('header-anchor')
+<a href="@route('project.poems.index')" class=''>
+    <div>
+        <span class="text-4xl">P</span>OEM 
 
-@section ('header')
-    <header class="">
-        @include('project.poems._header')
-    </header>
+        <span class="text-4xl">A</span>RCHIVE
+    </div>
+</a>
+@endsection 
+
+@section('header-info')
+{{ $firstline }} | 
+<a class="text-black underline italic">
+    Affiliated Manuscripts
+</a>
+<span>
+    |
+</span>
+<a href="" class="text-gray-500">
+    Commentary
+</a>
 @endsection
 
 @section ('content')
-<section class="flex justify-center">
-    <main class="max-w-5xl text-gray-700 text-lg">
-        <header class="text-center">
-            <h1 class="text-4xl font-hairline mb-8 pl-5">
-                {{ $firstline }} | 
-                <a class="text-black underline italic">
-                    Affiliated Manuscripts
-                </a>
-            </h1>
-        </header>
-    </main>
-</section>
 
-<section class="container mx-auto">
-    <header class="text-xl text-red-700">
+
+<section class="block">
+    <header class="text-xl text-red-700 block">
         Affiliated Manuscripts --
     </header>
 
     <main class="flex flex-wrap w-full pt-12">
         @foreach ($poems as $poem)
-            <article class="pb-32 px-4 w-full lg:w-1/2 xl:w-1/3">
+            <article class="pb-32 px-4 w-full lg:w-1/2 xl:w-1/3s">
                 <a href="@route('project.poems.show', $poem)">
                     @php 
                         $imageCount = $poem->getMedia()->count()
@@ -88,5 +93,6 @@
         @endforeach
     </main>
 </section>
+
 
 @endsection

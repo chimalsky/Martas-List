@@ -21,7 +21,8 @@ class FilterableAttribute extends Component
 
     protected $listeners = [
         'filterCleared',
-        'activeAttributeRemoved'
+        'activeAttributeRemoved',
+        'poem.index:resetted' => 'filterCleared'
     ];
 
     public function mount(ResourceAttribute $attribute, $expanded = false)
@@ -51,14 +52,18 @@ class FilterableAttribute extends Component
 
         $this->activeOptions = $options;
 
-        $this->emitUp('filterable-attribute.activeOptions.changed', $this->attribute->id, $this->activeOptions->toArray());
+        $this->emitUp('filterable-attribute:activeOptionsUpdated', $this->attribute->id, $this->activeOptions->toArray());
+        
+        //$this->emitUp('filterable-attribute.activeOptions.changed', $this->attribute->id, $this->activeOptions->toArray());
     }
 
     public function resetOptions()
     {
-        $this->activeOptions = collect([]);
+        $this->filterCleared();
 
-        $this->emitUp('filterable-attribute.activeOptions.resetOptions', $this->attribute->id, []);
+        $this->emitUp('filterable-attribute:resetted', $this->attribute->id, []);
+
+        //$this->emitUp('filterable-attribute.activeOptions.resetOptions', $this->attribute->id, []);
     }
 
     public function filterCleared()
@@ -80,7 +85,7 @@ class FilterableAttribute extends Component
     
             $this->activeOptions = $options; 
     
-            $this->emitUp('filterable-attribute.activeOptions.changed', $this->attribute->id, $this->activeOptions->toArray());
+            $this->emitUp('filterable-attribute:activeOptionsUpdated', $this->attribute->id, $this->activeOptions->toArray());
         }
     }
 
