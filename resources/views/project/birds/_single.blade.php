@@ -8,7 +8,6 @@
         $xc_citation = $bird->metaByAttribute(502)->first();
     @endphp
 
-    @if($xc_citation)
 
         @php
             $url = Str::afterLast($xc_citation->value, ' ');
@@ -19,6 +18,5 @@
         <div class="flex justify-center">
             <iframe src='{{ $url }}/embed' scrolling='no' frameborder='0' width='340' height='220'></iframe>
         </div>
-    @endif
 </a>
 </div>

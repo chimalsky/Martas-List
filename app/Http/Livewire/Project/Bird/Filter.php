@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Project\Bird;
 
+use App\Project\ChronoBird;
 use App\ResourceType;
 use Livewire\Component;
 
@@ -14,6 +15,7 @@ class Filter extends Component
     public $activeBirdCategories;
     public $activeMonths;
     public $activeSeasons;
+    public $activeChrono;
 
     public $activeBirds;
 
@@ -26,7 +28,9 @@ class Filter extends Component
         'filterable-attribute:activeOptionsUpdated' => 'filterByAttribute',
         'bird.index:resetted' => 'resetAll',
         'bird.index:rendering' => 'indexRendering',
-        'activeBirdRemoved' => 'updateSelectedBird'
+        'activeBirdRemoved' => 'updateSelectedBird',
+        'activeSeasonRemoved' => 'updateSeason',
+        'activeMonthRemoved' => 'updateMonth'
     ];
 
     public function mount()
@@ -38,6 +42,7 @@ class Filter extends Component
         $this->activeBirdCategories = collect([]);
         $this->activeMonths = collect([]);
         $this->activeSeasons = collect([]);
+        $this->activeChrono = 19;
     }
 
     public function updatedQuery()
@@ -87,7 +92,14 @@ class Filter extends Component
             $this->activeSeasons->splice($index, 1);
         }
 
+        $season = $this->activeSeasons->first();
+
         $this->emit('bird.filter:season-updated', $this->activeSeasons);
+    }
+
+    public function chronoClicked()
+    {
+        $this->emit('bird.filter:chrono-updated', $this->activeChrono);
     }
 
     public function resetBirds()
@@ -100,6 +112,8 @@ class Filter extends Component
     {
         $this->activeBirdCategories = collect([]);
         $this->reset('query');
+        $this->activeMonths = collect([]);
+        $this->activeSeasons = collect([]);
         //$this->activeFilterables = collect([]);
     }
 

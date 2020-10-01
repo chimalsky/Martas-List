@@ -35,10 +35,32 @@
             <div class="pl-4 mb-2">
                 <header class="font-bold text-gray-800" x-data="{expanded: false}">
                     <span @click="expanded = !expanded">
-                        {{ $activeSeason }}
+                        {{ Str::title($activeSeason)  }}
                     </span>
                     <span x-show="expanded">
-                        <button wire:click="$emitTo('project.poem.filter', 'activeBirdRemoved', {{ $activeSeason }})">
+                        <button wire:click="$emitTo('project.bird.filter', 'activeSeasonRemoved', '{{ $activeSeason }}')">
+                            <x-heroicon-o-x-circle class="w-4" />
+                        </button>
+                    </span>
+                </header>
+            </div>
+        @endforeach
+    </section>
+    @endif 
+
+    @if(optional($activeMonths)->count())
+    <section class="mb-10">
+        <header class="text-gray-800 mb-4">
+            Active Months--
+        </header>
+        @foreach ($activeMonths as $activeMonth)
+            <div class="pl-4 mb-2">
+                <header class="font-bold text-gray-800" x-data="{expanded: false}">
+                    <span @click="expanded = !expanded">
+                        {{ Str::title($activeMonth) }}
+                    </span>
+                    <span x-show="expanded">
+                        <button wire:click="$emitTo('project.bird.filter', 'activeMonthRemoved', '{{ $activeMonth }}')">
                             <x-heroicon-o-x-circle class="w-4" />
                         </button>
                     </span>

@@ -5,7 +5,10 @@ namespace App\Http\Livewire\Project\Bird;
 use App\ResourceType;
 use App\ResourceCategory;
 use App\Project\Bird;
+use App\Project\ChronoBird;
 use Livewire\Component;
+use App\Project\MonthEnum;
+use App\Project\SeasonMonthsEnum;
 use Illuminate\Support\Facades\Validator;
 
 class Index extends Component
@@ -23,6 +26,7 @@ class Index extends Component
     public $filterFilterables;
     public $filterMonths;
     public $filterSeasons;
+    public $filterChrono;
 
     public $readyToLoad = false;
 
@@ -32,12 +36,15 @@ class Index extends Component
         'bird.filter:bird-updated' => 'updateByBirds',
         'bird.filter:month-updated' => 'updateByMonth',
         'bird.filter:season-updated' => 'updateBySeason',
+        'bird.filter:chrono-updated' => 'updateByChrono',
         'bird.filter:filterable-updated' => 'updatePoemsByFilterables'
     ];
 
     public function mount()
     {
         $this->birdDefinition = ResourceType::find(19);
+        $this->filterChrono = 19;
+        
         //$this->filterOrderable = $this->birdDefinition->attributes->where('visibility', 1)->first();
     }
 
@@ -77,9 +84,25 @@ class Index extends Component
         $this->filterSeasons = collect($activeSeasons);
     }
 
+    public function updateByChrono($century)
+    {
+        $this->filterChrono = $century;
+    }
+
     public function getPotentialBirdsProperty()
     {
         return new Bird;
+    }
+
+    public function getChronoResourceTypeProperty()
+    {
+        $chronoDict = [
+            '19' => ChronoBird::nineteenthCenturyResourceType(),
+            '20' => ChronoBird::twentiethCenturyResourceType(),
+            '21' => ChronoBird::twentyFirstCenturyResourceType()
+        ];
+
+        return $chronoDict[$this->filterChrono];
     }
 
     public function getBirdsFilteredProperty()
@@ -100,15 +123,8 @@ class Index extends Component
             
             $filterSeasons = $this->filterSeasons;
 
-            $seasonsDict = [
-                2 => [11,12,1],
-                3 => [3,4,5],
-                4 => [6,7,8],
-                5 => [9,10,11]
-            ];
-
             $filteredBirdsByPresence = $presenceBirdsConnections
-                ->filter(function($connection) use ($filterSeasons, $seasonsDict) {
+                ->filter(function($connection) use ($filterSeasons) {
                     $bird = $connection->otherBird;
 
                     $presence = $bird->presenceMeta->value;
@@ -116,8 +132,8 @@ class Index extends Component
                     $months = collect(array_map('trim', explode(',', $presence)));
 
                     foreach ($filterSeasons as $season) {
-                        foreach ($seasonsDict[$season] as $month) {
-                            if (collect($months)->contains($month)) {
+                        foreach (SeasonMonthsEnum::getConstant($season) as $month) {
+                            if ($months->contains($month)) {
                                 return true;
                             }
                         }
@@ -139,7 +155,9 @@ class Index extends Component
 
                     $months = collect(array_map('trim', explode(',', $presence)));
 
-                    foreach($filterMonths as $month) {
+                    foreach ($filterMonths as $month) {
+                        $month = MonthEnum::getConstant($month);
+
                         if ($months->contains($month)) {
                             return true;
                         }
@@ -154,16 +172,18 @@ class Index extends Component
 
     public function getPresenceConnections($query)
     {
+        $chronoResourceType = $this->chronoResourceType;
+
         return $query->with('chronoConnections')->get()->pluck('chronoConnections')
             ->flatten()
-            ->filter(function($connection) { 
+            ->filter(function($connection) use ($chronoResourceType) { 
                 $bird = $connection->otherBird;
 
                 if (is_null($bird)) {
                     return;
                 }
                 
-                if ($bird->resource_type_id !== 8) {
+                if ($bird->resource_type_id !== $chronoResourceType) {
                     return;
                 }
                 

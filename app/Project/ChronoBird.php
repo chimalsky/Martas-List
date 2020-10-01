@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Builder;
 
 class ChronoBird extends Bird
 {
-    const resource_type_ids = [8];
-    const presence_meta_ids = [538, 565, 574];
+    const resource_type_ids = [8, 14, 15];
+    const presence_meta_ids = [538, 565, 574]; // 8 - clark 19th, 14 - bagg 20th, 15 -- mass 21st
 
     protected $table = 'resources';
 
@@ -30,5 +30,35 @@ class ChronoBird extends Bird
     {
         return $this->hasOne(ResourceMeta::class, 'resource_id')
             ->whereIn('resource_attribute_id', ChronoBird::presence_meta_ids);
+    }
+
+    public static function nineteenthCenturyResourceType()
+    {
+        return collect(self::resource_type_ids)->first();
+    }
+
+    public static function twentiethCenturyResourceType()
+    {
+        return collect(self::resource_type_ids)->slice(1)->first();
+    }
+
+    public static function twentyFirstCenturyResourceType()
+    {
+        return collect(self::resource_type_ids)->slice(2)->first();
+    }
+
+    public static function nineteenthCenturyPresence()
+    {
+        return collect(self::presence_meta_ids)->first();
+    }
+
+    public static function twentiethCenturyPresence()
+    {
+        return collect(self::presence_meta_ids)->slice(1)->first();
+    }
+
+    public static function twentyFirstCenturyPresence()
+    {
+        return collect(self::presence_meta_ids)->slice(2)->first();
     }
 }
