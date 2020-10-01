@@ -47,25 +47,65 @@
     <p class="mt-2 text-gray-600 hidden">
 
         Copied in 
-        {{ $poem->meta->where('resource_attribute_id', 142)->first()->value ?? null }}
+        {{ optional($poem->meta->firstWhere('resource_attribute_id', 142))->value }}
         on 
-        {{ $poem->meta->where('resource_attribute_id', 87)->first()->value ?? null }},
+        {{ optional($poem->meta->firstWhere('resource_attribute_id', 87))->value }},
         bound into
-        {{ $poem->meta->where('resource_attribute_id', 3)->first()->value ?? null }}
+        {{ optional($poem->meta->firstWhere('resource_attribute_id', 3))->value }}
     </p>
 </section>
 
 <section class="mt-12 flex flex-wrap">
-    <div class="w-1/3 mt-40">
+    <div id="js-transcription-source" class="h-0 w-0 opacity-0">
         <!-- Manuscript Transcription -->
-        {!! $poem->meta->where('resource_attribute_id', 78)->first()->value ?? null !!}
+        {!! optional($poem->meta->firstWhere('resource_attribute_id', 78))->value !!}
     </div>
 
-        <div class="w-2/3 md:pl-4 lg:pl-8">
-            @if ($poem->media()->exists())
-                <livewire:project.media-viewer :resource="$poem" />
-            @endif
-        </div>
+    <div id="js-transcription-display" class="w-full md:w-1/3 lg:w-1/2 mt-40 text-2xl">
+    </div>
+
+    <script>
+        let source = document.querySelector('#js-transcription-source');
+        let display = document.querySelector('#js-transcription-display');
+
+        let transcriptionText = source.innerText;
+
+        let splitText = transcriptionText.split("{/pb}");
+
+        splitText.forEach(function(page, i) {
+            let div = document.createElement('div');
+            div.innerText = page;
+            div.setAttribute('page-index', i)
+
+            display.appendChild(div);
+        });
+        
+        source.classList.add('hidden');
+
+        showPageByIndex(0);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            Livewire.on('media-viewer:pageChanged', pageIndex => {
+                showPageByIndex(pageIndex);
+            });
+        });
+
+        function showPageByIndex(index) {
+            let selectedText = document.querySelector(`#js-transcription-display div[page-index="${index}"]`)
+
+            document.querySelectorAll('#js-transcription-display div').forEach(function(div) {
+                div.classList.add('hidden');
+            });
+
+            selectedText.classList.remove('hidden');
+        }
+    </script>
+
+    <div class="w-full md:w-2/3 lg:w-1/2 md:pl-4 lg:pl-8">
+        @if ($poem->media()->exists())
+            <livewire:project.media-viewer :resource="$poem" />
+        @endif
+    </div>
 </section>
 
 <section id="birds" class="mt-12 lg:mt-24 mb-10">

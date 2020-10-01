@@ -30,7 +30,14 @@
 
         <section class="flex flex-wrap" style="background: #f4eee9;">
             <div class="text-xs w-3/5 pt-4 pl-4">
+                <section class="block mb-12">
+                    <livewire:project.filterable-attribute :attribute="$filterables->firstWhere('id', 370)" 
+                        :key="300"
+                        :expanded="true" />
+                </section>
+
                 @foreach($filterables as $key => $filterable)
+                    @unless($filterable->id == 370)
                     <section class="block mb-12">
                         @php 
                             // Only expand the first two Filterables
@@ -40,6 +47,7 @@
                         <livewire:project.filterable-attribute :attribute="$filterable" :key="$key"
                             :expanded="$expanded" />
                     </section>
+                    @endunless
                 @endforeach
             </div>
 
