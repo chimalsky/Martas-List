@@ -16,7 +16,7 @@
                         wire:model="orderable" wire:click="orderableClicked({{ $orderable->id }})"
                         
                         /> 
-                    <span class="mr-4 text-xl">{{ $orderable->key }}</span>
+                    <span class="mr-4">{{ $orderable->key }}</span>
                 </label>
             @endif
             @endforeach
