@@ -48,7 +48,8 @@ class MigrateOverExistingOptions extends Migration
             }
         });
 
-        dd('do it again later');
+        // Take care of this migration on Adagia
+        //dd('do it again later');
     }
 
     /**
