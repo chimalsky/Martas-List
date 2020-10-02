@@ -31,9 +31,11 @@
         <section class="flex flex-wrap" style="background: #f4eee9;">
             <div class="text-xs w-3/5 pt-4 pl-4">
                 <section class="block mb-12">
+                    @if($filterables->firstWhere('id', 370))
                     <livewire:project.filterable-attribute :attribute="$filterables->firstWhere('id', 370)" 
                         :key="300"
                         :expanded="true" />
+                    @endif
                 </section>
 
                 @foreach($filterables as $key => $filterable)
