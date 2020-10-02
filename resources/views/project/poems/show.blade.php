@@ -34,6 +34,12 @@
 @section ('content')
 
 <section class="text-center">
+    <header class="mb-10">
+        <a href="@route('resources.edit', $poem)" target="_blank" class="text-xl font-mono border border-black p-2">
+            View/Edit Data
+        </a>
+    </header>
+
     <p class="mt-18 text-black text-lg">
         {{ $season }} {{ $year }}
     </p>

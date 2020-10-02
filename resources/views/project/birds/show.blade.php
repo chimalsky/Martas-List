@@ -26,6 +26,12 @@
         </a>
     </h1>
 
+    <header class="my-10 text-center">
+        <a href="@route('resources.edit', $bird)" target="_blank" class="text-xl font-mono border border-black p-2">
+            View/Edit Data
+        </a>
+    </header>
+
     @if ($poems->count())
         <div class="block mt-2 text-center">
             <p>
