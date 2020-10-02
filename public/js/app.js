@@ -48985,6 +48985,36 @@ function bootstrap() {
     nextArrow: '<button type="button" class="next">></button>'
   });
 
+  function splitText() {
+    var source = document.querySelector('#js-transcription-source');
+    var display = document.querySelector('#js-transcription-display');
+    var transcriptionText = source.innerText;
+    var splitText = transcriptionText.split("{/pb}");
+    splitText.forEach(function (page, i) {
+      var div = document.createElement('div');
+      div.innerText = page;
+      div.setAttribute('page-index', i);
+      display.appendChild(div);
+    });
+    source.classList.add('hidden');
+  }
+
+  function showPageByIndex(index) {
+    if (!document.querySelector("#js-transcription-display div[page-index=\"".concat(index, "\"]"))) {
+      splitText();
+    }
+
+    var selectedText = document.querySelector("#js-transcription-display div[page-index=\"".concat(index, "\"]"));
+    document.querySelectorAll('#js-transcription-display div').forEach(function (div) {
+      div.classList.add('hidden');
+    });
+    selectedText.classList.remove('hidden');
+  }
+
+  Livewire.on('media-viewer:pageChanged', function (pageIndex) {
+    showPageByIndex(pageIndex);
+  });
+
   window.xenoPower = function () {
     window.$ = jquery__WEBPACK_IMPORTED_MODULE_3___default.a;
     var linkEl = document.querySelector("[data-target=link]");

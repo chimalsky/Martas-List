@@ -86,6 +86,43 @@ function bootstrap() {
         prevArrow: '<button type="button" class="previous"><</button>',
         nextArrow: '<button type="button" class="next">></button>'
     });
+
+    function splitText() {
+        let source = document.querySelector('#js-transcription-source');
+        let display = document.querySelector('#js-transcription-display');
+
+        let transcriptionText = source.innerText;
+
+        let splitText = transcriptionText.split("{/pb}");
+
+        splitText.forEach(function(page, i) {
+            let div = document.createElement('div');
+            div.innerText = page;
+            div.setAttribute('page-index', i)
+
+            display.appendChild(div);
+        });
+        
+        source.classList.add('hidden');
+    }
+
+    function showPageByIndex(index) {
+        if (!document.querySelector(`#js-transcription-display div[page-index="${index}"]`)) {
+            splitText();
+        }
+
+        let selectedText = document.querySelector(`#js-transcription-display div[page-index="${index}"]`)
+
+        document.querySelectorAll('#js-transcription-display div').forEach(function(div) {
+            div.classList.add('hidden');
+        });
+
+        selectedText.classList.remove('hidden');
+    }
+
+    Livewire.on('media-viewer:pageChanged', pageIndex => {
+        showPageByIndex(pageIndex);
+    });
         
     window.xenoPower = function() {
         window.$ = $

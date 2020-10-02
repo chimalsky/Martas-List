@@ -25,7 +25,7 @@ class LoadMore extends Component
         'bird.index:rendering' => 'refreshResourceIds'
     ];
 
-    public function mount($resourceIds = [], $page, $perPage = 9)
+    public function mount($resourceIds = [], $page, $perPage = 6)
     {
         $this->resourceIds = $resourceIds;
 

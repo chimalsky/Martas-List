@@ -17,9 +17,10 @@ class Index extends Component
     public $birds;
     public $birdIds;
     public $chronoBirds;
-    public $perPage = 9;
+    public $perPage = 6;
 
     public $filterQuery;
+    public $filterThreatQuery;
     public $filterOrderable;
     public $filterOrderableDirection = 'asc';
     public $filterCategoryBirds;
@@ -27,17 +28,20 @@ class Index extends Component
     public $filterMonths;
     public $filterSeasons;
     public $filterChrono;
+    public $filterConservationStates;
 
     public $readyToLoad = false;
 
     protected $listeners = [
         'bird.filter:query-updated' => 'updateByQuery',
+        'bird.filter:threatQuery-updated' => 'updateByThreatQuery',
         'bird.filter:orderable-updated' => 'updatePoemsByOrderable',
         'bird.filter:bird-updated' => 'updateByBirds',
         'bird.filter:month-updated' => 'updateByMonth',
         'bird.filter:season-updated' => 'updateBySeason',
         'bird.filter:chrono-updated' => 'updateByChrono',
-        'bird.filter:filterable-updated' => 'updatePoemsByFilterables'
+        'bird.filter:conservation-updated' => 'updateByConservationState'
+
     ];
 
     public function mount()
@@ -69,6 +73,22 @@ class Index extends Component
         $this->filterQuery = $query;
     }
 
+    public function updateByThreatQuery($query)
+    {
+        $validator = Validator::make([
+            'query' => $query
+        ], [
+            'query' => ['required', 'string', 'min:2']
+        ]);
+
+        if ($validator->fails()) {
+            $this->filterThreatQuery = null;
+            return;
+        }
+
+        $this->filterThreatQuery = $query;
+    }
+
     public function updateByBirds(array $activeBirds)
     {
         $this->filterCategoryBirds = ResourceCategory::whereIn('id', $activeBirds)->get();
@@ -87,6 +107,11 @@ class Index extends Component
     public function updateByChrono($century)
     {
         $this->filterChrono = $century;
+    }
+
+    public function updateByConservationState(array $activeConservationStates)
+    {
+        $this->filterConservationStates = collect($activeConservationStates);
     }
 
     public function getPotentialBirdsProperty()
@@ -110,12 +135,39 @@ class Index extends Component
         $birds = $this->potentialBirds;
 
         if ($this->filterCategoryBirds && $this->filterCategoryBirds->count()) {
-            $birds = $this->potentialBirds->whereIn('resource_category_id', $this->filterCategoryBirds->pluck('id'));
+            $birds = $birds->whereIn('resource_category_id', $this->filterCategoryBirds->pluck('id'));
         }
 
         if ($this->filterQuery) {
             $query = $this->filterQuery;
             $birds = $birds->where('name', 'like', "%$query%");
+        }
+
+        if ($this->filterThreatQuery) {
+            $threatQuery = $this->filterThreatQuery;
+
+            $birds = $birds->whereHas('meta', function ($query) use ($threatQuery) {
+                $query = $query->where('resource_attribute_id', 510)
+                    ->where('value', 'like', '%'.$threatQuery.'%');
+            });
+        }
+
+        if (optional($this->filterConservationStates)->count()) {
+            $states = $this->filterConservationStates;
+
+            $birds = $birds->whereHas('meta', function ($query) use ($states) {
+                $query = $query->where('resource_attribute_id', 509);
+
+                $query->where(function ($q) use ($states) {
+                    foreach ($states as $index => $state) {
+                        if ($index > 0) {
+                            $q->orWhere('value', 'like', '%'.$state.'%');
+                        } else {
+                            $q->where('value', 'like', '%'.$state.'%');
+                        }
+                    };
+                });
+            });
         }
 
         if (optional($this->filterSeasons)->count()) {

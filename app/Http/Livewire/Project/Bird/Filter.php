@@ -3,7 +3,9 @@
 namespace App\Http\Livewire\Project\Bird;
 
 use App\Project\ChronoBird;
+use App\ResourceMeta;
 use App\ResourceType;
+use App\ResourceAttribute;
 use Livewire\Component;
 
 class Filter extends Component
@@ -16,10 +18,14 @@ class Filter extends Component
     public $activeMonths;
     public $activeSeasons;
     public $activeChrono;
+    public $activeConservationStates;
 
     public $activeBirds;
 
     public $query;
+    public $threatQuery;
+
+    public $filterables;
 
     public $renderCount;
 
@@ -43,11 +49,17 @@ class Filter extends Component
         $this->activeMonths = collect([]);
         $this->activeSeasons = collect([]);
         $this->activeChrono = 19;
+        $this->activeConservationStates = collect([]);
     }
 
     public function updatedQuery()
     {
         $this->emit('bird.filter:query-updated', $this->query);        
+    }
+
+    public function updatedThreatQuery()
+    {
+        $this->emit('bird.filter:threatQuery-updated', $this->threatQuery);        
     }
 
     public function updateSelectedBird($birdId)
@@ -95,6 +107,21 @@ class Filter extends Component
         $season = $this->activeSeasons->first();
 
         $this->emit('bird.filter:season-updated', $this->activeSeasons);
+    }
+
+    public function updateConservationState($state)
+    {
+        if (! $this->activeConservationStates->contains($state) ) {
+            $this->activeConservationStates->push(
+                $state
+            );
+        } else {
+            $index = $this->activeConservationStates->search($state);
+
+            $this->activeConservationStates->splice($index, 1);
+        }
+
+        $this->emit('bird.filter:conservation-updated', $this->activeConservationStates);
     }
 
     public function chronoClicked()

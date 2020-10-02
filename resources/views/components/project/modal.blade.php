@@ -41,7 +41,7 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
     }
-</style>
+    </style>
 
 <section x-show="open"
     x-transition:enter="ease-out duration-300"

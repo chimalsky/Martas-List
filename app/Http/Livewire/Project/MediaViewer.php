@@ -17,7 +17,8 @@ class MediaViewer extends Component
     {
         $this->resource = $resource; 
         $this->medias = $resource->media;
-        $this->media = $resource->getFirstMedia();
+
+        $this->setMedia($this->medias->first()->id);
     }
 
     public function setMedia($media)

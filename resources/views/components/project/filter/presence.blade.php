@@ -102,5 +102,27 @@
             </span>
         </label>
         @endforeach
+
+        <section class="mt-4">
+            <div>
+                @switch ($activeChrono)
+                    @case(19)
+                        H. L. Clark’s 
+                        <span class="italic">
+                            The Birds of Amherst & Vicinity, including nearly the whole of Hampshire County 
+                        </span> (1887)
+                        @break 
+                    @case(20)
+                        Aaron Clark Bagg and Samuel Atkins Eliot Jr.’s 
+                        <span class="italic">
+                            Birds of the Connecticut Valley in Massachusetts
+                        </span> (1937)
+                        @break 
+                    @case(21)
+                        Various Sources
+                        @break
+                @endswitch
+            </div>
+        </section>
     </footer>
 </main>
