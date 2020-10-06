@@ -58,7 +58,7 @@
                 </div>
             </main>
 
-            <footer class="pt-4 pb-12 border-t-4 border-gray-300">
+            <footer class="pt-4 pb-12 mt-24 border-t-4 border-gray-300">
                 @yield('footer')
 
                 <div class="text-lg">

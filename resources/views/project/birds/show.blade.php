@@ -86,10 +86,10 @@
 
 
 @if ($bird->category)
-<main class="relative hidden xl:block ml-48">
+<main class="relative hidden xl:block ml-48 bg-red-200">
     <img src="{{ asset('img/bird-notebook.png') }}" />
-    <section class="absolute inset-0 flex flex-wrap py-32 pl-24 pr-48 pl-64">
-        <div class="w-2/5 pr-20 overflow-auto" style="max-height: 80%;">
+    <section class="absolute inset-0 flex flex-wrap py-32 pr-48 pl-48">
+        <div class="w-2/5 pr-18 overflow-auto" style="max-height: 80%;">
             <x-project.bird.notebook.entry header="Occurence in Amhrest Connecticut & Valley Mass.">
                 @if ($nineteenthBird)
                     @php
@@ -176,8 +176,9 @@
     </section>
 </main>
 @else
-<main class="block ml-48">
-    <section class="text-center">
+
+<main class="block flex justify-center mt-16">
+    <div class="max-w-xs text-center">
         <p class="text-2xl font-hairline">
             Habitat 
         </p>
@@ -243,22 +244,7 @@
                 21stc. {{ optional($bird->firstMetaByAttribute(38))->value ?? 'unknown' }}
             </span>
         </p>
-    </section>
-
-
-    <section id="poems" class="mt-12 lg:mt-24">
-        <h1 class="text-2xl">
-            Poems mentioning <span class="italic">{{ $bird->name }}</psan>
-        </h1>
-        
-        <main class="mt-4 flex flex-wrap">
-            @foreach ($poems as $poem)
-                <article class="w-full lg:w-1/2 lg:px-2 pb-10 lg:pb-16">
-                    @include('project.poems._single', $poem)
-                </article>
-            @endforeach
-        </main>
-    </section>
+    </div>
 </main>
 @endif
 @endsection

@@ -53,14 +53,20 @@
                 </div>
             @endif
            
-            @yield('content')
+
+            <main class="">
+                <div class="mx-auto">
+                    @yield('content')
+                </div>
+            </main>
+
         </main>
 
         <section class="">
             @yield('after-content-stretch')
         </section>
 
-        <footer class="container mx-auto pt-4 pb-12 border-t-4 border-gray-300">
+        <footer class="container mx-auto pt-4 pb-12 mt-24 border-t-4 border-gray-300">
             @yield('footer')
 
             <div class="text-lg">
