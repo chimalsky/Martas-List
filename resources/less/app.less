@@ -306,6 +306,33 @@ input[type=radio] {
 
 @tailwind utilities;
 
+
+trix-editor {
+    @apply py-2;
+    @apply px-10;
+
+    ul {
+        @apply list-disc;
+        @apply pl-10;
+    }
+
+    h1 {
+        @apply text-xl;
+        @apply text-center;
+    }
+
+    img {
+        @apply mx-auto;
+        @apply mb-2;
+    }
+
+    figcaption {
+        @apply text-center;
+        @apply text-sm;
+    }
+}
+
+
 @import 'markdown-content';
 
 @import '~trix/dist/trix.css';

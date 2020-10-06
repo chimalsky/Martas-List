@@ -6,7 +6,11 @@
 
 @section ('content')
 
-<main class="max-w-2xl mx-auto text-gray-700 text-lg">
+<main class="max-w-2xl mx-auto text-gray-700 text-lg page-content">
+    {!! $content !!}
+</main> 
+
+<main class="max-w-2xl mx-auto text-gray-700 text-lg hidden">
     <header class="mb-8 text-xl text-center">
         Dickinson’s Birds
         <br/>

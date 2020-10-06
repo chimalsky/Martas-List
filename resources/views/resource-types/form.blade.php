@@ -11,6 +11,6 @@
         Description of this Archive 
     </h1>
 
-    {{ html()->hidden('description')->attribute('id', 'description') }}
+    <input name='description' id='description' value="{!! $resourceType->description !!}" />
     <trix-editor input="description"></trix-editor>
 </section>
