@@ -86,7 +86,7 @@
 
 
 @if ($bird->category)
-<main class="relative hidden xl:block ml-48 bg-red-200">
+<main class="relative hidden xl:block ml-48">
     <img src="{{ asset('img/bird-notebook.png') }}" />
     <section class="absolute inset-0 flex flex-wrap py-32 pr-48 pl-48">
         <div class="w-2/5 pr-18 overflow-auto" style="max-height: 80%;">
