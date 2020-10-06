@@ -175,6 +175,88 @@
         </div>
     </section>
 </main>
+
+<main class="relative xl:hidden ">
+    <x-project.bird.notebook.entry header="Occurence in Amhrest Connecticut & Valley Mass.">
+        @if ($nineteenthBird)
+            @php
+                $presence = $nineteenthBird->firstMetaByAttribute(538);
+            @endphp
+
+            @if ($presence)
+                @php
+                    $presence = collect(explode(',', $presence->value));
+                    $presence = $presence->map(function($month) { return (int) $month; });
+
+                    $arrival = date("F", mktime(0, 0, 0, $presence->first(), 1));
+                    $departure = date("F", mktime(0, 0, 0, $presence->last(), 1));
+                @endphp 
+                
+                <div class="text-lg">
+                    <span class="font-bold">19th c.-</span> {{ $arrival }} - {{ $departure }}
+                </div>
+            @endif
+        @endif
+
+        @if ($twentyfirstBird)
+            @php
+                $presence = $twentyfirstBird->firstMetaByAttribute(574);
+            @endphp
+
+            @if ($presence)
+                @php
+                    $presence = collect(explode(',', $presence->value));
+                    $presence = $presence->map(function($month) { return (int) $month; });
+
+                    $arrival = date("F", mktime(0, 0, 0, $presence->first(), 1));
+                    $departure = date("F", mktime(0, 0, 0, $presence->last(), 1));
+                @endphp 
+                
+                <div class="text-lg">
+                    <span class="font-bold">21st c.-</span> {{ $arrival }} - {{ $departure }}
+                </div>
+            @endif
+        @endif
+    </x-project.bird.notebook.entry>
+
+    <x-project.bird.notebook.entry header="Habitat" :data="$bird->firstMetaByAttribute(504)" />
+
+    <x-project.bird.notebook.entry header="Nest Material" :data="$bird->firstMetaByAttribute(505)" />
+
+    <x-project.bird.notebook.entry header="Conservation Status" :data="$bird->firstMetaByAttribute(37)">
+        <p>
+            19thc. -- {{ optional($bird->firstMetaByAttribute(507))->value ?? 'Information Coming Soon' }};
+        </p>
+        <p>
+            21stc. -- {{ optional($bird->firstMetaByAttribute(509))->value ?? 'Information Coming Soon' }}
+        </p>
+    </x-project.bird.notebook.entry>
+
+    @php 
+        $fieldNotes = $nineteenthBird  
+            ? $nineteenthBird->firstMetaByAttribute(590)
+            : null;
+    @endphp
+    @if ($fieldNotes)
+    <x-project.bird.notebook.entry header="Field Notes" :data="$fieldNotes">
+        <p class="text-right">
+            —H.L. Clark, 1887
+        </p>
+    </x-project.bird.notebook.entry>
+    @endif
+
+    <x-project.bird.notebook.entry header="Significant Environmental Threats" 
+        :data="$bird->firstMetaByAttribute(510)" />
+
+    @if ($migrationMapLink)
+    <x-project.bird.notebook.entry header="Migration Range Map">
+        <a href="{{ $migrationMapLink->value }}">
+            {{ $migrationMapLink->value }}
+        </a>
+    </x-project.bird.notebook.entry>
+
+    @endif
+</main>
 @else
 
 <main class="block flex justify-center mt-16">
