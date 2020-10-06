@@ -5,6 +5,5 @@
 @endsection
 
 @section ('content')
-aosdifjdoij
 
 @endsection
