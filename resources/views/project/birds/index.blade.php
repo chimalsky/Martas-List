@@ -11,27 +11,10 @@
 @endsection 
 
 @section('header-info')
-<x-project.archive-notes>
-    <article>
-        +  For information on the guiding editorial principles for the Poem Archive, see 
-        <a href="">
-            Introduction.
-        </a>
-    </article>
-    <article>
-        +  For details about sources, see 
-        <a href="">
-            Primary Sources.
-        </a>
-    </article>
 
-    <h1>
-        Sources
-    </h1>
-    <h2 class="italic">
-        Citations for Dickinson’s birds come from— 
-    </h2>
+<x-project.archive-notes contentId="42073">
 </x-project.archive-notes>
+
 @endsection
 
 @section('sticky-aside')
