@@ -12,8 +12,6 @@
 
 @section('header-info')
 
-@include('project.birds._header')
-
 <x-project.archive-notes contentId="42073">
 </x-project.archive-notes>
 
