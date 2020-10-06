@@ -7,7 +7,7 @@
 
         <h2 class="mt-4 text-gray-700 text-lg tracking-wide pl-2">
             Edited by Marta Werner<br/>
-            and Abraham Kim and Caroline McCraw
+            and Caroline McCraw and Abraham Kim
         </h2>
     </header>
 </section>

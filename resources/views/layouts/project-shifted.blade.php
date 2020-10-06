@@ -66,7 +66,7 @@
                         Dickinson’s Birds: A Public Listening Project &#169; {{ carbon()->format('Y') }}
                     </p>
                     <p>
-                        Edited by Marta Werner and Abraham Kim and Caroline McCraw
+                        Edited by Marta Werner and Caroline McCraw and Abraham Kim
                     </p>
                 </div>
 
