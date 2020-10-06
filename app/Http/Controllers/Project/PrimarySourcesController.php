@@ -15,6 +15,7 @@ class PrimarySourcesController extends Controller
      */
     public function __invoke(Request $request)
     {
+        dd('primary-sources');
         $content = file_get_contents(base_path('/project/content/primary-sources.md'));
 
         return view('project.primary-sources', compact('content'));
