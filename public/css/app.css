@@ -24979,6 +24979,11 @@ trix-editor figcaption {
   font-size: 0.875rem;
 }
 
+.archive-notes h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
 @media (min-width: 640px){
   .sm\:container{
     width: 100%;

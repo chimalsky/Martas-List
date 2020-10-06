@@ -38,10 +38,10 @@
                                 </h2>
                             </div>
                         </header>
-                        <div class="relative flex-1 px-4 sm:px-6 text-xl text-left">
+                        <main class="archive-notes relative flex-1 px-4 sm:px-6 text-xl text-left">
                             <!-- Replace with your content -->
                             <div class="absolute inset-0 px-4 sm:px-6">
-                                <div class="h-full space-y-4 pl-6">
+                                <div class="h-full pl-6">
                                     {{ $slot }}
 
                                     @php 
@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                             <!-- /End replace -->
-                        </div>
+                        </main>
                     </div>
                 </div>
             </section>
