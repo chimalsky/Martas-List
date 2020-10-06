@@ -1,9 +1,20 @@
-@extends ('layouts.project')
+@extends ('layouts.project-shifted')
+
+@section('header-anchor')
+<a href="@route('project.birds.index')" class=''>
+    <div>
+        <span class="text-4xl">B</span>IRD 
+
+        <span class="text-4xl">A</span>RCHIVE
+    </div>
+</a>
+@endsection 
 
 
-@section ('header')
+@section ('header-info')
     @include('project.birds._header')
 @endsection
+
 
 @section ('before-content-stretch')
 <header class="mb-8 ml-48">
@@ -15,9 +26,9 @@
 
         | 
 
-        <span class="italic">
+        <a href="@route('project.bird.poems', $bird)" class="italic">
             Affiliated Manuscripts
-        </span>
+        </a>
 
         | 
 
@@ -78,15 +89,8 @@
 <main class="relative hidden xl:block ml-48">
     <img src="{{ asset('img/bird-notebook.png') }}" />
     <section class="absolute inset-0 flex flex-wrap py-32 pl-24 pr-48 pl-64">
-        <div class="w-1/2 pr-20">
-            <header class="text-xl">
-                <span class="text-3xl">O</span>CCURENCE IN 
-                <span class="text-3xl">A</span>MHERST <br/>
-                & <span class="text-3xl">C</span>ONNECTICUT 
-                <span class="text-3xl">V</span>ALLEY, <span class="text-3xl">M</span>ASS.
-            </header>
-
-            <main class="mt-6 text-lg">
+        <div class="w-2/5 pr-20 overflow-auto" style="max-height: 80%;">
+            <x-project.bird.notebook.entry header="Occurence in Amhrest Connecticut & Valley Mass.">
                 @if ($nineteenthBird)
                     @php
                         $presence = $nineteenthBird->firstMetaByAttribute(538);
@@ -126,84 +130,52 @@
                         </div>
                     @endif
                 @endif
-            </main>
+            </x-project.bird.notebook.entry>
 
-            <header class="text-xl mt-16 mb-6">
-                <span class="text-3xl">H</span>ABITAT
-            </header>
-            <main class="pl-6 italic text-lg">
-                {{ optional($bird->firstMetaByATtribute(504))->value }}
-            </main>
+            <x-project.bird.notebook.entry header="Habitat" :data="$bird->firstMetaByAttribute(504)" />
 
-            <header class="text-xl mt-16 mb-6">
-                <span class="text-3xl">N</span>EST
-                <span class="text-3xl">M</span>ATERIAL
-            </header>
-            <main class="pl-6 italic text-lg">
-                {{ $bird->firstMetaByAttribute(505)->value ?? null }}
-            </main>
+            <x-project.bird.notebook.entry header="Nest Material" :data="$bird->firstMetaByAttribute(505)" />
         </div>
 
 
-        <div class="w-1/2 px-8">
+        <div class="w-3/5 pl-32 pr-8 overflow-auto" style="max-height: 80%;">
+            <x-project.bird.notebook.entry header="Conservation Status" :data="$bird->firstMetaByAttribute(37)">
+                <p>
+                    19thc. -- {{ optional($bird->firstMetaByAttribute(507))->value ?? 'Information Coming Soon' }};
+                </p>
+                <p>
+                    21stc. -- {{ optional($bird->firstMetaByAttribute(509))->value ?? 'Information Coming Soon' }}
+                </p>
+            </x-project.bird.notebook.entry>
+
             @php 
                 $fieldNotes = $nineteenthBird  
                     ? $nineteenthBird->firstMetaByAttribute(590)
                     : null;
             @endphp
-
-            <header class="text-xl mb-6">
-                <span class="text-3xl">C</span>ONSERVATION
-                <span class="text-3xl">S</span>TATUS
-            </header>
-            <main class="pl-6 italic text-lg">
-                <p>
-                    19thc. {{ $bird->meta->where('resource_attribute_id', 37)->first()->value ?? null }};
-                </p>
-                <p>
-                    21stc. {{ $bird->meta->where('resource_attribute_id', 38)->first()->value ?? null }}
-                </p>
-            </main>
-
             @if ($fieldNotes)
-                <header class="text-xl mt-16 mb-6">
-                    <span class="text-3xl">F</span>IELD
-                    <span class="text-3xl">N</span>OTES
-                </header>
-                <main class="pl-6 italic text-lg">
-                    {{ $fieldNotes->value }}
-                    <p class="text-right">
-                        —H.L. Clark, 1887
-                    </p>
-                </main>
+            <x-project.bird.notebook.entry header="Field Notes" :data="$fieldNotes">
+                <p class="text-right">
+                    —H.L. Clark, 1887
+                </p>
+            </x-project.bird.notebook.entry>
             @endif
 
-            <header class="text-xl mt-16 mb-6">
-                <span class="text-3xl">S</span>IGNIFICANT
-                <span class="text-3xl">E</span>NVIRONMENTAL
-                <span class="text-3xl">T</span>HREATS
-            </header>
-            <main class="pl-6 italic text-lg">
-                {{ $bird->firstMetaByAttribute(510)->value ?? null }}
-            </main>
+            <x-project.bird.notebook.entry header="Significant Environmental Threats" 
+                :data="$bird->firstMetaByAttribute(510)" />
 
             @if ($migrationMapLink)
-                <header class="text-xl mt-16">
-                    <span class="text-3xl">M</span>IGRATION
-                    <span class="text-3xl">R</span>ANGE
-                    <span class="text-3xl">M</span>AP
-                </header>
-                <main class="pl-6 italic text-lg">
-                    <a href="{{ $migrationMapLink }}">
-                        {{ $migrationMapLink }}
-                    </a>
-                </main>
+            <x-project.bird.notebook.entry header="Migration Range Map">
+                <a href="{{ $migrationMapLink->value }}">
+                    {{ $migrationMapLink->value }}
+                </a>
+            </x-project.bird.notebook.entry>
+
             @endif
         </div>
     </section>
 </main>
-@endif
-
+@else
 <main class="block ml-48">
     <section class="text-center">
         <p class="text-2xl font-hairline">
@@ -217,7 +189,7 @@
             Nest Material 
         </p>
         <p>
-            {{ $bird->firstMetaByAttribute(505)->value ?? null }}
+            {{ optional($bird->firstMetaByAttribute(505))->value ?? null }}
         </p>
 
         <p class="text-2xl font-hairline mt-6">
@@ -230,22 +202,7 @@
                 @endphp
 
                 @if ($presence)
-                    @php
-                        $presence = collect(explode(',', $presence->value));
-                        $presence = $presence->map(function($month) { return (int) $month; });
-
-                        $arrival = date("F", mktime(0, 0, 0, $presence->first(), 1));
-                        $departure = date("F", mktime(0, 0, 0, $presence->last(), 1));
-                    @endphp 
-                    <header class="font-bold">
-                        19thc.
-                    </header>
-                    <span>
-                        {{ $arrival }}
-                    </span> --- 
-                    <span>
-                        {{ $departure }}
-                    </span>
+                    <x-project.presence-range-month header="19th c." :presence="$presence" />
                 @endif
             @endif
         </div>
@@ -257,22 +214,7 @@
                 @endphp
 
                 @if ($presence)
-                    @php
-                        $presence = collect(explode(',', $presence->value));
-                        $presence = $presence->map(function($month) { return (int) $month; });
-
-                        $arrival = date("F", mktime(0, 0, 0, $presence->first(), 1));
-                        $departure = date("F", mktime(0, 0, 0, $presence->last(), 1));
-                    @endphp 
-                    <header class="font-bold">
-                        21stc.
-                    </header> 
-                    <span>
-                        {{ $arrival }} 
-                    </span> --- 
-                    <span>
-                        {{ $departure }}
-                    </span>
+                    <x-project.presence-range-month header="21st c." :presence="$presence" />
                 @endif
             @endif
         </div>
@@ -295,10 +237,10 @@
         </p>
         <p>
             <span>
-                19thc. {{ $bird->meta->where('resource_attribute_id', 37)->first()->value ?? null }};
+                19thc. {{ optional($bird->firstMetaByAttribute(37))->value ?? 'unknown' }};
             </span>
             <span>
-                21stc. {{ $bird->meta->where('resource_attribute_id', 38)->first()->value ?? null }}
+                21stc. {{ optional($bird->firstMetaByAttribute(38))->value ?? 'unknown' }}
             </span>
         </p>
     </section>
@@ -317,8 +259,8 @@
             @endforeach
         </main>
     </section>
-
 </main>
+@endif
 @endsection
 
 @section('after-content-stretch')
