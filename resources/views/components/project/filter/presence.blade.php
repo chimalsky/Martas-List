@@ -119,7 +119,9 @@
                         </span> (1937)
                         @break 
                     @case(21)
-                        Various Sources
+                        <span class="italic">
+                            Mass Audubon | Birds of Massachusetts
+                        </span> (2020)
                         @break
                 @endswitch
             </div>

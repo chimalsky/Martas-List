@@ -52,7 +52,7 @@
         </h1>
 
         <ul class="text-xl space-y-4">
-            @foreach($birdLists as $birdList)
+            @foreach ($birdLists as $birdList)
                 <li x-data="{expanded: false}" @click="expanded = !expanded" 
                     class="ml-6">
                     <p class="underline cursor-pointer">
@@ -62,7 +62,7 @@
                         $otherBird = $bird->resources->firstWhere('resource_type_id', $birdList->id);
                         $attributes = $birdList->attributes->where('visibility', 1);
                     @endphp 
-                    <aside x-show="expanded">
+                    <aside x-show="expanded" x-on:click.stop>
                         <ul class="pl-8">
                             @foreach($attributes as $attribute) 
                                 @php 

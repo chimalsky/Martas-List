@@ -30,6 +30,10 @@ class Enum
     {
         $flippedConstants = array_flip(static::getConstants());
 
+        if (!array_key_exists($value, $flippedConstants)) {
+            return null;
+        }
+
         return $flippedConstants[$value];
     }
 }

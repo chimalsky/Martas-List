@@ -12,10 +12,10 @@
     </header>
 
     <main class="w-full flex flex-wrap">
-        <div class="p-4 w-4/12">
+        <div class="p-4 w-5/12">
             <x-project.filter.dickinsons-birds :dickinsonsBirds="$dickinsonsBirds" :activeBirdCategories="$activeBirdCategories" />
         </div>
-        <div class="p-4 w-5/12">
+        <div class="p-4 w-4/12">
             <x-project.filter.presence :activeSeasons="$activeSeasons" :activeMonths="$activeMonths" :activeChrono="$activeChrono" />
         </div>
         <div class="p-4 w-3/12">

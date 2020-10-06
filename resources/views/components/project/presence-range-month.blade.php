@@ -1,5 +1,5 @@
 @php
-    $presence = collect(explode(',', $presence->value));
+    $presence = collect(explode(',', preg_replace('/\xc2\xa0/', '', $presence->value)));
     $presence = $presence->map(function($month) { return (int) $month; });
 
     $arrival = \App\Project\MonthEnum::getConstantNameByValue($presence->first());  
@@ -13,8 +13,8 @@
 @endisset
 
 <span>
-    {{ $arrival }} 
+    {{ Str::title($arrival) }} 
 </span> --- 
 <span>
-    {{ $departure }}
+    {{ Str::title($departure) }}
 </span>

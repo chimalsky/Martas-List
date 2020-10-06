@@ -15,70 +15,47 @@
     @include('project.birds._header')
 @endsection
 
-
-@section ('before-content-stretch')
-<header class="mb-8 ml-48">
-    <h1 class="text-4xl font-hairline text-center">
-        {{ $bird->firstMetaByAttribute(500)->value ?? null }}
-        <span class="italic">
-            ({{ $bird->firstMetaByAttribute(501)->value ?? null }})
-        </span>
-
-        | 
-
-        <a href="@route('project.bird.poems', $bird)" class="italic">
-            Affiliated Manuscripts
-        </a>
-
-        | 
-
-        <a href="@route('project.birds.data', $bird)">
-            Further Data
-        </a>
-    </h1>
-
-    <header class="my-10 text-center">
-        <a href="@route('resources.edit', $bird)" target="_blank" class="text-xl font-mono border border-black p-2">
-            View/Edit Data
-        </a>
-    </header>
-
-    @if ($poems->count())
-        <div class="block mt-2 text-center">
-            <p>
-                Mentioned in {{ $poems->count() }} 
-                <a href="#poems">
-                    @if ($poems->count() === 1)
-                        Poem
-                    @else 
-                        Poems
-                    @endif
-                </a>
-            </p>
-        </div>
-    @endif
-
-    @php 
-        $xc_citation = $bird->metaByAttribute(502)->first()->value;
-        $url = Str::afterLast($xc_citation, ' ');
-        $url = Str::beforeLast($url, '.');
-        $url = 'https://'.trim($url);
-    @endphp
-
-    <section class="flex justify-center mt-6 hidden">
-    </section>
-
-
-    <section class="flex justify-center mt-2">
-        <iframe src='{{ $url }}/embed' scrolling='no' frameborder='0' width='340' height='220'></iframe>
-    </section>
-</header>
-@endsection
-
 @section('content')
+
+<header class="mb-8 flex">
+    <div class="max-w-xs mx-auto">
+        @if ($poems->count())
+            <div class="block mt-2 text-center">
+                <p>
+                    Mentioned in {{ $poems->count() }} 
+                    <a href="#poems">
+                        @if ($poems->count() === 1)
+                            Poem
+                        @else 
+                            Poems
+                        @endif
+                    </a>
+                </p>
+            </div>
+        @endif
+
+        @php 
+            $xc_citation = $bird->metaByAttribute(502)->first()->value;
+            $url = Str::afterLast($xc_citation, ' ');
+            $url = Str::beforeLast($url, '.');
+            $url = 'https://'.trim($url);
+        @endphp
+
+        <section class="mt-2">
+            <iframe src='{{ $url }}/embed' scrolling='no' frameborder='0' width='340' height='220'></iframe>
+        </section>
+
+        <header class="mt-10 flex justify-center">
+            <a href="@route('resources.edit', $bird)" target="_blank" class="text-xl font-mono border border-black p-2">
+                View/Edit Data
+            </a>
+        </header>
+    </div>
+</header>
 
 @php
     $nineteenthBird = $bird->resources->firstWhere('resource_type_id', 8);
+    $twentiethBird = $bird->resources->firstWhere('resource_type_id', 14);
     $twentyfirstBird = $bird->resources->firstWhere('resource_type_id', 15);
 
     $migrationMapLink = $bird->firstMetaByAttribute(506)
@@ -91,45 +68,18 @@
     <section class="absolute inset-0 flex flex-wrap py-32 pr-48 pl-48">
         <div class="w-2/5 pr-18 overflow-auto" style="max-height: 80%;">
             <x-project.bird.notebook.entry header="Occurence in Amhrest Connecticut & Valley Mass.">
-                @if ($nineteenthBird)
-                    @php
-                        $presence = $nineteenthBird->firstMetaByAttribute(538);
-                    @endphp
+                @isset ($nineteenthBird)
+                    <x-project.bird.presence class="mb-4" century="19" :bird="$nineteenthBird" />
+                @endisset 
 
-                    @if ($presence)
-                        @php
-                            $presence = collect(explode(',', $presence->value));
-                            $presence = $presence->map(function($month) { return (int) $month; });
+                @isset ($twentiethBird)
+                    <x-project.bird.presence class="mb-4" century="20" :bird="$twentiethBird" />
+                @endisset 
+                
+                @isset ($twentyfirstBird)
+                    <x-project.bird.presence class="mb-4" century="21" :bird="$twentyfirstBird" />
+                @endisset 
 
-                            $arrival = date("F", mktime(0, 0, 0, $presence->first(), 1));
-                            $departure = date("F", mktime(0, 0, 0, $presence->last(), 1));
-                        @endphp 
-                        
-                        <div class="text-lg">
-                            <span class="font-bold">19th c.-</span> {{ $arrival }} - {{ $departure }}
-                        </div>
-                    @endif
-                @endif
-
-                @if ($twentyfirstBird)
-                    @php
-                        $presence = $twentyfirstBird->firstMetaByAttribute(574);
-                    @endphp
-
-                    @if ($presence)
-                        @php
-                            $presence = collect(explode(',', $presence->value));
-                            $presence = $presence->map(function($month) { return (int) $month; });
-
-                            $arrival = date("F", mktime(0, 0, 0, $presence->first(), 1));
-                            $departure = date("F", mktime(0, 0, 0, $presence->last(), 1));
-                        @endphp 
-                        
-                        <div class="text-lg">
-                            <span class="font-bold">21st c.-</span> {{ $arrival }} - {{ $departure }}
-                        </div>
-                    @endif
-                @endif
             </x-project.bird.notebook.entry>
 
             <x-project.bird.notebook.entry header="Habitat" :data="$bird->firstMetaByAttribute(504)" />
@@ -178,45 +128,17 @@
 
 <main class="relative xl:hidden ">
     <x-project.bird.notebook.entry header="Occurence in Amhrest Connecticut & Valley Mass.">
-        @if ($nineteenthBird)
-            @php
-                $presence = $nineteenthBird->firstMetaByAttribute(538);
-            @endphp
+        @isset ($nineteenthBird)
+            <x-project.bird.presence class="mb-4" century="19" :bird="$nineteenthBird" />
+        @endisset 
 
-            @if ($presence)
-                @php
-                    $presence = collect(explode(',', $presence->value));
-                    $presence = $presence->map(function($month) { return (int) $month; });
-
-                    $arrival = date("F", mktime(0, 0, 0, $presence->first(), 1));
-                    $departure = date("F", mktime(0, 0, 0, $presence->last(), 1));
-                @endphp 
-                
-                <div class="text-lg">
-                    <span class="font-bold">19th c.-</span> {{ $arrival }} - {{ $departure }}
-                </div>
-            @endif
-        @endif
-
-        @if ($twentyfirstBird)
-            @php
-                $presence = $twentyfirstBird->firstMetaByAttribute(574);
-            @endphp
-
-            @if ($presence)
-                @php
-                    $presence = collect(explode(',', $presence->value));
-                    $presence = $presence->map(function($month) { return (int) $month; });
-
-                    $arrival = date("F", mktime(0, 0, 0, $presence->first(), 1));
-                    $departure = date("F", mktime(0, 0, 0, $presence->last(), 1));
-                @endphp 
-                
-                <div class="text-lg">
-                    <span class="font-bold">21st c.-</span> {{ $arrival }} - {{ $departure }}
-                </div>
-            @endif
-        @endif
+        @isset ($twentiethBird)
+            <x-project.bird.presence class="mb-4" century="20" :bird="$twentiethBird" />
+        @endisset 
+        
+        @isset ($twentyfirstBird)
+            <x-project.bird.presence class="mb-4" century="21" :bird="$twentyfirstBird" />
+        @endisset 
     </x-project.bird.notebook.entry>
 
     <x-project.bird.notebook.entry header="Habitat" :data="$bird->firstMetaByAttribute(504)" />
@@ -265,43 +187,32 @@
             Habitat 
         </p>
         <p>
-            {{ optional($bird->firstMetaByATtribute(504))->value ?? 'Unknown' }}
+            {{ optional($bird->firstMetaByAttribute(504))->value ?? 'Unknown' }}
         </p>
-
+ 
         <p class="text-2xl font-hairline mt-6">
             Nest Material 
         </p>
         <p>
-            {{ optional($bird->firstMetaByAttribute(505))->value ?? null }}
+            {{ optional($bird->firstMetaByAttribute(505))->value ?? 'Unknown' }}
         </p>
 
-        <p class="text-2xl font-hairline mt-6">
+        <p class="text-2xl font-hairline mt-6 mb-4">
             Seasons in Amherst, MA
         </p>
-        <div class="mb-4">
-            @if ($nineteenthBird)
-                @php
-                    $presence = $nineteenthBird->firstMetaByAttribute(538);
-                @endphp
+        <div class="">
+            @isset ($nineteenthBird)
+                <x-project.bird.presence class="mb-4" century="19" :bird="$nineteenthBird" />
+            @endisset 
 
-                @if ($presence)
-                    <x-project.presence-range-month header="19th c." :presence="$presence" />
-                @endif
-            @endif
+            @isset ($twentiethBird)
+                <x-project.bird.presence class="mb-4" century="20" :bird="$twentiethBird" />
+            @endisset 
+            
+            @isset ($twentyfirstBird)
+                <x-project.bird.presence class="mb-4" century="21" :bird="$twentyfirstBird" />
+            @endisset 
         </div>
-
-        <div class="mb-4">
-            @if ($twentyfirstBird)
-                @php
-                    $presence = $twentyfirstBird->firstMetaByAttribute(574);
-                @endphp
-
-                @if ($presence)
-                    <x-project.presence-range-month header="21st c." :presence="$presence" />
-                @endif
-            @endif
-        </div>
-        
 
         @if($migrationMapLink)
         <p class="">
@@ -318,14 +229,14 @@
         <p class="text-2xl font-hairline mt-6">
             Conservation Status
         </p>
-        <p>
-            <span>
-                19thc. {{ optional($bird->firstMetaByAttribute(37))->value ?? 'unknown' }};
-            </span>
-            <span>
-                21stc. {{ optional($bird->firstMetaByAttribute(38))->value ?? 'unknown' }}
-            </span>
-        </p>
+        <div>
+            <p>
+                19th c. {{ optional($bird->firstMetaByAttribute(37))->value ?? 'Information Coming Soon' }};
+            </p>
+            <p>
+                21st c. {{ optional($bird->firstMetaByAttribute(38))->value ?? 'Information Coming Soon' }}
+            </p>
+        </div>
     </div>
 </main>
 @endif
