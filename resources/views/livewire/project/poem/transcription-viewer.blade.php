@@ -1,5 +1,5 @@
 <div class="border-b border-gray-200">
-    <nav class="-mb-px space-x-4 mx-auto max-w-xs">
+    <nav class="-mb-px space-x-4 mx-auto max-w-xs flex justify-center">
         @foreach ($medias as $medium)
             @if (Str::contains($medium->mime_type, 'image'))
                 <button 
