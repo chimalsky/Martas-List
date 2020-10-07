@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Http\Livewire\Project;
+namespace App\Http\Livewire\Project\Poem;
 
 use App\Resource;
 use Livewire\Component;
 use Spatie\MediaLibrary\Models\Media;
 
-class MediaViewer extends Component
+class TranscriptionViewer extends Component
 {
-    public $resource;
+    public $poem;
     public $media;
     public $medias;
 
-    public function mount(Resource $resource)
+    public function mount(Resource $poem)
     {
-        $this->resource = $resource; 
-        $this->medias = $resource->media;
+        $this->poem = $poem; 
+        $this->medias = $poem->media;
 
         $this->setMedia($this->medias->first()->id);
     }
@@ -31,6 +31,6 @@ class MediaViewer extends Component
 
     public function render()
     {
-        return view('livewire.project.media-viewer');
+        return view('livewire.project.poem.transcription-viewer');
     }
 }

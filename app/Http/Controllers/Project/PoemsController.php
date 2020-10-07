@@ -109,6 +109,9 @@ class PoemsController extends Controller
         $season = $poem->meta->firstWhere('resource_attribute_id', 138)->value ?? null;
 
         $state = $poem->meta->firstWhere('resource_attribute_id', 89)->value ?? null;
+        $medium = $poem->meta->firstWhere('resource_attribute_id', 142)->value ?? null;
+        $paper = $poem->meta->firstWhere('resource_attribute_id', 87)->value ?? null;
+
         $setting = $poem->meta->firstWhere('resource_attribute_id', 103)->value ?? null;
         $circulation = $poem->meta->firstWhere('resource_attribute_id', 113)->value ?? null;
 
@@ -116,7 +119,8 @@ class PoemsController extends Controller
             compact(
                 'poem', 'birds', 'variants', 
                 'firstline', 'year', 'season',
-                'state', 'setting', 'circulation'
+                'state', 'medium', 'paper',
+                'setting', 'circulation'
             )
         );
     }

@@ -33,7 +33,7 @@
 
 @section ('content')
 
-<section class="text-center">
+<section class="text-center max-w-xs mx-auto">
     <header class="mb-10">
         <a href="@route('resources.edit', $poem)" target="_blank" class="text-xl font-mono border border-black p-2">
             View/Edit Data
@@ -45,13 +45,12 @@
     </p>
 
     <p class="text-base text-gray-600">
-        {{ $state }}
+        {{ $state }} in {{ $medium }} on {{ $paper }}
         <br/>
         {{ $setting }}, {{ $circulation }}
     </p>
 
     <p class="mt-2 text-gray-600 hidden">
-
         Copied in 
         {{ optional($poem->meta->firstWhere('resource_attribute_id', 142))->value }}
         on 
@@ -61,20 +60,10 @@
     </p>
 </section>
 
-<section class="mt-12 flex flex-wrap">
-    <div id="js-transcription-source" class="h-0 w-0 opacity-0">
-        <!-- Manuscript Transcription -->
-        {!! optional($poem->meta->firstWhere('resource_attribute_id', 78))->value !!}
-    </div>
-
-    <div id="js-transcription-display" class="w-full md:w-1/3 lg:w-1/2 mt-40 text-2xl">
-    </div>
-
-    <div class="w-full md:w-2/3 lg:w-1/2 md:pl-4 lg:pl-8">
-        @if ($poem->media()->exists())
-            <livewire:project.media-viewer :resource="$poem" />
-        @endif
-    </div>
+<section class="mt-12">
+    @if ($poem->media()->exists())
+        <livewire:project.poem.transcription-viewer :poem="$poem" />
+    @endif
 </section>
 
 <section id="birds" class="mt-12 lg:mt-24 mb-10">
