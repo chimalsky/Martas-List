@@ -32,7 +32,7 @@
         </div>
 
         <div class="w-full md:w-2/3 lg:w-1/2 md:pl-4 lg:pl-8">
-            <div wire:loading.remove class="max-h-screen">
+            <div wire:loading.remove class="h-screen">
                 <img class="max-h-full" src="{{ $media->getUrl() }}" />
             </div>
 
