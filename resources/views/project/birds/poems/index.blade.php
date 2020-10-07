@@ -29,7 +29,7 @@
 @section('content')
 <section id="poems" class="mt-12 lg:mt-24">
     <h1 class="text-2xl text-orange-700">
-        Dickinson's <span class="italic">{{ Str::plural($bird->name) }}</psan>
+        Dickinson's <span class="italic">{{ Str::plural($bird->category->name) }}</psan>
     </h1>
     
     <main class="mt-4 flex flex-wrap">
