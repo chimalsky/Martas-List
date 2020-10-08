@@ -83,7 +83,7 @@
 
 
         <div class="w-3/5 pl-32 pr-8 overflow-auto" style="max-height: 80%;">
-            <x-project.bird.notebook.entry header="Conservation Status" :data="$bird->firstMetaByAttribute(37)">
+            <x-project.bird.notebook.entry header="Conservation Notes" :data="$bird->firstMetaByAttribute(37)">
                 <p>
                     19thc. -- {{ optional($bird->firstMetaByAttribute(507))->value ?? 'Information Coming Soon' }};
                 </p>
@@ -139,7 +139,7 @@
 
     <x-project.bird.notebook.entry header="Nest Material" :data="$bird->firstMetaByAttribute(505)" />
 
-    <x-project.bird.notebook.entry header="Conservation Status" :data="$bird->firstMetaByAttribute(37)">
+    <x-project.bird.notebook.entry header="Conservation Notes" :data="$bird->firstMetaByAttribute(37)">
         <p>
             19thc. -- {{ optional($bird->firstMetaByAttribute(507))->value ?? 'Information Coming Soon' }};
         </p>
@@ -221,7 +221,7 @@
         @endif
 
         <p class="text-2xl font-hairline mt-6">
-            Conservation Status
+            Conservation Notes
         </p>
         <div>
             <p>
