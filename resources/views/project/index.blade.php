@@ -13,10 +13,10 @@
 </section>
 
 <section>
-    <main class="block my-12 container flex flex-wrap mx-auto">
-        <img class="w-full md:w-1/2 lg:w-1/3 object-cover" src="{{ asset('img/timeline.jpeg') }}" />
-        <img class="w-full md:w-1/2 lg:w-1/3 object-cover" src="{{ asset('img/birdring.jpg') }}" />
-        <img class="w-full md:w-1/2 lg:w-1/3 object-cover" src="{{ asset('img/map-ma.png') }}" />
+    <main class="block my-12 container flex flex-wrap justify-center mx-auto space-x-4">
+        <img class="w-32 h-32 lg:h-auto lg:w-1/4 object-cover rounded-full" src="{{ asset('img/timeline.jpeg') }}" />
+        <img class="w-32 h-32 lg:h-auto lg:w-1/4 object-cover rounded-full" src="{{ asset('img/birdring.jpg') }}" />
+        <img class="w-32 h-32 lg:h-auto lg:w-1/4 object-cover rounded-full" src="{{ asset('img/map-ma.png') }}" />
     </main>
 </section>
 
