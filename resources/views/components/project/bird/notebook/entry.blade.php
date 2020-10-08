@@ -3,7 +3,7 @@
 @endphp
 
 <div class="mb-12">
-    <header class="text-sm mb-6">
+    <header style="color: #B45F06" class="text-sm mb-6">
         @foreach ($words as $word)
         <span class="text-xl">
             {{ strtoupper(substr($word, 0, 1)) }}</span>{{ strtoupper(substr($word, 1)) }}

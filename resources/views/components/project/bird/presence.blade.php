@@ -17,12 +17,16 @@
 
 @if ($occurence || $presence)
     @php
+        $punctuation = '.';
+
         if ($presence) {
             $presence = collect(explode(',', $presence->value));
             $presence = $presence->map(function($month) { return (int) $month; });
 
             $arrival = date("F", mktime(0, 0, 0, $presence->first(), 1));
             $departure = date("F", mktime(0, 0, 0, $presence->last(), 1));
+
+            $punctuation = ';';
         }
     @endphp 
     
@@ -36,7 +40,7 @@
             Century
         -</span> 
         @if ($occurence)
-            {{ $occurence->value }};
+            {{ trim($occurence->value).$punctuation }}
         @endif
 
         @if ($presence)
