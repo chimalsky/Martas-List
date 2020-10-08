@@ -58,5 +58,14 @@
                 <x-project.filter.dickinsons-birds :dickinsonsBirds="$dickinsonsBirds" :activeBirdCategories="$activeBirdCategories" />
             </section>
         </section>
+
+        @if (optional($activeBirdCategories)->count() || optional($activeFilterables)->count())
+        <section class="flex justify-center fixed bottom-0 inset-x-0">
+            <button wire:click='resetAll' style="background: #6D8159" 
+                class="font-serif text-2xl font-bold shadow-2xl text-white py-2 px-4 mb-10">
+                Reset All
+            </button>   
+        </section>
+        @endif
     </main>
 </div>

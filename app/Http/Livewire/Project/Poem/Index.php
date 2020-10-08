@@ -31,7 +31,8 @@ class Index extends Component
         'poem.filter:query-updated' => 'updatePoemsByQuery',
         'poem.filter:orderable-updated' => 'updatePoemsByOrderable',
         'poem.filter:bird-updated' => 'updatePoemsByBirds',
-        'poem.filter:filterable-updated' => 'updatePoemsByFilterables'
+        'poem.filter:filterable-updated' => 'updatePoemsByFilterables',
+        'poem.filter:resetted' => 'resetAllFilters',
     ];
 
     public function mount()

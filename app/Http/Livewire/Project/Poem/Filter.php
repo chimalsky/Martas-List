@@ -110,6 +110,8 @@ class Filter extends Component
         $this->activeBirdCategories = collect([]);
         $this->reset('query');
         $this->activeFilterables = collect([]);
+        
+        $this->emit('poem.filter:resetted');
     }
 
     public function resetBirds()
