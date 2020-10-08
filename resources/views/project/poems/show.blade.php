@@ -35,15 +35,15 @@
 
 @section ('content')
 
-<section class="text-center max-w-xs mx-auto">
+<section class="text-center max-w-2xl mx-auto">
     <p class="mt-18 text-black text-lg">
-        {{ $season }} {{ $year }}
+        {{ $year }} {{ $season }}
     </p>
 
     <p class="text-base text-gray-600">
-        {{ $state }} in {{ $medium }} on {{ $paper }}
+        {{ $medium }}. {{ $state }}.
         <br/>
-        {{ $setting }}, {{ $circulation }}
+        {{ $setting }}, {{ $circulation }}.
     </p>
 
     <p class="mt-2 text-gray-600 hidden">
@@ -56,7 +56,7 @@
     </p>
 </section>
 
-<section class="mt-12">
+<section class="mt-12 max-w-4xl mx-auto">
     @if ($poem->media()->exists())
         <livewire:project.poem.transcription-viewer :poem="$poem" />
     @endif
