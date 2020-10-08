@@ -64,23 +64,27 @@
 
 <section id="birds" class="mt-12 lg:mt-24 mb-10">
     @if ($birds->count())
-    <h1 class="text-2xl text-orange-700">
+    <h1 class="text-2xl text-orange-700 mb-10">
         Birds circulating in this MS --
     </h1>
     
     <main class="flex flex-wrap">
         @foreach ($birds as $bird)
-        <a href="@route('project.birds.show', $bird)" class="p-4 w-full md:w-1/2 lg:w-1/3">
-            <article class="bird border-2 border-gray-400 shadow-lg hover:shadow-2xl rounded-lg pt-2 pb-6 px-4">
+            <article class="bird shadow-lg pt-2 pb-6 px-4 w-full lg:w-1/2 xl:w-1/3">
                 @include('project.birds._single', $bird)
             </article>
-        </a>
         @endforeach
     </main>
     @else 
         <h1 class="text-xl text-orange-700">
-            {{ $firstline }} mentions no birds
+            {{ $firstline }} - unnamed birds.
         </h1>
+
+        <div class="my-4 text-2xl">
+            View <a class="underline" href="@route('project.birds.index')">
+                Bird Archive
+            </a>
+        </div>
     @endif
 </section>
 
