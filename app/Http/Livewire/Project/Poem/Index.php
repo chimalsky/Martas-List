@@ -32,7 +32,7 @@ class Index extends Component
         'poem.filter:orderable-updated' => 'updatePoemsByOrderable',
         'poem.filter:bird-updated' => 'updatePoemsByBirds',
         'poem.filter:filterable-updated' => 'updatePoemsByFilterables',
-        'poem.filter:resetted' => 'resetAllFilters',
+        'poem.filter:resetted' => 'filterResetted',
     ];
 
     public function mount()
@@ -148,6 +148,13 @@ class Index extends Component
         $this->reset('filterFilterables');
 
         $this->emit('poem.index:resetted');
+    }
+
+    public function filterResetted()
+    {
+        $this->reset('filterCategoryBirds');
+        $this->reset('filterQuery');
+        $this->reset('filterFilterables');
     }
 
     public function render()

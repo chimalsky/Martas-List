@@ -32,7 +32,7 @@ class Filter extends Component
     protected $listeners = [
         'filterable-attribute:resetted' => 'filterByAttribute',
         'filterable-attribute:activeOptionsUpdated' => 'filterByAttribute',
-        'poem.index:resetted' => 'resetAll',
+        'poem.index:resetted' => 'indexResetted',
         'poem.index:rendering' => 'indexRendering',
         'activeBirdRemoved' => 'updateSelectedBird'
     ];
@@ -105,12 +105,19 @@ class Filter extends Component
         $this->emit('poem.filter:bird-updated', $this->activeBirdCategories);
     }
 
+    public function indexResetted()
+    {
+        $this->activeBirdCategories = collect([]);
+        $this->reset('query');
+        $this->activeFilterables = collect([]);
+    }
+
     public function resetAll()
     {
         $this->activeBirdCategories = collect([]);
         $this->reset('query');
         $this->activeFilterables = collect([]);
-        
+
         $this->emit('poem.filter:resetted');
     }
 

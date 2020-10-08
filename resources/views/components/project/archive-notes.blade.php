@@ -1,4 +1,4 @@
-<section class="flex justify-end" x-data="{notesOpen: false}">
+<section class="hidden lg:flex justify-end -mt-8" x-data="{notesOpen: false}">
     <button x-show="!notesOpen" @click="notesOpen = true" 
         class="text-lg border-t border-gray-700 pl-20">
         + Archive Notes
