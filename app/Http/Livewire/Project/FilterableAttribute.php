@@ -22,7 +22,8 @@ class FilterableAttribute extends Component
     protected $listeners = [
         'filterCleared',
         'activeAttributeRemoved',
-        'poem.index:resetted' => 'filterCleared'
+        'poem.index:resetted' => 'filterCleared',
+        'poem.filter:resetted' => 'filterCleared'
     ];
 
     public function mount(ResourceAttribute $attribute, $expanded = false)
