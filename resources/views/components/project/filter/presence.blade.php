@@ -5,13 +5,13 @@
 <main x-data="{filterBySeasons: {{ $filterBySeasons }}}">
     <nav class="mb-4">
         <button @click="filterBySeasons = 1"
-            :class="{ 'bg-gray-300 text-gray-900': filterBySeasons }"
-            class="px-3 py-2 font-medium text-sm leading-5 rounded-md">
+            :class="{ 'border-b border-gray-700': filterBySeasons }"
+            class="px-3 pb-1 font-medium text-sm leading-5 rounded-md">
             Seasons
         </button>
         <button @click="filterBySeasons = 0"
-            :class="{ 'bg-gray-300 text-gray-900': !filterBySeasons }"
-            class="px-3 py-2 font-medium text-sm leading-5 rounded-md">
+            :class="{ 'border-b border-gray-700': !filterBySeasons }"
+            class="px-3 pb-1 font-medium text-sm leading-5 rounded-md">
             Months
         </button>
     </nav>
@@ -87,6 +87,9 @@
     </section>
 
     <footer class="mt-8">
+        <h1 class="mb-2 text-xl">
+            Century
+        </h1>
         @foreach (collect([19,20,21]) as $century)
         <label class="mb-4 pr-4 cursor-pointer">
             <input type="radio" name="order" class="" value="{{ $century }}" 
@@ -98,7 +101,6 @@
                 @else
                     {{ $century }}st.
                 @endif
-                Century
             </span>
         </label>
         @endforeach

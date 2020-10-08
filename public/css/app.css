@@ -24933,6 +24933,10 @@ trix-editor figcaption {
   font-size: 0.875rem;
 }
 
+.facs-thumb {
+  align-self: flex-start;
+}
+
 .page-content h1 {
   font-size: 1.25rem;
   text-align: center;

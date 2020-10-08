@@ -3,7 +3,7 @@
         <span class="rounded-md flex items-center">
             <button @click="open = !open" type="button" id="menu-toggle"
             class="h-12 w-12 text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150">
-                <img src="{{ asset('img/bird-icon-round.png') }}" />
+                <img src="{{ asset('img/hamburger_hover_combo.png') }}" />
             </button>
             
             <h1 class="ml-1" style="font-family: 'IM Fell Double Pica', serif; color: #707A5E; font-size: 22pt;">

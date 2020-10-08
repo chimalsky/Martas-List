@@ -8,7 +8,7 @@
             </button>
         </h1>
 
-        <div class="p-4 flex flex-wrap w-full">            
+        <div class="p-4 flex flex-wrap w-full">      
             @foreach($orderables as $orderable)
             @if ($loop->index < 3)
                 <label class="mb-4 pr-4 cursor-pointer">

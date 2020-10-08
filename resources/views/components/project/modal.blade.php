@@ -49,8 +49,9 @@
     x-transition:enter-end="opacity-100"
     x-transition:leave="ease-out duration-300"
     x-transition:leave-start="opacity-100"
-    x-transition:leave-end="opacity-0">
-    <div class="fixed z-10 inset-0 overflow-y-auto">
+    x-transition:leave-end="opacity-0"
+    class="">
+    <div class="fixed inset-0 overflow-y-auto">
         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <!--
             Background overlay, show/hide based on modal state.

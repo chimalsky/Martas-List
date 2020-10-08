@@ -7,6 +7,8 @@ use Livewire\Component;
 
 class Filter extends Component
 {
+    public $open = false;
+
     public $poemDefinition;
     public $birdDefinition;
 

@@ -7,7 +7,7 @@
             <img src="{{ asset('img/bird-icon-round.png') }}" />
         </div>
     </div>
-    
+
     @foreach (collect($poems)->take($perPage) as $poem)
     <article class="pb-32 px-4 w-full lg:w-1/2 xl:w-1/3">
         @include('project.poems._single', ['poem' => $poem])
@@ -17,7 +17,8 @@
     @if ($readyToLoad)
         @if ($poems->count() > $perPage)
         <div class="w-full">
-            <livewire:project.poem.load-more wire:key="2" :poemIds="$poems->pluck('id')" :perPage="$perPage" :page="2" />
+            <livewire:project.poem.load-more wire:key="2" 
+                :poemIds="$poems->pluck('id')" :perPage="$perPage" :page="2" />
         </div>  
         @endif
     @endif 

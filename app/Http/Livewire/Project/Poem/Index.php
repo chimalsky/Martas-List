@@ -21,6 +21,9 @@ class Index extends Component
     public $filterOrderableDirection = 'asc';
     public $filterCategoryBirds;
     public $filterFilterables;
+    
+    public $orderablesAndPoems;
+    public $activeOrderableValue;
 
     public $readyToLoad = false;
 
@@ -124,7 +127,7 @@ class Index extends Component
             } 
         }
         
-        $this->filterOrderable = ResourceAttribute::Find($orderableId);
+        $this->filterOrderable = ResourceAttribute::find($orderableId);
     }
     
     public function updatePoemsByBirds(array $activeBirds)
@@ -157,6 +160,13 @@ class Index extends Component
         $this->poemIds = $this->poems 
             ? $this->poems->pluck('id')
             : [];
+
+        $this->orderablesAndPoems = collect($this->poems)
+            ->take($this->perPage)
+            ->groupBy('queryable_meta_value') 
+            ->filter(function($group) {
+                return $group->count();
+            });
 
         $this->emit('poem.index:rendering', $this->poemIds);
 

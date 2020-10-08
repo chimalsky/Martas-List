@@ -33,8 +33,7 @@
                     @forelse ($poem->getMedia() as $medium)
                         @if (Str::contains($medium->mime_type, 'image'))
                             <div class="flex justify-center cursor-pointer">
-                                <img class="w-24 px-1 shadow-lg" 
-                                style="align-self: flex-start"
+                                <img class="w-24 px-1 shadow-lg facs-thumb" 
                                 src="{{ $medium->getUrl('thumb') }}" />
                             </div>
                         @endif
@@ -47,12 +46,6 @@
                 </div>
             </section>
         @endif
-
-        @unless ($poem->headline_value == $poem->queryable_meta_value)
-            <p class="text-center text-xl">
-                {{ $poem->queryable_meta_value }}
-            </p>
-        @endunless
     </a>
 
     

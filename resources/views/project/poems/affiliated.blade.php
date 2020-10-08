@@ -55,7 +55,7 @@
                             @forelse ($poem->getMedia() as $medium)
                                 @if (Str::contains($medium->mime_type, 'image'))
                                     <div class="flex justify-center cursor-pointer">
-                                        <img class="w-24 px-1 shadow-lg" 
+                                        <img class="w-24 px-1 shadow-lg facs-thumb" 
                                         src="{{ $medium->getUrl('thumb') }}" />
                                     </div>
                                 @endif
