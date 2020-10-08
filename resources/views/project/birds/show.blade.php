@@ -44,12 +44,6 @@
         <section class="mt-2">
             <iframe src='{{ $url }}/embed' scrolling='no' frameborder='0' width='340' height='220'></iframe>
         </section>
-
-        <header class="mt-10 flex justify-center">
-            <a href="@route('resources.edit', $bird)" target="_blank" class="text-xl font-mono border border-black p-2">
-                View/Edit Data
-            </a>
-        </header>
     </div>
 </header>
 

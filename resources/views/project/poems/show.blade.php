@@ -12,13 +12,15 @@
 
 
 @section('header-info')
-{{ $firstline }} | 
+<span style="color:#B45F06">
+    {{ $firstline }}
+</span> | 
 @if($poem->category) 
-    <a class="text-black underline italic" href="@route('project.affiliated.poems', $poem)">
+    <a class="text-black" href="@route('project.affiliated.poems', $poem)">
         Affiliated Manuscripts
     </a>
 @else 
-    <span class="text-gray-500 italic">
+    <span class="text-gray-500">
         Affiliated Manuscripts
     </span>
 @endif
@@ -34,12 +36,6 @@
 @section ('content')
 
 <section class="text-center max-w-xs mx-auto">
-    <header class="mb-10">
-        <a href="@route('resources.edit', $poem)" target="_blank" class="text-xl font-mono border border-black p-2">
-            View/Edit Data
-        </a>
-    </header>
-
     <p class="mt-18 text-black text-lg">
         {{ $season }} {{ $year }}
     </p>

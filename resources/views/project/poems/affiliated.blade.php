@@ -11,8 +11,10 @@
 @endsection 
 
 @section('header-info')
-{{ $firstline }} | 
-<a class="text-black underline italic">
+<span style="color:#B45F06">
+    {{ $firstline }} 
+</span> | 
+<a class="text-black underline">
     Affiliated Manuscripts
 </a>
 <span>

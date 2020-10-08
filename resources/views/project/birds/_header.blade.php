@@ -9,11 +9,11 @@
     | 
 
     @if ($bird->category)
-        <a href="@route('project.bird.poems', $bird)" class="italic">
+        <a href="@route('project.bird.poems', $bird)" class="">
             Affiliated Manuscripts
         </a>
     @else 
-        <span class="text-gray-400 italic">
+        <span class="text-gray-400">
             Affiliated Manuscripts
         </span>
     @endif
