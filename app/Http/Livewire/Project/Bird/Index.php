@@ -21,6 +21,7 @@ class Index extends Component
 
     public $filterQuery;
     public $filterThreatQuery;
+    public $filterChronoScope;
     public $filterOrderable;
     public $filterOrderableDirection = 'asc';
     public $filterCategoryBirds;
@@ -35,6 +36,7 @@ class Index extends Component
     protected $listeners = [
         'bird.filter:query-updated' => 'updateByQuery',
         'bird.filter:threatQuery-updated' => 'updateByThreatQuery',
+        'bird.filter:chronoScope-updated' => 'updateByChronoScope',
         'bird.filter:orderable-updated' => 'updatePoemsByOrderable',
         'bird.filter:bird-updated' => 'updateByBirds',
         'bird.filter:month-updated' => 'updateByMonth',
@@ -48,7 +50,7 @@ class Index extends Component
     {
         $this->birdDefinition = ResourceType::find(19);
         $this->filterChrono = 19;
-        
+        $this->filterChronoScope = 'seasons';
         //$this->filterOrderable = $this->birdDefinition->attributes->where('visibility', 1)->first();
     }
 
@@ -87,6 +89,11 @@ class Index extends Component
         }
 
         $this->filterThreatQuery = $query;
+    }
+
+    public function updateByChronoScope($scope)
+    {
+        $this->filterChronoScope = $scope;
     }
 
     public function updateByBirds(array $activeBirds)
@@ -170,7 +177,7 @@ class Index extends Component
             });
         }
 
-        if (optional($this->filterSeasons)->count()) {
+        if (($this->filterChronoScope == 'seasons') && optional($this->filterSeasons)->count()) {
             $presenceBirdsConnections = $this->getPresenceConnections($birds);
             
             $filterSeasons = $this->filterSeasons;
@@ -194,7 +201,7 @@ class Index extends Component
 
             $birds = $birds->whereIn('id', $filteredBirdsByPresence->pluck('primary_bird_id'));
         } 
-        else if (optional($this->filterMonths)->count()) {
+        else if (($this->filterChronoScope == 'months') && optional($this->filterMonths)->count()) {
             $presenceBirdsConnections = $this->getPresenceConnections($birds);
             
             $filterMonths = $this->filterMonths;

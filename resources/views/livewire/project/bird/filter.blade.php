@@ -26,47 +26,63 @@
         @endif
     </section>
 
-    @if(optional($activeSeasons)->count())
-    <section class="mb-10">
-        <header class="text-gray-800 mb-4">
-            Active Seasons--
-        </header>
-        @foreach ($activeSeasons as $activeSeason)
-            <div class="pl-4 mb-2">
-                <header class="font-bold text-gray-800" x-data="{expanded: false}">
-                    <span @click="expanded = !expanded">
-                        {{ Str::title($activeSeason)  }}
-                    </span>
-                    <span x-show="expanded">
-                        <button wire:click="$emitTo('project.bird.filter', 'activeSeasonRemoved', '{{ $activeSeason }}')">
-                            <x-heroicon-o-x-circle class="w-4" />
-                        </button>
-                    </span>
+    @if ($activeChronoScope == 'seasons')
+        @if (optional($activeSeasons)->count())
+            @php
+                $activeSeasonsSorted = $activeSeasons->mapWithKeys(function($s) {
+                    return [ $s => App\Project\SeasonEnum::getConstant($s) ];
+                })->sort()->keys();
+            @endphp 
+
+            <section class="mb-10">
+                <header class="text-gray-800 mb-4">
+                    Active Seasons--
                 </header>
-            </div>
-        @endforeach
-    </section>
+                @foreach ($activeSeasonsSorted as $activeSeason)
+                    <div class="pl-4 mb-2">
+                        <header class="font-bold text-gray-800" x-data="{expanded: false}">
+                            <span @click="expanded = !expanded">
+                                {{ Str::title($activeSeason)  }}
+                            </span>
+                            <span x-show="expanded">
+                                <button wire:click="$emitTo('project.bird.filter', 'activeSeasonRemoved', '{{ $activeSeason }}')">
+                                    <x-heroicon-o-x-circle class="w-4" />
+                                </button>
+                            </span>
+                        </header>
+                    </div>
+                @endforeach
+            </section>
+        @endif
     @endif 
 
-    @if(optional($activeMonths)->count())
-    <section class="mb-10">
-        <header class="text-gray-800 mb-4">
-            Active Months--
-        </header>
-        @foreach ($activeMonths as $activeMonth)
-            <div class="pl-4 mb-2">
-                <header class="font-bold text-gray-800" x-data="{expanded: false}">
-                    <span @click="expanded = !expanded">
-                        {{ Str::title($activeMonth) }}
-                    </span>
-                    <span x-show="expanded">
-                        <button wire:click="$emitTo('project.bird.filter', 'activeMonthRemoved', '{{ $activeMonth }}')">
-                            <x-heroicon-o-x-circle class="w-4" />
-                        </button>
-                    </span>
+    @if ($activeChronoScope == 'months')
+        @if(optional($activeMonths)->count())
+            @php
+                $activeMonthsSorted = $activeMonths->mapWithKeys(function($m) {
+                    return [ $m => App\Project\MonthEnum::getConstant($m) ];
+                })->sort()->keys();
+            @endphp 
+            <section class="mb-10">
+                <header class="text-gray-800 mb-4">
+                    Active Months--
                 </header>
-            </div>
-        @endforeach
-    </section>
-    @endif 
+
+                @foreach ($activeMonthsSorted as $activeMonth)
+                    <div class="pl-4 mb-2">
+                        <header class="font-bold text-gray-800" x-data="{expanded: false}">
+                            <span @click="expanded = !expanded">
+                                {{ Str::title($activeMonth) }}
+                            </span>
+                            <span x-show="expanded">
+                                <button wire:click="$emitTo('project.bird.filter', 'activeMonthRemoved', '{{ $activeMonth }}')">
+                                    <x-heroicon-o-x-circle class="w-4" />
+                                </button>
+                            </span>
+                        </header>
+                    </div>
+                @endforeach
+            </section>
+        @endif 
+    @endif
 </div>

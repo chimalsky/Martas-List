@@ -16,7 +16,9 @@
             <x-project.filter.dickinsons-birds :dickinsonsBirds="$dickinsonsBirds" :activeBirdCategories="$activeBirdCategories" />
         </div>
         <div class="p-4 w-4/12">
-            <x-project.filter.presence :activeSeasons="$activeSeasons" :activeMonths="$activeMonths" :activeChrono="$activeChrono" />
+            <x-project.filter.presence :activeSeasons="$activeSeasons" 
+                :activeMonths="$activeMonths" :activeChrono="$activeChrono"
+                :activeChronoScope="$activeChronoScope" />
         </div>
         <div class="p-4 w-3/12">
             <header class="text-xl mb-2">

@@ -22,6 +22,8 @@ class Filter extends Component
 
     public $activeBirds;
 
+    public $activeChronoScope;
+
     public $query;
     public $threatQuery;
 
@@ -50,6 +52,8 @@ class Filter extends Component
         $this->activeSeasons = collect([]);
         $this->activeChrono = 19;
         $this->activeConservationStates = collect([]);
+
+        $this->activeChronoScope = 'seasons';
     }
 
     public function updatedQuery()
@@ -60,6 +64,11 @@ class Filter extends Component
     public function updatedThreatQuery()
     {
         $this->emit('bird.filter:threatQuery-updated', $this->threatQuery);        
+    }
+
+    public function updatedActiveChronoScope()
+    {
+        $this->emit('bird.filter:activeChronoScope-updated', $this->activeChronoScope);        
     }
 
     public function updateSelectedBird($birdId)

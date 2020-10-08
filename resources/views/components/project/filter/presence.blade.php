@@ -1,22 +1,19 @@
-@php
-    $filterBySeasons = optional($activeSeasons)->count();
-@endphp
 
-<main x-data="{filterBySeasons: {{ $filterBySeasons }}}">
+<main x-data="{chronoScope: '{{ $activeChronoScope }}'}">
     <nav class="mb-4">
-        <button @click="filterBySeasons = 1"
-            :class="{ 'border-b border-gray-700': filterBySeasons }"
+        <button wire:click="$set('activeChronoScope','seasons')"
+            :class="{ 'border-b border-gray-700': (chronoScope == 'seasons') }"
             class="px-3 pb-1 font-medium text-sm leading-5 rounded-md">
             Seasons
         </button>
-        <button @click="filterBySeasons = 0"
-            :class="{ 'border-b border-gray-700': !filterBySeasons }"
+        <button wire:click="$set('activeChronoScope','months')"
+            :class="{ 'border-b border-gray-700': (chronoScope == 'months') }"
             class="px-3 pb-1 font-medium text-sm leading-5 rounded-md">
             Months
         </button>
     </nav>
 
-    <section x-show="filterBySeasons">
+    <section x-show="chronoScope == 'seasons'">
         @php 
             $seasons = \App\Project\SeasonEnum::getConstants();
         @endphp 
@@ -40,7 +37,7 @@
         </section>
     </section>
 
-    <section x-show="!filterBySeasons">
+    <section x-show="chronoScope == 'months'">
         <div class="grid grid-cols-2">
             @php
                 $months = \App\Project\MonthEnum::getConstants();
