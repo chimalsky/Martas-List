@@ -1,5 +1,5 @@
 <h1 class="text-2xl md:text-3xl lg:text-4xl font-hairline text-center">
-    <a href="@route('project.birds.show', $bird)">
+    <a href="@route('project.birds.show', $bird)" style="color:#B45F06">
         {{ $bird->firstMetaByAttribute(500)->value ?? null }}
         <span class="italic">
             ({{ $bird->firstMetaByAttribute(501)->value ?? null }})
@@ -13,7 +13,7 @@
             Affiliated Manuscripts
         </a>
     @else 
-        <span class="text-gray-500 italic">
+        <span class="text-gray-400 italic">
             Affiliated Manuscripts
         </span>
     @endif

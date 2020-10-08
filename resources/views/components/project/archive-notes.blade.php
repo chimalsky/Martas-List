@@ -1,6 +1,6 @@
 <section class="flex justify-end" x-data="{notesOpen: false}">
     <button x-show="!notesOpen" @click="notesOpen = true" 
-        class="text-lg text-gray-700 border-t border-gray-700 pl-20">
+        class="text-lg border-t border-gray-700 pl-20">
         + Archive Notes
     </button>
 
@@ -32,7 +32,7 @@
                                     <button @click="notesOpen = false" aria-label="Close panel" class="text-black text-3xl hover:text-gray-900 transition ease-in-out duration-150 inline-block align-middle">
                                     -
                                     </button>
-                                    <span class="inline-block align-middle mt-1">
+                                    <span style="color: #B45F06" class="inline-block align-middle mt-1">
                                         Archive Notes
                                     </span>
                                 </h2>

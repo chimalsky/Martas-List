@@ -3,7 +3,7 @@
 </header>
 
 <div class="flex flex-wrap">
-    <main class="mx-auto w-11/12 grid grid-cols-4 bg-yellow-100">
+    <main class="mx-auto w-11/12 grid grid-cols-4">
         @foreach ($dickinsonsBirds->sortBy('name') as $bird)
             <label wire:click="updateSelectedBird({{ $bird->id }})"
                 class="col-span-1
@@ -15,9 +15,9 @@
                     "
                 style="
                     @unless (optional($activeBirdCategories)->contains($bird->id))
-                        background: #efefef;
+                        background: #F7F5E7;
                     @else
-                        background: #CC9A00;
+                        background: #B45F06;
                         color: white;
                     @endunless
                 ">
