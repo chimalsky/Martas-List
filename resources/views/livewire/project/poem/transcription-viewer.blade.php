@@ -25,10 +25,17 @@
     </nav>
 
     <main class="mt-4 flex flex-wrap">
-        <div id="js-transcription-source" class="h-0 w-0 opacity-0">
-            <!-- Manuscript Transcription -->
-            {!! optional($poem->meta->firstWhere('resource_attribute_id', 78))->value !!}
-        </div>
+        @if ($medias->count())
+            <div id="js-transcription-source" class="h-0 w-0 opacity-0">
+                <!-- Manuscript Transcription -->
+                {!! optional($poem->meta->firstWhere('resource_attribute_id', 78))->value !!}
+            </div>
+        @else 
+            <div id="js-transcription-source" class="h-0 w-0">
+                <!-- Manuscript Transcription -->
+                {!! optional($poem->meta->firstWhere('resource_attribute_id', 78))->value !!}
+            </div>
+        @endif
 
         <div id="js-transcription-display" class="w-full md:w-1/3 lg:w-1/2 text-2xl md:pl-10">
         </div>
