@@ -25,19 +25,15 @@
     </nav>
 
     <main class="mt-4 flex flex-wrap">
-        @if ($medias->count())
-            <div id="js-transcription-source" class="h-0 w-0 opacity-0">
-                <!-- Manuscript Transcription -->
-                {!! optional($poem->meta->firstWhere('resource_attribute_id', 78))->value !!}
-            </div>
-        @else 
-            <div id="js-transcription-source" class="h-0 w-0">
-                <!-- Manuscript Transcription -->
-                {!! optional($poem->meta->firstWhere('resource_attribute_id', 78))->value !!}
-            </div>
-        @endif
+        <div id="js-transcription-source" class="h-0 w-0 opacity-0">
+            <!-- Manuscript Transcription -->
+            {!! optional($poem->meta->firstWhere('resource_attribute_id', 78))->value !!}
+        </div>
 
         <div id="js-transcription-display" class="w-full md:w-1/3 lg:w-1/2 text-2xl md:pl-10">
+            @unless ($medias->count())
+                {!! optional($poem->meta->firstWhere('resource_attribute_id', 78))->value !!}
+            @endunless
         </div>
 
         <div class="w-full md:w-2/3 lg:w-1/2 md:pl-4">
