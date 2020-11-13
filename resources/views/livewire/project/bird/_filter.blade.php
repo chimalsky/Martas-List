@@ -6,7 +6,7 @@
             </span>
 
             <button class="float-right" @click="open = false">
-                <x-heroicon-o-x class="w-8" />
+                <x-heroicon-o-x class="w-5" />
             </button>
         </h1>
     </header>
@@ -36,7 +36,7 @@
                 @endphp 
 
                 @foreach ($conservationStates as $key => $value)
-                    <label class="mb-2 w-1/2 container relative text-base cursor-pointer hover:underline">
+                    <label class="mb-2 container relative text-base cursor-pointer hover:underline">
                         <input type="checkbox" wire:change="updateConservationState('{{ $value }}')"
                             class=""
                             autocomplete="off" />

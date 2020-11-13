@@ -55,11 +55,13 @@ class Filter extends Component
 
     public function updatedQuery()
     {
+        $this->emit('poem.filter:updated');
         $this->emit('poem.filter:query-updated', $this->query);        
     }
 
     public function orderableClicked()
     {
+        $this->emit('poem.filter:updated');
         $this->emit('poem.filter:orderable-updated', $this->orderable);
     }
 
@@ -87,6 +89,7 @@ class Filter extends Component
             }
         }
 
+        $this->emit('poem.filter:updated');
         $this->emit('poem.filter:filterable-updated', $this->activeFilterables);
     }
 
@@ -102,6 +105,7 @@ class Filter extends Component
             $this->activeBirdCategories->splice($index, 1);
         }
 
+        $this->emit('poem.filter:updated');
         $this->emit('poem.filter:bird-updated', $this->activeBirdCategories);
     }
 
@@ -118,12 +122,15 @@ class Filter extends Component
         $this->reset('query');
         $this->activeFilterables = collect([]);
 
+        $this->emit('poem.filter:updated');
         $this->emit('poem.filter:resetted');
     }
 
     public function resetBirds()
     {
         $this->activeBirdCategories = collect([]);
+
+        $this->emit('poem.filter:updated');
         $this->emit('poem.filter:bird-updated', $this->activeBirdCategories);
     }
 

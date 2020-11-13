@@ -1,14 +1,15 @@
-<header class="block ml-6 mb-2 font-serif font-bold text-xl">
+<header class="block ml-6 mb-2 font-serif font-semibold text-lg">
     Dickinson's Bird List
 </header>
 
 <div class="flex flex-wrap">
-    <main class="mx-auto w-11/12 grid grid-cols-4">
+    <main class="mx-auto w-11/12 grid grid-cols-3">
         @foreach ($dickinsonsBirds->sortBy('name') as $bird)
             <label wire:click="updateSelectedBird({{ $bird->id }})"
                 class="col-span-1
                 border border-orange-500 p-2
                 cursor-pointer
+                text-sm
                 @if (optional($activeBirdCategories)->contains($bird->id))
                     font-bold
                 @endif
@@ -28,9 +29,9 @@
 </div>
 
 @if ($activeBirdCategories->count() > 0)
-    <footer class="flex justify-center mt-4">
-        <button wire:click='resetBirds' style="background: #6D8159" class="font-serif font-bold shadow-2xl text-white py-2 px-4">
-            Unselect All
+    <footer class="flex justify-center my-4">
+        <button wire:click='resetBirds' style="background: #6D8159" class="font-serif font-bold shadow-md text-white py-2 px-4 text-xs">
+            Unselect All Birds
         </button>   
     </footer>
 @endif

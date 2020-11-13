@@ -28,10 +28,10 @@
             {!! optional($poem->meta->firstWhere('resource_attribute_id', 78))->value !!}
         </div>
 
-        <div id="js-transcription-display" class="w-full md:w-1/3 lg:w-1/2 text-2xl">
+        <div id="js-transcription-display" class="w-full md:w-1/3 lg:w-1/2 text-2xl md:pl-10">
         </div>
 
-        <div class="w-full md:w-2/3 lg:w-1/2 md:pl-4 lg:pl-8">
+        <div class="w-full md:w-2/3 lg:w-1/2 md:pl-4">
             <div wire:loading.remove class="h-screen">
                 <img class="max-h-full" src="{{ $media->getUrl() }}" />
             </div>

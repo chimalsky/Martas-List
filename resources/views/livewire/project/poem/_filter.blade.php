@@ -1,17 +1,17 @@
 <div id="js-poems-filter" class="relative w-full bg-white shadow-lg flex flex-wrap">
     <header class="bg-gray-100 w-full">
-        <h1 style="background: #B45F06" class="font-serif text-2xl text-white font-garamond font-thin p-3 italic shadow-xl flex justify-between">
+        <h1 style="background: #B45F06" class="font-serif text-xl text-white font-garamond font-thin p-3 pl-4 italic shadow-xl flex justify-between">
             Order By--
 
             <button @click="open = false">
-                <x-heroicon-o-x class="w-8" />
+                <x-heroicon-o-x class="w-5" />
             </button>
         </h1>
 
-        <div class="p-4 flex flex-wrap w-full">      
+        <div class="p-4 pl-6 flex flex-wrap w-full">      
             @foreach($orderables as $orderable)
-            @if ($loop->index < 3)
-                <label class="mb-4 pr-4 cursor-pointer">
+            @if ($loop->index < 2)
+                <label class="pr-4 cursor-pointer">
                     <input type="radio" name="order" class="" value="{{ $orderable->id }}" 
                         wire:model="orderable" wire:click="orderableClicked({{ $orderable->id }})"
                         
@@ -24,12 +24,12 @@
     </header>
 
     <main class="w-full">
-        <h1 style="background: #B45F06" class="font-serif text-2xl text-white font-thin p-3 italic shadow-xl">
+        <h1 style="background: #B45F06" class="font-serif text-xl text-white font-thin p-3 pl-4 italic shadow-xl">
             Curate by--
         </h1>
 
         <section class="flex flex-wrap" style="background: #f4eee9;">
-            <div class="text-xs w-3/5 pt-4 pl-4">
+            <div class="text-xs w-3/5 pt-4 pl-4 overflow-scroll h-full" style="max-height: 50vh;">
                 <section class="block mb-12">
                     @if($filterables->firstWhere('id', 370))
                     <livewire:project.filterable-attribute :attribute="$filterables->firstWhere('id', 370)" 
@@ -54,7 +54,7 @@
             </div>
 
 
-            <section class="w-2/5 pt-4" style="background: #d9e3d2">
+            <section class="w-2/5 pt-4 overflow-scroll h-auto" style="background: #d9e3d2; max-height: 50vh;">
                 <x-project.filter.dickinsons-birds :dickinsonsBirds="$dickinsonsBirds" :activeBirdCategories="$activeBirdCategories" />
             </section>
         </section>
@@ -62,7 +62,7 @@
         @if (optional($activeBirdCategories)->count() || optional($activeFilterables)->count())
         <section class="flex justify-center fixed bottom-0 inset-x-0">
             <button wire:click='resetAll' style="background: #6D8159" 
-                class="font-serif text-2xl font-bold shadow-2xl text-white py-2 px-4 mb-10">
+                class="font-serif text-md font-bold shadow-2xl text-white py-2 px-4 mb-2">
                 Reset All
             </button>   
         </section>

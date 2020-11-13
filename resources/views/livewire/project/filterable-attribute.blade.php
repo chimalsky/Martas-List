@@ -18,6 +18,13 @@
             <x-heroicon-o-chevron-down class="w-3" x-show="!expanded" />
         </button>
         {{ $attribute->key }} 
+
+        @if ($activeOptions->count() > 0)
+            <button class="ml-2 font-thin text-sm cursor-pointer underline"
+                wire:click="resetOptions()">
+                Uncheck All
+            </button>
+        @endif
     </h1>
 
     <div class="pl-8 pt-2" x-show="expanded"
@@ -27,7 +34,7 @@
         x-transition:leave="transition ease-in duration-300"
         x-transition:leave-start="opacity-100 transform scale-100"
         x-transition:leave-end="opacity-0 transform scale-50 -translate-y-full -translate-x-full">
-        <main class="grid grid-cols-5">
+        <main class="grid grid-cols-4">
             @foreach ($options as $option)
                 @unless(is_array($option))
                     @unless(is_null($option))
@@ -51,12 +58,7 @@
         </main>
 
         <footer class="flex justify-center pt-2">
-            @if ($activeOptions->count() > 0)
-                <button class="mb-2 col-span-1 p-2 font-thin cursor-pointer hover:underline border border-gray-600"
-                    wire:click="resetOptions()">
-                    Uncheck All
-                </button>
-            @endif
+            
         </footer>
     </div>
     

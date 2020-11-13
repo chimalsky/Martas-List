@@ -82,7 +82,7 @@
             <div @click.away="open = false" 
                 class="inline-block align-bottom bg-white rounded-lg text-left 
                 overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle 
-                max-w-full sm:w-full md:max-w-4xl lg:max-w-6xl xl:max-w-screen-xl" 
+                max-w-full sm:w-full md:max-w-4xl" 
                 role="dialog" aria-modal="true" aria-labelledby="modal-headline">
                     {{ $slot }}
             </div>

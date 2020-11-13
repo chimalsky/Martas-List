@@ -1,5 +1,6 @@
 @extends ('layouts.project-shifted')
 
+
 @section('header-anchor')
 <a href="@route('project.poems.index')" class=''>
     <div>
@@ -9,6 +10,7 @@
     </div>
 </a>
 @endsection 
+
 
 @section('header-info')
 <span style="color:#B45F06">
@@ -23,6 +25,25 @@
 <a href="" class="text-gray-500">
     Commentary
 </a>
+
+<section class="flex justify-center space-x-4 max-w-md mx-auto mt-8 text-sm">
+    <div class="inline-block">
+        <img class="w-8 inline-block" src="{{ asset('img/lost-or-destroyed.png') }}" />
+        <span>
+            = manuscript lost or destroyed
+        </span>
+    </div>
+
+    <div class="inline-block">
+        <img class="w-6 inline-block" src="{{ asset('img/coming-soon.jpg') }}" />
+        <span>
+            = manuscript coming soon
+        </span>
+    </div>
+</section>
+
+<x-project.archive-notes contentId="42072">
+</x-project.archive-notes>
 @endsection
 
 @section ('content')
@@ -35,7 +56,7 @@
 
     <main class="flex flex-wrap w-full pt-12">
         @foreach ($poems as $poem)
-            <article class="pb-32 px-4 w-full lg:w-1/2 xl:w-1/3s">
+            <article class="pb-32 px-4 w-full lg:w-1/2 xl:w-1/3">
                 <a href="@route('project.poems.show', $poem)">
                     @php 
                         $imageCount = $poem->getMedia()->count()
@@ -72,23 +93,27 @@
                 </a>
 
                 <div class="text-center mt-4">
-                    {{ $firstline }}
+                    <header class="font-bold">
+                        {{ $firstline }}
+                    </header>
 
                     <p>
-                        
-                    </p>
-
-                    <p>
-                        {{ $poem->firstMetaByAttribute(138)->value ?? null }}
-                    </p>
-                    <p>
-                        {{ $poem->firstMetaByAttribute(131)->value ?? null }}
+                        <!-- year of composition -->
+                        {{ optional($poem->firstMetaByAttribute(138))->value }},
+                        <!-- season of composition -->
+                        {{ optional($poem->firstMetaByAttribute(131))->value }}
                     </p>
                     <p>
-                        {{ $poem->firstMetaByAttribute(103)->value ?? null }}
+                        <!-- medium -->
+                        {{ optional($poem->firstMetaByAttribute(142))->value }}.
+                        <!-- mnuscript state --> 
+                        {{ optional($poem->firstMetaByAttribute(89))->value }}.
                     </p>
                     <p>
-                        {{ $poem->firstMetaByAttribute(142)->value ?? null }}
+                        <!-- setting -->
+                        {{ optional($poem->firstMetaByAttribute(103))->value }}
+                        <!-- ciculation -->
+                        {{ optional($poem->firstMetaByAttribute(113))->value }}
                     </p>
                 </div>
             </article> 

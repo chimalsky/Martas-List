@@ -30,6 +30,10 @@
 
 <x-project.archive-notes contentId="42072">
 </x-project.archive-notes>
+
+<x-notification.toaster on="poem.filter:updated">
+    updating
+</x-notification.toaster>
 @endsection
 
 @section('sticky-aside')

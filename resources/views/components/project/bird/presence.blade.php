@@ -30,7 +30,7 @@
         }
     @endphp 
     
-    <div {{ $attributes->merge(['class' => 'text-lg']) }}>
+    <div {{ $attributes }}>
         <span class="font-bold">
             @if ($century != 21)
                 {{ $century }}th.
