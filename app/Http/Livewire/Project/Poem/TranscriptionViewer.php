@@ -17,7 +17,9 @@ class TranscriptionViewer extends Component
         $this->poem = $poem; 
         $this->medias = $poem->media;
 
-        $this->setMedia($this->medias->first()->id);
+        if ($this->medias->count()) {
+            $this->setMedia($this->medias->first()->id);
+        }
     }
 
     public function setMedia($media)

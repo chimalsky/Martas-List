@@ -57,9 +57,7 @@
 </section>
 
 <section class="mt-12 max-w-4xl mx-auto">
-    @if ($poem->media()->exists())
-        <livewire:project.poem.transcription-viewer :poem="$poem" />
-    @endif
+    <livewire:project.poem.transcription-viewer :poem="$poem" />
 </section>
 
 <section id="birds" class="mt-12 lg:mt-24 mb-10">
