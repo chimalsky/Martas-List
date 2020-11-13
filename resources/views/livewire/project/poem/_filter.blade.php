@@ -56,6 +56,208 @@
 
             <section class="w-2/5 pt-4 overflow-scroll h-auto" style="background: #d9e3d2; max-height: 50vh;">
                 <x-project.filter.dickinsons-birds :dickinsonsBirds="$dickinsonsBirds" :activeBirdCategories="$activeBirdCategories" />
+
+                <div class="px-4 mt-4 opacity-50">
+                    <h1 class="text-xl font-bold mb-2">
+                        MS References (coming soon) --
+                    </h1>
+
+                    <label class="mb-2 container relative block cursor-pointer hover:underline">
+                        <input type="checkbox"
+                            class=""
+                            autocomplete="off" 
+                            />
+                        <span class="checkmark border-2 border-gray-500"></span>
+
+                        <span class="pl-6">
+                            Human Agents
+                        </span>
+                    </label> 
+
+                    <label class="mb-2 container relative block cursor-pointer hover:underline">
+                        <input type="checkbox"
+                            class=""
+                            autocomplete="off" 
+                            />
+                        <span class="checkmark border-2 border-gray-500"></span>
+
+                        <span class="pl-6">
+                            Nonhuman Agents
+                        </span>
+                    </label> 
+
+                    <div class="flex flex-wrap pl-8">
+                        <label class="mb-2 container relative cursor-pointer hover:underline w-1/3">
+                            <input type="checkbox"
+                                class=""
+                                autocomplete="off" 
+                                />
+                            <span class="checkmark border-2 border-gray-500"></span>
+
+                            <span class="pl-6">
+                                Flora
+                            </span>
+                        </label> 
+                        <label class="mb-2 container relative cursor-pointer hover:underline w-1/3">
+                            <input type="checkbox"
+                                class=""
+                                autocomplete="off" 
+                                />
+                            <span class="checkmark border-2 border-gray-500"></span>
+
+                            <span class="pl-6">
+                                Fauna
+                            </span>
+                        </label> 
+                        <label class="mb-2 container relative cursor-pointer hover:underline w-1/3">
+                            <input type="checkbox"
+                                class=""
+                                autocomplete="off" 
+                                />
+                            <span class="checkmark border-2 border-gray-500"></span>
+
+                            <span class="pl-6">
+                                Other
+                            </span>
+                        </label> 
+                    </div>
+
+                    <label class="mb-2 container relative block cursor-pointer hover:underline">
+                        <input type="checkbox"
+                            class=""
+                            autocomplete="off" 
+                            />
+                        <span class="checkmark border-2 border-gray-500"></span>
+
+                        <span class="pl-6">
+                            Time-marks
+                        </span>
+                    </label> 
+
+                    <label class="mb-2 container relative block cursor-pointer hover:underline">
+                        <input type="checkbox"
+                            class=""
+                            autocomplete="off" 
+                            />
+                        <span class="checkmark border-2 border-gray-500"></span>
+
+                        <span class="pl-6">
+                            Place-marks
+                        </span>
+                    </label> 
+
+                    <div class="pl-8">
+                        <label class="mb-2 container relative block cursor-pointer hover:underline">
+                            <input type="checkbox"
+                                class=""
+                                autocomplete="off" 
+                                />
+                            <span class="checkmark border-2 border-gray-500"></span>
+
+                            <span class="pl-6">
+                                Human Communities
+                            </span>
+                        </label> 
+
+                        <label class="mb-2 container relative block cursor-pointer hover:underline">
+                            <input type="checkbox"
+                                class=""
+                                autocomplete="off" 
+                                />
+                            <span class="checkmark border-2 border-gray-500"></span>
+
+                            <span class="pl-6">
+                                Nonhuman Communities
+                            </span>
+                        </label> 
+                    </div>
+
+                    <label class="mb-2 container relative block cursor-pointer hover:underline">
+                        <input type="checkbox"
+                            class=""
+                            autocomplete="off" 
+                            />
+                        <span class="checkmark border-2 border-gray-500"></span>
+
+                        <span class="pl-6">
+                            Landforms
+                        </span>
+                    </label> 
+
+                    <label class="mb-2 container relative block cursor-pointer hover:underline">
+                        <input type="checkbox"
+                            class=""
+                            autocomplete="off" 
+                            />
+                        <span class="checkmark border-2 border-gray-500"></span>
+
+                        <span class="pl-6">
+                            Sky objects
+                        </span>
+                    </label> 
+
+                    <label class="mb-2 container relative block cursor-pointer hover:underline">
+                        <input type="checkbox"
+                            class=""
+                            autocomplete="off" 
+                            />
+                        <span class="checkmark border-2 border-gray-500"></span>
+
+                        <span class="pl-6">
+                            Weather and Atmospheric phenomena
+                        </span>
+                    </label> 
+
+                    <label class="mb-2 container relative block cursor-pointer hover:underline">
+                        <input type="checkbox"
+                            class=""
+                            autocomplete="off" 
+                            />
+                        <span class="checkmark border-2 border-gray-500"></span>
+
+                        <span class="pl-6">
+                            Sound-marks
+                        </span>
+                    </label> 
+
+                    <div class="pl-8">
+                        <label class="mb-2 container relative block cursor-pointer hover:underline">
+                            <input type="checkbox"
+                                class=""
+                                autocomplete="off" 
+                                />
+                            <span class="checkmark border-2 border-gray-500"></span>
+
+                            <span class="pl-6">
+                                Geophany
+                            </span>
+                        </label> 
+
+                        <label class="mb-2 container relative block cursor-pointer hover:underline">
+                            <input type="checkbox"
+                                class=""
+                                autocomplete="off" 
+                                />
+                            <span class="checkmark border-2 border-gray-500"></span>
+
+                            <span class="pl-6">
+                                Biophany
+                            </span>
+                        </label> 
+
+                        <label class="mb-2 container relative block cursor-pointer hover:underline">
+                            <input type="checkbox"
+                                class=""
+                                autocomplete="off" 
+                                />
+                            <span class="checkmark border-2 border-gray-500"></span>
+
+                            <span class="pl-6">
+                                Anthrophany
+                            </span>
+                        </label> 
+                    </div>
+                </div>
             </section>
         </section>
 
