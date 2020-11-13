@@ -38,11 +38,23 @@
 
         <div class="w-full md:w-2/3 lg:w-1/2 md:pl-4">
             @if($placeholderMeta = $poem->meta()->firstWhere('resource_attribute_id', 149))
-                <section class="flex justify-center">
+                <section class="mb-4">
                     @if ($placeholderMeta->value == 'placeholder for LOST or DESTROYED MS')
-                        <img class="w-20 inline-block" src="/img/lost-or-destroyed.png" />
+                        <div class="flex justify-center">
+                            <img class="w-20" src="/img/lost-or-destroyed.png" />
+                        </div>
+                        
+                        <p class="text-center">
+                            Original Manuscript lost or destroyed
+                        </p>
                     @elseif ($placeholderMeta->value == 'placeholder for MS we need to request digital image for')
-                        <img class="w-16 inline-block" src="/img/coming-soon.jpg" />
+                        <div class="flex justify-center">
+                            <img class="w-16 align-center" src="/img/coming-soon.jpg" />
+                        </div>
+                        
+                        <p class="text-center">
+                            Manuscript Facsimile coming soon
+                        </p>
                     @endif
                 </section>
             @endif
