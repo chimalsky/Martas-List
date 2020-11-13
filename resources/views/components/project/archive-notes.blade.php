@@ -38,9 +38,10 @@
                                 </h2>
                             </div>
                         </header>
+
                         <main class="archive-notes relative flex-1 px-4 sm:px-6 text-xl text-left">
                             <!-- Replace with your content -->
-                            <div class="absolute inset-0 px-4 sm:px-6">
+                            <div class="inset-0 px-4 sm:px-6">
                                 <div class="h-full pl-6">
                                     {{ $slot }}
 
@@ -53,6 +54,12 @@
                             </div>
                             <!-- /End replace -->
                         </main>
+
+                        <footer class="border-t border-orange-300 pb-4">
+                            <button @click="notesOpen = false" aria-label="Close panel" class="text-black text-xl underline hover:text-gray-900 transition ease-in-out duration-150 inline-block align-middle">
+                                Close Notes
+                            </button>
+                        </footer>
                     </div>
                 </div>
             </section>
