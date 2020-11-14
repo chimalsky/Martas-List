@@ -36,25 +36,13 @@
 @section ('content')
 
 <section class="text-center max-w-2xl mx-auto">
-    <p class="mt-18 text-black text-lg">
-        {{ $year }} {{ $season }}
-    </p>
-
-    <p class="text-base text-gray-600">
-        {{ $medium }}. {{ $state }}.
-        <br/>
-        {{ $setting }}, {{ $circulation }}.
-    </p>
-
-    <p class="mt-2 text-gray-600 hidden">
-        Copied in 
-        {{ optional($poem->meta->firstWhere('resource_attribute_id', 142))->value }}
-        on 
-        {{ optional($poem->meta->firstWhere('resource_attribute_id', 87))->value }},
-        bound into
-        {{ optional($poem->meta->firstWhere('resource_attribute_id', 3))->value }}
-    </p>
+    @foreach ($poem->metaByAttribute(597)->pluck('value') as $line)
+        <p>
+            {{ $line }}
+        </p>
+    @endforeach
 </section>
+
 
 <section class="mt-12 max-w-4xl mx-auto">
     <livewire:project.poem.transcription-viewer :poem="$poem" />
