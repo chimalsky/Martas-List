@@ -4,7 +4,7 @@
             @if ($placeholderMeta->value == 'placeholder for LOST or DESTROYED MS')
                 <img class="w-20 h-20 inline-block" src="/img/lost-or-destroyed.png" />
             @elseif ($placeholderMeta->value == 'placeholder for MS we need to request digital image for')
-                <img class="w-16 h-16 inline-block" src="/img/coming-soon.jpg" />
+                <img class="w-16 h-24 inline-block" src="/img/coming-soon.jpg" />
             @endif
         </section>
     @else
