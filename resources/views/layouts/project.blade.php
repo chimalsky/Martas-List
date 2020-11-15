@@ -87,6 +87,14 @@
                     Licensed under Creative Commons Attribution 4.0 International License, 2020
                 </p>
             </div>
+
+            <div class="block mt-12 text-right">
+                @auth
+                    <a href="{{ route('resource-types.index') }}" class="no-underline hover:underline text-sm font-normal text-teal-800">Go to Archiver</a>
+                @else
+                    <a href="{{ route('login') }}" class="no-underline hover:underline text-sm font-normal text-teal-800 pr-6">{{ __('Login') }}</a>
+                @endauth
+            </div>
         </footer>
 
         @livewireScripts

@@ -145,4 +145,4 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('activities', 'ActivityController@index')->name('activity.index');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);

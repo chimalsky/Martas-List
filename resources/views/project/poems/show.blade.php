@@ -48,13 +48,13 @@
     <livewire:project.poem.transcription-viewer :poem="$poem" />
 </section>
 
-<section id="birds" class="mt-12 lg:mt-24 mb-10">
+<section id="birds" class="mt-12 mb-10 text-center">
     @if ($birds->count())
     <h1 class="text-2xl text-orange-700 mb-10">
         Birds circulating in this MS --
     </h1>
     
-    <main class="flex flex-wrap">
+    <main class="flex flex-wrap justify-center">
         @foreach ($birds as $bird)
             <article class="bird shadow-lg pt-2 pb-6 px-4 w-full lg:w-1/2 xl:w-1/3">
                 @include('project.birds._single', $bird)
