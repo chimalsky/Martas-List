@@ -63,7 +63,9 @@
     </main>
     @else 
         <h1 class="text-xl text-orange-700">
-            {{ $firstline }} - unnamed birds.
+            <span class="italic">
+                {{ $firstline }}
+            </span> mentions unnamed birds.
         </h1>
 
         <div class="my-4 text-2xl">
