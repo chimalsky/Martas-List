@@ -27,7 +27,7 @@
 @endsection
 
 @section('content')
-<section id="poems" class="mt-12 lg:mt-24">
+<section id="poems" class="mt-10 lg:mt-24">
     <h1 style="color: #B45F06;" class="text-2xl text-center">
         Dickinson's <span class="italic">{{ Str::plural($bird->category->name) }}</psan>
     </h1>
