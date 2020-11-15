@@ -59,7 +59,7 @@
                 </section>
             @endif
             @if ($medias->count())
-                <div wire:loading.remove class="h-screen">
+                <div wire:loading.remove class="max-h-screen">
                     <img class="max-h-full" src="{{ $media->getUrl() }}" />
                 </div>
 
