@@ -69,7 +69,7 @@
         </h1>
 
         <div class="my-4 text-2xl">
-            View <a class="underline" href="@route('project.birds.index')">
+            View the <a class="underline" href="@route('project.birds.index')">
                 Bird Archive
             </a>
         </div>
