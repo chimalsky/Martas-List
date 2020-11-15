@@ -56,7 +56,7 @@
     
     <main class="flex flex-wrap justify-center">
         @foreach ($birds as $bird)
-            <article class="bird shadow-lg pt-2 pb-6 px-4 w-full lg:w-1/2 xl:w-1/3">
+            <article class="bird pt-2 pb-6 px-4 w-full lg:w-1/2 xl:w-1/3">
                 @include('project.birds._single', $bird)
             </article>
         @endforeach
