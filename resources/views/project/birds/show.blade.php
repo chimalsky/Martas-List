@@ -17,7 +17,17 @@
 
 @section('content')
 
+
+@auth
+    <div class="flex justify-center my-4">
+        <a href="{{ route('resources.edit', $bird) }}" class="no-underline border border-gray-500 p-2 hover:underline font-normal text-teal-800">
+            View/Edit Data 
+        </a>
+    </div>
+@endauth
+
 <header class="mb-8 flex">
+
     <div class="max-w-xs mx-auto">
         @if ($poems->count())
             <div class="block mt-2 text-center">

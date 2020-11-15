@@ -35,6 +35,14 @@
 
 @section ('content')
 
+@auth
+    <div class="flex justify-center my-4">
+        <a href="{{ route('resources.edit', $poem) }}" class="no-underline border border-gray-500 p-2 hover:underline font-normal text-teal-800">
+            View/Edit Data 
+        </a>
+    </div>
+@endauth
+
 <section class="text-center max-w-2xl mx-auto">
     @foreach ($poem->metaByAttribute(597)->pluck('value') as $line)
         <p>
