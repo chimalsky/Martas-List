@@ -41,7 +41,7 @@
                 <section class="mb-4">
                     @if ($placeholderMeta->value == 'placeholder for LOST or DESTROYED MS')
                         <div class="flex justify-center">
-                            <img class="w-20" src="/img/lost-or-destroyed.png" />
+                            <img class="w-20 h-20" src="/img/lost-or-destroyed.png" />
                         </div>
                         
                         <p class="text-center">
@@ -49,7 +49,7 @@
                         </p>
                     @elseif ($placeholderMeta->value == 'placeholder for MS we need to request digital image for')
                         <div class="flex justify-center">
-                            <img class="w-16 align-center" src="/img/coming-soon.jpg" />
+                            <img class="w-16 h-16 align-center" src="/img/coming-soon.jpg" />
                         </div>
                         
                         <p class="text-center">
