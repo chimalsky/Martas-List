@@ -14,9 +14,9 @@
 
 <section>
     <main class="block my-12 max-w-2xl flex flex-wrap justify-center mx-auto space-x-4">
-        <img class="w-32 h-32 lg:h-auto lg:w-1/4 object-cover rounded-full" src="{{ asset('img/timeline.jpeg') }}" />
-        <img class="w-32 h-32 lg:h-auto lg:w-1/4 object-cover rounded-full" src="{{ asset('img/birdring.jpg') }}" />
-        <img class="w-32 h-32 lg:h-auto lg:w-1/4 object-cover rounded-full" src="{{ asset('img/map-ma.png') }}" />
+        <img class="w-32 h-32 lg:w-48 lg:h-48 object-cover rounded-full" src="{{ asset('img/timeline.jpeg') }}" />
+        <img class="w-32 h-32 lg:w-48 lg:h-48 object-cover rounded-full" src="{{ asset('img/birdring.jpg') }}" />
+        <img class="w-32 h-32 lg:w-48 lg:h-48 object-cover rounded-full" src="{{ asset('img/map-ma.png') }}" />
     </main>
 </section>
 
