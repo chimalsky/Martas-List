@@ -253,8 +253,13 @@ class Resource extends Model implements HasMedia
 
     public function scopeWithQueryableMetaValue($query, $queryableId)
     {
-        return $query->addSelect(['queryable_meta_value' => function($subQuery) use ($queryableId) {
-            $subQuery->select('value')
+        // Hotfix for being able to search first-line text without punctuation.
+        $value = ($queryableId === 84)
+            ? 'searchable_index'
+            : 'value';
+
+        return $query->addSelect(['queryable_meta_value' => function($subQuery) use ($queryableId, $value) {
+            $subQuery->select($value)
                 ->from('resource_metas')
                 ->whereColumn('resource_id', 'resources.id')
                 ->where('resource_attribute_id', $queryableId)

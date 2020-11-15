@@ -39,7 +39,8 @@ class LoadMore extends Component
         $this->perPage = $perPage;
         $this->page = $page;
 
-        $this->filterOrderable = $this->poemDefinition->attributes->where('visibility', 1)->last();
+        // 84 = first-line resource-attribute id
+        $this->filterOrderable = $this->poemDefinition->attributes->firstWhere('id', 84);
     }
 
     public function refreshPoemIds($poemIds = [])
