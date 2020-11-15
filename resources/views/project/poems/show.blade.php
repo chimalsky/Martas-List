@@ -48,9 +48,9 @@
     <livewire:project.poem.transcription-viewer :poem="$poem" />
 </section>
 
-<section id="birds" class="mt-6 mb-10 text-center">
+<section id="birds" class="mt-10 mb-10 text-center">
     @if ($birds->count())
-    <h1 class="text-2xl text-orange-700 mb-10">
+    <h1 class="text-2xl text-orange-700 mb-6">
         Birds circulating in this MS --
     </h1>
     
