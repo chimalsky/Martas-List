@@ -46,7 +46,7 @@ class LoadMore extends Component
 
     public function getResourcesPaginatedProperty()
     {
-        return $this->resourceDefinition->resources()->whereIn('id', $this->resourceIds ?? [])->paginate($this->perPage, ['*'], null, $this->page);
+        return $this->resourceDefinition->resources()->whereIn('id', $this->resourceIds ?? [])->orderBy('name')->paginate($this->perPage, ['*'], null, $this->page);
     }
 
     public function getResourcesRemainingProperty()

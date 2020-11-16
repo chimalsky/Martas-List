@@ -226,7 +226,7 @@ class Index extends Component
             $birds = $birds->whereIn('id', $filteredBirdsByPresence->pluck('primary_bird_id'));
         }
 
-        return $birds;
+        return $birds->orderBy('name');
     }
 
     public function getPresenceConnections($query)
