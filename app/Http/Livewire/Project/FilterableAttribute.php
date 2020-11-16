@@ -30,7 +30,6 @@ class FilterableAttribute extends Component
     {
         $this->attribute = $attribute;
         $this->options = $attribute->options;
-        $this->activeOptions = collect([]);
         $this->expanded = $expanded; 
     }
 
@@ -41,7 +40,7 @@ class FilterableAttribute extends Component
 
     public function syncOptions($option)
     {
-        $options = $this->activeOptions;
+        $options = collect($this->activeOptions);
 
         if ($options->contains($option)) {
             $options = $options->reject(function($value) use ($option) {
@@ -74,7 +73,12 @@ class FilterableAttribute extends Component
 
     public function getIsActiveProperty()
     {
-        return $this->activeOptions->count();
+        return collect($this->activeOptions)->count();
+    }
+
+    public function isActive($option)
+    {
+        return collect($this->activeOptions)->contains($option);
     }
 
     public function activeAttributeRemoved($attributeId, $value)

@@ -28,6 +28,10 @@ class Filter extends Component
 
     public $renderCount;
 
+    public $index = 0;
+
+    protected $queryString = ['index'];
+
     protected $rules = [
     ];
 

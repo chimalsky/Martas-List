@@ -31,6 +31,8 @@ class Filter extends Component
 
     public $renderCount;
 
+    public $index = 0;
+
     protected $listeners = [
         'filterable-attribute:resetted' => 'filterByAttribute',
         'filterable-attribute:activeOptionsUpdated' => 'filterByAttribute',

@@ -19,7 +19,7 @@
         </button>
         {{ $attribute->key }} 
 
-        @if ($activeOptions->count() > 0)
+        @if ($this->isActive)
             <button class="ml-2 font-thin text-sm cursor-pointer underline"
                 wire:click="resetOptions()">
                 Uncheck All
@@ -42,7 +42,7 @@
                             <input type="checkbox" wire:change="syncOptions('{{ $option }}')"
                                 class=""
                                 autocomplete="off" 
-                                @if ($activeOptions->contains($option))
+                                @if ($this->isActive($option))
                                     checked 
                                 @endif
                                     />

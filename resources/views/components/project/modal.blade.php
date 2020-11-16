@@ -80,11 +80,12 @@
                 To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             -->
             <div @click.away="open = false" 
-                class="inline-block float-right align-bottom bg-white rounded-lg text-left 
+                class="inline-block float-right mr-4 align-bottom bg-white rounded-lg text-left 
                 overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle 
-                max-w-full sm:w-full md:max-w-2xl lg:max-w-3xl xl:max-w-4xl" 
+                max-w-full sm:w-full md:max-w-lg pb-10" 
                 role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-                    {{ $slot }}
+                
+                {{ $slot }}
             </div>
         </div>
     </div>
