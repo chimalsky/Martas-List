@@ -78,7 +78,7 @@
                             MS References (coming soon) --
                         </h1>
 
-                        <label class="mb-8 container relative block cursor-pointer hover:underline">
+                        <label class="mb-6 container relative block cursor-pointer hover:underline">
                             <input type="checkbox"
                                 class=""
                                 autocomplete="off" 
@@ -90,7 +90,7 @@
                             </span>
                         </label> 
 
-                        <label class="mb-2 container relative block cursor-pointer hover:underline">
+                        <label class="mb-4 container relative block cursor-pointer hover:underline">
                             <input type="checkbox"
                                 class=""
                                 autocomplete="off" 
@@ -138,7 +138,7 @@
                             </label> 
                         </div>
 
-                        <label class="mb-8 container relative block cursor-pointer hover:underline">
+                        <label class="mb-6 container relative block cursor-pointer hover:underline">
                             <input type="checkbox"
                                 class=""
                                 autocomplete="off" 
@@ -150,7 +150,7 @@
                             </span>
                         </label> 
 
-                        <label class="mb-2 container relative block cursor-pointer hover:underline">
+                        <label class="mb-4 container relative block cursor-pointer hover:underline">
                             <input type="checkbox"
                                 class=""
                                 autocomplete="off" 
@@ -224,7 +224,7 @@
                             </span>
                         </label> 
 
-                        <label class="mb-2 container relative block cursor-pointer hover:underline">
+                        <label class="mb-4 container relative block cursor-pointer hover:underline">
                             <input type="checkbox"
                                 class=""
                                 autocomplete="off" 
