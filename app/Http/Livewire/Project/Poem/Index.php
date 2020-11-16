@@ -13,7 +13,7 @@ class Index extends Component
     public $poemDefinition;
     public $poems;
     public $poemIds;
-    public $perPage = 18;
+    public $perPage = 15;
     public $titleMeta = 84;
 
     public $filterQuery;
@@ -38,7 +38,7 @@ class Index extends Component
     public function mount()
     {
         $this->poemDefinition = ResourceType::find(3);
-        $this->filterOrderable = $this->poemDefinition->attributes->where('visibility', 1)->first();
+        $this->filterOrderable = $this->poemDefinition->attributes->firstWhere('id', 84);
     }
 
     public function loadResources()
@@ -118,17 +118,10 @@ class Index extends Component
         $this->filterQuery = $query;
     }
 
-    public function updatePoemsByOrderable($orderableId)
+    public function updatePoemsByOrderable($orderableId, $orderableDirection)
     {
-        if ($this->filterOrderable) {
-            if ($this->filterOrderable->id == $orderableId) {
-                $this->filterOrderableDirection = ('asc' == $this->filterOrderableDirection)
-                    ? 'desc'
-                    : 'asc';
-            } 
-        }
-        
         $this->filterOrderable = ResourceAttribute::find($orderableId);
+        $this->filterOrderableDirection = $orderableDirection;
     }
     
     public function updatePoemsByBirds(array $activeBirds)

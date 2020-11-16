@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Project\Poem;
 
+use App\ResourceAttribute;
 use App\ResourceType;
 use Livewire\Component;
 
@@ -20,6 +21,7 @@ class Filter extends Component
 
     public $orderables;
     public $orderable;
+    public $orderableDirection;
 
     public $filterables;
     public $activeFilterables;
@@ -47,7 +49,8 @@ class Filter extends Component
         $this->activeBirdCategories = collect([]);
 
         $this->orderables = $this->poemDefinition->attributes->where('visibility', 1);
-        $this->orderable = $this->orderables->first()->id ?? null;
+        $this->orderable = $this->poemDefinition->attributes->firstWhere('id', 84);
+        $this->orderableDirection = 'asc';
 
         $this->filterables = $this->orderables->where('options');
         $this->activeFilterables = collect([]);
@@ -59,10 +62,18 @@ class Filter extends Component
         $this->emit('poem.filter:query-updated', $this->query);        
     }
 
-    public function orderableClicked()
+    public function orderableClicked($orderableId)
     {
+        if ($this->orderable->id == $orderableId) {
+            $this->orderableDirection = ('asc' == $this->orderableDirection)
+                ? 'desc'
+                : 'asc';
+        } 
+
+        $this->orderable = ResourceAttribute::find($orderableId);
+        
         $this->emit('poem.filter:updated');
-        $this->emit('poem.filter:orderable-updated', $this->orderable);
+        $this->emit('poem.filter:orderable-updated', $orderableId, $this->orderableDirection);
     }
 
     public function filterByAttribute($attributeId, $optionValues)

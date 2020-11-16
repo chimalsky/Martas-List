@@ -14,6 +14,7 @@
     </article> 
     @endforeach
 
+
     @if ($readyToLoad)
         @if ($poems->count() > $perPage)
         <div class="w-full">

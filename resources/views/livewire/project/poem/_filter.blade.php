@@ -13,7 +13,7 @@
             @if ($loop->index < 2)
                 <label class="pr-4 cursor-pointer">
                     <input type="radio" name="order" class="" value="{{ $orderable->id }}" 
-                        wire:model="orderable" wire:click="orderableClicked({{ $orderable->id }})"
+                        wire:click="orderableClicked({{ $orderable->id }})"
                         
                         /> 
                     <span class="mr-4">{{ $orderable->key }}</span>

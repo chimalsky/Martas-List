@@ -18,6 +18,7 @@ class LoadMore extends Component
     public $loadMore;
 
     public $filterOrderable;
+    public $filterOrderableDirection;
 
     public $orderablesAndPoems;
 
@@ -41,6 +42,7 @@ class LoadMore extends Component
 
         // 84 = first-line resource-attribute id
         $this->filterOrderable = $this->poemDefinition->attributes->firstWhere('id', 84);
+        $this->filterOrderableDirection = 'asc';
     }
 
     public function refreshPoemIds($poemIds = [])
@@ -53,9 +55,10 @@ class LoadMore extends Component
         $this->loadMore = true;
     }
 
-    public function orderableUpdated($orderableId)
+    public function orderableUpdated($orderableId, $orderableDirection)
     {
         $this->filterOrderable = ResourceAttribute::find($orderableId);
+        $this->filterOrderableDirection = $orderableDirection;
     }
 
     public function getPoemsPaginatedProperty()
@@ -63,6 +66,7 @@ class LoadMore extends Component
         return $this->poemDefinition->resources()
             ->withQueryableMetaValue($this->filterOrderable->id)
             ->whereIn('id', $this->poemIds ?? [])
+            ->orderBy('queryable_meta_value', $this->filterOrderableDirection)
             ->paginate($this->perPage, ['*'], null, $this->page);
     }
 
