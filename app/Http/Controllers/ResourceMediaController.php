@@ -41,6 +41,7 @@ class ResourceMediaController extends Controller
         $request->validate([
             'name' => 'nullable|string|max:255',
             'media' => 'required|file',
+            'collection' => 'nullable',
             'date' => 'nullable|date',
             'time' => 'nullable',
             'location' => 'nullable|string|max:255',
@@ -51,7 +52,7 @@ class ResourceMediaController extends Controller
         
         $media = $resource->addMediaFromRequest('media')
             ->usingName($request->name ?? 'unnamed')
-            ->toMediaCollection();
+            ->toMediaCollection($request->collection ?? 'default');
         
         $media->date = $request->date;
         $media->time = $request->time;

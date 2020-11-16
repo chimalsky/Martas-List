@@ -91,7 +91,12 @@
 
             @include('resource.media.form')
 
-            <footer class="py-4">
+            <label>
+                <input type="checkbox" name="collection" value="secondary" />
+                Is Secondary
+            </label>
+
+            <footer class="py-4 mt-4">
                 <button class="btn btn-hollow">
                     Add media to {{ $resource->name }} 
                 </button>
@@ -105,7 +110,63 @@
             {{ $resource->name }} has {{ $resource->getMedia()->count() }} media
         </h1>
 
-        @foreach ($resource->getMedia() as $medium) 
+        @foreach ($resource->getMedia('default') as $medium) 
+            <article class="w-full md:w-1/2">
+                <div class="border border-1 border-gray-600 p-4">
+                    {{ html()->modelForm($medium, 'PUT', route('resource.media.update', 
+                        [
+                            'resource' => $resource,
+                            'medium' => $medium->id
+                        ]
+                        ))->open()
+                    }}
+                                                
+                        <section class="flex flex-wrap">
+                            <label class="w-full my-2">
+                                Name
+                                {{ html()->text('name')->class(['form-input']) }}
+                            </label>
+                        </section>
+
+                        <button class="btn btn-hollow">
+                            Save Changes
+                        </button>
+
+                    {{ html()->closeModelForm() }}
+
+                    {{ html()->modelForm($medium, 'DELETE', route('resource.media.destroy', [
+                        'resource' => $resource, 
+                        'medium' => $medium
+                    ] ))->open() }}
+                        <div class="flex mr-4 my-6">
+                            <button class="btn btn-red">
+                                Delete
+                            </button>
+                        </div>
+                    {{ html()->closeModelForm() }}
+
+                    
+
+                    @if (Str::contains($medium->mime_type, 'image'))
+                        <img src="{{ $medium->getUrl('thumb') }}" />
+                    @elseif (Str::contains($medium->mime_type, 'audio'))
+                        <audio
+                            controls
+                            src="{{ $medium->getUrl() }}">
+                                Your browser does not support the
+                                <code>audio</code> element.
+                        </audio>
+                    @else 
+                        <a href="{{ $medium->getUrl() }}"" download> download </a>
+                    @endif
+                </div>
+            </article>
+        @endforeach
+
+        @foreach ($resource->getMedia('secondary') as $medium) 
+            <h1 class="w-full mb-4 font-bold text-red-600 text-2xl">
+                Secondary Media
+            </h1>
             <article class="w-full md:w-1/2">
                 <div class="border border-1 border-gray-600 p-4">
                     {{ html()->modelForm($medium, 'PUT', route('resource.media.update', 
