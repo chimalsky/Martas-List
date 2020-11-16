@@ -42,11 +42,11 @@
 @section('content')
 
 <main class="relative max-w-3xl mx-auto flex flex-wrap pl-40">
-    <section class="w-1/2">
-        <img class="w-64 object-scale-down" src="{{ asset('img/dale.jpg') }}" />
+    <section class="w-2/5">
+        <img class="w-64 mt-8 object-scale-down" src="{{ asset('img/dale.jpg') }}" />
     </section>
 
-    <section class="w-1/2">
+    <section class="w-3/5">
         <h1 class="text-3xl italic">
             Bird Lists 
         </h1>
@@ -70,8 +70,8 @@
                                 @endphp
 
                                 @if ($otherBirdMeta)
-                                    <li>
-                                        <span class="italic text-xm">
+                                    <li class="mb-4">
+                                        <span class="italic text-xm mr-2">
                                             {{ $attribute->name }}
                                         </span>
 
