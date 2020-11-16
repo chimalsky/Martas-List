@@ -78,7 +78,7 @@
                             MS References (coming soon) --
                         </h1>
 
-                        <label class="mb-2 container relative block cursor-pointer hover:underline">
+                        <label class="mb-8 container relative block cursor-pointer hover:underline">
                             <input type="checkbox"
                                 class=""
                                 autocomplete="off" 
@@ -102,7 +102,7 @@
                             </span>
                         </label> 
 
-                        <div class="flex flex-wrap pl-8">
+                        <div class="flex flex-wrap pl-8 mb-8">
                             <label class="mb-2 container relative cursor-pointer hover:underline w-1/3">
                                 <input type="checkbox"
                                     class=""
@@ -138,7 +138,7 @@
                             </label> 
                         </div>
 
-                        <label class="mb-2 container relative block cursor-pointer hover:underline">
+                        <label class="mb-8 container relative block cursor-pointer hover:underline">
                             <input type="checkbox"
                                 class=""
                                 autocomplete="off" 
@@ -162,8 +162,8 @@
                             </span>
                         </label> 
 
-                        <div class="pl-8">
-                            <label class="mb-2 container relative block cursor-pointer hover:underline">
+                        <div class="pl-8 mb-8">
+                            <label class="mb-4 container relative block cursor-pointer hover:underline">
                                 <input type="checkbox"
                                     class=""
                                     autocomplete="off" 
@@ -188,7 +188,7 @@
                             </label> 
                         </div>
 
-                        <label class="mb-2 container relative block cursor-pointer hover:underline">
+                        <label class="mb-8 container relative block cursor-pointer hover:underline">
                             <input type="checkbox"
                                 class=""
                                 autocomplete="off" 
@@ -200,7 +200,7 @@
                             </span>
                         </label> 
 
-                        <label class="mb-2 container relative block cursor-pointer hover:underline">
+                        <label class="mb-8 container relative block cursor-pointer hover:underline">
                             <input type="checkbox"
                                 class=""
                                 autocomplete="off" 
@@ -212,7 +212,7 @@
                             </span>
                         </label> 
 
-                        <label class="mb-2 container relative block cursor-pointer hover:underline">
+                        <label class="mb-8 container relative block cursor-pointer hover:underline">
                             <input type="checkbox"
                                 class=""
                                 autocomplete="off" 
@@ -236,8 +236,8 @@
                             </span>
                         </label> 
 
-                        <div class="pl-8">
-                            <label class="mb-2 container relative block cursor-pointer hover:underline">
+                        <div class="pl-8 mb-8">
+                            <label class="mb-4 container relative block cursor-pointer hover:underline">
                                 <input type="checkbox"
                                     class=""
                                     autocomplete="off" 
@@ -249,7 +249,7 @@
                                 </span>
                             </label> 
 
-                            <label class="mb-2 container relative block cursor-pointer hover:underline">
+                            <label class="mb-4 container relative block cursor-pointer hover:underline">
                                 <input type="checkbox"
                                     class=""
                                     autocomplete="off" 
