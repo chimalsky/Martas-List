@@ -4,7 +4,7 @@
             Curate by--
         </h1>
 
-        <ul class="flex items-center">
+        <ul class="flex items-center mr-24">
             <li wire:click="$set('index', 0)" class="cursor-pointer @if($index === 0) underline @endif">
                 Dickinson's Birds
             </li>
@@ -16,7 +16,7 @@
             </li>
         </ul>
 
-        <button class="float-right ml-40" @click="open = false">
+        <button class="float-right" @click="open = false">
             <x-heroicon-o-x class="w-5" />
         </button>
     </header>
