@@ -62,28 +62,15 @@
                 </a>
 
                 <div class="text-center mt-4">
-                    <header class="font-bold">
+                    <header class="font-bold mb-1">
                         {{ $firstline }}
                     </header>
 
-                    <p>
-                        <!-- year of composition -->
-                        {{ optional($poem->firstMetaByAttribute(138))->value }},
-                        <!-- season of composition -->
-                        {{ optional($poem->firstMetaByAttribute(131))->value }}
-                    </p>
-                    <p>
-                        <!-- medium -->
-                        {{ optional($poem->firstMetaByAttribute(142))->value }}.
-                        <!-- mnuscript state --> 
-                        {{ optional($poem->firstMetaByAttribute(89))->value }}.
-                    </p>
-                    <p>
-                        <!-- setting -->
-                        {{ optional($poem->firstMetaByAttribute(103))->value }}
-                        <!-- ciculation -->
-                        {{ optional($poem->firstMetaByAttribute(113))->value }}
-                    </p>
+                    @foreach ($poem->metaByAttribute(597)->pluck('value') as $line)
+                        <p>
+                            {{ $line }}
+                        </p>
+                    @endforeach
                 </div>
             </article> 
         @endforeach
