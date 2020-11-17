@@ -6,7 +6,7 @@
 
         <ul class="flex items-center">
             <li wire:click="$set('index', 0)" class="cursor-pointer @if($index === 0) underline @endif">
-                Birds
+                Dickinson's Birds
             </li>
             <li wire:click="$set('index', 1)" class="ml-4 cursor-pointer @if($index === 1) underline @endif">
                 Seasonal
