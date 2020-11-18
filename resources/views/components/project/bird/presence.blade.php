@@ -31,20 +31,22 @@
     @endphp 
     
     <div {{ $attributes }}>
-        <span class="font-bold">
+        <p class="">
             @if ($century != 21)
                 {{ $century }}th.
             @else
                 {{ $century }}st.
             @endif
             Century
-        -</span> 
+        </p> 
         @if ($occurence)
-            {{ trim($occurence->value).$punctuation }}
+            <p class="italic">
+                {{ trim($occurence->value).$punctuation }}
+            </p>
         @endif
 
         @if ($presence)
-            <p class="text-right mt-2">
+            <p class="text-right mt-2 italic">
                 {{ $arrival }} - {{ $departure }}
             </p>
         @endif

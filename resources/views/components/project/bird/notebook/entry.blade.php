@@ -1,15 +1,22 @@
 @php
+    $noSmallCaps = $noSmallCaps ?? false;
     $words = explode(' ', $header);
 @endphp
 
 <div class="mb-12">
-    <header style="color: #B45F06" class="text-xs mb-6">
-        @foreach ($words as $word)
-        <span class="text-lg">
-            {{ strtoupper(substr($word, 0, 1)) }}</span>{{ strtoupper(substr($word, 1)) }}
-        @endforeach
+    <header style="color: #B45F06" class="text-lg mb-6">
+        @unless($noSmallCaps)
+            @foreach ($words as $word)
+            <span class="text-3xl">
+                {{ strtoupper(substr($word, 0, 1)) }}</span>{{ strtoupper(substr($word, 1)) }}
+            @endforeach
+        @else 
+            <span class="text-3xl">
+                {{ $header }}
+            </span>
+        @endunless
     </header>
-    <main class="pl-6 italic text-sm">
+    <main {{ $attributes->merge(['class' => "pl-6 text-sm italic"]) }}>
         @isset($data)
             {{ optional($data)->value ?? 'Unknown' }}
         @endisset 

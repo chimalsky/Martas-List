@@ -28,11 +28,13 @@
 
 <header class="mb-8 flex">
 
-    <div class="max-w-xs mx-auto">
-        @if ($poems->count())
-            <div class="block mt-2 text-center">
-                <p>
-                    Mentioned in {{ $poems->count() }} 
+    <div class="mx-auto">
+        <div class="grid grid-cols-2 gap-4">
+            <x-project.bird.xc :bird="$bird" class="col-span-1" />
+            
+            @isset ($birdCategory)
+                <div class="col-span-1 text-center">
+                    "{{ $birdCategory->name }}" appears in {{ $poems->count() }} 
                     <a href="#poems">
                         @if ($poems->count() === 1)
                             Poem
@@ -40,20 +42,10 @@
                             Poems
                         @endif
                     </a>
-                </p>
-            </div>
-        @endif
+                </div>
+            @endisset
+        </div>
 
-        @php 
-            $xc_citation = $bird->metaByAttribute(502)->first()->value;
-            $url = Str::afterLast($xc_citation, ' ');
-            $url = Str::beforeLast($url, '.');
-            $url = 'https://'.trim($url);
-        @endphp
-
-        <section class="mt-2">
-            <iframe src='{{ $url }}/embed' scrolling='no' frameborder='0' width='340' height='220'></iframe>
-        </section>
     </div>
 </header>
 
@@ -65,13 +57,58 @@
     $migrationMapLink = $bird->firstMetaByAttribute(506)
 @endphp
 
+<main class="text-center max-w-lg mx-auto">
+    <x-project.bird.notebook.entry header="Occurence in Amhrest & Connecticut Valley Mass.">
+        @isset ($nineteenthBird)
+            <x-project.bird.presence class="mb-4 text-lg" century="19" :bird="$nineteenthBird" />
+        @endisset 
+
+        @isset ($twentiethBird)
+            <x-project.bird.presence class="mb-4 text-lg" century="20" :bird="$twentiethBird" />
+        @endisset 
+        
+        @isset ($twentyfirstBird)
+            <x-project.bird.presence class="mb-4 text-lg" century="21" :bird="$twentyfirstBird" />
+        @endisset 
+
+    </x-project.bird.notebook.entry>
+
+    <x-project.bird.notebook.entry header="Habitat" class="text-lg" :data="$bird->firstMetaByAttribute(504)" />
+
+    <x-project.bird.notebook.entry header="Nest Materials" class="text-lg" :data="$bird->firstMetaByAttribute(505)" />
+
+    @php 
+        $fieldNotes = $nineteenthBird  
+            ? $nineteenthBird->firstMetaByAttribute(590)
+            : null;
+    @endphp
+    @if ($fieldNotes)
+    <x-project.bird.notebook.entry header="19th-20th Century Field Notes" class="text-lg" :noSmallCaps="true" :data="$fieldNotes">
+        <p class="text-right">
+            —H.L. Clark, 1887
+        </p>
+    </x-project.bird.notebook.entry>
+    @endif
+
+    <x-project.bird.notebook.entry header="21st Century Conservation Notes" :noSmallCaps="true" :data="$bird->firstMetaByAttribute(37)">
+        <p class="text-lg">
+            21stc. -- {{ optional($bird->firstMetaByAttribute(596))->value ?? 'Information Coming Soon' }}
+        </p>
+
+        <p class="mt-4">
+            (source: Audubon’s online Field Guide to North American Birds)
+        </p>
+    </x-project.bird.notebook.entry>
+</main>
+
+
 
 @if ($bird->category)
-<main class="relative hidden xl:block ml-48">
+<main class="relative hidden ml-48">
     <img src="{{ asset('img/bird-notebook.png') }}" />
     <section class="absolute inset-0 flex flex-wrap py-32 pr-48 pl-48">
         <div class="w-2/5 pr-18 overflow-auto" style="max-height: 80%;">
-            <x-project.bird.notebook.entry header="Occurence in Amhrest Connecticut & Valley Mass.">
+            <x-project.bird.notebook.entry header="Occurence in Amhrest & Connecticut Valley Mass.">
                 @isset ($nineteenthBird)
                     <x-project.bird.presence class="mb-4" century="19" :bird="$nineteenthBird" />
                 @endisset 
@@ -89,6 +126,8 @@
             <x-project.bird.notebook.entry header="Habitat" :data="$bird->firstMetaByAttribute(504)" />
 
             <x-project.bird.notebook.entry header="Nest Material" :data="$bird->firstMetaByAttribute(505)" />
+
+            
         </div>
 
 
@@ -185,7 +224,7 @@
 </main>
 @else
 
-<main class="block flex justify-center mt-16">
+<main class="hidden justify-center mt-16">
     <div class="max-w-xs text-center">
         <p class="text-2xl font-hairline">
             Habitat 
