@@ -28,5 +28,7 @@
             </article>
         @endforeach
     </main>
+    
+    <x-project.poem.state />
 </section>
 @endsection
