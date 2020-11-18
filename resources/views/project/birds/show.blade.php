@@ -92,7 +92,7 @@
 
     <x-project.bird.notebook.entry header="21st Century Conservation Notes" :noSmallCaps="true" :data="$bird->firstMetaByAttribute(37)">
         <p class="text-lg">
-            21stc. -- {{ optional($bird->firstMetaByAttribute(596))->value ?? 'Information Coming Soon' }}
+            {{ optional($bird->firstMetaByAttribute(596))->value ?? 'Information Coming Soon' }}
         </p>
 
         <p class="mt-4">
