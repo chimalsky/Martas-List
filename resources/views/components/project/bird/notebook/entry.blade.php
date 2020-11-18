@@ -4,14 +4,14 @@
 @endphp
 
 <div class="mb-12">
-    <header style="color: #B45F06" class="text-lg mb-6">
+    <header style="color: #B45F06" class="text-md mb-6">
         @unless($noSmallCaps)
             @foreach ($words as $word)
-            <span class="text-3xl">
+            <span class="text-2xl">
                 {{ strtoupper(substr($word, 0, 1)) }}</span>{{ strtoupper(substr($word, 1)) }}
             @endforeach
         @else 
-            <span class="text-3xl">
+            <span class="text-2xl">
                 {{ $header }}
             </span>
         @endunless
