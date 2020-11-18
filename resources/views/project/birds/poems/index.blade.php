@@ -13,17 +13,6 @@
 
 @section ('header-info')
     @include('project.birds._header')
-
-    @php 
-        $xc_citation = $bird->metaByAttribute(502)->first()->value;
-        $url = Str::afterLast($xc_citation, ' ');
-        $url = Str::beforeLast($url, '.');
-        $url = 'https://'.trim($url);
-    @endphp
-
-    <section class="flex justify-center mt-2">
-        <iframe src='{{ $url }}/embed' scrolling='no' frameborder='0' width='340' height='220'></iframe>
-    </section>
 @endsection
 
 @section('content')

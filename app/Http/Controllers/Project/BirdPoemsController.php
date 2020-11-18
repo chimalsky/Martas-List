@@ -28,6 +28,6 @@ class BirdPoemsController extends Controller
             $poems = collect([]);
         }
 
-        return view('project.birds.poems.index', compact('bird', 'poems'));
+        return view('project.birds.poems.index', compact('bird', 'poems', 'birdCategory'));
     }
 }

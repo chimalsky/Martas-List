@@ -24,3 +24,26 @@
         Further Data
     </a>
 </h1>
+
+@routeIsnt('project.birds.data')
+<header class="mb-8 flex">
+    <div class="mx-auto">
+        <div class="grid grid-cols-2 gap-4">
+            <x-project.bird.xc :bird="$bird" class="col-span-1" />
+            
+            @isset ($birdCategory)
+                <div class="col-span-1 text-center text-lg">
+                    "{{ $birdCategory->name }}" appears in {{ $poems->count() }} 
+                    <a href="#poems">
+                        @if ($poems->count() === 1)
+                            Poem
+                        @else 
+                            Poems
+                        @endif
+                    </a>
+                </div>
+            @endisset
+        </div>
+    </div>
+</header>
+@endrouteIsnt

@@ -26,29 +26,6 @@
     </div>
 @endauth
 
-<header class="mb-8 flex">
-
-    <div class="mx-auto">
-        <div class="grid grid-cols-2 gap-4">
-            <x-project.bird.xc :bird="$bird" class="col-span-1" />
-            
-            @isset ($birdCategory)
-                <div class="col-span-1 text-center">
-                    "{{ $birdCategory->name }}" appears in {{ $poems->count() }} 
-                    <a href="#poems">
-                        @if ($poems->count() === 1)
-                            Poem
-                        @else 
-                            Poems
-                        @endif
-                    </a>
-                </div>
-            @endisset
-        </div>
-
-    </div>
-</header>
-
 @php
     $nineteenthBird = $bird->resources->firstWhere('resource_type_id', 8);
     $twentiethBird = $bird->resources->firstWhere('resource_type_id', 14);
