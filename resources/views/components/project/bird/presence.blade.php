@@ -31,7 +31,7 @@
     @endphp 
     
     <div {{ $attributes }}>
-        <p class="">
+        <p class="not-italic">
             @if ($century != 21)
                 {{ $century }}th.
             @else

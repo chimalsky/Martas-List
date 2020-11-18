@@ -57,7 +57,7 @@
     $migrationMapLink = $bird->firstMetaByAttribute(506)
 @endphp
 
-<main class="text-center max-w-lg mx-auto">
+<main class="text-center max-w-sm mx-auto">
     <x-project.bird.notebook.entry header="Occurence in Amhrest & Connecticut Valley Mass.">
         @isset ($nineteenthBird)
             <x-project.bird.presence class="mb-4 text-lg" century="19" :bird="$nineteenthBird" />
