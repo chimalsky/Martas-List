@@ -26,7 +26,7 @@
 </h1>
 
 @routeIsnt('project.birds.data')
-<header class="mb-8 flex">
+<header class="my-12 flex">
     <div class="mx-auto">
         <div class="grid grid-cols-2 gap-4">
             <x-project.bird.xc :bird="$bird" class="col-span-1" />
