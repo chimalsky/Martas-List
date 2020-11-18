@@ -26,6 +26,7 @@ Route::prefix('project')->name('project.')->namespace('Project')->group(function
     Route::post('/poems/get', 'PoemsController@index')->name('poems.indexAsync');
 
     Route::get('/poems/{poem}/affiliated', 'AffiliatedPoemsController')->name('affiliated.poems');
+    Route::get('/poems/{poem}/commentary', 'PoemCommentaryController')->name('poems.commentary');
 
     Route::get('/partials/poems', function() {
         $poems = App\Resource::where('resource_type_id', 3)

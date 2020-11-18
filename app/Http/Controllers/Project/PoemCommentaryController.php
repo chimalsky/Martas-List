@@ -6,7 +6,7 @@ use App\Resource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AffiliatedPoemsController extends Controller
+class PoemCommentaryController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -23,6 +23,6 @@ class AffiliatedPoemsController extends Controller
         $poems = $category->resources;
         $firstline = $poems->first()->firstMetaByAttribute(84)->value ?? $poems->first()->name;
 
-        return view('project.poems.affiliated', compact('category', 'poems', 'poem', 'firstline'));
+        return view('project.poems.commentary', compact('category', 'poem', 'firstline'));
     }
 }

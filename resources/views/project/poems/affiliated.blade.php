@@ -22,7 +22,7 @@
 <span>
     |
 </span>
-<a href="" class="text-gray-500">
+<a href="@route('project.poems.commentary', $poem)" class="text-gray-500">
     Commentary
 </a>
 
