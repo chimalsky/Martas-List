@@ -69,13 +69,13 @@
 
     <x-project.bird.notebook.entry header="21st Century Conservation Notes" :noSmallCaps="true" :data="$bird->firstMetaByAttribute(37)">
         <p class="text-lg">
-            {{ optional($bird->firstMetaByAttribute(596))->value ?? 'Information Coming Soon' }}
-        </p>
-
-        <p class="mt-4">
-            (source: Audubon’s online Field Guide to North American Birds)
+            {{ optional($bird->firstMetaByAttribute(596))->value.'*' ?? 'Information Coming Soon' }}
         </p>
     </x-project.bird.notebook.entry>
+
+    <p class="mt-4">
+        (*data from the online Audubon Guide to North American Birds <a href="https://www.audubon.org/birds">https://www.audubon.org/birds</a>)    
+    </p>
 </main>
 
 
