@@ -1,5 +1,5 @@
 <header class="text-gray-800 mb-4">
-    Manuscripts mentioning birds--
+    {{ $header }}
 </header>
 @foreach ($dickinsonsBirds as $birdC)
     <div class="border-l-4 border-red-400 pl-4 mb-2">

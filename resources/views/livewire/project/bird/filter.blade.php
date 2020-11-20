@@ -26,6 +26,30 @@
         @endif
     </section>
 
+    @if(optional($activeBirdCategories)->count())
+        <section class="mb-10">
+            <header class="text-gray-800 mb-4">
+                Bird Categories --
+            </header>
+            @foreach ($activeBirdCategories as $activeBirdCategory)
+                <div class="border-l-4 border-red-400 pl-4 mb-2">
+                    @php $birdC = \App\Project\DickinsonsBird::find($activeBirdCategory) @endphp
+
+                    <header class="font-bold text-gray-800" x-data="{expanded: false}">
+                        <span @click="expanded = !expanded">
+                            {{ $birdC->name }}
+                        </span>
+                        <span x-show="expanded">
+                            <button wire:click="$emitTo('project.bird.filter', 'activeBirdRemoved', {{ $birdC->id }})">
+                                <x-heroicon-o-x-circle class="w-4" />
+                            </button>
+                        </span>
+                    </header>
+                </div>
+            @endforeach
+        </section>
+    @endif 
+
     @if ($activeChronoScope == 'seasons')
         @if (optional($activeSeasons)->count())
             @php

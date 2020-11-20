@@ -14,12 +14,10 @@
     </article> 
     @endforeach
 
-
     @if ($readyToLoad)
         @if ($poems->count() > $perPage)
         <div class="w-full">
-            <livewire:project.poem.load-more wire:key="2" 
-                :poemIds="$poems->pluck('id')" :perPage="$perPage" :page="2" />
+            <livewire:project.poem.load-more wire:key="2" :poemIds="$poems->pluck('id')" :perPage="$perPage" :page="2" />
         </div>  
         @endif
     @endif 
@@ -36,7 +34,7 @@
                 Manuscripts 
             @endif
         @else 
-            No Manuscripts matched your curation
+            No Manuscript matches your curation
         @endif
     </header>
     @endif
@@ -52,7 +50,11 @@
 
     @if(optional($filterCategoryBirds)->count())
         <section class="mb-10">
-            <x-project.audit.dickinsons-birds :dickinsonsBirds="$filterCategoryBirds" />
+            <x-project.audit.dickinsons-birds :dickinsonsBirds="$filterCategoryBirds">
+                <x-slot name="header">
+                    Manuscripts mentioning Birds --
+                </x-slot>
+            </x-project.audit.dickinsons-birds>
         </section>
     @endif 
 

@@ -71,6 +71,10 @@
         <p class="text-lg">
             {{ optional($bird->firstMetaByAttribute(596))->value ?? 'Information Coming Soon' }}
         </p>
+
+        <p class="mt-4">
+            (source: Audubon’s online Field Guide to North American Birds)
+        </p>
     </x-project.bird.notebook.entry>
 </main>
 
