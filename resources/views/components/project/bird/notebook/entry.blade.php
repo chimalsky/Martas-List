@@ -16,7 +16,7 @@
             </span>
         @endunless
     </header>
-    <main {{ $attributes->merge(['class' => "pl-6 text-sm italic"]) }}>
+    <main {{ $attributes->merge(['class' => "text-sm italic"]) }}>
         @isset($data)
             {{ optional($data)->value ?? 'Unknown' }}
         @endisset 
