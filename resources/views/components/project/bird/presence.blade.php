@@ -46,7 +46,7 @@
         @endif
 
         @if ($presence)
-            <p class="text-right mt-2 italic">
+            <p class="text-center mt-2 italic">
                 {{ $arrival }} - {{ $departure }}
             </p>
         @endif

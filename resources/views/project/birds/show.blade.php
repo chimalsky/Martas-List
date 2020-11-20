@@ -35,17 +35,17 @@
 @endphp
 
 <main class="text-center max-w-sm mx-auto">
-    <x-project.bird.notebook.entry header="Occurence in Amhrest & Connecticut Valley Mass.">
+    <x-project.bird.notebook.entry header="Occurence in Amhrest & Connecticut Valley, Mass.">
         @isset ($nineteenthBird)
-            <x-project.bird.presence class="mb-4 text-lg" century="19" :bird="$nineteenthBird" />
+            <x-project.bird.presence class="mb-8 text-lg" century="19" :bird="$nineteenthBird" />
         @endisset 
 
         @isset ($twentiethBird)
-            <x-project.bird.presence class="mb-4 text-lg" century="20" :bird="$twentiethBird" />
+            <x-project.bird.presence class="mb-8 text-lg" century="20" :bird="$twentiethBird" />
         @endisset 
         
         @isset ($twentyfirstBird)
-            <x-project.bird.presence class="mb-4 text-lg" century="21" :bird="$twentyfirstBird" />
+            <x-project.bird.presence class="mb-8 text-lg" century="21" :bird="$twentyfirstBird" />
         @endisset 
 
     </x-project.bird.notebook.entry>
@@ -70,10 +70,6 @@
     <x-project.bird.notebook.entry header="21st Century Conservation Notes" :noSmallCaps="true" :data="$bird->firstMetaByAttribute(37)">
         <p class="text-lg">
             {{ optional($bird->firstMetaByAttribute(596))->value ?? 'Information Coming Soon' }}
-        </p>
-
-        <p class="mt-4">
-            (source: Audubon’s online Field Guide to North American Birds)
         </p>
     </x-project.bird.notebook.entry>
 </main>

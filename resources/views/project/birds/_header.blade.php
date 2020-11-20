@@ -28,24 +28,29 @@
 @routeIsnt('project.birds.data')
 <header class="my-12 flex">
     <div class="mx-auto">
-        <div class="grid grid-cols-2 gap-4">
-            <x-project.bird.xc :bird="$bird" class="col-span-1" />
-            
-            <div class="col-span-1 text-center text-lg">
+        @if ($birdCategory)
+            <div class="grid grid-cols-2 gap-4">
+                <x-project.bird.xc :bird="$bird" class="col-span-1" />
+                
+                <div class="col-span-1 text-center text-lg">
+                    "{{ $birdCategory->name }}" appears in {{ $poems->count() }} 
+                    <a href="#poems">
+                        @if ($poems->count() === 1)
+                            Poem
+                        @else 
+                            Poems
+                        @endif
+                    </a>
+            </div>
+        @else 
+            <div class="flex justify-center">
+                <x-project.bird.xc :bird="$bird" />
+            </div>
 
-            @if ($birdCategory)
-                "{{ $birdCategory->name }}" appears in {{ $poems->count() }} 
-                <a href="#poems">
-                    @if ($poems->count() === 1)
-                        Poem
-                    @else 
-                        Poems
-                    @endif
-                </a>
-            @else
-                "{{ $bird->name }}" is never mentioned by Dickinson
-            @endif
-        </div>
+            <p class="text-base mt-4">
+                "{{ $bird->name }}" is not named in Dickinson's writings.
+            </p>
+        @endif
     </div>
 </header>
 @endrouteIsnt
