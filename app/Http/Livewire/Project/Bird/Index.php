@@ -104,11 +104,13 @@ class Index extends Component
     public function updateByMonth(array $activeMonths)
     {
         $this->filterMonths = collect($activeMonths);
+        $this->filterChronoScope = 'months';
     }
 
     public function updateBySeason(array $activeSeasons)
     {
         $this->filterSeasons = collect($activeSeasons);
+        $this->filterChronoScope = 'seasons';
     }
 
     public function updateByChrono($century)
