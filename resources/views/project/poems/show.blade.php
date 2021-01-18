@@ -1,33 +1,29 @@
 @extends ('layouts.project-shifted')
 
 @section('header-anchor')
-<a href="@route('project.poems.index')" class=''>
-    <div>
-        <span class="text-4xl">P</span>OEM 
-
-        <span class="text-4xl">A</span>RCHIVE
-    </div>
+<a href="@route('project.poems.index')">
+    Poem Archive
 </a>
 @endsection 
 
 
 @section('header-info')
-<span style="color:#B45F06">
+<span class="font-bold" style="color:#B45F06">
     {{ $firstline }}
 </span> | 
 @if($poem->category) 
-    <a class="text-black" href="@route('project.affiliated.poems', $poem)">
+    <a href="@route('project.affiliated.poems', $poem)" style="color: #806102">
         Affiliated Manuscripts
     </a>
 @else 
-    <span class="text-gray-500">
+    <span class="text-gray-500 italic">
         Affiliated Manuscripts
     </span>
 @endif
 <span>
     |
 </span>
-<a href="@route('project.poems.commentary', $poem)" class="text-gray-500">
+<a href="@route('project.poems.commentary', $poem)" class="text-gray-500 italic">
     Commentary
 </a>
 @endsection
@@ -43,7 +39,7 @@
     </div>
 @endauth
 
-<section class="text-center max-w-2xl mx-auto">
+<section class="text-center max-w-2xl mx-auto mt-10">
     @foreach ($poem->metaByAttribute(597)->pluck('value') as $line)
         <p>
             {{ $line }}
@@ -73,7 +69,7 @@
         <h1 class="text-xl text-orange-700">
             <span class="italic">
                 {{ $firstline }}
-            </span> mentions unnamed birds.
+            </span> mentions Unnamed Birds.
         </h1>
 
         <div class="my-4 text-2xl">

@@ -12,14 +12,20 @@
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
+        <link rel="stylesheet" type="text/css" href="/css/trix.css">
         <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+        <link href="/css/caroline-styles.css" rel="stylesheet">
+
         @stack('stylesheets')
 
         @livewireStyles
 
         <script src="{{ mix('js/app.js') }}" defer="true"></script>
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;1,500&family=Cormorant+SC&family=Cormorant+Upright:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap&family=IM+Fell+Double+Pica&display=swap" rel="stylesheet">
 
-        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap&family=IM+Fell+Double+Pica&display=swap" rel="stylesheet"> 
         @stack('scripts')
     </head>
     <body data-controller="application" class="mt-8 px-2 flex flex-wrap" style="max-width: 1700px">
@@ -39,15 +45,17 @@
             <header class="">
                 <div class="flex justify-center space-x-4 max-w-xs mx-auto">
                     <img class="object-cover w-16 h-16 rounded-full" src="{{ asset('img/do-1.jpg') }}" />
-                    <img class="object-cover w-16 h-16 rounded-full" src="{{ asset('img/do-2.jpg') }}" />
+                    <a href="@route('project.digital-objects.index')">
+                        <img class="object-cover w-16 h-16 rounded-full" src="{{ asset('img/do-2.jpg') }}" />
+                    </a>
                     <img class="object-cover w-16 h-16 rounded-full" src="{{ asset('img/do-3.png') }}" />
                 </div>
 
-                <nav class="text-2xl text-center flex justify-center font-serif mt-16">
+                <nav class="text-4xl text-center flex justify-center mt-16" style="font-family: Cormorant SC;">
                     @yield('header-anchor')
                 </nav>
 
-                <div class="text-center text-4xl font-hairline mb-8 block">
+                <div class="text-center text-4xl block" style="font-family: Cormorant Upright; color:#806102;">
                     @yield('header-info')
                 </div>
             </header>

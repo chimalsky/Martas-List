@@ -1,4 +1,4 @@
-<div id="js-poems-filter" class="relative w-full bg-white">
+<div id="js-poems-filter" class="relative w-full" style="background-color: #F7F5E7">
     <header style="background: #B45F06" class="p-3 pl-4 italic shadow-xl flex items-center text-white">
         <h1 class="font-serif text-xl font-thin mr-4">
             Curate by--

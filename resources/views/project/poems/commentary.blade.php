@@ -2,22 +2,18 @@
 
 
 @section('header-anchor')
-<a href="@route('project.poems.index')" class=''>
-    <div>
-        <span class="text-4xl">P</span>OEM 
-
-        <span class="text-4xl">A</span>RCHIVE
-    </div>
+<a href="@route('project.poems.index')">
+    Poem Archive
 </a>
 @endsection 
 
 
 @section('header-info')
-<span style="color:#B45F06">
+<a href="@route('project.poems.show', $poem)">
     {{ $firstline }} 
-</span> | 
+</a> | 
 @if($poem->category) 
-    <a class="text-black" href="@route('project.affiliated.poems', $poem)">
+    <a class="" href="@route('project.affiliated.poems', $poem)">
         Affiliated Manuscripts
     </a>
 @else 

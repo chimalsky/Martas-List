@@ -1,12 +1,8 @@
 @extends ('layouts.project-shifted')
 
 @section('header-anchor')
-<a href="@route('project.birds.index')" class=''>
-    <div>
-        <span class="text-4xl">B</span>IRD 
-
-        <span class="text-4xl">A</span>RCHIVE
-    </div>
+<a href="@route('project.birds.index')">
+    Bird Archive
 </a>
 @endsection 
 

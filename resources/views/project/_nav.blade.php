@@ -21,7 +21,8 @@
         x-transition:leave="transition ease-in duration-300" 
         x-transition:leave-start="transform opacity-100 scale-100" 
         x-transition:leave-end="transform opacity-0 scale-95" 
-        class="origin-top-left absolute left-0 w-56 rounded-md shadow-2xl flex-1 z-50">
+        class="origin-top-left absolute left-0 rounded-md shadow-2xl flex-1 z-50"
+        style="width: 24rem">
         <div class="rounded-md bg-white shadow-xs">
         <div class="py-1">
             @include('project._nav-items')

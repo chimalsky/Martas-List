@@ -8,6 +8,55 @@
         </div>
     </div>
 
+    @if (optional($filterFilterables)->count() || optional($filterCategoryBirds)->count())
+        <header class="w-full grid grid-cols-4 gap-2 mb-10">
+            @if (optional($filterCategoryBirds)->count())
+                <div class="text-xl col-span-2">
+                    <p class="text-gray-800">
+                        Dickinson's Birds
+                    </p>
+                    <ul>
+                        @foreach ($filterCategoryBirds as $birdCategory)
+                            <li class="text-black inline-block py-1 px-2 m-1" style="background-color: #F7F5E7">
+                                {{ $birdCategory->name }}
+
+                                <button wire:click="$emitTo('project.poem.filter', 'activeBirdRemoved', {{ $birdCategory->id }})">
+                                    <x-heroicon-o-x-circle class="w-4" />
+                                </button>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @if (optional($filterFilterables)->count())
+                @foreach ($filterFilterables as $filterable)
+                    @php
+                        $activeValues = $filterable['activeValues'];
+                        $filterableAttribute = \App\ResourceAttribute::find($filterable['id']);
+                    @endphp
+                    <div class="text-xl col-span-2">
+                        <p class="text-gray-800">
+                            {{ $filterableAttribute->name }}
+                        </p>
+
+                        <ul>
+                            @foreach($activeValues as $value)
+                                <li class="text-black inline-block py-1 px-4" style="background-color: #F7F5E7">
+                                    {{ $value }}
+
+                                    <button wire:click="$emitTo('project.filterable-attribute', 'activeAttributeRemoved', '{{ $filterableAttribute->id }}', '{{ $value }}' )">
+                                        <x-heroicon-o-x-circle class="w-4" />
+                                    </button>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endforeach
+            @endif
+        </header>
+    @endif
+
     @foreach (collect($poems)->take($perPage) as $poem)
     <article class="pb-32 px-4 w-full lg:w-1/2 xl:w-1/3">
         @include('project.poems._single', ['poem' => $poem])

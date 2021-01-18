@@ -212,9 +212,14 @@ class Index extends Component
                 ->filter(function($connection) use ($filterMonths) {
                     $bird = $connection->otherBird;
 
-                    $presence = $bird->presenceMeta->value;
+                    $stints = collect(explode(';', $bird->presenceMeta->value));
 
-                    $months = collect(array_map('trim', explode(',', $presence)));
+                    $months = $stints->map(function($stint) {
+                        return collect(explode(',', $stint))
+                            ->map(function($month) { 
+                                return (int) $month; 
+                            });
+                        })->flatten();
 
                     foreach ($filterMonths as $month) {
                         $month = MonthEnum::getConstant($month);

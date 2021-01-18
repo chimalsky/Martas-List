@@ -48,6 +48,10 @@ Route::prefix('project')->name('project.')->namespace('Project')->group(function
     Route::get('/birds/{bird}', 'BirdsController@show')->name('birds.show');
     Route::get('/birds/{bird}/poems', 'BirdPoemsController')->name('bird.poems');
     Route::get('/birds/{bird}/data', 'BirdsDataController')->name('birds.data');
+
+    Route::get('/digital-objects', 'DigitalObjects\IndexController')->name('digital-objects.index');
+
+    Route::get('/digital-object/birdring', 'DigitalObjects\BirdRingController')->name('digital-objects.birdring');
 });
 
 Route::group(['middleware' => 'auth'], function() {

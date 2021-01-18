@@ -2,30 +2,26 @@
 
 
 @section('header-anchor')
-<a href="@route('project.poems.index')" class=''>
-    <div>
-        <span class="text-4xl">P</span>OEM 
-
-        <span class="text-4xl">A</span>RCHIVE
-    </div>
+<a href="@route('project.poems.index')">
+    Poem Archive
 </a>
 @endsection 
 
 
 @section('header-info')
-<span style="color:#B45F06">
+<a href="@route('project.poems.show', $poem)">
     {{ $firstline }} 
-</span> | 
-<a class="text-black underline">
+</a> | 
+<a class="font-bold" style="color: #B45F06;">
     Affiliated Manuscripts
 </a>
 <span>
     |
 </span>
-<a href="@route('project.poems.commentary', $poem)" class="text-gray-500">
+<a href="@route('project.poems.commentary', $poem)" class="text-gray-500 italic">
     Commentary
 </a>
-
+    
 <x-project.poem.state />
 
 <x-project.archive-notes contentId="42072">
@@ -36,7 +32,7 @@
 
 
 <section class="block">
-    <header class="text-xl text-red-700 block">
+    <header class="text-xl blocko font-bold" style="color: #BF9000; font-family: Cormorant Garamond">
         Affiliated Manuscripts --
     </header>
 
@@ -47,16 +43,18 @@
                     <x-project.poem.image :poem="$poem" />
                 </a>
 
-                <div class="text-center mt-4">
-                    <header class="font-bold mb-1">
-                        {{ $firstline }}
-                    </header>
+                <div class="mt-4 flex justify-center">
+                    <div class="w-2/3 text-left">
+                        <header class="text-black mb-2" style="font-family: Cormorant Upright;">
+                            {{ $poem->firstMetaByAttribute(84)->value }}
+                        </header>
 
-                    @foreach ($poem->metaByAttribute(597)->pluck('value') as $line)
-                        <p>
-                            {{ $line }}
-                        </p>
-                    @endforeach
+                        @foreach ($poem->metaByAttribute(597)->pluck('value') as $line)
+                            <p style="font-family: Cormorant">
+                                {{ $line }}
+                            </p>
+                        @endforeach
+                    </div>
                 </div>
             </article> 
         @endforeach

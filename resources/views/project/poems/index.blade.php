@@ -1,12 +1,8 @@
 @extends ('layouts.project-shifted')
 
 @section('header-anchor')
-<a href="@route('project.poems.index')" class=''>
-    <div>
-        <span class="text-4xl">P</span>OEM 
-
-        <span class="text-4xl">A</span>RCHIVE
-    </div>
+<a href="@route('project.poems.index')">
+    Poem Archive
 </a>
 @endsection 
 
@@ -14,12 +10,9 @@
 
 <x-project.poem.state />
 
-<x-project.archive-notes contentId="42072">
+<x-project.archive-notes title="Poem" contentId="42072">
 </x-project.archive-notes>
 
-<x-notification.toaster on="poem.filter:updated">
-    updating
-</x-notification.toaster>
 @endsection
 
 @section('sticky-aside')

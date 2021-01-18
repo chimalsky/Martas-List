@@ -48988,12 +48988,14 @@ function bootstrap() {
   function splitText() {
     var source = document.querySelector('#js-transcription-source');
     var display = document.querySelector('#js-transcription-display');
-    var transcriptionText = source.innerText;
-    var splitText = transcriptionText.split("{/pb}");
+    var transcriptionNode = source.innerHTML;
+    var splitText = transcriptionNode.split("{/pb}");
     splitText.forEach(function (page, i) {
       var div = document.createElement('div');
-      div.innerText = page;
+      div.innerHTML = page;
       div.setAttribute('page-index', i);
+      div.classList.remove('hidden');
+      console.log(div);
       display.appendChild(div);
     });
     source.classList.add('hidden');
@@ -49011,8 +49013,7 @@ function bootstrap() {
     selectedText.classList.remove('hidden');
   }
 
-  Livewire.on('media-viewer:pageChanged', function (pageIndex) {
-    showPageByIndex(pageIndex);
+  Livewire.on('media-viewer:pageChanged', function (pageIndex) {//showPageByIndex(pageIndex);
   });
 
   window.xenoPower = function () {

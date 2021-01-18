@@ -25,27 +25,20 @@
     </nav>
 
     <main class="mt-4 flex flex-wrap">
-        <div id="js-transcription-source" class="h-0 w-0 opacity-0">
-            <!-- Manuscript Transcription -->
-            {!! optional($poem->meta->firstWhere('resource_attribute_id', 78))->value !!}
-        </div>
-
-        <div id="js-transcription-display" class="w-full md:w-1/3 lg:w-1/2 text-2xl md:pl-10">
-            @unless ($medias->count())
-                {!! optional($poem->meta->firstWhere('resource_attribute_id', 78))->value !!}
-            @endunless
+        <div id="js-transcription-display" class="w-full md:w-1/3 lg:w-1/2 text-2xl md:pl-10 italic" style="font-family: Alegreya; font-weight: 500;">
+            {!! $this->activePage !!}
         </div>
 
         <div class="w-full md:w-2/3 lg:w-1/2 md:pl-4">
             @if($placeholderMeta = $poem->meta()->firstWhere('resource_attribute_id', 149))
-                <section class="mb-4">
+                <section class="mb-4 italic">
                     @if ($placeholderMeta->value == 'placeholder for LOST or DESTROYED MS')
                         <div class="flex justify-center">
                             <img class="w-20 h-20" src="/img/lost-or-destroyed.png" />
                         </div>
                         
                         <p class="text-center">
-                            Original Manuscript lost or destroyed
+                            Original manuscript lost or destroyed
                         </p>
                     @elseif ($placeholderMeta->value == 'placeholder for MS we need to request digital image for')
                         <div class="flex justify-center">
@@ -53,7 +46,7 @@
                         </div>
                         
                         <p class="text-center">
-                            Manuscript Facsimile coming soon
+                            Manuscript facsimile coming soon
                         </p>
                     @endif
                 </section>

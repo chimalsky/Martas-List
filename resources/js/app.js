@@ -91,14 +91,17 @@ function bootstrap() {
         let source = document.querySelector('#js-transcription-source');
         let display = document.querySelector('#js-transcription-display');
 
-        let transcriptionText = source.innerText;
+        let transcriptionNode = source.innerHTML;
 
-        let splitText = transcriptionText.split("{/pb}");
+        let splitText = transcriptionNode.split("{/pb}");
 
         splitText.forEach(function(page, i) {
             let div = document.createElement('div');
-            div.innerText = page;
+            div.innerHTML = page;
             div.setAttribute('page-index', i)
+            div.classList.remove('hidden')
+
+            console.log(div)
 
             display.appendChild(div);
         });
@@ -121,7 +124,7 @@ function bootstrap() {
     }
 
     Livewire.on('media-viewer:pageChanged', pageIndex => {
-        showPageByIndex(pageIndex);
+        //showPageByIndex(pageIndex);
     });
         
     window.xenoPower = function() {

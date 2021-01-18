@@ -1,0 +1,35 @@
+[data-style='yellow'] h1 {
+    color: #b45f06;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.8rem;
+}
+
+[data-style='yellow'] [data-content] h1 {
+    color: #574b3c;
+    font-weight: bold;
+    font-size: 1.4rem;
+    font-style: normal;
+}
+
+[data-style='yellow'] [data-main] > div {
+    font-size: 1.3rem;
+    line-height: normal;
+}
+
+[data-style='yellow'] a {
+    text-decoration: underline;
+    color: darkslateblue;
+}
+
+
+[data-style='red'] h1 {
+    font-family: "Cormorant SC";
+    font-size: 1.8rem;
+    color: #403838;
+}
+
+[data-style='red'] > div {
+    font-family: 'Cormorant';
+    font-size: 1.3rem;
+}

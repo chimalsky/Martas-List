@@ -20,8 +20,8 @@ class PoemCommentaryController extends Controller
             ->find($poemId);
 
         $category = $poem->category;
-        $poems = $category->resources;
-        $firstline = $poems->first()->firstMetaByAttribute(84)->value ?? $poems->first()->name;
+        $poems = optional($category)->resources;
+        $firstline = $poem->firstMetaByAttribute(84)->value ?? $poems->first()->name;
 
         return view('project.poems.commentary', compact('category', 'poem', 'firstline'));
     }

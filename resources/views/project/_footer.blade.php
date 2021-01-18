@@ -1,3 +1,14 @@
+@routeIs('project.index')
+<div>
+    <i>Dickinson’s Birds</i> &#169; {{ carbon()->format('Y') }}, 
+    currently under Phase 1 development, 
+    is licensed under a Creative Commons Attribution 4.0 International License. 
+    Support for this project has been provided by the Office of Research Services and the Center for 
+    Textual Studies and Digital Humanities, Loyola University.
+</div>
+@endrouteIs
+
+@routeIsnt('project.index')
 <div class="text-lg">
     <p class="">
         Dickinson’s Birds: A Public Listening Project &#169; {{ carbon()->format('Y') }}
@@ -6,7 +17,7 @@
         Site under phase 1 development.
     </p>
     <p>
-        Edited by Marta Werner and Caroline McCraw and Abraham Kim
+        Curated by Marta Werner, Caroline McCraw, Abraham Kim, and Danielle Richards
     </p>
 </div>
 
@@ -27,3 +38,4 @@
         <a href="{{ route('login') }}" class="no-underline hover:underline text-sm font-normal text-teal-800 pr-6">{{ __('Login') }}</a>
     @endauth
 </div>
+@endrouteIsnt('project.index')

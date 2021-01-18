@@ -20,13 +20,14 @@
         $punctuation = '.';
 
         if ($presence) {
-            $presence = collect(explode(',', $presence->value));
-            $presence = $presence->map(function($month) { return (int) $month; });
+            $stints = collect(explode(';', $presence->value));
 
-            $arrival = date("F", mktime(0, 0, 0, $presence->first(), 1));
-            $departure = date("F", mktime(0, 0, 0, $presence->last(), 1));
-
-            $punctuation = ';';
+            $stints = $stints->map(function($stint) {
+                return collect(explode(',', $stint))
+                    ->map(function($month) { 
+                        return (int) $month; 
+                    });
+                });
         }
     @endphp 
     
@@ -41,14 +42,20 @@
         </p> 
         @if ($occurence)
             <p class="italic">
-                {{ trim($occurence->value).$punctuation }}
+                {{ trim($occurence->value) }};
             </p>
         @endif
 
         @if ($presence)
-            <p class="text-center mt-2 italic">
-                {{ $arrival }} - {{ $departure }}
-            </p>
+            @foreach ($stints as $stint)
+                @php
+                    $arrival = date("F", mktime(0, 0, 0, $stint->first(), 1));
+                    $departure = date("F", mktime(0, 0, 0, $stint->last(), 1));
+                @endphp
+                <p class="text-center mt-2 italic">
+                    {{ $arrival }} - {{ $departure }}
+                </p>
+            @endforeach
         @endif
     </div>
 @endif

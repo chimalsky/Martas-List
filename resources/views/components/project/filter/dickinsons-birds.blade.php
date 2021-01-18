@@ -18,7 +18,7 @@
                     @unless (optional($activeBirdCategories)->contains($bird->id))
                         background: #F7F5E7;
                     @else
-                        background: #B45F06;
+                        background: #B45F06; 
                         color: white;
                     @endunless
                 ">
