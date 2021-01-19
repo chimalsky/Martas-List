@@ -37,19 +37,22 @@
                 <header class="text-xl mb-2">
                     Current Conservation Status
                 </header>
-                <main class="flex flex-wrap p-3 bg-yellow-100">
+                <main class="grid grid-cols-2 gap-3 mb-4">
                     @php
                         $conservationStates = [
                             'Low concern' => 'low concern',
+                            'Common bird in steep decline (STEEP DECLINE)' => 'Common bird in steep decline (STEEP DECLINE)',
+                            'Restricted Range (WATCH)' => 'Restricted Range (WATCH)',
                             'Extinct' => 'extinct',
-                            'Watch' => 'watch',
-                            'Unknown' => 'unknown',
-                            'Steep-decline' => 'steep decline'
+                            'Declining (WATCH)' => 'Declining (WATCH)',
+                            'IUCN Red List (NEAR THREATENED)' => 'IUCN Red List (NEAR THREATENED)',
+                            'Red watch list (WATCH)' => 'Red watch list (WATCH)',
+                            'ICUN Red List (LEAST CONCERN)' => 'ICUN Red List (LEAST CONCERN)'
                         ];
                     @endphp 
 
                     @foreach ($conservationStates as $key => $value)
-                        <label class="mb-2 container relative text-base cursor-pointer hover:underline">
+                        <label class="col-span-1 container relative text-base cursor-pointer hover:underline">
                             <input type="checkbox" wire:change="updateConservationState('{{ $value }}')"
                                 class=""
                                 autocomplete="off" />
