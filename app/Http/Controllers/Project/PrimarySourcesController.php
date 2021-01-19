@@ -17,7 +17,8 @@ class PrimarySourcesController extends Controller
     public function __invoke(Request $request)
     {
         $content = optional(ResourceMeta::find(42071))->value ?? 'No Content Yet';
+        $footnotes = optional(ResourceMeta::find(45231))->value ?? 'No Content Yet';
 
-        return view('project.primary-sources', compact('content'));
+        return view('project.primary-sources', compact('content', 'footnotes'));
     }
 }

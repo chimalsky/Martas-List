@@ -15,6 +15,7 @@
 [data-style='yellow'] [data-main] > div {
     font-size: 1.3rem;
     line-height: normal;
+    color: black;
 }
 
 [data-style='yellow'] a {

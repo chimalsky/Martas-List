@@ -47,7 +47,7 @@
                                     </div>
 
                                     @isset($footnotes)
-                                        <img src="/img/line.png" />
+                                        <x-project.section-break />
 
                                         <footer data-main data-footnotes class="text-base space-y-6">
                                             {!! $footnotes !!}
