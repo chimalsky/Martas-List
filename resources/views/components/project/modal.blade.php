@@ -52,7 +52,7 @@
     x-transition:leave-end="opacity-0"
     class="">
     <div class="fixed inset-0 overflow-y-auto">
-        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 text-center sm:block sm:p-0">
             <!--
             Background overlay, show/hide based on modal state.
 
@@ -82,7 +82,7 @@
             <div @click.away="open = false" 
                 class="inline-block float-right mr-8 align-bottom bg-white rounded-lg text-left 
                 overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle 
-                max-w-full sm:w-full md:max-w-lg pb-10" 
+                max-w-full sm:w-full md:max-w-lg pb-10" style="background: #F7F5E7;" 
                 role="dialog" aria-modal="true" aria-labelledby="modal-headline">
                 
                 {{ $slot }}
