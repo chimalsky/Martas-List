@@ -33,7 +33,9 @@
         @if ($birdCategory)
             <div class="">
                 <div class="inline-block align-middle">
-                    <img src="/img/binoculars.png" class="w-24 h-auto mx-auto" />
+                    <a href="@route('project.bird.poems', $bird)">
+                        <img src="/img/binoculars.png" class="w-24 h-auto mx-auto" />
+                    </a>
                 </div>
                 <div class="inline-block text-xl align-middle italic">
                     "{{ $birdCategory->name }}" appears in {{ $poems->count() }} 
