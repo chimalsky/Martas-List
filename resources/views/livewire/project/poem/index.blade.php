@@ -16,7 +16,7 @@
                         Dickinson's Birds
                     </p>
                     <ul>
-                        @foreach ($filterCategoryBirds as $birdCategory)
+                        @foreach ($filterCategoryBirds->sort() as $birdCategory)
                             <li class="text-black inline-block py-1 px-2 m-1 bg-gray-300 rounded">
                                 {{ $birdCategory->name }}
 
@@ -33,7 +33,7 @@
             @if (optional($filterFilterables)->count())
                 @foreach ($filterFilterables as $filterable)
                     @php
-                        $activeValues = $filterable['activeValues'];
+                        $activeValues = collect($filterable['activeValues']);
                         $filterableAttribute = \App\ResourceAttribute::find($filterable['id']);
                     @endphp
                     <div class="text-xl col-span-1">
@@ -42,7 +42,7 @@
                         </p>
 
                         <ul>
-                            @foreach($activeValues as $value)
+                            @foreach($activeValues->sort() as $value)
                                 <li class="text-black inline-block py-1 px-4" style="background-color: #F7F5E7">
                                     {{ $value }}
 
