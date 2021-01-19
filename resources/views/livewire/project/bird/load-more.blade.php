@@ -35,9 +35,7 @@
         ) {
             loadMoreButton.setAttribute('loading', true)
 
-            setTimeout(function() {
-                loadMoreButton.click()
-            }, 1200)
+            loadMoreButton.click()
         }
     })
 </script>
