@@ -42,8 +42,8 @@ class Index extends Component
         'bird.filter:month-updated' => 'updateByMonth',
         'bird.filter:season-updated' => 'updateBySeason',
         'bird.filter:chrono-updated' => 'updateByChrono',
-        'bird.filter:conservation-updated' => 'updateByConservationState'
-
+        'bird.filter:conservation-updated' => 'updateByConservationState',
+        'bird.filter:threatQuery-cleared' => 'updateThreatQuery'
     ];
 
     public function mount()
@@ -121,6 +121,11 @@ class Index extends Component
     public function updateByConservationState(array $activeConservationStates)
     {
         $this->filterConservationStates = collect($activeConservationStates);
+    }
+
+    public function updateThreatQuery()
+    {
+        $this->filterThreatQuery = '';
     }
 
     public function getPotentialBirdsProperty()
@@ -239,6 +244,11 @@ class Index extends Component
     public function getConservationStatesProperty()
     {
         return $this->filterConservationStates;
+    }
+
+    public function getThreatQueryProperty()
+    {
+        return $this->filterThreatQuery;
     }
 
     public function getPresenceConnections($query)

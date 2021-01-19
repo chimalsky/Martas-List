@@ -107,22 +107,34 @@
             </div>
         @endif
 
-        @if (optional($this->conservationStates)->count())
+        @if (optional($this->conservationStates)->count() || $this->threatQuery)
             <div class="text-xl col-span-1">
                 <p class="text-gray-800">
                     Conservation States--
                 </p>
-                <ul>
-                    @foreach ($this->conservationStates as $conservationState)
-                        <li class="text-black inline-block py-1 px-2 m-1 rounded" style="background-color: #F7F5E7">
-                            {{ $conservationState }}
+                @if (optional($this->conservationStates)->count())
+                    <ul>
+                        @foreach ($this->conservationStates as $conservationState)
+                            <li class="text-black inline-block py-1 px-2 m-1 rounded" style="background-color: #F7F5E7">
+                                {{ $conservationState }}
 
-                            <button wire:click="$emitTo('project.bird.filter', 'activeConservationStateRemoved', '{{ $conservationState }}')">
-                                <x-heroicon-o-x-circle class="w-4" />
-                            </button>
-                        </li>
-                    @endforeach
-                </ul>
+                                <button wire:click="$emitTo('project.bird.filter', 'activeConservationStateRemoved', '{{ $conservationState }}')">
+                                    <x-heroicon-o-x-circle class="w-4" />
+                                </button>
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
+
+                @if ($this->threatQuery)
+                    <div class="text-black inline-block py-1 px-2 m-1 rounded bg-gray-300">
+                        Threat Query-- <span class="font-medium">{{ $this->threatQuery }}</span>
+
+                        <button wire:click="$emitTo('project.bird.filter', 'activeThreatQueryCleared')">
+                            <x-heroicon-o-x-circle class="w-4" />
+                        </button>
+                    </div>
+                @endif
             </div>
         @endif
     </header>

@@ -65,9 +65,9 @@
                     @endforeach
                 </main>
 
-                <label>
+                <label class="text-lg">
                     Significant environmental threats 
-                    <input wire:model.debounce.300ms="threatQuery" class="border border-black" />
+                    <input wire:model.debounce.700ms="threatQuery" class="border-b border-gray-700 p-2 ml-2" />
                 </label>
             </div>
         </div>

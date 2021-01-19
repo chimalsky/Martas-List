@@ -41,7 +41,8 @@ class Filter extends Component
         'activeBirdRemoved' => 'updateSelectedBird',
         'activeSeasonRemoved' => 'updateSeason',
         'activeMonthRemoved' => 'updateMonth',
-        'activeConservationStateRemoved' => 'updateConservationState'
+        'activeConservationStateRemoved' => 'updateConservationState',
+        'activeThreatQueryCleared' => 'clearThreatQuery'
     ];
 
     public function mount()
@@ -139,6 +140,12 @@ class Filter extends Component
     public function chronoClicked()
     {
         $this->emit('bird.filter:chrono-updated', $this->activeChrono);
+    }
+
+    public function clearThreatQuery()
+    {
+        $this->threatQuery = '';
+        $this->emit('bird.filter:threatQuery-cleared');
     }
 
     public function resetBirds()
