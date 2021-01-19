@@ -53,7 +53,7 @@ class Index extends Component
 
     public function getPotentialPoemsProperty()
     {
-        return $this->poemDefinition->resources()
+        return $this->poemDefinition->resources()->select('id')
             ->with('transcription');
     }
 
@@ -162,12 +162,12 @@ class Index extends Component
             ? $this->poems->pluck('id')
             : [];
 
-        $this->orderablesAndPoems = collect($this->poems)
+        /*$this->orderablesAndPoems = collect($this->poems)
             ->take($this->perPage)
             ->groupBy('queryable_meta_value') 
             ->filter(function($group) {
                 return $group->count();
-            });
+            }); */
 
         $this->emit('poem.index:rendering', $this->poemIds);
 
