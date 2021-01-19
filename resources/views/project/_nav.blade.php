@@ -1,18 +1,24 @@
 <span x-data="{ open: false }" @keydown.window.escape="open = false" @click.away="open = false" class="relative inline-block text-left">
-    <span class="flex-1">
-        <span class="rounded-md flex items-center">
+    <span class="flex-1 flex justify-between space-x-2">
+        <div class="">
+            <a href="/">
+                <img src="{{ asset('img/bird-icon.png') }}" class="h-12 w-12 mb-1" />
+            </a>
+
             <button @click="open = !open" type="button" id="menu-toggle"
-            class="h-12 w-12 text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150">
-                <img src="{{ asset('img/hamburger_hover_combo.png') }}" />
+            class="h-10 w-10 ml-1 border border-transparent p-1 hover:border-gray-700">
+                <img src="{{ asset('img/hamburger.png') }}" />
             </button>
-            
-            <h1 class="ml-1" style="font-family: 'IM Fell Double Pica', serif; color: #707A5E; font-size: 22pt;">
+        </div>
+
+        <div>
+            <h1 class="" style="font-family: 'IM Fell Double Pica', serif; color: #707A5E; font-size: 22pt;">
                 Dickinson's Birds
             </h1>
-        </span>
-        <h2 class="block ml-3 font-serif italic" style="font-size: 19.5pt;">
-            A Public Listening Project
-        </h2>
+            <h2 class="block font-serif italic mt-1" style="font-size: 19.5pt;">
+                A Public Listening Project
+            </h2>
+        </div>
     </span>
     <span x-show="open" 
         x-transition:enter="transition ease-out duration-300" 
