@@ -9,15 +9,15 @@
     </div>
 
     @if (optional($filterFilterables)->count() || optional($filterCategoryBirds)->count())
-        <header class="w-full grid grid-cols-4 gap-2 mb-10">
+        <header class="w-full grid grid-cols-3 gap-2 mb-10">
             @if (optional($filterCategoryBirds)->count())
-                <div class="text-xl col-span-2">
+                <div class="text-xl col-span-1">
                     <p class="text-gray-800">
                         Dickinson's Birds
                     </p>
                     <ul>
                         @foreach ($filterCategoryBirds as $birdCategory)
-                            <li class="text-black inline-block py-1 px-2 m-1" style="background-color: #F7F5E7">
+                            <li class="text-black inline-block py-1 px-2 m-1 bg-gray-300 rounded">
                                 {{ $birdCategory->name }}
 
                                 <button wire:click="$emitTo('project.poem.filter', 'activeBirdRemoved', {{ $birdCategory->id }})">
@@ -29,13 +29,14 @@
                 </div>
             @endif
 
+
             @if (optional($filterFilterables)->count())
                 @foreach ($filterFilterables as $filterable)
                     @php
                         $activeValues = $filterable['activeValues'];
                         $filterableAttribute = \App\ResourceAttribute::find($filterable['id']);
                     @endphp
-                    <div class="text-xl col-span-2">
+                    <div class="text-xl col-span-1">
                         <p class="text-gray-800">
                             {{ $filterableAttribute->name }}
                         </p>

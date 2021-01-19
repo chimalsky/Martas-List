@@ -7,6 +7,106 @@
             <img src="{{ asset('img/bird-icon-round.png') }}" />
         </div>
     </div>
+
+    <header class="w-full grid grid-cols-3 gap-2 mb-10">
+        <div class="text-black rounded col-span-1">
+            <header class="p-2 m-1 bg-gray-300 text-center">
+                @switch ($this->filterChrono)
+                    @case(19)
+                        H. L. Clark, (1887)
+                        @break 
+                    @case(20)
+                        Aaron Clark Bagg and Samuel Atkins Eliot Jr., (1937)
+                        @break 
+                    @case(21)
+                        Mass Audubon - Birds of Massachusetts, (2020)
+                        @break
+                @endswitch
+            </header>
+
+            @php 
+                $centuryText = collect([19,20])->contains($this->filterChrono)
+                    ? $this->filterChrono.'th c'
+                    : $this->filterChrono.'st c';
+            @endphp
+
+            @if ($filterChronoScope == 'seasons')
+                @if (optional($filterSeasons)->count())
+                    @php
+                        $activeSeasonsSorted = $filterSeasons->mapWithKeys(function($s) {
+                            return [ $s => App\Project\SeasonEnum::getConstant($s) ];
+                        })->sort()->keys();
+                    @endphp 
+
+                    <section class="mb-10">
+                        <div class="text-xl col-span-1">
+                            <p class="text-gray-800">
+                                Seasons in Amhrest {{ $centuryText }}
+                            </p>
+
+                            <ul>
+                                @foreach($activeSeasonsSorted as $activeSeason)
+                                    <li class="text-black inline-block py-1 px-4" style="background-color: #F7F5E7">
+                                        {{ Str::title($activeSeason) }}
+
+                                        <button wire:click="$emitTo('project.bird.filter', 'activeSeasonRemoved', '{{ $activeSeason }}')">
+                                            <x-heroicon-o-x-circle class="w-4" />
+                                        </button>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </section>
+                @endif
+            @endif 
+
+            @if ($filterChronoScope == 'months')
+                @if(optional($filterMonths)->count())
+                    @php
+                        $activeMonthsSorted = $filterMonths->mapWithKeys(function($m) {
+                            return [ $m => App\Project\MonthEnum::getConstant($m) ];
+                        })->sort()->keys();
+                    @endphp 
+                    <section class="mb-10">
+                        <header class="text-gray-800">
+                            Months in Amhrest
+                        </header>
+                        
+                        <ul>
+                            @foreach ($activeMonthsSorted as $activeMonth)
+                                <li class="text-black inline-block py-1 px-4" style="background-color: #F7F5E7">
+                                    {{ Str::title($activeMonth) }}
+
+                                    <button wire:click="$emitTo('project.bird.filter', 'activeMonthRemoved', '{{ $activeMonth }}')">
+                                        <x-heroicon-o-x-circle class="w-4" />
+                                    </button>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </section>
+                @endif 
+            @endif
+        </div>
+
+        @if (optional($filterCategoryBirds)->count())
+            <div class="text-xl col-span-1">
+                <p class="text-gray-800">
+                    Dickinson's Birds
+                </p>
+                <ul>
+                    @foreach ($filterCategoryBirds as $birdCategory)
+                        <li class="text-black inline-block py-1 px-2 m-1 bg-gray-300 rounded">
+                            {{ $birdCategory->name }}
+
+                            <button wire:click="$emitTo('project.poem.filter', 'activeBirdRemoved', {{ $birdCategory->id }})">
+                                <x-heroicon-o-x-circle class="w-4" />
+                            </button>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+    </header>
     
     @foreach (collect($birds)->take($perPage) as $bird)
     <article class="pb-32 px-4 w-full lg:w-1/2 xl:w-1/3">

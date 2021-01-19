@@ -141,7 +141,9 @@ class Index extends Component
 
     public function getBirdsFilteredProperty()
     {
-        $birds = $this->potentialBirds;
+        $birds = $this->potentialBirds::select(
+            'id', 'resource_category_id', 'name','resource_type_id'
+        );
 
         if ($this->filterCategoryBirds && $this->filterCategoryBirds->count()) {
             $birds = $birds->whereIn('resource_category_id', $this->filterCategoryBirds->pluck('id'));
@@ -179,9 +181,9 @@ class Index extends Component
             });
         }
 
-        if (($this->filterChronoScope == 'seasons') && optional($this->filterSeasons)->count()) {
-            $presenceBirdsConnections = $this->getPresenceConnections($birds);
-            
+        $presenceBirdsConnections = $this->getPresenceConnections($birds);
+
+        if (($this->filterChronoScope == 'seasons') && optional($this->filterSeasons)->count()) {            
             $filterSeasons = $this->filterSeasons;
 
             $filteredBirdsByPresence = $presenceBirdsConnections
@@ -200,12 +202,8 @@ class Index extends Component
                         }
                     }
                 });
-
-            $birds = $birds->whereIn('id', $filteredBirdsByPresence->pluck('primary_bird_id'));
         } 
-        else if (($this->filterChronoScope == 'months') && optional($this->filterMonths)->count()) {
-            $presenceBirdsConnections = $this->getPresenceConnections($birds);
-            
+        else if (($this->filterChronoScope == 'months') && optional($this->filterMonths)->count()) {            
             $filterMonths = $this->filterMonths;
 
             $filteredBirdsByPresence = $presenceBirdsConnections
@@ -229,9 +227,11 @@ class Index extends Component
                         }
                     }
                 });
-
-            $birds = $birds->whereIn('id', $filteredBirdsByPresence->pluck('primary_bird_id'));
+        } else {
+            $filteredBirdsByPresence = $presenceBirdsConnections;
         }
+
+        $birds = $birds->whereIn('id', $filteredBirdsByPresence->pluck('primary_bird_id'));
 
         return $birds->orderBy('name');
     }
@@ -240,7 +240,8 @@ class Index extends Component
     {
         $chronoResourceType = $this->chronoResourceType;
 
-        return $query->with('chronoConnections')->get()->pluck('chronoConnections')
+        return $query->with('chronoConnections')->get()
+            ->pluck('chronoConnections')
             ->flatten()
             ->filter(function($connection) use ($chronoResourceType) { 
                 $bird = $connection->otherBird;
@@ -271,15 +272,11 @@ class Index extends Component
     {
         if ($this->readyToLoad) {
             $this->birds = $this->birdsFiltered->get();
+
+            $this->emit('bird.index:rendering', $this->birds->pluck('id'));
         } else {
             $this->birds = [];
         }
-
-        $this->birdIds = $this->birds 
-            ? $this->birds->pluck('id')
-            : [];
-
-        $this->emit('bird.index:rendering', $this->birdIds);
 
         return view('livewire.project.bird.index');
     }
