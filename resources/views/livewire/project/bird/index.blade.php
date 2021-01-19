@@ -10,7 +10,7 @@
 
     <header class="w-full grid grid-cols-3 gap-2 mb-10">
         <div class="text-black rounded col-span-1">
-            <header class="p-2 m-1 bg-gray-300 text-center">
+            <header class="p-2 m-1 text-center" style="background-color: #F7F5E7">
                 @switch ($this->filterChrono)
                     @case(19)
                         H. L. Clark, (1887)
@@ -98,7 +98,26 @@
                         <li class="text-black inline-block py-1 px-2 m-1 bg-gray-300 rounded">
                             {{ $birdCategory->name }}
 
-                            <button wire:click="$emitTo('project.poem.filter', 'activeBirdRemoved', {{ $birdCategory->id }})">
+                            <button wire:click="$emitTo('project.bird.filter', 'activeBirdRemoved', {{ $birdCategory->id }})">
+                                <x-heroicon-o-x-circle class="w-4" />
+                            </button>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        @if (optional($this->conservationStates)->count())
+            <div class="text-xl col-span-1">
+                <p class="text-gray-800">
+                    Conservation States--
+                </p>
+                <ul>
+                    @foreach ($this->conservationStates as $conservationState)
+                        <li class="text-black inline-block py-1 px-2 m-1 rounded" style="background-color: #F7F5E7">
+                            {{ $conservationState }}
+
+                            <button wire:click="$emitTo('project.bird.filter', 'activeConservationStateRemoved', '{{ $conservationState }}')">
                                 <x-heroicon-o-x-circle class="w-4" />
                             </button>
                         </li>

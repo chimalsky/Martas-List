@@ -40,7 +40,8 @@ class Filter extends Component
         'bird.index:rendering' => 'indexRendering',
         'activeBirdRemoved' => 'updateSelectedBird',
         'activeSeasonRemoved' => 'updateSeason',
-        'activeMonthRemoved' => 'updateMonth'
+        'activeMonthRemoved' => 'updateMonth',
+        'activeConservationStateRemoved' => 'updateConservationState'
     ];
 
     public function mount()

@@ -236,6 +236,11 @@ class Index extends Component
         return $birds->orderBy('name');
     }
 
+    public function getConservationStatesProperty()
+    {
+        return $this->filterConservationStates;
+    }
+
     public function getPresenceConnections($query)
     {
         $chronoResourceType = $this->chronoResourceType;
