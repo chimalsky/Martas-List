@@ -24,7 +24,15 @@
     
 <x-project.poem.state />
 
-<x-project.archive-notes contentId="42072">
+
+<x-project.archive-notes title="Poem">
+    <x-slot name="content">
+        @php
+            $content = optional(App\ResourceMeta::find(42072))->value ?? 'No content yet';
+        @endphp
+
+        {!! $content !!}
+    </x-slot>
 </x-project.archive-notes>
 @endsection
 
@@ -32,9 +40,9 @@
 
 
 <section class="block">
-    <header class="text-xl blocko font-bold" style="color: #BF9000; font-family: Cormorant Garamond">
+    <h1 style="color: #B45F06;" class="text-3xl font-bold mt-12 mb-10">
         Affiliated Manuscripts --
-    </header>
+    </h1>
 
     <main class="flex flex-wrap w-full pt-12">
         @foreach ($poems as $poem)

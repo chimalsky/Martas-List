@@ -8,7 +8,22 @@
 
 @section('header-info')
 
-<x-project.archive-notes title="Bird" contentId="42073">
+<x-project.archive-notes title="Bird">
+    <x-slot name="content">
+        @php
+            $content = optional(App\ResourceMeta::find(42073))->value ?? 'No content yet';
+        @endphp
+
+        {!! $content !!}
+    </x-slot>
+
+    <x-slot name="footnotes">
+        @php
+            $footnotes = optional(App\ResourceMeta::find(45230))->value ?? 'No content yet';
+        @endphp
+
+        {!! $footnotes !!}
+    </x-slot>
 </x-project.archive-notes>
 
 @endsection

@@ -2,12 +2,8 @@
 
 
 @section('header-anchor')
-<a href="@route('project.birds.index')" class=''>
-    <div>
-        <span class="text-4xl">B</span>IRD 
-
-        <span class="text-4xl">A</span>RCHIVE
-    </div>
+<a href="@route('project.birds.index')">
+    Bird Archive
 </a>
 @endsection 
 
@@ -17,10 +13,10 @@
 
 @section('content')
 <section id="poems" class="mt-10 lg:mt-24">
-    <h1 style="color: #B45F06;" class="text-2xl text-center">
+    <h1 style="color: #B45F06;" class="text-3xl font-bold text-center mb-10">
         Dickinson's <span class="italic">{{ Str::plural($bird->category->name) }}</psan>
     </h1>
-    
+
     <main class="mt-4 flex flex-wrap">
         @foreach ($poems as $poem)
             <article class="w-full md:w-1/2 lg:w-1/3 lg:px-2 pb-10 lg:pb-16">

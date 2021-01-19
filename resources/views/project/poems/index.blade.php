@@ -10,7 +10,14 @@
 
 <x-project.poem.state />
 
-<x-project.archive-notes title="Poem" contentId="42072">
+<x-project.archive-notes title="Poem">
+    <x-slot name="content">
+        @php
+            $content = optional(App\ResourceMeta::find(42072))->value ?? 'No content yet';
+        @endphp
+
+        {!! $content !!}
+    </x-slot>
 </x-project.archive-notes>
 
 @endsection
@@ -22,14 +29,4 @@
 
 @section ('content')
     <livewire:project.poem.index />
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            window.livewire.on('poems-list.end', function(page) {
-                let curationDetails = document.querySelector('#js-show-at-end-of-list');
-
-                //curationDetails.classList.remove('hidden');
-            })
-        });
-    </script>
 @endsection

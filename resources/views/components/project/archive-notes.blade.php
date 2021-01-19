@@ -41,13 +41,18 @@
                             <div data-content class="inset-0 px-2">
                                 <div class="h-full pl-6">
                                     {{ $slot }}
-
-                                    @php 
-                                        $content = optional(App\ResourceMeta::find($contentId))->value ?? 'No content yet';
-                                    @endphp
+                                    
                                     <div data-main class="pr-8">
                                         {!! $content !!}
                                     </div>
+
+                                    @isset($footnotes)
+                                        <img src="/img/line.png" />
+
+                                        <footer data-main data-footnotes class="text-base space-y-6">
+                                            {!! $footnotes !!}
+                                        </footer>
+                                    @endisset
                                 </div>
                             </div>
                             <!-- /End replace -->

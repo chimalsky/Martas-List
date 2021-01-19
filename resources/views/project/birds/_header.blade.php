@@ -31,19 +31,24 @@
 <header class="my-12 flex">
     <div class="mx-auto">
         @if ($birdCategory)
-            <div class="grid grid-cols-2 gap-4">
-                <x-project.bird.xc :bird="$bird" class="col-span-1" />
-                
-                <div class="col-span-1 text-center text-lg">
+            <div class="">
+                <div class="inline-block align-middle">
+                    <img src="/img/binoculars.png" class="w-24 h-auto mx-auto" />
+                </div>
+                <div class="inline-block text-xl align-middle italic">
                     "{{ $birdCategory->name }}" appears in {{ $poems->count() }} 
-                    <a href="#poems">
+                    <a href="@route('project.bird.poems', $bird)" class="underline text-blue-700">
                         @if ($poems->count() === 1)
                             Poem
                         @else 
                             Poems
                         @endif
                     </a>
+                </div>
             </div>
+
+            <x-project.bird.xc :bird="$bird" class="col-span-1" />
+
         @else 
             <div class="flex justify-center">
                 <x-project.bird.xc :bird="$bird" />

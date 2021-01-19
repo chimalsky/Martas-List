@@ -74,18 +74,18 @@
 
 <footer class="max-w-lg mx-auto mb-10">
     @if ($readyToLoad)
-    <header class="mb-10">
-        @if ($poems->count() > 0)
-            <span class="text-4xl text-gray-400">{{ $poems->count() }} </span>
-            @if ($poems->count() === 1) 
-                Manuscript
+        <header class="mb-10">
+            @if ($poems->count() > 0)
+                <span class="text-4xl text-gray-400">{{ $poems->count() }} </span>
+                @if ($poems->count() === 1) 
+                    Manuscript
+                @else 
+                    Manuscripts 
+                @endif
             @else 
-                Manuscripts 
+                No Manuscript matches your curation
             @endif
-        @else 
-            No Manuscript matches your curation
-        @endif
-    </header>
+        </header>
     @endif
 
     @if ($filterQuery)
