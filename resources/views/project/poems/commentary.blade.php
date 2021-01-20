@@ -41,9 +41,14 @@
         </div>
 
 
-        <div class="w-3/5 pl-32 pr-8 overflow-auto" style="max-height: 80%;">
+        <div class="w-3/5 h-auto pl-32 pr-8 overflow-hidden" style="max-height: 80%;">
+            <img src="{{ asset('img/owl.jpg') }}" class="object-contain" />
         </div>
     </section>
+
+    <aside class="text-center mt-12">
+        <i>"Snowy Owl"</i>, painting by Mabel Loomis Todd
+    </aside>
 </main>
 
 @endsection

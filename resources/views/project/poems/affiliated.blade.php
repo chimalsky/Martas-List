@@ -41,7 +41,7 @@
 
 <section class="block">
     <h1 style="color: #B45F06;" class="text-3xl font-bold mt-12 mb-10">
-        Affiliated Manuscripts --
+        Affiliated <span class="italic">Bird</span> Manuscripts --
     </h1>
 
     <main class="flex flex-wrap w-full pt-12">
@@ -69,5 +69,32 @@
     </main>
 </section>
 
+@if ($additionalAffiliations = $poem->metaByAttribute(611))
+    <section class="block">
+        <h1 style="color: #B45F06;" class="text-3xl font-bold mt-12 mb-4">
+            <span class="italic">Additional</span> Manuscripts Affiliations --
+        </h1>
+
+        <aside class="max-w-3xl text-lg italic text-center mb-16">
+            <x-project.section-break class="mx-auto max-w-lg" />
+
+            <i>Dickinson’s Birds</i> shelters digital surrogates of only those manuscripts by Dickinson that contain
+            allusions to birds. Consequently, on occasion a manuscript affiliated with a bird-poem constellation
+            but not containing a reference to birds is left out of the present gathering. 
+            <br/><br/>
+            
+            In these cases, the missing
+            manuscript or manuscripts are noted below.
+
+            <x-project.section-break class="mx-auto max-w-lg" />
+        </aside>
+
+        @foreach ($additionalAffiliations as $additional) 
+            <article class="mb-10 block text-xl max-w-3xl">
+                {{ $additional->value }}
+            </article> 
+        @endforeach
+    </section>
+@endif
 
 @endsection
