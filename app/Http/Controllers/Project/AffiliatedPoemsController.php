@@ -23,6 +23,8 @@ class AffiliatedPoemsController extends Controller
         $poems = $category->resources;
         $firstline = $poems->first()->firstMetaByAttribute(84)->value ?? $poems->first()->name;
 
-        return view('project.poems.affiliated', compact('category', 'poems', 'poem', 'firstline'));
+        $additionalAffiliations = $poem->metaByAttribute(611);
+
+        return view('project.poems.affiliated', compact('category', 'poems', 'poem', 'firstline', 'additionalAffiliations'));
     }
 }

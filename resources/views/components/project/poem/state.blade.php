@@ -1,4 +1,4 @@
-<section class="flex justify-center space-x-4 max-w-lg mx-auto mt-8 text-sm italic">
+<section {{ $attributes->merge(['class' => "flex justify-center space-x-4 max-w-lg mx-auto mt-8 text-sm italic"]) }}>
     <div class="inline-block">
         <img class="w-8 inline-block" src="{{ asset('img/lost-or-destroyed.png') }}" />
         <span>

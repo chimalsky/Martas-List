@@ -69,7 +69,13 @@
     </main>
 </section>
 
-@if ($additionalAffiliations = $poem->metaByAttribute(611))
+@if ($additionalAffiliations->count())
+    @php
+        function make_links_clickable($text){
+            return preg_replace('!(((f|ht)tp(s)?://)[-a-zA-Zа-яА-Я()0-9@:%_+.~#?&;//=]+)!i', '<a href="$1">$1</a>', $text);
+        }
+    @endphp
+
     <section class="block">
         <h1 style="color: #B45F06;" class="text-3xl font-bold mt-12 mb-4">
             <span class="italic">Additional</span> Manuscripts Affiliations --
@@ -90,10 +96,19 @@
         </aside>
 
         @foreach ($additionalAffiliations as $additional) 
-            <article class="mb-10 block text-xl max-w-3xl">
-                {{ $additional->value }}
+            <article class="mb-10 block text-xl max-w-3xl additional-affiliation">
+                @php 
+                    echo make_links_clickable($additional->value);
+                @endphp
             </article> 
         @endforeach
+
+        <style>
+            .additional-affiliation a {
+                text-decoration: underline;
+                color: blue;
+            }
+        </style>
     </section>
 @endif
 
