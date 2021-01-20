@@ -22,6 +22,7 @@ Route::prefix('dearchived')->name('dearchived.')->namespace('Dearchived')->group
 Route::prefix('project')->name('project.')->namespace('Project')->group(function () {
     Route::get('/', 'IndexController')->name('index');
     Route::get('/about', 'AboutController')->name('about');
+    Route::get('/coordinates', 'CoordinatesController')->name('coordinates');
     Route::get('/primary-sources', 'PrimarySourcesController')->name('primary-sources');
     Route::get('/poems', 'PoemsController@index')->name('poems.index');
     Route::get('/poems/{poem}', 'PoemsController@show')->name('poems.show');

@@ -4,7 +4,7 @@
 <a href="@route('project.about')" class="font-semibold  block px-4 py-2 leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">
     About the Project
 </a>
-<a href="@route('project.primary-sources')" class="font-semibold block px-4 py-2 leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">
+<a href="@route('project.coordinates')" class="font-semibold block px-4 py-2 leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">
     Reading Coordinates & Navigation Notes
 </a>
 <a href="@route('project.poems.index')" style="background-color: #F7F5E7" class="font-semibold block px-4 py-2 leading-5 text-gray-700 hover:underline focus:outline-none focus:bg-gray-100 focus:text-gray-900">
