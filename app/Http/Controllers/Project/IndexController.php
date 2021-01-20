@@ -9,6 +9,6 @@ class IndexController extends Controller
 {
     public function __invoke(Request $request)
     {
-        return redirect()->route('project.index');
+        return view('project.index');
     }
 }

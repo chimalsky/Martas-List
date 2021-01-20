@@ -10,7 +10,7 @@ class BrochureController extends Controller
 {
     public function index() 
     {
-        return view('brochure.index');
+        return redirect()->route('project.index');
     }
 
     public function show()
