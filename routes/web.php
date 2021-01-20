@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'Project\IndexController')->name('brochure.index');
+Route::get('/', function(Request $request) {
+    return redirect()->route('project.index');
+});
 
 Route::prefix('dearchived')->name('dearchived.')->namespace('Dearchived')->group(function () {
     Route::get('/dearchived', 'BirdController@show')->name('bird.show');
