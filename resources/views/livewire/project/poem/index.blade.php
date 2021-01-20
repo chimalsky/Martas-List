@@ -3,7 +3,7 @@
     <div wire:loading class="w-full flex justify-center">
         <div wire:loading class="animate-ping h-12 w-12 text-gray-700 hover:text-gray-500 focus:outline-none 
             focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 
-            transition ease-in-out duration-150">
+            transition ease-in-out duration-150 fixed bottom-0 mb-8">
             <img src="{{ asset('img/bird-icon-round.png') }}" />
         </div>
     </div>

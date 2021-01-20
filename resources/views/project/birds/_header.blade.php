@@ -1,4 +1,4 @@
-<h1 class="text-2xl md:text-3xl lg:text-4xl text-center">
+<h1 class="text-lg md:text-xl md:text-2xl lg:text-4xl text-center mb-10">
     <a href="@route('project.birds.show', $bird)"
         @routeIs('project.birds.show') class="font-bold" style="color: #B45F06;" @endrouteIs>
         {{ $bird->firstMetaByAttribute(500)->value ?? null }}
@@ -30,36 +30,22 @@
 @routeIsnt('project.birds.data')
 <header class="my-12 flex">
     <div class="mx-auto">
-        @if ($birdCategory)
-            <div class="">
-                <div class="inline-block align-middle">
-                    <a href="@route('project.bird.poems', $bird)">
-                        <img src="/img/binoculars.png" class="w-24 h-auto mx-auto" />
-                    </a>
-                </div>
-                <div class="inline-block text-xl align-middle italic">
-                    "{{ $birdCategory->name }}" appears in {{ $poems->count() }} 
-                    <a href="@route('project.bird.poems', $bird)" class="underline text-blue-700">
-                        @if ($poems->count() === 1)
-                            Poem
-                        @else 
-                            Poems
-                        @endif
-                    </a>
-                </div>
-            </div>
-
-            <x-project.bird.xc :bird="$bird" class="col-span-1" />
-
-        @else 
-            <div class="flex justify-center">
-                <x-project.bird.xc :bird="$bird" />
-            </div>
-
-            <p class="text-base mt-4 italic">
+        <div class="inline-block text-3xl align-middle italic mb-4">
+            @if ($birdCategory)
+                "{{ $birdCategory->name }}" appears in {{ $poems->count() }} 
+                <a href="@route('project.bird.poems', $bird)" class="underline text-blue-700">
+                    @if ($poems->count() === 1)
+                        Poem
+                    @else 
+                        Poems
+                    @endif
+                </a>
+            @else 
                 "{{ $bird->name }}" is not named in Dickinson's writings.
-            </p>
-        @endif
+            @endif 
+        </div>
+
+        <x-project.bird.xc :bird="$bird" class="col-span-1" />
     </div>
 </header>
 @endrouteIsnt
