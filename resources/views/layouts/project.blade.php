@@ -69,7 +69,6 @@
         </section>
 
         <footer class="max-w-2xl mx-auto pt-4 pb-12 mt-24 border-t-4 border-gray-300">
-            -
             @yield('footer')
             @include('project._footer')
         </footer>
