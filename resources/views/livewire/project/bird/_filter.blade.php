@@ -54,6 +54,9 @@
                     @foreach ($conservationStates as $key => $value)
                         <label class="col-span-1 container relative text-base cursor-pointer hover:underline">
                             <input type="checkbox" wire:change="updateConservationState('{{ $value }}')"
+                                @if (optional($this->activeConservationStates)->contains($value))
+                                    checked
+                                @endif
                                 class=""
                                 autocomplete="off" />
                             <span class="checkmark border-2 border-gray-500"></span>

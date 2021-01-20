@@ -49,7 +49,7 @@ class Index extends Component
     public function mount()
     {
         $this->birdDefinition = ResourceType::find(19);
-        $this->filterChrono = 19;
+        $this->filterChrono = 'null';
         $this->filterChronoScope = 'seasons';
         //$this->filterOrderable = $this->birdDefinition->attributes->where('visibility', 1)->first();
     }
@@ -135,6 +135,10 @@ class Index extends Component
 
     public function getChronoResourceTypeProperty()
     {
+        if (!$this->filterChrono || $this->filterChrono == 'null') {
+            return;
+        }
+
         $chronoDict = [
             '19' => ChronoBird::nineteenthCenturyResourceType(),
             '20' => ChronoBird::twentiethCenturyResourceType(),
@@ -188,55 +192,59 @@ class Index extends Component
 
         $presenceBirdsConnections = $this->getPresenceConnections($birds);
 
-        if (($this->filterChronoScope == 'seasons') && optional($this->filterSeasons)->count()) {            
-            $filterSeasons = $this->filterSeasons;
+        if ($presenceBirdsConnections) {
+            if (($this->filterChronoScope == 'seasons') && optional($this->filterSeasons)->count()) {            
+                $filterSeasons = $this->filterSeasons;
 
-            $filteredBirdsByPresence = $presenceBirdsConnections
-                ->filter(function($connection) use ($filterSeasons) {
-                    $bird = $connection->otherBird;
+                $filteredBirdsByPresence = $presenceBirdsConnections
+                    ->filter(function($connection) use ($filterSeasons) {
+                        $bird = $connection->otherBird;
 
-                    $presence = $bird->presenceMeta->value;
+                        $presence = $bird->presenceMeta->value;
 
-                    $months = collect(array_map('trim', explode(',', $presence)));
+                        $months = collect(array_map('trim', explode(',', $presence)));
 
-                    foreach ($filterSeasons as $season) {
-                        foreach (SeasonMonthsEnum::getConstant($season) as $month) {
+                        foreach ($filterSeasons as $season) {
+                            foreach (SeasonMonthsEnum::getConstant($season) as $month) {
+                                if ($months->contains($month)) {
+                                    return true;
+                                }
+                            }
+                        }
+                    });
+            } 
+            else if (($this->filterChronoScope == 'months') && optional($this->filterMonths)->count()) {            
+                $filterMonths = $this->filterMonths;
+
+                $filteredBirdsByPresence = $presenceBirdsConnections
+                    ->filter(function($connection) use ($filterMonths) {
+                        $bird = $connection->otherBird;
+
+                        $stints = collect(explode(';', $bird->presenceMeta->value));
+
+                        $months = $stints->map(function($stint) {
+                            return collect(explode(',', $stint))
+                                ->map(function($month) { 
+                                    return (int) $month; 
+                                });
+                            })->flatten();
+
+                        foreach ($filterMonths as $month) {
+                            $month = MonthEnum::getConstant($month);
+
                             if ($months->contains($month)) {
                                 return true;
                             }
                         }
-                    }
-                });
-        } 
-        else if (($this->filterChronoScope == 'months') && optional($this->filterMonths)->count()) {            
-            $filterMonths = $this->filterMonths;
-
-            $filteredBirdsByPresence = $presenceBirdsConnections
-                ->filter(function($connection) use ($filterMonths) {
-                    $bird = $connection->otherBird;
-
-                    $stints = collect(explode(';', $bird->presenceMeta->value));
-
-                    $months = $stints->map(function($stint) {
-                        return collect(explode(',', $stint))
-                            ->map(function($month) { 
-                                return (int) $month; 
-                            });
-                        })->flatten();
-
-                    foreach ($filterMonths as $month) {
-                        $month = MonthEnum::getConstant($month);
-
-                        if ($months->contains($month)) {
-                            return true;
-                        }
-                    }
-                });
-        } else {
-            $filteredBirdsByPresence = $presenceBirdsConnections;
+                    });
+            } else {
+                $filteredBirdsByPresence = $presenceBirdsConnections;
+            }
         }
 
-        $birds = $birds->whereIn('id', $filteredBirdsByPresence->pluck('primary_bird_id'));
+        $birds = $presenceBirdsConnections
+            ? $birds->whereIn('id', $filteredBirdsByPresence->pluck('primary_bird_id'))
+            : $birds;
 
         return $birds->orderBy('name');
     }
@@ -254,6 +262,10 @@ class Index extends Component
     public function getPresenceConnections($query)
     {
         $chronoResourceType = $this->chronoResourceType;
+
+        if (!$chronoResourceType) {
+            return;
+        }
 
         return $query->with('chronoConnections')->get()
             ->pluck('chronoConnections')
@@ -279,6 +291,9 @@ class Index extends Component
         $this->reset('filterQuery');
         $this->reset('filterMonths');
         $this->reset('filterSeasons');
+        $this->reset('filterChrono');
+        $this->filterConservationStates = collect([]);
+        $this->filterThreatQuery = '';
 
         $this->emit('bird.index:resetted');
     }

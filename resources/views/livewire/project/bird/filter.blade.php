@@ -14,7 +14,6 @@
     <input wire:model.debounce.700ms="query" placeholder="search by keyword..."
         class="block mb-4 border-4 border-gray-700 text-black rounded-full pl-4 p-2 placeholder-gray-800" />
 
-
     <section class="mb-10">
         @if ($renderCount)
             <span class="text-2xl text-gray-800">{{ $renderCount }} </span>

@@ -1,28 +1,30 @@
 <div>
-<main wire:init="loadResources" class="flex flex-wrap w-full pt-12">
-    <div wire:loading class="w-full flex justify-center">
-        <div wire:loading class="animate-ping h-12 w-12 text-gray-700 hover:text-gray-500 focus:outline-none 
-            focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 
-            transition ease-in-out duration-150">
-            <img src="{{ asset('img/bird-icon-round.png') }}" />
-        </div>
+<div wire:loading class="w-full flex justify-center">
+    <div wire:loading class="animate-ping h-12 w-12 text-gray-700 hover:text-gray-500 focus:outline-none 
+        focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 
+        transition ease-in-out duration-150 fixed bottom-0 mb-8">
+        <img src="{{ asset('img/bird-icon-round.png') }}" />
     </div>
+</div>
 
+<main wire:init="loadResources" class="flex flex-wrap w-full pt-12">
     <header class="w-full grid grid-cols-3 gap-2 mb-10">
         <div class="text-black rounded col-span-1">
-            <header class="p-2 m-1 text-center" style="background-color: #F7F5E7">
-                @switch ($this->filterChrono)
-                    @case(19)
-                        H. L. Clark, (1887)
-                        @break 
-                    @case(20)
-                        Aaron Clark Bagg and Samuel Atkins Eliot Jr., (1937)
-                        @break 
-                    @case(21)
-                        Mass Audubon - Birds of Massachusetts, (2020)
-                        @break
-                @endswitch
-            </header>
+            @if ($this->filterChrono && $this->filterChrono != 'null')
+                <header class="p-2 m-1 text-center" style="background-color: #F7F5E7">
+                    @switch ($this->filterChrono)
+                        @case(19)
+                            H. L. Clark, (1887)
+                            @break 
+                        @case(20)
+                            Aaron Clark Bagg and Samuel Atkins Eliot Jr., (1937)
+                            @break 
+                        @case(21)
+                            Mass Audubon - Birds of Massachusetts, (2020)
+                            @break
+                    @endswitch
+                </header>
+            @endif
 
             @php 
                 $centuryText = collect([19,20])->contains($this->filterChrono)
@@ -156,27 +158,27 @@
 
 <footer class="max-w-lg mx-auto mb-10">
     @if ($readyToLoad)
-    <header class="mb-10">
-        @if ($birds->count() > 0)
-            <span class="text-4xl text-gray-400">{{ $birds->count() }} </span>
-            @if ($birds->count() === 1) 
-                Bird
+        <header class="mb-10">
+            @if ($birds->count() > 0)
+                <span class="text-4xl text-gray-400">{{ $birds->count() }} </span>
+                @if ($birds->count() === 1) 
+                    Bird
+                @else 
+                    Birds 
+                @endif
             @else 
-                Birds 
+                No Bird matches your curation
             @endif
-        @else 
-            No Bird matches your curation
-        @endif
-    </header>
+        </header>
     @endif
 
     @if ($filterQuery)
-    <div class="block flex-1 mb-16">
-        <x-heroicon-o-search class="w-8 text-gray-500 inline-block align-middle" />
-        <p class="text-black text-3xl inline-block align-middle">
-            {{ $filterQuery }}
-        </p>
-    </div>
+        <div class="block flex-1 mb-16">
+            <x-heroicon-o-search class="w-8 text-gray-500 inline-block align-middle" />
+            <p class="text-black text-3xl inline-block align-middle">
+                {{ $filterQuery }}
+            </p>
+        </div>
     @endif
 
     @if(optional($filterCategoryBirds)->count())
@@ -190,7 +192,7 @@
     @endif 
 
 
-    @if (optional($filterFilterables)->count() || $filterQuery || optional($filterCategoryBirds)->count())
+    @if (optional($filterFilterables)->count() || $filterQuery || optional($filterCategoryBirds)->count() || $this->threatQuery )
         <footer class="justify-center">
             <button wire:click="resetAllFilters" class="bg-green-700 border-2 text-white py-2 px-4 border-green-600 shadow-2xl">
                 Reset All Filters

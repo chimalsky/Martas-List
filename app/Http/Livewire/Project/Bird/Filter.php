@@ -15,14 +15,13 @@ class Filter extends Component
     public $birds;
     public $dickinsonsBirds;
     public $activeBirdCategories;
+    public $activeChrono;
+    public $activeChronoScope;
     public $activeMonths;
     public $activeSeasons;
-    public $activeChrono;
     public $activeConservationStates;
 
     public $activeBirds;
-
-    public $activeChronoScope;
 
     public $query;
     public $threatQuery;
@@ -54,7 +53,7 @@ class Filter extends Component
         $this->activeBirdCategories = collect([]);
         $this->activeMonths = collect([]);
         $this->activeSeasons = collect([]);
-        $this->activeChrono = 19;
+        $this->activeChrono = 'null';
         $this->activeConservationStates = collect([]);
 
         $this->activeChronoScope = 'seasons';
@@ -160,7 +159,9 @@ class Filter extends Component
         $this->reset('query');
         $this->activeMonths = collect([]);
         $this->activeSeasons = collect([]);
-        //$this->activeFilterables = collect([]);
+        $this->activeChrono = null;
+        $this->activeConservationStates = collect([]);
+        $this->threatQuery = '';
     }
 
     public function indexRendering($resourceIds)
