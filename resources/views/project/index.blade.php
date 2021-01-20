@@ -2,7 +2,7 @@
 
 @section ('content')
 <section class="max-w-2xl mx-auto">
-    <header class="mt-12 mx-auto">
+    <header class="mx-auto">
         @include('project._nav')
 
         <h2 class="mt-4 text-gray-700 text-lg tracking-wide pl-2">
