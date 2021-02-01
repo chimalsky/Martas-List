@@ -245,7 +245,7 @@
                                 <span class="checkmark border-2 border-gray-500"></span>
 
                                 <span class="pl-6">
-                                    Geophany
+                                    Geophony
                                 </span>
                             </label> 
 
@@ -257,7 +257,7 @@
                                 <span class="checkmark border-2 border-gray-500"></span>
 
                                 <span class="pl-6">
-                                    Biophany
+                                    Biophony
                                 </span>
                             </label> 
 
@@ -269,7 +269,7 @@
                                 <span class="checkmark border-2 border-gray-500"></span>
 
                                 <span class="pl-6">
-                                    Anthrophany
+                                    Anthrophony
                                 </span>
                             </label> 
                         </div>
