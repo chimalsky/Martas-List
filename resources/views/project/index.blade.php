@@ -21,7 +21,7 @@
         <img class="w-32 h-32 lg:w-48 lg:h-48 object-cover rounded-full" src="{{ asset('img/map-ma.png') }}" />
     </main>
 
-    <footer class="block text-center max-w-3xl mx-auto">
+    <footer class="block text-center max-w-3xl mx-auto text-gray-600 italic">
         <h1 class="mb-6 text-xl">
             Welcome!
         </h1>
