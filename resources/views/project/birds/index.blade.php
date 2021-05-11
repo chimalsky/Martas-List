@@ -1,5 +1,9 @@
 @extends ('layouts.project-shifted')
 
+@section('title')
+    Bird Archive - Dickinson's Birds
+@endsection
+
 @section('header-anchor')
 <a href="@route('project.birds.index')">
     Bird Archive

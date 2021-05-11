@@ -1,5 +1,9 @@
 @extends ('layouts.project')
 
+@section('title')
+    Reading Coordinates & Navigation Notes - Dickinson's Birds
+@endsection
+
 @section ('header')
     @include('project._nav', ['title' => 'About the Project'])
 @endsection

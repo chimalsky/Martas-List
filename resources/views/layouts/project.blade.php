@@ -6,7 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         
         <title>
-            Dickinson's Birds
+            @yield('title', "Dickinson's Birds")
         </title>
 
         <link rel="stylesheet" type="text/css" href="/css/trix.css">
@@ -16,6 +16,8 @@
         @stack('stylesheets')
         @bukStyles(true)
         @livewireStyles
+
+        <x-project.favicon />
 
         <script src="{{ mix('js/app.js') }}" defer="true"></script>
 
