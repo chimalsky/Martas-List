@@ -18,7 +18,7 @@
                     wire:model="activeChrono" wire:click="chronoClicked"
                     /> 
                 <span class="mr-4 cursor-pointer">
-                    @if ($loop->index == 2)
+                    @unless ($loop->index == 2)
                         {{ $century }}th.
                     @else
                         {{ $century }}st.

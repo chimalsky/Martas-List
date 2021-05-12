@@ -6,8 +6,8 @@
         @include('project._nav')
 
         <h2 class="mt-4 text-gray-700 text-lg tracking-wide pl-2">
-            Curated by Marta Werner,<br/>
-            Caroline McCraw, Abraham Kim, and Danielle Richards
+            Curated by Marta Werner, Caroline McCraw, Abraham<br>
+            Kim, and Danielle Richards
         </h2>
     </header>
 </section>

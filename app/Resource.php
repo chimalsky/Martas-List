@@ -3,10 +3,8 @@
 namespace App;
 
 use Str;
-use App\Resource;
 use App\Connection;
 use App\ResourceType;
-use App\ResourceAttribute;
 use App\Traits\IsSeasonal;
 use App\Traits\IsTemporal;
 use App\Traits\HasCitations;

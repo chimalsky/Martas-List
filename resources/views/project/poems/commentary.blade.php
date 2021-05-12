@@ -1,5 +1,8 @@
 @extends ('layouts.project-shifted')
 
+@section('title')
+    {{ $firstline }} - Commentary - Dickinson's Birds
+@endsection
 
 @section('header-anchor')
 <a href="@route('project.poems.index')">

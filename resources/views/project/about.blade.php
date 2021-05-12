@@ -1,5 +1,10 @@
 @extends ('layouts.project')
 
+
+@section('title')
+    About the Project - Dickinson's Birds
+@endsection
+
 @section ('header')
     @include('project._nav', ['title' => 'About the Project'])
 @endsection

@@ -6,7 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         
         <title>
-            Dickinson's Birds
+            @yield('title', "Dickinson's Birds")
         </title>
 
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
@@ -19,6 +19,8 @@
         @stack('stylesheets')
 
         @livewireStyles
+
+        <x-project.favicon />
 
         <script src="{{ mix('js/app.js') }}" defer="true"></script>
         
