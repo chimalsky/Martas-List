@@ -4,6 +4,7 @@ namespace App;
 
 use Str;
 use App\Connection;
+use App\Project\Transcription;
 use App\ResourceType;
 use App\Traits\IsSeasonal;
 use App\Traits\IsTemporal;
@@ -34,7 +35,7 @@ class Resource extends Model implements HasMedia
 
     public function category()
     {
-        return $this->belongsTo(ResourceCategory::class);
+        return $this->belongsTo(ResourceCategory::class, 'resource_category_id');
     }
 
     public function children()
@@ -52,8 +53,7 @@ class Resource extends Model implements HasMedia
     // TODO : figure out how to do this dynamically
     public function transcription()
     {
-        return $this->hasOne(ResourceMeta::class)
-            ->where('resource_attribute_id', 78);
+        return $this->hasOne(Transcription::class);
     } 
 
     public function queriedMeta()

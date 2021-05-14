@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Project\Poem;
 
+use App\Project\Transcription;
 use App\ResourceType;
 use App\ResourceCategory;
 use App\ResourceAttribute;
@@ -80,9 +81,14 @@ class Index extends Component
 
         if ($this->filterQuery) {
             $query = $this->filterQuery;
+            $transcriptions = Transcription::search($query)->get();
+
+            $poems = $poems->whereIn('id', $transcriptions->pluck('resource_id'));
+
+            /*
             $poems = $poems->whereHas('transcription', function($transcriptionQuery) use ($query) {
-                $transcriptionQuery->where('value', 'like', "%$query%");
-            });
+                $transcriptionQuery->search($query);
+            })->with('category.resources'); */
         }
 
         $poems = $poems->withHeadlineValue($this->titleMeta)

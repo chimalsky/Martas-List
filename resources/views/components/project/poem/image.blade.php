@@ -29,6 +29,7 @@
                     @if (Str::contains($medium->mime_type, 'image'))
                         <div class="flex justify-center cursor-pointer">
                             <img class="w-24 px-1 shadow-lg facs-thumb" 
+                            loading="lazy"
                             src="{{ $medium->getUrl('thumb') }}" />
                         </div>
                     @endif
