@@ -35,9 +35,15 @@
 <header class="max-w-lg">
     {{ html()->form('PUT', route('resource-type.attributes.update', [$resourceType, $attribute]))->open() }}
         <label class="block my-2">
+            <span class="mb-2 w-full">Subtitle</span>
+            
+            {{ html()->text("title", $attribute->title)->class(['form-input', 'mt-1', 'w-full', 'mb-2']) }}
+        </label>
+
+        <label class="block my-2">
             <span class="mb-2 w-full">Name</span>
             
-            {{ html()->text("name", $attribute->name)->class(['form-input', 'mt-1', 'w-full', 'mb-2']) }}
+            {{ html()->text("subtitle", $attribute->subtitle)->class(['form-input', 'mt-1', 'w-full', 'mb-2']) }}
         </label>
 
         <label class="block my-2">
