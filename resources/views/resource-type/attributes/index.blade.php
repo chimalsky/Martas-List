@@ -7,11 +7,15 @@
     x-data="{ open: false }">
     @foreach($resourceType->attributes as $attribute)
         <a href="{{ route('resource-type.attributes.edit', [$resourceType, $attribute]) }}"
-            class="block mb-1 py-2 pl-3 flex justify-between
+            class="block mb-1 py-2 pl-3
                 @if($attribute->visibility) font-bold @endif">
-            {{ $attribute->name }}
-
-            ( {{ $attribute->type }} ) -- ({{ $attribute->meta_count }})
+            {{ $attribute->title }} 
+            <span class="italic ml-2">
+                {{ $attribute->subtitle }}
+            </span>
+            <span class="font-mono">
+            ( {{ $attribute->type }} )
+            </span> -- ({{ $attribute->meta_count }})
         </a>
     @endforeach
 
@@ -34,10 +38,18 @@
         <main class="block mb-8">
             <label class="block mb-4 p-2">
                 <span class="mb-2 block">
-                    Name
+                    Title
                 </span>
 
-                {{ html()->text("name")->class(['form-input', 'mt-1', 'w-1/2']) }}
+                {{ html()->text("title")->class(['form-input', 'mt-1', 'w-1/2']) }}
+            </label>
+
+            <label class="block mb-4 p-2">
+                <span class="mb-2 block">
+                    Subtitle
+                </span>
+
+                {{ html()->text("subtitle")->class(['form-input', 'mt-1', 'w-1/2']) }}
             </label>
 
 

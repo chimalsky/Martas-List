@@ -6,6 +6,7 @@ use Str;
 use App\Connection;
 use App\Project\Transcription;
 use App\ResourceType;
+use App\Traits\HasMeta;
 use App\Traits\IsSeasonal;
 use App\Traits\IsTemporal;
 use App\Traits\HasCitations;
@@ -17,7 +18,7 @@ use Spatie\MediaLibrary\HasMedia\HasMedia;
 
 class Resource extends Model implements HasMedia
 {
-    use IsSeasonal, IsTemporal, 
+    use HasMeta, IsSeasonal, IsTemporal, 
         HasCitations, HasMediaTrait,
         \Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
@@ -41,13 +42,6 @@ class Resource extends Model implements HasMedia
     public function children()
     {
         return $this->hasMany(Resource::class, 'parent_id');
-    }
-
-    public function meta()
-    {
-        return $this->hasMany(ResourceMeta::class)
-            ->with('resourceAttribute')
-            ->orderBy('key', 'desc');
     }
 
     // TODO : figure out how to do this dynamically

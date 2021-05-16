@@ -43,13 +43,15 @@ class ResourceTypeAttributesController extends Controller
     public function store(Request $request, ResourceType $resourceType)
     {        
         $request->validate([
-            'name' => 'required',
+            'title' => 'required | string | max:255',
+            'subtitle' => 'nullable | string | max:255',
             'type' => 'required',
         ]);
 
         $resourceType->allAttributes()->create([
-            'key' => $request->input('name'), 
-            'type' => $request->input('type')
+            'key' => $request->title,
+            'subtitle' => $request->subtitle,
+            'type' => $request->type
         ]);
         
         return back()->with('status', "Attributes saved for $resourceType->name resource");
@@ -122,7 +124,8 @@ class ResourceTypeAttributesController extends Controller
     public function update(Request $request, ResourceType $resourceType, ResourceAttribute $resourceAttribute)
     {
         $request->validate([
-            'name' => 'required',
+            'title' => 'required | string | max:255',
+            'subtitle' => 'nullable | string | max:255',
             'type' => 'required',
             'visibility' => 'nullable',
             'options' => 'nullable | array',
@@ -130,7 +133,8 @@ class ResourceTypeAttributesController extends Controller
         ]);
         
         $params = [
-            'key' => $request->name,
+            'key' => $request->title,
+            'subtitle' => $request->subtitle,
             'type' => $request->type,
         ];
 

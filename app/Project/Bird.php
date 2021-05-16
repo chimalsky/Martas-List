@@ -33,13 +33,6 @@ class Bird extends ResourceModel
             ->with('otherBird');
     }
 
-    public function meta()
-    {
-        return $this->hasMany(ResourceMeta::class, 'resource_id')
-            ->with('resourceAttribute')
-            ->orderBy('key', 'desc');
-    }
-
     public function presenceMetas()
     {
         $chronoBirds = $this->chronoConnections->pluck('otherBird');
@@ -65,13 +58,4 @@ class Bird extends ResourceModel
             ->latest()->take(1)
         ]);
     }*/
-
-    public function firstMetaByAttribute($resourceAttribute)
-    {
-        $attributeId = is_int($resourceAttribute) 
-            ? $resourceAttribute 
-            : $resourceAttribute->id;
-
-        return $this->meta->firstWhere('resource_attribute_id', $attributeId);
-    }
 }

@@ -21,5 +21,5 @@ mix.js('resources/js/app.js', 'public/js')
     })
   .version(); 
 
-mix.js('resources/js/dearchived.js', 'public/js')
+mix.js('resources/js/project/app.js', 'public/js/project')
     .version();

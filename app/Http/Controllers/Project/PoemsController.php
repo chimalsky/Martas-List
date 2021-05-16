@@ -6,18 +6,21 @@ use App\Resource;
 use App\ResourceType;
 use App\ResourceAttribute;
 use App\Http\Controllers\Controller;
+use App\Project\Poem;
 use Illuminate\Http\Request;
 
 class PoemsController extends Controller
 { 
     public function index(Request $request)
     {
-        return view('project.poems.index');
+        $poems = Poem::all();
+
+        return view('project.poems.index', compact('poems'));
     }
 
     public function show(Request $request, $poemId)
     {
-        $poem = Resource::with(['meta', 'connections'])
+        $poem = Poem::with(['meta', 'connections'])
             ->find($poemId);
 
         $birdCategories = $poem->categories()->where('resource_type_id', 19)->get();

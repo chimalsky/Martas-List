@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Project\Poem;
 
+use App\Project\Poem;
 use App\Project\Transcription;
 use App\ResourceType;
 use App\ResourceCategory;
@@ -38,7 +39,7 @@ class Index extends Component
 
     public function mount()
     {
-        $this->poemDefinition = ResourceType::find(3);
+        $this->poemDefinition = ResourceType::find(Poem::resource_type_id);
         $this->filterOrderable = $this->poemDefinition->attributes->firstWhere('id', 84);
     }
 
@@ -54,17 +55,16 @@ class Index extends Component
 
     public function getPotentialPoemsProperty()
     {
-        return $this->poemDefinition->resources()->select('id')
-            ->with('transcription');
+        return Poem::select('id')->with('transcription');
     }
 
     public function getPoemsFilteredProperty()
     {
-        $poems = $this->potentialPoems;
+        $poems = Poem::with('transcription');
 
         if ($this->filterCategoryBirds && $this->filterCategoryBirds->count()) {
             $connectedPoemsIds = $this->filterCategoryBirds->pluck('connections')->flatten()->pluck('id');
-            $poems = $this->potentialPoems->whereIn('id', $connectedPoemsIds);
+            $poems = $poems->whereIn('id', $connectedPoemsIds);
         }
 
         if ($this->filterFilterables && $this->filterFilterables->count()) {
