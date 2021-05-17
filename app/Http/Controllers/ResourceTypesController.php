@@ -17,7 +17,9 @@ class ResourceTypesController extends Controller
      */
     public function index(Request $request)
     {
-        $resourceTypes = ResourceType::all();
+        $resourceTypes = ResourceType::ordered()->get();
+
+        dd($resourceTypes->pluck('name'));
 
         return view('resource-types.index', compact('resourceTypes'));
     }
