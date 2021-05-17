@@ -9,13 +9,13 @@
         <a href="{{ route('resource-type.attributes.edit', [$resourceType, $attribute]) }}"
             class="block mb-1 py-2 pl-3
                 @if($attribute->visibility) font-bold @endif">
-            {{ $attribute->title }} 
-            <span class="italic ml-2">
+            {{ $attribute->title }}
+
+            <span class="italic ml-2 mr-8">
                 {{ $attribute->subtitle }}
             </span>
-            <span class="font-mono">
-            ( {{ $attribute->type }} )
-            </span> -- ({{ $attribute->meta_count }})
+
+            ( {{ $attribute->type }} ) -- ({{ $attribute->meta_count }})
         </a>
     @endforeach
 

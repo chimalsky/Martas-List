@@ -5,6 +5,11 @@
 
     {{ html()->text('name')->class(['form-input', 'mt-1', 'mb-8', 'block', 'w-full']) }}
 </label>
+<label class="w-full">
+    <span class="">Archive Subtitle</span>
+
+    {{ html()->text('subtitle')->class(['form-input', 'mt-1', 'mb-8', 'block', 'w-full']) }}
+</label>
 
 <section class="bg-gray-200 text-gray-700">
     <h1 class="font-semibold px-2">

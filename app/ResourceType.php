@@ -8,13 +8,21 @@ use App\ResourceAttribute;
 use Spatie\Activitylog\Models\Activity;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Spatie\EloquentSortable\Sortable;
+use Spatie\EloquentSortable\SortableTrait;
 use Spatie\SchemalessAttributes\SchemalessAttributes;
 
-class ResourceType extends Model
+class ResourceType extends Model implements Sortable
 {
     use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
+    use SortableTrait;
 
     protected $guarded = ['id'];
+
+    public $sortable = [
+        'order_column_name' => 'order',
+        'sort_when_creating' => true,
+    ];
 
     public $casts = [
         'extra_attributes' => 'array',

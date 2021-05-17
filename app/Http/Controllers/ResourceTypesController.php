@@ -17,7 +17,7 @@ class ResourceTypesController extends Controller
      */
     public function index(Request $request)
     {
-        $resourceTypes = ResourceType::all();
+        $resourceTypes = ResourceType::ordered()->get();
 
         return view('resource-types.index', compact('resourceTypes'));
     }
@@ -29,7 +29,9 @@ class ResourceTypesController extends Controller
      */
     public function create()
     {
-        return view('resource-types.create');
+        $resourceType = new ResourceType;
+
+        return view('resource-types.create', compact('resourceType'));
     }
 
     /**
@@ -41,7 +43,8 @@ class ResourceTypesController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required',
+            'name' => 'required | string | max:255',
+            'subtitle' => 'nullable | string | max:255',
             'description' => 'nullable',
         ]);
 
@@ -136,6 +139,7 @@ class ResourceTypesController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required',
+            'subtitle' => 'nullable | string | max:255',
             'description' => 'nullable'
         ]);
 

@@ -18,7 +18,13 @@
             <div class="block">
                 <article class="p-2">
                     <a href="{{ route('resource-types.show', $resourceType) }}">
-                        {{ $resourceType->name }} -- {{ $resourceType->resources()->count() }}
+                        {{ $resourceType->name }}
+
+                        <span class="italic ml-2 mr-8">
+                            {{ $resourceType->subtitle }}
+                        </span>
+                        
+                         -- {{ $resourceType->resources()->count() }}
                     </a>
                 </article>
             </div>
