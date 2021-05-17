@@ -12,13 +12,13 @@
         </span>
 
         <a href="{{ route('resource-types.show', $resourceType) }}" class="mx-2">
-            {{ $resourceType->name }} 
+            {{ $resourceType->name }} <span class="italic ml-1">{{ $resourceType->subtitle }}</span>
         </a>
     </header>
 
     <header class="flex justify-between">
         <a href="{{ route('resource-types.show', $resourceType) }}" class="text-gray-500 text-xl">
-            {{ $resourceType->name }} 
+            {{ $resourceType->name }} <span class="italic ml-1">{{ $resourceType->subtitle }}</span>
         </p>
     </header>
 
