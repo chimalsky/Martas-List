@@ -19,8 +19,6 @@ class ResourceTypesController extends Controller
     {
         $resourceTypes = ResourceType::ordered()->get();
 
-        dd($resourceTypes->pluck('name'));
-
         return view('resource-types.index', compact('resourceTypes'));
     }
 
