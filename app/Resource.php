@@ -77,7 +77,7 @@ class Resource extends Model implements HasMedia
 
     public function connections()
     {
-        return $this->belongsToMany(Connection::class)
+        return $this->belongsToMany(Connection::class, 'connection_resource', 'resource_id')
             ->with(['resources' => function($query) {
                 $query->where('resource_id', '<>', $this->id);
             }]);

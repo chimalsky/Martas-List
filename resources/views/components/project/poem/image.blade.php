@@ -9,7 +9,7 @@
         </section>
     @else
         @php 
-            $imageCount = $poem->getMedia('default')->count()
+            $imageCount = $poem->facsimiles->count()
         @endphp
 
         <section class="block flex justify-center">
@@ -25,7 +25,7 @@
                     grid-cols-3
                 @endif
                 ">
-                @forelse ($poem->getMedia('default') as $medium)
+                @forelse ($poem->facsimiles as $medium)
                     @if (Str::contains($medium->mime_type, 'image'))
                         <div class="flex justify-center cursor-pointer">
                             <img class="w-24 px-1 shadow-lg facs-thumb" 

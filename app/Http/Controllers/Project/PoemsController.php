@@ -7,15 +7,39 @@ use App\ResourceType;
 use App\ResourceAttribute;
 use App\Http\Controllers\Controller;
 use App\Project\Poem;
+use App\Project\Transcription;
 use Illuminate\Http\Request;
 
 class PoemsController extends Controller
 { 
     public function index(Request $request)
     {
-        $poems = Poem::all();
+        $poems = Poem::with('facsimiles')->orderBy('name');
 
-        return view('project.poems.index', compact('poems'));
+        if ($query = $request->query('query')) {
+            $poems = $poems->byTranscriptionText($query);
+        }
+        
+        $filterables = collect($request->query('filterable'));
+
+        if ($filterables->count()) {
+            foreach ($filterables as $filterableId => $filterableValues) {
+                $poems = $poems->whereHas('meta', function ($query) use ($filterableId, $filterableValues) {
+                    $query = $query->where('resource_attribute_id', $filterableId)
+                        ->whereIn('value', $filterableValues);
+                });
+            }
+        }
+
+        $poems = $poems->get();
+
+        $filterables = ResourceAttribute::whereIn('id', $filterables->keys()->toArray())->get();
+
+        if ($request->wantsJson()) {
+            return view('project.poems.results', compact('poems', 'filterables'));
+        }
+
+        return view('project.poems.index', compact('poems', 'filterables'));
     }
 
     public function show(Request $request, $poemId)

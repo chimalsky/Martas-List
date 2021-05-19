@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Resource;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait as SpatieMediaTrait;
 
 trait HasMediaTrait
