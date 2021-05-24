@@ -4,6 +4,10 @@
     Poem Archive - Dickinson's Birds
 @endsection
 
+@push('controllers')
+    archive
+@endpush
+
 @section('header-anchor')
 <a href="@route('project.poems.index')">
     Poem Archive
@@ -26,54 +30,76 @@
 
 @section('sticky-aside')
 
-<form data-controller="form" action="@route('project.poems.index')" method="get">
+<form id="js-main-form" data-target="archive.form" data-controller="form" action="@route('project.poems.index')" method="get"
+    data-action="form-submitted@window->form#sync">
     <input placeholder="search by transcription text..." name="query" data-action="input->form#changed"
+        @if (request()->input('query')) value="{{ request()->input('query') }}" @endif
         class="block mb-4 border-4 border-gray-700 text-black rounded-full pl-4 p-2 placeholder-gray-800" />
 
-    <button>
-        Sort by First Line
-    </button>
+    <label class="cursor-pointer border border-gray-500 block p-2">
+        <input data-action="change->form#changed" name="sort" type="checkbox" class="hidden"
+            @if (request()->input('sort'))
+                checked 
+            @endif 
+            >
+        Change Sort Direction by <span class="font-bold">First Line</span>
+    </label>
 
 
     @foreach(App\ResourceType::find(App\Project\Poem::resource_type_id)->attributes->where('visibility', 1) as $key => $filterable)
-        @unless($filterable->id == 370)
-        <section class="block my-6" x-data="{open: false}">
-            @php 
-                // Only expand the first two Filterables
-                $expanded = $key < 2;
-            @endphp
-
+        <section class="block mb-1" x-data="{open: false}">
             <button type="button" @click="open = !open"
                 class="p-1 flex justify-between items-stretch w-full">
-                <span class="self-center">
-                    {{ $filterable->key }} 
+                <span class="self-center" :class="{ 'font-black': open }">
+                    {{ $filterable->title }} 
                 </span>
-                <span class="text-2xl self-center">
-                    +
+                <span class="text-3xl self-center">
+                    <span x-show="!open">
+                        +
+                    </span>
+                    <span x-show="open">
+                        -
+                    </span>
                 </span>
             </button>
 
-            <div x-show="open" class="w-full h-32 overflow-y-auto pl-6">
-                @foreach ($filterable->options as $option)
-                    <label class="block cursor-pointer">
-                        <input data-action="change->form#changed" type="checkbox"
-                            name="filterable[{{ $filterable->id }}][]"
-                            value="{{ $option }}"
-                            class=""
-                            @if (collect(request()->input('filterable.' . $filterable->id))->contains($option))
-                                checked 
-                            @endif
-                            autocomplete="off" 
-                                />
-                        <span class="pl-2">
-                            {{ $option }}
-                        </span>
-                    </label>
-                @endforeach
+            <div x-show="open" class="w-full">
+                <div class="text-gray-600 italic mb-2">
+                    {{ $filterable->subtitle }} 
+                </div>
+
+                <div class="pl-6 overflow-y-scroll" style="max-height: 8rem;">
+                    <x-project.filter.panel :filterable="$filterable" />
+                </div>
             </div>
         </section>
-        @endunless
     @endforeach
+
+    <section class="block mb-1" x-data="{open: false}">
+        <button type="button" @click="open = !open"
+            class="p-1 flex justify-between items-stretch w-full">
+            <span class="self-center" :class="{ 'font-black': open }">
+                Birds
+            </span>
+            <span class="text-3xl self-center">
+                <span x-show="!open">
+                    +
+                </span>
+                <span x-show="open">
+                    -
+                </span>
+            </span>
+        </button>
+
+        <div x-show="open" class="w-full overflow-y-auto">
+            <div class="text-gray-600 italic mb-2">
+                Birds referenced
+            </div>
+            <div class="overflow-y" style="max-height: 10rem;">
+                <x-project.filter.dickinsons-birds :dickinsonsBirds="$birds" />
+            </div>
+        </div>
+    </section>
 </form>
 @endsection
 

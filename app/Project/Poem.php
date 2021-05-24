@@ -3,6 +3,7 @@
 namespace App\Project;
 
 use App\Resource;
+use App\ResourceMeta;
 use Illuminate\Database\Eloquent\Builder;
 use Spatie\MediaLibrary\Models\Media;
 
@@ -28,6 +29,24 @@ class Poem extends Resource
     {
         return $this->hasMany(Media::class, 'model_id', 'id')
             ->where('model_type', Resource::class);
+    }
+
+    public function firstLine()
+    {
+        return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 84);
+    }
+
+    public function year()
+    {
+        return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 131);
+    }
+
+    public function placeholder()
+    {
+        return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 149);
     }
 
     public function scopeByTranscriptionText($query, $transcriptionQuery)

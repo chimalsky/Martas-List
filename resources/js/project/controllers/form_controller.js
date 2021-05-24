@@ -8,12 +8,6 @@ export default class extends Controller {
     static targets = [
     ]
 
-    connect() {
-        console.log(this.element)
-
-        console.log(this.inputTarget)
-    }
-
     async changed(event) {
         if (this.submitting)
             await delay(SUBMIT_DELAY);
@@ -21,9 +15,21 @@ export default class extends Controller {
         this.submitForm()
     }
 
+    sync(event) {
+        console.log(event, event.detail.data)
+    }
+
     async submitForm() {        
         const request = new Request(this.method, this.action, { responseKind: 'json', queryString: this.formData })
         const response = await request.perform()
+
+        const event = new CustomEvent("form-submitted", {
+            detail: { 
+                data: this.formData
+            }
+        })
+
+        window.dispatchEvent(event)
 
         this.submitting = true
 
@@ -43,17 +49,5 @@ export default class extends Controller {
 
     get formData() {
         return new FormData(this.element)
-    }
-
-    synthesizeFormMethod() {
-        this.syntheticMethodInput = this.element.querySelector("input[name=_method]")
-
-        if (!this.syntheticMethodInput) {
-            this.syntheticMethodInput = document.createElement("input")
-            this.syntheticMethodInput.type = "hidden"
-            this.syntheticMethodInput.name = "_method"
-            this.syntheticMethodInput.value = this.element.method
-            this.element.append(this.syntheticMethodInput)
-        }
     }
 }

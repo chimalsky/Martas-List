@@ -30,8 +30,8 @@
 
         @stack('scripts')
     </head>
-    <body data-controller="application" class="mt-8 px-2 flex flex-wrap" style="max-width: 1700px">
-        <aside class="flex-shrink">
+    <body data-controller="application @stack('controllers')" class="mt-8 px-2 flex flex-wrap" style="max-width: 1700px">
+        <aside class="flex-shrink max-w-xs">
             <h1 class="text-xl -mb-3 tracking-wide flex">
                 @include('project._nav')
             </h1>
