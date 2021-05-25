@@ -1,15 +1,15 @@
 <div>
-    @if($placeholderMeta = $poem->meta()->firstWhere('resource_attribute_id', 149))
+    @if($poem->placeholder)
         <section class="flex justify-center">
-            @if ($placeholderMeta->value == 'placeholder for LOST or DESTROYED MS')
-                <img class="w-20 h-20 inline-block" src="/img/lost-or-destroyed.png" />
-            @elseif ($placeholderMeta->value == 'placeholder for MS we need to request digital image for')
-                <img class="w-16 h-24 inline-block" src="/img/coming-soon.jpg" />
+            @if ($poem->placeholder->value == 'placeholder for LOST or DESTROYED MS')
+                <img class="w-20 h-20 inline-block" loading="lazy" src="/img/lost-or-destroyed.png" />
+            @elseif ($poem->placeholder->value == 'placeholder for MS we need to request digital image for')
+                <img class="w-16 h-24 inline-block" loading="lazy" src="/img/coming-soon.jpg" />
             @endif
         </section>
     @else
         @php 
-            $imageCount = $poem->getMedia('default')->count()
+            $imageCount = $poem->facsimiles->count()
         @endphp
 
         <section class="block flex justify-center">
@@ -23,12 +23,15 @@
                     grid-cols-2 w-1/2
                 @elseif ($imageCount == 5)
                     grid-cols-3
+                @elseif ($imageCount >= 5)
+                    grid-cols-4 
                 @endif
                 ">
-                @forelse ($poem->getMedia('default') as $medium)
+                @forelse ($poem->facsimiles as $medium)
                     @if (Str::contains($medium->mime_type, 'image'))
                         <div class="flex justify-center cursor-pointer">
                             <img class="w-24 px-1 shadow-lg facs-thumb" 
+                            loading="lazy"
                             src="{{ $medium->getUrl('thumb') }}" />
                         </div>
                     @endif

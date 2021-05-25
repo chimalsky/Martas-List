@@ -19,7 +19,7 @@
 
         <x-project.favicon />
 
-        <script src="{{ mix('js/app.js') }}" defer="true"></script>
+        <script src="{{ mix('js/project/app.js') }}" defer="true"></script>
 
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;1,500&family=Cormorant+SC&family=Cormorant+Upright:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 

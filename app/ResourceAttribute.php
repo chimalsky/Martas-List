@@ -72,6 +72,13 @@ class ResourceAttribute extends Model implements Sortable
         return $this->key;
     }
 
+    public function getNonNullOptionsAttribute()
+    {
+        return collect($this->options)->reject(function($option) {
+            return is_null($option);
+        });
+    }
+
     public function getOptionsDropdownAttribute()
     {
         return collect($this->options)->flatten()->mapWithKeys(function($option) {
