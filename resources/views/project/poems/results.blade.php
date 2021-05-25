@@ -56,7 +56,7 @@
 
     @if ($poems->count())
         <div class="block mx-auto max-w-md text-xl text-center">
-            {{ $poems->count() }} Poems
+            {{ $poems->flatten()->count() }} {{ Str::of('Poem')->plural($poems->flatten()->count()) }}
         </div>
     @endif
 </header>
@@ -69,7 +69,7 @@
                     {{ $year }}
                 </header>
 
-                <x-project.poem.list :poems="$poemsList" />
+                <x-project.poem.list :poems="$poemsList"/>
             @endforeach
         @else 
             <h1 class="text-2xl text-center w-full">

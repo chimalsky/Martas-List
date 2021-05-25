@@ -9,6 +9,14 @@ export default class extends Controller {
     ]
 
     async changed(event) {
+        console.log(event.target.checked)
+        if (event.target.name == 'sort') {
+            if (!event.target.checked) {
+                document.querySelector('#direction').innerHTML = 'A -> Z'
+            } else {
+                document.querySelector('#direction').innerHTML = 'Z -> A'
+            }
+        }
         if (this.submitting)
             await delay(SUBMIT_DELAY);
 

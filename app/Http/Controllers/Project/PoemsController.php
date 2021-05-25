@@ -23,7 +23,7 @@ class PoemsController extends Controller
             return $filterable->id == 131 || $filterable->id == 84;
         });
 
-        $poems = Poem::with(['facsimiles', 'firstLine', 'placeholder', 'year', 'meta' => function ($query) use ($displayableFilterables) {
+        $poems = Poem::with(['facsimiles', 'firstLine', 'placeholder', 'year', 'categories.resources', 'meta' => function ($query) use ($displayableFilterables) {
             $query->whereIn('resource_attribute_id', $displayableFilterables->pluck('id'));
         }]);
 
@@ -49,6 +49,8 @@ class PoemsController extends Controller
                 ->pluck('connections')->flatten()->pluck('id');
 
             $poems = $poems->whereIn('id', $connectedPoemsIds);
+
+
         }
 
         $poems = $poems->get();

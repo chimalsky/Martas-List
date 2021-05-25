@@ -30,9 +30,8 @@
 
 @section('sticky-aside')
 
-<form id="js-main-form" data-target="archive.form" data-controller="form" action="@route('project.poems.index')" method="get"
-    data-action="form-submitted@window->form#sync">
-    <input placeholder="search by transcription text..." name="query" data-action="input->form#changed"
+<form id="js-main-form" data-target="archive.form" data-controller="form" action="@route('project.poems.index')" method="get">
+    <input placeholder="Transcription text search..." name="query" data-action="input->form#changed"
         @if (request()->input('query')) value="{{ request()->input('query') }}" @endif
         class="block mb-4 border-4 border-gray-700 text-black rounded-full pl-4 p-2 placeholder-gray-800" />
 
@@ -42,7 +41,15 @@
                 checked 
             @endif 
             >
-        Change Sort Direction by <span class="font-bold">First Line</span>
+        Sorted 
+        by <span class="font-bold">First Line</span>
+        <span class="ml-2 font-black" id="direction">
+            @if (request()->input('sort'))
+                Z -> A 
+            @else 
+                A -> Z 
+            @endif
+        </span>
     </label>
 
 
