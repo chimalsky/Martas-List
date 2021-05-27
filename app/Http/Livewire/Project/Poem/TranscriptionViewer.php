@@ -19,7 +19,8 @@ class TranscriptionViewer extends Component
     public function mount(Resource $poem)
     {
         $this->poem = $poem; 
-        $this->medias = $poem->media;
+        $this->medias = $poem->facsimiles;
+
         $this->transcription = $poem->firstMetaByAttribute(78)->value;
 
         //$transcription = str_replace('{/pb}', '{/pb} </div>', $transcription);
@@ -185,14 +186,13 @@ class TranscriptionViewer extends Component
 
         $mediaIndex = $this->medias->pluck('id')->search($media);
 
+        if (!array_key_exists($mediaIndex, $this->pages->toArray())) {
+            return;
+        }
+
         $this->emit('media-viewer:pageChanged', $mediaIndex);
 
-        $this->setActivePageIndex($mediaIndex);
-    }
-
-    public function setActivePageIndex($index)
-    {
-        $this->activePageIndex = $index;
+        $this->activePageIndex = $mediaIndex;
     }
 
     public function getActivePageProperty()

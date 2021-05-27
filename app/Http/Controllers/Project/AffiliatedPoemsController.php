@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Project;
 
 use App\Resource;
 use App\Http\Controllers\Controller;
+use App\Project\Poem;
 use Illuminate\Http\Request;
 
 class AffiliatedPoemsController extends Controller
@@ -16,11 +17,16 @@ class AffiliatedPoemsController extends Controller
      */
     public function __invoke(Request $request, $poemId)
     {
-        $poem = Resource::with(['meta', 'connections', 'category'])
+        $poem = Poem::with(['meta', 'connections', 'category', 'facsimiles'])
             ->find($poemId);
 
         $category = $poem->category;
-        $poems = $category->resources;
+
+        $poems = Poem::where('resource_category_id', $category->id)
+            ->where('id', '!=', $poem->id)
+            ->with('facsimiles')
+            ->get();
+        
         $firstline = $poems->first()->firstMetaByAttribute(84)->value ?? $poems->first()->name;
 
         $additionalAffiliations = $poem->metaByAttribute(611);

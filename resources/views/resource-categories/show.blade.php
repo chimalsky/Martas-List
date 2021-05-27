@@ -17,6 +17,10 @@
             </a>
         </li>
     @endforeach
+
+    @foreach ($category->connections as $connection)
+        {{ $connection }} <br><br>
+    @endforeach
 </ul>
 
 

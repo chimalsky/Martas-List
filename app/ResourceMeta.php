@@ -5,15 +5,13 @@ namespace App;
 use App\Resource;
 use Illuminate\Support\Str;
 use App\Traits\HasCitations;
-use Illuminate\Support\HtmlString;
 use Illuminate\Database\Eloquent\Model;
-use App\Scopes\AttributeOptionValueScope;
-use Illuminate\Database\Eloquent\Builder;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class ResourceMeta extends Model
 {
-    use HasCitations, LogsActivity;
+    use HasCitations;
+    use LogsActivity;
     
     protected $guarded = ['id'];
 

@@ -12,6 +12,15 @@ const tailwindcss = require('tailwindcss')
  |
  */
 
+mix.webpackConfig({
+  resolve: {
+      alias: {
+          '@lib': path.resolve(__dirname, 'resources/js/project/lib'),
+          '@helpers': path.resolve(__dirname, 'resources/js/project/helpers')
+      }
+  }      
+});
+
 mix.js('resources/js/app.js', 'public/js')
   .less('resources/less/app.less', 'public/css')
     .options({
@@ -21,5 +30,5 @@ mix.js('resources/js/app.js', 'public/js')
     })
   .version(); 
 
-mix.js('resources/js/dearchived.js', 'public/js')
+mix.js('resources/js/project/app.js', 'public/js/project')
     .version();

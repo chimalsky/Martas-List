@@ -12,9 +12,11 @@
         </div>
 
         <div>
-            <h1 class="" style="font-family: 'IM Fell Double Pica', serif; color: #707A5E; font-size: 22pt;">
-                Dickinson's Birds
-            </h1>
+            <a href="/">
+                <h1 class="" style="font-family: 'IM Fell Double Pica', serif; color: #707A5E; font-size: 22pt;">
+                    Dickinson's Birds
+                </h1>
+            </a>
             <h2 class="block font-serif italic mt-1" style="font-size: 19.5pt;">
                 A Public Listening Project
             </h2>
