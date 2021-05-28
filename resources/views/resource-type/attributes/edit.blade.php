@@ -114,7 +114,7 @@
                 Options 
             </h1>
 
-            <button class="btn btn-blue"
+            <button class="btn btn-blue hidden"
                 @click="open = true" >
                 Change ordering
             </button>
@@ -124,7 +124,7 @@
         
 
         {{ html()->form('PUT', route('resource-type.attributes.update', [$resourceType, $attribute]))->open() }}
-            {{ html()->hidden("name", $attribute->name) }}
+            {{ html()->hidden("title", $attribute->name) }}
             {{ html()->hidden("type", $attribute->type) }}
 
             <section class="block mt-8 mb-8" data-target="resource-attribute.options">
