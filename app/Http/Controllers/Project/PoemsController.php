@@ -20,12 +20,14 @@ class PoemsController extends Controller
 
         $activeFilterables = ResourceAttribute::ordered()->whereIn('id', $filterables->keys()->toArray())->get();
         $displayableFilterables = $activeFilterables->reject(function($filterable) {
-            return $filterable->id == 131 || $filterable->id == 84;
+            return $filterable->id == 84;
         });
 
-        $poems = Poem::with(['facsimiles', 'firstLine', 'placeholder', 'year', 'categories.resources', 'meta' => function ($query) use ($displayableFilterables) {
-            $query->whereIn('resource_attribute_id', $displayableFilterables->pluck('id'));
-        }]);
+        $poems = Poem::whereHas('firstLine')
+            ->with(['facsimiles', 'firstLine', 'placeholder', 'year', 'categories.resources', 
+                'meta' => function ($query) use ($displayableFilterables) {
+                    $query->whereIn('resource_attribute_id', $displayableFilterables->pluck('id'));
+                }]);
 
         if ($query = $request->query('query')) {
             $poems = $poems->byTranscriptionText($query);
@@ -33,6 +35,11 @@ class PoemsController extends Controller
 
         if ($filterables->count()) {
             foreach ($filterables as $filterableId => $filterableValues) {
+                // month
+                if ($filterableId == 623 && $filterables->keys()->contains(138)) {
+                    continue;
+                }
+
                 $poems = $poems->whereHas('meta', function ($query) use ($filterableId, $filterableValues) {
                     $query = $query->where('resource_attribute_id', $filterableId)
                         ->whereIn('value', $filterableValues);
@@ -54,28 +61,41 @@ class PoemsController extends Controller
         }
 
         $poems = $poems->get();
+        $sortable = $request->query('sortable') ?? 'firstline';
+        $sortDirection = $request->query('sort_direction') ?? 'asc';
 
-        if ($sort = $request->query('sort')) {
-            $poems = $poems->sortByDesc(function($poem) {
-                return strtolower(preg_replace("/[^A-Za-z0-9 ]/", '', $poem->firstLine->value));
-            });
+        if ($sortable == 'firstline') {
+            if ($sortDirection == 'desc') {
+                $poems = $poems->sortByDesc(function($poem) {
+                    return strtolower(preg_replace("/[^A-Za-z0-9 ]/", '', $poem->firstLine->value));
+                });
+            } else {
+                $poems = $poems->sortBy(function($poem) {
+                    return strtolower(preg_replace("/[^A-Za-z0-9 ]/", '', $poem->firstLine->value));
+                });
+            }
+
+            $results = $poems;
         } else {
-            $poems = $poems->sortBy(function($poem) {
-                return strtolower(preg_replace("/[^A-Za-z0-9 ]/", '', $poem->firstLine->value));
-            });
+            if ($sortDirection == 'desc') {
+                $poems = $poems->sortByDesc('year.value');
+            } else {
+                $poems = $poems->sortBy('year.value');
+            }
+
+            $results = $poems->groupBy('year.value');
         }
 
         $birds = ResourceType::with('categories')->find(19)->categories;
 
         $activeBirds = ResourceCategory::whereIn('id', $filterableBirds)->get();
 
-        $poems = $poems->groupBy('year.value');
 
         if ($request->wantsJson()) {
-            return view('project.poems.results', compact('poems', 'activeFilterables', 'birds', 'activeBirds'));
+            return view('project.poems.results', compact('results', 'activeFilterables', 'birds', 'activeBirds'));
         }
 
-        return view('project.poems.index', compact('poems', 'activeFilterables', 'birds', 'activeBirds'));
+        return view('project.poems.index', compact('results', 'activeFilterables', 'birds', 'activeBirds'));
     }
 
     public function show(Request $request, $poemId)

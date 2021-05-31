@@ -54,23 +54,21 @@
         @endif
     </div>
 
-    @if ($poems->count())
+    @if ($results->count())
         <div class="block mx-auto max-w-md text-xl text-center">
-            {{ $poems->flatten()->count() }} {{ Str::of('Poem')->plural($poems->flatten()->count()) }}
+            {{ $results->flatten()->count() }} {{ Str::of('Poem')->plural($results->flatten()->count()) }}
         </div>
     @endif
 </header>
 
 <section id="results-list">
     <main class="flex flex-wrap w-full pt-12">
-        @if ($poems->count())
-            @foreach($poems as $year => $poemsList)
-                <header style="background-color: #F7F5E7" class="text-xl mb-2 ml-6 sticky top-0 pb-2 px-2 shadow-md">
-                    {{ $year }}
-                </header>
-
-                <x-project.poem.list :poems="$poemsList"/>
-            @endforeach
+        @if ($results->count())
+            @if (request()->input('sortable') == 'firstline' || is_null(request()->input('sortable')))
+                <x-project.poem.list :poems="$results" showYear />
+            @else
+                <x-project.poem.year-list :poemYears="$results" />
+            @endif
         @else 
             <h1 class="text-2xl text-center w-full">
                 No Poems match your curation

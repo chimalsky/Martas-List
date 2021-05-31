@@ -35,25 +35,61 @@
         @if (request()->input('query')) value="{{ request()->input('query') }}" @endif
         class="block mb-4 border-4 border-gray-700 text-black rounded-full pl-4 p-2 placeholder-gray-800" />
 
-    <label class="cursor-pointer border border-gray-500 block p-2">
-        <input data-action="change->form#changed" name="sort" type="checkbox" class="hidden"
-            @if (request()->input('sort'))
-                checked 
-            @endif 
-            >
-        Sorted 
-        by <span class="font-bold">First Line</span>
-        <span class="ml-2 font-black" id="direction">
-            @if (request()->input('sort'))
-                Z -> A 
-            @else 
-                A -> Z 
-            @endif
-        </span>
-    </label>
+    <div class="flex justify-between items-stretch w-full">
+        <label class="cursor-pointer p-2 self-center">
+            Sorted by
+            <select name="sortable" data-action="change->form#changed">
+                <option value="firstline">
+                    First Line
+                </option>
+                <option value="year">
+                    Year
+                </option>
+            </select>
+        </label>
+
+        <label class="cursor-pointer self-center">
+            <select name="sort_direction" data-action="change->form#changed"> 
+                <option value="asc">
+                    Forward
+                </option>
+                <option value="desc">
+                    Reverse
+                </option>
+            </select>
+        </label>
+    </div>
 
 
     @foreach(App\ResourceType::find(App\Project\Poem::resource_type_id)->attributes->where('visibility', 1) as $key => $filterable)
+        @if ($loop->index === 3) 
+            <section class="block mb-1" x-data="{open: false}">
+                <button type="button" @click="open = !open"
+                    class="p-1 flex justify-between items-stretch w-full">
+                    <span class="self-center" :class="{ 'font-black': open }">
+                        Birds
+                    </span>
+                    <span class="text-3xl self-center">
+                        <span x-show="!open">
+                            +
+                        </span>
+                        <span x-show="open">
+                            -
+                        </span>
+                    </span>
+                </button>
+
+                <div x-show="open" class="w-full overflow-y-auto">
+                    <div class="text-gray-600 italic mb-2">
+                        Birds referenced
+                    </div>
+                    <div class="overflow-y" style="max-height: 10rem;">
+                        <x-project.filter.dickinsons-birds :dickinsonsBirds="$birds" />
+                    </div>
+                </div>
+            </section>
+        @endif
+
         <section class="block mb-1" x-data="{open: false}">
             <button type="button" @click="open = !open"
                 class="p-1 flex justify-between items-stretch w-full">
@@ -81,38 +117,12 @@
             </div>
         </section>
     @endforeach
-
-    <section class="block mb-1" x-data="{open: false}">
-        <button type="button" @click="open = !open"
-            class="p-1 flex justify-between items-stretch w-full">
-            <span class="self-center" :class="{ 'font-black': open }">
-                Birds
-            </span>
-            <span class="text-3xl self-center">
-                <span x-show="!open">
-                    +
-                </span>
-                <span x-show="open">
-                    -
-                </span>
-            </span>
-        </button>
-
-        <div x-show="open" class="w-full overflow-y-auto">
-            <div class="text-gray-600 italic mb-2">
-                Birds referenced
-            </div>
-            <div class="overflow-y" style="max-height: 10rem;">
-                <x-project.filter.dickinsons-birds :dickinsonsBirds="$birds" />
-            </div>
-        </div>
-    </section>
 </form>
 @endsection
 
 
 @section ('content')
 <section id="results-section">
-    @include('project.poems.results', ['poems' => $poems])
+    @include('project.poems.results', ['results' => $results])
 </section>
 @endsection
