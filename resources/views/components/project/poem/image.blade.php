@@ -16,7 +16,7 @@
             <section class="flex flex-wrap justify-center gap-2">
                 @foreach ($poem->facsimiles as $medium)
                     <div class="flex justify-center cursor-pointer">
-                        <img class="w-24 px-1 shadow-lg facs-thumb" 
+                        <img class="w-20 px-1 shadow-lg facs-thumb" 
                         loading="lazy"
                         src="{{ $medium->getUrl('thumb') }}" />
                     </div>
