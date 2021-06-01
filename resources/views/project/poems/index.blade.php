@@ -61,7 +61,7 @@
     </div>
 
 
-    @foreach(App\ResourceType::find(App\Project\Poem::resource_type_id)->attributes->where('visibility', 1) as $key => $filterable)
+    @foreach(App\ResourceType::find(App\Project\Poem::$resource_type_id)->attributes->where('visibility', 1) as $key => $filterable)
         @if ($loop->index === 3) 
             <section class="block mb-1" x-data="{open: false}">
                 <button type="button" @click="open = !open"

@@ -24,7 +24,7 @@ class PoemsController extends Controller
         });
 
         $poems = Poem::whereHas('firstLine')
-            ->with(['facsimiles', 'firstLine', 'placeholder', 'year', 'categories.resources', 
+            ->with(['facsimiles', 'firstLine', 'placeholder', 'year', 'birdCategories.resources', 
                 'meta' => function ($query) use ($displayableFilterables) {
                     $query->whereIn('resource_attribute_id', $displayableFilterables->pluck('id'));
                 }]);
@@ -56,8 +56,6 @@ class PoemsController extends Controller
                 ->pluck('connections')->flatten()->pluck('id');
 
             $poems = $poems->whereIn('id', $connectedPoemsIds);
-
-
         }
 
         $poems = $poems->get();
@@ -65,30 +63,17 @@ class PoemsController extends Controller
         $sortDirection = $request->query('sort_direction') ?? 'asc';
 
         if ($sortable == 'firstline') {
-            if ($sortDirection == 'desc') {
-                $poems = $poems->sortByDesc(function($poem) {
-                    return strtolower(preg_replace("/[^A-Za-z0-9 ]/", '', $poem->firstLine->value));
-                });
-            } else {
-                $poems = $poems->sortBy(function($poem) {
-                    return strtolower(preg_replace("/[^A-Za-z0-9 ]/", '', $poem->firstLine->value));
-                });
-            }
+            $poems = $poems->sortByFirstline($sortDirection);
         } else {
-            if ($sortDirection == 'desc') {
-                $poems = $poems->sortByDesc('year.value');
-            } else {
-                $poems = $poems->sortBy('year.value');
-            }
-
+            $poems = $poems->sortByYear($sortDirection);
             //$results = $poems->groupBy('year.value');
         }
+
         $results = $poems;
 
         $birds = ResourceType::with('categories')->find(19)->categories;
 
         $activeBirds = ResourceCategory::whereIn('id', $filterableBirds)->get();
-
 
         if ($request->wantsJson()) {
             return view('project.poems.results', compact('results', 'activeFilterables', 'birds', 'activeBirds'));

@@ -8,14 +8,14 @@ use Illuminate\Database\Eloquent\Builder;
 
 class Bird extends ResourceModel
 {
-    const resource_type_id = 19;
+    public static $resource_type_id = 19;
 
     protected $table = 'resources';
 
     protected static function booted()
     {
         static::addGlobalScope('resource_type', function (Builder $builder) {
-            $builder->where('resource_type_id', self::resource_type_id);
+            $builder->where('resource_type_id', self::$resource_type_id);
         });
     }
 

@@ -9,15 +9,25 @@ use Spatie\MediaLibrary\Models\Media;
 
 class Poem extends Resource
 {
-    const resource_type_id = 3;
+    public static $resource_type_id = 3;
 
     protected $table = 'resources';
 
     protected static function booted()
     {
         static::addGlobalScope('resource_type', function (Builder $builder) {
-            $builder->where('resource_type_id', self::resource_type_id);
+            $builder->where('resource_type_id', self::$resource_type_id);
         });
+    }
+
+    public function newCollection(array $models = [])
+    {
+        return new PoemCollection($models);
+    }
+
+    public function birdCategories()
+    {
+        return $this->categories()->where('resource_type_id', Bird::$resource_type_id);
     }
 
     public function transcription()
@@ -47,6 +57,11 @@ class Poem extends Resource
     {
         return $this->hasOne(ResourceMeta::class, 'resource_id')
             ->where('resource_attribute_id', 149);
+    }
+
+    public function getFirstlineStrippedAttribute()
+    {
+        return preg_replace("/[^A-Za-z0-9 ]/", '', $this->firstLine->value);
     }
 
     public function scopeByTranscriptionText($query, $transcriptionQuery)

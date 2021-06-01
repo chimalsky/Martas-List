@@ -27,9 +27,9 @@
         </footer>
     @endif
 
-    @if (request()->input('filterableBird') && $poem->categories)
+    @if (request()->input('filterableBird') && $poem->birdCategories)
         <footer class="text-center mt-4">
-            @foreach ( $poem->categories->where('resource_type_id', 19)->pluck('resources')->flatten() as $bird )
+            @foreach ( $poem->birdCategories->pluck('resources')->flatten() as $bird )
                 @if ($loop->index > 0) 
                     +
                 @endif
