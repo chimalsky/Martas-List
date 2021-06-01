@@ -4,11 +4,9 @@
             {{ $poem->firstLine->value ?? $poem->name }}
         </header>
 
-        @unless (request()->input('sortable') == 'year')
-            <div class="text-center mb-2">
-                {{ $poem->year->value }}
-            </div>
-        @endunless
+        <div class="text-center mb-2">
+            {{ $poem->year->value }}
+        </div>
 
         <x-project.poem.image :poem="$poem" />
     </a>

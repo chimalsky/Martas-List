@@ -74,8 +74,6 @@ class PoemsController extends Controller
                     return strtolower(preg_replace("/[^A-Za-z0-9 ]/", '', $poem->firstLine->value));
                 });
             }
-
-            $results = $poems;
         } else {
             if ($sortDirection == 'desc') {
                 $poems = $poems->sortByDesc('year.value');
@@ -83,8 +81,9 @@ class PoemsController extends Controller
                 $poems = $poems->sortBy('year.value');
             }
 
-            $results = $poems->groupBy('year.value');
+            //$results = $poems->groupBy('year.value');
         }
+        $results = $poems;
 
         $birds = ResourceType::with('categories')->find(19)->categories;
 

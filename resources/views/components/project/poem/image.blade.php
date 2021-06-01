@@ -12,36 +12,23 @@
             $imageCount = $poem->facsimiles->count()
         @endphp
 
-        <section class="block flex justify-center">
-            
-            <div class="grid gap-8
-                @if ($imageCount == 2)
-                    grid-cols-2 w-1/2
-                @elseif ($imageCount == 3)
-                    grid-cols-3
-                @elseif ($imageCount == 4)
-                    grid-cols-2 w-1/2
-                @elseif ($imageCount == 5)
-                    grid-cols-3
-                @elseif ($imageCount >= 5)
-                    grid-cols-4 
-                @endif
-                ">
-                @forelse ($poem->facsimiles as $medium)
-                    @if (Str::contains($medium->mime_type, 'image'))
-                        <div class="flex justify-center cursor-pointer">
-                            <img class="w-24 px-1 shadow-lg facs-thumb" 
-                            loading="lazy"
-                            src="{{ $medium->getUrl('thumb') }}" />
-                        </div>
-                    @endif
-                @empty 
+        @if ($imageCount)
+            <section class="flex flex-wrap justify-center gap-2">
+                @foreach ($poem->facsimiles as $medium)
                     <div class="flex justify-center cursor-pointer">
-                        <div class="w-24 h-40 border-4 border-gray-300">
-                        </div>
+                        <img class="w-24 px-1 shadow-lg facs-thumb" 
+                        loading="lazy"
+                        src="{{ $medium->getUrl('thumb') }}" />
                     </div>
-                @endforelse
+                @endforeach
+            </section>
+        @else 
+            <div class="flex justify-center cursor-pointer">
+                <div class="w-24 h-40 border-4 border-gray-300">
+                </div>
             </div>
-        </section>
+        @endif
     @endif
 </div>
+
+

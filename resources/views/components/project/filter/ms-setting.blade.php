@@ -30,7 +30,7 @@
 <section x-show="stage === 1" id="suboptions" >
     @php 
         $boundOptions = $filterable->nonNullOptions->filter(function($option) { return Str::contains($option, 'fascicle'); });
-        $unboundOptions = $filterable->nonNullOptions->reject(function($option) { return Str::contains($option, 'fascicle') || in_array($option, ['Unknown', 'Bound', 'Unbound']); });
+        $unboundOptions = $filterable->nonNullOptions->reject(function($option) { return Str::contains($option, 'fascicle'); });
     @endphp
     <div x-show="type == 'bound'" 
         @back.window="document.querySelectorAll('#suboptions input').forEach(e => { console.log(e); if (!e.checked) { return; }  e.click()})">
@@ -61,7 +61,7 @@
         <header class="text-lg mb-4">
             Unbound Settings
         </header>
-        @foreach ($unboundOptions as $option) 
+        @foreach ($filterable->nonNullOptions as $option) 
             <label class="block cursor-pointer">
                 <input data-action="change->form#changed" 
                     @click="$dispatch('suboption-selected')"

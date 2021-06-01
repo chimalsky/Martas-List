@@ -64,11 +64,7 @@
 <section id="results-list">
     <main class="flex flex-wrap w-full pt-12">
         @if ($results->count())
-            @if (request()->input('sortable') == 'firstline' || is_null(request()->input('sortable')))
-                <x-project.poem.list :poems="$results" showYear />
-            @else
-                <x-project.poem.year-list :poemYears="$results" />
-            @endif
+            <x-project.poem.list :poems="$results" showYear />
         @else 
             <h1 class="text-2xl text-center w-full">
                 No Poems match your curation
