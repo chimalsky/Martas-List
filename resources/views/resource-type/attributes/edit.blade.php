@@ -98,11 +98,8 @@
     </ul>
 </section>
 
-
 <section class="border border-white p-2 hidden">
-
-@livewire('sortable-category-options', ['categories' => $attribute->categories])
-
+    @livewire('sortable-category-options', ['categories' => $attribute->categories])
 </section>
 
 
@@ -114,7 +111,7 @@
                 Options 
             </h1>
 
-            <button class="btn btn-blue hidden"
+            <button class="btn btn-blue"
                 @click="open = true" >
                 Change ordering
             </button>
@@ -141,7 +138,7 @@
                                     href="@route('resource-type.attribute.options.edit', [
                                         'resource_type' => $resourceType,
                                         'attribute' => $attribute,
-                                        'option' => $option
+                                        'option' => $item
                                     ])">
                                     {{ $item }}
                                 </a>
@@ -183,38 +180,25 @@
                 </button>
             </footer>
         {{ html()->closeModelForm() }}
-    </section>
-
-    <section class="block my-20">
-        <header class="text-2xl font-thin mb-2">
-            Option Blocks 
-        </header> 
-
-
-        <main class="mb-8">
-            @if ( collect($attribute->options)->count() == collect($attribute->options)->flatten()->count())
-                <p>No Blocks... All options are on the same hierarchical level</p>
-            @else 
-                <header>
-                    Blocks 
-                </header>
-            @endif
-        </main>
 
         {{ html()->form('post', route('attribute.options.block.store', $attribute))->open() }}
-            <input class="form-input" type="text" name="block" />
+            <section class="my-12 border p-2 border-gray-600">
+                <label>
+                    Add an option block to group/nest subattributes under <br>
+                    <input class="form-input" type="text" name="block" />
+                </label>
 
-            <section class="block mt-8">
-                <button class="btn btn-blue">
-                    Add option block 
-                </button>
+                <section class="block mt-8">
+                    <button class="btn btn-blue">
+                        Add option block 
+                    </button>
+                </section>
             </section>
         {{ html()->form()->close() }}
-
     </section>
 @endif
 
-<footer class="flex justify-end mt-8">
+<footer class="flex justify-end mt-24">
     {{ html()->form('DELETE', route('resource-type.attributes.destroy', [
         $resourceType, 
         $attribute

@@ -9,12 +9,12 @@ import $ from 'jquery'
 import turbolinks from 'turbolinks'
 
 import '@github/time-elements'
-import { Sortable } from '@shopify/draggable'
-import { Droppable } from '@shopify/draggable'
 
 import 'livewire-sortable'
 
 import Alpine from 'alpinejs'
+
+import Sortable from 'sortablejs';
 
 turbolinks.start()  
 
@@ -42,35 +42,29 @@ function bootstrap() {
     })
 
     // Sortable 
-    const sortable = new Sortable(document.querySelectorAll('.sortable'), {
-        draggable: '.draggable'
-    });
-    /*const sortableHeader = new Sortable(document.querySelectorAll('.sortable'), {
-        draggable: 'header.sortable'
-    });*/
+    let nestedSortables = [].slice.call(document.querySelectorAll('.sortable'))
 
-    sortable.on('sortable:stop', (e) => {
-        let container = e.data.newContainer
-        let target = e.dragEvent.data.source
+    for (var i = 0; i < nestedSortables.length; i++) {
+        new Sortable(nestedSortables[i], {
+            group: 'nested',
+            animation: 150,
+            fallbackOnBody: true,
+            swapThreshold: 0.65,
+            onSort: function(event) {
+                let destination = event.to,
+                    input = event.item.querySelector('input.option'); 
 
-        let inputId = target.querySelector('input').getAttribute('id')
+                if (destination.classList.contains('block-options')) {
+                    let blockId = destination.getAttribute('data-block-id')
+                    input.setAttribute('name', `options[${blockId}][]`)
 
-        let input = document.getElementById(inputId)
-
-        if (container.tagName.toLowerCase() == "header" && target.tagName.toLowerCase() == 'article') {
-            let blockName = container.getAttribute('id')
-            input.setAttribute('name', `options[${blockName}][]`)
-            //let input = e.newContainer.querySelector(sourceInput)
-            //let blockName = e.newContainer.getAttribute('data-block-name')
-
-           // input.setAttribute('name', `options[${blockName}]`)
-            //.setAttribute('foobar', 'options[Pen]')
-        } else {
-            if (target.tagName.toLowerCase() == 'article') {
-                input.setAttribute('name', 'options[]')
+                    console.log(input)
+                } else {
+                    input.setAttribute('name', 'options[]')
+                }
             }
-        }
-    });
+        });
+    }
 
     window.xenoPower = function() {
         window.$ = $

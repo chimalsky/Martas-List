@@ -13,7 +13,7 @@
                     @if ($attribute->options)
                         @foreach ($attribute->options as $index => $option) 
                             @if (is_array($option))
-                                <header class="draggable sortable attribute-block w-full my-2 mx-2 cursor-move hover:bg-indigo-900 border border-white p-1"
+                                <header class="attribute-block w-full my-2 mx-2 cursor-move hover:bg-indigo-900 border border-white p-1"
                                     id="block-{{ $index }}"
                                     data-block-name="{{ $option['_name'] }}">
 
@@ -22,26 +22,25 @@
                                     </h1>
 
                                     {{ html()->hidden("optionBlocks[block-{$index}]", $option['_name'])->id("attribute-option-block-{$option['_name']}") }}
-                                 
-                                    <section class="">
-                                        
+                                    
+                                    <div class="sortable block-options" data-block-id="block-{{ $index }}">
                                         @foreach ($option['_items'] as $item)
-                                            <article class="draggable attribute-option block my-2 mx-2 cursor-move hover:bg-indigo-900 py-1">
+                                            <article class="attribute-option block my-2 mx-2 cursor-move hover:bg-indigo-900 py-1">
                                                 <span class="text-gray-500">
                                                     {{ $index + 1 }}
                                                 </span>
-                                                {{ html()->hidden("options[block-{$index}][]", $item)->id("attribute-option-{$index}") }}
+                                                {{ html()->hidden("options[block-{$index}][]", $item)->id("attribute-option-{$index}")->class('option') }}
                                                 {{ $item }}
                                             </article>
                                         @endforeach
-                                    </section>
+                                    </div>
                                 </header>
                             @else
-                                <article class="draggable attribute-option block my-2 mx-2 cursor-move hover:bg-indigo-900 py-1">
+                                <article class="attribute-option block my-2 mx-2 cursor-move hover:bg-indigo-900 py-1">
                                     <span class="text-gray-500">
                                         {{ $index + 1 }}
                                     </span>
-                                    {{ html()->hidden('options[]', $option)->id("attribute-option-{$index}") }}
+                                    {{ html()->hidden('options[]', $option)->id("attribute-option-{$index}")->class('option') }}
                                     {{ $option }}
                                 </article>
                             @endif

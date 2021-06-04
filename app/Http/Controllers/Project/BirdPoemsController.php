@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Project;
 
 use App\Resource;
 use App\Http\Controllers\Controller;
+use App\Project\Poem;
 use Illuminate\Http\Request;
 
 class BirdPoemsController extends Controller
@@ -23,7 +24,7 @@ class BirdPoemsController extends Controller
 
         if ($birdCategory) {
             $connectedPoemsIds = $birdCategory->connections->pluck('id');
-            $poems = Resource::with('media')->whereIn('id', $connectedPoemsIds)->get();
+            $poems = Poem::with('media')->whereIn('id', $connectedPoemsIds)->get();
         } else {
             $poems = collect([]);
         }

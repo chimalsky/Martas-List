@@ -924,7063 +924,10 @@ if (!window.customElements.get('time-until')) {
 
 /***/ }),
 
-/***/ "./node_modules/@shopify/draggable/lib/draggable.bundle.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/@shopify/draggable/lib/draggable.bundle.js ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(true)
-		module.exports = factory();
-	else {}
-})(window, function() {
-return /******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 66);
-/******/ })
-/************************************************************************/
-/******/ ([
-/* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _AbstractEvent = __webpack_require__(64);
-
-var _AbstractEvent2 = _interopRequireDefault(_AbstractEvent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _AbstractEvent2.default;
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _AbstractPlugin = __webpack_require__(60);
-
-var _AbstractPlugin2 = _interopRequireDefault(_AbstractPlugin);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _AbstractPlugin2.default;
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _closest = __webpack_require__(51);
-
-Object.defineProperty(exports, 'closest', {
-  enumerable: true,
-  get: function () {
-    return _interopRequireDefault(_closest).default;
-  }
-});
-
-var _requestNextAnimationFrame = __webpack_require__(49);
-
-Object.defineProperty(exports, 'requestNextAnimationFrame', {
-  enumerable: true,
-  get: function () {
-    return _interopRequireDefault(_requestNextAnimationFrame).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _SensorEvent = __webpack_require__(44);
-
-Object.keys(_SensorEvent).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _SensorEvent[key];
-    }
-  });
-});
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Sensor = __webpack_require__(47);
-
-var _Sensor2 = _interopRequireDefault(_Sensor);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _Sensor2.default;
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _DragEvent = __webpack_require__(14);
-
-Object.keys(_DragEvent).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _DragEvent[key];
-    }
-  });
-});
-
-var _DraggableEvent = __webpack_require__(13);
-
-Object.keys(_DraggableEvent).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _DraggableEvent[key];
-    }
-  });
-});
-
-var _Plugins = __webpack_require__(12);
-
-Object.keys(_Plugins).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _Plugins[key];
-    }
-  });
-});
-
-var _Sensors = __webpack_require__(6);
-
-Object.keys(_Sensors).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _Sensors[key];
-    }
-  });
-});
-
-var _Draggable = __webpack_require__(37);
-
-var _Draggable2 = _interopRequireDefault(_Draggable);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _Draggable2.default;
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Sensor = __webpack_require__(4);
-
-Object.defineProperty(exports, 'Sensor', {
-  enumerable: true,
-  get: function () {
-    return _interopRequireDefault(_Sensor).default;
-  }
-});
-
-var _MouseSensor = __webpack_require__(46);
-
-Object.defineProperty(exports, 'MouseSensor', {
-  enumerable: true,
-  get: function () {
-    return _interopRequireDefault(_MouseSensor).default;
-  }
-});
-
-var _TouchSensor = __webpack_require__(43);
-
-Object.defineProperty(exports, 'TouchSensor', {
-  enumerable: true,
-  get: function () {
-    return _interopRequireDefault(_TouchSensor).default;
-  }
-});
-
-var _DragSensor = __webpack_require__(41);
-
-Object.defineProperty(exports, 'DragSensor', {
-  enumerable: true,
-  get: function () {
-    return _interopRequireDefault(_DragSensor).default;
-  }
-});
-
-var _ForceTouchSensor = __webpack_require__(39);
-
-Object.defineProperty(exports, 'ForceTouchSensor', {
-  enumerable: true,
-  get: function () {
-    return _interopRequireDefault(_ForceTouchSensor).default;
-  }
-});
-
-var _SensorEvent = __webpack_require__(3);
-
-Object.keys(_SensorEvent).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _SensorEvent[key];
-    }
-  });
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _SnappableEvent = __webpack_require__(18);
-
-Object.keys(_SnappableEvent).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _SnappableEvent[key];
-    }
-  });
-});
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _CollidableEvent = __webpack_require__(23);
-
-Object.keys(_CollidableEvent).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _CollidableEvent[key];
-    }
-  });
-});
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _SortableEvent = __webpack_require__(27);
-
-Object.keys(_SortableEvent).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _SortableEvent[key];
-    }
-  });
-});
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _SwappableEvent = __webpack_require__(30);
-
-Object.keys(_SwappableEvent).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _SwappableEvent[key];
-    }
-  });
-});
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _DroppableEvent = __webpack_require__(33);
-
-Object.keys(_DroppableEvent).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _DroppableEvent[key];
-    }
-  });
-});
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Announcement = __webpack_require__(62);
-
-Object.defineProperty(exports, 'Announcement', {
-  enumerable: true,
-  get: function () {
-    return _interopRequireDefault(_Announcement).default;
-  }
-});
-Object.defineProperty(exports, 'defaultAnnouncementOptions', {
-  enumerable: true,
-  get: function () {
-    return _Announcement.defaultOptions;
-  }
-});
-
-var _Focusable = __webpack_require__(59);
-
-Object.defineProperty(exports, 'Focusable', {
-  enumerable: true,
-  get: function () {
-    return _interopRequireDefault(_Focusable).default;
-  }
-});
-
-var _Mirror = __webpack_require__(57);
-
-Object.defineProperty(exports, 'Mirror', {
-  enumerable: true,
-  get: function () {
-    return _interopRequireDefault(_Mirror).default;
-  }
-});
-Object.defineProperty(exports, 'defaultMirrorOptions', {
-  enumerable: true,
-  get: function () {
-    return _Mirror.defaultOptions;
-  }
-});
-
-var _Scrollable = __webpack_require__(53);
-
-Object.defineProperty(exports, 'Scrollable', {
-  enumerable: true,
-  get: function () {
-    return _interopRequireDefault(_Scrollable).default;
-  }
-});
-Object.defineProperty(exports, 'defaultScrollableOptions', {
-  enumerable: true,
-  get: function () {
-    return _Scrollable.defaultOptions;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _DraggableEvent = __webpack_require__(63);
-
-Object.keys(_DraggableEvent).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _DraggableEvent[key];
-    }
-  });
-});
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _DragEvent = __webpack_require__(65);
-
-Object.keys(_DragEvent).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _DragEvent[key];
-    }
-  });
-});
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.defaultOptions = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _AbstractPlugin = __webpack_require__(1);
-
-var _AbstractPlugin2 = _interopRequireDefault(_AbstractPlugin);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const onSortableSorted = Symbol('onSortableSorted');
-
-/**
- * SwapAnimation default options
- * @property {Object} defaultOptions
- * @property {Number} defaultOptions.duration
- * @property {String} defaultOptions.easingFunction
- * @property {Boolean} defaultOptions.horizontal
- * @type {Object}
- */
-const defaultOptions = exports.defaultOptions = {
-  duration: 150,
-  easingFunction: 'ease-in-out',
-  horizontal: false
-};
-
-/**
- * SwapAnimation plugin adds swap animations for sortable
- * @class SwapAnimation
- * @module SwapAnimation
- * @extends AbstractPlugin
- */
-class SwapAnimation extends _AbstractPlugin2.default {
-  /**
-   * SwapAnimation constructor.
-   * @constructs SwapAnimation
-   * @param {Draggable} draggable - Draggable instance
-   */
-  constructor(draggable) {
-    super(draggable);
-
-    /**
-     * SwapAnimation options
-     * @property {Object} options
-     * @property {Number} defaultOptions.duration
-     * @property {String} defaultOptions.easingFunction
-     * @type {Object}
-     */
-    this.options = _extends({}, defaultOptions, this.getOptions());
-
-    /**
-     * Last animation frame
-     * @property {Number} lastAnimationFrame
-     * @type {Number}
-     */
-    this.lastAnimationFrame = null;
-
-    this[onSortableSorted] = this[onSortableSorted].bind(this);
-  }
-
-  /**
-   * Attaches plugins event listeners
-   */
-  attach() {
-    this.draggable.on('sortable:sorted', this[onSortableSorted]);
-  }
-
-  /**
-   * Detaches plugins event listeners
-   */
-  detach() {
-    this.draggable.off('sortable:sorted', this[onSortableSorted]);
-  }
-
-  /**
-   * Returns options passed through draggable
-   * @return {Object}
-   */
-  getOptions() {
-    return this.draggable.options.swapAnimation || {};
-  }
-
-  /**
-   * Sortable sorted handler
-   * @param {SortableSortedEvent} sortableEvent
-   * @private
-   */
-  [onSortableSorted]({ oldIndex, newIndex, dragEvent }) {
-    const { source, over } = dragEvent;
-
-    cancelAnimationFrame(this.lastAnimationFrame);
-
-    // Can be done in a separate frame
-    this.lastAnimationFrame = requestAnimationFrame(() => {
-      if (oldIndex >= newIndex) {
-        animate(source, over, this.options);
-      } else {
-        animate(over, source, this.options);
-      }
-    });
-  }
-}
-
-exports.default = SwapAnimation; /**
-                                  * Animates two elements
-                                  * @param {HTMLElement} from
-                                  * @param {HTMLElement} to
-                                  * @param {Object} options
-                                  * @param {Number} options.duration
-                                  * @param {String} options.easingFunction
-                                  * @param {String} options.horizontal
-                                  * @private
-                                  */
-
-function animate(from, to, { duration, easingFunction, horizontal }) {
-  for (const element of [from, to]) {
-    element.style.pointerEvents = 'none';
-  }
-
-  if (horizontal) {
-    const width = from.offsetWidth;
-    from.style.transform = `translate3d(${width}px, 0, 0)`;
-    to.style.transform = `translate3d(-${width}px, 0, 0)`;
-  } else {
-    const height = from.offsetHeight;
-    from.style.transform = `translate3d(0, ${height}px, 0)`;
-    to.style.transform = `translate3d(0, -${height}px, 0)`;
-  }
-
-  requestAnimationFrame(() => {
-    for (const element of [from, to]) {
-      element.addEventListener('transitionend', resetElementOnTransitionEnd);
-      element.style.transition = `transform ${duration}ms ${easingFunction}`;
-      element.style.transform = '';
-    }
-  });
-}
-
-/**
- * Resets animation style properties after animation has completed
- * @param {Event} event
- * @private
- */
-function resetElementOnTransitionEnd(event) {
-  event.target.style.transition = '';
-  event.target.style.pointerEvents = '';
-  event.target.removeEventListener('transitionend', resetElementOnTransitionEnd);
-}
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.defaultOptions = undefined;
-
-var _SwapAnimation = __webpack_require__(15);
-
-var _SwapAnimation2 = _interopRequireDefault(_SwapAnimation);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _SwapAnimation2.default;
-exports.defaultOptions = _SwapAnimation.defaultOptions;
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _AbstractPlugin = __webpack_require__(1);
-
-var _AbstractPlugin2 = _interopRequireDefault(_AbstractPlugin);
-
-var _SnappableEvent = __webpack_require__(7);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const onDragStart = Symbol('onDragStart');
-const onDragStop = Symbol('onDragStop');
-const onDragOver = Symbol('onDragOver');
-const onDragOut = Symbol('onDragOut');
-const onMirrorCreated = Symbol('onMirrorCreated');
-const onMirrorDestroy = Symbol('onMirrorDestroy');
-
-/**
- * Snappable plugin which snaps draggable elements into place
- * @class Snappable
- * @module Snappable
- * @extends AbstractPlugin
- */
-class Snappable extends _AbstractPlugin2.default {
-  /**
-   * Snappable constructor.
-   * @constructs Snappable
-   * @param {Draggable} draggable - Draggable instance
-   */
-  constructor(draggable) {
-    super(draggable);
-
-    /**
-     * Keeps track of the first source element
-     * @property {HTMLElement|null} firstSource
-     */
-    this.firstSource = null;
-
-    /**
-     * Keeps track of the mirror element
-     * @property {HTMLElement} mirror
-     */
-    this.mirror = null;
-
-    this[onDragStart] = this[onDragStart].bind(this);
-    this[onDragStop] = this[onDragStop].bind(this);
-    this[onDragOver] = this[onDragOver].bind(this);
-    this[onDragOut] = this[onDragOut].bind(this);
-    this[onMirrorCreated] = this[onMirrorCreated].bind(this);
-    this[onMirrorDestroy] = this[onMirrorDestroy].bind(this);
-  }
-
-  /**
-   * Attaches plugins event listeners
-   */
-  attach() {
-    this.draggable.on('drag:start', this[onDragStart]).on('drag:stop', this[onDragStop]).on('drag:over', this[onDragOver]).on('drag:out', this[onDragOut]).on('droppable:over', this[onDragOver]).on('droppable:out', this[onDragOut]).on('mirror:created', this[onMirrorCreated]).on('mirror:destroy', this[onMirrorDestroy]);
-  }
-
-  /**
-   * Detaches plugins event listeners
-   */
-  detach() {
-    this.draggable.off('drag:start', this[onDragStart]).off('drag:stop', this[onDragStop]).off('drag:over', this[onDragOver]).off('drag:out', this[onDragOut]).off('droppable:over', this[onDragOver]).off('droppable:out', this[onDragOut]).off('mirror:created', this[onMirrorCreated]).off('mirror:destroy', this[onMirrorDestroy]);
-  }
-
-  /**
-   * Drag start handler
-   * @private
-   * @param {DragStartEvent} event - Drag start event
-   */
-  [onDragStart](event) {
-    if (event.canceled()) {
-      return;
-    }
-
-    this.firstSource = event.source;
-  }
-
-  /**
-   * Drag stop handler
-   * @private
-   * @param {DragStopEvent} event - Drag stop event
-   */
-  [onDragStop]() {
-    this.firstSource = null;
-  }
-
-  /**
-   * Drag over handler
-   * @private
-   * @param {DragOverEvent|DroppableOverEvent} event - Drag over event
-   */
-  [onDragOver](event) {
-    if (event.canceled()) {
-      return;
-    }
-
-    const source = event.source || event.dragEvent.source;
-
-    if (source === this.firstSource) {
-      this.firstSource = null;
-      return;
-    }
-
-    const snapInEvent = new _SnappableEvent.SnapInEvent({
-      dragEvent: event,
-      snappable: event.over || event.droppable
-    });
-
-    this.draggable.trigger(snapInEvent);
-
-    if (snapInEvent.canceled()) {
-      return;
-    }
-
-    if (this.mirror) {
-      this.mirror.style.display = 'none';
-    }
-
-    source.classList.remove(this.draggable.getClassNameFor('source:dragging'));
-    source.classList.add(this.draggable.getClassNameFor('source:placed'));
-
-    // Need to cancel this in drag out
-    setTimeout(() => {
-      source.classList.remove(this.draggable.getClassNameFor('source:placed'));
-    }, this.draggable.options.placedTimeout);
-  }
-
-  /**
-   * Drag out handler
-   * @private
-   * @param {DragOutEvent|DroppableOutEvent} event - Drag out event
-   */
-  [onDragOut](event) {
-    if (event.canceled()) {
-      return;
-    }
-
-    const source = event.source || event.dragEvent.source;
-
-    const snapOutEvent = new _SnappableEvent.SnapOutEvent({
-      dragEvent: event,
-      snappable: event.over || event.droppable
-    });
-
-    this.draggable.trigger(snapOutEvent);
-
-    if (snapOutEvent.canceled()) {
-      return;
-    }
-
-    if (this.mirror) {
-      this.mirror.style.display = '';
-    }
-
-    source.classList.add(this.draggable.getClassNameFor('source:dragging'));
-  }
-
-  /**
-   * Mirror created handler
-   * @param {MirrorCreatedEvent} mirrorEvent
-   * @private
-   */
-  [onMirrorCreated]({ mirror }) {
-    this.mirror = mirror;
-  }
-
-  /**
-   * Mirror destroy handler
-   * @param {MirrorDestroyEvent} mirrorEvent
-   * @private
-   */
-  [onMirrorDestroy]() {
-    this.mirror = null;
-  }
-}
-exports.default = Snappable;
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SnapOutEvent = exports.SnapInEvent = exports.SnapEvent = undefined;
-
-var _AbstractEvent = __webpack_require__(0);
-
-var _AbstractEvent2 = _interopRequireDefault(_AbstractEvent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Base snap event
- * @class SnapEvent
- * @module SnapEvent
- * @extends AbstractEvent
- */
-class SnapEvent extends _AbstractEvent2.default {
-
-  /**
-   * Drag event that triggered this snap event
-   * @property dragEvent
-   * @type {DragEvent}
-   * @readonly
-   */
-  get dragEvent() {
-    return this.data.dragEvent;
-  }
-
-  /**
-   * Snappable element
-   * @property snappable
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get snappable() {
-    return this.data.snappable;
-  }
-}
-
-exports.SnapEvent = SnapEvent; /**
-                                * Snap in event
-                                * @class SnapInEvent
-                                * @module SnapInEvent
-                                * @extends SnapEvent
-                                */
-
-SnapEvent.type = 'snap';
-class SnapInEvent extends SnapEvent {}
-
-exports.SnapInEvent = SnapInEvent; /**
-                                    * Snap out event
-                                    * @class SnapOutEvent
-                                    * @module SnapOutEvent
-                                    * @extends SnapEvent
-                                    */
-
-SnapInEvent.type = 'snap:in';
-SnapInEvent.cancelable = true;
-class SnapOutEvent extends SnapEvent {}
-exports.SnapOutEvent = SnapOutEvent;
-SnapOutEvent.type = 'snap:out';
-SnapOutEvent.cancelable = true;
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _SnappableEvent = __webpack_require__(7);
-
-Object.keys(_SnappableEvent).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _SnappableEvent[key];
-    }
-  });
-});
-
-var _Snappable = __webpack_require__(17);
-
-var _Snappable2 = _interopRequireDefault(_Snappable);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _Snappable2.default;
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.defaultOptions = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _AbstractPlugin = __webpack_require__(1);
-
-var _AbstractPlugin2 = _interopRequireDefault(_AbstractPlugin);
-
-var _utils = __webpack_require__(2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const onMirrorCreated = Symbol('onMirrorCreated');
-const onMirrorDestroy = Symbol('onMirrorDestroy');
-const onDragOver = Symbol('onDragOver');
-const resize = Symbol('resize');
-
-/**
- * ResizeMirror default options
- * @property {Object} defaultOptions
- * @type {Object}
- */
-const defaultOptions = exports.defaultOptions = {};
-
-/**
- * The ResizeMirror plugin resizes the mirror element to the dimensions of the draggable element that the mirror is hovering over
- * @class ResizeMirror
- * @module ResizeMirror
- * @extends AbstractPlugin
- */
-class ResizeMirror extends _AbstractPlugin2.default {
-  /**
-   * ResizeMirror constructor.
-   * @constructs ResizeMirror
-   * @param {Draggable} draggable - Draggable instance
-   */
-  constructor(draggable) {
-    super(draggable);
-
-    /**
-     * ResizeMirror options
-     * @property {Object} options
-     * @type {Object}
-     */
-    this.options = _extends({}, defaultOptions, this.getOptions());
-
-    /**
-     * ResizeMirror remembers the last width when resizing the mirror
-     * to avoid additional writes to the DOM
-     * @property {number} lastWidth
-     */
-    this.lastWidth = 0;
-
-    /**
-     * ResizeMirror remembers the last height when resizing the mirror
-     * to avoid additional writes to the DOM
-     * @property {number} lastHeight
-     */
-    this.lastHeight = 0;
-
-    /**
-     * Keeps track of the mirror element
-     * @property {HTMLElement} mirror
-     */
-    this.mirror = null;
-
-    this[onMirrorCreated] = this[onMirrorCreated].bind(this);
-    this[onMirrorDestroy] = this[onMirrorDestroy].bind(this);
-    this[onDragOver] = this[onDragOver].bind(this);
-  }
-
-  /**
-   * Attaches plugins event listeners
-   */
-  attach() {
-    this.draggable.on('mirror:created', this[onMirrorCreated]).on('drag:over', this[onDragOver]).on('drag:over:container', this[onDragOver]);
-  }
-
-  /**
-   * Detaches plugins event listeners
-   */
-  detach() {
-    this.draggable.off('mirror:created', this[onMirrorCreated]).off('mirror:destroy', this[onMirrorDestroy]).off('drag:over', this[onDragOver]).off('drag:over:container', this[onDragOver]);
-  }
-
-  /**
-   * Returns options passed through draggable
-   * @return {Object}
-   */
-  getOptions() {
-    return this.draggable.options.resizeMirror || {};
-  }
-
-  /**
-   * Mirror created handler
-   * @param {MirrorCreatedEvent} mirrorEvent
-   * @private
-   */
-  [onMirrorCreated]({ mirror }) {
-    this.mirror = mirror;
-  }
-
-  /**
-   * Mirror destroy handler
-   * @param {MirrorDestroyEvent} mirrorEvent
-   * @private
-   */
-  [onMirrorDestroy]() {
-    this.mirror = null;
-  }
-
-  /**
-   * Drag over handler
-   * @param {DragOverEvent | DragOverContainer} dragEvent
-   * @private
-   */
-  [onDragOver](dragEvent) {
-    this[resize](dragEvent);
-  }
-
-  /**
-   * Resize function for
-   * @param {DragOverEvent | DragOverContainer} dragEvent
-   * @private
-   */
-  [resize]({ overContainer, over }) {
-    requestAnimationFrame(() => {
-      if (this.mirror.parentNode !== overContainer) {
-        overContainer.appendChild(this.mirror);
-      }
-
-      const overElement = over || this.draggable.getDraggableElementsForContainer(overContainer)[0];
-
-      if (!overElement) {
-        return;
-      }
-
-      (0, _utils.requestNextAnimationFrame)(() => {
-        const overRect = overElement.getBoundingClientRect();
-
-        if (this.lastHeight === overRect.height && this.lastWidth === overRect.width) {
-          return;
-        }
-
-        this.mirror.style.width = `${overRect.width}px`;
-        this.mirror.style.height = `${overRect.height}px`;
-
-        this.lastWidth = overRect.width;
-        this.lastHeight = overRect.height;
-      });
-    });
-  }
-}
-exports.default = ResizeMirror;
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.defaultOptions = undefined;
-
-var _ResizeMirror = __webpack_require__(20);
-
-var _ResizeMirror2 = _interopRequireDefault(_ResizeMirror);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _ResizeMirror2.default;
-exports.defaultOptions = _ResizeMirror.defaultOptions;
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _AbstractPlugin = __webpack_require__(1);
-
-var _AbstractPlugin2 = _interopRequireDefault(_AbstractPlugin);
-
-var _utils = __webpack_require__(2);
-
-var _CollidableEvent = __webpack_require__(8);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const onDragMove = Symbol('onDragMove');
-const onDragStop = Symbol('onDragStop');
-const onRequestAnimationFrame = Symbol('onRequestAnimationFrame');
-
-/**
- * Collidable plugin which detects colliding elements while dragging
- * @class Collidable
- * @module Collidable
- * @extends AbstractPlugin
- */
-class Collidable extends _AbstractPlugin2.default {
-  /**
-   * Collidable constructor.
-   * @constructs Collidable
-   * @param {Draggable} draggable - Draggable instance
-   */
-  constructor(draggable) {
-    super(draggable);
-
-    /**
-     * Keeps track of currently colliding elements
-     * @property {HTMLElement|null} currentlyCollidingElement
-     * @type {HTMLElement|null}
-     */
-    this.currentlyCollidingElement = null;
-
-    /**
-     * Keeps track of currently colliding elements
-     * @property {HTMLElement|null} lastCollidingElement
-     * @type {HTMLElement|null}
-     */
-    this.lastCollidingElement = null;
-
-    /**
-     * Animation frame for finding colliding elements
-     * @property {Number|null} currentAnimationFrame
-     * @type {Number|null}
-     */
-    this.currentAnimationFrame = null;
-
-    this[onDragMove] = this[onDragMove].bind(this);
-    this[onDragStop] = this[onDragStop].bind(this);
-    this[onRequestAnimationFrame] = this[onRequestAnimationFrame].bind(this);
-  }
-
-  /**
-   * Attaches plugins event listeners
-   */
-  attach() {
-    this.draggable.on('drag:move', this[onDragMove]).on('drag:stop', this[onDragStop]);
-  }
-
-  /**
-   * Detaches plugins event listeners
-   */
-  detach() {
-    this.draggable.off('drag:move', this[onDragMove]).off('drag:stop', this[onDragStop]);
-  }
-
-  /**
-   * Returns current collidables based on `collidables` option
-   * @return {HTMLElement[]}
-   */
-  getCollidables() {
-    const collidables = this.draggable.options.collidables;
-
-    if (typeof collidables === 'string') {
-      return Array.prototype.slice.call(document.querySelectorAll(collidables));
-    } else if (collidables instanceof NodeList || collidables instanceof Array) {
-      return Array.prototype.slice.call(collidables);
-    } else if (collidables instanceof HTMLElement) {
-      return [collidables];
-    } else if (typeof collidables === 'function') {
-      return collidables();
-    } else {
-      return [];
-    }
-  }
-
-  /**
-   * Drag move handler
-   * @private
-   * @param {DragMoveEvent} event - Drag move event
-   */
-  [onDragMove](event) {
-    const target = event.sensorEvent.target;
-
-    this.currentAnimationFrame = requestAnimationFrame(this[onRequestAnimationFrame](target));
-
-    if (this.currentlyCollidingElement) {
-      event.cancel();
-    }
-
-    const collidableInEvent = new _CollidableEvent.CollidableInEvent({
-      dragEvent: event,
-      collidingElement: this.currentlyCollidingElement
-    });
-
-    const collidableOutEvent = new _CollidableEvent.CollidableOutEvent({
-      dragEvent: event,
-      collidingElement: this.lastCollidingElement
-    });
-
-    const enteringCollidable = Boolean(this.currentlyCollidingElement && this.lastCollidingElement !== this.currentlyCollidingElement);
-    const leavingCollidable = Boolean(!this.currentlyCollidingElement && this.lastCollidingElement);
-
-    if (enteringCollidable) {
-      if (this.lastCollidingElement) {
-        this.draggable.trigger(collidableOutEvent);
-      }
-
-      this.draggable.trigger(collidableInEvent);
-    } else if (leavingCollidable) {
-      this.draggable.trigger(collidableOutEvent);
-    }
-
-    this.lastCollidingElement = this.currentlyCollidingElement;
-  }
-
-  /**
-   * Drag stop handler
-   * @private
-   * @param {DragStopEvent} event - Drag stop event
-   */
-  [onDragStop](event) {
-    const lastCollidingElement = this.currentlyCollidingElement || this.lastCollidingElement;
-    const collidableOutEvent = new _CollidableEvent.CollidableOutEvent({
-      dragEvent: event,
-      collidingElement: lastCollidingElement
-    });
-
-    if (lastCollidingElement) {
-      this.draggable.trigger(collidableOutEvent);
-    }
-
-    this.lastCollidingElement = null;
-    this.currentlyCollidingElement = null;
-  }
-
-  /**
-   * Animation frame function
-   * @private
-   * @param {HTMLElement} target - Current move target
-   * @return {Function}
-   */
-  [onRequestAnimationFrame](target) {
-    return () => {
-      const collidables = this.getCollidables();
-      this.currentlyCollidingElement = (0, _utils.closest)(target, element => collidables.includes(element));
-    };
-  }
-}
-exports.default = Collidable;
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.CollidableOutEvent = exports.CollidableInEvent = exports.CollidableEvent = undefined;
-
-var _AbstractEvent = __webpack_require__(0);
-
-var _AbstractEvent2 = _interopRequireDefault(_AbstractEvent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Base collidable event
- * @class CollidableEvent
- * @module CollidableEvent
- * @extends AbstractEvent
- */
-class CollidableEvent extends _AbstractEvent2.default {
-
-  /**
-   * Drag event that triggered this colliable event
-   * @property dragEvent
-   * @type {DragEvent}
-   * @readonly
-   */
-  get dragEvent() {
-    return this.data.dragEvent;
-  }
-}
-
-exports.CollidableEvent = CollidableEvent; /**
-                                            * Collidable in event
-                                            * @class CollidableInEvent
-                                            * @module CollidableInEvent
-                                            * @extends CollidableEvent
-                                            */
-
-CollidableEvent.type = 'collidable';
-class CollidableInEvent extends CollidableEvent {
-
-  /**
-   * Element you are currently colliding with
-   * @property collidingElement
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get collidingElement() {
-    return this.data.collidingElement;
-  }
-}
-
-exports.CollidableInEvent = CollidableInEvent; /**
-                                                * Collidable out event
-                                                * @class CollidableOutEvent
-                                                * @module CollidableOutEvent
-                                                * @extends CollidableEvent
-                                                */
-
-CollidableInEvent.type = 'collidable:in';
-class CollidableOutEvent extends CollidableEvent {
-
-  /**
-   * Element you were previously colliding with
-   * @property collidingElement
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get collidingElement() {
-    return this.data.collidingElement;
-  }
-}
-exports.CollidableOutEvent = CollidableOutEvent;
-CollidableOutEvent.type = 'collidable:out';
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _CollidableEvent = __webpack_require__(8);
-
-Object.keys(_CollidableEvent).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _CollidableEvent[key];
-    }
-  });
-});
-
-var _Collidable = __webpack_require__(22);
-
-var _Collidable2 = _interopRequireDefault(_Collidable);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _Collidable2.default;
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Collidable = __webpack_require__(24);
-
-Object.defineProperty(exports, 'Collidable', {
-  enumerable: true,
-  get: function () {
-    return _interopRequireDefault(_Collidable).default;
-  }
-});
-
-var _ResizeMirror = __webpack_require__(21);
-
-Object.defineProperty(exports, 'ResizeMirror', {
-  enumerable: true,
-  get: function () {
-    return _interopRequireDefault(_ResizeMirror).default;
-  }
-});
-Object.defineProperty(exports, 'defaultResizeMirrorOptions', {
-  enumerable: true,
-  get: function () {
-    return _ResizeMirror.defaultOptions;
-  }
-});
-
-var _Snappable = __webpack_require__(19);
-
-Object.defineProperty(exports, 'Snappable', {
-  enumerable: true,
-  get: function () {
-    return _interopRequireDefault(_Snappable).default;
-  }
-});
-
-var _SwapAnimation = __webpack_require__(16);
-
-Object.defineProperty(exports, 'SwapAnimation', {
-  enumerable: true,
-  get: function () {
-    return _interopRequireDefault(_SwapAnimation).default;
-  }
-});
-Object.defineProperty(exports, 'defaultSwapAnimationOptions', {
-  enumerable: true,
-  get: function () {
-    return _SwapAnimation.defaultOptions;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _Draggable = __webpack_require__(5);
-
-var _Draggable2 = _interopRequireDefault(_Draggable);
-
-var _SortableEvent = __webpack_require__(9);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const onDragStart = Symbol('onDragStart');
-const onDragOverContainer = Symbol('onDragOverContainer');
-const onDragOver = Symbol('onDragOver');
-const onDragStop = Symbol('onDragStop');
-
-/**
- * Returns announcement message when a Draggable element has been sorted with another Draggable element
- * or moved into a new container
- * @param {SortableSortedEvent} sortableEvent
- * @return {String}
- */
-function onSortableSortedDefaultAnnouncement({ dragEvent }) {
-  const sourceText = dragEvent.source.textContent.trim() || dragEvent.source.id || 'sortable element';
-
-  if (dragEvent.over) {
-    const overText = dragEvent.over.textContent.trim() || dragEvent.over.id || 'sortable element';
-    const isFollowing = dragEvent.source.compareDocumentPosition(dragEvent.over) & Node.DOCUMENT_POSITION_FOLLOWING;
-
-    if (isFollowing) {
-      return `Placed ${sourceText} after ${overText}`;
-    } else {
-      return `Placed ${sourceText} before ${overText}`;
-    }
-  } else {
-    // need to figure out how to compute container name
-    return `Placed ${sourceText} into a different container`;
-  }
-}
-
-/**
- * @const {Object} defaultAnnouncements
- * @const {Function} defaultAnnouncements['sortable:sorted']
- */
-const defaultAnnouncements = {
-  'sortable:sorted': onSortableSortedDefaultAnnouncement
-};
-
-/**
- * Sortable is built on top of Draggable and allows sorting of draggable elements. Sortable will keep
- * track of the original index and emits the new index as you drag over draggable elements.
- * @class Sortable
- * @module Sortable
- * @extends Draggable
- */
-class Sortable extends _Draggable2.default {
-  /**
-   * Sortable constructor.
-   * @constructs Sortable
-   * @param {HTMLElement[]|NodeList|HTMLElement} containers - Sortable containers
-   * @param {Object} options - Options for Sortable
-   */
-  constructor(containers = [], options = {}) {
-    super(containers, _extends({}, options, {
-      announcements: _extends({}, defaultAnnouncements, options.announcements || {})
-    }));
-
-    /**
-     * start index of source on drag start
-     * @property startIndex
-     * @type {Number}
-     */
-    this.startIndex = null;
-
-    /**
-     * start container on drag start
-     * @property startContainer
-     * @type {HTMLElement}
-     * @default null
-     */
-    this.startContainer = null;
-
-    this[onDragStart] = this[onDragStart].bind(this);
-    this[onDragOverContainer] = this[onDragOverContainer].bind(this);
-    this[onDragOver] = this[onDragOver].bind(this);
-    this[onDragStop] = this[onDragStop].bind(this);
-
-    this.on('drag:start', this[onDragStart]).on('drag:over:container', this[onDragOverContainer]).on('drag:over', this[onDragOver]).on('drag:stop', this[onDragStop]);
-  }
-
-  /**
-   * Destroys Sortable instance.
-   */
-  destroy() {
-    super.destroy();
-
-    this.off('drag:start', this[onDragStart]).off('drag:over:container', this[onDragOverContainer]).off('drag:over', this[onDragOver]).off('drag:stop', this[onDragStop]);
-  }
-
-  /**
-   * Returns true index of element within its container during drag operation, i.e. excluding mirror and original source
-   * @param {HTMLElement} element - An element
-   * @return {Number}
-   */
-  index(element) {
-    return this.getDraggableElementsForContainer(element.parentNode).indexOf(element);
-  }
-
-  /**
-   * Drag start handler
-   * @private
-   * @param {DragStartEvent} event - Drag start event
-   */
-  [onDragStart](event) {
-    this.startContainer = event.source.parentNode;
-    this.startIndex = this.index(event.source);
-
-    const sortableStartEvent = new _SortableEvent.SortableStartEvent({
-      dragEvent: event,
-      startIndex: this.startIndex,
-      startContainer: this.startContainer
-    });
-
-    this.trigger(sortableStartEvent);
-
-    if (sortableStartEvent.canceled()) {
-      event.cancel();
-    }
-  }
-
-  /**
-   * Drag over container handler
-   * @private
-   * @param {DragOverContainerEvent} event - Drag over container event
-   */
-  [onDragOverContainer](event) {
-    if (event.canceled()) {
-      return;
-    }
-
-    const { source, over, overContainer } = event;
-    const oldIndex = this.index(source);
-
-    const sortableSortEvent = new _SortableEvent.SortableSortEvent({
-      dragEvent: event,
-      currentIndex: oldIndex,
-      source,
-      over
-    });
-
-    this.trigger(sortableSortEvent);
-
-    if (sortableSortEvent.canceled()) {
-      return;
-    }
-
-    const children = this.getDraggableElementsForContainer(overContainer);
-    const moves = move({ source, over, overContainer, children });
-
-    if (!moves) {
-      return;
-    }
-
-    const { oldContainer, newContainer } = moves;
-    const newIndex = this.index(event.source);
-
-    const sortableSortedEvent = new _SortableEvent.SortableSortedEvent({
-      dragEvent: event,
-      oldIndex,
-      newIndex,
-      oldContainer,
-      newContainer
-    });
-
-    this.trigger(sortableSortedEvent);
-  }
-
-  /**
-   * Drag over handler
-   * @private
-   * @param {DragOverEvent} event - Drag over event
-   */
-  [onDragOver](event) {
-    if (event.over === event.originalSource || event.over === event.source) {
-      return;
-    }
-
-    const { source, over, overContainer } = event;
-    const oldIndex = this.index(source);
-
-    const sortableSortEvent = new _SortableEvent.SortableSortEvent({
-      dragEvent: event,
-      currentIndex: oldIndex,
-      source,
-      over
-    });
-
-    this.trigger(sortableSortEvent);
-
-    if (sortableSortEvent.canceled()) {
-      return;
-    }
-
-    const children = this.getDraggableElementsForContainer(overContainer);
-    const moves = move({ source, over, overContainer, children });
-
-    if (!moves) {
-      return;
-    }
-
-    const { oldContainer, newContainer } = moves;
-    const newIndex = this.index(source);
-
-    const sortableSortedEvent = new _SortableEvent.SortableSortedEvent({
-      dragEvent: event,
-      oldIndex,
-      newIndex,
-      oldContainer,
-      newContainer
-    });
-
-    this.trigger(sortableSortedEvent);
-  }
-
-  /**
-   * Drag stop handler
-   * @private
-   * @param {DragStopEvent} event - Drag stop event
-   */
-  [onDragStop](event) {
-    const sortableStopEvent = new _SortableEvent.SortableStopEvent({
-      dragEvent: event,
-      oldIndex: this.startIndex,
-      newIndex: this.index(event.source),
-      oldContainer: this.startContainer,
-      newContainer: event.source.parentNode
-    });
-
-    this.trigger(sortableStopEvent);
-
-    this.startIndex = null;
-    this.startContainer = null;
-  }
-}
-
-exports.default = Sortable;
-function index(element) {
-  return Array.prototype.indexOf.call(element.parentNode.children, element);
-}
-
-function move({ source, over, overContainer, children }) {
-  const emptyOverContainer = !children.length;
-  const differentContainer = source.parentNode !== overContainer;
-  const sameContainer = over && !differentContainer;
-
-  if (emptyOverContainer) {
-    return moveInsideEmptyContainer(source, overContainer);
-  } else if (sameContainer) {
-    return moveWithinContainer(source, over);
-  } else if (differentContainer) {
-    return moveOutsideContainer(source, over, overContainer);
-  } else {
-    return null;
-  }
-}
-
-function moveInsideEmptyContainer(source, overContainer) {
-  const oldContainer = source.parentNode;
-
-  overContainer.appendChild(source);
-
-  return { oldContainer, newContainer: overContainer };
-}
-
-function moveWithinContainer(source, over) {
-  const oldIndex = index(source);
-  const newIndex = index(over);
-
-  if (oldIndex < newIndex) {
-    source.parentNode.insertBefore(source, over.nextElementSibling);
-  } else {
-    source.parentNode.insertBefore(source, over);
-  }
-
-  return { oldContainer: source.parentNode, newContainer: source.parentNode };
-}
-
-function moveOutsideContainer(source, over, overContainer) {
-  const oldContainer = source.parentNode;
-
-  if (over) {
-    over.parentNode.insertBefore(source, over);
-  } else {
-    // need to figure out proper position
-    overContainer.appendChild(source);
-  }
-
-  return { oldContainer, newContainer: source.parentNode };
-}
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SortableStopEvent = exports.SortableSortedEvent = exports.SortableSortEvent = exports.SortableStartEvent = exports.SortableEvent = undefined;
-
-var _AbstractEvent = __webpack_require__(0);
-
-var _AbstractEvent2 = _interopRequireDefault(_AbstractEvent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Base sortable event
- * @class SortableEvent
- * @module SortableEvent
- * @extends AbstractEvent
- */
-class SortableEvent extends _AbstractEvent2.default {
-
-  /**
-   * Original drag event that triggered this sortable event
-   * @property dragEvent
-   * @type {DragEvent}
-   * @readonly
-   */
-  get dragEvent() {
-    return this.data.dragEvent;
-  }
-}
-
-exports.SortableEvent = SortableEvent; /**
-                                        * Sortable start event
-                                        * @class SortableStartEvent
-                                        * @module SortableStartEvent
-                                        * @extends SortableEvent
-                                        */
-
-SortableEvent.type = 'sortable';
-class SortableStartEvent extends SortableEvent {
-
-  /**
-   * Start index of source on sortable start
-   * @property startIndex
-   * @type {Number}
-   * @readonly
-   */
-  get startIndex() {
-    return this.data.startIndex;
-  }
-
-  /**
-   * Start container on sortable start
-   * @property startContainer
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get startContainer() {
-    return this.data.startContainer;
-  }
-}
-
-exports.SortableStartEvent = SortableStartEvent; /**
-                                                  * Sortable sort event
-                                                  * @class SortableSortEvent
-                                                  * @module SortableSortEvent
-                                                  * @extends SortableEvent
-                                                  */
-
-SortableStartEvent.type = 'sortable:start';
-SortableStartEvent.cancelable = true;
-class SortableSortEvent extends SortableEvent {
-
-  /**
-   * Index of current draggable element
-   * @property currentIndex
-   * @type {Number}
-   * @readonly
-   */
-  get currentIndex() {
-    return this.data.currentIndex;
-  }
-
-  /**
-   * Draggable element you are hovering over
-   * @property over
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get over() {
-    return this.data.oldIndex;
-  }
-
-  /**
-   * Draggable container element you are hovering over
-   * @property overContainer
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get overContainer() {
-    return this.data.newIndex;
-  }
-}
-
-exports.SortableSortEvent = SortableSortEvent; /**
-                                                * Sortable sorted event
-                                                * @class SortableSortedEvent
-                                                * @module SortableSortedEvent
-                                                * @extends SortableEvent
-                                                */
-
-SortableSortEvent.type = 'sortable:sort';
-SortableSortEvent.cancelable = true;
-class SortableSortedEvent extends SortableEvent {
-
-  /**
-   * Index of last sorted event
-   * @property oldIndex
-   * @type {Number}
-   * @readonly
-   */
-  get oldIndex() {
-    return this.data.oldIndex;
-  }
-
-  /**
-   * New index of this sorted event
-   * @property newIndex
-   * @type {Number}
-   * @readonly
-   */
-  get newIndex() {
-    return this.data.newIndex;
-  }
-
-  /**
-   * Old container of draggable element
-   * @property oldContainer
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get oldContainer() {
-    return this.data.oldContainer;
-  }
-
-  /**
-   * New container of draggable element
-   * @property newContainer
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get newContainer() {
-    return this.data.newContainer;
-  }
-}
-
-exports.SortableSortedEvent = SortableSortedEvent; /**
-                                                    * Sortable stop event
-                                                    * @class SortableStopEvent
-                                                    * @module SortableStopEvent
-                                                    * @extends SortableEvent
-                                                    */
-
-SortableSortedEvent.type = 'sortable:sorted';
-class SortableStopEvent extends SortableEvent {
-
-  /**
-   * Original index on sortable start
-   * @property oldIndex
-   * @type {Number}
-   * @readonly
-   */
-  get oldIndex() {
-    return this.data.oldIndex;
-  }
-
-  /**
-   * New index of draggable element
-   * @property newIndex
-   * @type {Number}
-   * @readonly
-   */
-  get newIndex() {
-    return this.data.newIndex;
-  }
-
-  /**
-   * Original container of draggable element
-   * @property oldContainer
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get oldContainer() {
-    return this.data.oldContainer;
-  }
-
-  /**
-   * New container of draggable element
-   * @property newContainer
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get newContainer() {
-    return this.data.newContainer;
-  }
-}
-exports.SortableStopEvent = SortableStopEvent;
-SortableStopEvent.type = 'sortable:stop';
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _SortableEvent = __webpack_require__(9);
-
-Object.keys(_SortableEvent).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _SortableEvent[key];
-    }
-  });
-});
-
-var _Sortable = __webpack_require__(26);
-
-var _Sortable2 = _interopRequireDefault(_Sortable);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _Sortable2.default;
-
-/***/ }),
-/* 29 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _Draggable = __webpack_require__(5);
-
-var _Draggable2 = _interopRequireDefault(_Draggable);
-
-var _SwappableEvent = __webpack_require__(10);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const onDragStart = Symbol('onDragStart');
-const onDragOver = Symbol('onDragOver');
-const onDragStop = Symbol('onDragStop');
-
-/**
- * Returns an announcement message when the Draggable element is swapped with another draggable element
- * @param {SwappableSwappedEvent} swappableEvent
- * @return {String}
- */
-function onSwappableSwappedDefaultAnnouncement({ dragEvent, swappedElement }) {
-  const sourceText = dragEvent.source.textContent.trim() || dragEvent.source.id || 'swappable element';
-  const overText = swappedElement.textContent.trim() || swappedElement.id || 'swappable element';
-
-  return `Swapped ${sourceText} with ${overText}`;
-}
-
-/**
- * @const {Object} defaultAnnouncements
- * @const {Function} defaultAnnouncements['swappabled:swapped']
- */
-const defaultAnnouncements = {
-  'swappabled:swapped': onSwappableSwappedDefaultAnnouncement
-};
-
-/**
- * Swappable is built on top of Draggable and allows swapping of draggable elements.
- * Order is irrelevant to Swappable.
- * @class Swappable
- * @module Swappable
- * @extends Draggable
- */
-class Swappable extends _Draggable2.default {
-  /**
-   * Swappable constructor.
-   * @constructs Swappable
-   * @param {HTMLElement[]|NodeList|HTMLElement} containers - Swappable containers
-   * @param {Object} options - Options for Swappable
-   */
-  constructor(containers = [], options = {}) {
-    super(containers, _extends({}, options, {
-      announcements: _extends({}, defaultAnnouncements, options.announcements || {})
-    }));
-
-    /**
-     * Last draggable element that was dragged over
-     * @property lastOver
-     * @type {HTMLElement}
-     */
-    this.lastOver = null;
-
-    this[onDragStart] = this[onDragStart].bind(this);
-    this[onDragOver] = this[onDragOver].bind(this);
-    this[onDragStop] = this[onDragStop].bind(this);
-
-    this.on('drag:start', this[onDragStart]).on('drag:over', this[onDragOver]).on('drag:stop', this[onDragStop]);
-  }
-
-  /**
-   * Destroys Swappable instance.
-   */
-  destroy() {
-    super.destroy();
-
-    this.off('drag:start', this._onDragStart).off('drag:over', this._onDragOver).off('drag:stop', this._onDragStop);
-  }
-
-  /**
-   * Drag start handler
-   * @private
-   * @param {DragStartEvent} event - Drag start event
-   */
-  [onDragStart](event) {
-    const swappableStartEvent = new _SwappableEvent.SwappableStartEvent({
-      dragEvent: event
-    });
-
-    this.trigger(swappableStartEvent);
-
-    if (swappableStartEvent.canceled()) {
-      event.cancel();
-    }
-  }
-
-  /**
-   * Drag over handler
-   * @private
-   * @param {DragOverEvent} event - Drag over event
-   */
-  [onDragOver](event) {
-    if (event.over === event.originalSource || event.over === event.source || event.canceled()) {
-      return;
-    }
-
-    const swappableSwapEvent = new _SwappableEvent.SwappableSwapEvent({
-      dragEvent: event,
-      over: event.over,
-      overContainer: event.overContainer
-    });
-
-    this.trigger(swappableSwapEvent);
-
-    if (swappableSwapEvent.canceled()) {
-      return;
-    }
-
-    // swap originally swapped element back
-    if (this.lastOver && this.lastOver !== event.over) {
-      swap(this.lastOver, event.source);
-    }
-
-    if (this.lastOver === event.over) {
-      this.lastOver = null;
-    } else {
-      this.lastOver = event.over;
-    }
-
-    swap(event.source, event.over);
-
-    const swappableSwappedEvent = new _SwappableEvent.SwappableSwappedEvent({
-      dragEvent: event,
-      swappedElement: event.over
-    });
-
-    this.trigger(swappableSwappedEvent);
-  }
-
-  /**
-   * Drag stop handler
-   * @private
-   * @param {DragStopEvent} event - Drag stop event
-   */
-  [onDragStop](event) {
-    const swappableStopEvent = new _SwappableEvent.SwappableStopEvent({
-      dragEvent: event
-    });
-
-    this.trigger(swappableStopEvent);
-    this.lastOver = null;
-  }
-}
-
-exports.default = Swappable;
-function withTempElement(callback) {
-  const tmpElement = document.createElement('div');
-  callback(tmpElement);
-  tmpElement.parentNode.removeChild(tmpElement);
-}
-
-function swap(source, over) {
-  const overParent = over.parentNode;
-  const sourceParent = source.parentNode;
-
-  withTempElement(tmpElement => {
-    sourceParent.insertBefore(tmpElement, source);
-    overParent.insertBefore(source, over);
-    sourceParent.insertBefore(over, tmpElement);
-  });
-}
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SwappableStopEvent = exports.SwappableSwappedEvent = exports.SwappableSwapEvent = exports.SwappableStartEvent = exports.SwappableEvent = undefined;
-
-var _AbstractEvent = __webpack_require__(0);
-
-var _AbstractEvent2 = _interopRequireDefault(_AbstractEvent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Base swappable event
- * @class SwappableEvent
- * @module SwappableEvent
- * @extends AbstractEvent
- */
-class SwappableEvent extends _AbstractEvent2.default {
-
-  /**
-   * Original drag event that triggered this swappable event
-   * @property dragEvent
-   * @type {DragEvent}
-   * @readonly
-   */
-  get dragEvent() {
-    return this.data.dragEvent;
-  }
-}
-
-exports.SwappableEvent = SwappableEvent; /**
-                                          * Swappable start event
-                                          * @class SwappableStartEvent
-                                          * @module SwappableStartEvent
-                                          * @extends SwappableEvent
-                                          */
-
-SwappableEvent.type = 'swappable';
-class SwappableStartEvent extends SwappableEvent {}
-
-exports.SwappableStartEvent = SwappableStartEvent; /**
-                                                    * Swappable swap event
-                                                    * @class SwappableSwapEvent
-                                                    * @module SwappableSwapEvent
-                                                    * @extends SwappableEvent
-                                                    */
-
-SwappableStartEvent.type = 'swappable:start';
-SwappableStartEvent.cancelable = true;
-class SwappableSwapEvent extends SwappableEvent {
-
-  /**
-   * Draggable element you are over
-   * @property over
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get over() {
-    return this.data.over;
-  }
-
-  /**
-   * Draggable container you are over
-   * @property overContainer
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get overContainer() {
-    return this.data.overContainer;
-  }
-}
-
-exports.SwappableSwapEvent = SwappableSwapEvent; /**
-                                                  * Swappable swapped event
-                                                  * @class SwappableSwappedEvent
-                                                  * @module SwappableSwappedEvent
-                                                  * @extends SwappableEvent
-                                                  */
-
-SwappableSwapEvent.type = 'swappable:swap';
-SwappableSwapEvent.cancelable = true;
-class SwappableSwappedEvent extends SwappableEvent {
-
-  /**
-   * The draggable element that you swapped with
-   * @property swappedElement
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get swappedElement() {
-    return this.data.swappedElement;
-  }
-}
-
-exports.SwappableSwappedEvent = SwappableSwappedEvent; /**
-                                                        * Swappable stop event
-                                                        * @class SwappableStopEvent
-                                                        * @module SwappableStopEvent
-                                                        * @extends SwappableEvent
-                                                        */
-
-SwappableSwappedEvent.type = 'swappable:swapped';
-class SwappableStopEvent extends SwappableEvent {}
-exports.SwappableStopEvent = SwappableStopEvent;
-SwappableStopEvent.type = 'swappable:stop';
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _SwappableEvent = __webpack_require__(10);
-
-Object.keys(_SwappableEvent).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _SwappableEvent[key];
-    }
-  });
-});
-
-var _Swappable = __webpack_require__(29);
-
-var _Swappable2 = _interopRequireDefault(_Swappable);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _Swappable2.default;
-
-/***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _utils = __webpack_require__(2);
-
-var _Draggable = __webpack_require__(5);
-
-var _Draggable2 = _interopRequireDefault(_Draggable);
-
-var _DroppableEvent = __webpack_require__(11);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const onDragStart = Symbol('onDragStart');
-const onDragMove = Symbol('onDragMove');
-const onDragStop = Symbol('onDragStop');
-const dropInDropzone = Symbol('dropInDropZone');
-const returnToOriginalDropzone = Symbol('returnToOriginalDropzone');
-const closestDropzone = Symbol('closestDropzone');
-const getDropzones = Symbol('getDropzones');
-
-/**
- * Returns an announcement message when the Draggable element is dropped into a dropzone element
- * @param {DroppableDroppedEvent} droppableEvent
- * @return {String}
- */
-function onDroppableDroppedDefaultAnnouncement({ dragEvent, dropzone }) {
-  const sourceText = dragEvent.source.textContent.trim() || dragEvent.source.id || 'draggable element';
-  const dropzoneText = dropzone.textContent.trim() || dropzone.id || 'droppable element';
-
-  return `Dropped ${sourceText} into ${dropzoneText}`;
-}
-
-/**
- * Returns an announcement message when the Draggable element has returned to its original dropzone element
- * @param {DroppableReturnedEvent} droppableEvent
- * @return {String}
- */
-function onDroppableReturnedDefaultAnnouncement({ dragEvent, dropzone }) {
-  const sourceText = dragEvent.source.textContent.trim() || dragEvent.source.id || 'draggable element';
-  const dropzoneText = dropzone.textContent.trim() || dropzone.id || 'droppable element';
-
-  return `Returned ${sourceText} from ${dropzoneText}`;
-}
-
-/**
- * @const {Object} defaultAnnouncements
- * @const {Function} defaultAnnouncements['droppable:dropped']
- * @const {Function} defaultAnnouncements['droppable:returned']
- */
-const defaultAnnouncements = {
-  'droppable:dropped': onDroppableDroppedDefaultAnnouncement,
-  'droppable:returned': onDroppableReturnedDefaultAnnouncement
-};
-
-const defaultClasses = {
-  'droppable:active': 'draggable-dropzone--active',
-  'droppable:occupied': 'draggable-dropzone--occupied'
-};
-
-const defaultOptions = {
-  dropzone: '.draggable-droppable'
-};
-
-/**
- * Droppable is built on top of Draggable and allows dropping draggable elements
- * into dropzone element
- * @class Droppable
- * @module Droppable
- * @extends Draggable
- */
-class Droppable extends _Draggable2.default {
-  /**
-   * Droppable constructor.
-   * @constructs Droppable
-   * @param {HTMLElement[]|NodeList|HTMLElement} containers - Droppable containers
-   * @param {Object} options - Options for Droppable
-   */
-  constructor(containers = [], options = {}) {
-    super(containers, _extends({}, defaultOptions, options, {
-      classes: _extends({}, defaultClasses, options.classes || {}),
-      announcements: _extends({}, defaultAnnouncements, options.announcements || {})
-    }));
-
-    /**
-     * All dropzone elements on drag start
-     * @property dropzones
-     * @type {HTMLElement[]}
-     */
-    this.dropzones = null;
-
-    /**
-     * Last dropzone element that the source was dropped into
-     * @property lastDropzone
-     * @type {HTMLElement}
-     */
-    this.lastDropzone = null;
-
-    /**
-     * Initial dropzone element that the source was drag from
-     * @property initialDropzone
-     * @type {HTMLElement}
-     */
-    this.initialDropzone = null;
-
-    this[onDragStart] = this[onDragStart].bind(this);
-    this[onDragMove] = this[onDragMove].bind(this);
-    this[onDragStop] = this[onDragStop].bind(this);
-
-    this.on('drag:start', this[onDragStart]).on('drag:move', this[onDragMove]).on('drag:stop', this[onDragStop]);
-  }
-
-  /**
-   * Destroys Droppable instance.
-   */
-  destroy() {
-    super.destroy();
-
-    this.off('drag:start', this[onDragStart]).off('drag:move', this[onDragMove]).off('drag:stop', this[onDragStop]);
-  }
-
-  /**
-   * Drag start handler
-   * @private
-   * @param {DragStartEvent} event - Drag start event
-   */
-  [onDragStart](event) {
-    if (event.canceled()) {
-      return;
-    }
-
-    this.dropzones = [...this[getDropzones]()];
-    const dropzone = (0, _utils.closest)(event.sensorEvent.target, this.options.dropzone);
-
-    if (!dropzone) {
-      event.cancel();
-      return;
-    }
-
-    const droppableStartEvent = new _DroppableEvent.DroppableStartEvent({
-      dragEvent: event,
-      dropzone
-    });
-
-    this.trigger(droppableStartEvent);
-
-    if (droppableStartEvent.canceled()) {
-      event.cancel();
-      return;
-    }
-
-    this.initialDropzone = dropzone;
-
-    for (const dropzoneElement of this.dropzones) {
-      if (dropzoneElement.classList.contains(this.getClassNameFor('droppable:occupied'))) {
-        continue;
-      }
-
-      dropzoneElement.classList.add(this.getClassNameFor('droppable:active'));
-    }
-  }
-
-  /**
-   * Drag move handler
-   * @private
-   * @param {DragMoveEvent} event - Drag move event
-   */
-  [onDragMove](event) {
-    if (event.canceled()) {
-      return;
-    }
-
-    const dropzone = this[closestDropzone](event.sensorEvent.target);
-    const overEmptyDropzone = dropzone && !dropzone.classList.contains(this.getClassNameFor('droppable:occupied'));
-
-    if (overEmptyDropzone && this[dropInDropzone](event, dropzone)) {
-      this.lastDropzone = dropzone;
-    } else if ((!dropzone || dropzone === this.initialDropzone) && this.lastDropzone) {
-      this[returnToOriginalDropzone](event);
-      this.lastDropzone = null;
-    }
-  }
-
-  /**
-   * Drag stop handler
-   * @private
-   * @param {DragStopEvent} event - Drag stop event
-   */
-  [onDragStop](event) {
-    const droppableStopEvent = new _DroppableEvent.DroppableStopEvent({
-      dragEvent: event,
-      dropzone: this.lastDropzone || this.initialDropzone
-    });
-
-    this.trigger(droppableStopEvent);
-
-    const occupiedClass = this.getClassNameFor('droppable:occupied');
-
-    for (const dropzone of this.dropzones) {
-      dropzone.classList.remove(this.getClassNameFor('droppable:active'));
-    }
-
-    if (this.lastDropzone && this.lastDropzone !== this.initialDropzone) {
-      this.initialDropzone.classList.remove(occupiedClass);
-    }
-
-    this.dropzones = null;
-    this.lastDropzone = null;
-    this.initialDropzone = null;
-  }
-
-  /**
-   * Drops a draggable element into a dropzone element
-   * @private
-   * @param {DragMoveEvent} event - Drag move event
-   * @param {HTMLElement} dropzone - Dropzone element to drop draggable into
-   */
-  [dropInDropzone](event, dropzone) {
-    const droppableDroppedEvent = new _DroppableEvent.DroppableDroppedEvent({
-      dragEvent: event,
-      dropzone
-    });
-
-    this.trigger(droppableDroppedEvent);
-
-    if (droppableDroppedEvent.canceled()) {
-      return false;
-    }
-
-    const occupiedClass = this.getClassNameFor('droppable:occupied');
-
-    if (this.lastDropzone) {
-      this.lastDropzone.classList.remove(occupiedClass);
-    }
-
-    dropzone.appendChild(event.source);
-    dropzone.classList.add(occupiedClass);
-
-    return true;
-  }
-
-  /**
-   * Moves the previously dropped element back into its original dropzone
-   * @private
-   * @param {DragMoveEvent} event - Drag move event
-   */
-  [returnToOriginalDropzone](event) {
-    const droppableReturnedEvent = new _DroppableEvent.DroppableReturnedEvent({
-      dragEvent: event,
-      dropzone: this.lastDropzone
-    });
-
-    this.trigger(droppableReturnedEvent);
-
-    if (droppableReturnedEvent.canceled()) {
-      return;
-    }
-
-    this.initialDropzone.appendChild(event.source);
-    this.lastDropzone.classList.remove(this.getClassNameFor('droppable:occupied'));
-  }
-
-  /**
-   * Returns closest dropzone element for even target
-   * @private
-   * @param {HTMLElement} target - Event target
-   * @return {HTMLElement|null}
-   */
-  [closestDropzone](target) {
-    if (!this.dropzones) {
-      return null;
-    }
-
-    return (0, _utils.closest)(target, this.dropzones);
-  }
-
-  /**
-   * Returns all current dropzone elements for this draggable instance
-   * @private
-   * @return {NodeList|HTMLElement[]|Array}
-   */
-  [getDropzones]() {
-    const dropzone = this.options.dropzone;
-
-    if (typeof dropzone === 'string') {
-      return document.querySelectorAll(dropzone);
-    } else if (dropzone instanceof NodeList || dropzone instanceof Array) {
-      return dropzone;
-    } else if (typeof dropzone === 'function') {
-      return dropzone();
-    } else {
-      return [];
-    }
-  }
-}
-exports.default = Droppable;
-
-/***/ }),
-/* 33 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DroppableStopEvent = exports.DroppableReturnedEvent = exports.DroppableDroppedEvent = exports.DroppableStartEvent = exports.DroppableEvent = undefined;
-
-var _AbstractEvent = __webpack_require__(0);
-
-var _AbstractEvent2 = _interopRequireDefault(_AbstractEvent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Base droppable event
- * @class DroppableEvent
- * @module DroppableEvent
- * @extends AbstractEvent
- */
-class DroppableEvent extends _AbstractEvent2.default {
-
-  /**
-   * Original drag event that triggered this droppable event
-   * @property dragEvent
-   * @type {DragEvent}
-   * @readonly
-   */
-  get dragEvent() {
-    return this.data.dragEvent;
-  }
-}
-
-exports.DroppableEvent = DroppableEvent; /**
-                                          * Droppable start event
-                                          * @class DroppableStartEvent
-                                          * @module DroppableStartEvent
-                                          * @extends DroppableEvent
-                                          */
-
-DroppableEvent.type = 'droppable';
-class DroppableStartEvent extends DroppableEvent {
-
-  /**
-   * The initial dropzone element of the currently dragging draggable element
-   * @property dropzone
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get dropzone() {
-    return this.data.dropzone;
-  }
-}
-
-exports.DroppableStartEvent = DroppableStartEvent; /**
-                                                    * Droppable dropped event
-                                                    * @class DroppableDroppedEvent
-                                                    * @module DroppableDroppedEvent
-                                                    * @extends DroppableEvent
-                                                    */
-
-DroppableStartEvent.type = 'droppable:start';
-DroppableStartEvent.cancelable = true;
-class DroppableDroppedEvent extends DroppableEvent {
-
-  /**
-   * The dropzone element you dropped the draggable element into
-   * @property dropzone
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get dropzone() {
-    return this.data.dropzone;
-  }
-}
-
-exports.DroppableDroppedEvent = DroppableDroppedEvent; /**
-                                                        * Droppable returned event
-                                                        * @class DroppableReturnedEvent
-                                                        * @module DroppableReturnedEvent
-                                                        * @extends DroppableEvent
-                                                        */
-
-DroppableDroppedEvent.type = 'droppable:dropped';
-DroppableDroppedEvent.cancelable = true;
-class DroppableReturnedEvent extends DroppableEvent {
-
-  /**
-   * The dropzone element you dragged away from
-   * @property dropzone
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get dropzone() {
-    return this.data.dropzone;
-  }
-}
-
-exports.DroppableReturnedEvent = DroppableReturnedEvent; /**
-                                                          * Droppable stop event
-                                                          * @class DroppableStopEvent
-                                                          * @module DroppableStopEvent
-                                                          * @extends DroppableEvent
-                                                          */
-
-DroppableReturnedEvent.type = 'droppable:returned';
-DroppableReturnedEvent.cancelable = true;
-class DroppableStopEvent extends DroppableEvent {
-
-  /**
-   * The final dropzone element of the draggable element
-   * @property dropzone
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get dropzone() {
-    return this.data.dropzone;
-  }
-}
-exports.DroppableStopEvent = DroppableStopEvent;
-DroppableStopEvent.type = 'droppable:stop';
-DroppableStopEvent.cancelable = true;
-
-/***/ }),
-/* 34 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _DroppableEvent = __webpack_require__(11);
-
-Object.keys(_DroppableEvent).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _DroppableEvent[key];
-    }
-  });
-});
-
-var _Droppable = __webpack_require__(32);
-
-var _Droppable2 = _interopRequireDefault(_Droppable);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _Droppable2.default;
-
-/***/ }),
-/* 35 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/**
- * The Emitter is a simple emitter class that provides you with `on()`, `off()` and `trigger()` methods
- * @class Emitter
- * @module Emitter
- */
-class Emitter {
-  constructor() {
-    this.callbacks = {};
-  }
-
-  /**
-   * Registers callbacks by event name
-   * @param {String} type
-   * @param {...Function} callbacks
-   */
-  on(type, ...callbacks) {
-    if (!this.callbacks[type]) {
-      this.callbacks[type] = [];
-    }
-
-    this.callbacks[type].push(...callbacks);
-
-    return this;
-  }
-
-  /**
-   * Unregisters callbacks by event name
-   * @param {String} type
-   * @param {Function} callback
-   */
-  off(type, callback) {
-    if (!this.callbacks[type]) {
-      return null;
-    }
-
-    const copy = this.callbacks[type].slice(0);
-
-    for (let i = 0; i < copy.length; i++) {
-      if (callback === copy[i]) {
-        this.callbacks[type].splice(i, 1);
-      }
-    }
-
-    return this;
-  }
-
-  /**
-   * Triggers event callbacks by event object
-   * @param {AbstractEvent} event
-   */
-  trigger(event) {
-    if (!this.callbacks[event.type]) {
-      return null;
-    }
-
-    const callbacks = [...this.callbacks[event.type]];
-    const caughtErrors = [];
-
-    for (let i = callbacks.length - 1; i >= 0; i--) {
-      const callback = callbacks[i];
-
-      try {
-        callback(event);
-      } catch (error) {
-        caughtErrors.push(error);
-      }
-    }
-
-    if (caughtErrors.length) {
-      /* eslint-disable no-console */
-      console.error(`Draggable caught errors while triggering '${event.type}'`, caughtErrors);
-      /* eslint-disable no-console */
-    }
-
-    return this;
-  }
-}
-exports.default = Emitter;
-
-/***/ }),
-/* 36 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Emitter = __webpack_require__(35);
-
-var _Emitter2 = _interopRequireDefault(_Emitter);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _Emitter2.default;
-
-/***/ }),
-/* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.defaultOptions = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _utils = __webpack_require__(2);
-
-var _Plugins = __webpack_require__(12);
-
-var _Emitter = __webpack_require__(36);
-
-var _Emitter2 = _interopRequireDefault(_Emitter);
-
-var _Sensors = __webpack_require__(6);
-
-var _DraggableEvent = __webpack_require__(13);
-
-var _DragEvent = __webpack_require__(14);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const onDragStart = Symbol('onDragStart');
-const onDragMove = Symbol('onDragMove');
-const onDragStop = Symbol('onDragStop');
-const onDragPressure = Symbol('onDragPressure');
-
-/**
- * @const {Object} defaultAnnouncements
- * @const {Function} defaultAnnouncements['drag:start']
- * @const {Function} defaultAnnouncements['drag:stop']
- */
-const defaultAnnouncements = {
-  'drag:start': event => `Picked up ${event.source.textContent.trim() || event.source.id || 'draggable element'}`,
-  'drag:stop': event => `Released ${event.source.textContent.trim() || event.source.id || 'draggable element'}`
-};
-
-const defaultClasses = {
-  'container:dragging': 'draggable-container--is-dragging',
-  'source:dragging': 'draggable-source--is-dragging',
-  'source:placed': 'draggable-source--placed',
-  'container:placed': 'draggable-container--placed',
-  'body:dragging': 'draggable--is-dragging',
-  'draggable:over': 'draggable--over',
-  'container:over': 'draggable-container--over',
-  'source:original': 'draggable--original',
-  mirror: 'draggable-mirror'
-};
-
-const defaultOptions = exports.defaultOptions = {
-  draggable: '.draggable-source',
-  handle: null,
-  delay: 100,
-  placedTimeout: 800,
-  plugins: [],
-  sensors: []
-};
-
-/**
- * This is the core draggable library that does the heavy lifting
- * @class Draggable
- * @module Draggable
- */
-class Draggable {
-
-  /**
-   * Draggable constructor.
-   * @constructs Draggable
-   * @param {HTMLElement[]|NodeList|HTMLElement} containers - Draggable containers
-   * @param {Object} options - Options for draggable
-   */
-  constructor(containers = [document.body], options = {}) {
-    /**
-     * Draggable containers
-     * @property containers
-     * @type {HTMLElement[]}
-     */
-    if (containers instanceof NodeList || containers instanceof Array) {
-      this.containers = [...containers];
-    } else if (containers instanceof HTMLElement) {
-      this.containers = [containers];
-    } else {
-      throw new Error('Draggable containers are expected to be of type `NodeList`, `HTMLElement[]` or `HTMLElement`');
-    }
-
-    this.options = _extends({}, defaultOptions, options, {
-      classes: _extends({}, defaultClasses, options.classes || {}),
-      announcements: _extends({}, defaultAnnouncements, options.announcements || {})
-    });
-
-    /**
-     * Draggables event emitter
-     * @property emitter
-     * @type {Emitter}
-     */
-    this.emitter = new _Emitter2.default();
-
-    /**
-     * Current drag state
-     * @property dragging
-     * @type {Boolean}
-     */
-    this.dragging = false;
-
-    /**
-     * Active plugins
-     * @property plugins
-     * @type {Plugin[]}
-     */
-    this.plugins = [];
-
-    /**
-     * Active sensors
-     * @property sensors
-     * @type {Sensor[]}
-     */
-    this.sensors = [];
-
-    this[onDragStart] = this[onDragStart].bind(this);
-    this[onDragMove] = this[onDragMove].bind(this);
-    this[onDragStop] = this[onDragStop].bind(this);
-    this[onDragPressure] = this[onDragPressure].bind(this);
-
-    document.addEventListener('drag:start', this[onDragStart], true);
-    document.addEventListener('drag:move', this[onDragMove], true);
-    document.addEventListener('drag:stop', this[onDragStop], true);
-    document.addEventListener('drag:pressure', this[onDragPressure], true);
-
-    const defaultPlugins = Object.values(Draggable.Plugins).map(Plugin => Plugin);
-    const defaultSensors = [_Sensors.MouseSensor, _Sensors.TouchSensor];
-
-    this.addPlugin(...[...defaultPlugins, ...this.options.plugins]);
-    this.addSensor(...[...defaultSensors, ...this.options.sensors]);
-
-    const draggableInitializedEvent = new _DraggableEvent.DraggableInitializedEvent({
-      draggable: this
-    });
-
-    this.on('mirror:created', ({ mirror }) => this.mirror = mirror);
-    this.on('mirror:destroy', () => this.mirror = null);
-
-    this.trigger(draggableInitializedEvent);
-  }
-
-  /**
-   * Destroys Draggable instance. This removes all internal event listeners and
-   * deactivates sensors and plugins
-   */
-
-  /**
-   * Default plugins draggable uses
-   * @static
-   * @property {Object} Plugins
-   * @property {Announcement} Plugins.Announcement
-   * @property {Focusable} Plugins.Focusable
-   * @property {Mirror} Plugins.Mirror
-   * @property {Scrollable} Plugins.Scrollable
-   * @type {Object}
-   */
-  destroy() {
-    document.removeEventListener('drag:start', this[onDragStart], true);
-    document.removeEventListener('drag:move', this[onDragMove], true);
-    document.removeEventListener('drag:stop', this[onDragStop], true);
-    document.removeEventListener('drag:pressure', this[onDragPressure], true);
-
-    const draggableDestroyEvent = new _DraggableEvent.DraggableDestroyEvent({
-      draggable: this
-    });
-
-    this.trigger(draggableDestroyEvent);
-
-    this.removePlugin(...this.plugins.map(plugin => plugin.constructor));
-    this.removeSensor(...this.sensors.map(sensor => sensor.constructor));
-  }
-
-  /**
-   * Adds plugin to this draggable instance. This will end up calling the attach method of the plugin
-   * @param {...typeof Plugin} plugins - Plugins that you want attached to draggable
-   * @return {Draggable}
-   * @example draggable.addPlugin(CustomA11yPlugin, CustomMirrorPlugin)
-   */
-  addPlugin(...plugins) {
-    const activePlugins = plugins.map(Plugin => new Plugin(this));
-
-    activePlugins.forEach(plugin => plugin.attach());
-    this.plugins = [...this.plugins, ...activePlugins];
-
-    return this;
-  }
-
-  /**
-   * Removes plugins that are already attached to this draggable instance. This will end up calling
-   * the detach method of the plugin
-   * @param {...typeof Plugin} plugins - Plugins that you want detached from draggable
-   * @return {Draggable}
-   * @example draggable.removePlugin(MirrorPlugin, CustomMirrorPlugin)
-   */
-  removePlugin(...plugins) {
-    const removedPlugins = this.plugins.filter(plugin => plugins.includes(plugin.constructor));
-
-    removedPlugins.forEach(plugin => plugin.detach());
-    this.plugins = this.plugins.filter(plugin => !plugins.includes(plugin.constructor));
-
-    return this;
-  }
-
-  /**
-   * Adds sensors to this draggable instance. This will end up calling the attach method of the sensor
-   * @param {...typeof Sensor} sensors - Sensors that you want attached to draggable
-   * @return {Draggable}
-   * @example draggable.addSensor(ForceTouchSensor, CustomSensor)
-   */
-  addSensor(...sensors) {
-    const activeSensors = sensors.map(Sensor => new Sensor(this.containers, this.options));
-
-    activeSensors.forEach(sensor => sensor.attach());
-    this.sensors = [...this.sensors, ...activeSensors];
-
-    return this;
-  }
-
-  /**
-   * Removes sensors that are already attached to this draggable instance. This will end up calling
-   * the detach method of the sensor
-   * @param {...typeof Sensor} sensors - Sensors that you want attached to draggable
-   * @return {Draggable}
-   * @example draggable.removeSensor(TouchSensor, DragSensor)
-   */
-  removeSensor(...sensors) {
-    const removedSensors = this.sensors.filter(sensor => sensors.includes(sensor.constructor));
-
-    removedSensors.forEach(sensor => sensor.detach());
-    this.sensors = this.sensors.filter(sensor => !sensors.includes(sensor.constructor));
-
-    return this;
-  }
-
-  /**
-   * Adds container to this draggable instance
-   * @param {...HTMLElement} containers - Containers you want to add to draggable
-   * @return {Draggable}
-   * @example draggable.addContainer(document.body)
-   */
-  addContainer(...containers) {
-    this.containers = [...this.containers, ...containers];
-    this.sensors.forEach(sensor => sensor.addContainer(...containers));
-    return this;
-  }
-
-  /**
-   * Removes container from this draggable instance
-   * @param {...HTMLElement} containers - Containers you want to remove from draggable
-   * @return {Draggable}
-   * @example draggable.removeContainer(document.body)
-   */
-  removeContainer(...containers) {
-    this.containers = this.containers.filter(container => !containers.includes(container));
-    this.sensors.forEach(sensor => sensor.removeContainer(...containers));
-    return this;
-  }
-
-  /**
-   * Adds listener for draggable events
-   * @param {String} type - Event name
-   * @param {...Function} callbacks - Event callbacks
-   * @return {Draggable}
-   * @example draggable.on('drag:start', (dragEvent) => dragEvent.cancel());
-   */
-  on(type, ...callbacks) {
-    this.emitter.on(type, ...callbacks);
-    return this;
-  }
-
-  /**
-   * Removes listener from draggable
-   * @param {String} type - Event name
-   * @param {Function} callback - Event callback
-   * @return {Draggable}
-   * @example draggable.off('drag:start', handlerFunction);
-   */
-  off(type, callback) {
-    this.emitter.off(type, callback);
-    return this;
-  }
-
-  /**
-   * Triggers draggable event
-   * @param {AbstractEvent} event - Event instance
-   * @return {Draggable}
-   * @example draggable.trigger(event);
-   */
-  trigger(event) {
-    this.emitter.trigger(event);
-    return this;
-  }
-
-  /**
-   * Returns class name for class identifier
-   * @param {String} name - Name of class identifier
-   * @return {String|null}
-   */
-  getClassNameFor(name) {
-    return this.options.classes[name];
-  }
-
-  /**
-   * Returns true if this draggable instance is currently dragging
-   * @return {Boolean}
-   */
-  isDragging() {
-    return Boolean(this.dragging);
-  }
-
-  /**
-   * Returns all draggable elements
-   * @return {HTMLElement[]}
-   */
-  getDraggableElements() {
-    return this.containers.reduce((current, container) => {
-      return [...current, ...this.getDraggableElementsForContainer(container)];
-    }, []);
-  }
-
-  /**
-   * Returns draggable elements for a given container, excluding the mirror and
-   * original source element if present
-   * @param {HTMLElement} container
-   * @return {HTMLElement[]}
-   */
-  getDraggableElementsForContainer(container) {
-    const allDraggableElements = container.querySelectorAll(this.options.draggable);
-
-    return [...allDraggableElements].filter(childElement => {
-      return childElement !== this.originalSource && childElement !== this.mirror;
-    });
-  }
-
-  /**
-   * Drag start handler
-   * @private
-   * @param {Event} event - DOM Drag event
-   */
-  [onDragStart](event) {
-    const sensorEvent = getSensorEvent(event);
-    const { target, container } = sensorEvent;
-
-    if (!this.containers.includes(container)) {
-      return;
-    }
-
-    if (this.options.handle && target && !(0, _utils.closest)(target, this.options.handle)) {
-      sensorEvent.cancel();
-      return;
-    }
-
-    // Find draggable source element
-    this.originalSource = (0, _utils.closest)(target, this.options.draggable);
-    this.sourceContainer = container;
-
-    if (!this.originalSource) {
-      sensorEvent.cancel();
-      return;
-    }
-
-    if (this.lastPlacedSource && this.lastPlacedContainer) {
-      clearTimeout(this.placedTimeoutID);
-      this.lastPlacedSource.classList.remove(this.getClassNameFor('source:placed'));
-      this.lastPlacedContainer.classList.remove(this.getClassNameFor('container:placed'));
-    }
-
-    this.source = this.originalSource.cloneNode(true);
-    this.originalSource.parentNode.insertBefore(this.source, this.originalSource);
-    this.originalSource.style.display = 'none';
-
-    const dragEvent = new _DragEvent.DragStartEvent({
-      source: this.source,
-      originalSource: this.originalSource,
-      sourceContainer: container,
-      sensorEvent
-    });
-
-    this.trigger(dragEvent);
-
-    this.dragging = !dragEvent.canceled();
-
-    if (dragEvent.canceled()) {
-      this.source.parentNode.removeChild(this.source);
-      this.originalSource.style.display = null;
-      return;
-    }
-
-    this.originalSource.classList.add(this.getClassNameFor('source:original'));
-    this.source.classList.add(this.getClassNameFor('source:dragging'));
-    this.sourceContainer.classList.add(this.getClassNameFor('container:dragging'));
-    document.body.classList.add(this.getClassNameFor('body:dragging'));
-    applyUserSelect(document.body, 'none');
-
-    requestAnimationFrame(() => {
-      const oldSensorEvent = getSensorEvent(event);
-      const newSensorEvent = oldSensorEvent.clone({ target: this.source });
-
-      this[onDragMove](_extends({}, event, {
-        detail: newSensorEvent
-      }));
-    });
-  }
-
-  /**
-   * Drag move handler
-   * @private
-   * @param {Event} event - DOM Drag event
-   */
-  [onDragMove](event) {
-    if (!this.dragging) {
-      return;
-    }
-
-    const sensorEvent = getSensorEvent(event);
-    const { container } = sensorEvent;
-    let target = sensorEvent.target;
-
-    const dragMoveEvent = new _DragEvent.DragMoveEvent({
-      source: this.source,
-      originalSource: this.originalSource,
-      sourceContainer: container,
-      sensorEvent
-    });
-
-    this.trigger(dragMoveEvent);
-
-    if (dragMoveEvent.canceled()) {
-      sensorEvent.cancel();
-    }
-
-    target = (0, _utils.closest)(target, this.options.draggable);
-    const withinCorrectContainer = (0, _utils.closest)(sensorEvent.target, this.containers);
-    const overContainer = sensorEvent.overContainer || withinCorrectContainer;
-    const isLeavingContainer = this.currentOverContainer && overContainer !== this.currentOverContainer;
-    const isLeavingDraggable = this.currentOver && target !== this.currentOver;
-    const isOverContainer = overContainer && this.currentOverContainer !== overContainer;
-    const isOverDraggable = withinCorrectContainer && target && this.currentOver !== target;
-
-    if (isLeavingDraggable) {
-      const dragOutEvent = new _DragEvent.DragOutEvent({
-        source: this.source,
-        originalSource: this.originalSource,
-        sourceContainer: container,
-        sensorEvent,
-        over: this.currentOver
-      });
-
-      this.currentOver.classList.remove(this.getClassNameFor('draggable:over'));
-      this.currentOver = null;
-
-      this.trigger(dragOutEvent);
-    }
-
-    if (isLeavingContainer) {
-      const dragOutContainerEvent = new _DragEvent.DragOutContainerEvent({
-        source: this.source,
-        originalSource: this.originalSource,
-        sourceContainer: container,
-        sensorEvent,
-        overContainer: this.currentOverContainer
-      });
-
-      this.currentOverContainer.classList.remove(this.getClassNameFor('container:over'));
-      this.currentOverContainer = null;
-
-      this.trigger(dragOutContainerEvent);
-    }
-
-    if (isOverContainer) {
-      overContainer.classList.add(this.getClassNameFor('container:over'));
-
-      const dragOverContainerEvent = new _DragEvent.DragOverContainerEvent({
-        source: this.source,
-        originalSource: this.originalSource,
-        sourceContainer: container,
-        sensorEvent,
-        overContainer
-      });
-
-      this.currentOverContainer = overContainer;
-
-      this.trigger(dragOverContainerEvent);
-    }
-
-    if (isOverDraggable) {
-      target.classList.add(this.getClassNameFor('draggable:over'));
-
-      const dragOverEvent = new _DragEvent.DragOverEvent({
-        source: this.source,
-        originalSource: this.originalSource,
-        sourceContainer: container,
-        sensorEvent,
-        overContainer,
-        over: target
-      });
-
-      this.currentOver = target;
-
-      this.trigger(dragOverEvent);
-    }
-  }
-
-  /**
-   * Drag stop handler
-   * @private
-   * @param {Event} event - DOM Drag event
-   */
-  [onDragStop](event) {
-    if (!this.dragging) {
-      return;
-    }
-
-    this.dragging = false;
-
-    const dragStopEvent = new _DragEvent.DragStopEvent({
-      source: this.source,
-      originalSource: this.originalSource,
-      sensorEvent: event.sensorEvent,
-      sourceContainer: this.sourceContainer
-    });
-
-    this.trigger(dragStopEvent);
-
-    this.source.parentNode.insertBefore(this.originalSource, this.source);
-    this.source.parentNode.removeChild(this.source);
-    this.originalSource.style.display = '';
-
-    this.source.classList.remove(this.getClassNameFor('source:dragging'));
-    this.originalSource.classList.remove(this.getClassNameFor('source:original'));
-    this.originalSource.classList.add(this.getClassNameFor('source:placed'));
-    this.sourceContainer.classList.add(this.getClassNameFor('container:placed'));
-    this.sourceContainer.classList.remove(this.getClassNameFor('container:dragging'));
-    document.body.classList.remove(this.getClassNameFor('body:dragging'));
-    applyUserSelect(document.body, '');
-
-    if (this.currentOver) {
-      this.currentOver.classList.remove(this.getClassNameFor('draggable:over'));
-    }
-
-    if (this.currentOverContainer) {
-      this.currentOverContainer.classList.remove(this.getClassNameFor('container:over'));
-    }
-
-    this.lastPlacedSource = this.originalSource;
-    this.lastPlacedContainer = this.sourceContainer;
-
-    this.placedTimeoutID = setTimeout(() => {
-      if (this.lastPlacedSource) {
-        this.lastPlacedSource.classList.remove(this.getClassNameFor('source:placed'));
-      }
-
-      if (this.lastPlacedContainer) {
-        this.lastPlacedContainer.classList.remove(this.getClassNameFor('container:placed'));
-      }
-
-      this.lastPlacedSource = null;
-      this.lastPlacedContainer = null;
-    }, this.options.placedTimeout);
-
-    this.source = null;
-    this.originalSource = null;
-    this.currentOverContainer = null;
-    this.currentOver = null;
-    this.sourceContainer = null;
-  }
-
-  /**
-   * Drag pressure handler
-   * @private
-   * @param {Event} event - DOM Drag event
-   */
-  [onDragPressure](event) {
-    if (!this.dragging) {
-      return;
-    }
-
-    const sensorEvent = getSensorEvent(event);
-    const source = this.source || (0, _utils.closest)(sensorEvent.originalEvent.target, this.options.draggable);
-
-    const dragPressureEvent = new _DragEvent.DragPressureEvent({
-      sensorEvent,
-      source,
-      pressure: sensorEvent.pressure
-    });
-
-    this.trigger(dragPressureEvent);
-  }
-}
-
-exports.default = Draggable;
-Draggable.Plugins = { Announcement: _Plugins.Announcement, Focusable: _Plugins.Focusable, Mirror: _Plugins.Mirror, Scrollable: _Plugins.Scrollable };
-function getSensorEvent(event) {
-  return event.detail;
-}
-
-function applyUserSelect(element, value) {
-  element.style.webkitUserSelect = value;
-  element.style.mozUserSelect = value;
-  element.style.msUserSelect = value;
-  element.style.oUserSelect = value;
-  element.style.userSelect = value;
-}
-
-/***/ }),
-/* 38 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Sensor = __webpack_require__(4);
-
-var _Sensor2 = _interopRequireDefault(_Sensor);
-
-var _SensorEvent = __webpack_require__(3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const onMouseForceWillBegin = Symbol('onMouseForceWillBegin');
-const onMouseForceDown = Symbol('onMouseForceDown');
-const onMouseDown = Symbol('onMouseDown');
-const onMouseForceChange = Symbol('onMouseForceChange');
-const onMouseMove = Symbol('onMouseMove');
-const onMouseUp = Symbol('onMouseUp');
-const onMouseForceGlobalChange = Symbol('onMouseForceGlobalChange');
-
-/**
- * This sensor picks up native force touch events and dictates drag operations
- * @class ForceTouchSensor
- * @module ForceTouchSensor
- * @extends Sensor
- */
-class ForceTouchSensor extends _Sensor2.default {
-  /**
-   * ForceTouchSensor constructor.
-   * @constructs ForceTouchSensor
-   * @param {HTMLElement[]|NodeList|HTMLElement} containers - Containers
-   * @param {Object} options - Options
-   */
-  constructor(containers = [], options = {}) {
-    super(containers, options);
-
-    /**
-     * Draggable element needs to be remembered to unset the draggable attribute after drag operation has completed
-     * @property mightDrag
-     * @type {Boolean}
-     */
-    this.mightDrag = false;
-
-    this[onMouseForceWillBegin] = this[onMouseForceWillBegin].bind(this);
-    this[onMouseForceDown] = this[onMouseForceDown].bind(this);
-    this[onMouseDown] = this[onMouseDown].bind(this);
-    this[onMouseForceChange] = this[onMouseForceChange].bind(this);
-    this[onMouseMove] = this[onMouseMove].bind(this);
-    this[onMouseUp] = this[onMouseUp].bind(this);
-  }
-
-  /**
-   * Attaches sensors event listeners to the DOM
-   */
-  attach() {
-    for (const container of this.containers) {
-      container.addEventListener('webkitmouseforcewillbegin', this[onMouseForceWillBegin], false);
-      container.addEventListener('webkitmouseforcedown', this[onMouseForceDown], false);
-      container.addEventListener('mousedown', this[onMouseDown], true);
-      container.addEventListener('webkitmouseforcechanged', this[onMouseForceChange], false);
-    }
-
-    document.addEventListener('mousemove', this[onMouseMove]);
-    document.addEventListener('mouseup', this[onMouseUp]);
-  }
-
-  /**
-   * Detaches sensors event listeners to the DOM
-   */
-  detach() {
-    for (const container of this.containers) {
-      container.removeEventListener('webkitmouseforcewillbegin', this[onMouseForceWillBegin], false);
-      container.removeEventListener('webkitmouseforcedown', this[onMouseForceDown], false);
-      container.removeEventListener('mousedown', this[onMouseDown], true);
-      container.removeEventListener('webkitmouseforcechanged', this[onMouseForceChange], false);
-    }
-
-    document.removeEventListener('mousemove', this[onMouseMove]);
-    document.removeEventListener('mouseup', this[onMouseUp]);
-  }
-
-  /**
-   * Mouse force will begin handler
-   * @private
-   * @param {Event} event - Mouse force will begin event
-   */
-  [onMouseForceWillBegin](event) {
-    event.preventDefault();
-    this.mightDrag = true;
-  }
-
-  /**
-   * Mouse force down handler
-   * @private
-   * @param {Event} event - Mouse force down event
-   */
-  [onMouseForceDown](event) {
-    if (this.dragging) {
-      return;
-    }
-
-    const target = document.elementFromPoint(event.clientX, event.clientY);
-    const container = event.currentTarget;
-
-    const dragStartEvent = new _SensorEvent.DragStartSensorEvent({
-      clientX: event.clientX,
-      clientY: event.clientY,
-      target,
-      container,
-      originalEvent: event
-    });
-
-    this.trigger(container, dragStartEvent);
-
-    this.currentContainer = container;
-    this.dragging = !dragStartEvent.canceled();
-    this.mightDrag = false;
-  }
-
-  /**
-   * Mouse up handler
-   * @private
-   * @param {Event} event - Mouse up event
-   */
-  [onMouseUp](event) {
-    if (!this.dragging) {
-      return;
-    }
-
-    const dragStopEvent = new _SensorEvent.DragStopSensorEvent({
-      clientX: event.clientX,
-      clientY: event.clientY,
-      target: null,
-      container: this.currentContainer,
-      originalEvent: event
-    });
-
-    this.trigger(this.currentContainer, dragStopEvent);
-
-    this.currentContainer = null;
-    this.dragging = false;
-    this.mightDrag = false;
-  }
-
-  /**
-   * Mouse down handler
-   * @private
-   * @param {Event} event - Mouse down event
-   */
-  [onMouseDown](event) {
-    if (!this.mightDrag) {
-      return;
-    }
-
-    // Need workaround for real click
-    // Cancel potential drag events
-    event.stopPropagation();
-    event.stopImmediatePropagation();
-    event.preventDefault();
-  }
-
-  /**
-   * Mouse move handler
-   * @private
-   * @param {Event} event - Mouse force will begin event
-   */
-  [onMouseMove](event) {
-    if (!this.dragging) {
-      return;
-    }
-
-    const target = document.elementFromPoint(event.clientX, event.clientY);
-
-    const dragMoveEvent = new _SensorEvent.DragMoveSensorEvent({
-      clientX: event.clientX,
-      clientY: event.clientY,
-      target,
-      container: this.currentContainer,
-      originalEvent: event
-    });
-
-    this.trigger(this.currentContainer, dragMoveEvent);
-  }
-
-  /**
-   * Mouse force change handler
-   * @private
-   * @param {Event} event - Mouse force change event
-   */
-  [onMouseForceChange](event) {
-    if (this.dragging) {
-      return;
-    }
-
-    const target = event.target;
-    const container = event.currentTarget;
-
-    const dragPressureEvent = new _SensorEvent.DragPressureSensorEvent({
-      pressure: event.webkitForce,
-      clientX: event.clientX,
-      clientY: event.clientY,
-      target,
-      container,
-      originalEvent: event
-    });
-
-    this.trigger(container, dragPressureEvent);
-  }
-
-  /**
-   * Mouse force global change handler
-   * @private
-   * @param {Event} event - Mouse force global change event
-   */
-  [onMouseForceGlobalChange](event) {
-    if (!this.dragging) {
-      return;
-    }
-
-    const target = event.target;
-
-    const dragPressureEvent = new _SensorEvent.DragPressureSensorEvent({
-      pressure: event.webkitForce,
-      clientX: event.clientX,
-      clientY: event.clientY,
-      target,
-      container: this.currentContainer,
-      originalEvent: event
-    });
-
-    this.trigger(this.currentContainer, dragPressureEvent);
-  }
-}
-exports.default = ForceTouchSensor;
-
-/***/ }),
-/* 39 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _ForceTouchSensor = __webpack_require__(38);
-
-var _ForceTouchSensor2 = _interopRequireDefault(_ForceTouchSensor);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _ForceTouchSensor2.default;
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _utils = __webpack_require__(2);
-
-var _Sensor = __webpack_require__(4);
-
-var _Sensor2 = _interopRequireDefault(_Sensor);
-
-var _SensorEvent = __webpack_require__(3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const onMouseDown = Symbol('onMouseDown');
-const onMouseUp = Symbol('onMouseUp');
-const onDragStart = Symbol('onDragStart');
-const onDragOver = Symbol('onDragOver');
-const onDragEnd = Symbol('onDragEnd');
-const onDrop = Symbol('onDrop');
-const reset = Symbol('reset');
-
-/**
- * This sensor picks up native browser drag events and dictates drag operations
- * @class DragSensor
- * @module DragSensor
- * @extends Sensor
- */
-class DragSensor extends _Sensor2.default {
-  /**
-   * DragSensor constructor.
-   * @constructs DragSensor
-   * @param {HTMLElement[]|NodeList|HTMLElement} containers - Containers
-   * @param {Object} options - Options
-   */
-  constructor(containers = [], options = {}) {
-    super(containers, options);
-
-    /**
-     * Mouse down timer which will end up setting the draggable attribute, unless canceled
-     * @property mouseDownTimeout
-     * @type {Number}
-     */
-    this.mouseDownTimeout = null;
-
-    /**
-     * Draggable element needs to be remembered to unset the draggable attribute after drag operation has completed
-     * @property draggableElement
-     * @type {HTMLElement}
-     */
-    this.draggableElement = null;
-
-    /**
-     * Native draggable element could be links or images, their draggable state will be disabled during drag operation
-     * @property nativeDraggableElement
-     * @type {HTMLElement}
-     */
-    this.nativeDraggableElement = null;
-
-    this[onMouseDown] = this[onMouseDown].bind(this);
-    this[onMouseUp] = this[onMouseUp].bind(this);
-    this[onDragStart] = this[onDragStart].bind(this);
-    this[onDragOver] = this[onDragOver].bind(this);
-    this[onDragEnd] = this[onDragEnd].bind(this);
-    this[onDrop] = this[onDrop].bind(this);
-  }
-
-  /**
-   * Attaches sensors event listeners to the DOM
-   */
-  attach() {
-    document.addEventListener('mousedown', this[onMouseDown], true);
-  }
-
-  /**
-   * Detaches sensors event listeners to the DOM
-   */
-  detach() {
-    document.removeEventListener('mousedown', this[onMouseDown], true);
-  }
-
-  /**
-   * Drag start handler
-   * @private
-   * @param {Event} event - Drag start event
-   */
-  [onDragStart](event) {
-    // Need for firefox. "text" key is needed for IE
-    event.dataTransfer.setData('text', '');
-    event.dataTransfer.effectAllowed = this.options.type;
-
-    const target = document.elementFromPoint(event.clientX, event.clientY);
-    this.currentContainer = (0, _utils.closest)(event.target, this.containers);
-
-    if (!this.currentContainer) {
-      return;
-    }
-
-    const dragStartEvent = new _SensorEvent.DragStartSensorEvent({
-      clientX: event.clientX,
-      clientY: event.clientY,
-      target,
-      container: this.currentContainer,
-      originalEvent: event
-    });
-
-    // Workaround
-    setTimeout(() => {
-      this.trigger(this.currentContainer, dragStartEvent);
-
-      if (dragStartEvent.canceled()) {
-        this.dragging = false;
-      } else {
-        this.dragging = true;
-      }
-    }, 0);
-  }
-
-  /**
-   * Drag over handler
-   * @private
-   * @param {Event} event - Drag over event
-   */
-  [onDragOver](event) {
-    if (!this.dragging) {
-      return;
-    }
-
-    const target = document.elementFromPoint(event.clientX, event.clientY);
-    const container = this.currentContainer;
-
-    const dragMoveEvent = new _SensorEvent.DragMoveSensorEvent({
-      clientX: event.clientX,
-      clientY: event.clientY,
-      target,
-      container,
-      originalEvent: event
-    });
-
-    this.trigger(container, dragMoveEvent);
-
-    if (!dragMoveEvent.canceled()) {
-      event.preventDefault();
-      event.dataTransfer.dropEffect = this.options.type;
-    }
-  }
-
-  /**
-   * Drag end handler
-   * @private
-   * @param {Event} event - Drag end event
-   */
-  [onDragEnd](event) {
-    if (!this.dragging) {
-      return;
-    }
-
-    document.removeEventListener('mouseup', this[onMouseUp], true);
-
-    const target = document.elementFromPoint(event.clientX, event.clientY);
-    const container = this.currentContainer;
-
-    const dragStopEvent = new _SensorEvent.DragStopSensorEvent({
-      clientX: event.clientX,
-      clientY: event.clientY,
-      target,
-      container,
-      originalEvent: event
-    });
-
-    this.trigger(container, dragStopEvent);
-
-    this.dragging = false;
-
-    this[reset]();
-  }
-
-  /**
-   * Drop handler
-   * @private
-   * @param {Event} event - Drop event
-   */
-  [onDrop](event) {
-    // eslint-disable-line class-methods-use-this
-    event.preventDefault();
-  }
-
-  /**
-   * Mouse down handler
-   * @private
-   * @param {Event} event - Mouse down event
-   */
-  [onMouseDown](event) {
-    // Firefox bug for inputs within draggables https://bugzilla.mozilla.org/show_bug.cgi?id=739071
-    if (event.target && (event.target.form || event.target.contenteditable)) {
-      return;
-    }
-
-    const nativeDraggableElement = (0, _utils.closest)(event.target, element => element.draggable);
-
-    if (nativeDraggableElement) {
-      nativeDraggableElement.draggable = false;
-      this.nativeDraggableElement = nativeDraggableElement;
-    }
-
-    document.addEventListener('mouseup', this[onMouseUp], true);
-    document.addEventListener('dragstart', this[onDragStart], false);
-    document.addEventListener('dragover', this[onDragOver], false);
-    document.addEventListener('dragend', this[onDragEnd], false);
-    document.addEventListener('drop', this[onDrop], false);
-
-    const target = (0, _utils.closest)(event.target, this.options.draggable);
-
-    if (!target) {
-      return;
-    }
-
-    this.mouseDownTimeout = setTimeout(() => {
-      target.draggable = true;
-      this.draggableElement = target;
-    }, this.options.delay);
-  }
-
-  /**
-   * Mouse up handler
-   * @private
-   * @param {Event} event - Mouse up event
-   */
-  [onMouseUp]() {
-    this[reset]();
-  }
-
-  /**
-   * Mouse up handler
-   * @private
-   * @param {Event} event - Mouse up event
-   */
-  [reset]() {
-    clearTimeout(this.mouseDownTimeout);
-
-    document.removeEventListener('mouseup', this[onMouseUp], true);
-    document.removeEventListener('dragstart', this[onDragStart], false);
-    document.removeEventListener('dragover', this[onDragOver], false);
-    document.removeEventListener('dragend', this[onDragEnd], false);
-    document.removeEventListener('drop', this[onDrop], false);
-
-    if (this.nativeDraggableElement) {
-      this.nativeDraggableElement.draggable = true;
-      this.nativeDraggableElement = null;
-    }
-
-    if (this.draggableElement) {
-      this.draggableElement.draggable = false;
-      this.draggableElement = null;
-    }
-  }
-}
-exports.default = DragSensor;
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _DragSensor = __webpack_require__(40);
-
-var _DragSensor2 = _interopRequireDefault(_DragSensor);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _DragSensor2.default;
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _utils = __webpack_require__(2);
-
-var _Sensor = __webpack_require__(4);
-
-var _Sensor2 = _interopRequireDefault(_Sensor);
-
-var _SensorEvent = __webpack_require__(3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const onTouchStart = Symbol('onTouchStart');
-const onTouchHold = Symbol('onTouchHold');
-const onTouchEnd = Symbol('onTouchEnd');
-const onTouchMove = Symbol('onTouchMove');
-
-/**
- * Prevents scrolling when set to true
- * @var {Boolean} preventScrolling
- */
-let preventScrolling = false;
-
-// WebKit requires cancelable `touchmove` events to be added as early as possible
-window.addEventListener('touchmove', event => {
-  if (!preventScrolling) {
-    return;
-  }
-
-  // Prevent scrolling
-  event.preventDefault();
-}, { passive: false });
-
-/**
- * This sensor picks up native browser touch events and dictates drag operations
- * @class TouchSensor
- * @module TouchSensor
- * @extends Sensor
- */
-class TouchSensor extends _Sensor2.default {
-  /**
-   * TouchSensor constructor.
-   * @constructs TouchSensor
-   * @param {HTMLElement[]|NodeList|HTMLElement} containers - Containers
-   * @param {Object} options - Options
-   */
-  constructor(containers = [], options = {}) {
-    super(containers, options);
-
-    /**
-     * Closest scrollable container so accidental scroll can cancel long touch
-     * @property currentScrollableParent
-     * @type {HTMLElement}
-     */
-    this.currentScrollableParent = null;
-
-    /**
-     * TimeoutID for long touch
-     * @property tapTimeout
-     * @type {Number}
-     */
-    this.tapTimeout = null;
-
-    /**
-     * touchMoved indicates if touch has moved during tapTimeout
-     * @property touchMoved
-     * @type {Boolean}
-     */
-    this.touchMoved = false;
-
-    this[onTouchStart] = this[onTouchStart].bind(this);
-    this[onTouchHold] = this[onTouchHold].bind(this);
-    this[onTouchEnd] = this[onTouchEnd].bind(this);
-    this[onTouchMove] = this[onTouchMove].bind(this);
-  }
-
-  /**
-   * Attaches sensors event listeners to the DOM
-   */
-  attach() {
-    document.addEventListener('touchstart', this[onTouchStart]);
-  }
-
-  /**
-   * Detaches sensors event listeners to the DOM
-   */
-  detach() {
-    document.removeEventListener('touchstart', this[onTouchStart]);
-  }
-
-  /**
-   * Touch start handler
-   * @private
-   * @param {Event} event - Touch start event
-   */
-  [onTouchStart](event) {
-    const container = (0, _utils.closest)(event.target, this.containers);
-
-    if (!container) {
-      return;
-    }
-
-    document.addEventListener('touchmove', this[onTouchMove]);
-    document.addEventListener('touchend', this[onTouchEnd]);
-    document.addEventListener('touchcancel', this[onTouchEnd]);
-    container.addEventListener('contextmenu', onContextMenu);
-
-    this.currentContainer = container;
-    this.tapTimeout = setTimeout(this[onTouchHold](event, container), this.options.delay);
-  }
-
-  /**
-   * Touch hold handler
-   * @private
-   * @param {Event} event - Touch start event
-   * @param {HTMLElement} container - Container element
-   */
-  [onTouchHold](event, container) {
-    return () => {
-      if (this.touchMoved) {
-        return;
-      }
-
-      const touch = event.touches[0] || event.changedTouches[0];
-      const target = event.target;
-
-      const dragStartEvent = new _SensorEvent.DragStartSensorEvent({
-        clientX: touch.pageX,
-        clientY: touch.pageY,
-        target,
-        container,
-        originalEvent: event
-      });
-
-      this.trigger(container, dragStartEvent);
-
-      this.dragging = !dragStartEvent.canceled();
-      preventScrolling = this.dragging;
-    };
-  }
-
-  /**
-   * Touch move handler
-   * @private
-   * @param {Event} event - Touch move event
-   */
-  [onTouchMove](event) {
-    this.touchMoved = true;
-
-    if (!this.dragging) {
-      return;
-    }
-
-    const touch = event.touches[0] || event.changedTouches[0];
-    const target = document.elementFromPoint(touch.pageX - window.scrollX, touch.pageY - window.scrollY);
-
-    const dragMoveEvent = new _SensorEvent.DragMoveSensorEvent({
-      clientX: touch.pageX,
-      clientY: touch.pageY,
-      target,
-      container: this.currentContainer,
-      originalEvent: event
-    });
-
-    this.trigger(this.currentContainer, dragMoveEvent);
-  }
-
-  /**
-   * Touch end handler
-   * @private
-   * @param {Event} event - Touch end event
-   */
-  [onTouchEnd](event) {
-    this.touchMoved = false;
-    preventScrolling = false;
-
-    document.removeEventListener('touchend', this[onTouchEnd]);
-    document.removeEventListener('touchcancel', this[onTouchEnd]);
-    document.removeEventListener('touchmove', this[onTouchMove]);
-
-    if (this.currentContainer) {
-      this.currentContainer.removeEventListener('contextmenu', onContextMenu);
-    }
-
-    clearTimeout(this.tapTimeout);
-
-    if (!this.dragging) {
-      return;
-    }
-
-    const touch = event.touches[0] || event.changedTouches[0];
-    const target = document.elementFromPoint(touch.pageX - window.scrollX, touch.pageY - window.scrollY);
-
-    event.preventDefault();
-
-    const dragStopEvent = new _SensorEvent.DragStopSensorEvent({
-      clientX: touch.pageX,
-      clientY: touch.pageY,
-      target,
-      container: this.currentContainer,
-      originalEvent: event
-    });
-
-    this.trigger(this.currentContainer, dragStopEvent);
-
-    this.currentContainer = null;
-    this.dragging = false;
-  }
-}
-
-exports.default = TouchSensor;
-function onContextMenu(event) {
-  event.preventDefault();
-  event.stopPropagation();
-}
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _TouchSensor = __webpack_require__(42);
-
-var _TouchSensor2 = _interopRequireDefault(_TouchSensor);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _TouchSensor2.default;
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DragPressureSensorEvent = exports.DragStopSensorEvent = exports.DragMoveSensorEvent = exports.DragStartSensorEvent = exports.SensorEvent = undefined;
-
-var _AbstractEvent = __webpack_require__(0);
-
-var _AbstractEvent2 = _interopRequireDefault(_AbstractEvent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Base sensor event
- * @class SensorEvent
- * @module SensorEvent
- * @extends AbstractEvent
- */
-class SensorEvent extends _AbstractEvent2.default {
-  /**
-   * Original browser event that triggered a sensor
-   * @property originalEvent
-   * @type {Event}
-   * @readonly
-   */
-  get originalEvent() {
-    return this.data.originalEvent;
-  }
-
-  /**
-   * Normalized clientX for both touch and mouse events
-   * @property clientX
-   * @type {Number}
-   * @readonly
-   */
-  get clientX() {
-    return this.data.clientX;
-  }
-
-  /**
-   * Normalized clientY for both touch and mouse events
-   * @property clientY
-   * @type {Number}
-   * @readonly
-   */
-  get clientY() {
-    return this.data.clientY;
-  }
-
-  /**
-   * Normalized target for both touch and mouse events
-   * Returns the element that is behind cursor or touch pointer
-   * @property target
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get target() {
-    return this.data.target;
-  }
-
-  /**
-   * Container that initiated the sensor
-   * @property container
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get container() {
-    return this.data.container;
-  }
-
-  /**
-   * Trackpad pressure
-   * @property pressure
-   * @type {Number}
-   * @readonly
-   */
-  get pressure() {
-    return this.data.pressure;
-  }
-}
-
-exports.SensorEvent = SensorEvent; /**
-                                    * Drag start sensor event
-                                    * @class DragStartSensorEvent
-                                    * @module DragStartSensorEvent
-                                    * @extends SensorEvent
-                                    */
-
-class DragStartSensorEvent extends SensorEvent {}
-
-exports.DragStartSensorEvent = DragStartSensorEvent; /**
-                                                      * Drag move sensor event
-                                                      * @class DragMoveSensorEvent
-                                                      * @module DragMoveSensorEvent
-                                                      * @extends SensorEvent
-                                                      */
-
-DragStartSensorEvent.type = 'drag:start';
-class DragMoveSensorEvent extends SensorEvent {}
-
-exports.DragMoveSensorEvent = DragMoveSensorEvent; /**
-                                                    * Drag stop sensor event
-                                                    * @class DragStopSensorEvent
-                                                    * @module DragStopSensorEvent
-                                                    * @extends SensorEvent
-                                                    */
-
-DragMoveSensorEvent.type = 'drag:move';
-class DragStopSensorEvent extends SensorEvent {}
-
-exports.DragStopSensorEvent = DragStopSensorEvent; /**
-                                                    * Drag pressure sensor event
-                                                    * @class DragPressureSensorEvent
-                                                    * @module DragPressureSensorEvent
-                                                    * @extends SensorEvent
-                                                    */
-
-DragStopSensorEvent.type = 'drag:stop';
-class DragPressureSensorEvent extends SensorEvent {}
-exports.DragPressureSensorEvent = DragPressureSensorEvent;
-DragPressureSensorEvent.type = 'drag:pressure';
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _utils = __webpack_require__(2);
-
-var _Sensor = __webpack_require__(4);
-
-var _Sensor2 = _interopRequireDefault(_Sensor);
-
-var _SensorEvent = __webpack_require__(3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const onContextMenuWhileDragging = Symbol('onContextMenuWhileDragging');
-const onMouseDown = Symbol('onMouseDown');
-const onMouseMove = Symbol('onMouseMove');
-const onMouseUp = Symbol('onMouseUp');
-
-/**
- * This sensor picks up native browser mouse events and dictates drag operations
- * @class MouseSensor
- * @module MouseSensor
- * @extends Sensor
- */
-class MouseSensor extends _Sensor2.default {
-  /**
-   * MouseSensor constructor.
-   * @constructs MouseSensor
-   * @param {HTMLElement[]|NodeList|HTMLElement} containers - Containers
-   * @param {Object} options - Options
-   */
-  constructor(containers = [], options = {}) {
-    super(containers, options);
-
-    /**
-     * Indicates if mouse button is still down
-     * @property mouseDown
-     * @type {Boolean}
-     */
-    this.mouseDown = false;
-
-    /**
-     * Mouse down timer which will end up triggering the drag start operation
-     * @property mouseDownTimeout
-     * @type {Number}
-     */
-    this.mouseDownTimeout = null;
-
-    /**
-     * Indicates if context menu has been opened during drag operation
-     * @property openedContextMenu
-     * @type {Boolean}
-     */
-    this.openedContextMenu = false;
-
-    this[onContextMenuWhileDragging] = this[onContextMenuWhileDragging].bind(this);
-    this[onMouseDown] = this[onMouseDown].bind(this);
-    this[onMouseMove] = this[onMouseMove].bind(this);
-    this[onMouseUp] = this[onMouseUp].bind(this);
-  }
-
-  /**
-   * Attaches sensors event listeners to the DOM
-   */
-  attach() {
-    document.addEventListener('mousedown', this[onMouseDown], true);
-  }
-
-  /**
-   * Detaches sensors event listeners to the DOM
-   */
-  detach() {
-    document.removeEventListener('mousedown', this[onMouseDown], true);
-  }
-
-  /**
-   * Mouse down handler
-   * @private
-   * @param {Event} event - Mouse down event
-   */
-  [onMouseDown](event) {
-    if (event.button !== 0 || event.ctrlKey || event.metaKey) {
-      return;
-    }
-
-    document.addEventListener('mouseup', this[onMouseUp]);
-
-    const target = document.elementFromPoint(event.clientX, event.clientY);
-    const container = (0, _utils.closest)(target, this.containers);
-
-    if (!container) {
-      return;
-    }
-
-    document.addEventListener('dragstart', preventNativeDragStart);
-
-    this.mouseDown = true;
-
-    clearTimeout(this.mouseDownTimeout);
-    this.mouseDownTimeout = setTimeout(() => {
-      if (!this.mouseDown) {
-        return;
-      }
-
-      const dragStartEvent = new _SensorEvent.DragStartSensorEvent({
-        clientX: event.clientX,
-        clientY: event.clientY,
-        target,
-        container,
-        originalEvent: event
-      });
-
-      this.trigger(container, dragStartEvent);
-
-      this.currentContainer = container;
-      this.dragging = !dragStartEvent.canceled();
-
-      if (this.dragging) {
-        document.addEventListener('contextmenu', this[onContextMenuWhileDragging]);
-        document.addEventListener('mousemove', this[onMouseMove]);
-      }
-    }, this.options.delay);
-  }
-
-  /**
-   * Mouse move handler
-   * @private
-   * @param {Event} event - Mouse move event
-   */
-  [onMouseMove](event) {
-    if (!this.dragging) {
-      return;
-    }
-
-    const target = document.elementFromPoint(event.clientX, event.clientY);
-
-    const dragMoveEvent = new _SensorEvent.DragMoveSensorEvent({
-      clientX: event.clientX,
-      clientY: event.clientY,
-      target,
-      container: this.currentContainer,
-      originalEvent: event
-    });
-
-    this.trigger(this.currentContainer, dragMoveEvent);
-  }
-
-  /**
-   * Mouse up handler
-   * @private
-   * @param {Event} event - Mouse up event
-   */
-  [onMouseUp](event) {
-    this.mouseDown = Boolean(this.openedContextMenu);
-
-    if (this.openedContextMenu) {
-      this.openedContextMenu = false;
-      return;
-    }
-
-    document.removeEventListener('mouseup', this[onMouseUp]);
-    document.removeEventListener('dragstart', preventNativeDragStart);
-
-    if (!this.dragging) {
-      return;
-    }
-
-    const target = document.elementFromPoint(event.clientX, event.clientY);
-
-    const dragStopEvent = new _SensorEvent.DragStopSensorEvent({
-      clientX: event.clientX,
-      clientY: event.clientY,
-      target,
-      container: this.currentContainer,
-      originalEvent: event
-    });
-
-    this.trigger(this.currentContainer, dragStopEvent);
-
-    document.removeEventListener('contextmenu', this[onContextMenuWhileDragging]);
-    document.removeEventListener('mousemove', this[onMouseMove]);
-
-    this.currentContainer = null;
-    this.dragging = false;
-  }
-
-  /**
-   * Context menu handler
-   * @private
-   * @param {Event} event - Context menu event
-   */
-  [onContextMenuWhileDragging](event) {
-    event.preventDefault();
-    this.openedContextMenu = true;
-  }
-}
-
-exports.default = MouseSensor;
-function preventNativeDragStart(event) {
-  event.preventDefault();
-}
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _MouseSensor = __webpack_require__(45);
-
-var _MouseSensor2 = _interopRequireDefault(_MouseSensor);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _MouseSensor2.default;
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-/**
- * Base sensor class. Extend from this class to create a new or custom sensor
- * @class Sensor
- * @module Sensor
- */
-class Sensor {
-  /**
-   * Sensor constructor.
-   * @constructs Sensor
-   * @param {HTMLElement[]|NodeList|HTMLElement} containers - Containers
-   * @param {Object} options - Options
-   */
-  constructor(containers = [], options = {}) {
-    /**
-     * Current containers
-     * @property containers
-     * @type {HTMLElement[]}
-     */
-    this.containers = [...containers];
-
-    /**
-     * Current options
-     * @property options
-     * @type {Object}
-     */
-    this.options = _extends({}, options);
-
-    /**
-     * Current drag state
-     * @property dragging
-     * @type {Boolean}
-     */
-    this.dragging = false;
-
-    /**
-     * Current container
-     * @property currentContainer
-     * @type {HTMLElement}
-     */
-    this.currentContainer = null;
-  }
-
-  /**
-   * Attaches sensors event listeners to the DOM
-   * @return {Sensor}
-   */
-  attach() {
-    return this;
-  }
-
-  /**
-   * Detaches sensors event listeners to the DOM
-   * @return {Sensor}
-   */
-  detach() {
-    return this;
-  }
-
-  /**
-   * Adds container to this sensor instance
-   * @param {...HTMLElement} containers - Containers you want to add to this sensor
-   * @example draggable.addContainer(document.body)
-   */
-  addContainer(...containers) {
-    this.containers = [...this.containers, ...containers];
-  }
-
-  /**
-   * Removes container from this sensor instance
-   * @param {...HTMLElement} containers - Containers you want to remove from this sensor
-   * @example draggable.removeContainer(document.body)
-   */
-  removeContainer(...containers) {
-    this.containers = this.containers.filter(container => !containers.includes(container));
-  }
-
-  /**
-   * Triggers event on target element
-   * @param {HTMLElement} element - Element to trigger event on
-   * @param {SensorEvent} sensorEvent - Sensor event to trigger
-   */
-  trigger(element, sensorEvent) {
-    const event = document.createEvent('Event');
-    event.detail = sensorEvent;
-    event.initEvent(sensorEvent.type, true, true);
-    element.dispatchEvent(event);
-    this.lastEvent = sensorEvent;
-
-    return sensorEvent;
-  }
-}
-exports.default = Sensor;
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = requestNextAnimationFrame;
-function requestNextAnimationFrame(callback) {
-  return requestAnimationFrame(() => {
-    requestAnimationFrame(callback);
-  });
-}
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _requestNextAnimationFrame = __webpack_require__(48);
-
-var _requestNextAnimationFrame2 = _interopRequireDefault(_requestNextAnimationFrame);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _requestNextAnimationFrame2.default;
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = closest;
-const matchFunction = Element.prototype.matches || Element.prototype.webkitMatchesSelector || Element.prototype.mozMatchesSelector || Element.prototype.msMatchesSelector;
-
-/**
- * Get the closest parent element of a given element that matches the given
- * selector string or matching function
- *
- * @param {Element} element The child element to find a parent of
- * @param {String|Function} selector The string or function to use to match
- *     the parent element
- * @return {Element|null}
- */
-function closest(element, value) {
-  if (!element) {
-    return null;
-  }
-
-  const selector = value;
-  const callback = value;
-  const nodeList = value;
-  const singleElement = value;
-
-  const isSelector = Boolean(typeof value === 'string');
-  const isFunction = Boolean(typeof value === 'function');
-  const isNodeList = Boolean(value instanceof NodeList || value instanceof Array);
-  const isElement = Boolean(value instanceof HTMLElement);
-
-  function conditionFn(currentElement) {
-    if (!currentElement) {
-      return currentElement;
-    } else if (isSelector) {
-      return matchFunction.call(currentElement, selector);
-    } else if (isNodeList) {
-      return [...nodeList].includes(currentElement);
-    } else if (isElement) {
-      return singleElement === currentElement;
-    } else if (isFunction) {
-      return callback(currentElement);
-    } else {
-      return null;
-    }
-  }
-
-  let current = element;
-
-  do {
-    current = current.correspondingUseElement || current.correspondingElement || current;
-
-    if (conditionFn(current)) {
-      return current;
-    }
-
-    current = current.parentNode;
-  } while (current && current !== document.body && current !== document);
-
-  return null;
-}
-
-/***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _closest = __webpack_require__(50);
-
-var _closest2 = _interopRequireDefault(_closest);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _closest2.default;
-
-/***/ }),
-/* 52 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.defaultOptions = exports.scroll = exports.onDragStop = exports.onDragMove = exports.onDragStart = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _AbstractPlugin = __webpack_require__(1);
-
-var _AbstractPlugin2 = _interopRequireDefault(_AbstractPlugin);
-
-var _utils = __webpack_require__(2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const onDragStart = exports.onDragStart = Symbol('onDragStart');
-const onDragMove = exports.onDragMove = Symbol('onDragMove');
-const onDragStop = exports.onDragStop = Symbol('onDragStop');
-const scroll = exports.scroll = Symbol('scroll');
-
-/**
- * Scrollable default options
- * @property {Object} defaultOptions
- * @property {Number} defaultOptions.speed
- * @property {Number} defaultOptions.sensitivity
- * @property {HTMLElement[]} defaultOptions.scrollableElements
- * @type {Object}
- */
-const defaultOptions = exports.defaultOptions = {
-  speed: 6,
-  sensitivity: 50,
-  scrollableElements: []
-};
-
-/**
- * Scrollable plugin which scrolls the closest scrollable parent
- * @class Scrollable
- * @module Scrollable
- * @extends AbstractPlugin
- */
-class Scrollable extends _AbstractPlugin2.default {
-  /**
-   * Scrollable constructor.
-   * @constructs Scrollable
-   * @param {Draggable} draggable - Draggable instance
-   */
-  constructor(draggable) {
-    super(draggable);
-
-    /**
-     * Scrollable options
-     * @property {Object} options
-     * @property {Number} options.speed
-     * @property {Number} options.sensitivity
-     * @property {HTMLElement[]} options.scrollableElements
-     * @type {Object}
-     */
-    this.options = _extends({}, defaultOptions, this.getOptions());
-
-    /**
-     * Keeps current mouse position
-     * @property {Object} currentMousePosition
-     * @property {Number} currentMousePosition.clientX
-     * @property {Number} currentMousePosition.clientY
-     * @type {Object|null}
-     */
-    this.currentMousePosition = null;
-
-    /**
-     * Scroll animation frame
-     * @property scrollAnimationFrame
-     * @type {Number|null}
-     */
-    this.scrollAnimationFrame = null;
-
-    /**
-     * Closest scrollable element
-     * @property scrollableElement
-     * @type {HTMLElement|null}
-     */
-    this.scrollableElement = null;
-
-    /**
-     * Animation frame looking for the closest scrollable element
-     * @property findScrollableElementFrame
-     * @type {Number|null}
-     */
-    this.findScrollableElementFrame = null;
-
-    this[onDragStart] = this[onDragStart].bind(this);
-    this[onDragMove] = this[onDragMove].bind(this);
-    this[onDragStop] = this[onDragStop].bind(this);
-    this[scroll] = this[scroll].bind(this);
-  }
-
-  /**
-   * Attaches plugins event listeners
-   */
-  attach() {
-    this.draggable.on('drag:start', this[onDragStart]).on('drag:move', this[onDragMove]).on('drag:stop', this[onDragStop]);
-  }
-
-  /**
-   * Detaches plugins event listeners
-   */
-  detach() {
-    this.draggable.off('drag:start', this[onDragStart]).off('drag:move', this[onDragMove]).off('drag:stop', this[onDragStop]);
-  }
-
-  /**
-   * Returns options passed through draggable
-   * @return {Object}
-   */
-  getOptions() {
-    return this.draggable.options.scrollable || {};
-  }
-
-  /**
-   * Returns closest scrollable elements by element
-   * @param {HTMLElement} target
-   * @return {HTMLElement}
-   */
-  getScrollableElement(target) {
-    if (this.hasDefinedScrollableElements()) {
-      return (0, _utils.closest)(target, this.options.scrollableElements) || document.documentElement;
-    } else {
-      return closestScrollableElement(target);
-    }
-  }
-
-  /**
-   * Returns true if at least one scrollable element have been defined via options
-   * @param {HTMLElement} target
-   * @return {Boolean}
-   */
-  hasDefinedScrollableElements() {
-    return Boolean(this.options.scrollableElements.length !== 0);
-  }
-
-  /**
-   * Drag start handler. Finds closest scrollable parent in separate frame
-   * @param {DragStartEvent} dragEvent
-   * @private
-   */
-  [onDragStart](dragEvent) {
-    this.findScrollableElementFrame = requestAnimationFrame(() => {
-      this.scrollableElement = this.getScrollableElement(dragEvent.source);
-    });
-  }
-
-  /**
-   * Drag move handler. Remembers mouse position and initiates scrolling
-   * @param {DragMoveEvent} dragEvent
-   * @private
-   */
-  [onDragMove](dragEvent) {
-    this.findScrollableElementFrame = requestAnimationFrame(() => {
-      this.scrollableElement = this.getScrollableElement(dragEvent.sensorEvent.target);
-    });
-
-    if (!this.scrollableElement) {
-      return;
-    }
-
-    const sensorEvent = dragEvent.sensorEvent;
-    const scrollOffset = { x: 0, y: 0 };
-
-    if ('ontouchstart' in window) {
-      scrollOffset.y = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-      scrollOffset.x = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
-    }
-
-    this.currentMousePosition = {
-      clientX: sensorEvent.clientX - scrollOffset.x,
-      clientY: sensorEvent.clientY - scrollOffset.y
-    };
-
-    this.scrollAnimationFrame = requestAnimationFrame(this[scroll]);
-  }
-
-  /**
-   * Drag stop handler. Cancels scroll animations and resets state
-   * @private
-   */
-  [onDragStop]() {
-    cancelAnimationFrame(this.scrollAnimationFrame);
-    cancelAnimationFrame(this.findScrollableElementFrame);
-
-    this.scrollableElement = null;
-    this.scrollAnimationFrame = null;
-    this.findScrollableElementFrame = null;
-    this.currentMousePosition = null;
-  }
-
-  /**
-   * Scroll function that does the heavylifting
-   * @private
-   */
-  [scroll]() {
-    if (!this.scrollableElement || !this.currentMousePosition) {
-      return;
-    }
-
-    cancelAnimationFrame(this.scrollAnimationFrame);
-
-    const { speed, sensitivity } = this.options;
-
-    const rect = this.scrollableElement.getBoundingClientRect();
-    const bottomCutOff = rect.bottom > window.innerHeight;
-    const topCutOff = rect.top < 0;
-    const cutOff = topCutOff || bottomCutOff;
-
-    const documentScrollingElement = getDocumentScrollingElement();
-    const scrollableElement = this.scrollableElement;
-    const clientX = this.currentMousePosition.clientX;
-    const clientY = this.currentMousePosition.clientY;
-
-    if (scrollableElement !== document.body && scrollableElement !== document.documentElement && !cutOff) {
-      const { offsetHeight, offsetWidth } = scrollableElement;
-
-      if (rect.top + offsetHeight - clientY < sensitivity) {
-        scrollableElement.scrollTop += speed;
-      } else if (clientY - rect.top < sensitivity) {
-        scrollableElement.scrollTop -= speed;
-      }
-
-      if (rect.left + offsetWidth - clientX < sensitivity) {
-        scrollableElement.scrollLeft += speed;
-      } else if (clientX - rect.left < sensitivity) {
-        scrollableElement.scrollLeft -= speed;
-      }
-    } else {
-      const { innerHeight, innerWidth } = window;
-
-      if (clientY < sensitivity) {
-        documentScrollingElement.scrollTop -= speed;
-      } else if (innerHeight - clientY < sensitivity) {
-        documentScrollingElement.scrollTop += speed;
-      }
-
-      if (clientX < sensitivity) {
-        documentScrollingElement.scrollLeft -= speed;
-      } else if (innerWidth - clientX < sensitivity) {
-        documentScrollingElement.scrollLeft += speed;
-      }
-    }
-
-    this.scrollAnimationFrame = requestAnimationFrame(this[scroll]);
-  }
-}
-
-exports.default = Scrollable; /**
-                               * Returns true if the passed element has overflow
-                               * @param {HTMLElement} element
-                               * @return {Boolean}
-                               * @private
-                               */
-
-function hasOverflow(element) {
-  const overflowRegex = /(auto|scroll)/;
-  const computedStyles = getComputedStyle(element, null);
-
-  const overflow = computedStyles.getPropertyValue('overflow') + computedStyles.getPropertyValue('overflow-y') + computedStyles.getPropertyValue('overflow-x');
-
-  return overflowRegex.test(overflow);
-}
-
-/**
- * Returns true if the passed element is statically positioned
- * @param {HTMLElement} element
- * @return {Boolean}
- * @private
- */
-function isStaticallyPositioned(element) {
-  const position = getComputedStyle(element).getPropertyValue('position');
-  return position === 'static';
-}
-
-/**
- * Finds closest scrollable element
- * @param {HTMLElement} element
- * @return {HTMLElement}
- * @private
- */
-function closestScrollableElement(element) {
-  if (!element) {
-    return getDocumentScrollingElement();
-  }
-
-  const position = getComputedStyle(element).getPropertyValue('position');
-  const excludeStaticParents = position === 'absolute';
-
-  const scrollableElement = (0, _utils.closest)(element, parent => {
-    if (excludeStaticParents && isStaticallyPositioned(parent)) {
-      return false;
-    }
-    return hasOverflow(parent);
-  });
-
-  if (position === 'fixed' || !scrollableElement) {
-    return getDocumentScrollingElement();
-  } else {
-    return scrollableElement;
-  }
-}
-
-/**
- * Returns element that scrolls document
- * @return {HTMLElement}
- * @private
- */
-function getDocumentScrollingElement() {
-  return document.scrollingElement || document.documentElement;
-}
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.defaultOptions = undefined;
-
-var _Scrollable = __webpack_require__(52);
-
-var _Scrollable2 = _interopRequireDefault(_Scrollable);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _Scrollable2.default;
-exports.defaultOptions = _Scrollable.defaultOptions;
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MirrorDestroyEvent = exports.MirrorMoveEvent = exports.MirrorAttachedEvent = exports.MirrorCreatedEvent = exports.MirrorCreateEvent = exports.MirrorEvent = undefined;
-
-var _AbstractEvent = __webpack_require__(0);
-
-var _AbstractEvent2 = _interopRequireDefault(_AbstractEvent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Base mirror event
- * @class MirrorEvent
- * @module MirrorEvent
- * @extends AbstractEvent
- */
-class MirrorEvent extends _AbstractEvent2.default {
-  /**
-   * Draggables source element
-   * @property source
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get source() {
-    return this.data.source;
-  }
-
-  /**
-   * Draggables original source element
-   * @property originalSource
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get originalSource() {
-    return this.data.originalSource;
-  }
-
-  /**
-   * Draggables source container element
-   * @property sourceContainer
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get sourceContainer() {
-    return this.data.sourceContainer;
-  }
-
-  /**
-   * Sensor event
-   * @property sensorEvent
-   * @type {SensorEvent}
-   * @readonly
-   */
-  get sensorEvent() {
-    return this.data.sensorEvent;
-  }
-
-  /**
-   * Drag event
-   * @property dragEvent
-   * @type {DragEvent}
-   * @readonly
-   */
-  get dragEvent() {
-    return this.data.dragEvent;
-  }
-
-  /**
-   * Original event that triggered sensor event
-   * @property originalEvent
-   * @type {Event}
-   * @readonly
-   */
-  get originalEvent() {
-    if (this.sensorEvent) {
-      return this.sensorEvent.originalEvent;
-    }
-
-    return null;
-  }
-}
-
-exports.MirrorEvent = MirrorEvent; /**
-                                    * Mirror create event
-                                    * @class MirrorCreateEvent
-                                    * @module MirrorCreateEvent
-                                    * @extends MirrorEvent
-                                    */
-
-class MirrorCreateEvent extends MirrorEvent {}
-
-exports.MirrorCreateEvent = MirrorCreateEvent; /**
-                                                * Mirror created event
-                                                * @class MirrorCreatedEvent
-                                                * @module MirrorCreatedEvent
-                                                * @extends MirrorEvent
-                                                */
-
-MirrorCreateEvent.type = 'mirror:create';
-class MirrorCreatedEvent extends MirrorEvent {
-
-  /**
-   * Draggables mirror element
-   * @property mirror
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get mirror() {
-    return this.data.mirror;
-  }
-}
-
-exports.MirrorCreatedEvent = MirrorCreatedEvent; /**
-                                                  * Mirror attached event
-                                                  * @class MirrorAttachedEvent
-                                                  * @module MirrorAttachedEvent
-                                                  * @extends MirrorEvent
-                                                  */
-
-MirrorCreatedEvent.type = 'mirror:created';
-class MirrorAttachedEvent extends MirrorEvent {
-
-  /**
-   * Draggables mirror element
-   * @property mirror
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get mirror() {
-    return this.data.mirror;
-  }
-}
-
-exports.MirrorAttachedEvent = MirrorAttachedEvent; /**
-                                                    * Mirror move event
-                                                    * @class MirrorMoveEvent
-                                                    * @module MirrorMoveEvent
-                                                    * @extends MirrorEvent
-                                                    */
-
-MirrorAttachedEvent.type = 'mirror:attached';
-class MirrorMoveEvent extends MirrorEvent {
-
-  /**
-   * Draggables mirror element
-   * @property mirror
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get mirror() {
-    return this.data.mirror;
-  }
-}
-
-exports.MirrorMoveEvent = MirrorMoveEvent; /**
-                                            * Mirror destroy event
-                                            * @class MirrorDestroyEvent
-                                            * @module MirrorDestroyEvent
-                                            * @extends MirrorEvent
-                                            */
-
-MirrorMoveEvent.type = 'mirror:move';
-MirrorMoveEvent.cancelable = true;
-class MirrorDestroyEvent extends MirrorEvent {
-
-  /**
-   * Draggables mirror element
-   * @property mirror
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get mirror() {
-    return this.data.mirror;
-  }
-}
-exports.MirrorDestroyEvent = MirrorDestroyEvent;
-MirrorDestroyEvent.type = 'mirror:destroy';
-MirrorDestroyEvent.cancelable = true;
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _MirrorEvent = __webpack_require__(54);
-
-Object.keys(_MirrorEvent).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _MirrorEvent[key];
-    }
-  });
-});
-
-/***/ }),
-/* 56 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.defaultOptions = exports.getAppendableContainer = exports.onScroll = exports.onMirrorMove = exports.onMirrorCreated = exports.onDragStop = exports.onDragMove = exports.onDragStart = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _AbstractPlugin = __webpack_require__(1);
-
-var _AbstractPlugin2 = _interopRequireDefault(_AbstractPlugin);
-
-var _MirrorEvent = __webpack_require__(55);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-const onDragStart = exports.onDragStart = Symbol('onDragStart');
-const onDragMove = exports.onDragMove = Symbol('onDragMove');
-const onDragStop = exports.onDragStop = Symbol('onDragStop');
-const onMirrorCreated = exports.onMirrorCreated = Symbol('onMirrorCreated');
-const onMirrorMove = exports.onMirrorMove = Symbol('onMirrorMove');
-const onScroll = exports.onScroll = Symbol('onScroll');
-const getAppendableContainer = exports.getAppendableContainer = Symbol('getAppendableContainer');
-
-/**
- * Mirror default options
- * @property {Object} defaultOptions
- * @property {Boolean} defaultOptions.constrainDimensions
- * @property {Boolean} defaultOptions.xAxis
- * @property {Boolean} defaultOptions.yAxis
- * @property {null} defaultOptions.cursorOffsetX
- * @property {null} defaultOptions.cursorOffsetY
- * @type {Object}
- */
-const defaultOptions = exports.defaultOptions = {
-  constrainDimensions: false,
-  xAxis: true,
-  yAxis: true,
-  cursorOffsetX: null,
-  cursorOffsetY: null
-};
-
-/**
- * Mirror plugin which controls the mirror positioning while dragging
- * @class Mirror
- * @module Mirror
- * @extends AbstractPlugin
- */
-class Mirror extends _AbstractPlugin2.default {
-  /**
-   * Mirror constructor.
-   * @constructs Mirror
-   * @param {Draggable} draggable - Draggable instance
-   */
-  constructor(draggable) {
-    super(draggable);
-
-    /**
-     * Mirror options
-     * @property {Object} options
-     * @property {Boolean} options.constrainDimensions
-     * @property {Boolean} options.xAxis
-     * @property {Boolean} options.yAxis
-     * @property {Number|null} options.cursorOffsetX
-     * @property {Number|null} options.cursorOffsetY
-     * @property {String|HTMLElement|Function} options.appendTo
-     * @type {Object}
-     */
-    this.options = _extends({}, defaultOptions, this.getOptions());
-
-    /**
-     * Scroll offset for touch devices because the mirror is positioned fixed
-     * @property {Object} scrollOffset
-     * @property {Number} scrollOffset.x
-     * @property {Number} scrollOffset.y
-     */
-    this.scrollOffset = { x: 0, y: 0 };
-
-    /**
-     * Initial scroll offset for touch devices because the mirror is positioned fixed
-     * @property {Object} scrollOffset
-     * @property {Number} scrollOffset.x
-     * @property {Number} scrollOffset.y
-     */
-    this.initialScrollOffset = {
-      x: window.scrollX,
-      y: window.scrollY
-    };
-
-    this[onDragStart] = this[onDragStart].bind(this);
-    this[onDragMove] = this[onDragMove].bind(this);
-    this[onDragStop] = this[onDragStop].bind(this);
-    this[onMirrorCreated] = this[onMirrorCreated].bind(this);
-    this[onMirrorMove] = this[onMirrorMove].bind(this);
-    this[onScroll] = this[onScroll].bind(this);
-  }
-
-  /**
-   * Attaches plugins event listeners
-   */
-  attach() {
-    this.draggable.on('drag:start', this[onDragStart]).on('drag:move', this[onDragMove]).on('drag:stop', this[onDragStop]).on('mirror:created', this[onMirrorCreated]).on('mirror:move', this[onMirrorMove]);
-  }
-
-  /**
-   * Detaches plugins event listeners
-   */
-  detach() {
-    this.draggable.off('drag:start', this[onDragStart]).off('drag:move', this[onDragMove]).off('drag:stop', this[onDragStop]).off('mirror:created', this[onMirrorCreated]).off('mirror:move', this[onMirrorMove]);
-  }
-
-  /**
-   * Returns options passed through draggable
-   * @return {Object}
-   */
-  getOptions() {
-    return this.draggable.options.mirror || {};
-  }
-
-  [onDragStart](dragEvent) {
-    if (dragEvent.canceled()) {
-      return;
-    }
-
-    if ('ontouchstart' in window) {
-      document.addEventListener('scroll', this[onScroll], true);
-    }
-
-    this.initialScrollOffset = {
-      x: window.scrollX,
-      y: window.scrollY
-    };
-
-    const { source, originalSource, sourceContainer, sensorEvent } = dragEvent;
-
-    const mirrorCreateEvent = new _MirrorEvent.MirrorCreateEvent({
-      source,
-      originalSource,
-      sourceContainer,
-      sensorEvent,
-      dragEvent
-    });
-
-    this.draggable.trigger(mirrorCreateEvent);
-
-    if (isNativeDragEvent(sensorEvent) || mirrorCreateEvent.canceled()) {
-      return;
-    }
-
-    const appendableContainer = this[getAppendableContainer](source) || sourceContainer;
-    this.mirror = source.cloneNode(true);
-
-    const mirrorCreatedEvent = new _MirrorEvent.MirrorCreatedEvent({
-      source,
-      originalSource,
-      sourceContainer,
-      sensorEvent,
-      dragEvent,
-      mirror: this.mirror
-    });
-
-    const mirrorAttachedEvent = new _MirrorEvent.MirrorAttachedEvent({
-      source,
-      originalSource,
-      sourceContainer,
-      sensorEvent,
-      dragEvent,
-      mirror: this.mirror
-    });
-
-    this.draggable.trigger(mirrorCreatedEvent);
-    appendableContainer.appendChild(this.mirror);
-    this.draggable.trigger(mirrorAttachedEvent);
-  }
-
-  [onDragMove](dragEvent) {
-    if (!this.mirror || dragEvent.canceled()) {
-      return;
-    }
-
-    const { source, originalSource, sourceContainer, sensorEvent } = dragEvent;
-
-    const mirrorMoveEvent = new _MirrorEvent.MirrorMoveEvent({
-      source,
-      originalSource,
-      sourceContainer,
-      sensorEvent,
-      dragEvent,
-      mirror: this.mirror
-    });
-
-    this.draggable.trigger(mirrorMoveEvent);
-  }
-
-  [onDragStop](dragEvent) {
-    if ('ontouchstart' in window) {
-      document.removeEventListener('scroll', this[onScroll], true);
-    }
-
-    this.initialScrollOffset = { x: 0, y: 0 };
-    this.scrollOffset = { x: 0, y: 0 };
-
-    if (!this.mirror) {
-      return;
-    }
-
-    const { source, sourceContainer, sensorEvent } = dragEvent;
-
-    const mirrorDestroyEvent = new _MirrorEvent.MirrorDestroyEvent({
-      source,
-      mirror: this.mirror,
-      sourceContainer,
-      sensorEvent,
-      dragEvent
-    });
-
-    this.draggable.trigger(mirrorDestroyEvent);
-
-    if (!mirrorDestroyEvent.canceled()) {
-      this.mirror.parentNode.removeChild(this.mirror);
-    }
-  }
-
-  [onScroll]() {
-    this.scrollOffset = {
-      x: window.scrollX - this.initialScrollOffset.x,
-      y: window.scrollY - this.initialScrollOffset.y
-    };
-  }
-
-  /**
-   * Mirror created handler
-   * @param {MirrorCreatedEvent} mirrorEvent
-   * @return {Promise}
-   * @private
-   */
-  [onMirrorCreated]({ mirror, source, sensorEvent }) {
-    const mirrorClass = this.draggable.getClassNameFor('mirror');
-
-    const setState = (_ref) => {
-      let { mirrorOffset, initialX, initialY } = _ref,
-          args = _objectWithoutProperties(_ref, ['mirrorOffset', 'initialX', 'initialY']);
-
-      this.mirrorOffset = mirrorOffset;
-      this.initialX = initialX;
-      this.initialY = initialY;
-      return _extends({ mirrorOffset, initialX, initialY }, args);
-    };
-
-    const initialState = {
-      mirror,
-      source,
-      sensorEvent,
-      mirrorClass,
-      scrollOffset: this.scrollOffset,
-      options: this.options
-    };
-
-    return Promise.resolve(initialState)
-    // Fix reflow here
-    .then(computeMirrorDimensions).then(calculateMirrorOffset).then(resetMirror).then(addMirrorClasses).then(positionMirror({ initial: true })).then(removeMirrorID).then(setState);
-  }
-
-  /**
-   * Mirror move handler
-   * @param {MirrorMoveEvent} mirrorEvent
-   * @return {Promise|null}
-   * @private
-   */
-  [onMirrorMove](mirrorEvent) {
-    if (mirrorEvent.canceled()) {
-      return null;
-    }
-
-    const initialState = {
-      mirror: mirrorEvent.mirror,
-      sensorEvent: mirrorEvent.sensorEvent,
-      mirrorOffset: this.mirrorOffset,
-      options: this.options,
-      initialX: this.initialX,
-      initialY: this.initialY,
-      scrollOffset: this.scrollOffset
-    };
-
-    return Promise.resolve(initialState).then(positionMirror({ raf: true }));
-  }
-
-  /**
-   * Returns appendable container for mirror based on the appendTo option
-   * @private
-   * @param {Object} options
-   * @param {HTMLElement} options.source - Current source
-   * @return {HTMLElement}
-   */
-  [getAppendableContainer](source) {
-    const appendTo = this.options.appendTo;
-
-    if (typeof appendTo === 'string') {
-      return document.querySelector(appendTo);
-    } else if (appendTo instanceof HTMLElement) {
-      return appendTo;
-    } else if (typeof appendTo === 'function') {
-      return appendTo(source);
-    } else {
-      return source.parentNode;
-    }
-  }
-}
-
-exports.default = Mirror; /**
-                           * Computes mirror dimensions based on the source element
-                           * Adds sourceRect to state
-                           * @param {Object} state
-                           * @param {HTMLElement} state.source
-                           * @return {Promise}
-                           * @private
-                           */
-
-function computeMirrorDimensions(_ref2) {
-  let { source } = _ref2,
-      args = _objectWithoutProperties(_ref2, ['source']);
-
-  return withPromise(resolve => {
-    const sourceRect = source.getBoundingClientRect();
-    resolve(_extends({ source, sourceRect }, args));
-  });
-}
-
-/**
- * Calculates mirror offset
- * Adds mirrorOffset to state
- * @param {Object} state
- * @param {SensorEvent} state.sensorEvent
- * @param {DOMRect} state.sourceRect
- * @return {Promise}
- * @private
- */
-function calculateMirrorOffset(_ref3) {
-  let { sensorEvent, sourceRect, options } = _ref3,
-      args = _objectWithoutProperties(_ref3, ['sensorEvent', 'sourceRect', 'options']);
-
-  return withPromise(resolve => {
-    const top = options.cursorOffsetY === null ? sensorEvent.clientY - sourceRect.top : options.cursorOffsetY;
-    const left = options.cursorOffsetX === null ? sensorEvent.clientX - sourceRect.left : options.cursorOffsetX;
-
-    const mirrorOffset = { top, left };
-
-    resolve(_extends({ sensorEvent, sourceRect, mirrorOffset, options }, args));
-  });
-}
-
-/**
- * Applys mirror styles
- * @param {Object} state
- * @param {HTMLElement} state.mirror
- * @param {HTMLElement} state.source
- * @param {Object} state.options
- * @return {Promise}
- * @private
- */
-function resetMirror(_ref4) {
-  let { mirror, source, options } = _ref4,
-      args = _objectWithoutProperties(_ref4, ['mirror', 'source', 'options']);
-
-  return withPromise(resolve => {
-    let offsetHeight;
-    let offsetWidth;
-
-    if (options.constrainDimensions) {
-      const computedSourceStyles = getComputedStyle(source);
-      offsetHeight = computedSourceStyles.getPropertyValue('height');
-      offsetWidth = computedSourceStyles.getPropertyValue('width');
-    }
-
-    mirror.style.position = 'fixed';
-    mirror.style.pointerEvents = 'none';
-    mirror.style.top = 0;
-    mirror.style.left = 0;
-    mirror.style.margin = 0;
-
-    if (options.constrainDimensions) {
-      mirror.style.height = offsetHeight;
-      mirror.style.width = offsetWidth;
-    }
-
-    resolve(_extends({ mirror, source, options }, args));
-  });
-}
-
-/**
- * Applys mirror class on mirror element
- * @param {Object} state
- * @param {HTMLElement} state.mirror
- * @param {String} state.mirrorClass
- * @return {Promise}
- * @private
- */
-function addMirrorClasses(_ref5) {
-  let { mirror, mirrorClass } = _ref5,
-      args = _objectWithoutProperties(_ref5, ['mirror', 'mirrorClass']);
-
-  return withPromise(resolve => {
-    mirror.classList.add(mirrorClass);
-    resolve(_extends({ mirror, mirrorClass }, args));
-  });
-}
-
-/**
- * Removes source ID from cloned mirror element
- * @param {Object} state
- * @param {HTMLElement} state.mirror
- * @return {Promise}
- * @private
- */
-function removeMirrorID(_ref6) {
-  let { mirror } = _ref6,
-      args = _objectWithoutProperties(_ref6, ['mirror']);
-
-  return withPromise(resolve => {
-    mirror.removeAttribute('id');
-    delete mirror.id;
-    resolve(_extends({ mirror }, args));
-  });
-}
-
-/**
- * Positions mirror with translate3d
- * @param {Object} state
- * @param {HTMLElement} state.mirror
- * @param {SensorEvent} state.sensorEvent
- * @param {Object} state.mirrorOffset
- * @param {Number} state.initialY
- * @param {Number} state.initialX
- * @param {Object} state.options
- * @return {Promise}
- * @private
- */
-function positionMirror({ withFrame = false, initial = false } = {}) {
-  return (_ref7) => {
-    let { mirror, sensorEvent, mirrorOffset, initialY, initialX, scrollOffset, options } = _ref7,
-        args = _objectWithoutProperties(_ref7, ['mirror', 'sensorEvent', 'mirrorOffset', 'initialY', 'initialX', 'scrollOffset', 'options']);
-
-    return withPromise(resolve => {
-      const result = _extends({
-        mirror,
-        sensorEvent,
-        mirrorOffset,
-        options
-      }, args);
-
-      if (mirrorOffset) {
-        const x = sensorEvent.clientX - mirrorOffset.left - scrollOffset.x;
-        const y = sensorEvent.clientY - mirrorOffset.top - scrollOffset.y;
-
-        if (options.xAxis && options.yAxis || initial) {
-          mirror.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-        } else if (options.xAxis && !options.yAxis) {
-          mirror.style.transform = `translate3d(${x}px, ${initialY}px, 0)`;
-        } else if (options.yAxis && !options.xAxis) {
-          mirror.style.transform = `translate3d(${initialX}px, ${y}px, 0)`;
-        }
-
-        if (initial) {
-          result.initialX = x;
-          result.initialY = y;
-        }
-      }
-
-      resolve(result);
-    }, { frame: withFrame });
-  };
-}
-
-/**
- * Wraps functions in promise with potential animation frame option
- * @param {Function} callback
- * @param {Object} options
- * @param {Boolean} options.raf
- * @return {Promise}
- * @private
- */
-function withPromise(callback, { raf = false } = {}) {
-  return new Promise((resolve, reject) => {
-    if (raf) {
-      requestAnimationFrame(() => {
-        callback(resolve, reject);
-      });
-    } else {
-      callback(resolve, reject);
-    }
-  });
-}
-
-/**
- * Returns true if the sensor event was triggered by a native browser drag event
- * @param {SensorEvent} sensorEvent
- */
-function isNativeDragEvent(sensorEvent) {
-  return (/^drag/.test(sensorEvent.originalEvent.type)
-  );
-}
-
-/***/ }),
-/* 57 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.defaultOptions = undefined;
-
-var _Mirror = __webpack_require__(56);
-
-var _Mirror2 = _interopRequireDefault(_Mirror);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _Mirror2.default;
-exports.defaultOptions = _Mirror.defaultOptions;
-
-/***/ }),
-/* 58 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _AbstractPlugin = __webpack_require__(1);
-
-var _AbstractPlugin2 = _interopRequireDefault(_AbstractPlugin);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const onInitialize = Symbol('onInitialize');
-const onDestroy = Symbol('onDestroy');
-
-/**
- * Focusable default options
- * @property {Object} defaultOptions
- * @type {Object}
- */
-const defaultOptions = {};
-
-/**
- * Focusable plugin
- * @class Focusable
- * @module Focusable
- * @extends AbstractPlugin
- */
-class Focusable extends _AbstractPlugin2.default {
-  /**
-   * Focusable constructor.
-   * @constructs Focusable
-   * @param {Draggable} draggable - Draggable instance
-   */
-  constructor(draggable) {
-    super(draggable);
-
-    /**
-     * Focusable options
-     * @property {Object} options
-     * @type {Object}
-     */
-    this.options = _extends({}, defaultOptions, this.getOptions());
-
-    this[onInitialize] = this[onInitialize].bind(this);
-    this[onDestroy] = this[onDestroy].bind(this);
-  }
-
-  /**
-   * Attaches listeners to draggable
-   */
-  attach() {
-    this.draggable.on('draggable:initialize', this[onInitialize]).on('draggable:destroy', this[onDestroy]);
-  }
-
-  /**
-   * Detaches listeners from draggable
-   */
-  detach() {
-    this.draggable.off('draggable:initialize', this[onInitialize]).off('draggable:destroy', this[onDestroy]);
-  }
-
-  /**
-   * Returns options passed through draggable
-   * @return {Object}
-   */
-  getOptions() {
-    return this.draggable.options.focusable || {};
-  }
-
-  /**
-   * Returns draggable containers and elements
-   * @return {HTMLElement[]}
-   */
-  getElements() {
-    return [...this.draggable.containers, ...this.draggable.getDraggableElements()];
-  }
-
-  /**
-   * Intialize handler
-   * @private
-   */
-  [onInitialize]() {
-    // Can wait until the next best frame is available
-    requestAnimationFrame(() => {
-      this.getElements().forEach(element => decorateElement(element));
-    });
-  }
-
-  /**
-   * Destroy handler
-   * @private
-   */
-  [onDestroy]() {
-    // Can wait until the next best frame is available
-    requestAnimationFrame(() => {
-      this.getElements().forEach(element => stripElement(element));
-    });
-  }
-}
-
-exports.default = Focusable; /**
-                              * Keeps track of all the elements that are missing tabindex attributes
-                              * so they can be reset when draggable gets destroyed
-                              * @const {HTMLElement[]} elementsWithMissingTabIndex
-                              */
-
-const elementsWithMissingTabIndex = [];
-
-/**
- * Decorates element with tabindex attributes
- * @param {HTMLElement} element
- * @return {Object}
- * @private
- */
-function decorateElement(element) {
-  const hasMissingTabIndex = Boolean(!element.getAttribute('tabindex') && element.tabIndex === -1);
-
-  if (hasMissingTabIndex) {
-    elementsWithMissingTabIndex.push(element);
-    element.tabIndex = 0;
-  }
-}
-
-/**
- * Removes elements tabindex attributes
- * @param {HTMLElement} element
- * @private
- */
-function stripElement(element) {
-  const tabIndexElementPosition = elementsWithMissingTabIndex.indexOf(element);
-
-  if (tabIndexElementPosition !== -1) {
-    element.tabIndex = -1;
-    elementsWithMissingTabIndex.splice(tabIndexElementPosition, 1);
-  }
-}
-
-/***/ }),
-/* 59 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Focusable = __webpack_require__(58);
-
-var _Focusable2 = _interopRequireDefault(_Focusable);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _Focusable2.default;
-
-/***/ }),
-/* 60 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/**
- * All draggable plugins inherit from this class.
- * @abstract
- * @class AbstractPlugin
- * @module AbstractPlugin
- */
-class AbstractPlugin {
-  /**
-   * AbstractPlugin constructor.
-   * @constructs AbstractPlugin
-   * @param {Draggable} draggable - Draggable instance
-   */
-  constructor(draggable) {
-    /**
-     * Draggable instance
-     * @property draggable
-     * @type {Draggable}
-     */
-    this.draggable = draggable;
-  }
-
-  /**
-   * Override to add listeners
-   * @abstract
-   */
-  attach() {
-    throw new Error('Not Implemented');
-  }
-
-  /**
-   * Override to remove listeners
-   * @abstract
-   */
-  detach() {
-    throw new Error('Not Implemented');
-  }
-}
-exports.default = AbstractPlugin;
-
-/***/ }),
-/* 61 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.defaultOptions = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _AbstractPlugin = __webpack_require__(1);
-
-var _AbstractPlugin2 = _interopRequireDefault(_AbstractPlugin);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const onInitialize = Symbol('onInitialize');
-const onDestroy = Symbol('onDestroy');
-const announceEvent = Symbol('announceEvent');
-const announceMessage = Symbol('announceMessage');
-
-const ARIA_RELEVANT = 'aria-relevant';
-const ARIA_ATOMIC = 'aria-atomic';
-const ARIA_LIVE = 'aria-live';
-const ROLE = 'role';
-
-/**
- * Announcement default options
- * @property {Object} defaultOptions
- * @property {Number} defaultOptions.expire
- * @type {Object}
- */
-const defaultOptions = exports.defaultOptions = {
-  expire: 7000
-};
-
-/**
- * Announcement plugin
- * @class Announcement
- * @module Announcement
- * @extends AbstractPlugin
- */
-class Announcement extends _AbstractPlugin2.default {
-  /**
-   * Announcement constructor.
-   * @constructs Announcement
-   * @param {Draggable} draggable - Draggable instance
-   */
-  constructor(draggable) {
-    super(draggable);
-
-    /**
-     * Plugin options
-     * @property options
-     * @type {Object}
-     */
-    this.options = _extends({}, defaultOptions, this.getOptions());
-
-    /**
-     * Original draggable trigger method. Hack until we have onAll or on('all')
-     * @property originalTriggerMethod
-     * @type {Function}
-     */
-    this.originalTriggerMethod = this.draggable.trigger;
-
-    this[onInitialize] = this[onInitialize].bind(this);
-    this[onDestroy] = this[onDestroy].bind(this);
-  }
-
-  /**
-   * Attaches listeners to draggable
-   */
-  attach() {
-    this.draggable.on('draggable:initialize', this[onInitialize]);
-  }
-
-  /**
-   * Detaches listeners from draggable
-   */
-  detach() {
-    this.draggable.off('draggable:destroy', this[onDestroy]);
-  }
-
-  /**
-   * Returns passed in options
-   */
-  getOptions() {
-    return this.draggable.options.announcements || {};
-  }
-
-  /**
-   * Announces event
-   * @private
-   * @param {AbstractEvent} event
-   */
-  [announceEvent](event) {
-    const message = this.options[event.type];
-
-    if (message && typeof message === 'string') {
-      this[announceMessage](message);
-    }
-
-    if (message && typeof message === 'function') {
-      this[announceMessage](message(event));
-    }
-  }
-
-  /**
-   * Announces message to screen reader
-   * @private
-   * @param {String} message
-   */
-  [announceMessage](message) {
-    announce(message, { expire: this.options.expire });
-  }
-
-  /**
-   * Initialize hander
-   * @private
-   */
-  [onInitialize]() {
-    // Hack until there is an api for listening for all events
-    this.draggable.trigger = event => {
-      try {
-        this[announceEvent](event);
-      } finally {
-        // Ensure that original trigger is called
-        this.originalTriggerMethod.call(this.draggable, event);
-      }
-    };
-  }
-
-  /**
-   * Destroy hander
-   * @private
-   */
-  [onDestroy]() {
-    this.draggable.trigger = this.originalTriggerMethod;
-  }
-}
-
-exports.default = Announcement; /**
-                                 * @const {HTMLElement} liveRegion
-                                 */
-
-const liveRegion = createRegion();
-
-/**
- * Announces message via live region
- * @param {String} message
- * @param {Object} options
- * @param {Number} options.expire
- */
-function announce(message, { expire }) {
-  const element = document.createElement('div');
-
-  element.textContent = message;
-  liveRegion.appendChild(element);
-
-  return setTimeout(() => {
-    liveRegion.removeChild(element);
-  }, expire);
-}
-
-/**
- * Creates region element
- * @return {HTMLElement}
- */
-function createRegion() {
-  const element = document.createElement('div');
-
-  element.setAttribute('id', 'draggable-live-region');
-  element.setAttribute(ARIA_RELEVANT, 'additions');
-  element.setAttribute(ARIA_ATOMIC, 'true');
-  element.setAttribute(ARIA_LIVE, 'assertive');
-  element.setAttribute(ROLE, 'log');
-
-  element.style.position = 'fixed';
-  element.style.width = '1px';
-  element.style.height = '1px';
-  element.style.top = '-1px';
-  element.style.overflow = 'hidden';
-
-  return element;
-}
-
-// Append live region element as early as possible
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.appendChild(liveRegion);
-});
-
-/***/ }),
-/* 62 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.defaultOptions = undefined;
-
-var _Announcement = __webpack_require__(61);
-
-var _Announcement2 = _interopRequireDefault(_Announcement);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _Announcement2.default;
-exports.defaultOptions = _Announcement.defaultOptions;
-
-/***/ }),
-/* 63 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DraggableDestroyEvent = exports.DraggableInitializedEvent = exports.DraggableEvent = undefined;
-
-var _AbstractEvent = __webpack_require__(0);
-
-var _AbstractEvent2 = _interopRequireDefault(_AbstractEvent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Base draggable event
- * @class DraggableEvent
- * @module DraggableEvent
- * @extends AbstractEvent
- */
-class DraggableEvent extends _AbstractEvent2.default {
-
-  /**
-   * Draggable instance
-   * @property draggable
-   * @type {Draggable}
-   * @readonly
-   */
-  get draggable() {
-    return this.data.draggable;
-  }
-}
-
-exports.DraggableEvent = DraggableEvent; /**
-                                          * Draggable initialized event
-                                          * @class DraggableInitializedEvent
-                                          * @module DraggableInitializedEvent
-                                          * @extends DraggableEvent
-                                          */
-
-DraggableEvent.type = 'draggable';
-class DraggableInitializedEvent extends DraggableEvent {}
-
-exports.DraggableInitializedEvent = DraggableInitializedEvent; /**
-                                                                * Draggable destory event
-                                                                * @class DraggableInitializedEvent
-                                                                * @module DraggableDestroyEvent
-                                                                * @extends DraggableDestroyEvent
-                                                                */
-
-DraggableInitializedEvent.type = 'draggable:initialize';
-class DraggableDestroyEvent extends DraggableEvent {}
-exports.DraggableDestroyEvent = DraggableDestroyEvent;
-DraggableDestroyEvent.type = 'draggable:destroy';
-
-/***/ }),
-/* 64 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-const canceled = Symbol('canceled');
-
-/**
- * All events fired by draggable inherit this class. You can call `cancel()` to
- * cancel a specific event or you can check if an event has been canceled by
- * calling `canceled()`.
- * @abstract
- * @class AbstractEvent
- * @module AbstractEvent
- */
-class AbstractEvent {
-
-  /**
-   * AbstractEvent constructor.
-   * @constructs AbstractEvent
-   * @param {object} data - Event data
-   */
-
-  /**
-   * Event type
-   * @static
-   * @abstract
-   * @property type
-   * @type {String}
-   */
-  constructor(data) {
-    this[canceled] = false;
-    this.data = data;
-  }
-
-  /**
-   * Read-only type
-   * @abstract
-   * @return {String}
-   */
-
-
-  /**
-   * Event cancelable
-   * @static
-   * @abstract
-   * @property cancelable
-   * @type {Boolean}
-   */
-  get type() {
-    return this.constructor.type;
-  }
-
-  /**
-   * Read-only cancelable
-   * @abstract
-   * @return {Boolean}
-   */
-  get cancelable() {
-    return this.constructor.cancelable;
-  }
-
-  /**
-   * Cancels the event instance
-   * @abstract
-   */
-  cancel() {
-    this[canceled] = true;
-  }
-
-  /**
-   * Check if event has been canceled
-   * @abstract
-   * @return {Boolean}
-   */
-  canceled() {
-    return Boolean(this[canceled]);
-  }
-
-  /**
-   * Returns new event instance with existing event data.
-   * This method allows for overriding of event data.
-   * @param {Object} data
-   * @return {AbstractEvent}
-   */
-  clone(data) {
-    return new this.constructor(_extends({}, this.data, data));
-  }
-}
-exports.default = AbstractEvent;
-AbstractEvent.type = 'event';
-AbstractEvent.cancelable = false;
-
-/***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DragStopEvent = exports.DragPressureEvent = exports.DragOutContainerEvent = exports.DragOverContainerEvent = exports.DragOutEvent = exports.DragOverEvent = exports.DragMoveEvent = exports.DragStartEvent = exports.DragEvent = undefined;
-
-var _AbstractEvent = __webpack_require__(0);
-
-var _AbstractEvent2 = _interopRequireDefault(_AbstractEvent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Base drag event
- * @class DragEvent
- * @module DragEvent
- * @extends AbstractEvent
- */
-class DragEvent extends _AbstractEvent2.default {
-
-  /**
-   * Draggables source element
-   * @property source
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get source() {
-    return this.data.source;
-  }
-
-  /**
-   * Draggables original source element
-   * @property originalSource
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get originalSource() {
-    return this.data.originalSource;
-  }
-
-  /**
-   * Draggables mirror element
-   * @property mirror
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get mirror() {
-    return this.data.mirror;
-  }
-
-  /**
-   * Draggables source container element
-   * @property sourceContainer
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get sourceContainer() {
-    return this.data.sourceContainer;
-  }
-
-  /**
-   * Sensor event
-   * @property sensorEvent
-   * @type {SensorEvent}
-   * @readonly
-   */
-  get sensorEvent() {
-    return this.data.sensorEvent;
-  }
-
-  /**
-   * Original event that triggered sensor event
-   * @property originalEvent
-   * @type {Event}
-   * @readonly
-   */
-  get originalEvent() {
-    if (this.sensorEvent) {
-      return this.sensorEvent.originalEvent;
-    }
-
-    return null;
-  }
-}
-
-exports.DragEvent = DragEvent; /**
-                                * Drag start event
-                                * @class DragStartEvent
-                                * @module DragStartEvent
-                                * @extends DragEvent
-                                */
-
-DragEvent.type = 'drag';
-class DragStartEvent extends DragEvent {}
-
-exports.DragStartEvent = DragStartEvent; /**
-                                          * Drag move event
-                                          * @class DragMoveEvent
-                                          * @module DragMoveEvent
-                                          * @extends DragEvent
-                                          */
-
-DragStartEvent.type = 'drag:start';
-DragStartEvent.cancelable = true;
-class DragMoveEvent extends DragEvent {}
-
-exports.DragMoveEvent = DragMoveEvent; /**
-                                        * Drag over event
-                                        * @class DragOverEvent
-                                        * @module DragOverEvent
-                                        * @extends DragEvent
-                                        */
-
-DragMoveEvent.type = 'drag:move';
-class DragOverEvent extends DragEvent {
-
-  /**
-   * Draggable container you are over
-   * @property overContainer
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get overContainer() {
-    return this.data.overContainer;
-  }
-
-  /**
-   * Draggable element you are over
-   * @property over
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get over() {
-    return this.data.over;
-  }
-}
-
-exports.DragOverEvent = DragOverEvent; /**
-                                        * Drag out event
-                                        * @class DragOutEvent
-                                        * @module DragOutEvent
-                                        * @extends DragEvent
-                                        */
-
-DragOverEvent.type = 'drag:over';
-DragOverEvent.cancelable = true;
-class DragOutEvent extends DragEvent {
-
-  /**
-   * Draggable container you are over
-   * @property overContainer
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get overContainer() {
-    return this.data.overContainer;
-  }
-
-  /**
-   * Draggable element you left
-   * @property over
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get over() {
-    return this.data.over;
-  }
-}
-
-exports.DragOutEvent = DragOutEvent; /**
-                                      * Drag over container event
-                                      * @class DragOverContainerEvent
-                                      * @module DragOverContainerEvent
-                                      * @extends DragEvent
-                                      */
-
-DragOutEvent.type = 'drag:out';
-class DragOverContainerEvent extends DragEvent {
-
-  /**
-   * Draggable container you are over
-   * @property overContainer
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get overContainer() {
-    return this.data.overContainer;
-  }
-}
-
-exports.DragOverContainerEvent = DragOverContainerEvent; /**
-                                                          * Drag out container event
-                                                          * @class DragOutContainerEvent
-                                                          * @module DragOutContainerEvent
-                                                          * @extends DragEvent
-                                                          */
-
-DragOverContainerEvent.type = 'drag:over:container';
-class DragOutContainerEvent extends DragEvent {
-
-  /**
-   * Draggable container you left
-   * @property overContainer
-   * @type {HTMLElement}
-   * @readonly
-   */
-  get overContainer() {
-    return this.data.overContainer;
-  }
-}
-
-exports.DragOutContainerEvent = DragOutContainerEvent; /**
-                                                        * Drag pressure event
-                                                        * @class DragPressureEvent
-                                                        * @module DragPressureEvent
-                                                        * @extends DragEvent
-                                                        */
-
-DragOutContainerEvent.type = 'drag:out:container';
-class DragPressureEvent extends DragEvent {
-
-  /**
-   * Pressure applied on draggable element
-   * @property pressure
-   * @type {Number}
-   * @readonly
-   */
-  get pressure() {
-    return this.data.pressure;
-  }
-}
-
-exports.DragPressureEvent = DragPressureEvent; /**
-                                                * Drag stop event
-                                                * @class DragStopEvent
-                                                * @module DragStopEvent
-                                                * @extends DragEvent
-                                                */
-
-DragPressureEvent.type = 'drag:pressure';
-class DragStopEvent extends DragEvent {}
-exports.DragStopEvent = DragStopEvent;
-DragStopEvent.type = 'drag:stop';
-
-/***/ }),
-/* 66 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Plugins = exports.Sensors = exports.Sortable = exports.Swappable = exports.Droppable = exports.Draggable = exports.BasePlugin = exports.BaseEvent = undefined;
-
-var _Draggable = __webpack_require__(5);
-
-Object.defineProperty(exports, 'Draggable', {
-  enumerable: true,
-  get: function () {
-    return _interopRequireDefault(_Draggable).default;
-  }
-});
-
-var _Droppable = __webpack_require__(34);
-
-Object.defineProperty(exports, 'Droppable', {
-  enumerable: true,
-  get: function () {
-    return _interopRequireDefault(_Droppable).default;
-  }
-});
-
-var _Swappable = __webpack_require__(31);
-
-Object.defineProperty(exports, 'Swappable', {
-  enumerable: true,
-  get: function () {
-    return _interopRequireDefault(_Swappable).default;
-  }
-});
-
-var _Sortable = __webpack_require__(28);
-
-Object.defineProperty(exports, 'Sortable', {
-  enumerable: true,
-  get: function () {
-    return _interopRequireDefault(_Sortable).default;
-  }
-});
-
-var _AbstractEvent = __webpack_require__(0);
-
-var _AbstractEvent2 = _interopRequireDefault(_AbstractEvent);
-
-var _AbstractPlugin = __webpack_require__(1);
-
-var _AbstractPlugin2 = _interopRequireDefault(_AbstractPlugin);
-
-var _Sensors = __webpack_require__(6);
-
-var Sensors = _interopRequireWildcard(_Sensors);
-
-var _Plugins = __webpack_require__(25);
-
-var Plugins = _interopRequireWildcard(_Plugins);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.BaseEvent = _AbstractEvent2.default;
-exports.BasePlugin = _AbstractPlugin2.default;
-exports.Sensors = Sensors;
-exports.Plugins = Plugins;
-
-/***/ })
-/******/ ]);
-});
-
-/***/ }),
-
-/***/ "./node_modules/@stimulus/core/dist/index.js":
-/*!***************************************************!*\
-  !*** ./node_modules/@stimulus/core/dist/index.js ***!
-  \***************************************************/
-/*! exports provided: Application, Context, Controller, defaultSchema */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _src_application__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/application */ "./node_modules/@stimulus/core/dist/src/application.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Application", function() { return _src_application__WEBPACK_IMPORTED_MODULE_0__["Application"]; });
-
-/* harmony import */ var _src_context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/context */ "./node_modules/@stimulus/core/dist/src/context.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Context", function() { return _src_context__WEBPACK_IMPORTED_MODULE_1__["Context"]; });
-
-/* harmony import */ var _src_controller__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/controller */ "./node_modules/@stimulus/core/dist/src/controller.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Controller", function() { return _src_controller__WEBPACK_IMPORTED_MODULE_2__["Controller"]; });
-
-/* harmony import */ var _src_schema__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/schema */ "./node_modules/@stimulus/core/dist/src/schema.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "defaultSchema", function() { return _src_schema__WEBPACK_IMPORTED_MODULE_3__["defaultSchema"]; });
-
-
-
-
-
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxPQUFPLEVBQUUsV0FBVyxFQUFFLE1BQU0sbUJBQW1CLENBQUE7QUFDL0MsT0FBTyxFQUFFLE9BQU8sRUFBRSxNQUFNLGVBQWUsQ0FBQTtBQUN2QyxPQUFPLEVBQUUsVUFBVSxFQUF5QixNQUFNLGtCQUFrQixDQUFBO0FBRXBFLE9BQU8sRUFBVSxhQUFhLEVBQUUsTUFBTSxjQUFjLENBQUEifQ==
-
-/***/ }),
-
-/***/ "./node_modules/@stimulus/core/dist/src/action.js":
-/*!********************************************************!*\
-  !*** ./node_modules/@stimulus/core/dist/src/action.js ***!
-  \********************************************************/
+/***/ "./node_modules/@stimulus/core/dist/action.js":
+/*!****************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/action.js ***!
+  \****************************************************/
 /*! exports provided: Action, getDefaultEventNameForElement */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -7988,7 +935,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Action", function() { return Action; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDefaultEventNameForElement", function() { return getDefaultEventNameForElement; });
-/* harmony import */ var _action_descriptor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./action_descriptor */ "./node_modules/@stimulus/core/dist/src/action_descriptor.js");
+/* harmony import */ var _action_descriptor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./action_descriptor */ "./node_modules/@stimulus/core/dist/action_descriptor.js");
 
 var Action = /** @class */ (function () {
     function Action(element, index, descriptor) {
@@ -7996,11 +943,12 @@ var Action = /** @class */ (function () {
         this.index = index;
         this.eventTarget = descriptor.eventTarget || element;
         this.eventName = descriptor.eventName || getDefaultEventNameForElement(element) || error("missing event name");
+        this.eventOptions = descriptor.eventOptions || {};
         this.identifier = descriptor.identifier || error("missing identifier");
         this.methodName = descriptor.methodName || error("missing method name");
     }
     Action.forToken = function (token) {
-        return new this(token.element, token.index, Object(_action_descriptor__WEBPACK_IMPORTED_MODULE_0__["parseDescriptorString"])(token.content));
+        return new this(token.element, token.index, Object(_action_descriptor__WEBPACK_IMPORTED_MODULE_0__["parseActionDescriptorString"])(token.content));
     };
     Action.prototype.toString = function () {
         var eventNameSuffix = this.eventTargetName ? "@" + this.eventTargetName : "";
@@ -8010,7 +958,7 @@ var Action = /** @class */ (function () {
         get: function () {
             return Object(_action_descriptor__WEBPACK_IMPORTED_MODULE_0__["stringifyEventTarget"])(this.eventTarget);
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     return Action;
@@ -8020,9 +968,9 @@ var defaultEventNames = {
     "a": function (e) { return "click"; },
     "button": function (e) { return "click"; },
     "form": function (e) { return "submit"; },
-    "input": function (e) { return e.getAttribute("type") == "submit" ? "click" : "change"; },
+    "input": function (e) { return e.getAttribute("type") == "submit" ? "click" : "input"; },
     "select": function (e) { return "change"; },
-    "textarea": function (e) { return "change"; }
+    "textarea": function (e) { return "input"; }
 };
 function getDefaultEventNameForElement(element) {
     var tagName = element.tagName.toLowerCase();
@@ -8033,29 +981,30 @@ function getDefaultEventNameForElement(element) {
 function error(message) {
     throw new Error(message);
 }
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYWN0aW9uLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vc3JjL2FjdGlvbi50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxPQUFPLEVBQW9CLHFCQUFxQixFQUFFLG9CQUFvQixFQUFFLE1BQU0scUJBQXFCLENBQUE7QUFHbkc7SUFZRSxnQkFBWSxPQUFnQixFQUFFLEtBQWEsRUFBRSxVQUFxQztRQUNoRixJQUFJLENBQUMsT0FBTyxHQUFPLE9BQU8sQ0FBQTtRQUMxQixJQUFJLENBQUMsS0FBSyxHQUFTLEtBQUssQ0FBQTtRQUN4QixJQUFJLENBQUMsV0FBVyxHQUFHLFVBQVUsQ0FBQyxXQUFXLElBQUksT0FBTyxDQUFBO1FBQ3BELElBQUksQ0FBQyxTQUFTLEdBQUssVUFBVSxDQUFDLFNBQVMsSUFBSSw2QkFBNkIsQ0FBQyxPQUFPLENBQUMsSUFBSSxLQUFLLENBQUMsb0JBQW9CLENBQUMsQ0FBQTtRQUNoSCxJQUFJLENBQUMsVUFBVSxHQUFJLFVBQVUsQ0FBQyxVQUFVLElBQUksS0FBSyxDQUFDLG9CQUFvQixDQUFDLENBQUE7UUFDdkUsSUFBSSxDQUFDLFVBQVUsR0FBSSxVQUFVLENBQUMsVUFBVSxJQUFJLEtBQUssQ0FBQyxxQkFBcUIsQ0FBQyxDQUFBO0lBQzFFLENBQUM7SUFYTSxlQUFRLEdBQWYsVUFBZ0IsS0FBWTtRQUMxQixPQUFPLElBQUksSUFBSSxDQUFDLEtBQUssQ0FBQyxPQUFPLEVBQUUsS0FBSyxDQUFDLEtBQUssRUFBRSxxQkFBcUIsQ0FBQyxLQUFLLENBQUMsT0FBTyxDQUFDLENBQUMsQ0FBQTtJQUNuRixDQUFDO0lBV0QseUJBQVEsR0FBUjtRQUNFLElBQU0sZUFBZSxHQUFHLElBQUksQ0FBQyxlQUFlLENBQUMsQ0FBQyxDQUFDLE1BQUksSUFBSSxDQUFDLGVBQWlCLENBQUMsQ0FBQyxDQUFDLEVBQUUsQ0FBQTtRQUM5RSxPQUFPLEtBQUcsSUFBSSxDQUFDLFNBQVMsR0FBRyxlQUFlLFVBQUssSUFBSSxDQUFDLFVBQVUsU0FBSSxJQUFJLENBQUMsVUFBWSxDQUFBO0lBQ3JGLENBQUM7SUFFRCxzQkFBWSxtQ0FBZTthQUEzQjtZQUNFLE9BQU8sb0JBQW9CLENBQUMsSUFBSSxDQUFDLFdBQVcsQ0FBQyxDQUFBO1FBQy9DLENBQUM7OztPQUFBO0lBQ0gsYUFBQztBQUFELENBQUMsQUE3QkQsSUE2QkM7O0FBRUQsSUFBTSxpQkFBaUIsR0FBd0Q7SUFDN0UsR0FBRyxFQUFTLFVBQUEsQ0FBQyxJQUFJLE9BQUEsT0FBTyxFQUFQLENBQU87SUFDeEIsUUFBUSxFQUFJLFVBQUEsQ0FBQyxJQUFJLE9BQUEsT0FBTyxFQUFQLENBQU87SUFDeEIsTUFBTSxFQUFNLFVBQUEsQ0FBQyxJQUFJLE9BQUEsUUFBUSxFQUFSLENBQVE7SUFDekIsT0FBTyxFQUFLLFVBQUEsQ0FBQyxJQUFJLE9BQUEsQ0FBQyxDQUFDLFlBQVksQ0FBQyxNQUFNLENBQUMsSUFBSSxRQUFRLENBQUMsQ0FBQyxDQUFDLE9BQU8sQ0FBQyxDQUFDLENBQUMsUUFBUSxFQUF2RCxDQUF1RDtJQUN4RSxRQUFRLEVBQUksVUFBQSxDQUFDLElBQUksT0FBQSxRQUFRLEVBQVIsQ0FBUTtJQUN6QixVQUFVLEVBQUUsVUFBQSxDQUFDLElBQUksT0FBQSxRQUFRLEVBQVIsQ0FBUTtDQUMxQixDQUFBO0FBRUQsTUFBTSx3Q0FBd0MsT0FBZ0I7SUFDNUQsSUFBTSxPQUFPLEdBQUcsT0FBTyxDQUFDLE9BQU8sQ0FBQyxXQUFXLEVBQUUsQ0FBQTtJQUM3QyxJQUFJLE9BQU8sSUFBSSxpQkFBaUIsRUFBRTtRQUNoQyxPQUFPLGlCQUFpQixDQUFDLE9BQU8sQ0FBQyxDQUFDLE9BQU8sQ0FBQyxDQUFBO0tBQzNDO0FBQ0gsQ0FBQztBQUVELGVBQWUsT0FBZTtJQUM1QixNQUFNLElBQUksS0FBSyxDQUFDLE9BQU8sQ0FBQyxDQUFBO0FBQzFCLENBQUMifQ==
+//# sourceMappingURL=action.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/core/dist/src/action_descriptor.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/@stimulus/core/dist/src/action_descriptor.js ***!
-  \*******************************************************************/
-/*! exports provided: parseDescriptorString, stringifyEventTarget */
+/***/ "./node_modules/@stimulus/core/dist/action_descriptor.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/action_descriptor.js ***!
+  \***************************************************************/
+/*! exports provided: parseActionDescriptorString, stringifyEventTarget */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseDescriptorString", function() { return parseDescriptorString; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseActionDescriptorString", function() { return parseActionDescriptorString; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "stringifyEventTarget", function() { return stringifyEventTarget; });
-// capture nos.:            12   23 4               43   1 5   56 7  76
-var descriptorPattern = /^((.+?)(@(window|document))?->)?(.+?)(#(.+))?$/;
-function parseDescriptorString(descriptorString) {
+// capture nos.:            12   23 4               43   1 5   56 7      768 9  98
+var descriptorPattern = /^((.+?)(@(window|document))?->)?(.+?)(#([^:]+?))(:(.+))?$/;
+function parseActionDescriptorString(descriptorString) {
     var source = descriptorString.trim();
     var matches = source.match(descriptorPattern) || [];
     return {
         eventTarget: parseEventTarget(matches[4]),
         eventName: matches[2],
+        eventOptions: matches[9] ? parseEventOptions(matches[9]) : {},
         identifier: matches[5],
         methodName: matches[7]
     };
@@ -8068,6 +1017,12 @@ function parseEventTarget(eventTargetName) {
         return document;
     }
 }
+function parseEventOptions(eventOptions) {
+    return eventOptions.split(":").reduce(function (options, token) {
+        var _a;
+        return Object.assign(options, (_a = {}, _a[token.replace(/^!/, "")] = !/^!/.test(token), _a));
+    }, {});
+}
 function stringifyEventTarget(eventTarget) {
     if (eventTarget == window) {
         return "window";
@@ -8076,28 +1031,29 @@ function stringifyEventTarget(eventTarget) {
         return "document";
     }
 }
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYWN0aW9uX2Rlc2NyaXB0b3IuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvYWN0aW9uX2Rlc2NyaXB0b3IudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBT0EsdUVBQXVFO0FBQ3ZFLElBQU0saUJBQWlCLEdBQUcsZ0RBQWdELENBQUE7QUFFMUUsTUFBTSxnQ0FBZ0MsZ0JBQXdCO0lBQzVELElBQU0sTUFBTSxHQUFHLGdCQUFnQixDQUFDLElBQUksRUFBRSxDQUFBO0lBQ3RDLElBQU0sT0FBTyxHQUFHLE1BQU0sQ0FBQyxLQUFLLENBQUMsaUJBQWlCLENBQUMsSUFBSSxFQUFFLENBQUE7SUFDckQsT0FBTztRQUNMLFdBQVcsRUFBRSxnQkFBZ0IsQ0FBQyxPQUFPLENBQUMsQ0FBQyxDQUFDLENBQUM7UUFDekMsU0FBUyxFQUFJLE9BQU8sQ0FBQyxDQUFDLENBQUM7UUFDdkIsVUFBVSxFQUFHLE9BQU8sQ0FBQyxDQUFDLENBQUM7UUFDdkIsVUFBVSxFQUFHLE9BQU8sQ0FBQyxDQUFDLENBQUM7S0FDeEIsQ0FBQTtBQUNILENBQUM7QUFFRCwwQkFBMEIsZUFBdUI7SUFDL0MsSUFBSSxlQUFlLElBQUksUUFBUSxFQUFFO1FBQy9CLE9BQU8sTUFBTSxDQUFBO0tBQ2Q7U0FBTSxJQUFJLGVBQWUsSUFBSSxVQUFVLEVBQUU7UUFDeEMsT0FBTyxRQUFRLENBQUE7S0FDaEI7QUFDSCxDQUFDO0FBRUQsTUFBTSwrQkFBK0IsV0FBd0I7SUFDM0QsSUFBSSxXQUFXLElBQUksTUFBTSxFQUFFO1FBQ3pCLE9BQU8sUUFBUSxDQUFBO0tBQ2hCO1NBQU0sSUFBSSxXQUFXLElBQUksUUFBUSxFQUFFO1FBQ2xDLE9BQU8sVUFBVSxDQUFBO0tBQ2xCO0FBQ0gsQ0FBQyJ9
+//# sourceMappingURL=action_descriptor.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/core/dist/src/application.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/@stimulus/core/dist/src/application.js ***!
-  \*************************************************************/
+/***/ "./node_modules/@stimulus/core/dist/application.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/application.js ***!
+  \*********************************************************/
 /*! exports provided: Application */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Application", function() { return Application; });
-/* harmony import */ var _dispatcher__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dispatcher */ "./node_modules/@stimulus/core/dist/src/dispatcher.js");
-/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router */ "./node_modules/@stimulus/core/dist/src/router.js");
-/* harmony import */ var _schema__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./schema */ "./node_modules/@stimulus/core/dist/src/schema.js");
+/* harmony import */ var _dispatcher__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dispatcher */ "./node_modules/@stimulus/core/dist/dispatcher.js");
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router */ "./node_modules/@stimulus/core/dist/router.js");
+/* harmony import */ var _schema__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./schema */ "./node_modules/@stimulus/core/dist/schema.js");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -8108,8 +1064,8 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
         while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
                 case 0: case 1: t = op; break;
                 case 4: _.label++; return { value: op[1], done: false };
@@ -8128,6 +1084,13 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __spreadArrays = (undefined && undefined.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 
 
 
@@ -8135,6 +1098,7 @@ var Application = /** @class */ (function () {
     function Application(element, schema) {
         if (element === void 0) { element = document.documentElement; }
         if (schema === void 0) { schema = _schema__WEBPACK_IMPORTED_MODULE_2__["defaultSchema"]; }
+        this.logger = console;
         this.element = element;
         this.schema = schema;
         this.dispatcher = new _dispatcher__WEBPACK_IMPORTED_MODULE_0__["Dispatcher"](this);
@@ -8152,16 +1116,16 @@ var Application = /** @class */ (function () {
                     case 0: return [4 /*yield*/, domReady()];
                     case 1:
                         _a.sent();
-                        this.router.start();
                         this.dispatcher.start();
+                        this.router.start();
                         return [2 /*return*/];
                 }
             });
         });
     };
     Application.prototype.stop = function () {
-        this.router.stop();
         this.dispatcher.stop();
+        this.router.stop();
     };
     Application.prototype.register = function (identifier, controllerConstructor) {
         this.load({ identifier: identifier, controllerConstructor: controllerConstructor });
@@ -8172,7 +1136,7 @@ var Application = /** @class */ (function () {
         for (var _i = 1; _i < arguments.length; _i++) {
             rest[_i - 1] = arguments[_i];
         }
-        var definitions = Array.isArray(head) ? head : [head].concat(rest);
+        var definitions = Array.isArray(head) ? head : __spreadArrays([head], rest);
         definitions.forEach(function (definition) { return _this.router.loadDefinition(definition); });
     };
     Application.prototype.unload = function (head) {
@@ -8181,7 +1145,7 @@ var Application = /** @class */ (function () {
         for (var _i = 1; _i < arguments.length; _i++) {
             rest[_i - 1] = arguments[_i];
         }
-        var identifiers = Array.isArray(head) ? head : [head].concat(rest);
+        var identifiers = Array.isArray(head) ? head : __spreadArrays([head], rest);
         identifiers.forEach(function (identifier) { return _this.router.unloadIdentifier(identifier); });
     };
     Object.defineProperty(Application.prototype, "controllers", {
@@ -8189,7 +1153,7 @@ var Application = /** @class */ (function () {
         get: function () {
             return this.router.contexts.map(function (context) { return context.controller; });
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Application.prototype.getControllerForElementAndIdentifier = function (element, identifier) {
@@ -8198,7 +1162,7 @@ var Application = /** @class */ (function () {
     };
     // Error handling
     Application.prototype.handleError = function (error, message, detail) {
-        console.error("%s\n\n%o\n\n%o", message, error, detail);
+        this.logger.error("%s\n\n%o\n\n%o", message, error, detail);
     };
     return Application;
 }());
@@ -8213,14 +1177,14 @@ function domReady() {
         }
     });
 }
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBwbGljYXRpb24uanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvYXBwbGljYXRpb24udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFFQSxPQUFPLEVBQUUsVUFBVSxFQUFFLE1BQU0sY0FBYyxDQUFBO0FBRXpDLE9BQU8sRUFBRSxNQUFNLEVBQUUsTUFBTSxVQUFVLENBQUE7QUFDakMsT0FBTyxFQUFVLGFBQWEsRUFBRSxNQUFNLFVBQVUsQ0FBQTtBQUVoRDtJQVlFLHFCQUFZLE9BQTJDLEVBQUUsTUFBOEI7UUFBM0Usd0JBQUEsRUFBQSxVQUFtQixRQUFRLENBQUMsZUFBZTtRQUFFLHVCQUFBLEVBQUEsc0JBQThCO1FBQ3JGLElBQUksQ0FBQyxPQUFPLEdBQUcsT0FBTyxDQUFBO1FBQ3RCLElBQUksQ0FBQyxNQUFNLEdBQUcsTUFBTSxDQUFBO1FBQ3BCLElBQUksQ0FBQyxVQUFVLEdBQUcsSUFBSSxVQUFVLENBQUMsSUFBSSxDQUFDLENBQUE7UUFDdEMsSUFBSSxDQUFDLE1BQU0sR0FBRyxJQUFJLE1BQU0sQ0FBQyxJQUFJLENBQUMsQ0FBQTtJQUNoQyxDQUFDO0lBWE0saUJBQUssR0FBWixVQUFhLE9BQWlCLEVBQUUsTUFBZTtRQUM3QyxJQUFNLFdBQVcsR0FBRyxJQUFJLFdBQVcsQ0FBQyxPQUFPLEVBQUUsTUFBTSxDQUFDLENBQUE7UUFDcEQsV0FBVyxDQUFDLEtBQUssRUFBRSxDQUFBO1FBQ25CLE9BQU8sV0FBVyxDQUFBO0lBQ3BCLENBQUM7SUFTSywyQkFBSyxHQUFYOzs7OzRCQUNFLHFCQUFNLFFBQVEsRUFBRSxFQUFBOzt3QkFBaEIsU0FBZ0IsQ0FBQTt3QkFDaEIsSUFBSSxDQUFDLE1BQU0sQ0FBQyxLQUFLLEVBQUUsQ0FBQTt3QkFDbkIsSUFBSSxDQUFDLFVBQVUsQ0FBQyxLQUFLLEVBQUUsQ0FBQTs7Ozs7S0FDeEI7SUFFRCwwQkFBSSxHQUFKO1FBQ0UsSUFBSSxDQUFDLE1BQU0sQ0FBQyxJQUFJLEVBQUUsQ0FBQTtRQUNsQixJQUFJLENBQUMsVUFBVSxDQUFDLElBQUksRUFBRSxDQUFBO0lBQ3hCLENBQUM7SUFFRCw4QkFBUSxHQUFSLFVBQVMsVUFBa0IsRUFBRSxxQkFBNEM7UUFDdkUsSUFBSSxDQUFDLElBQUksQ0FBQyxFQUFFLFVBQVUsWUFBQSxFQUFFLHFCQUFxQix1QkFBQSxFQUFFLENBQUMsQ0FBQTtJQUNsRCxDQUFDO0lBSUQsMEJBQUksR0FBSixVQUFLLElBQStCO1FBQXBDLGlCQUdDO1FBSHFDLGNBQXFCO2FBQXJCLFVBQXFCLEVBQXJCLHFCQUFxQixFQUFyQixJQUFxQjtZQUFyQiw2QkFBcUI7O1FBQ3pELElBQU0sV0FBVyxHQUFHLEtBQUssQ0FBQyxPQUFPLENBQUMsSUFBSSxDQUFDLENBQUMsQ0FBQyxDQUFDLElBQUksQ0FBQyxDQUFDLEVBQUUsSUFBSSxTQUFLLElBQUksQ0FBQyxDQUFBO1FBQ2hFLFdBQVcsQ0FBQyxPQUFPLENBQUMsVUFBQSxVQUFVLElBQUksT0FBQSxLQUFJLENBQUMsTUFBTSxDQUFDLGNBQWMsQ0FBQyxVQUFVLENBQUMsRUFBdEMsQ0FBc0MsQ0FBQyxDQUFBO0lBQzNFLENBQUM7SUFJRCw0QkFBTSxHQUFOLFVBQU8sSUFBdUI7UUFBOUIsaUJBR0M7UUFIK0IsY0FBaUI7YUFBakIsVUFBaUIsRUFBakIscUJBQWlCLEVBQWpCLElBQWlCO1lBQWpCLDZCQUFpQjs7UUFDL0MsSUFBTSxXQUFXLEdBQUcsS0FBSyxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsQ0FBQyxDQUFDLENBQUMsSUFBSSxDQUFDLENBQUMsRUFBRSxJQUFJLFNBQUssSUFBSSxDQUFDLENBQUE7UUFDaEUsV0FBVyxDQUFDLE9BQU8sQ0FBQyxVQUFBLFVBQVUsSUFBSSxPQUFBLEtBQUksQ0FBQyxNQUFNLENBQUMsZ0JBQWdCLENBQUMsVUFBVSxDQUFDLEVBQXhDLENBQXdDLENBQUMsQ0FBQTtJQUM3RSxDQUFDO0lBSUQsc0JBQUksb0NBQVc7UUFGZixjQUFjO2FBRWQ7WUFDRSxPQUFPLElBQUksQ0FBQyxNQUFNLENBQUMsUUFBUSxDQUFDLEdBQUcsQ0FBQyxVQUFBLE9BQU8sSUFBSSxPQUFBLE9BQU8sQ0FBQyxVQUFVLEVBQWxCLENBQWtCLENBQUMsQ0FBQTtRQUNoRSxDQUFDOzs7T0FBQTtJQUVELDBEQUFvQyxHQUFwQyxVQUFxQyxPQUFnQixFQUFFLFVBQWtCO1FBQ3ZFLElBQU0sT0FBTyxHQUFHLElBQUksQ0FBQyxNQUFNLENBQUMsaUNBQWlDLENBQUMsT0FBTyxFQUFFLFVBQVUsQ0FBQyxDQUFBO1FBQ2xGLE9BQU8sT0FBTyxDQUFDLENBQUMsQ0FBQyxPQUFPLENBQUMsVUFBVSxDQUFDLENBQUMsQ0FBQyxJQUFJLENBQUE7SUFDNUMsQ0FBQztJQUVELGlCQUFpQjtJQUVqQixpQ0FBVyxHQUFYLFVBQVksS0FBWSxFQUFFLE9BQWUsRUFBRSxNQUFjO1FBQ3ZELE9BQU8sQ0FBQyxLQUFLLENBQUMsZ0JBQWdCLEVBQUUsT0FBTyxFQUFFLEtBQUssRUFBRSxNQUFNLENBQUMsQ0FBQTtJQUN6RCxDQUFDO0lBQ0gsa0JBQUM7QUFBRCxDQUFDLEFBaEVELElBZ0VDOztBQUVEO0lBQ0UsT0FBTyxJQUFJLE9BQU8sQ0FBQyxVQUFBLE9BQU87UUFDeEIsSUFBSSxRQUFRLENBQUMsVUFBVSxJQUFJLFNBQVMsRUFBRTtZQUNwQyxRQUFRLENBQUMsZ0JBQWdCLENBQUMsa0JBQWtCLEVBQUUsT0FBTyxDQUFDLENBQUE7U0FDdkQ7YUFBTTtZQUNMLE9BQU8sRUFBRSxDQUFBO1NBQ1Y7SUFDSCxDQUFDLENBQUMsQ0FBQTtBQUNKLENBQUMifQ==
+//# sourceMappingURL=application.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/core/dist/src/binding.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/@stimulus/core/dist/src/binding.js ***!
-  \*********************************************************/
+/***/ "./node_modules/@stimulus/core/dist/binding.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/binding.js ***!
+  \*****************************************************/
 /*! exports provided: Binding */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -8236,21 +1200,28 @@ var Binding = /** @class */ (function () {
         get: function () {
             return this.action.index;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Binding.prototype, "eventTarget", {
         get: function () {
             return this.action.eventTarget;
         },
-        enumerable: true,
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Binding.prototype, "eventOptions", {
+        get: function () {
+            return this.action.eventOptions;
+        },
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Binding.prototype, "identifier", {
         get: function () {
             return this.context.identifier;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Binding.prototype.handleEvent = function (event) {
@@ -8262,7 +1233,7 @@ var Binding = /** @class */ (function () {
         get: function () {
             return this.action.eventName;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Binding.prototype, "method", {
@@ -8273,7 +1244,7 @@ var Binding = /** @class */ (function () {
             }
             throw new Error("Action \"" + this.action + "\" references undefined method \"" + this.methodName + "\"");
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Binding.prototype.invokeWithEvent = function (event) {
@@ -8295,56 +1266,56 @@ var Binding = /** @class */ (function () {
             return this.scope.containsElement(eventTarget);
         }
         else {
-            return true;
+            return this.scope.containsElement(this.action.element);
         }
     };
     Object.defineProperty(Binding.prototype, "controller", {
         get: function () {
             return this.context.controller;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Binding.prototype, "methodName", {
         get: function () {
             return this.action.methodName;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Binding.prototype, "element", {
         get: function () {
             return this.scope.element;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Binding.prototype, "scope", {
         get: function () {
             return this.context.scope;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     return Binding;
 }());
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYmluZGluZy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9iaW5kaW5nLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUtBO0lBSUUsaUJBQVksT0FBZ0IsRUFBRSxNQUFjO1FBQzFDLElBQUksQ0FBQyxPQUFPLEdBQUcsT0FBTyxDQUFBO1FBQ3RCLElBQUksQ0FBQyxNQUFNLEdBQUcsTUFBTSxDQUFBO0lBQ3RCLENBQUM7SUFFRCxzQkFBSSwwQkFBSzthQUFUO1lBQ0UsT0FBTyxJQUFJLENBQUMsTUFBTSxDQUFDLEtBQUssQ0FBQTtRQUMxQixDQUFDOzs7T0FBQTtJQUVELHNCQUFJLGdDQUFXO2FBQWY7WUFDRSxPQUFPLElBQUksQ0FBQyxNQUFNLENBQUMsV0FBVyxDQUFBO1FBQ2hDLENBQUM7OztPQUFBO0lBRUQsc0JBQUksK0JBQVU7YUFBZDtZQUNFLE9BQU8sSUFBSSxDQUFDLE9BQU8sQ0FBQyxVQUFVLENBQUE7UUFDaEMsQ0FBQzs7O09BQUE7SUFFRCw2QkFBVyxHQUFYLFVBQVksS0FBWTtRQUN0QixJQUFJLElBQUksQ0FBQyxvQkFBb0IsQ0FBQyxLQUFLLENBQUMsRUFBRTtZQUNwQyxJQUFJLENBQUMsZUFBZSxDQUFDLEtBQUssQ0FBQyxDQUFBO1NBQzVCO0lBQ0gsQ0FBQztJQUVELHNCQUFJLDhCQUFTO2FBQWI7WUFDRSxPQUFPLElBQUksQ0FBQyxNQUFNLENBQUMsU0FBUyxDQUFBO1FBQzlCLENBQUM7OztPQUFBO0lBRUQsc0JBQUksMkJBQU07YUFBVjtZQUNFLElBQU0sTUFBTSxHQUFJLElBQUksQ0FBQyxVQUFrQixDQUFDLElBQUksQ0FBQyxVQUFVLENBQUMsQ0FBQTtZQUN4RCxJQUFJLE9BQU8sTUFBTSxJQUFJLFVBQVUsRUFBRTtnQkFDL0IsT0FBTyxNQUFNLENBQUE7YUFDZDtZQUNELE1BQU0sSUFBSSxLQUFLLENBQUMsY0FBVyxJQUFJLENBQUMsTUFBTSx5Q0FBa0MsSUFBSSxDQUFDLFVBQVUsT0FBRyxDQUFDLENBQUE7UUFDN0YsQ0FBQzs7O09BQUE7SUFFTyxpQ0FBZSxHQUF2QixVQUF3QixLQUFZO1FBQ2xDLElBQUk7WUFDRixJQUFJLENBQUMsTUFBTSxDQUFDLElBQUksQ0FBQyxJQUFJLENBQUMsVUFBVSxFQUFFLEtBQUssQ0FBQyxDQUFBO1NBQ3pDO1FBQUMsT0FBTyxLQUFLLEVBQUU7WUFDUixJQUFBLFNBQWlELEVBQS9DLDBCQUFVLEVBQUUsMEJBQVUsRUFBRSxvQkFBTyxFQUFFLGdCQUFLLENBQVM7WUFDdkQsSUFBTSxNQUFNLEdBQUcsRUFBRSxVQUFVLFlBQUEsRUFBRSxVQUFVLFlBQUEsRUFBRSxPQUFPLFNBQUEsRUFBRSxLQUFLLE9BQUEsRUFBRSxLQUFLLE9BQUEsRUFBRSxDQUFBO1lBQ2hFLElBQUksQ0FBQyxPQUFPLENBQUMsV0FBVyxDQUFDLEtBQUssRUFBRSx1QkFBb0IsSUFBSSxDQUFDLE1BQU0sT0FBRyxFQUFFLE1BQU0sQ0FBQyxDQUFBO1NBQzVFO0lBQ0gsQ0FBQztJQUVPLHNDQUFvQixHQUE1QixVQUE2QixLQUFZO1FBQ3ZDLElBQU0sV0FBVyxHQUFHLEtBQUssQ0FBQyxNQUFNLENBQUE7UUFDaEMsSUFBSSxJQUFJLENBQUMsT0FBTyxLQUFLLFdBQVcsRUFBRTtZQUNoQyxPQUFPLElBQUksQ0FBQTtTQUNaO2FBQU0sSUFBSSxXQUFXLFlBQVksT0FBTyxJQUFJLElBQUksQ0FBQyxPQUFPLENBQUMsUUFBUSxDQUFDLFdBQVcsQ0FBQyxFQUFFO1lBQy9FLE9BQU8sSUFBSSxDQUFDLEtBQUssQ0FBQyxlQUFlLENBQUMsV0FBVyxDQUFDLENBQUE7U0FDL0M7YUFBTTtZQUNMLE9BQU8sSUFBSSxDQUFBO1NBQ1o7SUFDSCxDQUFDO0lBRUQsc0JBQVksK0JBQVU7YUFBdEI7WUFDRSxPQUFPLElBQUksQ0FBQyxPQUFPLENBQUMsVUFBVSxDQUFBO1FBQ2hDLENBQUM7OztPQUFBO0lBRUQsc0JBQVksK0JBQVU7YUFBdEI7WUFDRSxPQUFPLElBQUksQ0FBQyxNQUFNLENBQUMsVUFBVSxDQUFBO1FBQy9CLENBQUM7OztPQUFBO0lBRUQsc0JBQVksNEJBQU87YUFBbkI7WUFDRSxPQUFPLElBQUksQ0FBQyxLQUFLLENBQUMsT0FBTyxDQUFBO1FBQzNCLENBQUM7OztPQUFBO0lBRUQsc0JBQVksMEJBQUs7YUFBakI7WUFDRSxPQUFPLElBQUksQ0FBQyxPQUFPLENBQUMsS0FBSyxDQUFBO1FBQzNCLENBQUM7OztPQUFBO0lBQ0gsY0FBQztBQUFELENBQUMsQUEzRUQsSUEyRUMifQ==
+//# sourceMappingURL=binding.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/core/dist/src/binding_observer.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/@stimulus/core/dist/src/binding_observer.js ***!
-  \******************************************************************/
+/***/ "./node_modules/@stimulus/core/dist/binding_observer.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/binding_observer.js ***!
+  \**************************************************************/
 /*! exports provided: BindingObserver */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BindingObserver", function() { return BindingObserver; });
-/* harmony import */ var _action__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./action */ "./node_modules/@stimulus/core/dist/src/action.js");
-/* harmony import */ var _binding__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./binding */ "./node_modules/@stimulus/core/dist/src/binding.js");
+/* harmony import */ var _action__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./action */ "./node_modules/@stimulus/core/dist/action.js");
+/* harmony import */ var _binding__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./binding */ "./node_modules/@stimulus/core/dist/binding.js");
 /* harmony import */ var _stimulus_mutation_observers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @stimulus/mutation-observers */ "./node_modules/@stimulus/mutation-observers/dist/index.js");
 
 
@@ -8372,35 +1343,35 @@ var BindingObserver = /** @class */ (function () {
         get: function () {
             return this.context.element;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(BindingObserver.prototype, "identifier", {
         get: function () {
             return this.context.identifier;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(BindingObserver.prototype, "actionAttribute", {
         get: function () {
             return this.schema.actionAttribute;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(BindingObserver.prototype, "schema", {
         get: function () {
             return this.context.schema;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(BindingObserver.prototype, "bindings", {
         get: function () {
             return Array.from(this.bindingsByAction.values());
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     BindingObserver.prototype.connectAction = function (action) {
@@ -8436,21 +1407,230 @@ var BindingObserver = /** @class */ (function () {
     return BindingObserver;
 }());
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYmluZGluZ19vYnNlcnZlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9iaW5kaW5nX29ic2VydmVyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sRUFBRSxNQUFNLEVBQUUsTUFBTSxVQUFVLENBQUE7QUFDakMsT0FBTyxFQUFFLE9BQU8sRUFBRSxNQUFNLFdBQVcsQ0FBQTtBQUluQyxPQUFPLEVBQVMsaUJBQWlCLEVBQTZCLE1BQU0sOEJBQThCLENBQUE7QUFPbEc7SUFNRSx5QkFBWSxPQUFnQixFQUFFLFFBQWlDO1FBQzdELElBQUksQ0FBQyxPQUFPLEdBQUcsT0FBTyxDQUFBO1FBQ3RCLElBQUksQ0FBQyxRQUFRLEdBQUcsUUFBUSxDQUFBO1FBQ3hCLElBQUksQ0FBQyxnQkFBZ0IsR0FBRyxJQUFJLEdBQUcsQ0FBQTtJQUNqQyxDQUFDO0lBRUQsK0JBQUssR0FBTDtRQUNFLElBQUksQ0FBQyxJQUFJLENBQUMsaUJBQWlCLEVBQUU7WUFDM0IsSUFBSSxDQUFDLGlCQUFpQixHQUFHLElBQUksaUJBQWlCLENBQUMsSUFBSSxDQUFDLE9BQU8sRUFBRSxJQUFJLENBQUMsZUFBZSxFQUFFLElBQUksQ0FBQyxDQUFBO1lBQ3hGLElBQUksQ0FBQyxpQkFBaUIsQ0FBQyxLQUFLLEVBQUUsQ0FBQTtTQUMvQjtJQUNILENBQUM7SUFFRCw4QkFBSSxHQUFKO1FBQ0UsSUFBSSxJQUFJLENBQUMsaUJBQWlCLEVBQUU7WUFDMUIsSUFBSSxDQUFDLGlCQUFpQixDQUFDLElBQUksRUFBRSxDQUFBO1lBQzdCLE9BQU8sSUFBSSxDQUFDLGlCQUFpQixDQUFBO1lBQzdCLElBQUksQ0FBQyxvQkFBb0IsRUFBRSxDQUFBO1NBQzVCO0lBQ0gsQ0FBQztJQUVELHNCQUFJLG9DQUFPO2FBQVg7WUFDRSxPQUFPLElBQUksQ0FBQyxPQUFPLENBQUMsT0FBTyxDQUFBO1FBQzdCLENBQUM7OztPQUFBO0lBRUQsc0JBQUksdUNBQVU7YUFBZDtZQUNFLE9BQU8sSUFBSSxDQUFDLE9BQU8sQ0FBQyxVQUFVLENBQUE7UUFDaEMsQ0FBQzs7O09BQUE7SUFFRCxzQkFBSSw0Q0FBZTthQUFuQjtZQUNFLE9BQU8sSUFBSSxDQUFDLE1BQU0sQ0FBQyxlQUFlLENBQUE7UUFDcEMsQ0FBQzs7O09BQUE7SUFFRCxzQkFBSSxtQ0FBTTthQUFWO1lBQ0UsT0FBTyxJQUFJLENBQUMsT0FBTyxDQUFDLE1BQU0sQ0FBQTtRQUM1QixDQUFDOzs7T0FBQTtJQUVELHNCQUFJLHFDQUFRO2FBQVo7WUFDRSxPQUFPLEtBQUssQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLGdCQUFnQixDQUFDLE1BQU0sRUFBRSxDQUFDLENBQUE7UUFDbkQsQ0FBQzs7O09BQUE7SUFFTyx1Q0FBYSxHQUFyQixVQUFzQixNQUFjO1FBQ2xDLElBQU0sT0FBTyxHQUFHLElBQUksT0FBTyxDQUFDLElBQUksQ0FBQyxPQUFPLEVBQUUsTUFBTSxDQUFDLENBQUE7UUFDakQsSUFBSSxDQUFDLGdCQUFnQixDQUFDLEdBQUcsQ0FBQyxNQUFNLEVBQUUsT0FBTyxDQUFDLENBQUE7UUFDMUMsSUFBSSxDQUFDLFFBQVEsQ0FBQyxnQkFBZ0IsQ0FBQyxPQUFPLENBQUMsQ0FBQTtJQUN6QyxDQUFDO0lBRU8sMENBQWdCLEdBQXhCLFVBQXlCLE1BQWM7UUFDckMsSUFBTSxPQUFPLEdBQUcsSUFBSSxDQUFDLGdCQUFnQixDQUFDLEdBQUcsQ0FBQyxNQUFNLENBQUMsQ0FBQTtRQUNqRCxJQUFJLE9BQU8sRUFBRTtZQUNYLElBQUksQ0FBQyxnQkFBZ0IsQ0FBQyxNQUFNLENBQUMsTUFBTSxDQUFDLENBQUE7WUFDcEMsSUFBSSxDQUFDLFFBQVEsQ0FBQyxtQkFBbUIsQ0FBQyxPQUFPLENBQUMsQ0FBQTtTQUMzQztJQUNILENBQUM7SUFFTyw4Q0FBb0IsR0FBNUI7UUFBQSxpQkFHQztRQUZDLElBQUksQ0FBQyxRQUFRLENBQUMsT0FBTyxDQUFDLFVBQUEsT0FBTyxJQUFJLE9BQUEsS0FBSSxDQUFDLFFBQVEsQ0FBQyxtQkFBbUIsQ0FBQyxPQUFPLENBQUMsRUFBMUMsQ0FBMEMsQ0FBQyxDQUFBO1FBQzVFLElBQUksQ0FBQyxnQkFBZ0IsQ0FBQyxLQUFLLEVBQUUsQ0FBQTtJQUMvQixDQUFDO0lBRUQsMEJBQTBCO0lBRTFCLDRDQUFrQixHQUFsQixVQUFtQixLQUFZO1FBQzdCLElBQU0sTUFBTSxHQUFHLE1BQU0sQ0FBQyxRQUFRLENBQUMsS0FBSyxDQUFDLENBQUE7UUFDckMsSUFBSSxNQUFNLENBQUMsVUFBVSxJQUFJLElBQUksQ0FBQyxVQUFVLEVBQUU7WUFDeEMsT0FBTyxNQUFNLENBQUE7U0FDZDtJQUNILENBQUM7SUFFRCw2Q0FBbUIsR0FBbkIsVUFBb0IsT0FBZ0IsRUFBRSxNQUFjO1FBQ2xELElBQUksQ0FBQyxhQUFhLENBQUMsTUFBTSxDQUFDLENBQUE7SUFDNUIsQ0FBQztJQUVELCtDQUFxQixHQUFyQixVQUFzQixPQUFnQixFQUFFLE1BQWM7UUFDcEQsSUFBSSxDQUFDLGdCQUFnQixDQUFDLE1BQU0sQ0FBQyxDQUFBO0lBQy9CLENBQUM7SUFDSCxzQkFBQztBQUFELENBQUMsQUFsRkQsSUFrRkMifQ==
+//# sourceMappingURL=binding_observer.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/core/dist/src/context.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/@stimulus/core/dist/src/context.js ***!
-  \*********************************************************/
+/***/ "./node_modules/@stimulus/core/dist/blessing.js":
+/*!******************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/blessing.js ***!
+  \******************************************************/
+/*! exports provided: bless */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bless", function() { return bless; });
+/* harmony import */ var _inheritable_statics__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./inheritable_statics */ "./node_modules/@stimulus/core/dist/inheritable_statics.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __spreadArrays = (undefined && undefined.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
+
+/** @hidden */
+function bless(constructor) {
+    return shadow(constructor, getBlessedProperties(constructor));
+}
+function shadow(constructor, properties) {
+    var shadowConstructor = extend(constructor);
+    var shadowProperties = getShadowProperties(constructor.prototype, properties);
+    Object.defineProperties(shadowConstructor.prototype, shadowProperties);
+    return shadowConstructor;
+}
+function getBlessedProperties(constructor) {
+    var blessings = Object(_inheritable_statics__WEBPACK_IMPORTED_MODULE_0__["readInheritableStaticArrayValues"])(constructor, "blessings");
+    return blessings.reduce(function (blessedProperties, blessing) {
+        var properties = blessing(constructor);
+        for (var key in properties) {
+            var descriptor = blessedProperties[key] || {};
+            blessedProperties[key] = Object.assign(descriptor, properties[key]);
+        }
+        return blessedProperties;
+    }, {});
+}
+function getShadowProperties(prototype, properties) {
+    return getOwnKeys(properties).reduce(function (shadowProperties, key) {
+        var _a;
+        var descriptor = getShadowedDescriptor(prototype, properties, key);
+        if (descriptor) {
+            Object.assign(shadowProperties, (_a = {}, _a[key] = descriptor, _a));
+        }
+        return shadowProperties;
+    }, {});
+}
+function getShadowedDescriptor(prototype, properties, key) {
+    var shadowingDescriptor = Object.getOwnPropertyDescriptor(prototype, key);
+    var shadowedByValue = shadowingDescriptor && "value" in shadowingDescriptor;
+    if (!shadowedByValue) {
+        var descriptor = Object.getOwnPropertyDescriptor(properties, key).value;
+        if (shadowingDescriptor) {
+            descriptor.get = shadowingDescriptor.get || descriptor.get;
+            descriptor.set = shadowingDescriptor.set || descriptor.set;
+        }
+        return descriptor;
+    }
+}
+var getOwnKeys = (function () {
+    if (typeof Object.getOwnPropertySymbols == "function") {
+        return function (object) { return __spreadArrays(Object.getOwnPropertyNames(object), Object.getOwnPropertySymbols(object)); };
+    }
+    else {
+        return Object.getOwnPropertyNames;
+    }
+})();
+var extend = (function () {
+    function extendWithReflect(constructor) {
+        function extended() {
+            var _newTarget = this && this instanceof extended ? this.constructor : void 0;
+            return Reflect.construct(constructor, arguments, _newTarget);
+        }
+        extended.prototype = Object.create(constructor.prototype, {
+            constructor: { value: extended }
+        });
+        Reflect.setPrototypeOf(extended, constructor);
+        return extended;
+    }
+    function testReflectExtension() {
+        var a = function () { this.a.call(this); };
+        var b = extendWithReflect(a);
+        b.prototype.a = function () { };
+        return new b;
+    }
+    try {
+        testReflectExtension();
+        return extendWithReflect;
+    }
+    catch (error) {
+        return function (constructor) { return /** @class */ (function (_super) {
+            __extends(extended, _super);
+            function extended() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            return extended;
+        }(constructor)); };
+    }
+})();
+//# sourceMappingURL=blessing.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@stimulus/core/dist/class_map.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/class_map.js ***!
+  \*******************************************************/
+/*! exports provided: ClassMap */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClassMap", function() { return ClassMap; });
+var ClassMap = /** @class */ (function () {
+    function ClassMap(scope) {
+        this.scope = scope;
+    }
+    ClassMap.prototype.has = function (name) {
+        return this.data.has(this.getDataKey(name));
+    };
+    ClassMap.prototype.get = function (name) {
+        return this.data.get(this.getDataKey(name));
+    };
+    ClassMap.prototype.getAttributeName = function (name) {
+        return this.data.getAttributeNameForKey(this.getDataKey(name));
+    };
+    ClassMap.prototype.getDataKey = function (name) {
+        return name + "-class";
+    };
+    Object.defineProperty(ClassMap.prototype, "data", {
+        get: function () {
+            return this.scope.data;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return ClassMap;
+}());
+
+//# sourceMappingURL=class_map.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@stimulus/core/dist/class_properties.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/class_properties.js ***!
+  \**************************************************************/
+/*! exports provided: ClassPropertiesBlessing */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClassPropertiesBlessing", function() { return ClassPropertiesBlessing; });
+/* harmony import */ var _inheritable_statics__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./inheritable_statics */ "./node_modules/@stimulus/core/dist/inheritable_statics.js");
+/* harmony import */ var _string_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./string_helpers */ "./node_modules/@stimulus/core/dist/string_helpers.js");
+
+
+/** @hidden */
+function ClassPropertiesBlessing(constructor) {
+    var classes = Object(_inheritable_statics__WEBPACK_IMPORTED_MODULE_0__["readInheritableStaticArrayValues"])(constructor, "classes");
+    return classes.reduce(function (properties, classDefinition) {
+        return Object.assign(properties, propertiesForClassDefinition(classDefinition));
+    }, {});
+}
+function propertiesForClassDefinition(key) {
+    var _a;
+    var name = key + "Class";
+    return _a = {},
+        _a[name] = {
+            get: function () {
+                var classes = this.classes;
+                if (classes.has(key)) {
+                    return classes.get(key);
+                }
+                else {
+                    var attribute = classes.getAttributeName(key);
+                    throw new Error("Missing attribute \"" + attribute + "\"");
+                }
+            }
+        },
+        _a["has" + Object(_string_helpers__WEBPACK_IMPORTED_MODULE_1__["capitalize"])(name)] = {
+            get: function () {
+                return this.classes.has(key);
+            }
+        },
+        _a;
+}
+//# sourceMappingURL=class_properties.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@stimulus/core/dist/context.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/context.js ***!
+  \*****************************************************/
 /*! exports provided: Context */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Context", function() { return Context; });
-/* harmony import */ var _binding_observer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./binding_observer */ "./node_modules/@stimulus/core/dist/src/binding_observer.js");
+/* harmony import */ var _binding_observer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./binding_observer */ "./node_modules/@stimulus/core/dist/binding_observer.js");
+/* harmony import */ var _value_observer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./value_observer */ "./node_modules/@stimulus/core/dist/value_observer.js");
+
 
 var Context = /** @class */ (function () {
     function Context(module, scope) {
@@ -8458,6 +1638,7 @@ var Context = /** @class */ (function () {
         this.scope = scope;
         this.controller = new module.controllerConstructor(this);
         this.bindingObserver = new _binding_observer__WEBPACK_IMPORTED_MODULE_0__["BindingObserver"](this, this.dispatcher);
+        this.valueObserver = new _value_observer__WEBPACK_IMPORTED_MODULE_1__["ValueObserver"](this, this.controller);
         try {
             this.controller.initialize();
         }
@@ -8467,6 +1648,7 @@ var Context = /** @class */ (function () {
     }
     Context.prototype.connect = function () {
         this.bindingObserver.start();
+        this.valueObserver.start();
         try {
             this.controller.connect();
         }
@@ -8481,48 +1663,49 @@ var Context = /** @class */ (function () {
         catch (error) {
             this.handleError(error, "disconnecting controller");
         }
+        this.valueObserver.stop();
         this.bindingObserver.stop();
     };
     Object.defineProperty(Context.prototype, "application", {
         get: function () {
             return this.module.application;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Context.prototype, "identifier", {
         get: function () {
             return this.module.identifier;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Context.prototype, "schema", {
         get: function () {
             return this.application.schema;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Context.prototype, "dispatcher", {
         get: function () {
             return this.application.dispatcher;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Context.prototype, "element", {
         get: function () {
             return this.scope.element;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Context.prototype, "parentElement", {
         get: function () {
             return this.element.parentElement;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     // Error handling
@@ -8535,69 +1718,77 @@ var Context = /** @class */ (function () {
     return Context;
 }());
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29udGV4dC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9jb250ZXh0LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUNBLE9BQU8sRUFBRSxlQUFlLEVBQUUsTUFBTSxvQkFBb0IsQ0FBQTtBQVFwRDtJQU1FLGlCQUFZLE1BQWMsRUFBRSxLQUFZO1FBQ3RDLElBQUksQ0FBQyxNQUFNLEdBQUcsTUFBTSxDQUFBO1FBQ3BCLElBQUksQ0FBQyxLQUFLLEdBQUcsS0FBSyxDQUFBO1FBQ2xCLElBQUksQ0FBQyxVQUFVLEdBQUcsSUFBSSxNQUFNLENBQUMscUJBQXFCLENBQUMsSUFBSSxDQUFDLENBQUE7UUFDeEQsSUFBSSxDQUFDLGVBQWUsR0FBRyxJQUFJLGVBQWUsQ0FBQyxJQUFJLEVBQUUsSUFBSSxDQUFDLFVBQVUsQ0FBQyxDQUFBO1FBRWpFLElBQUk7WUFDRixJQUFJLENBQUMsVUFBVSxDQUFDLFVBQVUsRUFBRSxDQUFBO1NBQzdCO1FBQUMsT0FBTyxLQUFLLEVBQUU7WUFDZCxJQUFJLENBQUMsV0FBVyxDQUFDLEtBQUssRUFBRSx5QkFBeUIsQ0FBQyxDQUFBO1NBQ25EO0lBQ0gsQ0FBQztJQUVELHlCQUFPLEdBQVA7UUFDRSxJQUFJLENBQUMsZUFBZSxDQUFDLEtBQUssRUFBRSxDQUFBO1FBRTVCLElBQUk7WUFDRixJQUFJLENBQUMsVUFBVSxDQUFDLE9BQU8sRUFBRSxDQUFBO1NBQzFCO1FBQUMsT0FBTyxLQUFLLEVBQUU7WUFDZCxJQUFJLENBQUMsV0FBVyxDQUFDLEtBQUssRUFBRSx1QkFBdUIsQ0FBQyxDQUFBO1NBQ2pEO0lBQ0gsQ0FBQztJQUVELDRCQUFVLEdBQVY7UUFDRSxJQUFJO1lBQ0YsSUFBSSxDQUFDLFVBQVUsQ0FBQyxVQUFVLEVBQUUsQ0FBQTtTQUM3QjtRQUFDLE9BQU8sS0FBSyxFQUFFO1lBQ2QsSUFBSSxDQUFDLFdBQVcsQ0FBQyxLQUFLLEVBQUUsMEJBQTBCLENBQUMsQ0FBQTtTQUNwRDtRQUVELElBQUksQ0FBQyxlQUFlLENBQUMsSUFBSSxFQUFFLENBQUE7SUFDN0IsQ0FBQztJQUVELHNCQUFJLGdDQUFXO2FBQWY7WUFDRSxPQUFPLElBQUksQ0FBQyxNQUFNLENBQUMsV0FBVyxDQUFBO1FBQ2hDLENBQUM7OztPQUFBO0lBRUQsc0JBQUksK0JBQVU7YUFBZDtZQUNFLE9BQU8sSUFBSSxDQUFDLE1BQU0sQ0FBQyxVQUFVLENBQUE7UUFDL0IsQ0FBQzs7O09BQUE7SUFFRCxzQkFBSSwyQkFBTTthQUFWO1lBQ0UsT0FBTyxJQUFJLENBQUMsV0FBVyxDQUFDLE1BQU0sQ0FBQTtRQUNoQyxDQUFDOzs7T0FBQTtJQUVELHNCQUFJLCtCQUFVO2FBQWQ7WUFDRSxPQUFPLElBQUksQ0FBQyxXQUFXLENBQUMsVUFBVSxDQUFBO1FBQ3BDLENBQUM7OztPQUFBO0lBRUQsc0JBQUksNEJBQU87YUFBWDtZQUNFLE9BQU8sSUFBSSxDQUFDLEtBQUssQ0FBQyxPQUFPLENBQUE7UUFDM0IsQ0FBQzs7O09BQUE7SUFFRCxzQkFBSSxrQ0FBYTthQUFqQjtZQUNFLE9BQU8sSUFBSSxDQUFDLE9BQU8sQ0FBQyxhQUFhLENBQUE7UUFDbkMsQ0FBQzs7O09BQUE7SUFFRCxpQkFBaUI7SUFFakIsNkJBQVcsR0FBWCxVQUFZLEtBQVksRUFBRSxPQUFlLEVBQUUsTUFBbUI7UUFBbkIsdUJBQUEsRUFBQSxXQUFtQjtRQUN0RCxJQUFBLFNBQTBDLEVBQXhDLDBCQUFVLEVBQUUsMEJBQVUsRUFBRSxvQkFBTyxDQUFTO1FBQ2hELE1BQU0sR0FBRyxNQUFNLENBQUMsTUFBTSxDQUFDLEVBQUUsVUFBVSxZQUFBLEVBQUUsVUFBVSxZQUFBLEVBQUUsT0FBTyxTQUFBLEVBQUUsRUFBRSxNQUFNLENBQUMsQ0FBQTtRQUNuRSxJQUFJLENBQUMsV0FBVyxDQUFDLFdBQVcsQ0FBQyxLQUFLLEVBQUUsV0FBUyxPQUFTLEVBQUUsTUFBTSxDQUFDLENBQUE7SUFDakUsQ0FBQztJQUNILGNBQUM7QUFBRCxDQUFDLEFBdEVELElBc0VDIn0=
+//# sourceMappingURL=context.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/core/dist/src/controller.js":
-/*!************************************************************!*\
-  !*** ./node_modules/@stimulus/core/dist/src/controller.js ***!
-  \************************************************************/
+/***/ "./node_modules/@stimulus/core/dist/controller.js":
+/*!********************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/controller.js ***!
+  \********************************************************/
 /*! exports provided: Controller */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Controller", function() { return Controller; });
-/* harmony import */ var _target_properties__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./target_properties */ "./node_modules/@stimulus/core/dist/src/target_properties.js");
+/* harmony import */ var _class_properties__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./class_properties */ "./node_modules/@stimulus/core/dist/class_properties.js");
+/* harmony import */ var _target_properties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./target_properties */ "./node_modules/@stimulus/core/dist/target_properties.js");
+/* harmony import */ var _value_properties__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./value_properties */ "./node_modules/@stimulus/core/dist/value_properties.js");
+
+
 
 var Controller = /** @class */ (function () {
     function Controller(context) {
         this.context = context;
     }
-    Controller.bless = function () {
-        Object(_target_properties__WEBPACK_IMPORTED_MODULE_0__["defineTargetProperties"])(this);
-    };
     Object.defineProperty(Controller.prototype, "application", {
         get: function () {
             return this.context.application;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Controller.prototype, "scope", {
         get: function () {
             return this.context.scope;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Controller.prototype, "element", {
         get: function () {
             return this.scope.element;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Controller.prototype, "identifier", {
         get: function () {
             return this.scope.identifier;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Controller.prototype, "targets", {
         get: function () {
             return this.scope.targets;
         },
-        enumerable: true,
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Controller.prototype, "classes", {
+        get: function () {
+            return this.scope.classes;
+        },
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Controller.prototype, "data", {
         get: function () {
             return this.scope.data;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Controller.prototype.initialize = function () {
@@ -8609,24 +1800,28 @@ var Controller = /** @class */ (function () {
     Controller.prototype.disconnect = function () {
         // Override in your subclass to respond when the controller is disconnected from the DOM
     };
+    Controller.blessings = [_class_properties__WEBPACK_IMPORTED_MODULE_0__["ClassPropertiesBlessing"], _target_properties__WEBPACK_IMPORTED_MODULE_1__["TargetPropertiesBlessing"], _value_properties__WEBPACK_IMPORTED_MODULE_2__["ValuePropertiesBlessing"]];
     Controller.targets = [];
+    Controller.values = {};
     return Controller;
 }());
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29udHJvbGxlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9jb250cm9sbGVyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUtBLE9BQU8sRUFBRSxzQkFBc0IsRUFBRSxNQUFNLHFCQUFxQixDQUFBO0FBTzVEO0lBU0Usb0JBQVksT0FBZ0I7UUFDMUIsSUFBSSxDQUFDLE9BQU8sR0FBRyxPQUFPLENBQUE7SUFDeEIsQ0FBQztJQU5NLGdCQUFLLEdBQVo7UUFDRSxzQkFBc0IsQ0FBQyxJQUFJLENBQUMsQ0FBQTtJQUM5QixDQUFDO0lBTUQsc0JBQUksbUNBQVc7YUFBZjtZQUNFLE9BQU8sSUFBSSxDQUFDLE9BQU8sQ0FBQyxXQUFXLENBQUE7UUFDakMsQ0FBQzs7O09BQUE7SUFFRCxzQkFBSSw2QkFBSzthQUFUO1lBQ0UsT0FBTyxJQUFJLENBQUMsT0FBTyxDQUFDLEtBQUssQ0FBQTtRQUMzQixDQUFDOzs7T0FBQTtJQUVELHNCQUFJLCtCQUFPO2FBQVg7WUFDRSxPQUFPLElBQUksQ0FBQyxLQUFLLENBQUMsT0FBTyxDQUFBO1FBQzNCLENBQUM7OztPQUFBO0lBRUQsc0JBQUksa0NBQVU7YUFBZDtZQUNFLE9BQU8sSUFBSSxDQUFDLEtBQUssQ0FBQyxVQUFVLENBQUE7UUFDOUIsQ0FBQzs7O09BQUE7SUFFRCxzQkFBSSwrQkFBTzthQUFYO1lBQ0UsT0FBTyxJQUFJLENBQUMsS0FBSyxDQUFDLE9BQU8sQ0FBQTtRQUMzQixDQUFDOzs7T0FBQTtJQUVELHNCQUFJLDRCQUFJO2FBQVI7WUFDRSxPQUFPLElBQUksQ0FBQyxLQUFLLENBQUMsSUFBSSxDQUFBO1FBQ3hCLENBQUM7OztPQUFBO0lBRUQsK0JBQVUsR0FBVjtRQUNFLCtEQUErRDtJQUNqRSxDQUFDO0lBRUQsNEJBQU8sR0FBUDtRQUNFLG1GQUFtRjtJQUNyRixDQUFDO0lBRUQsK0JBQVUsR0FBVjtRQUNFLHdGQUF3RjtJQUMxRixDQUFDO0lBOUNNLGtCQUFPLEdBQWEsRUFBRSxDQUFBO0lBK0MvQixpQkFBQztDQUFBLEFBaERELElBZ0RDO1NBaERZLFVBQVUifQ==
+//# sourceMappingURL=controller.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/core/dist/src/data_map.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/@stimulus/core/dist/src/data_map.js ***!
-  \**********************************************************/
+/***/ "./node_modules/@stimulus/core/dist/data_map.js":
+/*!******************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/data_map.js ***!
+  \******************************************************/
 /*! exports provided: DataMap */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataMap", function() { return DataMap; });
+/* harmony import */ var _string_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./string_helpers */ "./node_modules/@stimulus/core/dist/string_helpers.js");
+
 var DataMap = /** @class */ (function () {
     function DataMap(scope) {
         this.scope = scope;
@@ -8635,131 +1830,83 @@ var DataMap = /** @class */ (function () {
         get: function () {
             return this.scope.element;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(DataMap.prototype, "identifier", {
         get: function () {
             return this.scope.identifier;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     DataMap.prototype.get = function (key) {
-        key = this.getFormattedKey(key);
-        return this.element.getAttribute(key);
+        var name = this.getAttributeNameForKey(key);
+        return this.element.getAttribute(name);
     };
     DataMap.prototype.set = function (key, value) {
-        key = this.getFormattedKey(key);
-        this.element.setAttribute(key, value);
+        var name = this.getAttributeNameForKey(key);
+        this.element.setAttribute(name, value);
         return this.get(key);
     };
     DataMap.prototype.has = function (key) {
-        key = this.getFormattedKey(key);
-        return this.element.hasAttribute(key);
+        var name = this.getAttributeNameForKey(key);
+        return this.element.hasAttribute(name);
     };
     DataMap.prototype.delete = function (key) {
         if (this.has(key)) {
-            key = this.getFormattedKey(key);
-            this.element.removeAttribute(key);
+            var name_1 = this.getAttributeNameForKey(key);
+            this.element.removeAttribute(name_1);
             return true;
         }
         else {
             return false;
         }
     };
-    DataMap.prototype.getFormattedKey = function (key) {
-        return "data-" + this.identifier + "-" + dasherize(key);
+    DataMap.prototype.getAttributeNameForKey = function (key) {
+        return "data-" + this.identifier + "-" + Object(_string_helpers__WEBPACK_IMPORTED_MODULE_0__["dasherize"])(key);
     };
     return DataMap;
 }());
 
-function dasherize(value) {
-    return value.replace(/([A-Z])/g, function (_, char) { return "-" + char.toLowerCase(); });
-}
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZGF0YV9tYXAuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvZGF0YV9tYXAudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUE7SUFHRSxpQkFBWSxLQUFZO1FBQ3RCLElBQUksQ0FBQyxLQUFLLEdBQUcsS0FBSyxDQUFBO0lBQ3BCLENBQUM7SUFFRCxzQkFBSSw0QkFBTzthQUFYO1lBQ0UsT0FBTyxJQUFJLENBQUMsS0FBSyxDQUFDLE9BQU8sQ0FBQTtRQUMzQixDQUFDOzs7T0FBQTtJQUVELHNCQUFJLCtCQUFVO2FBQWQ7WUFDRSxPQUFPLElBQUksQ0FBQyxLQUFLLENBQUMsVUFBVSxDQUFBO1FBQzlCLENBQUM7OztPQUFBO0lBRUQscUJBQUcsR0FBSCxVQUFJLEdBQVc7UUFDYixHQUFHLEdBQUcsSUFBSSxDQUFDLGVBQWUsQ0FBQyxHQUFHLENBQUMsQ0FBQTtRQUMvQixPQUFPLElBQUksQ0FBQyxPQUFPLENBQUMsWUFBWSxDQUFDLEdBQUcsQ0FBQyxDQUFBO0lBQ3ZDLENBQUM7SUFFRCxxQkFBRyxHQUFILFVBQUksR0FBVyxFQUFFLEtBQWE7UUFDNUIsR0FBRyxHQUFHLElBQUksQ0FBQyxlQUFlLENBQUMsR0FBRyxDQUFDLENBQUE7UUFDL0IsSUFBSSxDQUFDLE9BQU8sQ0FBQyxZQUFZLENBQUMsR0FBRyxFQUFFLEtBQUssQ0FBQyxDQUFBO1FBQ3JDLE9BQU8sSUFBSSxDQUFDLEdBQUcsQ0FBQyxHQUFHLENBQUMsQ0FBQTtJQUN0QixDQUFDO0lBRUQscUJBQUcsR0FBSCxVQUFJLEdBQVc7UUFDYixHQUFHLEdBQUcsSUFBSSxDQUFDLGVBQWUsQ0FBQyxHQUFHLENBQUMsQ0FBQTtRQUMvQixPQUFPLElBQUksQ0FBQyxPQUFPLENBQUMsWUFBWSxDQUFDLEdBQUcsQ0FBQyxDQUFBO0lBQ3ZDLENBQUM7SUFFRCx3QkFBTSxHQUFOLFVBQU8sR0FBVztRQUNoQixJQUFJLElBQUksQ0FBQyxHQUFHLENBQUMsR0FBRyxDQUFDLEVBQUU7WUFDakIsR0FBRyxHQUFHLElBQUksQ0FBQyxlQUFlLENBQUMsR0FBRyxDQUFDLENBQUE7WUFDL0IsSUFBSSxDQUFDLE9BQU8sQ0FBQyxlQUFlLENBQUMsR0FBRyxDQUFDLENBQUE7WUFDakMsT0FBTyxJQUFJLENBQUE7U0FDWjthQUFNO1lBQ0wsT0FBTyxLQUFLLENBQUE7U0FDYjtJQUNILENBQUM7SUFFTyxpQ0FBZSxHQUF2QixVQUF3QixHQUFXO1FBQ2pDLE9BQU8sVUFBUSxJQUFJLENBQUMsVUFBVSxTQUFJLFNBQVMsQ0FBQyxHQUFHLENBQUcsQ0FBQTtJQUNwRCxDQUFDO0lBQ0gsY0FBQztBQUFELENBQUMsQUE1Q0QsSUE0Q0M7O0FBRUQsbUJBQW1CLEtBQWE7SUFDOUIsT0FBTyxLQUFLLENBQUMsT0FBTyxDQUFDLFVBQVUsRUFBRSxVQUFDLENBQUMsRUFBRSxJQUFJLElBQUssT0FBQSxNQUFJLElBQUksQ0FBQyxXQUFXLEVBQUksRUFBeEIsQ0FBd0IsQ0FBQyxDQUFBO0FBQ3pFLENBQUMifQ==
+//# sourceMappingURL=data_map.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/core/dist/src/definition.js":
-/*!************************************************************!*\
-  !*** ./node_modules/@stimulus/core/dist/src/definition.js ***!
-  \************************************************************/
+/***/ "./node_modules/@stimulus/core/dist/definition.js":
+/*!********************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/definition.js ***!
+  \********************************************************/
 /*! exports provided: blessDefinition */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "blessDefinition", function() { return blessDefinition; });
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
+/* harmony import */ var _blessing__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blessing */ "./node_modules/@stimulus/core/dist/blessing.js");
+
 /** @hidden */
 function blessDefinition(definition) {
     return {
         identifier: definition.identifier,
-        controllerConstructor: blessControllerConstructor(definition.controllerConstructor)
+        controllerConstructor: Object(_blessing__WEBPACK_IMPORTED_MODULE_0__["bless"])(definition.controllerConstructor)
     };
 }
-function blessControllerConstructor(controllerConstructor) {
-    var constructor = extend(controllerConstructor);
-    constructor.bless();
-    return constructor;
-}
-var extend = (function () {
-    function extendWithReflect(constructor) {
-        function Controller() {
-            var _newTarget = this && this instanceof Controller ? this.constructor : void 0;
-            return Reflect.construct(constructor, arguments, _newTarget);
-        }
-        Controller.prototype = Object.create(constructor.prototype, {
-            constructor: { value: Controller }
-        });
-        Reflect.setPrototypeOf(Controller, constructor);
-        return Controller;
-    }
-    function testReflectExtension() {
-        var a = function () { this.a.call(this); };
-        var b = extendWithReflect(a);
-        b.prototype.a = function () { };
-        return new b;
-    }
-    try {
-        testReflectExtension();
-        return extendWithReflect;
-    }
-    catch (error) {
-        return function (constructor) { return /** @class */ (function (_super) {
-            __extends(Controller, _super);
-            function Controller() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            return Controller;
-        }(constructor)); };
-    }
-})();
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZGVmaW5pdGlvbi5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9kZWZpbml0aW9uLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7QUFPQSxjQUFjO0FBQ2QsTUFBTSwwQkFBMEIsVUFBc0I7SUFDcEQsT0FBTztRQUNMLFVBQVUsRUFBRSxVQUFVLENBQUMsVUFBVTtRQUNqQyxxQkFBcUIsRUFBRSwwQkFBMEIsQ0FBQyxVQUFVLENBQUMscUJBQXFCLENBQUM7S0FDcEYsQ0FBQTtBQUNILENBQUM7QUFFRCxvQ0FBb0MscUJBQTRDO0lBQzlFLElBQU0sV0FBVyxHQUFHLE1BQU0sQ0FBQyxxQkFBcUIsQ0FBQyxDQUFBO0lBQ2pELFdBQVcsQ0FBQyxLQUFLLEVBQUUsQ0FBQTtJQUNuQixPQUFPLFdBQVcsQ0FBQTtBQUNwQixDQUFDO0FBRUQsSUFBTSxNQUFNLEdBQUcsQ0FBQztJQUdkLDJCQUFzRCxXQUFjO1FBQ2xFOztZQUNFLE9BQU8sT0FBTyxDQUFDLFNBQVMsQ0FBQyxXQUFXLEVBQUUsU0FBUyxhQUFhLENBQUE7UUFDOUQsQ0FBQztRQUVELFVBQVUsQ0FBQyxTQUFTLEdBQUcsTUFBTSxDQUFDLE1BQU0sQ0FBQyxXQUFXLENBQUMsU0FBUyxFQUFFO1lBQzFELFdBQVcsRUFBRSxFQUFFLEtBQUssRUFBRSxVQUFVLEVBQUU7U0FDbkMsQ0FBQyxDQUFBO1FBRUYsT0FBTyxDQUFDLGNBQWMsQ0FBQyxVQUFVLEVBQUUsV0FBVyxDQUFDLENBQUE7UUFDL0MsT0FBTyxVQUFpQixDQUFBO0lBQzFCLENBQUM7SUFFRDtRQUNFLElBQU0sQ0FBQyxHQUFHLGNBQXNCLElBQUksQ0FBQyxDQUFDLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxDQUFBLENBQUMsQ0FBUSxDQUFBO1FBQzFELElBQU0sQ0FBQyxHQUFHLGlCQUFpQixDQUFDLENBQUMsQ0FBQyxDQUFBO1FBQzlCLENBQUMsQ0FBQyxTQUFTLENBQUMsQ0FBQyxHQUFHLGNBQVksQ0FBQyxDQUFBO1FBQzdCLE9BQU8sSUFBSSxDQUFDLENBQUE7SUFDZCxDQUFDO0lBRUQsSUFBSTtRQUNGLG9CQUFvQixFQUFFLENBQUE7UUFDdEIsT0FBTyxpQkFBaUIsQ0FBQTtLQUN6QjtJQUFDLE9BQU8sS0FBSyxFQUFFO1FBQ2QsT0FBTyxVQUE0QixXQUFjLElBQUs7WUFBeUIsOEJBQVc7WUFBcEM7O1lBQXNDLENBQUM7WUFBRCxpQkFBQztRQUFELENBQUMsQUFBdkMsQ0FBeUIsV0FBVyxJQUFwQyxDQUF1QyxDQUFBO0tBQzlGO0FBQ0gsQ0FBQyxDQUFDLEVBQUUsQ0FBQSJ9
+//# sourceMappingURL=definition.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/core/dist/src/dispatcher.js":
-/*!************************************************************!*\
-  !*** ./node_modules/@stimulus/core/dist/src/dispatcher.js ***!
-  \************************************************************/
+/***/ "./node_modules/@stimulus/core/dist/dispatcher.js":
+/*!********************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/dispatcher.js ***!
+  \********************************************************/
 /*! exports provided: Dispatcher */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Dispatcher", function() { return Dispatcher; });
-/* harmony import */ var _event_listener__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./event_listener */ "./node_modules/@stimulus/core/dist/src/event_listener.js");
+/* harmony import */ var _event_listener__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./event_listener */ "./node_modules/@stimulus/core/dist/event_listener.js");
 
 var Dispatcher = /** @class */ (function () {
     function Dispatcher(application) {
@@ -8784,7 +1931,7 @@ var Dispatcher = /** @class */ (function () {
             return Array.from(this.eventListenerMaps.values())
                 .reduce(function (listeners, map) { return listeners.concat(Array.from(map.values())); }, []);
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     // Binding observer delegate
@@ -8802,20 +1949,21 @@ var Dispatcher = /** @class */ (function () {
         this.application.handleError(error, "Error " + message, detail);
     };
     Dispatcher.prototype.fetchEventListenerForBinding = function (binding) {
-        var eventTarget = binding.eventTarget, eventName = binding.eventName;
-        return this.fetchEventListener(eventTarget, eventName);
+        var eventTarget = binding.eventTarget, eventName = binding.eventName, eventOptions = binding.eventOptions;
+        return this.fetchEventListener(eventTarget, eventName, eventOptions);
     };
-    Dispatcher.prototype.fetchEventListener = function (eventTarget, eventName) {
+    Dispatcher.prototype.fetchEventListener = function (eventTarget, eventName, eventOptions) {
         var eventListenerMap = this.fetchEventListenerMapForEventTarget(eventTarget);
-        var eventListener = eventListenerMap.get(eventName);
+        var cacheKey = this.cacheKey(eventName, eventOptions);
+        var eventListener = eventListenerMap.get(cacheKey);
         if (!eventListener) {
-            eventListener = this.createEventListener(eventTarget, eventName);
-            eventListenerMap.set(eventName, eventListener);
+            eventListener = this.createEventListener(eventTarget, eventName, eventOptions);
+            eventListenerMap.set(cacheKey, eventListener);
         }
         return eventListener;
     };
-    Dispatcher.prototype.createEventListener = function (eventTarget, eventName) {
-        var eventListener = new _event_listener__WEBPACK_IMPORTED_MODULE_0__["EventListener"](eventTarget, eventName);
+    Dispatcher.prototype.createEventListener = function (eventTarget, eventName, eventOptions) {
+        var eventListener = new _event_listener__WEBPACK_IMPORTED_MODULE_0__["EventListener"](eventTarget, eventName, eventOptions);
         if (this.started) {
             eventListener.connect();
         }
@@ -8829,17 +1977,24 @@ var Dispatcher = /** @class */ (function () {
         }
         return eventListenerMap;
     };
+    Dispatcher.prototype.cacheKey = function (eventName, eventOptions) {
+        var parts = [eventName];
+        Object.keys(eventOptions).sort().forEach(function (key) {
+            parts.push("" + (eventOptions[key] ? "" : "!") + key);
+        });
+        return parts.join(":");
+    };
     return Dispatcher;
 }());
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZGlzcGF0Y2hlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9kaXNwYXRjaGVyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUdBLE9BQU8sRUFBRSxhQUFhLEVBQUUsTUFBTSxrQkFBa0IsQ0FBQTtBQUVoRDtJQUtFLG9CQUFZLFdBQXdCO1FBQ2xDLElBQUksQ0FBQyxXQUFXLEdBQUcsV0FBVyxDQUFBO1FBQzlCLElBQUksQ0FBQyxpQkFBaUIsR0FBRyxJQUFJLEdBQUcsQ0FBQTtRQUNoQyxJQUFJLENBQUMsT0FBTyxHQUFHLEtBQUssQ0FBQTtJQUN0QixDQUFDO0lBRUQsMEJBQUssR0FBTDtRQUNFLElBQUksQ0FBQyxJQUFJLENBQUMsT0FBTyxFQUFFO1lBQ2pCLElBQUksQ0FBQyxPQUFPLEdBQUcsSUFBSSxDQUFBO1lBQ25CLElBQUksQ0FBQyxjQUFjLENBQUMsT0FBTyxDQUFDLFVBQUEsYUFBYSxJQUFJLE9BQUEsYUFBYSxDQUFDLE9BQU8sRUFBRSxFQUF2QixDQUF1QixDQUFDLENBQUE7U0FDdEU7SUFDSCxDQUFDO0lBRUQseUJBQUksR0FBSjtRQUNFLElBQUksSUFBSSxDQUFDLE9BQU8sRUFBRTtZQUNoQixJQUFJLENBQUMsT0FBTyxHQUFHLEtBQUssQ0FBQTtZQUNwQixJQUFJLENBQUMsY0FBYyxDQUFDLE9BQU8sQ0FBQyxVQUFBLGFBQWEsSUFBSSxPQUFBLGFBQWEsQ0FBQyxVQUFVLEVBQUUsRUFBMUIsQ0FBMEIsQ0FBQyxDQUFBO1NBQ3pFO0lBQ0gsQ0FBQztJQUVELHNCQUFJLHNDQUFjO2FBQWxCO1lBQ0UsT0FBTyxLQUFLLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxpQkFBaUIsQ0FBQyxNQUFNLEVBQUUsQ0FBQztpQkFDL0MsTUFBTSxDQUFDLFVBQUMsU0FBUyxFQUFFLEdBQUcsSUFBSyxPQUFBLFNBQVMsQ0FBQyxNQUFNLENBQUMsS0FBSyxDQUFDLElBQUksQ0FBQyxHQUFHLENBQUMsTUFBTSxFQUFFLENBQUMsQ0FBQyxFQUExQyxDQUEwQyxFQUFFLEVBQXFCLENBQUMsQ0FBQTtRQUNsRyxDQUFDOzs7T0FBQTtJQUVELDRCQUE0QjtJQUU1QixjQUFjO0lBQ2QscUNBQWdCLEdBQWhCLFVBQWlCLE9BQWdCO1FBQy9CLElBQUksQ0FBQyw0QkFBNEIsQ0FBQyxPQUFPLENBQUMsQ0FBQyxnQkFBZ0IsQ0FBQyxPQUFPLENBQUMsQ0FBQTtJQUN0RSxDQUFDO0lBRUQsY0FBYztJQUNkLHdDQUFtQixHQUFuQixVQUFvQixPQUFnQjtRQUNsQyxJQUFJLENBQUMsNEJBQTRCLENBQUMsT0FBTyxDQUFDLENBQUMsbUJBQW1CLENBQUMsT0FBTyxDQUFDLENBQUE7SUFDekUsQ0FBQztJQUVELGlCQUFpQjtJQUVqQixnQ0FBVyxHQUFYLFVBQVksS0FBWSxFQUFFLE9BQWUsRUFBRSxNQUFtQjtRQUFuQix1QkFBQSxFQUFBLFdBQW1CO1FBQzVELElBQUksQ0FBQyxXQUFXLENBQUMsV0FBVyxDQUFDLEtBQUssRUFBRSxXQUFTLE9BQVMsRUFBRSxNQUFNLENBQUMsQ0FBQTtJQUNqRSxDQUFDO0lBRU8saURBQTRCLEdBQXBDLFVBQXFDLE9BQWdCO1FBQzNDLElBQUEsaUNBQVcsRUFBRSw2QkFBUyxDQUFZO1FBQzFDLE9BQU8sSUFBSSxDQUFDLGtCQUFrQixDQUFDLFdBQVcsRUFBRSxTQUFTLENBQUMsQ0FBQTtJQUN4RCxDQUFDO0lBRU8sdUNBQWtCLEdBQTFCLFVBQTJCLFdBQXdCLEVBQUUsU0FBaUI7UUFDcEUsSUFBTSxnQkFBZ0IsR0FBRyxJQUFJLENBQUMsbUNBQW1DLENBQUMsV0FBVyxDQUFDLENBQUE7UUFDOUUsSUFBSSxhQUFhLEdBQUcsZ0JBQWdCLENBQUMsR0FBRyxDQUFDLFNBQVMsQ0FBQyxDQUFBO1FBQ25ELElBQUksQ0FBQyxhQUFhLEVBQUU7WUFDbEIsYUFBYSxHQUFHLElBQUksQ0FBQyxtQkFBbUIsQ0FBQyxXQUFXLEVBQUUsU0FBUyxDQUFDLENBQUE7WUFDaEUsZ0JBQWdCLENBQUMsR0FBRyxDQUFDLFNBQVMsRUFBRSxhQUFhLENBQUMsQ0FBQTtTQUMvQztRQUNELE9BQU8sYUFBYSxDQUFBO0lBQ3RCLENBQUM7SUFFTyx3Q0FBbUIsR0FBM0IsVUFBNEIsV0FBd0IsRUFBRSxTQUFpQjtRQUNyRSxJQUFNLGFBQWEsR0FBRyxJQUFJLGFBQWEsQ0FBQyxXQUFXLEVBQUUsU0FBUyxDQUFDLENBQUE7UUFDL0QsSUFBSSxJQUFJLENBQUMsT0FBTyxFQUFFO1lBQ2hCLGFBQWEsQ0FBQyxPQUFPLEVBQUUsQ0FBQTtTQUN4QjtRQUNELE9BQU8sYUFBYSxDQUFBO0lBQ3RCLENBQUM7SUFFTyx3REFBbUMsR0FBM0MsVUFBNEMsV0FBd0I7UUFDbEUsSUFBSSxnQkFBZ0IsR0FBRyxJQUFJLENBQUMsaUJBQWlCLENBQUMsR0FBRyxDQUFDLFdBQVcsQ0FBQyxDQUFBO1FBQzlELElBQUksQ0FBQyxnQkFBZ0IsRUFBRTtZQUNyQixnQkFBZ0IsR0FBRyxJQUFJLEdBQUcsQ0FBQTtZQUMxQixJQUFJLENBQUMsaUJBQWlCLENBQUMsR0FBRyxDQUFDLFdBQVcsRUFBRSxnQkFBZ0IsQ0FBQyxDQUFBO1NBQzFEO1FBQ0QsT0FBTyxnQkFBZ0IsQ0FBQTtJQUN6QixDQUFDO0lBQ0gsaUJBQUM7QUFBRCxDQUFDLEFBL0VELElBK0VDIn0=
+//# sourceMappingURL=dispatcher.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/core/dist/src/event_listener.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/@stimulus/core/dist/src/event_listener.js ***!
-  \****************************************************************/
+/***/ "./node_modules/@stimulus/core/dist/event_listener.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/event_listener.js ***!
+  \************************************************************/
 /*! exports provided: EventListener */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -8847,16 +2002,17 @@ var Dispatcher = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventListener", function() { return EventListener; });
 var EventListener = /** @class */ (function () {
-    function EventListener(eventTarget, eventName) {
+    function EventListener(eventTarget, eventName, eventOptions) {
         this.eventTarget = eventTarget;
         this.eventName = eventName;
-        this.unorderedBindings = new Set;
+        this.eventOptions = eventOptions;
+        this.unorderedBindings = new Set();
     }
     EventListener.prototype.connect = function () {
-        this.eventTarget.addEventListener(this.eventName, this, false);
+        this.eventTarget.addEventListener(this.eventName, this, this.eventOptions);
     };
     EventListener.prototype.disconnect = function () {
-        this.eventTarget.removeEventListener(this.eventName, this, false);
+        this.eventTarget.removeEventListener(this.eventName, this, this.eventOptions);
     };
     // Binding observer delegate
     /** @hidden */
@@ -8886,7 +2042,7 @@ var EventListener = /** @class */ (function () {
                 return leftIndex < rightIndex ? -1 : leftIndex > rightIndex ? 1 : 0;
             });
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     return EventListener;
@@ -8907,22 +2063,129 @@ function extendEvent(event) {
         });
     }
 }
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZXZlbnRfbGlzdGVuZXIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvZXZlbnRfbGlzdGVuZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUE7SUFLRSx1QkFBWSxXQUF3QixFQUFFLFNBQWlCO1FBQ3JELElBQUksQ0FBQyxXQUFXLEdBQUcsV0FBVyxDQUFBO1FBQzlCLElBQUksQ0FBQyxTQUFTLEdBQUcsU0FBUyxDQUFBO1FBQzFCLElBQUksQ0FBQyxpQkFBaUIsR0FBRyxJQUFJLEdBQUcsQ0FBQTtJQUNsQyxDQUFDO0lBRUQsK0JBQU8sR0FBUDtRQUNFLElBQUksQ0FBQyxXQUFXLENBQUMsZ0JBQWdCLENBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxJQUFJLEVBQUUsS0FBSyxDQUFDLENBQUE7SUFDaEUsQ0FBQztJQUVELGtDQUFVLEdBQVY7UUFDRSxJQUFJLENBQUMsV0FBVyxDQUFDLG1CQUFtQixDQUFDLElBQUksQ0FBQyxTQUFTLEVBQUUsSUFBSSxFQUFFLEtBQUssQ0FBQyxDQUFBO0lBQ25FLENBQUM7SUFFRCw0QkFBNEI7SUFFNUIsY0FBYztJQUNkLHdDQUFnQixHQUFoQixVQUFpQixPQUFnQjtRQUMvQixJQUFJLENBQUMsaUJBQWlCLENBQUMsR0FBRyxDQUFDLE9BQU8sQ0FBQyxDQUFBO0lBQ3JDLENBQUM7SUFFRCxjQUFjO0lBQ2QsMkNBQW1CLEdBQW5CLFVBQW9CLE9BQWdCO1FBQ2xDLElBQUksQ0FBQyxpQkFBaUIsQ0FBQyxNQUFNLENBQUMsT0FBTyxDQUFDLENBQUE7SUFDeEMsQ0FBQztJQUVELG1DQUFXLEdBQVgsVUFBWSxLQUFZO1FBQ3RCLElBQU0sYUFBYSxHQUFHLFdBQVcsQ0FBQyxLQUFLLENBQUMsQ0FBQTtRQUN4QyxLQUFzQixVQUFhLEVBQWIsS0FBQSxJQUFJLENBQUMsUUFBUSxFQUFiLGNBQWEsRUFBYixJQUFhLEVBQUU7WUFBaEMsSUFBTSxPQUFPLFNBQUE7WUFDaEIsSUFBSSxhQUFhLENBQUMsMkJBQTJCLEVBQUU7Z0JBQzdDLE1BQUs7YUFDTjtpQkFBTTtnQkFDTCxPQUFPLENBQUMsV0FBVyxDQUFDLGFBQWEsQ0FBQyxDQUFBO2FBQ25DO1NBQ0Y7SUFDSCxDQUFDO0lBRUQsc0JBQUksbUNBQVE7YUFBWjtZQUNFLE9BQU8sS0FBSyxDQUFDLElBQUksQ0FBQyxJQUFJLENBQUMsaUJBQWlCLENBQUMsQ0FBQyxJQUFJLENBQUMsVUFBQyxJQUFJLEVBQUUsS0FBSztnQkFDekQsSUFBTSxTQUFTLEdBQUcsSUFBSSxDQUFDLEtBQUssRUFBRSxVQUFVLEdBQUcsS0FBSyxDQUFDLEtBQUssQ0FBQTtnQkFDdEQsT0FBTyxTQUFTLEdBQUcsVUFBVSxDQUFDLENBQUMsQ0FBQyxDQUFDLENBQUMsQ0FBQyxDQUFDLENBQUMsU0FBUyxHQUFHLFVBQVUsQ0FBQyxDQUFDLENBQUMsQ0FBQyxDQUFDLENBQUMsQ0FBQyxDQUFDLENBQUE7WUFDckUsQ0FBQyxDQUFDLENBQUE7UUFDSixDQUFDOzs7T0FBQTtJQUNILG9CQUFDO0FBQUQsQ0FBQyxBQWhERCxJQWdEQzs7QUFFRCxxQkFBcUIsS0FBWTtJQUMvQixJQUFJLDZCQUE2QixJQUFJLEtBQUssRUFBRTtRQUMxQyxPQUFPLEtBQUssQ0FBQTtLQUNiO1NBQU07UUFDRyxJQUFBLDJEQUF3QixDQUFVO1FBQzFDLE9BQU8sTUFBTSxDQUFDLE1BQU0sQ0FBQyxLQUFLLEVBQUU7WUFDMUIsMkJBQTJCLEVBQUUsS0FBSztZQUNsQyx3QkFBd0I7Z0JBQ3RCLElBQUksQ0FBQywyQkFBMkIsR0FBRyxJQUFJLENBQUE7Z0JBQ3ZDLDBCQUF3QixDQUFDLElBQUksQ0FBQyxJQUFJLENBQUMsQ0FBQTtZQUNyQyxDQUFDO1NBQ0YsQ0FBQyxDQUFBO0tBQ0g7QUFDSCxDQUFDIn0=
+//# sourceMappingURL=event_listener.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/core/dist/src/module.js":
-/*!********************************************************!*\
-  !*** ./node_modules/@stimulus/core/dist/src/module.js ***!
-  \********************************************************/
+/***/ "./node_modules/@stimulus/core/dist/guide.js":
+/*!***************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/guide.js ***!
+  \***************************************************/
+/*! exports provided: Guide */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Guide", function() { return Guide; });
+var Guide = /** @class */ (function () {
+    function Guide(logger) {
+        this.warnedKeysByObject = new WeakMap;
+        this.logger = logger;
+    }
+    Guide.prototype.warn = function (object, key, message) {
+        var warnedKeys = this.warnedKeysByObject.get(object);
+        if (!warnedKeys) {
+            warnedKeys = new Set;
+            this.warnedKeysByObject.set(object, warnedKeys);
+        }
+        if (!warnedKeys.has(key)) {
+            warnedKeys.add(key);
+            this.logger.warn(message, object);
+        }
+    };
+    return Guide;
+}());
+
+//# sourceMappingURL=guide.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@stimulus/core/dist/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/index.js ***!
+  \***************************************************/
+/*! exports provided: Application, Context, Controller, defaultSchema */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _application__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./application */ "./node_modules/@stimulus/core/dist/application.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Application", function() { return _application__WEBPACK_IMPORTED_MODULE_0__["Application"]; });
+
+/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./context */ "./node_modules/@stimulus/core/dist/context.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Context", function() { return _context__WEBPACK_IMPORTED_MODULE_1__["Context"]; });
+
+/* harmony import */ var _controller__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./controller */ "./node_modules/@stimulus/core/dist/controller.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Controller", function() { return _controller__WEBPACK_IMPORTED_MODULE_2__["Controller"]; });
+
+/* harmony import */ var _schema__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./schema */ "./node_modules/@stimulus/core/dist/schema.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "defaultSchema", function() { return _schema__WEBPACK_IMPORTED_MODULE_3__["defaultSchema"]; });
+
+
+
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@stimulus/core/dist/inheritable_statics.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/inheritable_statics.js ***!
+  \*****************************************************************/
+/*! exports provided: readInheritableStaticArrayValues, readInheritableStaticObjectPairs */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "readInheritableStaticArrayValues", function() { return readInheritableStaticArrayValues; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "readInheritableStaticObjectPairs", function() { return readInheritableStaticObjectPairs; });
+function readInheritableStaticArrayValues(constructor, propertyName) {
+    var ancestors = getAncestorsForConstructor(constructor);
+    return Array.from(ancestors.reduce(function (values, constructor) {
+        getOwnStaticArrayValues(constructor, propertyName).forEach(function (name) { return values.add(name); });
+        return values;
+    }, new Set));
+}
+function readInheritableStaticObjectPairs(constructor, propertyName) {
+    var ancestors = getAncestorsForConstructor(constructor);
+    return ancestors.reduce(function (pairs, constructor) {
+        pairs.push.apply(pairs, getOwnStaticObjectPairs(constructor, propertyName));
+        return pairs;
+    }, []);
+}
+function getAncestorsForConstructor(constructor) {
+    var ancestors = [];
+    while (constructor) {
+        ancestors.push(constructor);
+        constructor = Object.getPrototypeOf(constructor);
+    }
+    return ancestors.reverse();
+}
+function getOwnStaticArrayValues(constructor, propertyName) {
+    var definition = constructor[propertyName];
+    return Array.isArray(definition) ? definition : [];
+}
+function getOwnStaticObjectPairs(constructor, propertyName) {
+    var definition = constructor[propertyName];
+    return definition ? Object.keys(definition).map(function (key) { return [key, definition[key]]; }) : [];
+}
+//# sourceMappingURL=inheritable_statics.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@stimulus/core/dist/module.js":
+/*!****************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/module.js ***!
+  \****************************************************/
 /*! exports provided: Module */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Module", function() { return Module; });
-/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./context */ "./node_modules/@stimulus/core/dist/src/context.js");
-/* harmony import */ var _definition__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definition */ "./node_modules/@stimulus/core/dist/src/definition.js");
+/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./context */ "./node_modules/@stimulus/core/dist/context.js");
+/* harmony import */ var _definition__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definition */ "./node_modules/@stimulus/core/dist/definition.js");
 
 
 var Module = /** @class */ (function () {
@@ -8936,21 +2199,21 @@ var Module = /** @class */ (function () {
         get: function () {
             return this.definition.identifier;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Module.prototype, "controllerConstructor", {
         get: function () {
             return this.definition.controllerConstructor;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Module.prototype, "contexts", {
         get: function () {
             return Array.from(this.connectedContexts);
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Module.prototype.connectContextForScope = function (scope) {
@@ -8976,30 +2239,32 @@ var Module = /** @class */ (function () {
     return Module;
 }());
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibW9kdWxlLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vc3JjL21vZHVsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQSxPQUFPLEVBQUUsT0FBTyxFQUFFLE1BQU0sV0FBVyxDQUFBO0FBRW5DLE9BQU8sRUFBYyxlQUFlLEVBQUUsTUFBTSxjQUFjLENBQUE7QUFHMUQ7SUFNRSxnQkFBWSxXQUF3QixFQUFFLFVBQXNCO1FBQzFELElBQUksQ0FBQyxXQUFXLEdBQUcsV0FBVyxDQUFBO1FBQzlCLElBQUksQ0FBQyxVQUFVLEdBQUcsZUFBZSxDQUFDLFVBQVUsQ0FBQyxDQUFBO1FBQzdDLElBQUksQ0FBQyxlQUFlLEdBQUcsSUFBSSxPQUFPLENBQUE7UUFDbEMsSUFBSSxDQUFDLGlCQUFpQixHQUFHLElBQUksR0FBRyxDQUFBO0lBQ2xDLENBQUM7SUFFRCxzQkFBSSw4QkFBVTthQUFkO1lBQ0UsT0FBTyxJQUFJLENBQUMsVUFBVSxDQUFDLFVBQVUsQ0FBQTtRQUNuQyxDQUFDOzs7T0FBQTtJQUVELHNCQUFJLHlDQUFxQjthQUF6QjtZQUNFLE9BQU8sSUFBSSxDQUFDLFVBQVUsQ0FBQyxxQkFBcUIsQ0FBQTtRQUM5QyxDQUFDOzs7T0FBQTtJQUVELHNCQUFJLDRCQUFRO2FBQVo7WUFDRSxPQUFPLEtBQUssQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLGlCQUFpQixDQUFDLENBQUE7UUFDM0MsQ0FBQzs7O09BQUE7SUFFRCx1Q0FBc0IsR0FBdEIsVUFBdUIsS0FBWTtRQUNqQyxJQUFNLE9BQU8sR0FBRyxJQUFJLENBQUMsb0JBQW9CLENBQUMsS0FBSyxDQUFDLENBQUE7UUFDaEQsSUFBSSxDQUFDLGlCQUFpQixDQUFDLEdBQUcsQ0FBQyxPQUFPLENBQUMsQ0FBQTtRQUNuQyxPQUFPLENBQUMsT0FBTyxFQUFFLENBQUE7SUFDbkIsQ0FBQztJQUVELDBDQUF5QixHQUF6QixVQUEwQixLQUFZO1FBQ3BDLElBQU0sT0FBTyxHQUFHLElBQUksQ0FBQyxlQUFlLENBQUMsR0FBRyxDQUFDLEtBQUssQ0FBQyxDQUFBO1FBQy9DLElBQUksT0FBTyxFQUFFO1lBQ1gsSUFBSSxDQUFDLGlCQUFpQixDQUFDLE1BQU0sQ0FBQyxPQUFPLENBQUMsQ0FBQTtZQUN0QyxPQUFPLENBQUMsVUFBVSxFQUFFLENBQUE7U0FDckI7SUFDSCxDQUFDO0lBRU8scUNBQW9CLEdBQTVCLFVBQTZCLEtBQVk7UUFDdkMsSUFBSSxPQUFPLEdBQUcsSUFBSSxDQUFDLGVBQWUsQ0FBQyxHQUFHLENBQUMsS0FBSyxDQUFDLENBQUE7UUFDN0MsSUFBSSxDQUFDLE9BQU8sRUFBRTtZQUNaLE9BQU8sR0FBRyxJQUFJLE9BQU8sQ0FBQyxJQUFJLEVBQUUsS0FBSyxDQUFDLENBQUE7WUFDbEMsSUFBSSxDQUFDLGVBQWUsQ0FBQyxHQUFHLENBQUMsS0FBSyxFQUFFLE9BQU8sQ0FBQyxDQUFBO1NBQ3pDO1FBQ0QsT0FBTyxPQUFPLENBQUE7SUFDaEIsQ0FBQztJQUNILGFBQUM7QUFBRCxDQUFDLEFBL0NELElBK0NDIn0=
+//# sourceMappingURL=module.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/core/dist/src/router.js":
-/*!********************************************************!*\
-  !*** ./node_modules/@stimulus/core/dist/src/router.js ***!
-  \********************************************************/
+/***/ "./node_modules/@stimulus/core/dist/router.js":
+/*!****************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/router.js ***!
+  \****************************************************/
 /*! exports provided: Router */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return Router; });
-/* harmony import */ var _module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./module */ "./node_modules/@stimulus/core/dist/src/module.js");
+/* harmony import */ var _module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./module */ "./node_modules/@stimulus/core/dist/module.js");
 /* harmony import */ var _stimulus_multimap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @stimulus/multimap */ "./node_modules/@stimulus/multimap/dist/index.js");
-/* harmony import */ var _scope_observer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scope_observer */ "./node_modules/@stimulus/core/dist/src/scope_observer.js");
+/* harmony import */ var _scope__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scope */ "./node_modules/@stimulus/core/dist/scope.js");
+/* harmony import */ var _scope_observer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scope_observer */ "./node_modules/@stimulus/core/dist/scope_observer.js");
+
 
 
 
 var Router = /** @class */ (function () {
     function Router(application) {
         this.application = application;
-        this.scopeObserver = new _scope_observer__WEBPACK_IMPORTED_MODULE_2__["ScopeObserver"](this.element, this.schema, this);
+        this.scopeObserver = new _scope_observer__WEBPACK_IMPORTED_MODULE_3__["ScopeObserver"](this.element, this.schema, this);
         this.scopesByIdentifier = new _stimulus_multimap__WEBPACK_IMPORTED_MODULE_1__["Multimap"];
         this.modulesByIdentifier = new Map;
     }
@@ -9007,35 +2272,42 @@ var Router = /** @class */ (function () {
         get: function () {
             return this.application.element;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Router.prototype, "schema", {
         get: function () {
             return this.application.schema;
         },
-        enumerable: true,
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Router.prototype, "logger", {
+        get: function () {
+            return this.application.logger;
+        },
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Router.prototype, "controllerAttribute", {
         get: function () {
             return this.schema.controllerAttribute;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Router.prototype, "modules", {
         get: function () {
             return Array.from(this.modulesByIdentifier.values());
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Router.prototype, "contexts", {
         get: function () {
             return this.modules.reduce(function (contexts, module) { return contexts.concat(module.contexts); }, []);
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Router.prototype.start = function () {
@@ -9068,6 +2340,10 @@ var Router = /** @class */ (function () {
     };
     // Scope observer delegate
     /** @hidden */
+    Router.prototype.createScopeForElementAndIdentifier = function (element, identifier) {
+        return new _scope__WEBPACK_IMPORTED_MODULE_2__["Scope"](this.schema, element, identifier, this.logger);
+    };
+    /** @hidden */
     Router.prototype.scopeConnected = function (scope) {
         this.scopesByIdentifier.add(scope.identifier, scope);
         var module = this.modulesByIdentifier.get(scope.identifier);
@@ -9097,14 +2373,14 @@ var Router = /** @class */ (function () {
     return Router;
 }());
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicm91dGVyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vc3JjL3JvdXRlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQSxPQUFPLEVBQUUsTUFBTSxFQUFFLE1BQU0sVUFBVSxDQUFBO0FBQ2pDLE9BQU8sRUFBRSxRQUFRLEVBQUUsTUFBTSxvQkFBb0IsQ0FBQTtBQUc3QyxPQUFPLEVBQUUsYUFBYSxFQUF5QixNQUFNLGtCQUFrQixDQUFBO0FBRXZFO0lBTUUsZ0JBQVksV0FBd0I7UUFDbEMsSUFBSSxDQUFDLFdBQVcsR0FBRyxXQUFXLENBQUE7UUFDOUIsSUFBSSxDQUFDLGFBQWEsR0FBRyxJQUFJLGFBQWEsQ0FBQyxJQUFJLENBQUMsT0FBTyxFQUFFLElBQUksQ0FBQyxNQUFNLEVBQUUsSUFBSSxDQUFDLENBQUE7UUFDdkUsSUFBSSxDQUFDLGtCQUFrQixHQUFHLElBQUksUUFBUSxDQUFBO1FBQ3RDLElBQUksQ0FBQyxtQkFBbUIsR0FBRyxJQUFJLEdBQUcsQ0FBQTtJQUNwQyxDQUFDO0lBRUQsc0JBQUksMkJBQU87YUFBWDtZQUNFLE9BQU8sSUFBSSxDQUFDLFdBQVcsQ0FBQyxPQUFPLENBQUE7UUFDakMsQ0FBQzs7O09BQUE7SUFFRCxzQkFBSSwwQkFBTTthQUFWO1lBQ0UsT0FBTyxJQUFJLENBQUMsV0FBVyxDQUFDLE1BQU0sQ0FBQTtRQUNoQyxDQUFDOzs7T0FBQTtJQUVELHNCQUFJLHVDQUFtQjthQUF2QjtZQUNFLE9BQU8sSUFBSSxDQUFDLE1BQU0sQ0FBQyxtQkFBbUIsQ0FBQTtRQUN4QyxDQUFDOzs7T0FBQTtJQUVELHNCQUFJLDJCQUFPO2FBQVg7WUFDRSxPQUFPLEtBQUssQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLG1CQUFtQixDQUFDLE1BQU0sRUFBRSxDQUFDLENBQUE7UUFDdEQsQ0FBQzs7O09BQUE7SUFFRCxzQkFBSSw0QkFBUTthQUFaO1lBQ0UsT0FBTyxJQUFJLENBQUMsT0FBTyxDQUFDLE1BQU0sQ0FBQyxVQUFDLFFBQVEsRUFBRSxNQUFNLElBQUssT0FBQSxRQUFRLENBQUMsTUFBTSxDQUFDLE1BQU0sQ0FBQyxRQUFRLENBQUMsRUFBaEMsQ0FBZ0MsRUFBRSxFQUFlLENBQUMsQ0FBQTtRQUNyRyxDQUFDOzs7T0FBQTtJQUVELHNCQUFLLEdBQUw7UUFDRSxJQUFJLENBQUMsYUFBYSxDQUFDLEtBQUssRUFBRSxDQUFBO0lBQzVCLENBQUM7SUFFRCxxQkFBSSxHQUFKO1FBQ0UsSUFBSSxDQUFDLGFBQWEsQ0FBQyxJQUFJLEVBQUUsQ0FBQTtJQUMzQixDQUFDO0lBRUQsK0JBQWMsR0FBZCxVQUFlLFVBQXNCO1FBQ25DLElBQUksQ0FBQyxnQkFBZ0IsQ0FBQyxVQUFVLENBQUMsVUFBVSxDQUFDLENBQUE7UUFDNUMsSUFBTSxNQUFNLEdBQUcsSUFBSSxNQUFNLENBQUMsSUFBSSxDQUFDLFdBQVcsRUFBRSxVQUFVLENBQUMsQ0FBQTtRQUN2RCxJQUFJLENBQUMsYUFBYSxDQUFDLE1BQU0sQ0FBQyxDQUFBO0lBQzVCLENBQUM7SUFFRCxpQ0FBZ0IsR0FBaEIsVUFBaUIsVUFBa0I7UUFDakMsSUFBTSxNQUFNLEdBQUcsSUFBSSxDQUFDLG1CQUFtQixDQUFDLEdBQUcsQ0FBQyxVQUFVLENBQUMsQ0FBQTtRQUN2RCxJQUFJLE1BQU0sRUFBRTtZQUNWLElBQUksQ0FBQyxnQkFBZ0IsQ0FBQyxNQUFNLENBQUMsQ0FBQTtTQUM5QjtJQUNILENBQUM7SUFFRCxrREFBaUMsR0FBakMsVUFBa0MsT0FBZ0IsRUFBRSxVQUFrQjtRQUNwRSxJQUFNLE1BQU0sR0FBRyxJQUFJLENBQUMsbUJBQW1CLENBQUMsR0FBRyxDQUFDLFVBQVUsQ0FBQyxDQUFBO1FBQ3ZELElBQUksTUFBTSxFQUFFO1lBQ1YsT0FBTyxNQUFNLENBQUMsUUFBUSxDQUFDLElBQUksQ0FBQyxVQUFBLE9BQU8sSUFBSSxPQUFBLE9BQU8sQ0FBQyxPQUFPLElBQUksT0FBTyxFQUExQixDQUEwQixDQUFDLENBQUE7U0FDbkU7SUFDSCxDQUFDO0lBRUQseUJBQXlCO0lBRXpCLGNBQWM7SUFDZCw0QkFBVyxHQUFYLFVBQVksS0FBWSxFQUFFLE9BQWUsRUFBRSxNQUFXO1FBQ3BELElBQUksQ0FBQyxXQUFXLENBQUMsV0FBVyxDQUFDLEtBQUssRUFBRSxPQUFPLEVBQUUsTUFBTSxDQUFDLENBQUE7SUFDdEQsQ0FBQztJQUVELDBCQUEwQjtJQUUxQixjQUFjO0lBQ2QsK0JBQWMsR0FBZCxVQUFlLEtBQVk7UUFDekIsSUFBSSxDQUFDLGtCQUFrQixDQUFDLEdBQUcsQ0FBQyxLQUFLLENBQUMsVUFBVSxFQUFFLEtBQUssQ0FBQyxDQUFBO1FBQ3BELElBQU0sTUFBTSxHQUFHLElBQUksQ0FBQyxtQkFBbUIsQ0FBQyxHQUFHLENBQUMsS0FBSyxDQUFDLFVBQVUsQ0FBQyxDQUFBO1FBQzdELElBQUksTUFBTSxFQUFFO1lBQ1YsTUFBTSxDQUFDLHNCQUFzQixDQUFDLEtBQUssQ0FBQyxDQUFBO1NBQ3JDO0lBQ0gsQ0FBQztJQUVELGNBQWM7SUFDZCxrQ0FBaUIsR0FBakIsVUFBa0IsS0FBWTtRQUM1QixJQUFJLENBQUMsa0JBQWtCLENBQUMsTUFBTSxDQUFDLEtBQUssQ0FBQyxVQUFVLEVBQUUsS0FBSyxDQUFDLENBQUE7UUFDdkQsSUFBTSxNQUFNLEdBQUcsSUFBSSxDQUFDLG1CQUFtQixDQUFDLEdBQUcsQ0FBQyxLQUFLLENBQUMsVUFBVSxDQUFDLENBQUE7UUFDN0QsSUFBSSxNQUFNLEVBQUU7WUFDVixNQUFNLENBQUMseUJBQXlCLENBQUMsS0FBSyxDQUFDLENBQUE7U0FDeEM7SUFDSCxDQUFDO0lBRUQsVUFBVTtJQUVGLDhCQUFhLEdBQXJCLFVBQXNCLE1BQWM7UUFDbEMsSUFBSSxDQUFDLG1CQUFtQixDQUFDLEdBQUcsQ0FBQyxNQUFNLENBQUMsVUFBVSxFQUFFLE1BQU0sQ0FBQyxDQUFBO1FBQ3ZELElBQU0sTUFBTSxHQUFHLElBQUksQ0FBQyxrQkFBa0IsQ0FBQyxlQUFlLENBQUMsTUFBTSxDQUFDLFVBQVUsQ0FBQyxDQUFBO1FBQ3pFLE1BQU0sQ0FBQyxPQUFPLENBQUMsVUFBQSxLQUFLLElBQUksT0FBQSxNQUFNLENBQUMsc0JBQXNCLENBQUMsS0FBSyxDQUFDLEVBQXBDLENBQW9DLENBQUMsQ0FBQTtJQUMvRCxDQUFDO0lBRU8saUNBQWdCLEdBQXhCLFVBQXlCLE1BQWM7UUFDckMsSUFBSSxDQUFDLG1CQUFtQixDQUFDLE1BQU0sQ0FBQyxNQUFNLENBQUMsVUFBVSxDQUFDLENBQUE7UUFDbEQsSUFBTSxNQUFNLEdBQUcsSUFBSSxDQUFDLGtCQUFrQixDQUFDLGVBQWUsQ0FBQyxNQUFNLENBQUMsVUFBVSxDQUFDLENBQUE7UUFDekUsTUFBTSxDQUFDLE9BQU8sQ0FBQyxVQUFBLEtBQUssSUFBSSxPQUFBLE1BQU0sQ0FBQyx5QkFBeUIsQ0FBQyxLQUFLLENBQUMsRUFBdkMsQ0FBdUMsQ0FBQyxDQUFBO0lBQ2xFLENBQUM7SUFDSCxhQUFDO0FBQUQsQ0FBQyxBQXJHRCxJQXFHQyJ9
+//# sourceMappingURL=router.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/core/dist/src/schema.js":
-/*!********************************************************!*\
-  !*** ./node_modules/@stimulus/core/dist/src/schema.js ***!
-  \********************************************************/
+/***/ "./node_modules/@stimulus/core/dist/schema.js":
+/*!****************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/schema.js ***!
+  \****************************************************/
 /*! exports provided: defaultSchema */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -9116,83 +2392,94 @@ var defaultSchema = {
     actionAttribute: "data-action",
     targetAttribute: "data-target"
 };
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2NoZW1hLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vc3JjL3NjaGVtYS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFNQSxNQUFNLENBQUMsSUFBTSxhQUFhLEdBQVc7SUFDbkMsbUJBQW1CLEVBQUUsaUJBQWlCO0lBQ3RDLGVBQWUsRUFBRSxhQUFhO0lBQzlCLGVBQWUsRUFBRSxhQUFhO0NBQy9CLENBQUEifQ==
+//# sourceMappingURL=schema.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/core/dist/src/scope.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/@stimulus/core/dist/src/scope.js ***!
-  \*******************************************************/
+/***/ "./node_modules/@stimulus/core/dist/scope.js":
+/*!***************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/scope.js ***!
+  \***************************************************/
 /*! exports provided: Scope */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Scope", function() { return Scope; });
-/* harmony import */ var _data_map__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data_map */ "./node_modules/@stimulus/core/dist/src/data_map.js");
-/* harmony import */ var _target_set__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./target_set */ "./node_modules/@stimulus/core/dist/src/target_set.js");
-/* harmony import */ var _selectors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./selectors */ "./node_modules/@stimulus/core/dist/src/selectors.js");
+/* harmony import */ var _class_map__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./class_map */ "./node_modules/@stimulus/core/dist/class_map.js");
+/* harmony import */ var _data_map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./data_map */ "./node_modules/@stimulus/core/dist/data_map.js");
+/* harmony import */ var _guide__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./guide */ "./node_modules/@stimulus/core/dist/guide.js");
+/* harmony import */ var _selectors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./selectors */ "./node_modules/@stimulus/core/dist/selectors.js");
+/* harmony import */ var _target_set__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./target_set */ "./node_modules/@stimulus/core/dist/target_set.js");
+var __spreadArrays = (undefined && undefined.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
+
+
 
 
 
 var Scope = /** @class */ (function () {
-    function Scope(schema, identifier, element) {
+    function Scope(schema, element, identifier, logger) {
+        var _this = this;
+        this.targets = new _target_set__WEBPACK_IMPORTED_MODULE_4__["TargetSet"](this);
+        this.classes = new _class_map__WEBPACK_IMPORTED_MODULE_0__["ClassMap"](this);
+        this.data = new _data_map__WEBPACK_IMPORTED_MODULE_1__["DataMap"](this);
+        this.containsElement = function (element) {
+            return element.closest(_this.controllerSelector) === _this.element;
+        };
         this.schema = schema;
-        this.identifier = identifier;
         this.element = element;
-        this.targets = new _target_set__WEBPACK_IMPORTED_MODULE_1__["TargetSet"](this);
-        this.data = new _data_map__WEBPACK_IMPORTED_MODULE_0__["DataMap"](this);
+        this.identifier = identifier;
+        this.guide = new _guide__WEBPACK_IMPORTED_MODULE_2__["Guide"](logger);
     }
     Scope.prototype.findElement = function (selector) {
-        return this.findAllElements(selector)[0];
+        return this.element.matches(selector)
+            ? this.element
+            : this.queryElements(selector).find(this.containsElement);
     };
     Scope.prototype.findAllElements = function (selector) {
-        var head = this.element.matches(selector) ? [this.element] : [];
-        var tail = this.filterElements(Array.from(this.element.querySelectorAll(selector)));
-        return head.concat(tail);
+        return __spreadArrays(this.element.matches(selector) ? [this.element] : [], this.queryElements(selector).filter(this.containsElement));
     };
-    Scope.prototype.filterElements = function (elements) {
-        var _this = this;
-        return elements.filter(function (element) { return _this.containsElement(element); });
-    };
-    Scope.prototype.containsElement = function (element) {
-        return element.closest(this.controllerSelector) === this.element;
+    Scope.prototype.queryElements = function (selector) {
+        return Array.from(this.element.querySelectorAll(selector));
     };
     Object.defineProperty(Scope.prototype, "controllerSelector", {
         get: function () {
-            return Object(_selectors__WEBPACK_IMPORTED_MODULE_2__["attributeValueContainsToken"])(this.schema.controllerAttribute, this.identifier);
+            return Object(_selectors__WEBPACK_IMPORTED_MODULE_3__["attributeValueContainsToken"])(this.schema.controllerAttribute, this.identifier);
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     return Scope;
 }());
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2NvcGUuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvc2NvcGUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUFFLE9BQU8sRUFBRSxNQUFNLFlBQVksQ0FBQTtBQUVwQyxPQUFPLEVBQUUsU0FBUyxFQUFFLE1BQU0sY0FBYyxDQUFBO0FBQ3hDLE9BQU8sRUFBRSwyQkFBMkIsRUFBRSxNQUFNLGFBQWEsQ0FBQTtBQUV6RDtJQU9FLGVBQVksTUFBYyxFQUFFLFVBQWtCLEVBQUUsT0FBZ0I7UUFDOUQsSUFBSSxDQUFDLE1BQU0sR0FBRyxNQUFNLENBQUE7UUFDcEIsSUFBSSxDQUFDLFVBQVUsR0FBRyxVQUFVLENBQUE7UUFDNUIsSUFBSSxDQUFDLE9BQU8sR0FBRyxPQUFPLENBQUE7UUFDdEIsSUFBSSxDQUFDLE9BQU8sR0FBRyxJQUFJLFNBQVMsQ0FBQyxJQUFJLENBQUMsQ0FBQTtRQUNsQyxJQUFJLENBQUMsSUFBSSxHQUFHLElBQUksT0FBTyxDQUFDLElBQUksQ0FBQyxDQUFBO0lBQy9CLENBQUM7SUFFRCwyQkFBVyxHQUFYLFVBQVksUUFBZ0I7UUFDMUIsT0FBTyxJQUFJLENBQUMsZUFBZSxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQyxDQUFBO0lBQzFDLENBQUM7SUFFRCwrQkFBZSxHQUFmLFVBQWdCLFFBQWdCO1FBQzlCLElBQU0sSUFBSSxHQUFHLElBQUksQ0FBQyxPQUFPLENBQUMsT0FBTyxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQyxDQUFDLElBQUksQ0FBQyxPQUFPLENBQUMsQ0FBQyxDQUFDLENBQUMsRUFBRSxDQUFBO1FBQ2pFLElBQU0sSUFBSSxHQUFHLElBQUksQ0FBQyxjQUFjLENBQUMsS0FBSyxDQUFDLElBQUksQ0FBQyxJQUFJLENBQUMsT0FBTyxDQUFDLGdCQUFnQixDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQTtRQUNyRixPQUFPLElBQUksQ0FBQyxNQUFNLENBQUMsSUFBSSxDQUFDLENBQUE7SUFDMUIsQ0FBQztJQUVELDhCQUFjLEdBQWQsVUFBZSxRQUFtQjtRQUFsQyxpQkFFQztRQURDLE9BQU8sUUFBUSxDQUFDLE1BQU0sQ0FBQyxVQUFBLE9BQU8sSUFBSSxPQUFBLEtBQUksQ0FBQyxlQUFlLENBQUMsT0FBTyxDQUFDLEVBQTdCLENBQTZCLENBQUMsQ0FBQTtJQUNsRSxDQUFDO0lBRUQsK0JBQWUsR0FBZixVQUFnQixPQUFnQjtRQUM5QixPQUFPLE9BQU8sQ0FBQyxPQUFPLENBQUMsSUFBSSxDQUFDLGtCQUFrQixDQUFDLEtBQUssSUFBSSxDQUFDLE9BQU8sQ0FBQTtJQUNsRSxDQUFDO0lBRUQsc0JBQVkscUNBQWtCO2FBQTlCO1lBQ0UsT0FBTywyQkFBMkIsQ0FBQyxJQUFJLENBQUMsTUFBTSxDQUFDLG1CQUFtQixFQUFFLElBQUksQ0FBQyxVQUFVLENBQUMsQ0FBQTtRQUN0RixDQUFDOzs7T0FBQTtJQUNILFlBQUM7QUFBRCxDQUFDLEFBcENELElBb0NDIn0=
+//# sourceMappingURL=scope.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/core/dist/src/scope_observer.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/@stimulus/core/dist/src/scope_observer.js ***!
-  \****************************************************************/
+/***/ "./node_modules/@stimulus/core/dist/scope_observer.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/scope_observer.js ***!
+  \************************************************************/
 /*! exports provided: ScopeObserver */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ScopeObserver", function() { return ScopeObserver; });
-/* harmony import */ var _scope__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./scope */ "./node_modules/@stimulus/core/dist/src/scope.js");
-/* harmony import */ var _stimulus_mutation_observers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @stimulus/mutation-observers */ "./node_modules/@stimulus/mutation-observers/dist/index.js");
-
+/* harmony import */ var _stimulus_mutation_observers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @stimulus/mutation-observers */ "./node_modules/@stimulus/mutation-observers/dist/index.js");
 
 var ScopeObserver = /** @class */ (function () {
     function ScopeObserver(element, schema, delegate) {
         this.element = element;
         this.schema = schema;
         this.delegate = delegate;
-        this.valueListObserver = new _stimulus_mutation_observers__WEBPACK_IMPORTED_MODULE_1__["ValueListObserver"](this.element, this.controllerAttribute, this);
+        this.valueListObserver = new _stimulus_mutation_observers__WEBPACK_IMPORTED_MODULE_0__["ValueListObserver"](this.element, this.controllerAttribute, this);
         this.scopesByIdentifierByElement = new WeakMap;
         this.scopeReferenceCounts = new WeakMap;
     }
@@ -9206,7 +2493,7 @@ var ScopeObserver = /** @class */ (function () {
         get: function () {
             return this.schema.controllerAttribute;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     // Value observer delegate
@@ -9216,7 +2503,7 @@ var ScopeObserver = /** @class */ (function () {
         var scopesByIdentifier = this.fetchScopesByIdentifierForElement(element);
         var scope = scopesByIdentifier.get(identifier);
         if (!scope) {
-            scope = new _scope__WEBPACK_IMPORTED_MODULE_0__["Scope"](this.schema, identifier, element);
+            scope = this.delegate.createScopeForElementAndIdentifier(element, identifier);
             scopesByIdentifier.set(identifier, scope);
         }
         return scope;
@@ -9250,14 +2537,14 @@ var ScopeObserver = /** @class */ (function () {
     return ScopeObserver;
 }());
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2NvcGVfb2JzZXJ2ZXIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvc2NvcGVfb2JzZXJ2ZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUEsT0FBTyxFQUFFLEtBQUssRUFBRSxNQUFNLFNBQVMsQ0FBQTtBQUMvQixPQUFPLEVBQVMsaUJBQWlCLEVBQTZCLE1BQU0sOEJBQThCLENBQUE7QUFPbEc7SUFRRSx1QkFBWSxPQUFnQixFQUFFLE1BQWMsRUFBRSxRQUErQjtRQUMzRSxJQUFJLENBQUMsT0FBTyxHQUFHLE9BQU8sQ0FBQTtRQUN0QixJQUFJLENBQUMsTUFBTSxHQUFHLE1BQU0sQ0FBQTtRQUNwQixJQUFJLENBQUMsUUFBUSxHQUFHLFFBQVEsQ0FBQTtRQUN4QixJQUFJLENBQUMsaUJBQWlCLEdBQUcsSUFBSSxpQkFBaUIsQ0FBQyxJQUFJLENBQUMsT0FBTyxFQUFFLElBQUksQ0FBQyxtQkFBbUIsRUFBRSxJQUFJLENBQUMsQ0FBQTtRQUM1RixJQUFJLENBQUMsMkJBQTJCLEdBQUcsSUFBSSxPQUFPLENBQUE7UUFDOUMsSUFBSSxDQUFDLG9CQUFvQixHQUFHLElBQUksT0FBTyxDQUFBO0lBQ3pDLENBQUM7SUFFRCw2QkFBSyxHQUFMO1FBQ0UsSUFBSSxDQUFDLGlCQUFpQixDQUFDLEtBQUssRUFBRSxDQUFBO0lBQ2hDLENBQUM7SUFFRCw0QkFBSSxHQUFKO1FBQ0UsSUFBSSxDQUFDLGlCQUFpQixDQUFDLElBQUksRUFBRSxDQUFBO0lBQy9CLENBQUM7SUFFRCxzQkFBSSw4Q0FBbUI7YUFBdkI7WUFDRSxPQUFPLElBQUksQ0FBQyxNQUFNLENBQUMsbUJBQW1CLENBQUE7UUFDeEMsQ0FBQzs7O09BQUE7SUFFRCwwQkFBMEI7SUFFMUIsY0FBYztJQUNkLDBDQUFrQixHQUFsQixVQUFtQixLQUFZO1FBQ3JCLElBQUEsdUJBQU8sRUFBRSwwQkFBbUIsQ0FBVTtRQUM5QyxJQUFNLGtCQUFrQixHQUFHLElBQUksQ0FBQyxpQ0FBaUMsQ0FBQyxPQUFPLENBQUMsQ0FBQTtRQUUxRSxJQUFJLEtBQUssR0FBRyxrQkFBa0IsQ0FBQyxHQUFHLENBQUMsVUFBVSxDQUFDLENBQUE7UUFDOUMsSUFBSSxDQUFDLEtBQUssRUFBRTtZQUNWLEtBQUssR0FBRyxJQUFJLEtBQUssQ0FBQyxJQUFJLENBQUMsTUFBTSxFQUFFLFVBQVUsRUFBRSxPQUFPLENBQUMsQ0FBQTtZQUNuRCxrQkFBa0IsQ0FBQyxHQUFHLENBQUMsVUFBVSxFQUFFLEtBQUssQ0FBQyxDQUFBO1NBQzFDO1FBRUQsT0FBTyxLQUFLLENBQUE7SUFDZCxDQUFDO0lBRUQsY0FBYztJQUNkLDJDQUFtQixHQUFuQixVQUFvQixPQUFnQixFQUFFLEtBQVk7UUFDaEQsSUFBTSxjQUFjLEdBQUcsQ0FBQyxJQUFJLENBQUMsb0JBQW9CLENBQUMsR0FBRyxDQUFDLEtBQUssQ0FBQyxJQUFJLENBQUMsQ0FBQyxHQUFHLENBQUMsQ0FBQTtRQUN0RSxJQUFJLENBQUMsb0JBQW9CLENBQUMsR0FBRyxDQUFDLEtBQUssRUFBRSxjQUFjLENBQUMsQ0FBQTtRQUNwRCxJQUFJLGNBQWMsSUFBSSxDQUFDLEVBQUU7WUFDdkIsSUFBSSxDQUFDLFFBQVEsQ0FBQyxjQUFjLENBQUMsS0FBSyxDQUFDLENBQUE7U0FDcEM7SUFDSCxDQUFDO0lBRUQsY0FBYztJQUNkLDZDQUFxQixHQUFyQixVQUFzQixPQUFnQixFQUFFLEtBQVk7UUFDbEQsSUFBTSxjQUFjLEdBQUcsSUFBSSxDQUFDLG9CQUFvQixDQUFDLEdBQUcsQ0FBQyxLQUFLLENBQUMsQ0FBQTtRQUMzRCxJQUFJLGNBQWMsRUFBRTtZQUNsQixJQUFJLENBQUMsb0JBQW9CLENBQUMsR0FBRyxDQUFDLEtBQUssRUFBRSxjQUFjLEdBQUcsQ0FBQyxDQUFDLENBQUE7WUFDeEQsSUFBSSxjQUFjLElBQUksQ0FBQyxFQUFFO2dCQUN2QixJQUFJLENBQUMsUUFBUSxDQUFDLGlCQUFpQixDQUFDLEtBQUssQ0FBQyxDQUFBO2FBQ3ZDO1NBQ0Y7SUFDSCxDQUFDO0lBRU8seURBQWlDLEdBQXpDLFVBQTBDLE9BQWdCO1FBQ3hELElBQUksa0JBQWtCLEdBQUcsSUFBSSxDQUFDLDJCQUEyQixDQUFDLEdBQUcsQ0FBQyxPQUFPLENBQUMsQ0FBQTtRQUN0RSxJQUFJLENBQUMsa0JBQWtCLEVBQUU7WUFDdkIsa0JBQWtCLEdBQUcsSUFBSSxHQUFHLENBQUE7WUFDNUIsSUFBSSxDQUFDLDJCQUEyQixDQUFDLEdBQUcsQ0FBQyxPQUFPLEVBQUUsa0JBQWtCLENBQUMsQ0FBQTtTQUNsRTtRQUNELE9BQU8sa0JBQWtCLENBQUE7SUFDM0IsQ0FBQztJQUNILG9CQUFDO0FBQUQsQ0FBQyxBQXpFRCxJQXlFQyJ9
+//# sourceMappingURL=scope_observer.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/core/dist/src/selectors.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/@stimulus/core/dist/src/selectors.js ***!
-  \***********************************************************/
+/***/ "./node_modules/@stimulus/core/dist/selectors.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/selectors.js ***!
+  \*******************************************************/
 /*! exports provided: attributeValueContainsToken */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -9268,96 +2555,104 @@ __webpack_require__.r(__webpack_exports__);
 function attributeValueContainsToken(attributeName, token) {
     return "[" + attributeName + "~=\"" + token + "\"]";
 }
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2VsZWN0b3JzLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vc3JjL3NlbGVjdG9ycy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxjQUFjO0FBQ2QsTUFBTSxzQ0FBc0MsYUFBcUIsRUFBRSxLQUFhO0lBQzlFLE9BQU8sTUFBSSxhQUFhLFlBQU0sS0FBSyxRQUFJLENBQUE7QUFDekMsQ0FBQyJ9
+//# sourceMappingURL=selectors.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/core/dist/src/target_properties.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/@stimulus/core/dist/src/target_properties.js ***!
-  \*******************************************************************/
-/*! exports provided: defineTargetProperties */
+/***/ "./node_modules/@stimulus/core/dist/string_helpers.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/string_helpers.js ***!
+  \************************************************************/
+/*! exports provided: camelize, capitalize, dasherize */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defineTargetProperties", function() { return defineTargetProperties; });
-/** @hidden */
-function defineTargetProperties(constructor) {
-    var prototype = constructor.prototype;
-    var targetNames = getTargetNamesForConstructor(constructor);
-    targetNames.forEach(function (name) {
-        var _a;
-        return defineLinkedProperties(prototype, (_a = {},
-            _a[name + "Target"] = {
-                get: function () {
-                    var target = this.targets.find(name);
-                    if (target) {
-                        return target;
-                    }
-                    else {
-                        throw new Error("Missing target element \"" + this.identifier + "." + name + "\"");
-                    }
-                }
-            },
-            _a[name + "Targets"] = {
-                get: function () {
-                    return this.targets.findAll(name);
-                }
-            },
-            _a["has" + capitalize(name) + "Target"] = {
-                get: function () {
-                    return this.targets.has(name);
-                }
-            },
-            _a));
-    });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "camelize", function() { return camelize; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "capitalize", function() { return capitalize; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dasherize", function() { return dasherize; });
+function camelize(value) {
+    return value.replace(/(?:[_-])([a-z0-9])/g, function (_, char) { return char.toUpperCase(); });
 }
-function getTargetNamesForConstructor(constructor) {
-    var ancestors = getAncestorsForConstructor(constructor);
-    return Array.from(ancestors.reduce(function (targetNames, constructor) {
-        getOwnTargetNamesForConstructor(constructor).forEach(function (name) { return targetNames.add(name); });
-        return targetNames;
-    }, new Set));
+function capitalize(value) {
+    return value.charAt(0).toUpperCase() + value.slice(1);
 }
-function getAncestorsForConstructor(constructor) {
-    var ancestors = [];
-    while (constructor) {
-        ancestors.push(constructor);
-        constructor = Object.getPrototypeOf(constructor);
-    }
-    return ancestors;
+function dasherize(value) {
+    return value.replace(/([A-Z])/g, function (_, char) { return "-" + char.toLowerCase(); });
 }
-function getOwnTargetNamesForConstructor(constructor) {
-    var definition = constructor["targets"];
-    return Array.isArray(definition) ? definition : [];
-}
-function defineLinkedProperties(object, properties) {
-    Object.keys(properties).forEach(function (name) {
-        if (!(name in object)) {
-            var descriptor = properties[name];
-            Object.defineProperty(object, name, descriptor);
-        }
-    });
-}
-function capitalize(name) {
-    return name.charAt(0).toUpperCase() + name.slice(1);
-}
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidGFyZ2V0X3Byb3BlcnRpZXMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvdGFyZ2V0X3Byb3BlcnRpZXMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUEsY0FBYztBQUNkLE1BQU0saUNBQWlDLFdBQXFCO0lBQzFELElBQU0sU0FBUyxHQUFHLFdBQVcsQ0FBQyxTQUFTLENBQUE7SUFDdkMsSUFBTSxXQUFXLEdBQUcsNEJBQTRCLENBQUMsV0FBVyxDQUFDLENBQUE7SUFDN0QsV0FBVyxDQUFDLE9BQU8sQ0FBQyxVQUFBLElBQUk7O1FBQUksT0FBQSxzQkFBc0IsQ0FBQyxTQUFTO1lBQzFELEdBQUksSUFBSSxXQUFRLElBQUc7Z0JBQ2pCLEdBQUc7b0JBQ0QsSUFBTSxNQUFNLEdBQUcsSUFBSSxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLENBQUE7b0JBQ3RDLElBQUksTUFBTSxFQUFFO3dCQUNWLE9BQU8sTUFBTSxDQUFBO3FCQUNkO3lCQUFNO3dCQUNMLE1BQU0sSUFBSSxLQUFLLENBQUMsOEJBQTJCLElBQUksQ0FBQyxVQUFVLFNBQUksSUFBSSxPQUFHLENBQUMsQ0FBQTtxQkFDdkU7Z0JBQ0gsQ0FBQzthQUNGO1lBQ0QsR0FBSSxJQUFJLFlBQVMsSUFBRztnQkFDbEIsR0FBRztvQkFDRCxPQUFPLElBQUksQ0FBQyxPQUFPLENBQUMsT0FBTyxDQUFDLElBQUksQ0FBQyxDQUFBO2dCQUNuQyxDQUFDO2FBQ0Y7WUFDRCxHQUFDLFFBQU0sVUFBVSxDQUFDLElBQUksQ0FBQyxXQUFRLElBQUc7Z0JBQ2hDLEdBQUc7b0JBQ0QsT0FBTyxJQUFJLENBQUMsT0FBTyxDQUFDLEdBQUcsQ0FBQyxJQUFJLENBQUMsQ0FBQTtnQkFDL0IsQ0FBQzthQUNGO2dCQUNEO0lBckIwQixDQXFCMUIsQ0FBQyxDQUFBO0FBQ0wsQ0FBQztBQUVELHNDQUFzQyxXQUFxQjtJQUN6RCxJQUFNLFNBQVMsR0FBRywwQkFBMEIsQ0FBQyxXQUFXLENBQUMsQ0FBQTtJQUN6RCxPQUFPLEtBQUssQ0FBQyxJQUFJLENBQUMsU0FBUyxDQUFDLE1BQU0sQ0FBQyxVQUFDLFdBQVcsRUFBRSxXQUFXO1FBQzFELCtCQUErQixDQUFDLFdBQVcsQ0FBQyxDQUFDLE9BQU8sQ0FBQyxVQUFBLElBQUksSUFBSSxPQUFBLFdBQVcsQ0FBQyxHQUFHLENBQUMsSUFBSSxDQUFDLEVBQXJCLENBQXFCLENBQUMsQ0FBQTtRQUNuRixPQUFPLFdBQVcsQ0FBQTtJQUNwQixDQUFDLEVBQUUsSUFBSSxHQUFrQixDQUFDLENBQUMsQ0FBQTtBQUM3QixDQUFDO0FBRUQsb0NBQW9DLFdBQXFCO0lBQ3ZELElBQU0sU0FBUyxHQUFlLEVBQUUsQ0FBQTtJQUNoQyxPQUFPLFdBQVcsRUFBRTtRQUNsQixTQUFTLENBQUMsSUFBSSxDQUFDLFdBQVcsQ0FBQyxDQUFBO1FBQzNCLFdBQVcsR0FBRyxNQUFNLENBQUMsY0FBYyxDQUFDLFdBQVcsQ0FBQyxDQUFBO0tBQ2pEO0lBQ0QsT0FBTyxTQUFTLENBQUE7QUFDbEIsQ0FBQztBQUVELHlDQUF5QyxXQUFxQjtJQUM1RCxJQUFNLFVBQVUsR0FBSSxXQUFtQixDQUFDLFNBQVMsQ0FBQyxDQUFBO0lBQ2xELE9BQU8sS0FBSyxDQUFDLE9BQU8sQ0FBQyxVQUFVLENBQUMsQ0FBQyxDQUFDLENBQUMsVUFBVSxDQUFDLENBQUMsQ0FBQyxFQUFFLENBQUE7QUFDcEQsQ0FBQztBQUVELGdDQUFnQyxNQUFXLEVBQUUsVUFBaUM7SUFDNUUsTUFBTSxDQUFDLElBQUksQ0FBQyxVQUFVLENBQUMsQ0FBQyxPQUFPLENBQUMsVUFBQyxJQUFJO1FBQ25DLElBQUksQ0FBQyxDQUFDLElBQUksSUFBSSxNQUFNLENBQUMsRUFBRTtZQUNyQixJQUFNLFVBQVUsR0FBRyxVQUFVLENBQUMsSUFBSSxDQUFDLENBQUE7WUFDbkMsTUFBTSxDQUFDLGNBQWMsQ0FBQyxNQUFNLEVBQUUsSUFBSSxFQUFFLFVBQVUsQ0FBQyxDQUFBO1NBQ2hEO0lBQ0gsQ0FBQyxDQUFDLENBQUE7QUFDSixDQUFDO0FBRUQsb0JBQW9CLElBQVk7SUFDOUIsT0FBTyxJQUFJLENBQUMsTUFBTSxDQUFDLENBQUMsQ0FBQyxDQUFDLFdBQVcsRUFBRSxHQUFHLElBQUksQ0FBQyxLQUFLLENBQUMsQ0FBQyxDQUFDLENBQUE7QUFDckQsQ0FBQyJ9
+//# sourceMappingURL=string_helpers.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/core/dist/src/target_set.js":
-/*!************************************************************!*\
-  !*** ./node_modules/@stimulus/core/dist/src/target_set.js ***!
-  \************************************************************/
+/***/ "./node_modules/@stimulus/core/dist/target_properties.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/target_properties.js ***!
+  \***************************************************************/
+/*! exports provided: TargetPropertiesBlessing */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TargetPropertiesBlessing", function() { return TargetPropertiesBlessing; });
+/* harmony import */ var _inheritable_statics__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./inheritable_statics */ "./node_modules/@stimulus/core/dist/inheritable_statics.js");
+/* harmony import */ var _string_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./string_helpers */ "./node_modules/@stimulus/core/dist/string_helpers.js");
+
+
+/** @hidden */
+function TargetPropertiesBlessing(constructor) {
+    var targets = Object(_inheritable_statics__WEBPACK_IMPORTED_MODULE_0__["readInheritableStaticArrayValues"])(constructor, "targets");
+    return targets.reduce(function (properties, targetDefinition) {
+        return Object.assign(properties, propertiesForTargetDefinition(targetDefinition));
+    }, {});
+}
+function propertiesForTargetDefinition(name) {
+    var _a;
+    return _a = {},
+        _a[name + "Target"] = {
+            get: function () {
+                var target = this.targets.find(name);
+                if (target) {
+                    return target;
+                }
+                else {
+                    throw new Error("Missing target element \"" + this.identifier + "." + name + "\"");
+                }
+            }
+        },
+        _a[name + "Targets"] = {
+            get: function () {
+                return this.targets.findAll(name);
+            }
+        },
+        _a["has" + Object(_string_helpers__WEBPACK_IMPORTED_MODULE_1__["capitalize"])(name) + "Target"] = {
+            get: function () {
+                return this.targets.has(name);
+            }
+        },
+        _a;
+}
+//# sourceMappingURL=target_properties.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@stimulus/core/dist/target_set.js":
+/*!********************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/target_set.js ***!
+  \********************************************************/
 /*! exports provided: TargetSet */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TargetSet", function() { return TargetSet; });
-/* harmony import */ var _selectors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors */ "./node_modules/@stimulus/core/dist/src/selectors.js");
+/* harmony import */ var _selectors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./selectors */ "./node_modules/@stimulus/core/dist/selectors.js");
+var __spreadArrays = (undefined && undefined.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 
 var TargetSet = /** @class */ (function () {
     function TargetSet(scope) {
@@ -9367,54 +2662,310 @@ var TargetSet = /** @class */ (function () {
         get: function () {
             return this.scope.element;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(TargetSet.prototype, "identifier", {
         get: function () {
             return this.scope.identifier;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(TargetSet.prototype, "schema", {
         get: function () {
             return this.scope.schema;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     TargetSet.prototype.has = function (targetName) {
         return this.find(targetName) != null;
     };
     TargetSet.prototype.find = function () {
+        var _this = this;
         var targetNames = [];
         for (var _i = 0; _i < arguments.length; _i++) {
             targetNames[_i] = arguments[_i];
         }
-        var selector = this.getSelectorForTargetNames(targetNames);
-        return this.scope.findElement(selector);
+        return targetNames.reduce(function (target, targetName) {
+            return target
+                || _this.findTarget(targetName)
+                || _this.findLegacyTarget(targetName);
+        }, undefined);
     };
     TargetSet.prototype.findAll = function () {
+        var _this = this;
         var targetNames = [];
         for (var _i = 0; _i < arguments.length; _i++) {
             targetNames[_i] = arguments[_i];
         }
-        var selector = this.getSelectorForTargetNames(targetNames);
+        return targetNames.reduce(function (targets, targetName) { return __spreadArrays(targets, _this.findAllTargets(targetName), _this.findAllLegacyTargets(targetName)); }, []);
+    };
+    TargetSet.prototype.findTarget = function (targetName) {
+        var selector = this.getSelectorForTargetName(targetName);
+        return this.scope.findElement(selector);
+    };
+    TargetSet.prototype.findAllTargets = function (targetName) {
+        var selector = this.getSelectorForTargetName(targetName);
         return this.scope.findAllElements(selector);
     };
-    TargetSet.prototype.getSelectorForTargetNames = function (targetNames) {
-        var _this = this;
-        return targetNames.map(function (targetName) { return _this.getSelectorForTargetName(targetName); }).join(", ");
-    };
     TargetSet.prototype.getSelectorForTargetName = function (targetName) {
+        var attributeName = "data-" + this.identifier + "-target";
+        return Object(_selectors__WEBPACK_IMPORTED_MODULE_0__["attributeValueContainsToken"])(attributeName, targetName);
+    };
+    TargetSet.prototype.findLegacyTarget = function (targetName) {
+        var selector = this.getLegacySelectorForTargetName(targetName);
+        return this.deprecate(this.scope.findElement(selector), targetName);
+    };
+    TargetSet.prototype.findAllLegacyTargets = function (targetName) {
+        var _this = this;
+        var selector = this.getLegacySelectorForTargetName(targetName);
+        return this.scope.findAllElements(selector).map(function (element) { return _this.deprecate(element, targetName); });
+    };
+    TargetSet.prototype.getLegacySelectorForTargetName = function (targetName) {
         var targetDescriptor = this.identifier + "." + targetName;
         return Object(_selectors__WEBPACK_IMPORTED_MODULE_0__["attributeValueContainsToken"])(this.schema.targetAttribute, targetDescriptor);
     };
+    TargetSet.prototype.deprecate = function (element, targetName) {
+        if (element) {
+            var identifier = this.identifier;
+            var attributeName = this.schema.targetAttribute;
+            this.guide.warn(element, "target:" + targetName, "Please replace " + attributeName + "=\"" + identifier + "." + targetName + "\" with data-" + identifier + "-target=\"" + targetName + "\". " +
+                ("The " + attributeName + " attribute is deprecated and will be removed in a future version of Stimulus."));
+        }
+        return element;
+    };
+    Object.defineProperty(TargetSet.prototype, "guide", {
+        get: function () {
+            return this.scope.guide;
+        },
+        enumerable: false,
+        configurable: true
+    });
     return TargetSet;
 }());
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidGFyZ2V0X3NldC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy90YXJnZXRfc2V0LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBLE9BQU8sRUFBRSwyQkFBMkIsRUFBRSxNQUFNLGFBQWEsQ0FBQTtBQUV6RDtJQUdFLG1CQUFZLEtBQVk7UUFDdEIsSUFBSSxDQUFDLEtBQUssR0FBRyxLQUFLLENBQUE7SUFDcEIsQ0FBQztJQUVELHNCQUFJLDhCQUFPO2FBQVg7WUFDRSxPQUFPLElBQUksQ0FBQyxLQUFLLENBQUMsT0FBTyxDQUFBO1FBQzNCLENBQUM7OztPQUFBO0lBRUQsc0JBQUksaUNBQVU7YUFBZDtZQUNFLE9BQU8sSUFBSSxDQUFDLEtBQUssQ0FBQyxVQUFVLENBQUE7UUFDOUIsQ0FBQzs7O09BQUE7SUFFRCxzQkFBSSw2QkFBTTthQUFWO1lBQ0UsT0FBTyxJQUFJLENBQUMsS0FBSyxDQUFDLE1BQU0sQ0FBQTtRQUMxQixDQUFDOzs7T0FBQTtJQUVELHVCQUFHLEdBQUgsVUFBSSxVQUFrQjtRQUNwQixPQUFPLElBQUksQ0FBQyxJQUFJLENBQUMsVUFBVSxDQUFDLElBQUksSUFBSSxDQUFBO0lBQ3RDLENBQUM7SUFFRCx3QkFBSSxHQUFKO1FBQUsscUJBQXdCO2FBQXhCLFVBQXdCLEVBQXhCLHFCQUF3QixFQUF4QixJQUF3QjtZQUF4QixnQ0FBd0I7O1FBQzNCLElBQU0sUUFBUSxHQUFHLElBQUksQ0FBQyx5QkFBeUIsQ0FBQyxXQUFXLENBQUMsQ0FBQTtRQUM1RCxPQUFPLElBQUksQ0FBQyxLQUFLLENBQUMsV0FBVyxDQUFDLFFBQVEsQ0FBQyxDQUFBO0lBQ3pDLENBQUM7SUFFRCwyQkFBTyxHQUFQO1FBQVEscUJBQXdCO2FBQXhCLFVBQXdCLEVBQXhCLHFCQUF3QixFQUF4QixJQUF3QjtZQUF4QixnQ0FBd0I7O1FBQzlCLElBQU0sUUFBUSxHQUFHLElBQUksQ0FBQyx5QkFBeUIsQ0FBQyxXQUFXLENBQUMsQ0FBQTtRQUM1RCxPQUFPLElBQUksQ0FBQyxLQUFLLENBQUMsZUFBZSxDQUFDLFFBQVEsQ0FBQyxDQUFBO0lBQzdDLENBQUM7SUFFTyw2Q0FBeUIsR0FBakMsVUFBa0MsV0FBcUI7UUFBdkQsaUJBRUM7UUFEQyxPQUFPLFdBQVcsQ0FBQyxHQUFHLENBQUMsVUFBQSxVQUFVLElBQUksT0FBQSxLQUFJLENBQUMsd0JBQXdCLENBQUMsVUFBVSxDQUFDLEVBQXpDLENBQXlDLENBQUMsQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLENBQUE7SUFDNUYsQ0FBQztJQUVPLDRDQUF3QixHQUFoQyxVQUFpQyxVQUFrQjtRQUNqRCxJQUFNLGdCQUFnQixHQUFNLElBQUksQ0FBQyxVQUFVLFNBQUksVUFBWSxDQUFBO1FBQzNELE9BQU8sMkJBQTJCLENBQUMsSUFBSSxDQUFDLE1BQU0sQ0FBQyxlQUFlLEVBQUUsZ0JBQWdCLENBQUMsQ0FBQTtJQUNuRixDQUFDO0lBQ0gsZ0JBQUM7QUFBRCxDQUFDLEFBekNELElBeUNDIn0=
+//# sourceMappingURL=target_set.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@stimulus/core/dist/value_observer.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/value_observer.js ***!
+  \************************************************************/
+/*! exports provided: ValueObserver */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ValueObserver", function() { return ValueObserver; });
+/* harmony import */ var _stimulus_mutation_observers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @stimulus/mutation-observers */ "./node_modules/@stimulus/mutation-observers/dist/index.js");
+
+var ValueObserver = /** @class */ (function () {
+    function ValueObserver(context, receiver) {
+        this.context = context;
+        this.receiver = receiver;
+        this.stringMapObserver = new _stimulus_mutation_observers__WEBPACK_IMPORTED_MODULE_0__["StringMapObserver"](this.element, this);
+        this.valueDescriptorMap = this.controller.valueDescriptorMap;
+        this.invokeChangedCallbacksForDefaultValues();
+    }
+    ValueObserver.prototype.start = function () {
+        this.stringMapObserver.start();
+    };
+    ValueObserver.prototype.stop = function () {
+        this.stringMapObserver.stop();
+    };
+    Object.defineProperty(ValueObserver.prototype, "element", {
+        get: function () {
+            return this.context.element;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(ValueObserver.prototype, "controller", {
+        get: function () {
+            return this.context.controller;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    // String map observer delegate
+    ValueObserver.prototype.getStringMapKeyForAttribute = function (attributeName) {
+        if (attributeName in this.valueDescriptorMap) {
+            return this.valueDescriptorMap[attributeName].name;
+        }
+    };
+    ValueObserver.prototype.stringMapValueChanged = function (attributeValue, name) {
+        this.invokeChangedCallbackForValue(name);
+    };
+    ValueObserver.prototype.invokeChangedCallbacksForDefaultValues = function () {
+        for (var _i = 0, _a = this.valueDescriptors; _i < _a.length; _i++) {
+            var _b = _a[_i], key = _b.key, name_1 = _b.name, defaultValue = _b.defaultValue;
+            if (defaultValue != undefined && !this.controller.data.has(key)) {
+                this.invokeChangedCallbackForValue(name_1);
+            }
+        }
+    };
+    ValueObserver.prototype.invokeChangedCallbackForValue = function (name) {
+        var methodName = name + "Changed";
+        var method = this.receiver[methodName];
+        if (typeof method == "function") {
+            var value = this.receiver[name];
+            method.call(this.receiver, value);
+        }
+    };
+    Object.defineProperty(ValueObserver.prototype, "valueDescriptors", {
+        get: function () {
+            var valueDescriptorMap = this.valueDescriptorMap;
+            return Object.keys(valueDescriptorMap).map(function (key) { return valueDescriptorMap[key]; });
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return ValueObserver;
+}());
+
+//# sourceMappingURL=value_observer.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@stimulus/core/dist/value_properties.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/@stimulus/core/dist/value_properties.js ***!
+  \**************************************************************/
+/*! exports provided: ValuePropertiesBlessing, propertiesForValueDefinitionPair */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ValuePropertiesBlessing", function() { return ValuePropertiesBlessing; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "propertiesForValueDefinitionPair", function() { return propertiesForValueDefinitionPair; });
+/* harmony import */ var _inheritable_statics__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./inheritable_statics */ "./node_modules/@stimulus/core/dist/inheritable_statics.js");
+/* harmony import */ var _string_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./string_helpers */ "./node_modules/@stimulus/core/dist/string_helpers.js");
+
+
+/** @hidden */
+function ValuePropertiesBlessing(constructor) {
+    var valueDefinitionPairs = Object(_inheritable_statics__WEBPACK_IMPORTED_MODULE_0__["readInheritableStaticObjectPairs"])(constructor, "values");
+    var propertyDescriptorMap = {
+        valueDescriptorMap: {
+            get: function () {
+                var _this = this;
+                return valueDefinitionPairs.reduce(function (result, valueDefinitionPair) {
+                    var _a;
+                    var valueDescriptor = parseValueDefinitionPair(valueDefinitionPair);
+                    var attributeName = _this.data.getAttributeNameForKey(valueDescriptor.key);
+                    return Object.assign(result, (_a = {}, _a[attributeName] = valueDescriptor, _a));
+                }, {});
+            }
+        }
+    };
+    return valueDefinitionPairs.reduce(function (properties, valueDefinitionPair) {
+        return Object.assign(properties, propertiesForValueDefinitionPair(valueDefinitionPair));
+    }, propertyDescriptorMap);
+}
+/** @hidden */
+function propertiesForValueDefinitionPair(valueDefinitionPair) {
+    var _a;
+    var definition = parseValueDefinitionPair(valueDefinitionPair);
+    var type = definition.type, key = definition.key, name = definition.name;
+    var read = readers[type], write = writers[type] || writers.default;
+    return _a = {},
+        _a[name] = {
+            get: function () {
+                var value = this.data.get(key);
+                if (value !== null) {
+                    return read(value);
+                }
+                else {
+                    return definition.defaultValue;
+                }
+            },
+            set: function (value) {
+                if (value === undefined) {
+                    this.data.delete(key);
+                }
+                else {
+                    this.data.set(key, write(value));
+                }
+            }
+        },
+        _a["has" + Object(_string_helpers__WEBPACK_IMPORTED_MODULE_1__["capitalize"])(name)] = {
+            get: function () {
+                return this.data.has(key);
+            }
+        },
+        _a;
+}
+function parseValueDefinitionPair(_a) {
+    var token = _a[0], typeConstant = _a[1];
+    var type = parseValueTypeConstant(typeConstant);
+    return valueDescriptorForTokenAndType(token, type);
+}
+function parseValueTypeConstant(typeConstant) {
+    switch (typeConstant) {
+        case Array: return "array";
+        case Boolean: return "boolean";
+        case Number: return "number";
+        case Object: return "object";
+        case String: return "string";
+    }
+    throw new Error("Unknown value type constant \"" + typeConstant + "\"");
+}
+function valueDescriptorForTokenAndType(token, type) {
+    var key = Object(_string_helpers__WEBPACK_IMPORTED_MODULE_1__["dasherize"])(token) + "-value";
+    return {
+        type: type,
+        key: key,
+        name: Object(_string_helpers__WEBPACK_IMPORTED_MODULE_1__["camelize"])(key),
+        get defaultValue() { return defaultValuesByType[type]; }
+    };
+}
+var defaultValuesByType = {
+    get array() { return []; },
+    boolean: false,
+    number: 0,
+    get object() { return {}; },
+    string: ""
+};
+var readers = {
+    array: function (value) {
+        var array = JSON.parse(value);
+        if (!Array.isArray(array)) {
+            throw new TypeError("Expected array");
+        }
+        return array;
+    },
+    boolean: function (value) {
+        return !(value == "0" || value == "false");
+    },
+    number: function (value) {
+        return parseFloat(value);
+    },
+    object: function (value) {
+        var object = JSON.parse(value);
+        if (object === null || typeof object != "object" || Array.isArray(object)) {
+            throw new TypeError("Expected object");
+        }
+        return object;
+    },
+    string: function (value) {
+        return value;
+    }
+};
+var writers = {
+    default: writeString,
+    array: writeJSON,
+    object: writeJSON
+};
+function writeJSON(value) {
+    return JSON.stringify(value);
+}
+function writeString(value) {
+    return "" + value;
+}
+//# sourceMappingURL=value_properties.js.map
 
 /***/ }),
 
@@ -9422,39 +2973,52 @@ var TargetSet = /** @class */ (function () {
 /*!*******************************************************!*\
   !*** ./node_modules/@stimulus/multimap/dist/index.js ***!
   \*******************************************************/
-/*! exports provided: Multimap, IndexedMultimap */
+/*! exports provided: IndexedMultimap, Multimap, add, del, fetch, prune */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _src_multimap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/multimap */ "./node_modules/@stimulus/multimap/dist/src/multimap.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Multimap", function() { return _src_multimap__WEBPACK_IMPORTED_MODULE_0__["Multimap"]; });
+/* harmony import */ var _indexed_multimap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./indexed_multimap */ "./node_modules/@stimulus/multimap/dist/indexed_multimap.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "IndexedMultimap", function() { return _indexed_multimap__WEBPACK_IMPORTED_MODULE_0__["IndexedMultimap"]; });
 
-/* harmony import */ var _src_indexed_multimap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/indexed_multimap */ "./node_modules/@stimulus/multimap/dist/src/indexed_multimap.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "IndexedMultimap", function() { return _src_indexed_multimap__WEBPACK_IMPORTED_MODULE_1__["IndexedMultimap"]; });
+/* harmony import */ var _multimap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./multimap */ "./node_modules/@stimulus/multimap/dist/multimap.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Multimap", function() { return _multimap__WEBPACK_IMPORTED_MODULE_1__["Multimap"]; });
+
+/* harmony import */ var _set_operations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./set_operations */ "./node_modules/@stimulus/multimap/dist/set_operations.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "add", function() { return _set_operations__WEBPACK_IMPORTED_MODULE_2__["add"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "del", function() { return _set_operations__WEBPACK_IMPORTED_MODULE_2__["del"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "fetch", function() { return _set_operations__WEBPACK_IMPORTED_MODULE_2__["fetch"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "prune", function() { return _set_operations__WEBPACK_IMPORTED_MODULE_2__["prune"]; });
 
 
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxjQUFjLGdCQUFnQixDQUFBO0FBQzlCLGNBQWMsd0JBQXdCLENBQUEifQ==
+
+//# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/multimap/dist/src/indexed_multimap.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/@stimulus/multimap/dist/src/indexed_multimap.js ***!
-  \**********************************************************************/
+/***/ "./node_modules/@stimulus/multimap/dist/indexed_multimap.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@stimulus/multimap/dist/indexed_multimap.js ***!
+  \******************************************************************/
 /*! exports provided: IndexedMultimap */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IndexedMultimap", function() { return IndexedMultimap; });
-/* harmony import */ var _multimap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./multimap */ "./node_modules/@stimulus/multimap/dist/src/multimap.js");
-/* harmony import */ var _set_operations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./set_operations */ "./node_modules/@stimulus/multimap/dist/src/set_operations.js");
+/* harmony import */ var _multimap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./multimap */ "./node_modules/@stimulus/multimap/dist/multimap.js");
+/* harmony import */ var _set_operations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./set_operations */ "./node_modules/@stimulus/multimap/dist/set_operations.js");
 var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -9474,7 +3038,7 @@ var IndexedMultimap = /** @class */ (function (_super) {
         get: function () {
             return Array.from(this.keysByValue.keys());
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     IndexedMultimap.prototype.add = function (key, value) {
@@ -9495,21 +3059,21 @@ var IndexedMultimap = /** @class */ (function (_super) {
     return IndexedMultimap;
 }(_multimap__WEBPACK_IMPORTED_MODULE_0__["Multimap"]));
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXhlZF9tdWx0aW1hcC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9pbmRleGVkX211bHRpbWFwLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7QUFBQSxPQUFPLEVBQUUsUUFBUSxFQUFFLE1BQU0sWUFBWSxDQUFBO0FBQ3JDLE9BQU8sRUFBRSxHQUFHLEVBQUUsR0FBRyxFQUFFLE1BQU0sa0JBQWtCLENBQUE7QUFFM0M7SUFBMkMsbUNBQWM7SUFHdkQ7UUFBQSxZQUNFLGlCQUFPLFNBRVI7UUFEQyxLQUFJLENBQUMsV0FBVyxHQUFHLElBQUksR0FBRyxDQUFBOztJQUM1QixDQUFDO0lBRUQsc0JBQUksbUNBQU07YUFBVjtZQUNFLE9BQU8sS0FBSyxDQUFDLElBQUksQ0FBQyxJQUFJLENBQUMsV0FBVyxDQUFDLElBQUksRUFBRSxDQUFDLENBQUE7UUFDNUMsQ0FBQzs7O09BQUE7SUFFRCw2QkFBRyxHQUFILFVBQUksR0FBTSxFQUFFLEtBQVE7UUFDbEIsaUJBQU0sR0FBRyxZQUFDLEdBQUcsRUFBRSxLQUFLLENBQUMsQ0FBQTtRQUNyQixHQUFHLENBQUMsSUFBSSxDQUFDLFdBQVcsRUFBRSxLQUFLLEVBQUUsR0FBRyxDQUFDLENBQUE7SUFDbkMsQ0FBQztJQUVELGdDQUFNLEdBQU4sVUFBTyxHQUFNLEVBQUUsS0FBUTtRQUNyQixpQkFBTSxNQUFNLFlBQUMsR0FBRyxFQUFFLEtBQUssQ0FBQyxDQUFBO1FBQ3hCLEdBQUcsQ0FBQyxJQUFJLENBQUMsV0FBVyxFQUFFLEtBQUssRUFBRSxHQUFHLENBQUMsQ0FBQTtJQUNuQyxDQUFDO0lBRUQsa0NBQVEsR0FBUixVQUFTLEtBQVE7UUFDZixPQUFPLElBQUksQ0FBQyxXQUFXLENBQUMsR0FBRyxDQUFDLEtBQUssQ0FBQyxDQUFBO0lBQ3BDLENBQUM7SUFFRCx5Q0FBZSxHQUFmLFVBQWdCLEtBQVE7UUFDdEIsSUFBTSxHQUFHLEdBQUcsSUFBSSxDQUFDLFdBQVcsQ0FBQyxHQUFHLENBQUMsS0FBSyxDQUFDLENBQUE7UUFDdkMsT0FBTyxHQUFHLENBQUMsQ0FBQyxDQUFDLEtBQUssQ0FBQyxJQUFJLENBQUMsR0FBRyxDQUFDLENBQUMsQ0FBQyxDQUFDLEVBQUUsQ0FBQTtJQUNuQyxDQUFDO0lBQ0gsc0JBQUM7QUFBRCxDQUFDLEFBOUJELENBQTJDLFFBQVEsR0E4QmxEIn0=
+//# sourceMappingURL=indexed_multimap.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/multimap/dist/src/multimap.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/@stimulus/multimap/dist/src/multimap.js ***!
-  \**************************************************************/
+/***/ "./node_modules/@stimulus/multimap/dist/multimap.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@stimulus/multimap/dist/multimap.js ***!
+  \**********************************************************/
 /*! exports provided: Multimap */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Multimap", function() { return Multimap; });
-/* harmony import */ var _set_operations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./set_operations */ "./node_modules/@stimulus/multimap/dist/src/set_operations.js");
+/* harmony import */ var _set_operations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./set_operations */ "./node_modules/@stimulus/multimap/dist/set_operations.js");
 
 var Multimap = /** @class */ (function () {
     function Multimap() {
@@ -9520,7 +3084,7 @@ var Multimap = /** @class */ (function () {
             var sets = Array.from(this.valuesByKey.values());
             return sets.reduce(function (values, set) { return values.concat(Array.from(set)); }, []);
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Multimap.prototype, "size", {
@@ -9528,7 +3092,7 @@ var Multimap = /** @class */ (function () {
             var sets = Array.from(this.valuesByKey.values());
             return sets.reduce(function (size, set) { return size + set.size; }, 0);
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Multimap.prototype.add = function (key, value) {
@@ -9566,14 +3130,14 @@ var Multimap = /** @class */ (function () {
     return Multimap;
 }());
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibXVsdGltYXAuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvbXVsdGltYXAudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUFFLEdBQUcsRUFBRSxHQUFHLEVBQUUsTUFBTSxrQkFBa0IsQ0FBQTtBQUUzQztJQUdFO1FBQ0UsSUFBSSxDQUFDLFdBQVcsR0FBRyxJQUFJLEdBQUcsRUFBYSxDQUFBO0lBQ3pDLENBQUM7SUFFRCxzQkFBSSw0QkFBTTthQUFWO1lBQ0UsSUFBTSxJQUFJLEdBQUcsS0FBSyxDQUFDLElBQUksQ0FBQyxJQUFJLENBQUMsV0FBVyxDQUFDLE1BQU0sRUFBRSxDQUFDLENBQUE7WUFDbEQsT0FBTyxJQUFJLENBQUMsTUFBTSxDQUFDLFVBQUMsTUFBTSxFQUFFLEdBQUcsSUFBSyxPQUFBLE1BQU0sQ0FBQyxNQUFNLENBQUMsS0FBSyxDQUFDLElBQUksQ0FBQyxHQUFHLENBQUMsQ0FBQyxFQUE5QixDQUE4QixFQUFRLEVBQUUsQ0FBQyxDQUFBO1FBQy9FLENBQUM7OztPQUFBO0lBRUQsc0JBQUksMEJBQUk7YUFBUjtZQUNFLElBQU0sSUFBSSxHQUFHLEtBQUssQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLFdBQVcsQ0FBQyxNQUFNLEVBQUUsQ0FBQyxDQUFBO1lBQ2xELE9BQU8sSUFBSSxDQUFDLE1BQU0sQ0FBQyxVQUFDLElBQUksRUFBRSxHQUFHLElBQUssT0FBQSxJQUFJLEdBQUcsR0FBRyxDQUFDLElBQUksRUFBZixDQUFlLEVBQUUsQ0FBQyxDQUFDLENBQUE7UUFDdkQsQ0FBQzs7O09BQUE7SUFFRCxzQkFBRyxHQUFILFVBQUksR0FBTSxFQUFFLEtBQVE7UUFDbEIsR0FBRyxDQUFDLElBQUksQ0FBQyxXQUFXLEVBQUUsR0FBRyxFQUFFLEtBQUssQ0FBQyxDQUFBO0lBQ25DLENBQUM7SUFFRCx5QkFBTSxHQUFOLFVBQU8sR0FBTSxFQUFFLEtBQVE7UUFDckIsR0FBRyxDQUFDLElBQUksQ0FBQyxXQUFXLEVBQUUsR0FBRyxFQUFFLEtBQUssQ0FBQyxDQUFBO0lBQ25DLENBQUM7SUFFRCxzQkFBRyxHQUFILFVBQUksR0FBTSxFQUFFLEtBQVE7UUFDbEIsSUFBTSxNQUFNLEdBQUcsSUFBSSxDQUFDLFdBQVcsQ0FBQyxHQUFHLENBQUMsR0FBRyxDQUFDLENBQUE7UUFDeEMsT0FBTyxNQUFNLElBQUksSUFBSSxJQUFJLE1BQU0sQ0FBQyxHQUFHLENBQUMsS0FBSyxDQUFDLENBQUE7SUFDNUMsQ0FBQztJQUVELHlCQUFNLEdBQU4sVUFBTyxHQUFNO1FBQ1gsT0FBTyxJQUFJLENBQUMsV0FBVyxDQUFDLEdBQUcsQ0FBQyxHQUFHLENBQUMsQ0FBQTtJQUNsQyxDQUFDO0lBRUQsMkJBQVEsR0FBUixVQUFTLEtBQVE7UUFDZixJQUFNLElBQUksR0FBRyxLQUFLLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxXQUFXLENBQUMsTUFBTSxFQUFFLENBQUMsQ0FBQTtRQUNsRCxPQUFPLElBQUksQ0FBQyxJQUFJLENBQUMsVUFBQSxHQUFHLElBQUksT0FBQSxHQUFHLENBQUMsR0FBRyxDQUFDLEtBQUssQ0FBQyxFQUFkLENBQWMsQ0FBQyxDQUFBO0lBQ3pDLENBQUM7SUFFRCxrQ0FBZSxHQUFmLFVBQWdCLEdBQU07UUFDcEIsSUFBTSxNQUFNLEdBQUcsSUFBSSxDQUFDLFdBQVcsQ0FBQyxHQUFHLENBQUMsR0FBRyxDQUFDLENBQUE7UUFDeEMsT0FBTyxNQUFNLENBQUMsQ0FBQyxDQUFDLEtBQUssQ0FBQyxJQUFJLENBQUMsTUFBTSxDQUFDLENBQUMsQ0FBQyxDQUFDLEVBQUUsQ0FBQTtJQUN6QyxDQUFDO0lBRUQsa0NBQWUsR0FBZixVQUFnQixLQUFRO1FBQ3RCLE9BQU8sS0FBSyxDQUFDLElBQUksQ0FBQyxJQUFJLENBQUMsV0FBVyxDQUFDO2FBQ2hDLE1BQU0sQ0FBQyxVQUFDLEVBQWE7Z0JBQVosV0FBRyxFQUFFLGNBQU07WUFBTSxPQUFBLE1BQU0sQ0FBQyxHQUFHLENBQUMsS0FBSyxDQUFDO1FBQWpCLENBQWlCLENBQUM7YUFDNUMsR0FBRyxDQUFDLFVBQUMsRUFBYTtnQkFBWixXQUFHLEVBQUUsY0FBTTtZQUFNLE9BQUEsR0FBRztRQUFILENBQUcsQ0FBQyxDQUFBO0lBQ2hDLENBQUM7SUFDSCxlQUFDO0FBQUQsQ0FBQyxBQWpERCxJQWlEQyJ9
+//# sourceMappingURL=multimap.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/multimap/dist/src/set_operations.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/@stimulus/multimap/dist/src/set_operations.js ***!
-  \********************************************************************/
+/***/ "./node_modules/@stimulus/multimap/dist/set_operations.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/@stimulus/multimap/dist/set_operations.js ***!
+  \****************************************************************/
 /*! exports provided: add, del, fetch, prune */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -9604,50 +3168,21 @@ function prune(map, key) {
         map.delete(key);
     }
 }
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2V0X29wZXJhdGlvbnMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvc2V0X29wZXJhdGlvbnMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsTUFBTSxjQUFvQixHQUFtQixFQUFFLEdBQU0sRUFBRSxLQUFRO0lBQzdELEtBQUssQ0FBQyxHQUFHLEVBQUUsR0FBRyxDQUFDLENBQUMsR0FBRyxDQUFDLEtBQUssQ0FBQyxDQUFBO0FBQzVCLENBQUM7QUFFRCxNQUFNLGNBQW9CLEdBQW1CLEVBQUUsR0FBTSxFQUFFLEtBQVE7SUFDN0QsS0FBSyxDQUFDLEdBQUcsRUFBRSxHQUFHLENBQUMsQ0FBQyxNQUFNLENBQUMsS0FBSyxDQUFDLENBQUE7SUFDN0IsS0FBSyxDQUFDLEdBQUcsRUFBRSxHQUFHLENBQUMsQ0FBQTtBQUNqQixDQUFDO0FBRUQsTUFBTSxnQkFBc0IsR0FBbUIsRUFBRSxHQUFNO0lBQ3JELElBQUksTUFBTSxHQUFHLEdBQUcsQ0FBQyxHQUFHLENBQUMsR0FBRyxDQUFDLENBQUE7SUFDekIsSUFBSSxDQUFDLE1BQU0sRUFBRTtRQUNYLE1BQU0sR0FBRyxJQUFJLEdBQUcsRUFBRSxDQUFBO1FBQ2xCLEdBQUcsQ0FBQyxHQUFHLENBQUMsR0FBRyxFQUFFLE1BQU0sQ0FBQyxDQUFBO0tBQ3JCO0lBQ0QsT0FBTyxNQUFNLENBQUE7QUFDZixDQUFDO0FBRUQsTUFBTSxnQkFBc0IsR0FBbUIsRUFBRSxHQUFNO0lBQ3JELElBQU0sTUFBTSxHQUFHLEdBQUcsQ0FBQyxHQUFHLENBQUMsR0FBRyxDQUFDLENBQUE7SUFDM0IsSUFBSSxNQUFNLElBQUksSUFBSSxJQUFJLE1BQU0sQ0FBQyxJQUFJLElBQUksQ0FBQyxFQUFFO1FBQ3RDLEdBQUcsQ0FBQyxNQUFNLENBQUMsR0FBRyxDQUFDLENBQUE7S0FDaEI7QUFDSCxDQUFDIn0=
+//# sourceMappingURL=set_operations.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/mutation-observers/dist/index.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/@stimulus/mutation-observers/dist/index.js ***!
-  \*****************************************************************/
-/*! exports provided: AttributeObserver, ElementObserver, TokenListObserver, ValueListObserver */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _src_attribute_observer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/attribute_observer */ "./node_modules/@stimulus/mutation-observers/dist/src/attribute_observer.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AttributeObserver", function() { return _src_attribute_observer__WEBPACK_IMPORTED_MODULE_0__["AttributeObserver"]; });
-
-/* harmony import */ var _src_element_observer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/element_observer */ "./node_modules/@stimulus/mutation-observers/dist/src/element_observer.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ElementObserver", function() { return _src_element_observer__WEBPACK_IMPORTED_MODULE_1__["ElementObserver"]; });
-
-/* harmony import */ var _src_token_list_observer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/token_list_observer */ "./node_modules/@stimulus/mutation-observers/dist/src/token_list_observer.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TokenListObserver", function() { return _src_token_list_observer__WEBPACK_IMPORTED_MODULE_2__["TokenListObserver"]; });
-
-/* harmony import */ var _src_value_list_observer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/value_list_observer */ "./node_modules/@stimulus/mutation-observers/dist/src/value_list_observer.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ValueListObserver", function() { return _src_value_list_observer__WEBPACK_IMPORTED_MODULE_3__["ValueListObserver"]; });
-
-
-
-
-
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxjQUFjLDBCQUEwQixDQUFBO0FBQ3hDLGNBQWMsd0JBQXdCLENBQUE7QUFDdEMsY0FBYywyQkFBMkIsQ0FBQTtBQUN6QyxjQUFjLDJCQUEyQixDQUFBIn0=
-
-/***/ }),
-
-/***/ "./node_modules/@stimulus/mutation-observers/dist/src/attribute_observer.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/@stimulus/mutation-observers/dist/src/attribute_observer.js ***!
-  \**********************************************************************************/
+/***/ "./node_modules/@stimulus/mutation-observers/dist/attribute_observer.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/@stimulus/mutation-observers/dist/attribute_observer.js ***!
+  \******************************************************************************/
 /*! exports provided: AttributeObserver */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AttributeObserver", function() { return AttributeObserver; });
-/* harmony import */ var _element_observer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./element_observer */ "./node_modules/@stimulus/mutation-observers/dist/src/element_observer.js");
+/* harmony import */ var _element_observer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./element_observer */ "./node_modules/@stimulus/mutation-observers/dist/element_observer.js");
 
 var AttributeObserver = /** @class */ (function () {
     function AttributeObserver(element, attributeName, delegate) {
@@ -9659,14 +3194,14 @@ var AttributeObserver = /** @class */ (function () {
         get: function () {
             return this.elementObserver.element;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(AttributeObserver.prototype, "selector", {
         get: function () {
             return "[" + this.attributeName + "]";
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     AttributeObserver.prototype.start = function () {
@@ -9682,7 +3217,7 @@ var AttributeObserver = /** @class */ (function () {
         get: function () {
             return this.elementObserver.started;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     // Element observer delegate
@@ -9712,14 +3247,14 @@ var AttributeObserver = /** @class */ (function () {
     return AttributeObserver;
 }());
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXR0cmlidXRlX29ic2VydmVyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vc3JjL2F0dHJpYnV0ZV9vYnNlcnZlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxPQUFPLEVBQUUsZUFBZSxFQUEyQixNQUFNLG9CQUFvQixDQUFBO0FBUTdFO0lBTUUsMkJBQVksT0FBZ0IsRUFBRSxhQUFxQixFQUFFLFFBQW1DO1FBQ3RGLElBQUksQ0FBQyxhQUFhLEdBQUcsYUFBYSxDQUFBO1FBQ2xDLElBQUksQ0FBQyxRQUFRLEdBQUcsUUFBUSxDQUFBO1FBRXhCLElBQUksQ0FBQyxlQUFlLEdBQUcsSUFBSSxlQUFlLENBQUMsT0FBTyxFQUFFLElBQUksQ0FBQyxDQUFBO0lBQzNELENBQUM7SUFFRCxzQkFBSSxzQ0FBTzthQUFYO1lBQ0UsT0FBTyxJQUFJLENBQUMsZUFBZSxDQUFDLE9BQU8sQ0FBQTtRQUNyQyxDQUFDOzs7T0FBQTtJQUVELHNCQUFJLHVDQUFRO2FBQVo7WUFDRSxPQUFPLE1BQUksSUFBSSxDQUFDLGFBQWEsTUFBRyxDQUFBO1FBQ2xDLENBQUM7OztPQUFBO0lBRUQsaUNBQUssR0FBTDtRQUNFLElBQUksQ0FBQyxlQUFlLENBQUMsS0FBSyxFQUFFLENBQUE7SUFDOUIsQ0FBQztJQUVELGdDQUFJLEdBQUo7UUFDRSxJQUFJLENBQUMsZUFBZSxDQUFDLElBQUksRUFBRSxDQUFBO0lBQzdCLENBQUM7SUFFRCxtQ0FBTyxHQUFQO1FBQ0UsSUFBSSxDQUFDLGVBQWUsQ0FBQyxPQUFPLEVBQUUsQ0FBQTtJQUNoQyxDQUFDO0lBRUQsc0JBQUksc0NBQU87YUFBWDtZQUNFLE9BQU8sSUFBSSxDQUFDLGVBQWUsQ0FBQyxPQUFPLENBQUE7UUFDckMsQ0FBQzs7O09BQUE7SUFFRCw0QkFBNEI7SUFFNUIsd0NBQVksR0FBWixVQUFhLE9BQWdCO1FBQzNCLE9BQU8sT0FBTyxDQUFDLFlBQVksQ0FBQyxJQUFJLENBQUMsYUFBYSxDQUFDLENBQUE7SUFDakQsQ0FBQztJQUVELCtDQUFtQixHQUFuQixVQUFvQixJQUFhO1FBQy9CLElBQU0sS0FBSyxHQUFHLElBQUksQ0FBQyxZQUFZLENBQUMsSUFBSSxDQUFDLENBQUMsQ0FBQyxDQUFDLENBQUMsSUFBSSxDQUFDLENBQUMsQ0FBQyxDQUFDLEVBQUUsQ0FBQTtRQUNuRCxJQUFNLE9BQU8sR0FBRyxLQUFLLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxnQkFBZ0IsQ0FBQyxJQUFJLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQTtRQUNoRSxPQUFPLEtBQUssQ0FBQyxNQUFNLENBQUMsT0FBTyxDQUFDLENBQUE7SUFDOUIsQ0FBQztJQUVELDBDQUFjLEdBQWQsVUFBZSxPQUFnQjtRQUM3QixJQUFJLElBQUksQ0FBQyxRQUFRLENBQUMsdUJBQXVCLEVBQUU7WUFDekMsSUFBSSxDQUFDLFFBQVEsQ0FBQyx1QkFBdUIsQ0FBQyxPQUFPLEVBQUUsSUFBSSxDQUFDLGFBQWEsQ0FBQyxDQUFBO1NBQ25FO0lBQ0gsQ0FBQztJQUVELDRDQUFnQixHQUFoQixVQUFpQixPQUFnQjtRQUMvQixJQUFJLElBQUksQ0FBQyxRQUFRLENBQUMseUJBQXlCLEVBQUU7WUFDM0MsSUFBSSxDQUFDLFFBQVEsQ0FBQyx5QkFBeUIsQ0FBQyxPQUFPLEVBQUUsSUFBSSxDQUFDLGFBQWEsQ0FBQyxDQUFBO1NBQ3JFO0lBQ0gsQ0FBQztJQUVELG1EQUF1QixHQUF2QixVQUF3QixPQUFnQixFQUFFLGFBQXFCO1FBQzdELElBQUksSUFBSSxDQUFDLFFBQVEsQ0FBQyw0QkFBNEIsSUFBSSxJQUFJLENBQUMsYUFBYSxJQUFJLGFBQWEsRUFBRTtZQUNyRixJQUFJLENBQUMsUUFBUSxDQUFDLDRCQUE0QixDQUFDLE9BQU8sRUFBRSxhQUFhLENBQUMsQ0FBQTtTQUNuRTtJQUNILENBQUM7SUFDSCx3QkFBQztBQUFELENBQUMsQUFsRUQsSUFrRUMifQ==
+//# sourceMappingURL=attribute_observer.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/mutation-observers/dist/src/element_observer.js":
-/*!********************************************************************************!*\
-  !*** ./node_modules/@stimulus/mutation-observers/dist/src/element_observer.js ***!
-  \********************************************************************************/
+/***/ "./node_modules/@stimulus/mutation-observers/dist/element_observer.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@stimulus/mutation-observers/dist/element_observer.js ***!
+  \****************************************************************************/
 /*! exports provided: ElementObserver */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -9863,21 +3398,173 @@ var ElementObserver = /** @class */ (function () {
     return ElementObserver;
 }());
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZWxlbWVudF9vYnNlcnZlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9lbGVtZW50X29ic2VydmVyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQVNBO0lBUUUseUJBQVksT0FBZ0IsRUFBRSxRQUFpQztRQUEvRCxpQkFPQztRQU5DLElBQUksQ0FBQyxPQUFPLEdBQUcsT0FBTyxDQUFBO1FBQ3RCLElBQUksQ0FBQyxPQUFPLEdBQUcsS0FBSyxDQUFBO1FBQ3BCLElBQUksQ0FBQyxRQUFRLEdBQUcsUUFBUSxDQUFBO1FBRXhCLElBQUksQ0FBQyxRQUFRLEdBQUcsSUFBSSxHQUFHLENBQUE7UUFDdkIsSUFBSSxDQUFDLGdCQUFnQixHQUFHLElBQUksZ0JBQWdCLENBQUMsVUFBQyxTQUFTLElBQUssT0FBQSxLQUFJLENBQUMsZ0JBQWdCLENBQUMsU0FBUyxDQUFDLEVBQWhDLENBQWdDLENBQUMsQ0FBQTtJQUMvRixDQUFDO0lBRUQsK0JBQUssR0FBTDtRQUNFLElBQUksQ0FBQyxJQUFJLENBQUMsT0FBTyxFQUFFO1lBQ2pCLElBQUksQ0FBQyxPQUFPLEdBQUcsSUFBSSxDQUFBO1lBQ25CLElBQUksQ0FBQyxnQkFBZ0IsQ0FBQyxPQUFPLENBQUMsSUFBSSxDQUFDLE9BQU8sRUFBRSxFQUFFLFVBQVUsRUFBRSxJQUFJLEVBQUUsU0FBUyxFQUFFLElBQUksRUFBRSxPQUFPLEVBQUUsSUFBSSxFQUFFLENBQUMsQ0FBQTtZQUNqRyxJQUFJLENBQUMsT0FBTyxFQUFFLENBQUE7U0FDZjtJQUNILENBQUM7SUFFRCw4QkFBSSxHQUFKO1FBQ0UsSUFBSSxJQUFJLENBQUMsT0FBTyxFQUFFO1lBQ2hCLElBQUksQ0FBQyxnQkFBZ0IsQ0FBQyxXQUFXLEVBQUUsQ0FBQTtZQUNuQyxJQUFJLENBQUMsZ0JBQWdCLENBQUMsVUFBVSxFQUFFLENBQUE7WUFDbEMsSUFBSSxDQUFDLE9BQU8sR0FBRyxLQUFLLENBQUE7U0FDckI7SUFDSCxDQUFDO0lBRUQsaUNBQU8sR0FBUDtRQUNFLElBQUksSUFBSSxDQUFDLE9BQU8sRUFBRTtZQUNoQixJQUFNLE9BQU8sR0FBRyxJQUFJLEdBQUcsQ0FBQyxJQUFJLENBQUMsbUJBQW1CLEVBQUUsQ0FBQyxDQUFBO1lBRW5ELEtBQXNCLFVBQXlCLEVBQXpCLEtBQUEsS0FBSyxDQUFDLElBQUksQ0FBQyxJQUFJLENBQUMsUUFBUSxDQUFDLEVBQXpCLGNBQXlCLEVBQXpCLElBQXlCLEVBQUU7Z0JBQTVDLElBQU0sT0FBTyxTQUFBO2dCQUNoQixJQUFJLENBQUMsT0FBTyxDQUFDLEdBQUcsQ0FBQyxPQUFPLENBQUMsRUFBRTtvQkFDekIsSUFBSSxDQUFDLGFBQWEsQ0FBQyxPQUFPLENBQUMsQ0FBQTtpQkFDNUI7YUFDRjtZQUVELEtBQXNCLFVBQW1CLEVBQW5CLEtBQUEsS0FBSyxDQUFDLElBQUksQ0FBQyxPQUFPLENBQUMsRUFBbkIsY0FBbUIsRUFBbkIsSUFBbUIsRUFBRTtnQkFBdEMsSUFBTSxPQUFPLFNBQUE7Z0JBQ2hCLElBQUksQ0FBQyxVQUFVLENBQUMsT0FBTyxDQUFDLENBQUE7YUFDekI7U0FDRjtJQUNILENBQUM7SUFFRCw2QkFBNkI7SUFFckIsMENBQWdCLEdBQXhCLFVBQXlCLFNBQTJCO1FBQ2xELElBQUksSUFBSSxDQUFDLE9BQU8sRUFBRTtZQUNoQixLQUF1QixVQUFTLEVBQVQsdUJBQVMsRUFBVCx1QkFBUyxFQUFULElBQVMsRUFBRTtnQkFBN0IsSUFBTSxRQUFRLGtCQUFBO2dCQUNqQixJQUFJLENBQUMsZUFBZSxDQUFDLFFBQVEsQ0FBQyxDQUFBO2FBQy9CO1NBQ0Y7SUFDSCxDQUFDO0lBRU8seUNBQWUsR0FBdkIsVUFBd0IsUUFBd0I7UUFDOUMsSUFBSSxRQUFRLENBQUMsSUFBSSxJQUFJLFlBQVksRUFBRTtZQUNqQyxJQUFJLENBQUMsc0JBQXNCLENBQUMsUUFBUSxDQUFDLE1BQU0sRUFBRSxRQUFRLENBQUMsYUFBYyxDQUFDLENBQUE7U0FDdEU7YUFBTSxJQUFJLFFBQVEsQ0FBQyxJQUFJLElBQUksV0FBVyxFQUFFO1lBQ3ZDLElBQUksQ0FBQyxtQkFBbUIsQ0FBQyxRQUFRLENBQUMsWUFBWSxDQUFDLENBQUE7WUFDL0MsSUFBSSxDQUFDLGlCQUFpQixDQUFDLFFBQVEsQ0FBQyxVQUFVLENBQUMsQ0FBQTtTQUM1QztJQUNILENBQUM7SUFFTyxnREFBc0IsR0FBOUIsVUFBK0IsSUFBVSxFQUFFLGFBQXFCO1FBQzlELElBQU0sT0FBTyxHQUFHLElBQWUsQ0FBQTtRQUMvQixJQUFJLElBQUksQ0FBQyxRQUFRLENBQUMsR0FBRyxDQUFDLE9BQU8sQ0FBQyxFQUFFO1lBQzlCLElBQUksSUFBSSxDQUFDLFFBQVEsQ0FBQyx1QkFBdUIsSUFBSSxJQUFJLENBQUMsWUFBWSxDQUFDLE9BQU8sQ0FBQyxFQUFFO2dCQUN2RSxJQUFJLENBQUMsUUFBUSxDQUFDLHVCQUF1QixDQUFDLE9BQU8sRUFBRSxhQUFhLENBQUMsQ0FBQTthQUM5RDtpQkFBTTtnQkFDTCxJQUFJLENBQUMsYUFBYSxDQUFDLE9BQU8sQ0FBQyxDQUFBO2FBQzVCO1NBQ0Y7YUFBTSxJQUFJLElBQUksQ0FBQyxZQUFZLENBQUMsT0FBTyxDQUFDLEVBQUU7WUFDckMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxPQUFPLENBQUMsQ0FBQTtTQUN6QjtJQUNILENBQUM7SUFFTyw2Q0FBbUIsR0FBM0IsVUFBNEIsS0FBZTtRQUN6QyxLQUFtQixVQUFpQixFQUFqQixLQUFBLEtBQUssQ0FBQyxJQUFJLENBQUMsS0FBSyxDQUFDLEVBQWpCLGNBQWlCLEVBQWpCLElBQWlCLEVBQUU7WUFBakMsSUFBTSxJQUFJLFNBQUE7WUFDYixJQUFNLE9BQU8sR0FBRyxJQUFJLENBQUMsZUFBZSxDQUFDLElBQUksQ0FBQyxDQUFBO1lBQzFDLElBQUksT0FBTyxFQUFFO2dCQUNYLElBQUksQ0FBQyxXQUFXLENBQUMsT0FBTyxFQUFFLElBQUksQ0FBQyxhQUFhLENBQUMsQ0FBQTthQUM5QztTQUNGO0lBQ0gsQ0FBQztJQUVPLDJDQUFpQixHQUF6QixVQUEwQixLQUFlO1FBQ3ZDLEtBQW1CLFVBQWlCLEVBQWpCLEtBQUEsS0FBSyxDQUFDLElBQUksQ0FBQyxLQUFLLENBQUMsRUFBakIsY0FBaUIsRUFBakIsSUFBaUIsRUFBRTtZQUFqQyxJQUFNLElBQUksU0FBQTtZQUNiLElBQU0sT0FBTyxHQUFHLElBQUksQ0FBQyxlQUFlLENBQUMsSUFBSSxDQUFDLENBQUE7WUFDMUMsSUFBSSxPQUFPLElBQUksSUFBSSxDQUFDLGVBQWUsQ0FBQyxPQUFPLENBQUMsRUFBRTtnQkFDNUMsSUFBSSxDQUFDLFdBQVcsQ0FBQyxPQUFPLEVBQUUsSUFBSSxDQUFDLFVBQVUsQ0FBQyxDQUFBO2FBQzNDO1NBQ0Y7SUFDSCxDQUFDO0lBRUQsbUJBQW1CO0lBRVgsc0NBQVksR0FBcEIsVUFBcUIsT0FBZ0I7UUFDbkMsT0FBTyxJQUFJLENBQUMsUUFBUSxDQUFDLFlBQVksQ0FBQyxPQUFPLENBQUMsQ0FBQTtJQUM1QyxDQUFDO0lBRU8sNkNBQW1CLEdBQTNCLFVBQTRCLElBQTRCO1FBQTVCLHFCQUFBLEVBQUEsT0FBZ0IsSUFBSSxDQUFDLE9BQU87UUFDdEQsT0FBTyxJQUFJLENBQUMsUUFBUSxDQUFDLG1CQUFtQixDQUFDLElBQUksQ0FBQyxDQUFBO0lBQ2hELENBQUM7SUFFTyxxQ0FBVyxHQUFuQixVQUFvQixJQUFhLEVBQUUsU0FBcUM7UUFDdEUsS0FBc0IsVUFBOEIsRUFBOUIsS0FBQSxJQUFJLENBQUMsbUJBQW1CLENBQUMsSUFBSSxDQUFDLEVBQTlCLGNBQThCLEVBQTlCLElBQThCLEVBQUU7WUFBakQsSUFBTSxPQUFPLFNBQUE7WUFDaEIsU0FBUyxDQUFDLElBQUksQ0FBQyxJQUFJLEVBQUUsT0FBTyxDQUFDLENBQUE7U0FDOUI7SUFDSCxDQUFDO0lBRU8seUNBQWUsR0FBdkIsVUFBd0IsSUFBVTtRQUNoQyxJQUFJLElBQUksQ0FBQyxRQUFRLElBQUksSUFBSSxDQUFDLFlBQVksRUFBRTtZQUN0QyxPQUFPLElBQWUsQ0FBQTtTQUN2QjtJQUNILENBQUM7SUFFTyx5Q0FBZSxHQUF2QixVQUF3QixPQUFnQjtRQUN0QyxJQUFJLE9BQU8sQ0FBQyxXQUFXLElBQUksSUFBSSxDQUFDLE9BQU8sQ0FBQyxXQUFXLEVBQUU7WUFDbkQsT0FBTyxLQUFLLENBQUE7U0FDYjthQUFNO1lBQ0wsT0FBTyxJQUFJLENBQUMsT0FBTyxDQUFDLFFBQVEsQ0FBQyxPQUFPLENBQUMsQ0FBQTtTQUN0QztJQUNILENBQUM7SUFFRCxtQkFBbUI7SUFFWCxvQ0FBVSxHQUFsQixVQUFtQixPQUFnQjtRQUNqQyxJQUFJLENBQUMsSUFBSSxDQUFDLFFBQVEsQ0FBQyxHQUFHLENBQUMsT0FBTyxDQUFDLEVBQUU7WUFDL0IsSUFBSSxJQUFJLENBQUMsZUFBZSxDQUFDLE9BQU8sQ0FBQyxFQUFFO2dCQUNqQyxJQUFJLENBQUMsUUFBUSxDQUFDLEdBQUcsQ0FBQyxPQUFPLENBQUMsQ0FBQTtnQkFDMUIsSUFBSSxJQUFJLENBQUMsUUFBUSxDQUFDLGNBQWMsRUFBRTtvQkFDaEMsSUFBSSxDQUFDLFFBQVEsQ0FBQyxjQUFjLENBQUMsT0FBTyxDQUFDLENBQUE7aUJBQ3RDO2FBQ0Y7U0FDRjtJQUNILENBQUM7SUFFTyx1Q0FBYSxHQUFyQixVQUFzQixPQUFnQjtRQUNwQyxJQUFJLElBQUksQ0FBQyxRQUFRLENBQUMsR0FBRyxDQUFDLE9BQU8sQ0FBQyxFQUFFO1lBQzlCLElBQUksQ0FBQyxRQUFRLENBQUMsTUFBTSxDQUFDLE9BQU8sQ0FBQyxDQUFBO1lBQzdCLElBQUksSUFBSSxDQUFDLFFBQVEsQ0FBQyxnQkFBZ0IsRUFBRTtnQkFDbEMsSUFBSSxDQUFDLFFBQVEsQ0FBQyxnQkFBZ0IsQ0FBQyxPQUFPLENBQUMsQ0FBQTthQUN4QztTQUNGO0lBQ0gsQ0FBQztJQUNILHNCQUFDO0FBQUQsQ0FBQyxBQXRKRCxJQXNKQyJ9
+//# sourceMappingURL=element_observer.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/mutation-observers/dist/src/token_list_observer.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/@stimulus/mutation-observers/dist/src/token_list_observer.js ***!
-  \***********************************************************************************/
+/***/ "./node_modules/@stimulus/mutation-observers/dist/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@stimulus/mutation-observers/dist/index.js ***!
+  \*****************************************************************/
+/*! exports provided: AttributeObserver, ElementObserver, StringMapObserver, TokenListObserver, ValueListObserver */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _attribute_observer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./attribute_observer */ "./node_modules/@stimulus/mutation-observers/dist/attribute_observer.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AttributeObserver", function() { return _attribute_observer__WEBPACK_IMPORTED_MODULE_0__["AttributeObserver"]; });
+
+/* harmony import */ var _element_observer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./element_observer */ "./node_modules/@stimulus/mutation-observers/dist/element_observer.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ElementObserver", function() { return _element_observer__WEBPACK_IMPORTED_MODULE_1__["ElementObserver"]; });
+
+/* harmony import */ var _string_map_observer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./string_map_observer */ "./node_modules/@stimulus/mutation-observers/dist/string_map_observer.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StringMapObserver", function() { return _string_map_observer__WEBPACK_IMPORTED_MODULE_2__["StringMapObserver"]; });
+
+/* harmony import */ var _token_list_observer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./token_list_observer */ "./node_modules/@stimulus/mutation-observers/dist/token_list_observer.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TokenListObserver", function() { return _token_list_observer__WEBPACK_IMPORTED_MODULE_3__["TokenListObserver"]; });
+
+/* harmony import */ var _value_list_observer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./value_list_observer */ "./node_modules/@stimulus/mutation-observers/dist/value_list_observer.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ValueListObserver", function() { return _value_list_observer__WEBPACK_IMPORTED_MODULE_4__["ValueListObserver"]; });
+
+
+
+
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@stimulus/mutation-observers/dist/string_map_observer.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/@stimulus/mutation-observers/dist/string_map_observer.js ***!
+  \*******************************************************************************/
+/*! exports provided: StringMapObserver */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StringMapObserver", function() { return StringMapObserver; });
+var StringMapObserver = /** @class */ (function () {
+    function StringMapObserver(element, delegate) {
+        var _this = this;
+        this.element = element;
+        this.delegate = delegate;
+        this.started = false;
+        this.stringMap = new Map;
+        this.mutationObserver = new MutationObserver(function (mutations) { return _this.processMutations(mutations); });
+    }
+    StringMapObserver.prototype.start = function () {
+        if (!this.started) {
+            this.started = true;
+            this.mutationObserver.observe(this.element, { attributes: true });
+            this.refresh();
+        }
+    };
+    StringMapObserver.prototype.stop = function () {
+        if (this.started) {
+            this.mutationObserver.takeRecords();
+            this.mutationObserver.disconnect();
+            this.started = false;
+        }
+    };
+    StringMapObserver.prototype.refresh = function () {
+        if (this.started) {
+            for (var _i = 0, _a = this.knownAttributeNames; _i < _a.length; _i++) {
+                var attributeName = _a[_i];
+                this.refreshAttribute(attributeName);
+            }
+        }
+    };
+    // Mutation record processing
+    StringMapObserver.prototype.processMutations = function (mutations) {
+        if (this.started) {
+            for (var _i = 0, mutations_1 = mutations; _i < mutations_1.length; _i++) {
+                var mutation = mutations_1[_i];
+                this.processMutation(mutation);
+            }
+        }
+    };
+    StringMapObserver.prototype.processMutation = function (mutation) {
+        var attributeName = mutation.attributeName;
+        if (attributeName) {
+            this.refreshAttribute(attributeName);
+        }
+    };
+    // State tracking
+    StringMapObserver.prototype.refreshAttribute = function (attributeName) {
+        var key = this.delegate.getStringMapKeyForAttribute(attributeName);
+        if (key != null) {
+            if (!this.stringMap.has(attributeName)) {
+                this.stringMapKeyAdded(key, attributeName);
+            }
+            var value = this.element.getAttribute(attributeName);
+            if (this.stringMap.get(attributeName) != value) {
+                this.stringMapValueChanged(value, key);
+            }
+            if (value == null) {
+                this.stringMap.delete(attributeName);
+                this.stringMapKeyRemoved(key, attributeName);
+            }
+            else {
+                this.stringMap.set(attributeName, value);
+            }
+        }
+    };
+    StringMapObserver.prototype.stringMapKeyAdded = function (key, attributeName) {
+        if (this.delegate.stringMapKeyAdded) {
+            this.delegate.stringMapKeyAdded(key, attributeName);
+        }
+    };
+    StringMapObserver.prototype.stringMapValueChanged = function (value, key) {
+        if (this.delegate.stringMapValueChanged) {
+            this.delegate.stringMapValueChanged(value, key);
+        }
+    };
+    StringMapObserver.prototype.stringMapKeyRemoved = function (key, attributeName) {
+        if (this.delegate.stringMapKeyRemoved) {
+            this.delegate.stringMapKeyRemoved(key, attributeName);
+        }
+    };
+    Object.defineProperty(StringMapObserver.prototype, "knownAttributeNames", {
+        get: function () {
+            return Array.from(new Set(this.currentAttributeNames.concat(this.recordedAttributeNames)));
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(StringMapObserver.prototype, "currentAttributeNames", {
+        get: function () {
+            return Array.from(this.element.attributes).map(function (attribute) { return attribute.name; });
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(StringMapObserver.prototype, "recordedAttributeNames", {
+        get: function () {
+            return Array.from(this.stringMap.keys());
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return StringMapObserver;
+}());
+
+//# sourceMappingURL=string_map_observer.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@stimulus/mutation-observers/dist/token_list_observer.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/@stimulus/mutation-observers/dist/token_list_observer.js ***!
+  \*******************************************************************************/
 /*! exports provided: TokenListObserver */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TokenListObserver", function() { return TokenListObserver; });
-/* harmony import */ var _attribute_observer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./attribute_observer */ "./node_modules/@stimulus/mutation-observers/dist/src/attribute_observer.js");
+/* harmony import */ var _attribute_observer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./attribute_observer */ "./node_modules/@stimulus/mutation-observers/dist/attribute_observer.js");
 /* harmony import */ var _stimulus_multimap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @stimulus/multimap */ "./node_modules/@stimulus/multimap/dist/index.js");
 
 
@@ -9891,7 +3578,7 @@ var TokenListObserver = /** @class */ (function () {
         get: function () {
             return this.attributeObserver.started;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     TokenListObserver.prototype.start = function () {
@@ -9907,14 +3594,14 @@ var TokenListObserver = /** @class */ (function () {
         get: function () {
             return this.attributeObserver.element;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(TokenListObserver.prototype, "attributeName", {
         get: function () {
             return this.attributeObserver.attributeName;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     // Attribute observer delegate
@@ -9979,21 +3666,21 @@ function zip(left, right) {
 function tokensAreEqual(left, right) {
     return left && right && left.index == right.index && left.content == right.content;
 }
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidG9rZW5fbGlzdF9vYnNlcnZlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy90b2tlbl9saXN0X29ic2VydmVyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sRUFBRSxpQkFBaUIsRUFBNkIsTUFBTSxzQkFBc0IsQ0FBQTtBQUNuRixPQUFPLEVBQUUsUUFBUSxFQUFFLE1BQU0sb0JBQW9CLENBQUE7QUFjN0M7SUFLRSwyQkFBWSxPQUFnQixFQUFFLGFBQXFCLEVBQUUsUUFBbUM7UUFDdEYsSUFBSSxDQUFDLGlCQUFpQixHQUFHLElBQUksaUJBQWlCLENBQUMsT0FBTyxFQUFFLGFBQWEsRUFBRSxJQUFJLENBQUMsQ0FBQTtRQUM1RSxJQUFJLENBQUMsUUFBUSxHQUFHLFFBQVEsQ0FBQTtRQUN4QixJQUFJLENBQUMsZUFBZSxHQUFHLElBQUksUUFBUSxDQUFBO0lBQ3JDLENBQUM7SUFFRCxzQkFBSSxzQ0FBTzthQUFYO1lBQ0UsT0FBTyxJQUFJLENBQUMsaUJBQWlCLENBQUMsT0FBTyxDQUFBO1FBQ3ZDLENBQUM7OztPQUFBO0lBRUQsaUNBQUssR0FBTDtRQUNFLElBQUksQ0FBQyxpQkFBaUIsQ0FBQyxLQUFLLEVBQUUsQ0FBQTtJQUNoQyxDQUFDO0lBRUQsZ0NBQUksR0FBSjtRQUNFLElBQUksQ0FBQyxpQkFBaUIsQ0FBQyxJQUFJLEVBQUUsQ0FBQTtJQUMvQixDQUFDO0lBRUQsbUNBQU8sR0FBUDtRQUNFLElBQUksQ0FBQyxpQkFBaUIsQ0FBQyxPQUFPLEVBQUUsQ0FBQTtJQUNsQyxDQUFDO0lBRUQsc0JBQUksc0NBQU87YUFBWDtZQUNFLE9BQU8sSUFBSSxDQUFDLGlCQUFpQixDQUFDLE9BQU8sQ0FBQTtRQUN2QyxDQUFDOzs7T0FBQTtJQUVELHNCQUFJLDRDQUFhO2FBQWpCO1lBQ0UsT0FBTyxJQUFJLENBQUMsaUJBQWlCLENBQUMsYUFBYSxDQUFBO1FBQzdDLENBQUM7OztPQUFBO0lBRUQsOEJBQThCO0lBRTlCLG1EQUF1QixHQUF2QixVQUF3QixPQUFnQjtRQUN0QyxJQUFJLENBQUMsYUFBYSxDQUFDLElBQUksQ0FBQyxvQkFBb0IsQ0FBQyxPQUFPLENBQUMsQ0FBQyxDQUFBO0lBQ3hELENBQUM7SUFFRCx3REFBNEIsR0FBNUIsVUFBNkIsT0FBZ0I7UUFDckMsSUFBQSwwQ0FBd0UsRUFBdkUsdUJBQWUsRUFBRSxxQkFBYSxDQUF5QztRQUM5RSxJQUFJLENBQUMsZUFBZSxDQUFDLGVBQWUsQ0FBQyxDQUFBO1FBQ3JDLElBQUksQ0FBQyxhQUFhLENBQUMsYUFBYSxDQUFDLENBQUE7SUFDbkMsQ0FBQztJQUVELHFEQUF5QixHQUF6QixVQUEwQixPQUFnQjtRQUN4QyxJQUFJLENBQUMsZUFBZSxDQUFDLElBQUksQ0FBQyxlQUFlLENBQUMsZUFBZSxDQUFDLE9BQU8sQ0FBQyxDQUFDLENBQUE7SUFDckUsQ0FBQztJQUVPLHlDQUFhLEdBQXJCLFVBQXNCLE1BQWU7UUFBckMsaUJBRUM7UUFEQyxNQUFNLENBQUMsT0FBTyxDQUFDLFVBQUEsS0FBSyxJQUFJLE9BQUEsS0FBSSxDQUFDLFlBQVksQ0FBQyxLQUFLLENBQUMsRUFBeEIsQ0FBd0IsQ0FBQyxDQUFBO0lBQ25ELENBQUM7SUFFTywyQ0FBZSxHQUF2QixVQUF3QixNQUFlO1FBQXZDLGlCQUVDO1FBREMsTUFBTSxDQUFDLE9BQU8sQ0FBQyxVQUFBLEtBQUssSUFBSSxPQUFBLEtBQUksQ0FBQyxjQUFjLENBQUMsS0FBSyxDQUFDLEVBQTFCLENBQTBCLENBQUMsQ0FBQTtJQUNyRCxDQUFDO0lBRU8sd0NBQVksR0FBcEIsVUFBcUIsS0FBWTtRQUMvQixJQUFJLENBQUMsUUFBUSxDQUFDLFlBQVksQ0FBQyxLQUFLLENBQUMsQ0FBQTtRQUNqQyxJQUFJLENBQUMsZUFBZSxDQUFDLEdBQUcsQ0FBQyxLQUFLLENBQUMsT0FBTyxFQUFFLEtBQUssQ0FBQyxDQUFBO0lBQ2hELENBQUM7SUFFTywwQ0FBYyxHQUF0QixVQUF1QixLQUFZO1FBQ2pDLElBQUksQ0FBQyxRQUFRLENBQUMsY0FBYyxDQUFDLEtBQUssQ0FBQyxDQUFBO1FBQ25DLElBQUksQ0FBQyxlQUFlLENBQUMsTUFBTSxDQUFDLEtBQUssQ0FBQyxPQUFPLEVBQUUsS0FBSyxDQUFDLENBQUE7SUFDbkQsQ0FBQztJQUVPLG1EQUF1QixHQUEvQixVQUFnQyxPQUFnQjtRQUM5QyxJQUFNLGNBQWMsR0FBRyxJQUFJLENBQUMsZUFBZSxDQUFDLGVBQWUsQ0FBQyxPQUFPLENBQUMsQ0FBQTtRQUNwRSxJQUFNLGFBQWEsR0FBRyxJQUFJLENBQUMsb0JBQW9CLENBQUMsT0FBTyxDQUFDLENBQUE7UUFDeEQsSUFBTSxtQkFBbUIsR0FBRyxHQUFHLENBQUMsY0FBYyxFQUFFLGFBQWEsQ0FBQzthQUMzRCxTQUFTLENBQUMsVUFBQyxFQUE2QjtnQkFBNUIscUJBQWEsRUFBRSxvQkFBWTtZQUFNLE9BQUEsQ0FBQyxjQUFjLENBQUMsYUFBYSxFQUFFLFlBQVksQ0FBQztRQUE1QyxDQUE0QyxDQUFDLENBQUE7UUFFN0YsSUFBSSxtQkFBbUIsSUFBSSxDQUFDLENBQUMsRUFBRTtZQUM3QixPQUFPLENBQUMsRUFBRSxFQUFFLEVBQUUsQ0FBQyxDQUFBO1NBQ2hCO2FBQU07WUFDTCxPQUFPLENBQUMsY0FBYyxDQUFDLEtBQUssQ0FBQyxtQkFBbUIsQ0FBQyxFQUFFLGFBQWEsQ0FBQyxLQUFLLENBQUMsbUJBQW1CLENBQUMsQ0FBQyxDQUFBO1NBQzdGO0lBQ0gsQ0FBQztJQUVPLGdEQUFvQixHQUE1QixVQUE2QixPQUFnQjtRQUMzQyxJQUFNLGFBQWEsR0FBRyxJQUFJLENBQUMsYUFBYSxDQUFBO1FBQ3hDLElBQU0sV0FBVyxHQUFHLE9BQU8sQ0FBQyxZQUFZLENBQUMsYUFBYSxDQUFDLElBQUksRUFBRSxDQUFBO1FBQzdELE9BQU8sZ0JBQWdCLENBQUMsV0FBVyxFQUFFLE9BQU8sRUFBRSxhQUFhLENBQUMsQ0FBQTtJQUM5RCxDQUFDO0lBQ0gsd0JBQUM7QUFBRCxDQUFDLEFBdkZELElBdUZDOztBQUVELDBCQUEwQixXQUFtQixFQUFFLE9BQWdCLEVBQUUsYUFBcUI7SUFDcEYsT0FBTyxXQUFXLENBQUMsSUFBSSxFQUFFLENBQUMsS0FBSyxDQUFDLEtBQUssQ0FBQyxDQUFDLE1BQU0sQ0FBQyxVQUFBLE9BQU8sSUFBSSxPQUFBLE9BQU8sQ0FBQyxNQUFNLEVBQWQsQ0FBYyxDQUFDO1NBQ3JFLEdBQUcsQ0FBQyxVQUFDLE9BQU8sRUFBRSxLQUFLLElBQUssT0FBQSxDQUFDLEVBQUUsT0FBTyxTQUFBLEVBQUUsYUFBYSxlQUFBLEVBQUUsT0FBTyxTQUFBLEVBQUUsS0FBSyxPQUFBLEVBQUUsQ0FBQyxFQUE1QyxDQUE0QyxDQUFDLENBQUE7QUFDMUUsQ0FBQztBQUVELGFBQW1CLElBQVMsRUFBRSxLQUFVO0lBQ3RDLElBQU0sTUFBTSxHQUFHLElBQUksQ0FBQyxHQUFHLENBQUMsSUFBSSxDQUFDLE1BQU0sRUFBRSxLQUFLLENBQUMsTUFBTSxDQUFDLENBQUE7SUFDbEQsT0FBTyxLQUFLLENBQUMsSUFBSSxDQUFDLEVBQUUsTUFBTSxRQUFBLEVBQUUsRUFBRSxVQUFDLENBQUMsRUFBRSxLQUFLLElBQUssT0FBQSxDQUFDLElBQUksQ0FBQyxLQUFLLENBQUMsRUFBRSxLQUFLLENBQUMsS0FBSyxDQUFDLENBQVcsRUFBckMsQ0FBcUMsQ0FBQyxDQUFBO0FBQ3BGLENBQUM7QUFFRCx3QkFBd0IsSUFBWSxFQUFFLEtBQWE7SUFDakQsT0FBTyxJQUFJLElBQUksS0FBSyxJQUFJLElBQUksQ0FBQyxLQUFLLElBQUksS0FBSyxDQUFDLEtBQUssSUFBSSxJQUFJLENBQUMsT0FBTyxJQUFJLEtBQUssQ0FBQyxPQUFPLENBQUE7QUFDcEYsQ0FBQyJ9
+//# sourceMappingURL=token_list_observer.js.map
 
 /***/ }),
 
-/***/ "./node_modules/@stimulus/mutation-observers/dist/src/value_list_observer.js":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/@stimulus/mutation-observers/dist/src/value_list_observer.js ***!
-  \***********************************************************************************/
+/***/ "./node_modules/@stimulus/mutation-observers/dist/value_list_observer.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/@stimulus/mutation-observers/dist/value_list_observer.js ***!
+  \*******************************************************************************/
 /*! exports provided: ValueListObserver */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ValueListObserver", function() { return ValueListObserver; });
-/* harmony import */ var _token_list_observer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./token_list_observer */ "./node_modules/@stimulus/mutation-observers/dist/src/token_list_observer.js");
+/* harmony import */ var _token_list_observer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./token_list_observer */ "./node_modules/@stimulus/mutation-observers/dist/token_list_observer.js");
 
 var ValueListObserver = /** @class */ (function () {
     function ValueListObserver(element, attributeName, delegate) {
@@ -10006,7 +3693,7 @@ var ValueListObserver = /** @class */ (function () {
         get: function () {
             return this.tokenListObserver.started;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     ValueListObserver.prototype.start = function () {
@@ -10022,14 +3709,14 @@ var ValueListObserver = /** @class */ (function () {
         get: function () {
             return this.tokenListObserver.element;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(ValueListObserver.prototype, "attributeName", {
         get: function () {
             return this.tokenListObserver.attributeName;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     ValueListObserver.prototype.tokenMatched = function (token) {
@@ -10076,7 +3763,7 @@ var ValueListObserver = /** @class */ (function () {
     return ValueListObserver;
 }());
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidmFsdWVfbGlzdF9vYnNlcnZlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy92YWx1ZV9saXN0X29ic2VydmVyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sRUFBUyxpQkFBaUIsRUFBNkIsTUFBTSx1QkFBdUIsQ0FBQTtBQWEzRjtJQU1FLDJCQUFZLE9BQWdCLEVBQUUsYUFBcUIsRUFBRSxRQUFzQztRQUN6RixJQUFJLENBQUMsaUJBQWlCLEdBQUcsSUFBSSxpQkFBaUIsQ0FBQyxPQUFPLEVBQUUsYUFBYSxFQUFFLElBQUksQ0FBQyxDQUFBO1FBQzVFLElBQUksQ0FBQyxRQUFRLEdBQUcsUUFBUSxDQUFBO1FBQ3hCLElBQUksQ0FBQyxtQkFBbUIsR0FBRyxJQUFJLE9BQU8sQ0FBQTtRQUN0QyxJQUFJLENBQUMsc0JBQXNCLEdBQUcsSUFBSSxPQUFPLENBQUE7SUFDM0MsQ0FBQztJQUVELHNCQUFJLHNDQUFPO2FBQVg7WUFDRSxPQUFPLElBQUksQ0FBQyxpQkFBaUIsQ0FBQyxPQUFPLENBQUE7UUFDdkMsQ0FBQzs7O09BQUE7SUFFRCxpQ0FBSyxHQUFMO1FBQ0UsSUFBSSxDQUFDLGlCQUFpQixDQUFDLEtBQUssRUFBRSxDQUFBO0lBQ2hDLENBQUM7SUFFRCxnQ0FBSSxHQUFKO1FBQ0UsSUFBSSxDQUFDLGlCQUFpQixDQUFDLElBQUksRUFBRSxDQUFBO0lBQy9CLENBQUM7SUFFRCxtQ0FBTyxHQUFQO1FBQ0UsSUFBSSxDQUFDLGlCQUFpQixDQUFDLE9BQU8sRUFBRSxDQUFBO0lBQ2xDLENBQUM7SUFFRCxzQkFBSSxzQ0FBTzthQUFYO1lBQ0UsT0FBTyxJQUFJLENBQUMsaUJBQWlCLENBQUMsT0FBTyxDQUFBO1FBQ3ZDLENBQUM7OztPQUFBO0lBRUQsc0JBQUksNENBQWE7YUFBakI7WUFDRSxPQUFPLElBQUksQ0FBQyxpQkFBaUIsQ0FBQyxhQUFhLENBQUE7UUFDN0MsQ0FBQzs7O09BQUE7SUFFRCx3Q0FBWSxHQUFaLFVBQWEsS0FBWTtRQUNmLElBQUEsdUJBQU8sQ0FBVTtRQUNqQixJQUFBLGtEQUFLLENBQXlDO1FBQ3RELElBQUksS0FBSyxFQUFFO1lBQ1QsSUFBSSxDQUFDLDRCQUE0QixDQUFDLE9BQU8sQ0FBQyxDQUFDLEdBQUcsQ0FBQyxLQUFLLEVBQUUsS0FBSyxDQUFDLENBQUE7WUFDNUQsSUFBSSxDQUFDLFFBQVEsQ0FBQyxtQkFBbUIsQ0FBQyxPQUFPLEVBQUUsS0FBSyxDQUFDLENBQUE7U0FDbEQ7SUFDSCxDQUFDO0lBRUQsMENBQWMsR0FBZCxVQUFlLEtBQVk7UUFDakIsSUFBQSx1QkFBTyxDQUFVO1FBQ2pCLElBQUEsa0RBQUssQ0FBeUM7UUFDdEQsSUFBSSxLQUFLLEVBQUU7WUFDVCxJQUFJLENBQUMsNEJBQTRCLENBQUMsT0FBTyxDQUFDLENBQUMsTUFBTSxDQUFDLEtBQUssQ0FBQyxDQUFBO1lBQ3hELElBQUksQ0FBQyxRQUFRLENBQUMscUJBQXFCLENBQUMsT0FBTyxFQUFFLEtBQUssQ0FBQyxDQUFBO1NBQ3BEO0lBQ0gsQ0FBQztJQUVPLG9EQUF3QixHQUFoQyxVQUFpQyxLQUFZO1FBQzNDLElBQUksV0FBVyxHQUFHLElBQUksQ0FBQyxtQkFBbUIsQ0FBQyxHQUFHLENBQUMsS0FBSyxDQUFDLENBQUE7UUFDckQsSUFBSSxDQUFDLFdBQVcsRUFBRTtZQUNoQixXQUFXLEdBQUcsSUFBSSxDQUFDLFVBQVUsQ0FBQyxLQUFLLENBQUMsQ0FBQTtZQUNwQyxJQUFJLENBQUMsbUJBQW1CLENBQUMsR0FBRyxDQUFDLEtBQUssRUFBRSxXQUFXLENBQUMsQ0FBQTtTQUNqRDtRQUNELE9BQU8sV0FBVyxDQUFBO0lBQ3BCLENBQUM7SUFFTyx3REFBNEIsR0FBcEMsVUFBcUMsT0FBZ0I7UUFDbkQsSUFBSSxhQUFhLEdBQUcsSUFBSSxDQUFDLHNCQUFzQixDQUFDLEdBQUcsQ0FBQyxPQUFPLENBQUMsQ0FBQTtRQUM1RCxJQUFJLENBQUMsYUFBYSxFQUFFO1lBQ2xCLGFBQWEsR0FBRyxJQUFJLEdBQUcsQ0FBQTtZQUN2QixJQUFJLENBQUMsc0JBQXNCLENBQUMsR0FBRyxDQUFDLE9BQU8sRUFBRSxhQUFhLENBQUMsQ0FBQTtTQUN4RDtRQUNELE9BQU8sYUFBYSxDQUFBO0lBQ3RCLENBQUM7SUFFTyxzQ0FBVSxHQUFsQixVQUFtQixLQUFZO1FBQzdCLElBQUk7WUFDRixJQUFNLEtBQUssR0FBRyxJQUFJLENBQUMsUUFBUSxDQUFDLGtCQUFrQixDQUFDLEtBQUssQ0FBQyxDQUFBO1lBQ3JELE9BQU8sRUFBRSxLQUFLLE9BQUEsRUFBRSxDQUFBO1NBQ2pCO1FBQUMsT0FBTyxLQUFLLEVBQUU7WUFDZCxPQUFPLEVBQUUsS0FBSyxPQUFBLEVBQUUsQ0FBQTtTQUNqQjtJQUNILENBQUM7SUFDSCx3QkFBQztBQUFELENBQUMsQUFqRkQsSUFpRkMifQ==
+//# sourceMappingURL=value_list_observer.js.map
 
 /***/ }),
 
@@ -10114,7 +3801,7 @@ function identifierForContextKey(key) {
         return logicalName.replace(/_/g, "-").replace(/\//g, "--");
     }
 }
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFPQSxNQUFNLGlDQUFpQyxPQUEwQztJQUMvRSxPQUFPLE9BQU8sQ0FBQyxJQUFJLEVBQUU7U0FDbEIsR0FBRyxDQUFDLFVBQUEsR0FBRyxJQUFJLE9BQUEsb0NBQW9DLENBQUMsT0FBTyxFQUFFLEdBQUcsQ0FBQyxFQUFsRCxDQUFrRCxDQUFDO1NBQzlELE1BQU0sQ0FBQyxVQUFBLEtBQUssSUFBSSxPQUFBLEtBQUssRUFBTCxDQUFLLENBQWlCLENBQUE7QUFDM0MsQ0FBQztBQUVELDhDQUE4QyxPQUEwQyxFQUFFLEdBQVc7SUFDbkcsSUFBTSxVQUFVLEdBQUcsdUJBQXVCLENBQUMsR0FBRyxDQUFDLENBQUE7SUFDL0MsSUFBSSxVQUFVLEVBQUU7UUFDZCxPQUFPLGdDQUFnQyxDQUFDLE9BQU8sQ0FBQyxHQUFHLENBQUMsRUFBRSxVQUFVLENBQUMsQ0FBQTtLQUNsRTtBQUNILENBQUM7QUFFRCwwQ0FBMEMsTUFBd0IsRUFBRSxVQUFrQjtJQUNwRixJQUFNLHFCQUFxQixHQUFHLE1BQU0sQ0FBQyxPQUFPLENBQUE7SUFDNUMsSUFBSSxPQUFPLHFCQUFxQixJQUFJLFVBQVUsRUFBRTtRQUM5QyxPQUFPLEVBQUUsVUFBVSxZQUFBLEVBQUUscUJBQXFCLHVCQUFBLEVBQUUsQ0FBQTtLQUM3QztBQUNILENBQUM7QUFFRCxNQUFNLGtDQUFrQyxHQUFXO0lBQ2pELElBQU0sV0FBVyxHQUFHLENBQUMsR0FBRyxDQUFDLEtBQUssQ0FBQyx3Q0FBd0MsQ0FBQyxJQUFJLEVBQUUsQ0FBQyxDQUFDLENBQUMsQ0FBQyxDQUFBO0lBQ2xGLElBQUksV0FBVyxFQUFFO1FBQ2YsT0FBTyxXQUFXLENBQUMsT0FBTyxDQUFDLElBQUksRUFBRSxHQUFHLENBQUMsQ0FBQyxPQUFPLENBQUMsS0FBSyxFQUFFLElBQUksQ0FBQyxDQUFBO0tBQzNEO0FBQ0gsQ0FBQyJ9
+//# sourceMappingURL=index.js.map
 
 /***/ }),
 
@@ -45357,6 +39044,3733 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/sortablejs/modular/sortable.esm.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/sortablejs/modular/sortable.esm.js ***!
+  \*********************************************************/
+/*! exports provided: default, MultiDrag, Sortable, Swap */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MultiDrag", function() { return MultiDragPlugin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Sortable", function() { return Sortable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Swap", function() { return SwapPlugin; });
+/**!
+ * Sortable 1.13.0
+ * @author	RubaXa   <trash@rubaxa.org>
+ * @author	owenm    <owen23355@gmail.com>
+ * @license MIT
+ */
+function _typeof(obj) {
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function (obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function (obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    var ownKeys = Object.keys(source);
+
+    if (typeof Object.getOwnPropertySymbols === 'function') {
+      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+    return arr2;
+  }
+}
+
+function _iterableToArray(iter) {
+  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+var version = "1.13.0";
+
+function userAgent(pattern) {
+  if (typeof window !== 'undefined' && window.navigator) {
+    return !!
+    /*@__PURE__*/
+    navigator.userAgent.match(pattern);
+  }
+}
+
+var IE11OrLess = userAgent(/(?:Trident.*rv[ :]?11\.|msie|iemobile|Windows Phone)/i);
+var Edge = userAgent(/Edge/i);
+var FireFox = userAgent(/firefox/i);
+var Safari = userAgent(/safari/i) && !userAgent(/chrome/i) && !userAgent(/android/i);
+var IOS = userAgent(/iP(ad|od|hone)/i);
+var ChromeForAndroid = userAgent(/chrome/i) && userAgent(/android/i);
+
+var captureMode = {
+  capture: false,
+  passive: false
+};
+
+function on(el, event, fn) {
+  el.addEventListener(event, fn, !IE11OrLess && captureMode);
+}
+
+function off(el, event, fn) {
+  el.removeEventListener(event, fn, !IE11OrLess && captureMode);
+}
+
+function matches(
+/**HTMLElement*/
+el,
+/**String*/
+selector) {
+  if (!selector) return;
+  selector[0] === '>' && (selector = selector.substring(1));
+
+  if (el) {
+    try {
+      if (el.matches) {
+        return el.matches(selector);
+      } else if (el.msMatchesSelector) {
+        return el.msMatchesSelector(selector);
+      } else if (el.webkitMatchesSelector) {
+        return el.webkitMatchesSelector(selector);
+      }
+    } catch (_) {
+      return false;
+    }
+  }
+
+  return false;
+}
+
+function getParentOrHost(el) {
+  return el.host && el !== document && el.host.nodeType ? el.host : el.parentNode;
+}
+
+function closest(
+/**HTMLElement*/
+el,
+/**String*/
+selector,
+/**HTMLElement*/
+ctx, includeCTX) {
+  if (el) {
+    ctx = ctx || document;
+
+    do {
+      if (selector != null && (selector[0] === '>' ? el.parentNode === ctx && matches(el, selector) : matches(el, selector)) || includeCTX && el === ctx) {
+        return el;
+      }
+
+      if (el === ctx) break;
+      /* jshint boss:true */
+    } while (el = getParentOrHost(el));
+  }
+
+  return null;
+}
+
+var R_SPACE = /\s+/g;
+
+function toggleClass(el, name, state) {
+  if (el && name) {
+    if (el.classList) {
+      el.classList[state ? 'add' : 'remove'](name);
+    } else {
+      var className = (' ' + el.className + ' ').replace(R_SPACE, ' ').replace(' ' + name + ' ', ' ');
+      el.className = (className + (state ? ' ' + name : '')).replace(R_SPACE, ' ');
+    }
+  }
+}
+
+function css(el, prop, val) {
+  var style = el && el.style;
+
+  if (style) {
+    if (val === void 0) {
+      if (document.defaultView && document.defaultView.getComputedStyle) {
+        val = document.defaultView.getComputedStyle(el, '');
+      } else if (el.currentStyle) {
+        val = el.currentStyle;
+      }
+
+      return prop === void 0 ? val : val[prop];
+    } else {
+      if (!(prop in style) && prop.indexOf('webkit') === -1) {
+        prop = '-webkit-' + prop;
+      }
+
+      style[prop] = val + (typeof val === 'string' ? '' : 'px');
+    }
+  }
+}
+
+function matrix(el, selfOnly) {
+  var appliedTransforms = '';
+
+  if (typeof el === 'string') {
+    appliedTransforms = el;
+  } else {
+    do {
+      var transform = css(el, 'transform');
+
+      if (transform && transform !== 'none') {
+        appliedTransforms = transform + ' ' + appliedTransforms;
+      }
+      /* jshint boss:true */
+
+    } while (!selfOnly && (el = el.parentNode));
+  }
+
+  var matrixFn = window.DOMMatrix || window.WebKitCSSMatrix || window.CSSMatrix || window.MSCSSMatrix;
+  /*jshint -W056 */
+
+  return matrixFn && new matrixFn(appliedTransforms);
+}
+
+function find(ctx, tagName, iterator) {
+  if (ctx) {
+    var list = ctx.getElementsByTagName(tagName),
+        i = 0,
+        n = list.length;
+
+    if (iterator) {
+      for (; i < n; i++) {
+        iterator(list[i], i);
+      }
+    }
+
+    return list;
+  }
+
+  return [];
+}
+
+function getWindowScrollingElement() {
+  var scrollingElement = document.scrollingElement;
+
+  if (scrollingElement) {
+    return scrollingElement;
+  } else {
+    return document.documentElement;
+  }
+}
+/**
+ * Returns the "bounding client rect" of given element
+ * @param  {HTMLElement} el                       The element whose boundingClientRect is wanted
+ * @param  {[Boolean]} relativeToContainingBlock  Whether the rect should be relative to the containing block of (including) the container
+ * @param  {[Boolean]} relativeToNonStaticParent  Whether the rect should be relative to the relative parent of (including) the contaienr
+ * @param  {[Boolean]} undoScale                  Whether the container's scale() should be undone
+ * @param  {[HTMLElement]} container              The parent the element will be placed in
+ * @return {Object}                               The boundingClientRect of el, with specified adjustments
+ */
+
+
+function getRect(el, relativeToContainingBlock, relativeToNonStaticParent, undoScale, container) {
+  if (!el.getBoundingClientRect && el !== window) return;
+  var elRect, top, left, bottom, right, height, width;
+
+  if (el !== window && el.parentNode && el !== getWindowScrollingElement()) {
+    elRect = el.getBoundingClientRect();
+    top = elRect.top;
+    left = elRect.left;
+    bottom = elRect.bottom;
+    right = elRect.right;
+    height = elRect.height;
+    width = elRect.width;
+  } else {
+    top = 0;
+    left = 0;
+    bottom = window.innerHeight;
+    right = window.innerWidth;
+    height = window.innerHeight;
+    width = window.innerWidth;
+  }
+
+  if ((relativeToContainingBlock || relativeToNonStaticParent) && el !== window) {
+    // Adjust for translate()
+    container = container || el.parentNode; // solves #1123 (see: https://stackoverflow.com/a/37953806/6088312)
+    // Not needed on <= IE11
+
+    if (!IE11OrLess) {
+      do {
+        if (container && container.getBoundingClientRect && (css(container, 'transform') !== 'none' || relativeToNonStaticParent && css(container, 'position') !== 'static')) {
+          var containerRect = container.getBoundingClientRect(); // Set relative to edges of padding box of container
+
+          top -= containerRect.top + parseInt(css(container, 'border-top-width'));
+          left -= containerRect.left + parseInt(css(container, 'border-left-width'));
+          bottom = top + elRect.height;
+          right = left + elRect.width;
+          break;
+        }
+        /* jshint boss:true */
+
+      } while (container = container.parentNode);
+    }
+  }
+
+  if (undoScale && el !== window) {
+    // Adjust for scale()
+    var elMatrix = matrix(container || el),
+        scaleX = elMatrix && elMatrix.a,
+        scaleY = elMatrix && elMatrix.d;
+
+    if (elMatrix) {
+      top /= scaleY;
+      left /= scaleX;
+      width /= scaleX;
+      height /= scaleY;
+      bottom = top + height;
+      right = left + width;
+    }
+  }
+
+  return {
+    top: top,
+    left: left,
+    bottom: bottom,
+    right: right,
+    width: width,
+    height: height
+  };
+}
+/**
+ * Checks if a side of an element is scrolled past a side of its parents
+ * @param  {HTMLElement}  el           The element who's side being scrolled out of view is in question
+ * @param  {String}       elSide       Side of the element in question ('top', 'left', 'right', 'bottom')
+ * @param  {String}       parentSide   Side of the parent in question ('top', 'left', 'right', 'bottom')
+ * @return {HTMLElement}               The parent scroll element that the el's side is scrolled past, or null if there is no such element
+ */
+
+
+function isScrolledPast(el, elSide, parentSide) {
+  var parent = getParentAutoScrollElement(el, true),
+      elSideVal = getRect(el)[elSide];
+  /* jshint boss:true */
+
+  while (parent) {
+    var parentSideVal = getRect(parent)[parentSide],
+        visible = void 0;
+
+    if (parentSide === 'top' || parentSide === 'left') {
+      visible = elSideVal >= parentSideVal;
+    } else {
+      visible = elSideVal <= parentSideVal;
+    }
+
+    if (!visible) return parent;
+    if (parent === getWindowScrollingElement()) break;
+    parent = getParentAutoScrollElement(parent, false);
+  }
+
+  return false;
+}
+/**
+ * Gets nth child of el, ignoring hidden children, sortable's elements (does not ignore clone if it's visible)
+ * and non-draggable elements
+ * @param  {HTMLElement} el       The parent element
+ * @param  {Number} childNum      The index of the child
+ * @param  {Object} options       Parent Sortable's options
+ * @return {HTMLElement}          The child at index childNum, or null if not found
+ */
+
+
+function getChild(el, childNum, options) {
+  var currentChild = 0,
+      i = 0,
+      children = el.children;
+
+  while (i < children.length) {
+    if (children[i].style.display !== 'none' && children[i] !== Sortable.ghost && children[i] !== Sortable.dragged && closest(children[i], options.draggable, el, false)) {
+      if (currentChild === childNum) {
+        return children[i];
+      }
+
+      currentChild++;
+    }
+
+    i++;
+  }
+
+  return null;
+}
+/**
+ * Gets the last child in the el, ignoring ghostEl or invisible elements (clones)
+ * @param  {HTMLElement} el       Parent element
+ * @param  {selector} selector    Any other elements that should be ignored
+ * @return {HTMLElement}          The last child, ignoring ghostEl
+ */
+
+
+function lastChild(el, selector) {
+  var last = el.lastElementChild;
+
+  while (last && (last === Sortable.ghost || css(last, 'display') === 'none' || selector && !matches(last, selector))) {
+    last = last.previousElementSibling;
+  }
+
+  return last || null;
+}
+/**
+ * Returns the index of an element within its parent for a selected set of
+ * elements
+ * @param  {HTMLElement} el
+ * @param  {selector} selector
+ * @return {number}
+ */
+
+
+function index(el, selector) {
+  var index = 0;
+
+  if (!el || !el.parentNode) {
+    return -1;
+  }
+  /* jshint boss:true */
+
+
+  while (el = el.previousElementSibling) {
+    if (el.nodeName.toUpperCase() !== 'TEMPLATE' && el !== Sortable.clone && (!selector || matches(el, selector))) {
+      index++;
+    }
+  }
+
+  return index;
+}
+/**
+ * Returns the scroll offset of the given element, added with all the scroll offsets of parent elements.
+ * The value is returned in real pixels.
+ * @param  {HTMLElement} el
+ * @return {Array}             Offsets in the format of [left, top]
+ */
+
+
+function getRelativeScrollOffset(el) {
+  var offsetLeft = 0,
+      offsetTop = 0,
+      winScroller = getWindowScrollingElement();
+
+  if (el) {
+    do {
+      var elMatrix = matrix(el),
+          scaleX = elMatrix.a,
+          scaleY = elMatrix.d;
+      offsetLeft += el.scrollLeft * scaleX;
+      offsetTop += el.scrollTop * scaleY;
+    } while (el !== winScroller && (el = el.parentNode));
+  }
+
+  return [offsetLeft, offsetTop];
+}
+/**
+ * Returns the index of the object within the given array
+ * @param  {Array} arr   Array that may or may not hold the object
+ * @param  {Object} obj  An object that has a key-value pair unique to and identical to a key-value pair in the object you want to find
+ * @return {Number}      The index of the object in the array, or -1
+ */
+
+
+function indexOfObject(arr, obj) {
+  for (var i in arr) {
+    if (!arr.hasOwnProperty(i)) continue;
+
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key) && obj[key] === arr[i][key]) return Number(i);
+    }
+  }
+
+  return -1;
+}
+
+function getParentAutoScrollElement(el, includeSelf) {
+  // skip to window
+  if (!el || !el.getBoundingClientRect) return getWindowScrollingElement();
+  var elem = el;
+  var gotSelf = false;
+
+  do {
+    // we don't need to get elem css if it isn't even overflowing in the first place (performance)
+    if (elem.clientWidth < elem.scrollWidth || elem.clientHeight < elem.scrollHeight) {
+      var elemCSS = css(elem);
+
+      if (elem.clientWidth < elem.scrollWidth && (elemCSS.overflowX == 'auto' || elemCSS.overflowX == 'scroll') || elem.clientHeight < elem.scrollHeight && (elemCSS.overflowY == 'auto' || elemCSS.overflowY == 'scroll')) {
+        if (!elem.getBoundingClientRect || elem === document.body) return getWindowScrollingElement();
+        if (gotSelf || includeSelf) return elem;
+        gotSelf = true;
+      }
+    }
+    /* jshint boss:true */
+
+  } while (elem = elem.parentNode);
+
+  return getWindowScrollingElement();
+}
+
+function extend(dst, src) {
+  if (dst && src) {
+    for (var key in src) {
+      if (src.hasOwnProperty(key)) {
+        dst[key] = src[key];
+      }
+    }
+  }
+
+  return dst;
+}
+
+function isRectEqual(rect1, rect2) {
+  return Math.round(rect1.top) === Math.round(rect2.top) && Math.round(rect1.left) === Math.round(rect2.left) && Math.round(rect1.height) === Math.round(rect2.height) && Math.round(rect1.width) === Math.round(rect2.width);
+}
+
+var _throttleTimeout;
+
+function throttle(callback, ms) {
+  return function () {
+    if (!_throttleTimeout) {
+      var args = arguments,
+          _this = this;
+
+      if (args.length === 1) {
+        callback.call(_this, args[0]);
+      } else {
+        callback.apply(_this, args);
+      }
+
+      _throttleTimeout = setTimeout(function () {
+        _throttleTimeout = void 0;
+      }, ms);
+    }
+  };
+}
+
+function cancelThrottle() {
+  clearTimeout(_throttleTimeout);
+  _throttleTimeout = void 0;
+}
+
+function scrollBy(el, x, y) {
+  el.scrollLeft += x;
+  el.scrollTop += y;
+}
+
+function clone(el) {
+  var Polymer = window.Polymer;
+  var $ = window.jQuery || window.Zepto;
+
+  if (Polymer && Polymer.dom) {
+    return Polymer.dom(el).cloneNode(true);
+  } else if ($) {
+    return $(el).clone(true)[0];
+  } else {
+    return el.cloneNode(true);
+  }
+}
+
+function setRect(el, rect) {
+  css(el, 'position', 'absolute');
+  css(el, 'top', rect.top);
+  css(el, 'left', rect.left);
+  css(el, 'width', rect.width);
+  css(el, 'height', rect.height);
+}
+
+function unsetRect(el) {
+  css(el, 'position', '');
+  css(el, 'top', '');
+  css(el, 'left', '');
+  css(el, 'width', '');
+  css(el, 'height', '');
+}
+
+var expando = 'Sortable' + new Date().getTime();
+
+function AnimationStateManager() {
+  var animationStates = [],
+      animationCallbackId;
+  return {
+    captureAnimationState: function captureAnimationState() {
+      animationStates = [];
+      if (!this.options.animation) return;
+      var children = [].slice.call(this.el.children);
+      children.forEach(function (child) {
+        if (css(child, 'display') === 'none' || child === Sortable.ghost) return;
+        animationStates.push({
+          target: child,
+          rect: getRect(child)
+        });
+
+        var fromRect = _objectSpread({}, animationStates[animationStates.length - 1].rect); // If animating: compensate for current animation
+
+
+        if (child.thisAnimationDuration) {
+          var childMatrix = matrix(child, true);
+
+          if (childMatrix) {
+            fromRect.top -= childMatrix.f;
+            fromRect.left -= childMatrix.e;
+          }
+        }
+
+        child.fromRect = fromRect;
+      });
+    },
+    addAnimationState: function addAnimationState(state) {
+      animationStates.push(state);
+    },
+    removeAnimationState: function removeAnimationState(target) {
+      animationStates.splice(indexOfObject(animationStates, {
+        target: target
+      }), 1);
+    },
+    animateAll: function animateAll(callback) {
+      var _this = this;
+
+      if (!this.options.animation) {
+        clearTimeout(animationCallbackId);
+        if (typeof callback === 'function') callback();
+        return;
+      }
+
+      var animating = false,
+          animationTime = 0;
+      animationStates.forEach(function (state) {
+        var time = 0,
+            target = state.target,
+            fromRect = target.fromRect,
+            toRect = getRect(target),
+            prevFromRect = target.prevFromRect,
+            prevToRect = target.prevToRect,
+            animatingRect = state.rect,
+            targetMatrix = matrix(target, true);
+
+        if (targetMatrix) {
+          // Compensate for current animation
+          toRect.top -= targetMatrix.f;
+          toRect.left -= targetMatrix.e;
+        }
+
+        target.toRect = toRect;
+
+        if (target.thisAnimationDuration) {
+          // Could also check if animatingRect is between fromRect and toRect
+          if (isRectEqual(prevFromRect, toRect) && !isRectEqual(fromRect, toRect) && // Make sure animatingRect is on line between toRect & fromRect
+          (animatingRect.top - toRect.top) / (animatingRect.left - toRect.left) === (fromRect.top - toRect.top) / (fromRect.left - toRect.left)) {
+            // If returning to same place as started from animation and on same axis
+            time = calculateRealTime(animatingRect, prevFromRect, prevToRect, _this.options);
+          }
+        } // if fromRect != toRect: animate
+
+
+        if (!isRectEqual(toRect, fromRect)) {
+          target.prevFromRect = fromRect;
+          target.prevToRect = toRect;
+
+          if (!time) {
+            time = _this.options.animation;
+          }
+
+          _this.animate(target, animatingRect, toRect, time);
+        }
+
+        if (time) {
+          animating = true;
+          animationTime = Math.max(animationTime, time);
+          clearTimeout(target.animationResetTimer);
+          target.animationResetTimer = setTimeout(function () {
+            target.animationTime = 0;
+            target.prevFromRect = null;
+            target.fromRect = null;
+            target.prevToRect = null;
+            target.thisAnimationDuration = null;
+          }, time);
+          target.thisAnimationDuration = time;
+        }
+      });
+      clearTimeout(animationCallbackId);
+
+      if (!animating) {
+        if (typeof callback === 'function') callback();
+      } else {
+        animationCallbackId = setTimeout(function () {
+          if (typeof callback === 'function') callback();
+        }, animationTime);
+      }
+
+      animationStates = [];
+    },
+    animate: function animate(target, currentRect, toRect, duration) {
+      if (duration) {
+        css(target, 'transition', '');
+        css(target, 'transform', '');
+        var elMatrix = matrix(this.el),
+            scaleX = elMatrix && elMatrix.a,
+            scaleY = elMatrix && elMatrix.d,
+            translateX = (currentRect.left - toRect.left) / (scaleX || 1),
+            translateY = (currentRect.top - toRect.top) / (scaleY || 1);
+        target.animatingX = !!translateX;
+        target.animatingY = !!translateY;
+        css(target, 'transform', 'translate3d(' + translateX + 'px,' + translateY + 'px,0)');
+        this.forRepaintDummy = repaint(target); // repaint
+
+        css(target, 'transition', 'transform ' + duration + 'ms' + (this.options.easing ? ' ' + this.options.easing : ''));
+        css(target, 'transform', 'translate3d(0,0,0)');
+        typeof target.animated === 'number' && clearTimeout(target.animated);
+        target.animated = setTimeout(function () {
+          css(target, 'transition', '');
+          css(target, 'transform', '');
+          target.animated = false;
+          target.animatingX = false;
+          target.animatingY = false;
+        }, duration);
+      }
+    }
+  };
+}
+
+function repaint(target) {
+  return target.offsetWidth;
+}
+
+function calculateRealTime(animatingRect, fromRect, toRect, options) {
+  return Math.sqrt(Math.pow(fromRect.top - animatingRect.top, 2) + Math.pow(fromRect.left - animatingRect.left, 2)) / Math.sqrt(Math.pow(fromRect.top - toRect.top, 2) + Math.pow(fromRect.left - toRect.left, 2)) * options.animation;
+}
+
+var plugins = [];
+var defaults = {
+  initializeByDefault: true
+};
+var PluginManager = {
+  mount: function mount(plugin) {
+    // Set default static properties
+    for (var option in defaults) {
+      if (defaults.hasOwnProperty(option) && !(option in plugin)) {
+        plugin[option] = defaults[option];
+      }
+    }
+
+    plugins.forEach(function (p) {
+      if (p.pluginName === plugin.pluginName) {
+        throw "Sortable: Cannot mount plugin ".concat(plugin.pluginName, " more than once");
+      }
+    });
+    plugins.push(plugin);
+  },
+  pluginEvent: function pluginEvent(eventName, sortable, evt) {
+    var _this = this;
+
+    this.eventCanceled = false;
+
+    evt.cancel = function () {
+      _this.eventCanceled = true;
+    };
+
+    var eventNameGlobal = eventName + 'Global';
+    plugins.forEach(function (plugin) {
+      if (!sortable[plugin.pluginName]) return; // Fire global events if it exists in this sortable
+
+      if (sortable[plugin.pluginName][eventNameGlobal]) {
+        sortable[plugin.pluginName][eventNameGlobal](_objectSpread({
+          sortable: sortable
+        }, evt));
+      } // Only fire plugin event if plugin is enabled in this sortable,
+      // and plugin has event defined
+
+
+      if (sortable.options[plugin.pluginName] && sortable[plugin.pluginName][eventName]) {
+        sortable[plugin.pluginName][eventName](_objectSpread({
+          sortable: sortable
+        }, evt));
+      }
+    });
+  },
+  initializePlugins: function initializePlugins(sortable, el, defaults, options) {
+    plugins.forEach(function (plugin) {
+      var pluginName = plugin.pluginName;
+      if (!sortable.options[pluginName] && !plugin.initializeByDefault) return;
+      var initialized = new plugin(sortable, el, sortable.options);
+      initialized.sortable = sortable;
+      initialized.options = sortable.options;
+      sortable[pluginName] = initialized; // Add default options from plugin
+
+      _extends(defaults, initialized.defaults);
+    });
+
+    for (var option in sortable.options) {
+      if (!sortable.options.hasOwnProperty(option)) continue;
+      var modified = this.modifyOption(sortable, option, sortable.options[option]);
+
+      if (typeof modified !== 'undefined') {
+        sortable.options[option] = modified;
+      }
+    }
+  },
+  getEventProperties: function getEventProperties(name, sortable) {
+    var eventProperties = {};
+    plugins.forEach(function (plugin) {
+      if (typeof plugin.eventProperties !== 'function') return;
+
+      _extends(eventProperties, plugin.eventProperties.call(sortable[plugin.pluginName], name));
+    });
+    return eventProperties;
+  },
+  modifyOption: function modifyOption(sortable, name, value) {
+    var modifiedValue;
+    plugins.forEach(function (plugin) {
+      // Plugin must exist on the Sortable
+      if (!sortable[plugin.pluginName]) return; // If static option listener exists for this option, call in the context of the Sortable's instance of this plugin
+
+      if (plugin.optionListeners && typeof plugin.optionListeners[name] === 'function') {
+        modifiedValue = plugin.optionListeners[name].call(sortable[plugin.pluginName], value);
+      }
+    });
+    return modifiedValue;
+  }
+};
+
+function dispatchEvent(_ref) {
+  var sortable = _ref.sortable,
+      rootEl = _ref.rootEl,
+      name = _ref.name,
+      targetEl = _ref.targetEl,
+      cloneEl = _ref.cloneEl,
+      toEl = _ref.toEl,
+      fromEl = _ref.fromEl,
+      oldIndex = _ref.oldIndex,
+      newIndex = _ref.newIndex,
+      oldDraggableIndex = _ref.oldDraggableIndex,
+      newDraggableIndex = _ref.newDraggableIndex,
+      originalEvent = _ref.originalEvent,
+      putSortable = _ref.putSortable,
+      extraEventProperties = _ref.extraEventProperties;
+  sortable = sortable || rootEl && rootEl[expando];
+  if (!sortable) return;
+  var evt,
+      options = sortable.options,
+      onName = 'on' + name.charAt(0).toUpperCase() + name.substr(1); // Support for new CustomEvent feature
+
+  if (window.CustomEvent && !IE11OrLess && !Edge) {
+    evt = new CustomEvent(name, {
+      bubbles: true,
+      cancelable: true
+    });
+  } else {
+    evt = document.createEvent('Event');
+    evt.initEvent(name, true, true);
+  }
+
+  evt.to = toEl || rootEl;
+  evt.from = fromEl || rootEl;
+  evt.item = targetEl || rootEl;
+  evt.clone = cloneEl;
+  evt.oldIndex = oldIndex;
+  evt.newIndex = newIndex;
+  evt.oldDraggableIndex = oldDraggableIndex;
+  evt.newDraggableIndex = newDraggableIndex;
+  evt.originalEvent = originalEvent;
+  evt.pullMode = putSortable ? putSortable.lastPutMode : undefined;
+
+  var allEventProperties = _objectSpread({}, extraEventProperties, PluginManager.getEventProperties(name, sortable));
+
+  for (var option in allEventProperties) {
+    evt[option] = allEventProperties[option];
+  }
+
+  if (rootEl) {
+    rootEl.dispatchEvent(evt);
+  }
+
+  if (options[onName]) {
+    options[onName].call(sortable, evt);
+  }
+}
+
+var pluginEvent = function pluginEvent(eventName, sortable) {
+  var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+      originalEvent = _ref.evt,
+      data = _objectWithoutProperties(_ref, ["evt"]);
+
+  PluginManager.pluginEvent.bind(Sortable)(eventName, sortable, _objectSpread({
+    dragEl: dragEl,
+    parentEl: parentEl,
+    ghostEl: ghostEl,
+    rootEl: rootEl,
+    nextEl: nextEl,
+    lastDownEl: lastDownEl,
+    cloneEl: cloneEl,
+    cloneHidden: cloneHidden,
+    dragStarted: moved,
+    putSortable: putSortable,
+    activeSortable: Sortable.active,
+    originalEvent: originalEvent,
+    oldIndex: oldIndex,
+    oldDraggableIndex: oldDraggableIndex,
+    newIndex: newIndex,
+    newDraggableIndex: newDraggableIndex,
+    hideGhostForTarget: _hideGhostForTarget,
+    unhideGhostForTarget: _unhideGhostForTarget,
+    cloneNowHidden: function cloneNowHidden() {
+      cloneHidden = true;
+    },
+    cloneNowShown: function cloneNowShown() {
+      cloneHidden = false;
+    },
+    dispatchSortableEvent: function dispatchSortableEvent(name) {
+      _dispatchEvent({
+        sortable: sortable,
+        name: name,
+        originalEvent: originalEvent
+      });
+    }
+  }, data));
+};
+
+function _dispatchEvent(info) {
+  dispatchEvent(_objectSpread({
+    putSortable: putSortable,
+    cloneEl: cloneEl,
+    targetEl: dragEl,
+    rootEl: rootEl,
+    oldIndex: oldIndex,
+    oldDraggableIndex: oldDraggableIndex,
+    newIndex: newIndex,
+    newDraggableIndex: newDraggableIndex
+  }, info));
+}
+
+var dragEl,
+    parentEl,
+    ghostEl,
+    rootEl,
+    nextEl,
+    lastDownEl,
+    cloneEl,
+    cloneHidden,
+    oldIndex,
+    newIndex,
+    oldDraggableIndex,
+    newDraggableIndex,
+    activeGroup,
+    putSortable,
+    awaitingDragStarted = false,
+    ignoreNextClick = false,
+    sortables = [],
+    tapEvt,
+    touchEvt,
+    lastDx,
+    lastDy,
+    tapDistanceLeft,
+    tapDistanceTop,
+    moved,
+    lastTarget,
+    lastDirection,
+    pastFirstInvertThresh = false,
+    isCircumstantialInvert = false,
+    targetMoveDistance,
+    // For positioning ghost absolutely
+ghostRelativeParent,
+    ghostRelativeParentInitialScroll = [],
+    // (left, top)
+_silent = false,
+    savedInputChecked = [];
+/** @const */
+
+var documentExists = typeof document !== 'undefined',
+    PositionGhostAbsolutely = IOS,
+    CSSFloatProperty = Edge || IE11OrLess ? 'cssFloat' : 'float',
+    // This will not pass for IE9, because IE9 DnD only works on anchors
+supportDraggable = documentExists && !ChromeForAndroid && !IOS && 'draggable' in document.createElement('div'),
+    supportCssPointerEvents = function () {
+  if (!documentExists) return; // false when <= IE11
+
+  if (IE11OrLess) {
+    return false;
+  }
+
+  var el = document.createElement('x');
+  el.style.cssText = 'pointer-events:auto';
+  return el.style.pointerEvents === 'auto';
+}(),
+    _detectDirection = function _detectDirection(el, options) {
+  var elCSS = css(el),
+      elWidth = parseInt(elCSS.width) - parseInt(elCSS.paddingLeft) - parseInt(elCSS.paddingRight) - parseInt(elCSS.borderLeftWidth) - parseInt(elCSS.borderRightWidth),
+      child1 = getChild(el, 0, options),
+      child2 = getChild(el, 1, options),
+      firstChildCSS = child1 && css(child1),
+      secondChildCSS = child2 && css(child2),
+      firstChildWidth = firstChildCSS && parseInt(firstChildCSS.marginLeft) + parseInt(firstChildCSS.marginRight) + getRect(child1).width,
+      secondChildWidth = secondChildCSS && parseInt(secondChildCSS.marginLeft) + parseInt(secondChildCSS.marginRight) + getRect(child2).width;
+
+  if (elCSS.display === 'flex') {
+    return elCSS.flexDirection === 'column' || elCSS.flexDirection === 'column-reverse' ? 'vertical' : 'horizontal';
+  }
+
+  if (elCSS.display === 'grid') {
+    return elCSS.gridTemplateColumns.split(' ').length <= 1 ? 'vertical' : 'horizontal';
+  }
+
+  if (child1 && firstChildCSS["float"] && firstChildCSS["float"] !== 'none') {
+    var touchingSideChild2 = firstChildCSS["float"] === 'left' ? 'left' : 'right';
+    return child2 && (secondChildCSS.clear === 'both' || secondChildCSS.clear === touchingSideChild2) ? 'vertical' : 'horizontal';
+  }
+
+  return child1 && (firstChildCSS.display === 'block' || firstChildCSS.display === 'flex' || firstChildCSS.display === 'table' || firstChildCSS.display === 'grid' || firstChildWidth >= elWidth && elCSS[CSSFloatProperty] === 'none' || child2 && elCSS[CSSFloatProperty] === 'none' && firstChildWidth + secondChildWidth > elWidth) ? 'vertical' : 'horizontal';
+},
+    _dragElInRowColumn = function _dragElInRowColumn(dragRect, targetRect, vertical) {
+  var dragElS1Opp = vertical ? dragRect.left : dragRect.top,
+      dragElS2Opp = vertical ? dragRect.right : dragRect.bottom,
+      dragElOppLength = vertical ? dragRect.width : dragRect.height,
+      targetS1Opp = vertical ? targetRect.left : targetRect.top,
+      targetS2Opp = vertical ? targetRect.right : targetRect.bottom,
+      targetOppLength = vertical ? targetRect.width : targetRect.height;
+  return dragElS1Opp === targetS1Opp || dragElS2Opp === targetS2Opp || dragElS1Opp + dragElOppLength / 2 === targetS1Opp + targetOppLength / 2;
+},
+
+/**
+ * Detects first nearest empty sortable to X and Y position using emptyInsertThreshold.
+ * @param  {Number} x      X position
+ * @param  {Number} y      Y position
+ * @return {HTMLElement}   Element of the first found nearest Sortable
+ */
+_detectNearestEmptySortable = function _detectNearestEmptySortable(x, y) {
+  var ret;
+  sortables.some(function (sortable) {
+    if (lastChild(sortable)) return;
+    var rect = getRect(sortable),
+        threshold = sortable[expando].options.emptyInsertThreshold,
+        insideHorizontally = x >= rect.left - threshold && x <= rect.right + threshold,
+        insideVertically = y >= rect.top - threshold && y <= rect.bottom + threshold;
+
+    if (threshold && insideHorizontally && insideVertically) {
+      return ret = sortable;
+    }
+  });
+  return ret;
+},
+    _prepareGroup = function _prepareGroup(options) {
+  function toFn(value, pull) {
+    return function (to, from, dragEl, evt) {
+      var sameGroup = to.options.group.name && from.options.group.name && to.options.group.name === from.options.group.name;
+
+      if (value == null && (pull || sameGroup)) {
+        // Default pull value
+        // Default pull and put value if same group
+        return true;
+      } else if (value == null || value === false) {
+        return false;
+      } else if (pull && value === 'clone') {
+        return value;
+      } else if (typeof value === 'function') {
+        return toFn(value(to, from, dragEl, evt), pull)(to, from, dragEl, evt);
+      } else {
+        var otherGroup = (pull ? to : from).options.group.name;
+        return value === true || typeof value === 'string' && value === otherGroup || value.join && value.indexOf(otherGroup) > -1;
+      }
+    };
+  }
+
+  var group = {};
+  var originalGroup = options.group;
+
+  if (!originalGroup || _typeof(originalGroup) != 'object') {
+    originalGroup = {
+      name: originalGroup
+    };
+  }
+
+  group.name = originalGroup.name;
+  group.checkPull = toFn(originalGroup.pull, true);
+  group.checkPut = toFn(originalGroup.put);
+  group.revertClone = originalGroup.revertClone;
+  options.group = group;
+},
+    _hideGhostForTarget = function _hideGhostForTarget() {
+  if (!supportCssPointerEvents && ghostEl) {
+    css(ghostEl, 'display', 'none');
+  }
+},
+    _unhideGhostForTarget = function _unhideGhostForTarget() {
+  if (!supportCssPointerEvents && ghostEl) {
+    css(ghostEl, 'display', '');
+  }
+}; // #1184 fix - Prevent click event on fallback if dragged but item not changed position
+
+
+if (documentExists) {
+  document.addEventListener('click', function (evt) {
+    if (ignoreNextClick) {
+      evt.preventDefault();
+      evt.stopPropagation && evt.stopPropagation();
+      evt.stopImmediatePropagation && evt.stopImmediatePropagation();
+      ignoreNextClick = false;
+      return false;
+    }
+  }, true);
+}
+
+var nearestEmptyInsertDetectEvent = function nearestEmptyInsertDetectEvent(evt) {
+  if (dragEl) {
+    evt = evt.touches ? evt.touches[0] : evt;
+
+    var nearest = _detectNearestEmptySortable(evt.clientX, evt.clientY);
+
+    if (nearest) {
+      // Create imitation event
+      var event = {};
+
+      for (var i in evt) {
+        if (evt.hasOwnProperty(i)) {
+          event[i] = evt[i];
+        }
+      }
+
+      event.target = event.rootEl = nearest;
+      event.preventDefault = void 0;
+      event.stopPropagation = void 0;
+
+      nearest[expando]._onDragOver(event);
+    }
+  }
+};
+
+var _checkOutsideTargetEl = function _checkOutsideTargetEl(evt) {
+  if (dragEl) {
+    dragEl.parentNode[expando]._isOutsideThisEl(evt.target);
+  }
+};
+/**
+ * @class  Sortable
+ * @param  {HTMLElement}  el
+ * @param  {Object}       [options]
+ */
+
+
+function Sortable(el, options) {
+  if (!(el && el.nodeType && el.nodeType === 1)) {
+    throw "Sortable: `el` must be an HTMLElement, not ".concat({}.toString.call(el));
+  }
+
+  this.el = el; // root element
+
+  this.options = options = _extends({}, options); // Export instance
+
+  el[expando] = this;
+  var defaults = {
+    group: null,
+    sort: true,
+    disabled: false,
+    store: null,
+    handle: null,
+    draggable: /^[uo]l$/i.test(el.nodeName) ? '>li' : '>*',
+    swapThreshold: 1,
+    // percentage; 0 <= x <= 1
+    invertSwap: false,
+    // invert always
+    invertedSwapThreshold: null,
+    // will be set to same as swapThreshold if default
+    removeCloneOnHide: true,
+    direction: function direction() {
+      return _detectDirection(el, this.options);
+    },
+    ghostClass: 'sortable-ghost',
+    chosenClass: 'sortable-chosen',
+    dragClass: 'sortable-drag',
+    ignore: 'a, img',
+    filter: null,
+    preventOnFilter: true,
+    animation: 0,
+    easing: null,
+    setData: function setData(dataTransfer, dragEl) {
+      dataTransfer.setData('Text', dragEl.textContent);
+    },
+    dropBubble: false,
+    dragoverBubble: false,
+    dataIdAttr: 'data-id',
+    delay: 0,
+    delayOnTouchOnly: false,
+    touchStartThreshold: (Number.parseInt ? Number : window).parseInt(window.devicePixelRatio, 10) || 1,
+    forceFallback: false,
+    fallbackClass: 'sortable-fallback',
+    fallbackOnBody: false,
+    fallbackTolerance: 0,
+    fallbackOffset: {
+      x: 0,
+      y: 0
+    },
+    supportPointer: Sortable.supportPointer !== false && 'PointerEvent' in window && !Safari,
+    emptyInsertThreshold: 5
+  };
+  PluginManager.initializePlugins(this, el, defaults); // Set default options
+
+  for (var name in defaults) {
+    !(name in options) && (options[name] = defaults[name]);
+  }
+
+  _prepareGroup(options); // Bind all private methods
+
+
+  for (var fn in this) {
+    if (fn.charAt(0) === '_' && typeof this[fn] === 'function') {
+      this[fn] = this[fn].bind(this);
+    }
+  } // Setup drag mode
+
+
+  this.nativeDraggable = options.forceFallback ? false : supportDraggable;
+
+  if (this.nativeDraggable) {
+    // Touch start threshold cannot be greater than the native dragstart threshold
+    this.options.touchStartThreshold = 1;
+  } // Bind events
+
+
+  if (options.supportPointer) {
+    on(el, 'pointerdown', this._onTapStart);
+  } else {
+    on(el, 'mousedown', this._onTapStart);
+    on(el, 'touchstart', this._onTapStart);
+  }
+
+  if (this.nativeDraggable) {
+    on(el, 'dragover', this);
+    on(el, 'dragenter', this);
+  }
+
+  sortables.push(this.el); // Restore sorting
+
+  options.store && options.store.get && this.sort(options.store.get(this) || []); // Add animation state manager
+
+  _extends(this, AnimationStateManager());
+}
+
+Sortable.prototype =
+/** @lends Sortable.prototype */
+{
+  constructor: Sortable,
+  _isOutsideThisEl: function _isOutsideThisEl(target) {
+    if (!this.el.contains(target) && target !== this.el) {
+      lastTarget = null;
+    }
+  },
+  _getDirection: function _getDirection(evt, target) {
+    return typeof this.options.direction === 'function' ? this.options.direction.call(this, evt, target, dragEl) : this.options.direction;
+  },
+  _onTapStart: function _onTapStart(
+  /** Event|TouchEvent */
+  evt) {
+    if (!evt.cancelable) return;
+
+    var _this = this,
+        el = this.el,
+        options = this.options,
+        preventOnFilter = options.preventOnFilter,
+        type = evt.type,
+        touch = evt.touches && evt.touches[0] || evt.pointerType && evt.pointerType === 'touch' && evt,
+        target = (touch || evt).target,
+        originalTarget = evt.target.shadowRoot && (evt.path && evt.path[0] || evt.composedPath && evt.composedPath()[0]) || target,
+        filter = options.filter;
+
+    _saveInputCheckedState(el); // Don't trigger start event when an element is been dragged, otherwise the evt.oldindex always wrong when set option.group.
+
+
+    if (dragEl) {
+      return;
+    }
+
+    if (/mousedown|pointerdown/.test(type) && evt.button !== 0 || options.disabled) {
+      return; // only left button and enabled
+    } // cancel dnd if original target is content editable
+
+
+    if (originalTarget.isContentEditable) {
+      return;
+    } // Safari ignores further event handling after mousedown
+
+
+    if (!this.nativeDraggable && Safari && target && target.tagName.toUpperCase() === 'SELECT') {
+      return;
+    }
+
+    target = closest(target, options.draggable, el, false);
+
+    if (target && target.animated) {
+      return;
+    }
+
+    if (lastDownEl === target) {
+      // Ignoring duplicate `down`
+      return;
+    } // Get the index of the dragged element within its parent
+
+
+    oldIndex = index(target);
+    oldDraggableIndex = index(target, options.draggable); // Check filter
+
+    if (typeof filter === 'function') {
+      if (filter.call(this, evt, target, this)) {
+        _dispatchEvent({
+          sortable: _this,
+          rootEl: originalTarget,
+          name: 'filter',
+          targetEl: target,
+          toEl: el,
+          fromEl: el
+        });
+
+        pluginEvent('filter', _this, {
+          evt: evt
+        });
+        preventOnFilter && evt.cancelable && evt.preventDefault();
+        return; // cancel dnd
+      }
+    } else if (filter) {
+      filter = filter.split(',').some(function (criteria) {
+        criteria = closest(originalTarget, criteria.trim(), el, false);
+
+        if (criteria) {
+          _dispatchEvent({
+            sortable: _this,
+            rootEl: criteria,
+            name: 'filter',
+            targetEl: target,
+            fromEl: el,
+            toEl: el
+          });
+
+          pluginEvent('filter', _this, {
+            evt: evt
+          });
+          return true;
+        }
+      });
+
+      if (filter) {
+        preventOnFilter && evt.cancelable && evt.preventDefault();
+        return; // cancel dnd
+      }
+    }
+
+    if (options.handle && !closest(originalTarget, options.handle, el, false)) {
+      return;
+    } // Prepare `dragstart`
+
+
+    this._prepareDragStart(evt, touch, target);
+  },
+  _prepareDragStart: function _prepareDragStart(
+  /** Event */
+  evt,
+  /** Touch */
+  touch,
+  /** HTMLElement */
+  target) {
+    var _this = this,
+        el = _this.el,
+        options = _this.options,
+        ownerDocument = el.ownerDocument,
+        dragStartFn;
+
+    if (target && !dragEl && target.parentNode === el) {
+      var dragRect = getRect(target);
+      rootEl = el;
+      dragEl = target;
+      parentEl = dragEl.parentNode;
+      nextEl = dragEl.nextSibling;
+      lastDownEl = target;
+      activeGroup = options.group;
+      Sortable.dragged = dragEl;
+      tapEvt = {
+        target: dragEl,
+        clientX: (touch || evt).clientX,
+        clientY: (touch || evt).clientY
+      };
+      tapDistanceLeft = tapEvt.clientX - dragRect.left;
+      tapDistanceTop = tapEvt.clientY - dragRect.top;
+      this._lastX = (touch || evt).clientX;
+      this._lastY = (touch || evt).clientY;
+      dragEl.style['will-change'] = 'all';
+
+      dragStartFn = function dragStartFn() {
+        pluginEvent('delayEnded', _this, {
+          evt: evt
+        });
+
+        if (Sortable.eventCanceled) {
+          _this._onDrop();
+
+          return;
+        } // Delayed drag has been triggered
+        // we can re-enable the events: touchmove/mousemove
+
+
+        _this._disableDelayedDragEvents();
+
+        if (!FireFox && _this.nativeDraggable) {
+          dragEl.draggable = true;
+        } // Bind the events: dragstart/dragend
+
+
+        _this._triggerDragStart(evt, touch); // Drag start event
+
+
+        _dispatchEvent({
+          sortable: _this,
+          name: 'choose',
+          originalEvent: evt
+        }); // Chosen item
+
+
+        toggleClass(dragEl, options.chosenClass, true);
+      }; // Disable "draggable"
+
+
+      options.ignore.split(',').forEach(function (criteria) {
+        find(dragEl, criteria.trim(), _disableDraggable);
+      });
+      on(ownerDocument, 'dragover', nearestEmptyInsertDetectEvent);
+      on(ownerDocument, 'mousemove', nearestEmptyInsertDetectEvent);
+      on(ownerDocument, 'touchmove', nearestEmptyInsertDetectEvent);
+      on(ownerDocument, 'mouseup', _this._onDrop);
+      on(ownerDocument, 'touchend', _this._onDrop);
+      on(ownerDocument, 'touchcancel', _this._onDrop); // Make dragEl draggable (must be before delay for FireFox)
+
+      if (FireFox && this.nativeDraggable) {
+        this.options.touchStartThreshold = 4;
+        dragEl.draggable = true;
+      }
+
+      pluginEvent('delayStart', this, {
+        evt: evt
+      }); // Delay is impossible for native DnD in Edge or IE
+
+      if (options.delay && (!options.delayOnTouchOnly || touch) && (!this.nativeDraggable || !(Edge || IE11OrLess))) {
+        if (Sortable.eventCanceled) {
+          this._onDrop();
+
+          return;
+        } // If the user moves the pointer or let go the click or touch
+        // before the delay has been reached:
+        // disable the delayed drag
+
+
+        on(ownerDocument, 'mouseup', _this._disableDelayedDrag);
+        on(ownerDocument, 'touchend', _this._disableDelayedDrag);
+        on(ownerDocument, 'touchcancel', _this._disableDelayedDrag);
+        on(ownerDocument, 'mousemove', _this._delayedDragTouchMoveHandler);
+        on(ownerDocument, 'touchmove', _this._delayedDragTouchMoveHandler);
+        options.supportPointer && on(ownerDocument, 'pointermove', _this._delayedDragTouchMoveHandler);
+        _this._dragStartTimer = setTimeout(dragStartFn, options.delay);
+      } else {
+        dragStartFn();
+      }
+    }
+  },
+  _delayedDragTouchMoveHandler: function _delayedDragTouchMoveHandler(
+  /** TouchEvent|PointerEvent **/
+  e) {
+    var touch = e.touches ? e.touches[0] : e;
+
+    if (Math.max(Math.abs(touch.clientX - this._lastX), Math.abs(touch.clientY - this._lastY)) >= Math.floor(this.options.touchStartThreshold / (this.nativeDraggable && window.devicePixelRatio || 1))) {
+      this._disableDelayedDrag();
+    }
+  },
+  _disableDelayedDrag: function _disableDelayedDrag() {
+    dragEl && _disableDraggable(dragEl);
+    clearTimeout(this._dragStartTimer);
+
+    this._disableDelayedDragEvents();
+  },
+  _disableDelayedDragEvents: function _disableDelayedDragEvents() {
+    var ownerDocument = this.el.ownerDocument;
+    off(ownerDocument, 'mouseup', this._disableDelayedDrag);
+    off(ownerDocument, 'touchend', this._disableDelayedDrag);
+    off(ownerDocument, 'touchcancel', this._disableDelayedDrag);
+    off(ownerDocument, 'mousemove', this._delayedDragTouchMoveHandler);
+    off(ownerDocument, 'touchmove', this._delayedDragTouchMoveHandler);
+    off(ownerDocument, 'pointermove', this._delayedDragTouchMoveHandler);
+  },
+  _triggerDragStart: function _triggerDragStart(
+  /** Event */
+  evt,
+  /** Touch */
+  touch) {
+    touch = touch || evt.pointerType == 'touch' && evt;
+
+    if (!this.nativeDraggable || touch) {
+      if (this.options.supportPointer) {
+        on(document, 'pointermove', this._onTouchMove);
+      } else if (touch) {
+        on(document, 'touchmove', this._onTouchMove);
+      } else {
+        on(document, 'mousemove', this._onTouchMove);
+      }
+    } else {
+      on(dragEl, 'dragend', this);
+      on(rootEl, 'dragstart', this._onDragStart);
+    }
+
+    try {
+      if (document.selection) {
+        // Timeout neccessary for IE9
+        _nextTick(function () {
+          document.selection.empty();
+        });
+      } else {
+        window.getSelection().removeAllRanges();
+      }
+    } catch (err) {}
+  },
+  _dragStarted: function _dragStarted(fallback, evt) {
+
+    awaitingDragStarted = false;
+
+    if (rootEl && dragEl) {
+      pluginEvent('dragStarted', this, {
+        evt: evt
+      });
+
+      if (this.nativeDraggable) {
+        on(document, 'dragover', _checkOutsideTargetEl);
+      }
+
+      var options = this.options; // Apply effect
+
+      !fallback && toggleClass(dragEl, options.dragClass, false);
+      toggleClass(dragEl, options.ghostClass, true);
+      Sortable.active = this;
+      fallback && this._appendGhost(); // Drag start event
+
+      _dispatchEvent({
+        sortable: this,
+        name: 'start',
+        originalEvent: evt
+      });
+    } else {
+      this._nulling();
+    }
+  },
+  _emulateDragOver: function _emulateDragOver() {
+    if (touchEvt) {
+      this._lastX = touchEvt.clientX;
+      this._lastY = touchEvt.clientY;
+
+      _hideGhostForTarget();
+
+      var target = document.elementFromPoint(touchEvt.clientX, touchEvt.clientY);
+      var parent = target;
+
+      while (target && target.shadowRoot) {
+        target = target.shadowRoot.elementFromPoint(touchEvt.clientX, touchEvt.clientY);
+        if (target === parent) break;
+        parent = target;
+      }
+
+      dragEl.parentNode[expando]._isOutsideThisEl(target);
+
+      if (parent) {
+        do {
+          if (parent[expando]) {
+            var inserted = void 0;
+            inserted = parent[expando]._onDragOver({
+              clientX: touchEvt.clientX,
+              clientY: touchEvt.clientY,
+              target: target,
+              rootEl: parent
+            });
+
+            if (inserted && !this.options.dragoverBubble) {
+              break;
+            }
+          }
+
+          target = parent; // store last element
+        }
+        /* jshint boss:true */
+        while (parent = parent.parentNode);
+      }
+
+      _unhideGhostForTarget();
+    }
+  },
+  _onTouchMove: function _onTouchMove(
+  /**TouchEvent*/
+  evt) {
+    if (tapEvt) {
+      var options = this.options,
+          fallbackTolerance = options.fallbackTolerance,
+          fallbackOffset = options.fallbackOffset,
+          touch = evt.touches ? evt.touches[0] : evt,
+          ghostMatrix = ghostEl && matrix(ghostEl, true),
+          scaleX = ghostEl && ghostMatrix && ghostMatrix.a,
+          scaleY = ghostEl && ghostMatrix && ghostMatrix.d,
+          relativeScrollOffset = PositionGhostAbsolutely && ghostRelativeParent && getRelativeScrollOffset(ghostRelativeParent),
+          dx = (touch.clientX - tapEvt.clientX + fallbackOffset.x) / (scaleX || 1) + (relativeScrollOffset ? relativeScrollOffset[0] - ghostRelativeParentInitialScroll[0] : 0) / (scaleX || 1),
+          dy = (touch.clientY - tapEvt.clientY + fallbackOffset.y) / (scaleY || 1) + (relativeScrollOffset ? relativeScrollOffset[1] - ghostRelativeParentInitialScroll[1] : 0) / (scaleY || 1); // only set the status to dragging, when we are actually dragging
+
+      if (!Sortable.active && !awaitingDragStarted) {
+        if (fallbackTolerance && Math.max(Math.abs(touch.clientX - this._lastX), Math.abs(touch.clientY - this._lastY)) < fallbackTolerance) {
+          return;
+        }
+
+        this._onDragStart(evt, true);
+      }
+
+      if (ghostEl) {
+        if (ghostMatrix) {
+          ghostMatrix.e += dx - (lastDx || 0);
+          ghostMatrix.f += dy - (lastDy || 0);
+        } else {
+          ghostMatrix = {
+            a: 1,
+            b: 0,
+            c: 0,
+            d: 1,
+            e: dx,
+            f: dy
+          };
+        }
+
+        var cssMatrix = "matrix(".concat(ghostMatrix.a, ",").concat(ghostMatrix.b, ",").concat(ghostMatrix.c, ",").concat(ghostMatrix.d, ",").concat(ghostMatrix.e, ",").concat(ghostMatrix.f, ")");
+        css(ghostEl, 'webkitTransform', cssMatrix);
+        css(ghostEl, 'mozTransform', cssMatrix);
+        css(ghostEl, 'msTransform', cssMatrix);
+        css(ghostEl, 'transform', cssMatrix);
+        lastDx = dx;
+        lastDy = dy;
+        touchEvt = touch;
+      }
+
+      evt.cancelable && evt.preventDefault();
+    }
+  },
+  _appendGhost: function _appendGhost() {
+    // Bug if using scale(): https://stackoverflow.com/questions/2637058
+    // Not being adjusted for
+    if (!ghostEl) {
+      var container = this.options.fallbackOnBody ? document.body : rootEl,
+          rect = getRect(dragEl, true, PositionGhostAbsolutely, true, container),
+          options = this.options; // Position absolutely
+
+      if (PositionGhostAbsolutely) {
+        // Get relatively positioned parent
+        ghostRelativeParent = container;
+
+        while (css(ghostRelativeParent, 'position') === 'static' && css(ghostRelativeParent, 'transform') === 'none' && ghostRelativeParent !== document) {
+          ghostRelativeParent = ghostRelativeParent.parentNode;
+        }
+
+        if (ghostRelativeParent !== document.body && ghostRelativeParent !== document.documentElement) {
+          if (ghostRelativeParent === document) ghostRelativeParent = getWindowScrollingElement();
+          rect.top += ghostRelativeParent.scrollTop;
+          rect.left += ghostRelativeParent.scrollLeft;
+        } else {
+          ghostRelativeParent = getWindowScrollingElement();
+        }
+
+        ghostRelativeParentInitialScroll = getRelativeScrollOffset(ghostRelativeParent);
+      }
+
+      ghostEl = dragEl.cloneNode(true);
+      toggleClass(ghostEl, options.ghostClass, false);
+      toggleClass(ghostEl, options.fallbackClass, true);
+      toggleClass(ghostEl, options.dragClass, true);
+      css(ghostEl, 'transition', '');
+      css(ghostEl, 'transform', '');
+      css(ghostEl, 'box-sizing', 'border-box');
+      css(ghostEl, 'margin', 0);
+      css(ghostEl, 'top', rect.top);
+      css(ghostEl, 'left', rect.left);
+      css(ghostEl, 'width', rect.width);
+      css(ghostEl, 'height', rect.height);
+      css(ghostEl, 'opacity', '0.8');
+      css(ghostEl, 'position', PositionGhostAbsolutely ? 'absolute' : 'fixed');
+      css(ghostEl, 'zIndex', '100000');
+      css(ghostEl, 'pointerEvents', 'none');
+      Sortable.ghost = ghostEl;
+      container.appendChild(ghostEl); // Set transform-origin
+
+      css(ghostEl, 'transform-origin', tapDistanceLeft / parseInt(ghostEl.style.width) * 100 + '% ' + tapDistanceTop / parseInt(ghostEl.style.height) * 100 + '%');
+    }
+  },
+  _onDragStart: function _onDragStart(
+  /**Event*/
+  evt,
+  /**boolean*/
+  fallback) {
+    var _this = this;
+
+    var dataTransfer = evt.dataTransfer;
+    var options = _this.options;
+    pluginEvent('dragStart', this, {
+      evt: evt
+    });
+
+    if (Sortable.eventCanceled) {
+      this._onDrop();
+
+      return;
+    }
+
+    pluginEvent('setupClone', this);
+
+    if (!Sortable.eventCanceled) {
+      cloneEl = clone(dragEl);
+      cloneEl.draggable = false;
+      cloneEl.style['will-change'] = '';
+
+      this._hideClone();
+
+      toggleClass(cloneEl, this.options.chosenClass, false);
+      Sortable.clone = cloneEl;
+    } // #1143: IFrame support workaround
+
+
+    _this.cloneId = _nextTick(function () {
+      pluginEvent('clone', _this);
+      if (Sortable.eventCanceled) return;
+
+      if (!_this.options.removeCloneOnHide) {
+        rootEl.insertBefore(cloneEl, dragEl);
+      }
+
+      _this._hideClone();
+
+      _dispatchEvent({
+        sortable: _this,
+        name: 'clone'
+      });
+    });
+    !fallback && toggleClass(dragEl, options.dragClass, true); // Set proper drop events
+
+    if (fallback) {
+      ignoreNextClick = true;
+      _this._loopId = setInterval(_this._emulateDragOver, 50);
+    } else {
+      // Undo what was set in _prepareDragStart before drag started
+      off(document, 'mouseup', _this._onDrop);
+      off(document, 'touchend', _this._onDrop);
+      off(document, 'touchcancel', _this._onDrop);
+
+      if (dataTransfer) {
+        dataTransfer.effectAllowed = 'move';
+        options.setData && options.setData.call(_this, dataTransfer, dragEl);
+      }
+
+      on(document, 'drop', _this); // #1276 fix:
+
+      css(dragEl, 'transform', 'translateZ(0)');
+    }
+
+    awaitingDragStarted = true;
+    _this._dragStartId = _nextTick(_this._dragStarted.bind(_this, fallback, evt));
+    on(document, 'selectstart', _this);
+    moved = true;
+
+    if (Safari) {
+      css(document.body, 'user-select', 'none');
+    }
+  },
+  // Returns true - if no further action is needed (either inserted or another condition)
+  _onDragOver: function _onDragOver(
+  /**Event*/
+  evt) {
+    var el = this.el,
+        target = evt.target,
+        dragRect,
+        targetRect,
+        revert,
+        options = this.options,
+        group = options.group,
+        activeSortable = Sortable.active,
+        isOwner = activeGroup === group,
+        canSort = options.sort,
+        fromSortable = putSortable || activeSortable,
+        vertical,
+        _this = this,
+        completedFired = false;
+
+    if (_silent) return;
+
+    function dragOverEvent(name, extra) {
+      pluginEvent(name, _this, _objectSpread({
+        evt: evt,
+        isOwner: isOwner,
+        axis: vertical ? 'vertical' : 'horizontal',
+        revert: revert,
+        dragRect: dragRect,
+        targetRect: targetRect,
+        canSort: canSort,
+        fromSortable: fromSortable,
+        target: target,
+        completed: completed,
+        onMove: function onMove(target, after) {
+          return _onMove(rootEl, el, dragEl, dragRect, target, getRect(target), evt, after);
+        },
+        changed: changed
+      }, extra));
+    } // Capture animation state
+
+
+    function capture() {
+      dragOverEvent('dragOverAnimationCapture');
+
+      _this.captureAnimationState();
+
+      if (_this !== fromSortable) {
+        fromSortable.captureAnimationState();
+      }
+    } // Return invocation when dragEl is inserted (or completed)
+
+
+    function completed(insertion) {
+      dragOverEvent('dragOverCompleted', {
+        insertion: insertion
+      });
+
+      if (insertion) {
+        // Clones must be hidden before folding animation to capture dragRectAbsolute properly
+        if (isOwner) {
+          activeSortable._hideClone();
+        } else {
+          activeSortable._showClone(_this);
+        }
+
+        if (_this !== fromSortable) {
+          // Set ghost class to new sortable's ghost class
+          toggleClass(dragEl, putSortable ? putSortable.options.ghostClass : activeSortable.options.ghostClass, false);
+          toggleClass(dragEl, options.ghostClass, true);
+        }
+
+        if (putSortable !== _this && _this !== Sortable.active) {
+          putSortable = _this;
+        } else if (_this === Sortable.active && putSortable) {
+          putSortable = null;
+        } // Animation
+
+
+        if (fromSortable === _this) {
+          _this._ignoreWhileAnimating = target;
+        }
+
+        _this.animateAll(function () {
+          dragOverEvent('dragOverAnimationComplete');
+          _this._ignoreWhileAnimating = null;
+        });
+
+        if (_this !== fromSortable) {
+          fromSortable.animateAll();
+          fromSortable._ignoreWhileAnimating = null;
+        }
+      } // Null lastTarget if it is not inside a previously swapped element
+
+
+      if (target === dragEl && !dragEl.animated || target === el && !target.animated) {
+        lastTarget = null;
+      } // no bubbling and not fallback
+
+
+      if (!options.dragoverBubble && !evt.rootEl && target !== document) {
+        dragEl.parentNode[expando]._isOutsideThisEl(evt.target); // Do not detect for empty insert if already inserted
+
+
+        !insertion && nearestEmptyInsertDetectEvent(evt);
+      }
+
+      !options.dragoverBubble && evt.stopPropagation && evt.stopPropagation();
+      return completedFired = true;
+    } // Call when dragEl has been inserted
+
+
+    function changed() {
+      newIndex = index(dragEl);
+      newDraggableIndex = index(dragEl, options.draggable);
+
+      _dispatchEvent({
+        sortable: _this,
+        name: 'change',
+        toEl: el,
+        newIndex: newIndex,
+        newDraggableIndex: newDraggableIndex,
+        originalEvent: evt
+      });
+    }
+
+    if (evt.preventDefault !== void 0) {
+      evt.cancelable && evt.preventDefault();
+    }
+
+    target = closest(target, options.draggable, el, true);
+    dragOverEvent('dragOver');
+    if (Sortable.eventCanceled) return completedFired;
+
+    if (dragEl.contains(evt.target) || target.animated && target.animatingX && target.animatingY || _this._ignoreWhileAnimating === target) {
+      return completed(false);
+    }
+
+    ignoreNextClick = false;
+
+    if (activeSortable && !options.disabled && (isOwner ? canSort || (revert = !rootEl.contains(dragEl)) // Reverting item into the original list
+    : putSortable === this || (this.lastPutMode = activeGroup.checkPull(this, activeSortable, dragEl, evt)) && group.checkPut(this, activeSortable, dragEl, evt))) {
+      vertical = this._getDirection(evt, target) === 'vertical';
+      dragRect = getRect(dragEl);
+      dragOverEvent('dragOverValid');
+      if (Sortable.eventCanceled) return completedFired;
+
+      if (revert) {
+        parentEl = rootEl; // actualization
+
+        capture();
+
+        this._hideClone();
+
+        dragOverEvent('revert');
+
+        if (!Sortable.eventCanceled) {
+          if (nextEl) {
+            rootEl.insertBefore(dragEl, nextEl);
+          } else {
+            rootEl.appendChild(dragEl);
+          }
+        }
+
+        return completed(true);
+      }
+
+      var elLastChild = lastChild(el, options.draggable);
+
+      if (!elLastChild || _ghostIsLast(evt, vertical, this) && !elLastChild.animated) {
+        // If already at end of list: Do not insert
+        if (elLastChild === dragEl) {
+          return completed(false);
+        } // assign target only if condition is true
+
+
+        if (elLastChild && el === evt.target) {
+          target = elLastChild;
+        }
+
+        if (target) {
+          targetRect = getRect(target);
+        }
+
+        if (_onMove(rootEl, el, dragEl, dragRect, target, targetRect, evt, !!target) !== false) {
+          capture();
+          el.appendChild(dragEl);
+          parentEl = el; // actualization
+
+          changed();
+          return completed(true);
+        }
+      } else if (target.parentNode === el) {
+        targetRect = getRect(target);
+        var direction = 0,
+            targetBeforeFirstSwap,
+            differentLevel = dragEl.parentNode !== el,
+            differentRowCol = !_dragElInRowColumn(dragEl.animated && dragEl.toRect || dragRect, target.animated && target.toRect || targetRect, vertical),
+            side1 = vertical ? 'top' : 'left',
+            scrolledPastTop = isScrolledPast(target, 'top', 'top') || isScrolledPast(dragEl, 'top', 'top'),
+            scrollBefore = scrolledPastTop ? scrolledPastTop.scrollTop : void 0;
+
+        if (lastTarget !== target) {
+          targetBeforeFirstSwap = targetRect[side1];
+          pastFirstInvertThresh = false;
+          isCircumstantialInvert = !differentRowCol && options.invertSwap || differentLevel;
+        }
+
+        direction = _getSwapDirection(evt, target, targetRect, vertical, differentRowCol ? 1 : options.swapThreshold, options.invertedSwapThreshold == null ? options.swapThreshold : options.invertedSwapThreshold, isCircumstantialInvert, lastTarget === target);
+        var sibling;
+
+        if (direction !== 0) {
+          // Check if target is beside dragEl in respective direction (ignoring hidden elements)
+          var dragIndex = index(dragEl);
+
+          do {
+            dragIndex -= direction;
+            sibling = parentEl.children[dragIndex];
+          } while (sibling && (css(sibling, 'display') === 'none' || sibling === ghostEl));
+        } // If dragEl is already beside target: Do not insert
+
+
+        if (direction === 0 || sibling === target) {
+          return completed(false);
+        }
+
+        lastTarget = target;
+        lastDirection = direction;
+        var nextSibling = target.nextElementSibling,
+            after = false;
+        after = direction === 1;
+
+        var moveVector = _onMove(rootEl, el, dragEl, dragRect, target, targetRect, evt, after);
+
+        if (moveVector !== false) {
+          if (moveVector === 1 || moveVector === -1) {
+            after = moveVector === 1;
+          }
+
+          _silent = true;
+          setTimeout(_unsilent, 30);
+          capture();
+
+          if (after && !nextSibling) {
+            el.appendChild(dragEl);
+          } else {
+            target.parentNode.insertBefore(dragEl, after ? nextSibling : target);
+          } // Undo chrome's scroll adjustment (has no effect on other browsers)
+
+
+          if (scrolledPastTop) {
+            scrollBy(scrolledPastTop, 0, scrollBefore - scrolledPastTop.scrollTop);
+          }
+
+          parentEl = dragEl.parentNode; // actualization
+          // must be done before animation
+
+          if (targetBeforeFirstSwap !== undefined && !isCircumstantialInvert) {
+            targetMoveDistance = Math.abs(targetBeforeFirstSwap - getRect(target)[side1]);
+          }
+
+          changed();
+          return completed(true);
+        }
+      }
+
+      if (el.contains(dragEl)) {
+        return completed(false);
+      }
+    }
+
+    return false;
+  },
+  _ignoreWhileAnimating: null,
+  _offMoveEvents: function _offMoveEvents() {
+    off(document, 'mousemove', this._onTouchMove);
+    off(document, 'touchmove', this._onTouchMove);
+    off(document, 'pointermove', this._onTouchMove);
+    off(document, 'dragover', nearestEmptyInsertDetectEvent);
+    off(document, 'mousemove', nearestEmptyInsertDetectEvent);
+    off(document, 'touchmove', nearestEmptyInsertDetectEvent);
+  },
+  _offUpEvents: function _offUpEvents() {
+    var ownerDocument = this.el.ownerDocument;
+    off(ownerDocument, 'mouseup', this._onDrop);
+    off(ownerDocument, 'touchend', this._onDrop);
+    off(ownerDocument, 'pointerup', this._onDrop);
+    off(ownerDocument, 'touchcancel', this._onDrop);
+    off(document, 'selectstart', this);
+  },
+  _onDrop: function _onDrop(
+  /**Event*/
+  evt) {
+    var el = this.el,
+        options = this.options; // Get the index of the dragged element within its parent
+
+    newIndex = index(dragEl);
+    newDraggableIndex = index(dragEl, options.draggable);
+    pluginEvent('drop', this, {
+      evt: evt
+    });
+    parentEl = dragEl && dragEl.parentNode; // Get again after plugin event
+
+    newIndex = index(dragEl);
+    newDraggableIndex = index(dragEl, options.draggable);
+
+    if (Sortable.eventCanceled) {
+      this._nulling();
+
+      return;
+    }
+
+    awaitingDragStarted = false;
+    isCircumstantialInvert = false;
+    pastFirstInvertThresh = false;
+    clearInterval(this._loopId);
+    clearTimeout(this._dragStartTimer);
+
+    _cancelNextTick(this.cloneId);
+
+    _cancelNextTick(this._dragStartId); // Unbind events
+
+
+    if (this.nativeDraggable) {
+      off(document, 'drop', this);
+      off(el, 'dragstart', this._onDragStart);
+    }
+
+    this._offMoveEvents();
+
+    this._offUpEvents();
+
+    if (Safari) {
+      css(document.body, 'user-select', '');
+    }
+
+    css(dragEl, 'transform', '');
+
+    if (evt) {
+      if (moved) {
+        evt.cancelable && evt.preventDefault();
+        !options.dropBubble && evt.stopPropagation();
+      }
+
+      ghostEl && ghostEl.parentNode && ghostEl.parentNode.removeChild(ghostEl);
+
+      if (rootEl === parentEl || putSortable && putSortable.lastPutMode !== 'clone') {
+        // Remove clone(s)
+        cloneEl && cloneEl.parentNode && cloneEl.parentNode.removeChild(cloneEl);
+      }
+
+      if (dragEl) {
+        if (this.nativeDraggable) {
+          off(dragEl, 'dragend', this);
+        }
+
+        _disableDraggable(dragEl);
+
+        dragEl.style['will-change'] = ''; // Remove classes
+        // ghostClass is added in dragStarted
+
+        if (moved && !awaitingDragStarted) {
+          toggleClass(dragEl, putSortable ? putSortable.options.ghostClass : this.options.ghostClass, false);
+        }
+
+        toggleClass(dragEl, this.options.chosenClass, false); // Drag stop event
+
+        _dispatchEvent({
+          sortable: this,
+          name: 'unchoose',
+          toEl: parentEl,
+          newIndex: null,
+          newDraggableIndex: null,
+          originalEvent: evt
+        });
+
+        if (rootEl !== parentEl) {
+          if (newIndex >= 0) {
+            // Add event
+            _dispatchEvent({
+              rootEl: parentEl,
+              name: 'add',
+              toEl: parentEl,
+              fromEl: rootEl,
+              originalEvent: evt
+            }); // Remove event
+
+
+            _dispatchEvent({
+              sortable: this,
+              name: 'remove',
+              toEl: parentEl,
+              originalEvent: evt
+            }); // drag from one list and drop into another
+
+
+            _dispatchEvent({
+              rootEl: parentEl,
+              name: 'sort',
+              toEl: parentEl,
+              fromEl: rootEl,
+              originalEvent: evt
+            });
+
+            _dispatchEvent({
+              sortable: this,
+              name: 'sort',
+              toEl: parentEl,
+              originalEvent: evt
+            });
+          }
+
+          putSortable && putSortable.save();
+        } else {
+          if (newIndex !== oldIndex) {
+            if (newIndex >= 0) {
+              // drag & drop within the same list
+              _dispatchEvent({
+                sortable: this,
+                name: 'update',
+                toEl: parentEl,
+                originalEvent: evt
+              });
+
+              _dispatchEvent({
+                sortable: this,
+                name: 'sort',
+                toEl: parentEl,
+                originalEvent: evt
+              });
+            }
+          }
+        }
+
+        if (Sortable.active) {
+          /* jshint eqnull:true */
+          if (newIndex == null || newIndex === -1) {
+            newIndex = oldIndex;
+            newDraggableIndex = oldDraggableIndex;
+          }
+
+          _dispatchEvent({
+            sortable: this,
+            name: 'end',
+            toEl: parentEl,
+            originalEvent: evt
+          }); // Save sorting
+
+
+          this.save();
+        }
+      }
+    }
+
+    this._nulling();
+  },
+  _nulling: function _nulling() {
+    pluginEvent('nulling', this);
+    rootEl = dragEl = parentEl = ghostEl = nextEl = cloneEl = lastDownEl = cloneHidden = tapEvt = touchEvt = moved = newIndex = newDraggableIndex = oldIndex = oldDraggableIndex = lastTarget = lastDirection = putSortable = activeGroup = Sortable.dragged = Sortable.ghost = Sortable.clone = Sortable.active = null;
+    savedInputChecked.forEach(function (el) {
+      el.checked = true;
+    });
+    savedInputChecked.length = lastDx = lastDy = 0;
+  },
+  handleEvent: function handleEvent(
+  /**Event*/
+  evt) {
+    switch (evt.type) {
+      case 'drop':
+      case 'dragend':
+        this._onDrop(evt);
+
+        break;
+
+      case 'dragenter':
+      case 'dragover':
+        if (dragEl) {
+          this._onDragOver(evt);
+
+          _globalDragOver(evt);
+        }
+
+        break;
+
+      case 'selectstart':
+        evt.preventDefault();
+        break;
+    }
+  },
+
+  /**
+   * Serializes the item into an array of string.
+   * @returns {String[]}
+   */
+  toArray: function toArray() {
+    var order = [],
+        el,
+        children = this.el.children,
+        i = 0,
+        n = children.length,
+        options = this.options;
+
+    for (; i < n; i++) {
+      el = children[i];
+
+      if (closest(el, options.draggable, this.el, false)) {
+        order.push(el.getAttribute(options.dataIdAttr) || _generateId(el));
+      }
+    }
+
+    return order;
+  },
+
+  /**
+   * Sorts the elements according to the array.
+   * @param  {String[]}  order  order of the items
+   */
+  sort: function sort(order, useAnimation) {
+    var items = {},
+        rootEl = this.el;
+    this.toArray().forEach(function (id, i) {
+      var el = rootEl.children[i];
+
+      if (closest(el, this.options.draggable, rootEl, false)) {
+        items[id] = el;
+      }
+    }, this);
+    useAnimation && this.captureAnimationState();
+    order.forEach(function (id) {
+      if (items[id]) {
+        rootEl.removeChild(items[id]);
+        rootEl.appendChild(items[id]);
+      }
+    });
+    useAnimation && this.animateAll();
+  },
+
+  /**
+   * Save the current sorting
+   */
+  save: function save() {
+    var store = this.options.store;
+    store && store.set && store.set(this);
+  },
+
+  /**
+   * For each element in the set, get the first element that matches the selector by testing the element itself and traversing up through its ancestors in the DOM tree.
+   * @param   {HTMLElement}  el
+   * @param   {String}       [selector]  default: `options.draggable`
+   * @returns {HTMLElement|null}
+   */
+  closest: function closest$1(el, selector) {
+    return closest(el, selector || this.options.draggable, this.el, false);
+  },
+
+  /**
+   * Set/get option
+   * @param   {string} name
+   * @param   {*}      [value]
+   * @returns {*}
+   */
+  option: function option(name, value) {
+    var options = this.options;
+
+    if (value === void 0) {
+      return options[name];
+    } else {
+      var modifiedValue = PluginManager.modifyOption(this, name, value);
+
+      if (typeof modifiedValue !== 'undefined') {
+        options[name] = modifiedValue;
+      } else {
+        options[name] = value;
+      }
+
+      if (name === 'group') {
+        _prepareGroup(options);
+      }
+    }
+  },
+
+  /**
+   * Destroy
+   */
+  destroy: function destroy() {
+    pluginEvent('destroy', this);
+    var el = this.el;
+    el[expando] = null;
+    off(el, 'mousedown', this._onTapStart);
+    off(el, 'touchstart', this._onTapStart);
+    off(el, 'pointerdown', this._onTapStart);
+
+    if (this.nativeDraggable) {
+      off(el, 'dragover', this);
+      off(el, 'dragenter', this);
+    } // Remove draggable attributes
+
+
+    Array.prototype.forEach.call(el.querySelectorAll('[draggable]'), function (el) {
+      el.removeAttribute('draggable');
+    });
+
+    this._onDrop();
+
+    this._disableDelayedDragEvents();
+
+    sortables.splice(sortables.indexOf(this.el), 1);
+    this.el = el = null;
+  },
+  _hideClone: function _hideClone() {
+    if (!cloneHidden) {
+      pluginEvent('hideClone', this);
+      if (Sortable.eventCanceled) return;
+      css(cloneEl, 'display', 'none');
+
+      if (this.options.removeCloneOnHide && cloneEl.parentNode) {
+        cloneEl.parentNode.removeChild(cloneEl);
+      }
+
+      cloneHidden = true;
+    }
+  },
+  _showClone: function _showClone(putSortable) {
+    if (putSortable.lastPutMode !== 'clone') {
+      this._hideClone();
+
+      return;
+    }
+
+    if (cloneHidden) {
+      pluginEvent('showClone', this);
+      if (Sortable.eventCanceled) return; // show clone at dragEl or original position
+
+      if (dragEl.parentNode == rootEl && !this.options.group.revertClone) {
+        rootEl.insertBefore(cloneEl, dragEl);
+      } else if (nextEl) {
+        rootEl.insertBefore(cloneEl, nextEl);
+      } else {
+        rootEl.appendChild(cloneEl);
+      }
+
+      if (this.options.group.revertClone) {
+        this.animate(dragEl, cloneEl);
+      }
+
+      css(cloneEl, 'display', '');
+      cloneHidden = false;
+    }
+  }
+};
+
+function _globalDragOver(
+/**Event*/
+evt) {
+  if (evt.dataTransfer) {
+    evt.dataTransfer.dropEffect = 'move';
+  }
+
+  evt.cancelable && evt.preventDefault();
+}
+
+function _onMove(fromEl, toEl, dragEl, dragRect, targetEl, targetRect, originalEvent, willInsertAfter) {
+  var evt,
+      sortable = fromEl[expando],
+      onMoveFn = sortable.options.onMove,
+      retVal; // Support for new CustomEvent feature
+
+  if (window.CustomEvent && !IE11OrLess && !Edge) {
+    evt = new CustomEvent('move', {
+      bubbles: true,
+      cancelable: true
+    });
+  } else {
+    evt = document.createEvent('Event');
+    evt.initEvent('move', true, true);
+  }
+
+  evt.to = toEl;
+  evt.from = fromEl;
+  evt.dragged = dragEl;
+  evt.draggedRect = dragRect;
+  evt.related = targetEl || toEl;
+  evt.relatedRect = targetRect || getRect(toEl);
+  evt.willInsertAfter = willInsertAfter;
+  evt.originalEvent = originalEvent;
+  fromEl.dispatchEvent(evt);
+
+  if (onMoveFn) {
+    retVal = onMoveFn.call(sortable, evt, originalEvent);
+  }
+
+  return retVal;
+}
+
+function _disableDraggable(el) {
+  el.draggable = false;
+}
+
+function _unsilent() {
+  _silent = false;
+}
+
+function _ghostIsLast(evt, vertical, sortable) {
+  var rect = getRect(lastChild(sortable.el, sortable.options.draggable));
+  var spacer = 10;
+  return vertical ? evt.clientX > rect.right + spacer || evt.clientX <= rect.right && evt.clientY > rect.bottom && evt.clientX >= rect.left : evt.clientX > rect.right && evt.clientY > rect.top || evt.clientX <= rect.right && evt.clientY > rect.bottom + spacer;
+}
+
+function _getSwapDirection(evt, target, targetRect, vertical, swapThreshold, invertedSwapThreshold, invertSwap, isLastTarget) {
+  var mouseOnAxis = vertical ? evt.clientY : evt.clientX,
+      targetLength = vertical ? targetRect.height : targetRect.width,
+      targetS1 = vertical ? targetRect.top : targetRect.left,
+      targetS2 = vertical ? targetRect.bottom : targetRect.right,
+      invert = false;
+
+  if (!invertSwap) {
+    // Never invert or create dragEl shadow when target movemenet causes mouse to move past the end of regular swapThreshold
+    if (isLastTarget && targetMoveDistance < targetLength * swapThreshold) {
+      // multiplied only by swapThreshold because mouse will already be inside target by (1 - threshold) * targetLength / 2
+      // check if past first invert threshold on side opposite of lastDirection
+      if (!pastFirstInvertThresh && (lastDirection === 1 ? mouseOnAxis > targetS1 + targetLength * invertedSwapThreshold / 2 : mouseOnAxis < targetS2 - targetLength * invertedSwapThreshold / 2)) {
+        // past first invert threshold, do not restrict inverted threshold to dragEl shadow
+        pastFirstInvertThresh = true;
+      }
+
+      if (!pastFirstInvertThresh) {
+        // dragEl shadow (target move distance shadow)
+        if (lastDirection === 1 ? mouseOnAxis < targetS1 + targetMoveDistance // over dragEl shadow
+        : mouseOnAxis > targetS2 - targetMoveDistance) {
+          return -lastDirection;
+        }
+      } else {
+        invert = true;
+      }
+    } else {
+      // Regular
+      if (mouseOnAxis > targetS1 + targetLength * (1 - swapThreshold) / 2 && mouseOnAxis < targetS2 - targetLength * (1 - swapThreshold) / 2) {
+        return _getInsertDirection(target);
+      }
+    }
+  }
+
+  invert = invert || invertSwap;
+
+  if (invert) {
+    // Invert of regular
+    if (mouseOnAxis < targetS1 + targetLength * invertedSwapThreshold / 2 || mouseOnAxis > targetS2 - targetLength * invertedSwapThreshold / 2) {
+      return mouseOnAxis > targetS1 + targetLength / 2 ? 1 : -1;
+    }
+  }
+
+  return 0;
+}
+/**
+ * Gets the direction dragEl must be swapped relative to target in order to make it
+ * seem that dragEl has been "inserted" into that element's position
+ * @param  {HTMLElement} target       The target whose position dragEl is being inserted at
+ * @return {Number}                   Direction dragEl must be swapped
+ */
+
+
+function _getInsertDirection(target) {
+  if (index(dragEl) < index(target)) {
+    return 1;
+  } else {
+    return -1;
+  }
+}
+/**
+ * Generate id
+ * @param   {HTMLElement} el
+ * @returns {String}
+ * @private
+ */
+
+
+function _generateId(el) {
+  var str = el.tagName + el.className + el.src + el.href + el.textContent,
+      i = str.length,
+      sum = 0;
+
+  while (i--) {
+    sum += str.charCodeAt(i);
+  }
+
+  return sum.toString(36);
+}
+
+function _saveInputCheckedState(root) {
+  savedInputChecked.length = 0;
+  var inputs = root.getElementsByTagName('input');
+  var idx = inputs.length;
+
+  while (idx--) {
+    var el = inputs[idx];
+    el.checked && savedInputChecked.push(el);
+  }
+}
+
+function _nextTick(fn) {
+  return setTimeout(fn, 0);
+}
+
+function _cancelNextTick(id) {
+  return clearTimeout(id);
+} // Fixed #973:
+
+
+if (documentExists) {
+  on(document, 'touchmove', function (evt) {
+    if ((Sortable.active || awaitingDragStarted) && evt.cancelable) {
+      evt.preventDefault();
+    }
+  });
+} // Export utils
+
+
+Sortable.utils = {
+  on: on,
+  off: off,
+  css: css,
+  find: find,
+  is: function is(el, selector) {
+    return !!closest(el, selector, el, false);
+  },
+  extend: extend,
+  throttle: throttle,
+  closest: closest,
+  toggleClass: toggleClass,
+  clone: clone,
+  index: index,
+  nextTick: _nextTick,
+  cancelNextTick: _cancelNextTick,
+  detectDirection: _detectDirection,
+  getChild: getChild
+};
+/**
+ * Get the Sortable instance of an element
+ * @param  {HTMLElement} element The element
+ * @return {Sortable|undefined}         The instance of Sortable
+ */
+
+Sortable.get = function (element) {
+  return element[expando];
+};
+/**
+ * Mount a plugin to Sortable
+ * @param  {...SortablePlugin|SortablePlugin[]} plugins       Plugins being mounted
+ */
+
+
+Sortable.mount = function () {
+  for (var _len = arguments.length, plugins = new Array(_len), _key = 0; _key < _len; _key++) {
+    plugins[_key] = arguments[_key];
+  }
+
+  if (plugins[0].constructor === Array) plugins = plugins[0];
+  plugins.forEach(function (plugin) {
+    if (!plugin.prototype || !plugin.prototype.constructor) {
+      throw "Sortable: Mounted plugin must be a constructor function, not ".concat({}.toString.call(plugin));
+    }
+
+    if (plugin.utils) Sortable.utils = _objectSpread({}, Sortable.utils, plugin.utils);
+    PluginManager.mount(plugin);
+  });
+};
+/**
+ * Create sortable instance
+ * @param {HTMLElement}  el
+ * @param {Object}      [options]
+ */
+
+
+Sortable.create = function (el, options) {
+  return new Sortable(el, options);
+}; // Export
+
+
+Sortable.version = version;
+
+var autoScrolls = [],
+    scrollEl,
+    scrollRootEl,
+    scrolling = false,
+    lastAutoScrollX,
+    lastAutoScrollY,
+    touchEvt$1,
+    pointerElemChangedInterval;
+
+function AutoScrollPlugin() {
+  function AutoScroll() {
+    this.defaults = {
+      scroll: true,
+      scrollSensitivity: 30,
+      scrollSpeed: 10,
+      bubbleScroll: true
+    }; // Bind all private methods
+
+    for (var fn in this) {
+      if (fn.charAt(0) === '_' && typeof this[fn] === 'function') {
+        this[fn] = this[fn].bind(this);
+      }
+    }
+  }
+
+  AutoScroll.prototype = {
+    dragStarted: function dragStarted(_ref) {
+      var originalEvent = _ref.originalEvent;
+
+      if (this.sortable.nativeDraggable) {
+        on(document, 'dragover', this._handleAutoScroll);
+      } else {
+        if (this.options.supportPointer) {
+          on(document, 'pointermove', this._handleFallbackAutoScroll);
+        } else if (originalEvent.touches) {
+          on(document, 'touchmove', this._handleFallbackAutoScroll);
+        } else {
+          on(document, 'mousemove', this._handleFallbackAutoScroll);
+        }
+      }
+    },
+    dragOverCompleted: function dragOverCompleted(_ref2) {
+      var originalEvent = _ref2.originalEvent;
+
+      // For when bubbling is canceled and using fallback (fallback 'touchmove' always reached)
+      if (!this.options.dragOverBubble && !originalEvent.rootEl) {
+        this._handleAutoScroll(originalEvent);
+      }
+    },
+    drop: function drop() {
+      if (this.sortable.nativeDraggable) {
+        off(document, 'dragover', this._handleAutoScroll);
+      } else {
+        off(document, 'pointermove', this._handleFallbackAutoScroll);
+        off(document, 'touchmove', this._handleFallbackAutoScroll);
+        off(document, 'mousemove', this._handleFallbackAutoScroll);
+      }
+
+      clearPointerElemChangedInterval();
+      clearAutoScrolls();
+      cancelThrottle();
+    },
+    nulling: function nulling() {
+      touchEvt$1 = scrollRootEl = scrollEl = scrolling = pointerElemChangedInterval = lastAutoScrollX = lastAutoScrollY = null;
+      autoScrolls.length = 0;
+    },
+    _handleFallbackAutoScroll: function _handleFallbackAutoScroll(evt) {
+      this._handleAutoScroll(evt, true);
+    },
+    _handleAutoScroll: function _handleAutoScroll(evt, fallback) {
+      var _this = this;
+
+      var x = (evt.touches ? evt.touches[0] : evt).clientX,
+          y = (evt.touches ? evt.touches[0] : evt).clientY,
+          elem = document.elementFromPoint(x, y);
+      touchEvt$1 = evt; // IE does not seem to have native autoscroll,
+      // Edge's autoscroll seems too conditional,
+      // MACOS Safari does not have autoscroll,
+      // Firefox and Chrome are good
+
+      if (fallback || Edge || IE11OrLess || Safari) {
+        autoScroll(evt, this.options, elem, fallback); // Listener for pointer element change
+
+        var ogElemScroller = getParentAutoScrollElement(elem, true);
+
+        if (scrolling && (!pointerElemChangedInterval || x !== lastAutoScrollX || y !== lastAutoScrollY)) {
+          pointerElemChangedInterval && clearPointerElemChangedInterval(); // Detect for pointer elem change, emulating native DnD behaviour
+
+          pointerElemChangedInterval = setInterval(function () {
+            var newElem = getParentAutoScrollElement(document.elementFromPoint(x, y), true);
+
+            if (newElem !== ogElemScroller) {
+              ogElemScroller = newElem;
+              clearAutoScrolls();
+            }
+
+            autoScroll(evt, _this.options, newElem, fallback);
+          }, 10);
+          lastAutoScrollX = x;
+          lastAutoScrollY = y;
+        }
+      } else {
+        // if DnD is enabled (and browser has good autoscrolling), first autoscroll will already scroll, so get parent autoscroll of first autoscroll
+        if (!this.options.bubbleScroll || getParentAutoScrollElement(elem, true) === getWindowScrollingElement()) {
+          clearAutoScrolls();
+          return;
+        }
+
+        autoScroll(evt, this.options, getParentAutoScrollElement(elem, false), false);
+      }
+    }
+  };
+  return _extends(AutoScroll, {
+    pluginName: 'scroll',
+    initializeByDefault: true
+  });
+}
+
+function clearAutoScrolls() {
+  autoScrolls.forEach(function (autoScroll) {
+    clearInterval(autoScroll.pid);
+  });
+  autoScrolls = [];
+}
+
+function clearPointerElemChangedInterval() {
+  clearInterval(pointerElemChangedInterval);
+}
+
+var autoScroll = throttle(function (evt, options, rootEl, isFallback) {
+  // Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=505521
+  if (!options.scroll) return;
+  var x = (evt.touches ? evt.touches[0] : evt).clientX,
+      y = (evt.touches ? evt.touches[0] : evt).clientY,
+      sens = options.scrollSensitivity,
+      speed = options.scrollSpeed,
+      winScroller = getWindowScrollingElement();
+  var scrollThisInstance = false,
+      scrollCustomFn; // New scroll root, set scrollEl
+
+  if (scrollRootEl !== rootEl) {
+    scrollRootEl = rootEl;
+    clearAutoScrolls();
+    scrollEl = options.scroll;
+    scrollCustomFn = options.scrollFn;
+
+    if (scrollEl === true) {
+      scrollEl = getParentAutoScrollElement(rootEl, true);
+    }
+  }
+
+  var layersOut = 0;
+  var currentParent = scrollEl;
+
+  do {
+    var el = currentParent,
+        rect = getRect(el),
+        top = rect.top,
+        bottom = rect.bottom,
+        left = rect.left,
+        right = rect.right,
+        width = rect.width,
+        height = rect.height,
+        canScrollX = void 0,
+        canScrollY = void 0,
+        scrollWidth = el.scrollWidth,
+        scrollHeight = el.scrollHeight,
+        elCSS = css(el),
+        scrollPosX = el.scrollLeft,
+        scrollPosY = el.scrollTop;
+
+    if (el === winScroller) {
+      canScrollX = width < scrollWidth && (elCSS.overflowX === 'auto' || elCSS.overflowX === 'scroll' || elCSS.overflowX === 'visible');
+      canScrollY = height < scrollHeight && (elCSS.overflowY === 'auto' || elCSS.overflowY === 'scroll' || elCSS.overflowY === 'visible');
+    } else {
+      canScrollX = width < scrollWidth && (elCSS.overflowX === 'auto' || elCSS.overflowX === 'scroll');
+      canScrollY = height < scrollHeight && (elCSS.overflowY === 'auto' || elCSS.overflowY === 'scroll');
+    }
+
+    var vx = canScrollX && (Math.abs(right - x) <= sens && scrollPosX + width < scrollWidth) - (Math.abs(left - x) <= sens && !!scrollPosX);
+    var vy = canScrollY && (Math.abs(bottom - y) <= sens && scrollPosY + height < scrollHeight) - (Math.abs(top - y) <= sens && !!scrollPosY);
+
+    if (!autoScrolls[layersOut]) {
+      for (var i = 0; i <= layersOut; i++) {
+        if (!autoScrolls[i]) {
+          autoScrolls[i] = {};
+        }
+      }
+    }
+
+    if (autoScrolls[layersOut].vx != vx || autoScrolls[layersOut].vy != vy || autoScrolls[layersOut].el !== el) {
+      autoScrolls[layersOut].el = el;
+      autoScrolls[layersOut].vx = vx;
+      autoScrolls[layersOut].vy = vy;
+      clearInterval(autoScrolls[layersOut].pid);
+
+      if (vx != 0 || vy != 0) {
+        scrollThisInstance = true;
+        /* jshint loopfunc:true */
+
+        autoScrolls[layersOut].pid = setInterval(function () {
+          // emulate drag over during autoscroll (fallback), emulating native DnD behaviour
+          if (isFallback && this.layer === 0) {
+            Sortable.active._onTouchMove(touchEvt$1); // To move ghost if it is positioned absolutely
+
+          }
+
+          var scrollOffsetY = autoScrolls[this.layer].vy ? autoScrolls[this.layer].vy * speed : 0;
+          var scrollOffsetX = autoScrolls[this.layer].vx ? autoScrolls[this.layer].vx * speed : 0;
+
+          if (typeof scrollCustomFn === 'function') {
+            if (scrollCustomFn.call(Sortable.dragged.parentNode[expando], scrollOffsetX, scrollOffsetY, evt, touchEvt$1, autoScrolls[this.layer].el) !== 'continue') {
+              return;
+            }
+          }
+
+          scrollBy(autoScrolls[this.layer].el, scrollOffsetX, scrollOffsetY);
+        }.bind({
+          layer: layersOut
+        }), 24);
+      }
+    }
+
+    layersOut++;
+  } while (options.bubbleScroll && currentParent !== winScroller && (currentParent = getParentAutoScrollElement(currentParent, false)));
+
+  scrolling = scrollThisInstance; // in case another function catches scrolling as false in between when it is not
+}, 30);
+
+var drop = function drop(_ref) {
+  var originalEvent = _ref.originalEvent,
+      putSortable = _ref.putSortable,
+      dragEl = _ref.dragEl,
+      activeSortable = _ref.activeSortable,
+      dispatchSortableEvent = _ref.dispatchSortableEvent,
+      hideGhostForTarget = _ref.hideGhostForTarget,
+      unhideGhostForTarget = _ref.unhideGhostForTarget;
+  if (!originalEvent) return;
+  var toSortable = putSortable || activeSortable;
+  hideGhostForTarget();
+  var touch = originalEvent.changedTouches && originalEvent.changedTouches.length ? originalEvent.changedTouches[0] : originalEvent;
+  var target = document.elementFromPoint(touch.clientX, touch.clientY);
+  unhideGhostForTarget();
+
+  if (toSortable && !toSortable.el.contains(target)) {
+    dispatchSortableEvent('spill');
+    this.onSpill({
+      dragEl: dragEl,
+      putSortable: putSortable
+    });
+  }
+};
+
+function Revert() {}
+
+Revert.prototype = {
+  startIndex: null,
+  dragStart: function dragStart(_ref2) {
+    var oldDraggableIndex = _ref2.oldDraggableIndex;
+    this.startIndex = oldDraggableIndex;
+  },
+  onSpill: function onSpill(_ref3) {
+    var dragEl = _ref3.dragEl,
+        putSortable = _ref3.putSortable;
+    this.sortable.captureAnimationState();
+
+    if (putSortable) {
+      putSortable.captureAnimationState();
+    }
+
+    var nextSibling = getChild(this.sortable.el, this.startIndex, this.options);
+
+    if (nextSibling) {
+      this.sortable.el.insertBefore(dragEl, nextSibling);
+    } else {
+      this.sortable.el.appendChild(dragEl);
+    }
+
+    this.sortable.animateAll();
+
+    if (putSortable) {
+      putSortable.animateAll();
+    }
+  },
+  drop: drop
+};
+
+_extends(Revert, {
+  pluginName: 'revertOnSpill'
+});
+
+function Remove() {}
+
+Remove.prototype = {
+  onSpill: function onSpill(_ref4) {
+    var dragEl = _ref4.dragEl,
+        putSortable = _ref4.putSortable;
+    var parentSortable = putSortable || this.sortable;
+    parentSortable.captureAnimationState();
+    dragEl.parentNode && dragEl.parentNode.removeChild(dragEl);
+    parentSortable.animateAll();
+  },
+  drop: drop
+};
+
+_extends(Remove, {
+  pluginName: 'removeOnSpill'
+});
+
+var lastSwapEl;
+
+function SwapPlugin() {
+  function Swap() {
+    this.defaults = {
+      swapClass: 'sortable-swap-highlight'
+    };
+  }
+
+  Swap.prototype = {
+    dragStart: function dragStart(_ref) {
+      var dragEl = _ref.dragEl;
+      lastSwapEl = dragEl;
+    },
+    dragOverValid: function dragOverValid(_ref2) {
+      var completed = _ref2.completed,
+          target = _ref2.target,
+          onMove = _ref2.onMove,
+          activeSortable = _ref2.activeSortable,
+          changed = _ref2.changed,
+          cancel = _ref2.cancel;
+      if (!activeSortable.options.swap) return;
+      var el = this.sortable.el,
+          options = this.options;
+
+      if (target && target !== el) {
+        var prevSwapEl = lastSwapEl;
+
+        if (onMove(target) !== false) {
+          toggleClass(target, options.swapClass, true);
+          lastSwapEl = target;
+        } else {
+          lastSwapEl = null;
+        }
+
+        if (prevSwapEl && prevSwapEl !== lastSwapEl) {
+          toggleClass(prevSwapEl, options.swapClass, false);
+        }
+      }
+
+      changed();
+      completed(true);
+      cancel();
+    },
+    drop: function drop(_ref3) {
+      var activeSortable = _ref3.activeSortable,
+          putSortable = _ref3.putSortable,
+          dragEl = _ref3.dragEl;
+      var toSortable = putSortable || this.sortable;
+      var options = this.options;
+      lastSwapEl && toggleClass(lastSwapEl, options.swapClass, false);
+
+      if (lastSwapEl && (options.swap || putSortable && putSortable.options.swap)) {
+        if (dragEl !== lastSwapEl) {
+          toSortable.captureAnimationState();
+          if (toSortable !== activeSortable) activeSortable.captureAnimationState();
+          swapNodes(dragEl, lastSwapEl);
+          toSortable.animateAll();
+          if (toSortable !== activeSortable) activeSortable.animateAll();
+        }
+      }
+    },
+    nulling: function nulling() {
+      lastSwapEl = null;
+    }
+  };
+  return _extends(Swap, {
+    pluginName: 'swap',
+    eventProperties: function eventProperties() {
+      return {
+        swapItem: lastSwapEl
+      };
+    }
+  });
+}
+
+function swapNodes(n1, n2) {
+  var p1 = n1.parentNode,
+      p2 = n2.parentNode,
+      i1,
+      i2;
+  if (!p1 || !p2 || p1.isEqualNode(n2) || p2.isEqualNode(n1)) return;
+  i1 = index(n1);
+  i2 = index(n2);
+
+  if (p1.isEqualNode(p2) && i1 < i2) {
+    i2++;
+  }
+
+  p1.insertBefore(n2, p1.children[i1]);
+  p2.insertBefore(n1, p2.children[i2]);
+}
+
+var multiDragElements = [],
+    multiDragClones = [],
+    lastMultiDragSelect,
+    // for selection with modifier key down (SHIFT)
+multiDragSortable,
+    initialFolding = false,
+    // Initial multi-drag fold when drag started
+folding = false,
+    // Folding any other time
+dragStarted = false,
+    dragEl$1,
+    clonesFromRect,
+    clonesHidden;
+
+function MultiDragPlugin() {
+  function MultiDrag(sortable) {
+    // Bind all private methods
+    for (var fn in this) {
+      if (fn.charAt(0) === '_' && typeof this[fn] === 'function') {
+        this[fn] = this[fn].bind(this);
+      }
+    }
+
+    if (sortable.options.supportPointer) {
+      on(document, 'pointerup', this._deselectMultiDrag);
+    } else {
+      on(document, 'mouseup', this._deselectMultiDrag);
+      on(document, 'touchend', this._deselectMultiDrag);
+    }
+
+    on(document, 'keydown', this._checkKeyDown);
+    on(document, 'keyup', this._checkKeyUp);
+    this.defaults = {
+      selectedClass: 'sortable-selected',
+      multiDragKey: null,
+      setData: function setData(dataTransfer, dragEl) {
+        var data = '';
+
+        if (multiDragElements.length && multiDragSortable === sortable) {
+          multiDragElements.forEach(function (multiDragElement, i) {
+            data += (!i ? '' : ', ') + multiDragElement.textContent;
+          });
+        } else {
+          data = dragEl.textContent;
+        }
+
+        dataTransfer.setData('Text', data);
+      }
+    };
+  }
+
+  MultiDrag.prototype = {
+    multiDragKeyDown: false,
+    isMultiDrag: false,
+    delayStartGlobal: function delayStartGlobal(_ref) {
+      var dragged = _ref.dragEl;
+      dragEl$1 = dragged;
+    },
+    delayEnded: function delayEnded() {
+      this.isMultiDrag = ~multiDragElements.indexOf(dragEl$1);
+    },
+    setupClone: function setupClone(_ref2) {
+      var sortable = _ref2.sortable,
+          cancel = _ref2.cancel;
+      if (!this.isMultiDrag) return;
+
+      for (var i = 0; i < multiDragElements.length; i++) {
+        multiDragClones.push(clone(multiDragElements[i]));
+        multiDragClones[i].sortableIndex = multiDragElements[i].sortableIndex;
+        multiDragClones[i].draggable = false;
+        multiDragClones[i].style['will-change'] = '';
+        toggleClass(multiDragClones[i], this.options.selectedClass, false);
+        multiDragElements[i] === dragEl$1 && toggleClass(multiDragClones[i], this.options.chosenClass, false);
+      }
+
+      sortable._hideClone();
+
+      cancel();
+    },
+    clone: function clone(_ref3) {
+      var sortable = _ref3.sortable,
+          rootEl = _ref3.rootEl,
+          dispatchSortableEvent = _ref3.dispatchSortableEvent,
+          cancel = _ref3.cancel;
+      if (!this.isMultiDrag) return;
+
+      if (!this.options.removeCloneOnHide) {
+        if (multiDragElements.length && multiDragSortable === sortable) {
+          insertMultiDragClones(true, rootEl);
+          dispatchSortableEvent('clone');
+          cancel();
+        }
+      }
+    },
+    showClone: function showClone(_ref4) {
+      var cloneNowShown = _ref4.cloneNowShown,
+          rootEl = _ref4.rootEl,
+          cancel = _ref4.cancel;
+      if (!this.isMultiDrag) return;
+      insertMultiDragClones(false, rootEl);
+      multiDragClones.forEach(function (clone) {
+        css(clone, 'display', '');
+      });
+      cloneNowShown();
+      clonesHidden = false;
+      cancel();
+    },
+    hideClone: function hideClone(_ref5) {
+      var _this = this;
+
+      var sortable = _ref5.sortable,
+          cloneNowHidden = _ref5.cloneNowHidden,
+          cancel = _ref5.cancel;
+      if (!this.isMultiDrag) return;
+      multiDragClones.forEach(function (clone) {
+        css(clone, 'display', 'none');
+
+        if (_this.options.removeCloneOnHide && clone.parentNode) {
+          clone.parentNode.removeChild(clone);
+        }
+      });
+      cloneNowHidden();
+      clonesHidden = true;
+      cancel();
+    },
+    dragStartGlobal: function dragStartGlobal(_ref6) {
+      var sortable = _ref6.sortable;
+
+      if (!this.isMultiDrag && multiDragSortable) {
+        multiDragSortable.multiDrag._deselectMultiDrag();
+      }
+
+      multiDragElements.forEach(function (multiDragElement) {
+        multiDragElement.sortableIndex = index(multiDragElement);
+      }); // Sort multi-drag elements
+
+      multiDragElements = multiDragElements.sort(function (a, b) {
+        return a.sortableIndex - b.sortableIndex;
+      });
+      dragStarted = true;
+    },
+    dragStarted: function dragStarted(_ref7) {
+      var _this2 = this;
+
+      var sortable = _ref7.sortable;
+      if (!this.isMultiDrag) return;
+
+      if (this.options.sort) {
+        // Capture rects,
+        // hide multi drag elements (by positioning them absolute),
+        // set multi drag elements rects to dragRect,
+        // show multi drag elements,
+        // animate to rects,
+        // unset rects & remove from DOM
+        sortable.captureAnimationState();
+
+        if (this.options.animation) {
+          multiDragElements.forEach(function (multiDragElement) {
+            if (multiDragElement === dragEl$1) return;
+            css(multiDragElement, 'position', 'absolute');
+          });
+          var dragRect = getRect(dragEl$1, false, true, true);
+          multiDragElements.forEach(function (multiDragElement) {
+            if (multiDragElement === dragEl$1) return;
+            setRect(multiDragElement, dragRect);
+          });
+          folding = true;
+          initialFolding = true;
+        }
+      }
+
+      sortable.animateAll(function () {
+        folding = false;
+        initialFolding = false;
+
+        if (_this2.options.animation) {
+          multiDragElements.forEach(function (multiDragElement) {
+            unsetRect(multiDragElement);
+          });
+        } // Remove all auxiliary multidrag items from el, if sorting enabled
+
+
+        if (_this2.options.sort) {
+          removeMultiDragElements();
+        }
+      });
+    },
+    dragOver: function dragOver(_ref8) {
+      var target = _ref8.target,
+          completed = _ref8.completed,
+          cancel = _ref8.cancel;
+
+      if (folding && ~multiDragElements.indexOf(target)) {
+        completed(false);
+        cancel();
+      }
+    },
+    revert: function revert(_ref9) {
+      var fromSortable = _ref9.fromSortable,
+          rootEl = _ref9.rootEl,
+          sortable = _ref9.sortable,
+          dragRect = _ref9.dragRect;
+
+      if (multiDragElements.length > 1) {
+        // Setup unfold animation
+        multiDragElements.forEach(function (multiDragElement) {
+          sortable.addAnimationState({
+            target: multiDragElement,
+            rect: folding ? getRect(multiDragElement) : dragRect
+          });
+          unsetRect(multiDragElement);
+          multiDragElement.fromRect = dragRect;
+          fromSortable.removeAnimationState(multiDragElement);
+        });
+        folding = false;
+        insertMultiDragElements(!this.options.removeCloneOnHide, rootEl);
+      }
+    },
+    dragOverCompleted: function dragOverCompleted(_ref10) {
+      var sortable = _ref10.sortable,
+          isOwner = _ref10.isOwner,
+          insertion = _ref10.insertion,
+          activeSortable = _ref10.activeSortable,
+          parentEl = _ref10.parentEl,
+          putSortable = _ref10.putSortable;
+      var options = this.options;
+
+      if (insertion) {
+        // Clones must be hidden before folding animation to capture dragRectAbsolute properly
+        if (isOwner) {
+          activeSortable._hideClone();
+        }
+
+        initialFolding = false; // If leaving sort:false root, or already folding - Fold to new location
+
+        if (options.animation && multiDragElements.length > 1 && (folding || !isOwner && !activeSortable.options.sort && !putSortable)) {
+          // Fold: Set all multi drag elements's rects to dragEl's rect when multi-drag elements are invisible
+          var dragRectAbsolute = getRect(dragEl$1, false, true, true);
+          multiDragElements.forEach(function (multiDragElement) {
+            if (multiDragElement === dragEl$1) return;
+            setRect(multiDragElement, dragRectAbsolute); // Move element(s) to end of parentEl so that it does not interfere with multi-drag clones insertion if they are inserted
+            // while folding, and so that we can capture them again because old sortable will no longer be fromSortable
+
+            parentEl.appendChild(multiDragElement);
+          });
+          folding = true;
+        } // Clones must be shown (and check to remove multi drags) after folding when interfering multiDragElements are moved out
+
+
+        if (!isOwner) {
+          // Only remove if not folding (folding will remove them anyways)
+          if (!folding) {
+            removeMultiDragElements();
+          }
+
+          if (multiDragElements.length > 1) {
+            var clonesHiddenBefore = clonesHidden;
+
+            activeSortable._showClone(sortable); // Unfold animation for clones if showing from hidden
+
+
+            if (activeSortable.options.animation && !clonesHidden && clonesHiddenBefore) {
+              multiDragClones.forEach(function (clone) {
+                activeSortable.addAnimationState({
+                  target: clone,
+                  rect: clonesFromRect
+                });
+                clone.fromRect = clonesFromRect;
+                clone.thisAnimationDuration = null;
+              });
+            }
+          } else {
+            activeSortable._showClone(sortable);
+          }
+        }
+      }
+    },
+    dragOverAnimationCapture: function dragOverAnimationCapture(_ref11) {
+      var dragRect = _ref11.dragRect,
+          isOwner = _ref11.isOwner,
+          activeSortable = _ref11.activeSortable;
+      multiDragElements.forEach(function (multiDragElement) {
+        multiDragElement.thisAnimationDuration = null;
+      });
+
+      if (activeSortable.options.animation && !isOwner && activeSortable.multiDrag.isMultiDrag) {
+        clonesFromRect = _extends({}, dragRect);
+        var dragMatrix = matrix(dragEl$1, true);
+        clonesFromRect.top -= dragMatrix.f;
+        clonesFromRect.left -= dragMatrix.e;
+      }
+    },
+    dragOverAnimationComplete: function dragOverAnimationComplete() {
+      if (folding) {
+        folding = false;
+        removeMultiDragElements();
+      }
+    },
+    drop: function drop(_ref12) {
+      var evt = _ref12.originalEvent,
+          rootEl = _ref12.rootEl,
+          parentEl = _ref12.parentEl,
+          sortable = _ref12.sortable,
+          dispatchSortableEvent = _ref12.dispatchSortableEvent,
+          oldIndex = _ref12.oldIndex,
+          putSortable = _ref12.putSortable;
+      var toSortable = putSortable || this.sortable;
+      if (!evt) return;
+      var options = this.options,
+          children = parentEl.children; // Multi-drag selection
+
+      if (!dragStarted) {
+        if (options.multiDragKey && !this.multiDragKeyDown) {
+          this._deselectMultiDrag();
+        }
+
+        toggleClass(dragEl$1, options.selectedClass, !~multiDragElements.indexOf(dragEl$1));
+
+        if (!~multiDragElements.indexOf(dragEl$1)) {
+          multiDragElements.push(dragEl$1);
+          dispatchEvent({
+            sortable: sortable,
+            rootEl: rootEl,
+            name: 'select',
+            targetEl: dragEl$1,
+            originalEvt: evt
+          }); // Modifier activated, select from last to dragEl
+
+          if (evt.shiftKey && lastMultiDragSelect && sortable.el.contains(lastMultiDragSelect)) {
+            var lastIndex = index(lastMultiDragSelect),
+                currentIndex = index(dragEl$1);
+
+            if (~lastIndex && ~currentIndex && lastIndex !== currentIndex) {
+              // Must include lastMultiDragSelect (select it), in case modified selection from no selection
+              // (but previous selection existed)
+              var n, i;
+
+              if (currentIndex > lastIndex) {
+                i = lastIndex;
+                n = currentIndex;
+              } else {
+                i = currentIndex;
+                n = lastIndex + 1;
+              }
+
+              for (; i < n; i++) {
+                if (~multiDragElements.indexOf(children[i])) continue;
+                toggleClass(children[i], options.selectedClass, true);
+                multiDragElements.push(children[i]);
+                dispatchEvent({
+                  sortable: sortable,
+                  rootEl: rootEl,
+                  name: 'select',
+                  targetEl: children[i],
+                  originalEvt: evt
+                });
+              }
+            }
+          } else {
+            lastMultiDragSelect = dragEl$1;
+          }
+
+          multiDragSortable = toSortable;
+        } else {
+          multiDragElements.splice(multiDragElements.indexOf(dragEl$1), 1);
+          lastMultiDragSelect = null;
+          dispatchEvent({
+            sortable: sortable,
+            rootEl: rootEl,
+            name: 'deselect',
+            targetEl: dragEl$1,
+            originalEvt: evt
+          });
+        }
+      } // Multi-drag drop
+
+
+      if (dragStarted && this.isMultiDrag) {
+        // Do not "unfold" after around dragEl if reverted
+        if ((parentEl[expando].options.sort || parentEl !== rootEl) && multiDragElements.length > 1) {
+          var dragRect = getRect(dragEl$1),
+              multiDragIndex = index(dragEl$1, ':not(.' + this.options.selectedClass + ')');
+          if (!initialFolding && options.animation) dragEl$1.thisAnimationDuration = null;
+          toSortable.captureAnimationState();
+
+          if (!initialFolding) {
+            if (options.animation) {
+              dragEl$1.fromRect = dragRect;
+              multiDragElements.forEach(function (multiDragElement) {
+                multiDragElement.thisAnimationDuration = null;
+
+                if (multiDragElement !== dragEl$1) {
+                  var rect = folding ? getRect(multiDragElement) : dragRect;
+                  multiDragElement.fromRect = rect; // Prepare unfold animation
+
+                  toSortable.addAnimationState({
+                    target: multiDragElement,
+                    rect: rect
+                  });
+                }
+              });
+            } // Multi drag elements are not necessarily removed from the DOM on drop, so to reinsert
+            // properly they must all be removed
+
+
+            removeMultiDragElements();
+            multiDragElements.forEach(function (multiDragElement) {
+              if (children[multiDragIndex]) {
+                parentEl.insertBefore(multiDragElement, children[multiDragIndex]);
+              } else {
+                parentEl.appendChild(multiDragElement);
+              }
+
+              multiDragIndex++;
+            }); // If initial folding is done, the elements may have changed position because they are now
+            // unfolding around dragEl, even though dragEl may not have his index changed, so update event
+            // must be fired here as Sortable will not.
+
+            if (oldIndex === index(dragEl$1)) {
+              var update = false;
+              multiDragElements.forEach(function (multiDragElement) {
+                if (multiDragElement.sortableIndex !== index(multiDragElement)) {
+                  update = true;
+                  return;
+                }
+              });
+
+              if (update) {
+                dispatchSortableEvent('update');
+              }
+            }
+          } // Must be done after capturing individual rects (scroll bar)
+
+
+          multiDragElements.forEach(function (multiDragElement) {
+            unsetRect(multiDragElement);
+          });
+          toSortable.animateAll();
+        }
+
+        multiDragSortable = toSortable;
+      } // Remove clones if necessary
+
+
+      if (rootEl === parentEl || putSortable && putSortable.lastPutMode !== 'clone') {
+        multiDragClones.forEach(function (clone) {
+          clone.parentNode && clone.parentNode.removeChild(clone);
+        });
+      }
+    },
+    nullingGlobal: function nullingGlobal() {
+      this.isMultiDrag = dragStarted = false;
+      multiDragClones.length = 0;
+    },
+    destroyGlobal: function destroyGlobal() {
+      this._deselectMultiDrag();
+
+      off(document, 'pointerup', this._deselectMultiDrag);
+      off(document, 'mouseup', this._deselectMultiDrag);
+      off(document, 'touchend', this._deselectMultiDrag);
+      off(document, 'keydown', this._checkKeyDown);
+      off(document, 'keyup', this._checkKeyUp);
+    },
+    _deselectMultiDrag: function _deselectMultiDrag(evt) {
+      if (typeof dragStarted !== "undefined" && dragStarted) return; // Only deselect if selection is in this sortable
+
+      if (multiDragSortable !== this.sortable) return; // Only deselect if target is not item in this sortable
+
+      if (evt && closest(evt.target, this.options.draggable, this.sortable.el, false)) return; // Only deselect if left click
+
+      if (evt && evt.button !== 0) return;
+
+      while (multiDragElements.length) {
+        var el = multiDragElements[0];
+        toggleClass(el, this.options.selectedClass, false);
+        multiDragElements.shift();
+        dispatchEvent({
+          sortable: this.sortable,
+          rootEl: this.sortable.el,
+          name: 'deselect',
+          targetEl: el,
+          originalEvt: evt
+        });
+      }
+    },
+    _checkKeyDown: function _checkKeyDown(evt) {
+      if (evt.key === this.options.multiDragKey) {
+        this.multiDragKeyDown = true;
+      }
+    },
+    _checkKeyUp: function _checkKeyUp(evt) {
+      if (evt.key === this.options.multiDragKey) {
+        this.multiDragKeyDown = false;
+      }
+    }
+  };
+  return _extends(MultiDrag, {
+    // Static methods & properties
+    pluginName: 'multiDrag',
+    utils: {
+      /**
+       * Selects the provided multi-drag item
+       * @param  {HTMLElement} el    The element to be selected
+       */
+      select: function select(el) {
+        var sortable = el.parentNode[expando];
+        if (!sortable || !sortable.options.multiDrag || ~multiDragElements.indexOf(el)) return;
+
+        if (multiDragSortable && multiDragSortable !== sortable) {
+          multiDragSortable.multiDrag._deselectMultiDrag();
+
+          multiDragSortable = sortable;
+        }
+
+        toggleClass(el, sortable.options.selectedClass, true);
+        multiDragElements.push(el);
+      },
+
+      /**
+       * Deselects the provided multi-drag item
+       * @param  {HTMLElement} el    The element to be deselected
+       */
+      deselect: function deselect(el) {
+        var sortable = el.parentNode[expando],
+            index = multiDragElements.indexOf(el);
+        if (!sortable || !sortable.options.multiDrag || !~index) return;
+        toggleClass(el, sortable.options.selectedClass, false);
+        multiDragElements.splice(index, 1);
+      }
+    },
+    eventProperties: function eventProperties() {
+      var _this3 = this;
+
+      var oldIndicies = [],
+          newIndicies = [];
+      multiDragElements.forEach(function (multiDragElement) {
+        oldIndicies.push({
+          multiDragElement: multiDragElement,
+          index: multiDragElement.sortableIndex
+        }); // multiDragElements will already be sorted if folding
+
+        var newIndex;
+
+        if (folding && multiDragElement !== dragEl$1) {
+          newIndex = -1;
+        } else if (folding) {
+          newIndex = index(multiDragElement, ':not(.' + _this3.options.selectedClass + ')');
+        } else {
+          newIndex = index(multiDragElement);
+        }
+
+        newIndicies.push({
+          multiDragElement: multiDragElement,
+          index: newIndex
+        });
+      });
+      return {
+        items: _toConsumableArray(multiDragElements),
+        clones: [].concat(multiDragClones),
+        oldIndicies: oldIndicies,
+        newIndicies: newIndicies
+      };
+    },
+    optionListeners: {
+      multiDragKey: function multiDragKey(key) {
+        key = key.toLowerCase();
+
+        if (key === 'ctrl') {
+          key = 'Control';
+        } else if (key.length > 1) {
+          key = key.charAt(0).toUpperCase() + key.substr(1);
+        }
+
+        return key;
+      }
+    }
+  });
+}
+
+function insertMultiDragElements(clonesInserted, rootEl) {
+  multiDragElements.forEach(function (multiDragElement, i) {
+    var target = rootEl.children[multiDragElement.sortableIndex + (clonesInserted ? Number(i) : 0)];
+
+    if (target) {
+      rootEl.insertBefore(multiDragElement, target);
+    } else {
+      rootEl.appendChild(multiDragElement);
+    }
+  });
+}
+/**
+ * Insert multi-drag clones
+ * @param  {[Boolean]} elementsInserted  Whether the multi-drag elements are inserted
+ * @param  {HTMLElement} rootEl
+ */
+
+
+function insertMultiDragClones(elementsInserted, rootEl) {
+  multiDragClones.forEach(function (clone, i) {
+    var target = rootEl.children[clone.sortableIndex + (elementsInserted ? Number(i) : 0)];
+
+    if (target) {
+      rootEl.insertBefore(clone, target);
+    } else {
+      rootEl.appendChild(clone);
+    }
+  });
+}
+
+function removeMultiDragElements() {
+  multiDragElements.forEach(function (multiDragElement) {
+    if (multiDragElement === dragEl$1) return;
+    multiDragElement.parentNode && multiDragElement.parentNode.removeChild(multiDragElement);
+  });
+}
+
+Sortable.mount(new AutoScrollPlugin());
+Sortable.mount(Remove, Revert);
+
+/* harmony default export */ __webpack_exports__["default"] = (Sortable);
+
+
+
+/***/ }),
+
 /***/ "./node_modules/stimulus/index.js":
 /*!****************************************!*\
   !*** ./node_modules/stimulus/index.js ***!
@@ -46121,13 +43535,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var turbolinks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! turbolinks */ "./node_modules/turbolinks/dist/turbolinks.js");
 /* harmony import */ var turbolinks__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(turbolinks__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _github_time_elements__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @github/time-elements */ "./node_modules/@github/time-elements/dist/time-elements.js");
-/* harmony import */ var _shopify_draggable__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @shopify/draggable */ "./node_modules/@shopify/draggable/lib/draggable.bundle.js");
-/* harmony import */ var _shopify_draggable__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_shopify_draggable__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var livewire_sortable__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! livewire-sortable */ "./node_modules/livewire-sortable/dist/livewire-sortable.js");
-/* harmony import */ var livewire_sortable__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(livewire_sortable__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
-/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(alpinejs__WEBPACK_IMPORTED_MODULE_8__);
-
+/* harmony import */ var livewire_sortable__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! livewire-sortable */ "./node_modules/livewire-sortable/dist/livewire-sortable.js");
+/* harmony import */ var livewire_sortable__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(livewire_sortable__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
+/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(alpinejs__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var sortablejs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! sortablejs */ "./node_modules/sortablejs/modular/sortable.esm.js");
 
 
 
@@ -46159,31 +43571,28 @@ function bootstrap() {
     }, 3500);
   }); // Sortable 
 
-  var sortable = new _shopify_draggable__WEBPACK_IMPORTED_MODULE_6__["Sortable"](document.querySelectorAll('.sortable'), {
-    draggable: '.draggable'
-  });
-  /*const sortableHeader = new Sortable(document.querySelectorAll('.sortable'), {
-      draggable: 'header.sortable'
-  });*/
+  var nestedSortables = [].slice.call(document.querySelectorAll('.sortable'));
 
-  sortable.on('sortable:stop', function (e) {
-    var container = e.data.newContainer;
-    var target = e.dragEvent.data.source;
-    var inputId = target.querySelector('input').getAttribute('id');
-    var input = document.getElementById(inputId);
+  for (var i = 0; i < nestedSortables.length; i++) {
+    new sortablejs__WEBPACK_IMPORTED_MODULE_8__["default"](nestedSortables[i], {
+      group: 'nested',
+      animation: 150,
+      fallbackOnBody: true,
+      swapThreshold: 0.65,
+      onSort: function onSort(event) {
+        var destination = event.to,
+            input = event.item.querySelector('input.option');
 
-    if (container.tagName.toLowerCase() == "header" && target.tagName.toLowerCase() == 'article') {
-      var blockName = container.getAttribute('id');
-      input.setAttribute('name', "options[".concat(blockName, "][]")); //let input = e.newContainer.querySelector(sourceInput)
-      //let blockName = e.newContainer.getAttribute('data-block-name')
-      // input.setAttribute('name', `options[${blockName}]`)
-      //.setAttribute('foobar', 'options[Pen]')
-    } else {
-      if (target.tagName.toLowerCase() == 'article') {
-        input.setAttribute('name', 'options[]');
+        if (destination.classList.contains('block-options')) {
+          var blockId = destination.getAttribute('data-block-id');
+          input.setAttribute('name', "options[".concat(blockId, "][]"));
+          console.log(input);
+        } else {
+          input.setAttribute('name', 'options[]');
+        }
       }
-    }
-  });
+    });
+  }
 
   window.xenoPower = function () {
     window.$ = jquery__WEBPACK_IMPORTED_MODULE_3___default.a;

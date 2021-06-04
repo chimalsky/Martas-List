@@ -13,7 +13,7 @@ class ResourceTypeAttributeOptionsController extends Controller
     {
         $request->validate([
             'option' => ['required', function($validatingAttribute, $value, $fail) use ($attribute) {
-                if (!collect($attribute->options)->contains($value)) {
+                if (!$attribute->nonNullOptionsFlattened->contains($value)) {
                     $fail('This is an invalid option for this attribute.');
                 }
             }]

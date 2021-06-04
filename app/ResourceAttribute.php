@@ -72,6 +72,20 @@ class ResourceAttribute extends Model implements Sortable
         return $this->key;
     }
 
+    public function getOptionsGroupedAttribute()
+    {
+        return $this->nonNullOptions->map(function($item) {
+            if (is_array($item)) {
+                return $item;
+            }
+
+            return [
+                '_name' => $item,
+                '_items' => []
+            ];
+        });
+    }
+
     public function getNonNullOptionsAttribute()
     {
         return collect($this->options)->reject(function($option) {
@@ -79,10 +93,48 @@ class ResourceAttribute extends Model implements Sortable
         });
     }
 
+    public function getNonNullOptionsFlattenedAttribute()
+    {
+        return $this->nonNullOptions->map(function($item) {
+            if (is_array($item)) {
+                return $item['_items'];
+            }
+
+            return $item;
+        })->flatten();
+    }
+
+    public function getOptionBlocksAttribute()
+    {
+        return $this->optionsGrouped->pluck('_name');
+    }
+
     public function getOptionsDropdownAttribute()
     {
-        return collect($this->options)->flatten()->mapWithKeys(function($option) {
+        return $this->nonNullOptionsFlattened->mapWithKeys(function($option) {
             return [$option => $option];
         })->toArray();
+    }
+
+    public function hasOption($option)
+    {
+        return $this->nonNullOptionsFlattened->contains($option);
+    }
+
+    public function hasOptionBlock($optionBlock)
+    {
+        return $this->optionBlocks->contains($optionBlock);
+    }
+
+    public function getOptionBlock($optionBlock)
+    {
+        return $this->optionsGrouped->first(function($group) use ($optionBlock) {
+            return $group['_name'] == $optionBlock;
+        });
+    }
+
+    public function getOptionBlockItems($optionBlock)
+    {
+        return $this->getOptionBlock($optionBlock)['_items'];
     }
 }

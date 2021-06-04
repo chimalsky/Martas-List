@@ -33,16 +33,24 @@ class PoemsController extends Controller
             $poems = $poems->byTranscriptionText($query);
         }
 
-        if ($filterables->count()) {
-            foreach ($filterables as $filterableId => $filterableValues) {
+        if ($activeFilterables->count()) {
+            foreach ($activeFilterables as $filterable) {
                 // month
-                if ($filterableId == 623 && $filterables->keys()->contains(138)) {
+                if ($filterable->id == 623 && $filterables->keys()->contains(138)) {
                     continue;
                 }
 
-                $poems = $poems->whereHas('meta', function ($query) use ($filterableId, $filterableValues) {
-                    $query = $query->where('resource_attribute_id', $filterableId)
-                        ->whereIn('value', $filterableValues);
+                $activeFilterableValues = $filterables[$filterable->id];
+
+                $poems = $poems->whereHas('meta', function ($query) use ($filterable, $activeFilterableValues) {
+                    if (count($activeFilterableValues) === 1 
+                        && $filterable->hasOptionBlock($activeFilterableValues[0])
+                        ) {
+                        $activeFilterableValues = $filterable->getOptionBlockItems($activeFilterableValues[0]);
+                    }
+
+                    $query = $query->where('resource_attribute_id', $filterable->id)
+                        ->whereIn('value', $activeFilterableValues);
                 });
             }
         }

@@ -23,7 +23,7 @@
     <main class="mt-4 flex flex-wrap">
         @foreach ($poems as $poem)
             <article class="w-full md:w-1/2 lg:w-1/3 lg:px-2 pb-10 lg:pb-16">
-                @include('project.poems._single', $poem)
+                <x-project.poem.single :poem="$poem" />
             </article>
         @endforeach
     </main>
