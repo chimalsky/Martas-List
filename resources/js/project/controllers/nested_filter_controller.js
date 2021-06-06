@@ -13,42 +13,28 @@ export default class extends Controller {
     }
 
     initialize() {
+        if (this.hasSelectedBlock() || this.hasSelectedBlockOption()) {
+            this.selectedBlockValue = this.activeBlock
+            return this.navigateToStage(2)
+        }
+
         this.navigateToStage(1)
     }
 
     blockSelected(event) {
         this.selectedBlockValue = event.target.value
 
-        /*
-        this.blockOptionsTargets.forEach((element) => {
-            element.querySelectorAll('input').forEach((el) => {
-                if (el.checked) el.click()
-            })
-        })
-
-        this.blockTargets.forEach((element) => {
-            let input = element.querySelector('input')
-
-            console.log(element.getAttribute('data-block-name'), this.selectedBlockValue)
-
-            if (input.checked && element.getAttribute('data-block-name') != this.selectedBlockValue) {
-                console.log('foo')
-                input.click()
-            }
-        }) 
-        */
+        this.dispatchUpdate()
 
         this.navigateToStage(2)
     }
 
-    optionSelected(event) {
-        let activeBlock = this.blockTargets.find(el => {
-            return el.getAttribute('data-block-name') == this.selectedBlockValue
-        }).querySelector('input')
-        
-        if (activeBlock.checked) {
-            activeBlock.click()
+    optionSelected(event) {        
+        if (this.selectedBlock && this.selectedBlock.checked) {
+            this.selectedBlock.click()
         }
+
+        this.dispatchUpdate()
     }
 
     navigateToStage(stage) {
@@ -79,5 +65,67 @@ export default class extends Controller {
 
     back(event) {
         this.navigateToStage(1)
+
+        this.clearSelectedBlockOptions()
+
+        this.clearSelectedBlocks()
+
+        this.dispatchUpdate()
+    }
+
+    clearSelectedBlockOptions() {
+        this.blockOptionsTargets.forEach((element) => {
+            element.querySelectorAll('input').forEach((el) => {
+                if (el.checked) el.checked = false
+            })
+        })
+    }
+
+    clearSelectedBlocks() {
+        this.blockTargets.forEach((element) => {
+            let input = element.querySelector('input')
+
+            input.checked = false
+        }) 
+    }
+
+    hasSelectedBlock() {
+        return this.selectedBlock ? true : false
+    }
+
+    hasSelectedBlockOption() {
+        return this.selectedBlockOptions.length
+            ? true
+            : false
+    }
+
+    get selectedBlock() {
+        let checkedBlock = this.blockTargets.find(
+            el => el.querySelector('input').checked
+        )
+        
+        return checkedBlock 
+            ? checkedBlock.querySelector('input')
+            : null
+    }
+
+    get activeBlock() {
+        if (this.hasSelectedBlock()) {
+            return this.selectedBlock.value
+        }
+
+        if (this.hasSelectedBlockOption()) {
+            return this.selectedBlockOptions[0].getAttribute('data-block')
+        }
+
+    }
+
+    get selectedBlockOptions() {
+        return Array.from(this.element.querySelectorAll('input[data-option]'))
+            .filter(element => element.checked)
+    }
+    
+    dispatchUpdate() {
+        window.dispatchEvent(new CustomEvent('filter-value-updated'))
     }
 }
