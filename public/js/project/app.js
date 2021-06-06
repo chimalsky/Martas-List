@@ -5891,47 +5891,33 @@ var _default = /*#__PURE__*/function (_Controller) {
   _createClass(_default, [{
     key: "initialize",
     value: function initialize() {
+      if (this.hasSelectedBlock() || this.hasSelectedBlockOption()) {
+        this.selectedBlockValue = this.activeBlock;
+        return this.navigateToStage(2);
+      }
+
       this.navigateToStage(1);
     }
   }, {
     key: "blockSelected",
     value: function blockSelected(event) {
       this.selectedBlockValue = event.target.value;
-      /*
-      this.blockOptionsTargets.forEach((element) => {
-          element.querySelectorAll('input').forEach((el) => {
-              if (el.checked) el.click()
-          })
-      })
-       this.blockTargets.forEach((element) => {
-          let input = element.querySelector('input')
-           console.log(element.getAttribute('data-block-name'), this.selectedBlockValue)
-           if (input.checked && element.getAttribute('data-block-name') != this.selectedBlockValue) {
-              console.log('foo')
-              input.click()
-          }
-      }) 
-      */
-
+      this.dispatchUpdate();
       this.navigateToStage(2);
     }
   }, {
     key: "optionSelected",
     value: function optionSelected(event) {
-      var _this = this;
-
-      var activeBlock = this.blockTargets.find(function (el) {
-        return el.getAttribute('data-block-name') == _this.selectedBlockValue;
-      }).querySelector('input');
-
-      if (activeBlock.checked) {
-        activeBlock.click();
+      if (this.selectedBlock && this.selectedBlock.checked) {
+        this.selectedBlock.click();
       }
+
+      this.dispatchUpdate();
     }
   }, {
     key: "navigateToStage",
     value: function navigateToStage(stage) {
-      var _this2 = this;
+      var _this = this;
 
       this.stageValue = stage;
 
@@ -5947,10 +5933,10 @@ var _default = /*#__PURE__*/function (_Controller) {
 
       if (this.stageValue === 2) {
         this.blockOptionsTargets.find(function (element) {
-          return element.getAttribute('data-block') == _this2.selectedBlockValue;
+          return element.getAttribute('data-block') == _this.selectedBlockValue;
         }).classList.remove('hidden');
         this.blockOptionsTargets.filter(function (element) {
-          return element.getAttribute('data-block') != _this2.selectedBlockValue;
+          return element.getAttribute('data-block') != _this.selectedBlockValue;
         }).forEach(function (el) {
           return el.classList.add('hidden');
         });
@@ -5964,6 +5950,67 @@ var _default = /*#__PURE__*/function (_Controller) {
     key: "back",
     value: function back(event) {
       this.navigateToStage(1);
+      this.clearSelectedBlockOptions();
+      this.clearSelectedBlocks();
+      this.dispatchUpdate();
+    }
+  }, {
+    key: "clearSelectedBlockOptions",
+    value: function clearSelectedBlockOptions() {
+      this.blockOptionsTargets.forEach(function (element) {
+        element.querySelectorAll('input').forEach(function (el) {
+          if (el.checked) el.checked = false;
+        });
+      });
+    }
+  }, {
+    key: "clearSelectedBlocks",
+    value: function clearSelectedBlocks() {
+      this.blockTargets.forEach(function (element) {
+        var input = element.querySelector('input');
+        input.checked = false;
+      });
+    }
+  }, {
+    key: "hasSelectedBlock",
+    value: function hasSelectedBlock() {
+      return this.selectedBlock ? true : false;
+    }
+  }, {
+    key: "hasSelectedBlockOption",
+    value: function hasSelectedBlockOption() {
+      return this.selectedBlockOptions.length ? true : false;
+    }
+  }, {
+    key: "selectedBlock",
+    get: function get() {
+      var checkedBlock = this.blockTargets.find(function (el) {
+        return el.querySelector('input').checked;
+      });
+      return checkedBlock ? checkedBlock.querySelector('input') : null;
+    }
+  }, {
+    key: "activeBlock",
+    get: function get() {
+      if (this.hasSelectedBlock()) {
+        return this.selectedBlock.value;
+      }
+
+      if (this.hasSelectedBlockOption()) {
+        return this.selectedBlockOptions[0].getAttribute('data-block');
+      }
+    }
+  }, {
+    key: "selectedBlockOptions",
+    get: function get() {
+      return Array.from(this.element.querySelectorAll('input[data-option]')).filter(function (element) {
+        return element.checked;
+      });
+    }
+  }, {
+    key: "dispatchUpdate",
+    value: function dispatchUpdate() {
+      window.dispatchEvent(new CustomEvent('filter-value-updated'));
     }
   }]);
 

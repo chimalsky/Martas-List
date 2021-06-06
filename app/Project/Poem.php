@@ -3,7 +3,9 @@
 namespace App\Project;
 
 use App\Resource;
+use App\ResourceAttribute;
 use App\ResourceMeta;
+use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\Builder;
 use Spatie\MediaLibrary\Models\Media;
 
@@ -69,5 +71,31 @@ class Poem extends Resource
         $transcriptions = Transcription::search($transcriptionQuery)->get();
 
         return $query->whereIn('id', $transcriptions->pluck('resource_id'));
+    }
+
+    public function scopeHasBirds($query){
+        return $query->whereDoesntHave('meta', function($query) {
+            $query->where('resource_attribute_id', 624);
+        });
+    }
+
+    public function scopeDoesntHaveBirds($query){
+        return $query->whereHas('meta', function($query) {
+            $query->where('resource_attribute_id', 624);
+        });
+    }
+
+    public function scopeWithFilterableValues($query, ResourceAttribute $filterable, $values)
+    {
+        return $query->whereHas('meta', function ($query) use ($filterable, $values) {
+            if (count($values) === 1 
+                && $filterable->hasOptionBlock($values[0])
+                ) {
+                $values = $filterable->getOptionBlockItems($values[0]);
+            }
+
+            $query = $query->where('resource_attribute_id', $filterable->id)
+                ->whereIn('value', $values);
+        });
     }
 }

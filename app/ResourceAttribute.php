@@ -106,7 +106,13 @@ class ResourceAttribute extends Model implements Sortable
 
     public function getOptionBlocksAttribute()
     {
-        return $this->optionsGrouped->pluck('_name');
+        return $this->optionsGrouped->filter(function($block) {
+            if (!is_array($block)) {
+                return false;
+            }
+
+            return count($block['_items']);
+        })->pluck('_name');
     }
 
     public function getOptionsDropdownAttribute()
@@ -119,6 +125,11 @@ class ResourceAttribute extends Model implements Sortable
     public function hasOption($option)
     {
         return $this->nonNullOptionsFlattened->contains($option);
+    }
+
+    public function hasOptionBlocks()
+    {
+        return $this->optionBlocks->count(); 
     }
 
     public function hasOptionBlock($optionBlock)
