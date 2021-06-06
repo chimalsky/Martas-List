@@ -21,6 +21,25 @@ class PoemsController extends Controller
             return $filterable->id == 84;
         });
 
+        $birds = ResourceCategory::with('connections')
+                ->where('resource_type_id', Bird::$resource_type_id)->get();
+
+        $filterableBirds = collect($request->query('filterableBird'));
+        
+        $activeBirds = $birds->whereIn('id', $filterableBirds->keys());
+
+        return view('project.poems.index', compact('activeFilterables', 'birds', 'activeBirds'));
+    }
+
+    public function indexFetch(Request $request)
+    {
+        $filterables = collect($request->query('filterable'));
+
+        $activeFilterables = ResourceAttribute::ordered()->whereIn('id', $filterables->keys()->toArray())->get();
+        $displayableFilterables = $activeFilterables->reject(function($filterable) {
+            return $filterable->id == 84;
+        });
+
         $poems = Poem::hasBirds()
             ->whereHas('firstLine')
             ->with(['facsimiles', 'firstLine', 'placeholder', 'year', 'birdCategories.resources', 
@@ -70,11 +89,7 @@ class PoemsController extends Controller
 
         $results = $poems;
 
-        if ($request->wantsJson()) {
-            return view('project.poems.results', compact('results', 'activeFilterables', 'birds', 'activeBirds'));
-        }
-
-        return view('project.poems.index', compact('results', 'activeFilterables', 'birds', 'activeBirds'));
+        return view('project.poems.results', compact('results', 'activeFilterables', 'birds', 'activeBirds'));
     }
 
     public function show(Request $request, $poemId)

@@ -1,8 +1,5 @@
 <header id="results-composition" class="gap-4 mt-12">
     <div data-target="archive.formFacade"">
-        <input placeholder="search by transcription text..." name="query" type="hidden"
-            class="block mb-4 border-4 border-gray-700 text-black rounded-full pl-4 p-2 placeholder-gray-800" />
-
         @foreach ($activeFilterables as $filterable)
             <div class="text-center mb-6">
                 <header class="block">

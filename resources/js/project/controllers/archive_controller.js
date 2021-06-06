@@ -3,7 +3,11 @@ import { Controller } from "stimulus"
 export default class extends Controller {   
     static targets = [
         'form',
-        'formFacade'
+        'formFacade'    
+    ]
+
+    static classes = [
+        'loading'
     ]
 
     relayAction(event) {

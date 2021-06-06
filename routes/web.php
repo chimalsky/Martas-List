@@ -25,6 +25,7 @@ Route::prefix('project')->name('project.')->namespace('Project')->group(function
     Route::get('/coordinates', 'CoordinatesController')->name('coordinates');
     Route::get('/primary-sources', 'PrimarySourcesController')->name('primary-sources');
     Route::get('/poems', 'PoemsController@index')->name('poems.index');
+    Route::get('/poems/fetch', 'PoemsController@indexFetch')->name('poems.index-fetch');
     Route::get('/poems/{poem}', 'PoemsController@show')->name('poems.show');
     Route::post('/poems/get', 'PoemsController@index')->name('poems.indexAsync');
 

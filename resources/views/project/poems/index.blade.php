@@ -4,7 +4,7 @@
     Poem Archive - Dickinson's Birds
 @endsection
 
-@push('controllers')
+@push('stimulus-controllers')
     archive
 @endpush
 
@@ -32,7 +32,7 @@
 
 <form id="js-main-form" data-target="archive.form" data-controller="form" 
     data-action="filter-value-updated@window->form#changed" 
-    action="@route('project.poems.index')" method="get">
+    action="@route('project.poems.index-fetch')" method="get">
     <input placeholder="Transcription text search..." name="query" data-action="input->form#changed"
         @if (request()->input('query')) value="{{ request()->input('query') }}" @endif
         class="block mb-4 border-4 border-gray-700 text-black rounded-full pl-4 p-2 placeholder-gray-800" />
@@ -124,7 +124,15 @@
 
 
 @section ('content')
+<div class="w-full flex justify-center hidden">
+    <div class="animate-ping h-12 w-12 text-gray-700 hover:text-gray-500 focus:outline-none 
+        focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 
+        transition ease-in-out duration-150 mt-16">
+        <img src="{{ asset('img/bird-icon-round.png') }}" />
+    </div>
+</div>
+
 <section id="results-section">
-    @include('project.poems.results', ['results' => $results])
+
 </section>
 @endsection

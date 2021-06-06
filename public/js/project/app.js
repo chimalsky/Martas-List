@@ -5655,6 +5655,8 @@ var _default = /*#__PURE__*/function (_Controller) {
 
 _defineProperty(_default, "targets", ['form', 'formFacade']);
 
+_defineProperty(_default, "classes", ['loading']);
+
 
 
 /***/ }),
@@ -5721,6 +5723,11 @@ var _default = /*#__PURE__*/function (_Controller) {
   }
 
   _createClass(_default, [{
+    key: "initialize",
+    value: function initialize() {
+      this.submitForm();
+    }
+  }, {
     key: "changed",
     value: function () {
       var _changed = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(event) {

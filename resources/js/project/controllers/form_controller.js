@@ -8,6 +8,10 @@ export default class extends Controller {
     static targets = [
     ]
 
+    initialize() {
+        this.submitForm()
+    }
+
     async changed(event) {
         console.log(event.target.checked)
         if (event.target.name == 'sort') {
