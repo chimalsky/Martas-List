@@ -20,7 +20,7 @@
 
 @routeIsnt('project.index')
 <div class="text-center">
-    <i>Dickinson’s Birds</i> &#169; {{ carbon()->format('Y') }}
+    <i>Dickinson's Birds: A Public Listening Project</i> &#169; {{ carbon()->format('Y') }}
     <br>
     <strong>Site under phase 1 development.</strong>
 
