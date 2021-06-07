@@ -137,6 +137,10 @@
             transition ease-in-out duration-150 mt-16 mx-auto">
             <img src="{{ asset('img/bird-icon-round.png') }}" />
         </div>
+
+        <p class="text-center mt-8 text-lg text-gray-600" data-archive-target="hide">
+            Loading a world of Birds and Poems
+        </p>
     </div>
 
     <section id="results-section">

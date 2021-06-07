@@ -4,7 +4,8 @@ export default class extends Controller {
     static targets = [
         'form',
         'formFacade',
-        'resultsContainer'
+        'resultsContainer',
+        'hide'
     ]
 
     relayAction(event) {
@@ -21,6 +22,8 @@ export default class extends Controller {
     }
 
     loadingComplete() {
+        this.hideTargets.forEach(el => el.classList.add('hidden'))
+        
         this.loadingSplashElement.classList.add('hidden')
     }
 

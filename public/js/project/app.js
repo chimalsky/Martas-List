@@ -5656,6 +5656,9 @@ var _default = /*#__PURE__*/function (_Controller) {
   }, {
     key: "loadingComplete",
     value: function loadingComplete() {
+      this.hideTargets.forEach(function (el) {
+        return el.classList.add('hidden');
+      });
       this.loadingSplashElement.classList.add('hidden');
     }
   }, {
@@ -5668,7 +5671,7 @@ var _default = /*#__PURE__*/function (_Controller) {
   return _default;
 }(stimulus__WEBPACK_IMPORTED_MODULE_0__["Controller"]);
 
-_defineProperty(_default, "targets", ['form', 'formFacade', 'resultsContainer']);
+_defineProperty(_default, "targets", ['form', 'formFacade', 'resultsContainer', 'hide']);
 
 
 
