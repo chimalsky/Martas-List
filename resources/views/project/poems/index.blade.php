@@ -28,6 +28,8 @@
             $content = optional(App\ResourceMeta::find(42072))->value ?? 'No content yet';
         @endphp
 
+        <x-project.poem.state />
+
         {!! $content !!}
     </x-slot>
 </x-project.archive-notes>
@@ -130,8 +132,8 @@
 
 
 @section ('content')
-<main data-archive-target="resultsContainer" class="relative pb-24">
-    <div class="z-50 absolute w-full top-0 loading-splash">
+<main data-archive-target="resultsContainer" class="pb-24">
+    <div class="loading-splash">
         <div class="animate-ping h-12 w-12 hover:text-gray-500 focus:outline-none 
             focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 
             transition ease-in-out duration-150 mt-16 mx-auto">
