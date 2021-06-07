@@ -31,7 +31,7 @@
         @stack('scripts')
     </head>
     <body data-controller="application @stack('stimulus-controllers')" 
-        @stack('stimulus-attributes') class="mt-8 px-2 flex flex-wrap" style="max-width: 1700px">
+        @stack('stimulus-attributes') class="mt-8 px-2 flex flex-wrap loading" style="max-width: 2400px">
         <aside class="flex-shrink max-w-xs">
             <h1 class="text-xl -mb-3 tracking-wide flex">
                 @include('project._nav')

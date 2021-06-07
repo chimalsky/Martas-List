@@ -5648,14 +5648,27 @@ var _default = /*#__PURE__*/function (_Controller) {
       var formInput = this.formTarget.querySelector('[name="' + target.name + '"][value="' + target.value + '"]');
       formInput.click();
     }
+  }, {
+    key: "loading",
+    value: function loading() {
+      this.loadingSplashElement.classList.remove('hidden');
+    }
+  }, {
+    key: "loadingComplete",
+    value: function loadingComplete() {
+      this.loadingSplashElement.classList.add('hidden');
+    }
+  }, {
+    key: "loadingSplashElement",
+    get: function get() {
+      return this.resultsContainerTarget.querySelector('.loading-splash');
+    }
   }]);
 
   return _default;
 }(stimulus__WEBPACK_IMPORTED_MODULE_0__["Controller"]);
 
-_defineProperty(_default, "targets", ['form', 'formFacade']);
-
-_defineProperty(_default, "classes", ['loading']);
+_defineProperty(_default, "targets", ['form', 'formFacade', 'resultsContainer']);
 
 
 
@@ -5725,7 +5738,11 @@ var _default = /*#__PURE__*/function (_Controller) {
   _createClass(_default, [{
     key: "initialize",
     value: function initialize() {
-      this.submitForm();
+      var _this = this;
+
+      setTimeout(function () {
+        _this.submitForm();
+      }, 50);
     }
   }, {
     key: "changed",
@@ -5736,6 +5753,7 @@ var _default = /*#__PURE__*/function (_Controller) {
             switch (_context.prev = _context.next) {
               case 0:
                 console.log(event.target.checked);
+                window.dispatchEvent(new CustomEvent('form-updated'));
 
                 if (event.target.name == 'sort') {
                   if (!event.target.checked) {
@@ -5746,17 +5764,17 @@ var _default = /*#__PURE__*/function (_Controller) {
                 }
 
                 if (!this.submitting) {
-                  _context.next = 5;
+                  _context.next = 6;
                   break;
                 }
 
-                _context.next = 5;
+                _context.next = 6;
                 return Object(_helpers_timing_helpers__WEBPACK_IMPORTED_MODULE_3__["delay"])(SUBMIT_DELAY);
 
-              case 5:
+              case 6:
                 this.submitForm();
 
-              case 6:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -5779,9 +5797,9 @@ var _default = /*#__PURE__*/function (_Controller) {
     key: "submitForm",
     value: function () {
       var _submitForm = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var _this = this;
+        var _this2 = this;
 
-        var request, response, event;
+        var request, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -5795,19 +5813,19 @@ var _default = /*#__PURE__*/function (_Controller) {
 
               case 3:
                 response = _context2.sent;
-                event = new CustomEvent("form-submitted", {
+                window.dispatchEvent(new CustomEvent("form-submitted", {
                   detail: {
                     data: this.formData
                   }
-                });
-                window.dispatchEvent(event);
+                }));
                 this.submitting = true;
                 response.html.then(function (html) {
                   document.querySelector('#results-section').innerHTML = html;
-                  _this.submitting = false;
+                  _this2.submitting = false;
+                  window.dispatchEvent(new CustomEvent('results-updated'));
                 });
 
-              case 8:
+              case 7:
               case "end":
                 return _context2.stop();
             }

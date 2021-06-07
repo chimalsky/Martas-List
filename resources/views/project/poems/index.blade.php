@@ -8,6 +8,12 @@
     archive
 @endpush
 
+@push('stimulus-attributes')
+    data-action="form-updated@window->archive#loading 
+        form-submitted@window->archive#loading 
+        results-updated@window->archive#loadingComplete"
+@endpush
+
 @section('header-anchor')
 <a href="@route('project.poems.index')">
     Poem Archive
@@ -124,15 +130,16 @@
 
 
 @section ('content')
-<div class="w-full flex justify-center hidden">
-    <div class="animate-ping h-12 w-12 text-gray-700 hover:text-gray-500 focus:outline-none 
-        focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 
-        transition ease-in-out duration-150 mt-16">
-        <img src="{{ asset('img/bird-icon-round.png') }}" />
+<main data-archive-target="resultsContainer" class="relative">
+    <div class="z-50 absolute w-full top-0 loading-splash">
+        <div class="animate-ping h-12 w-12 hover:text-gray-500 focus:outline-none 
+            focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 
+            transition ease-in-out duration-150 mt-16 mx-auto">
+            <img src="{{ asset('img/bird-icon-round.png') }}" />
+        </div>
     </div>
-</div>
 
-<section id="results-section">
-
-</section>
+    <section id="results-section">
+    </section>
+</main>
 @endsection

@@ -9,11 +9,16 @@ export default class extends Controller {
     ]
 
     initialize() {
-        this.submitForm()
+        setTimeout(() => {
+            this.submitForm()
+        }, 50)
     }
 
     async changed(event) {
         console.log(event.target.checked)
+
+        window.dispatchEvent(new CustomEvent('form-updated'))
+
         if (event.target.name == 'sort') {
             if (!event.target.checked) {
                 document.querySelector('#direction').innerHTML = 'A -> Z'
@@ -35,19 +40,19 @@ export default class extends Controller {
         const request = new Request(this.method, this.action, { responseKind: 'json', queryString: this.formData })
         const response = await request.perform()
 
-        const event = new CustomEvent("form-submitted", {
+        window.dispatchEvent(new CustomEvent("form-submitted", {
             detail: { 
                 data: this.formData
             }
-        })
-
-        window.dispatchEvent(event)
+        }))
 
         this.submitting = true
 
         response.html.then((html) => { 
             document.querySelector('#results-section').innerHTML = html
             this.submitting = false
+
+            window.dispatchEvent(new CustomEvent('results-updated'))
         })
     }
 

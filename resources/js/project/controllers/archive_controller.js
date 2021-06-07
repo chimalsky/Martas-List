@@ -3,11 +3,8 @@ import { Controller } from "stimulus"
 export default class extends Controller {   
     static targets = [
         'form',
-        'formFacade'    
-    ]
-
-    static classes = [
-        'loading'
+        'formFacade',
+        'resultsContainer'
     ]
 
     relayAction(event) {
@@ -17,5 +14,17 @@ export default class extends Controller {
         let formInput = this.formTarget.querySelector('[name="'+target.name+'"][value="'+target.value+'"]')
         
         formInput.click()
+    }
+
+    loading() {
+        this.loadingSplashElement.classList.remove('hidden')
+    }
+
+    loadingComplete() {
+        this.loadingSplashElement.classList.add('hidden')
+    }
+
+    get loadingSplashElement() {
+        return this.resultsContainerTarget.querySelector('.loading-splash')
     }
 }
