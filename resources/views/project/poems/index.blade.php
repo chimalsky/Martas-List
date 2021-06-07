@@ -130,7 +130,7 @@
 
 
 @section ('content')
-<main data-archive-target="resultsContainer" class="relative">
+<main data-archive-target="resultsContainer" class="relative pb-24">
     <div class="z-50 absolute w-full top-0 loading-splash">
         <div class="animate-ping h-12 w-12 hover:text-gray-500 focus:outline-none 
             focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 
