@@ -5700,6 +5700,20 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -5743,8 +5757,57 @@ var _default = /*#__PURE__*/function (_Controller) {
     value: function initialize() {
       var _this = this;
 
+      var _JSON$parse = JSON.parse(localStorage.getItem(this.key)),
+          params = _JSON$parse.params;
+
+      var _iterator = _createForOfIteratorHelper(new URLSearchParams(params)),
+          _step;
+
+      try {
+        var _loop = function _loop() {
+          var _step$value = _slicedToArray(_step.value, 2),
+              key = _step$value[0],
+              value = _step$value[1];
+
+          var input = _this.element.elements[key];
+          console.log(input, key, value, input.type);
+
+          switch (input.type) {
+            case "text":
+              input.value = value;
+              break;
+
+            case "checkbox":
+              input.checked = !!value;
+              break;
+
+            case "select-one":
+              input.value = value;
+              break;
+
+            case undefined:
+              input.forEach(function (el) {
+                if (el.value == value) {
+                  el.setAttribute('checked', true);
+                }
+              });
+
+            default:
+              break;
+          }
+        };
+
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          _loop();
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
       setTimeout(function () {
-        _this.submitForm();
+        _this.submitForm(false);
       }, 50);
     }
   }, {
@@ -5792,29 +5855,29 @@ var _default = /*#__PURE__*/function (_Controller) {
       return changed;
     }()
   }, {
-    key: "sync",
-    value: function sync(event) {
-      console.log(event, event.detail.data);
-    }
-  }, {
     key: "submitForm",
     value: function () {
       var _submitForm = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var _this2 = this;
 
-        var request, response;
+        var persistState,
+            request,
+            response,
+            _args2 = arguments;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
+                persistState = _args2.length > 0 && _args2[0] !== undefined ? _args2[0] : true;
+                if (persistState) this.saveState();
                 request = new _lib_http_request__WEBPACK_IMPORTED_MODULE_2__["Request"](this.method, this.action, {
                   responseKind: 'json',
                   queryString: this.formData
                 });
-                _context2.next = 3;
+                _context2.next = 5;
                 return request.perform();
 
-              case 3:
+              case 5:
                 response = _context2.sent;
                 window.dispatchEvent(new CustomEvent("form-submitted", {
                   detail: {
@@ -5828,7 +5891,7 @@ var _default = /*#__PURE__*/function (_Controller) {
                   window.dispatchEvent(new CustomEvent('results-updated'));
                 });
 
-              case 7:
+              case 9:
               case "end":
                 return _context2.stop();
             }
@@ -5843,6 +5906,14 @@ var _default = /*#__PURE__*/function (_Controller) {
       return submitForm;
     }()
   }, {
+    key: "saveState",
+    value: function saveState() {
+      var params = this.formDataString;
+      localStorage.setItem(this.key, JSON.stringify({
+        params: params
+      }));
+    }
+  }, {
     key: "action",
     get: function get() {
       return this.element.action;
@@ -5856,6 +5927,26 @@ var _default = /*#__PURE__*/function (_Controller) {
     key: "formData",
     get: function get() {
       return new FormData(this.element);
+    }
+  }, {
+    key: "formDataString",
+    get: function get() {
+      return new URLSearchParams(this.formData).toString();
+    }
+  }, {
+    key: "pathname",
+    get: function get() {
+      return new URL(this.action, location).pathname;
+    }
+  }, {
+    key: "key",
+    get: function get() {
+      return "curation::".concat(this.pathname);
+    }
+  }, {
+    key: "savedState",
+    get: function get() {
+      return localStorage.getItem(this.key);
     }
   }]);
 
