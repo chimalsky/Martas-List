@@ -63,7 +63,9 @@ class Poem extends Resource
 
     public function getFirstlineStrippedAttribute()
     {
-        return preg_replace("/[^A-Za-z0-9 ]/", '', $this->firstLine->value);
+        return strtolower(
+            preg_replace("/[^A-Za-z0-9 ]/", '', $this->firstLine->value)
+        );
     }
 
     public function scopeByTranscriptionText($query, $transcriptionQuery)
