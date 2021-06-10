@@ -5551,7 +5551,6 @@ __webpack_require__.r(__webpack_exports__);
 turbolinks__WEBPACK_IMPORTED_MODULE_2___default.a.start();
 document.addEventListener('turbolinks:load', function () {
   window.livewire.rescan();
-  bootstrap();
 });
 var application = new stimulus__WEBPACK_IMPORTED_MODULE_0__["Application"].start();
 

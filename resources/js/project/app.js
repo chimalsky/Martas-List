@@ -9,7 +9,6 @@ turbolinks.start()
 
 document.addEventListener('turbolinks:load', () => {
     window.livewire.rescan()
-    bootstrap()
 })
 
 const application = new Application.start()
