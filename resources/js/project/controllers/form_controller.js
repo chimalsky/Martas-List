@@ -120,7 +120,7 @@ export default class extends Controller {
             }
         })
 
-        this.submitForm()
+        this.submitForm(false)
     }
 
     get action() {

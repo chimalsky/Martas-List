@@ -22,10 +22,12 @@ export default class extends Controller {
     }
 
     loading() {
+        console.log('loading')
         this.loadingSplashElement.classList.remove('hidden')
     }
 
     loadingComplete() {
+        console.log('complete')
         this.hideTargets.forEach(el => el.classList.add('hidden'))
         
         this.loadingSplashElement.classList.add('hidden')

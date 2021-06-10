@@ -5549,6 +5549,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 turbolinks__WEBPACK_IMPORTED_MODULE_2___default.a.start();
+document.addEventListener('turbolinks:load', function () {
+  window.livewire.rescan();
+  bootstrap();
+});
 var application = new stimulus__WEBPACK_IMPORTED_MODULE_0__["Application"].start();
 
 var context = __webpack_require__("./resources/js/project/controllers sync recursive \\.js$");
@@ -5656,11 +5660,13 @@ var _default = /*#__PURE__*/function (_Controller) {
   }, {
     key: "loading",
     value: function loading() {
+      console.log('loading');
       this.loadingSplashElement.classList.remove('hidden');
     }
   }, {
     key: "loadingComplete",
     value: function loadingComplete() {
+      console.log('complete');
       this.hideTargets.forEach(function (el) {
         return el.classList.add('hidden');
       });
@@ -5951,7 +5957,7 @@ var _default = /*#__PURE__*/function (_Controller) {
             break;
         }
       });
-      this.submitForm();
+      this.submitForm(false);
     }
   }, {
     key: "action",

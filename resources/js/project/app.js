@@ -7,6 +7,11 @@ import Alpine from 'alpinejs'
 
 turbolinks.start()  
 
+document.addEventListener('turbolinks:load', () => {
+    window.livewire.rescan()
+    bootstrap()
+})
+
 const application = new Application.start()
 const context = require.context("./controllers", true, /\.js$/)
 application.load(definitionsFromContext(context))
