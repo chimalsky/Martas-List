@@ -39,7 +39,7 @@
 @section('sticky-aside')
 
 <form id="js-main-form" data-target="archive.form" data-controller="form" 
-    data-action="filter-value-updated@window->form#changed" 
+    data-action="filter-value-updated@window->form#changed curation-cleared@window->form#clearState" 
     action="@route('project.poems.index-fetch')" method="get">
     <input placeholder="Transcription text search..." name="query" data-action="input->form#changed"
         @if (request()->input('query')) value="{{ request()->input('query') }}" @endif

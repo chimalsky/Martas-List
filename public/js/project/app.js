@@ -5649,6 +5649,11 @@ var _default = /*#__PURE__*/function (_Controller) {
       formInput.click();
     }
   }, {
+    key: "clearForm",
+    value: function clearForm(event) {
+      window.dispatchEvent(new CustomEvent('curation-cleared'));
+    }
+  }, {
     key: "loading",
     value: function loading() {
       this.loadingSplashElement.classList.remove('hidden');
@@ -5694,12 +5699,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers_timing_helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @helpers/timing_helpers */ "./resources/js/project/helpers/timing_helpers.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -5713,6 +5712,12 @@ function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -5757,55 +5762,7 @@ var _default = /*#__PURE__*/function (_Controller) {
     value: function initialize() {
       var _this = this;
 
-      var _JSON$parse = JSON.parse(localStorage.getItem(this.key)),
-          params = _JSON$parse.params;
-
-      var _iterator = _createForOfIteratorHelper(new URLSearchParams(params)),
-          _step;
-
-      try {
-        var _loop = function _loop() {
-          var _step$value = _slicedToArray(_step.value, 2),
-              key = _step$value[0],
-              value = _step$value[1];
-
-          var input = _this.element.elements[key];
-          console.log(input, key, value, input.type);
-
-          switch (input.type) {
-            case "text":
-              input.value = value;
-              break;
-
-            case "checkbox":
-              input.checked = !!value;
-              break;
-
-            case "select-one":
-              input.value = value;
-              break;
-
-            case undefined:
-              input.forEach(function (el) {
-                if (el.value == value) {
-                  el.setAttribute('checked', true);
-                }
-              });
-
-            default:
-              break;
-          }
-        };
-
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          _loop();
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-
+      if (this.savedState) this.restoreState();
       setTimeout(function () {
         _this.submitForm(false);
       }, 50);
@@ -5912,6 +5869,89 @@ var _default = /*#__PURE__*/function (_Controller) {
       localStorage.setItem(this.key, JSON.stringify({
         params: params
       }));
+    }
+  }, {
+    key: "restoreState",
+    value: function restoreState() {
+      var _this3 = this;
+
+      if (!localStorage.getItem(this.key)) return;
+
+      var _JSON$parse = JSON.parse(localStorage.getItem(this.key)),
+          params = _JSON$parse.params;
+
+      var _iterator = _createForOfIteratorHelper(new URLSearchParams(params)),
+          _step;
+
+      try {
+        var _loop = function _loop() {
+          var _step$value = _slicedToArray(_step.value, 2),
+              key = _step$value[0],
+              value = _step$value[1];
+
+          var input = _this3.element.elements[key];
+          console.log(input, key, value, input.type);
+
+          if (NodeList.prototype.isPrototypeOf(input)) {
+            input.forEach(function (el) {
+              if (el.value == value) {
+                el.setAttribute('checked', true);
+              }
+            });
+          } else {
+            switch (input.type) {
+              case "text":
+                input.value = value;
+                break;
+
+              case "checkbox":
+                input.checked = !!value;
+                break;
+
+              case "select-one":
+                input.value = value;
+                break;
+
+              default:
+                break;
+            }
+          }
+        };
+
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          _loop();
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    }
+  }, {
+    key: "clearState",
+    value: function clearState() {
+      localStorage.removeItem(this.key);
+      var checked = Array.from(this.element.querySelectorAll('input')).filter(function (el) {
+        return el.checked || el.value;
+      }).forEach(function (input) {
+        switch (input.type) {
+          case "text":
+            input.value = '';
+            break;
+
+          case "checkbox":
+            input.checked = false;
+            break;
+
+          case "select-one":
+            input.value = '';
+            break;
+
+          default:
+            break;
+        }
+      });
+      this.submitForm();
     }
   }, {
     key: "action",

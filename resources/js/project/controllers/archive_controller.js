@@ -17,6 +17,10 @@ export default class extends Controller {
         formInput.click()
     }
 
+    clearForm(event) {
+        window.dispatchEvent(new CustomEvent('curation-cleared'))
+    }
+
     loading() {
         this.loadingSplashElement.classList.remove('hidden')
     }

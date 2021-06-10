@@ -9,32 +9,9 @@ export default class extends Controller {
     ]
 
     initialize() {
-        const { params } = JSON.parse(localStorage.getItem(this.key))
-    
-        for (const [ key, value ] of new URLSearchParams(params)) {
-            const input = this.element.elements[key]
-            console.log(input, key, value, input.type)
+        if (this.savedState)
+            this.restoreState(); 
 
-            switch (input.type) {
-                case "text":
-                    input.value = value
-                    break;
-                case "checkbox":
-                    input.checked = !!value
-                    break
-                case "select-one":
-                    input.value = value
-                    break;
-                case undefined:
-                    input.forEach((el) => {
-                        if (el.value == value) {
-                            el.setAttribute('checked', true)
-                        }
-                    })
-                    default: 
-                  break
-            }
-        }
         setTimeout(() => { 
             this.submitForm(false)
         }, 50)
@@ -84,6 +61,66 @@ export default class extends Controller {
     saveState() {
         let params = this.formDataString
         localStorage.setItem(this.key, JSON.stringify({params}))
+    }
+
+    restoreState() {
+        if (!localStorage.getItem(this.key))
+            return;
+
+        const { params } = JSON.parse(localStorage.getItem(this.key))
+    
+        for (const [ key, value ] of new URLSearchParams(params)) {
+            const input = this.element.elements[key]
+            console.log(input, key, value, input.type)
+
+            if (NodeList.prototype.isPrototypeOf(input)) {
+                input.forEach((el) => {
+                    if (el.value == value) {
+                        el.setAttribute('checked', true)
+                    }
+                })
+            } else {
+                switch (input.type) {
+                    case "text":
+                        input.value = value
+                        break;
+                    case "checkbox":
+                        input.checked = !!value
+                        break
+                    case "select-one":
+                        input.value = value
+                        break;
+                    default:
+                      break
+                }
+            }
+
+            
+        }
+    }
+
+    clearState() {
+        localStorage.removeItem(this.key)
+
+        let checked = Array.from(this.element.querySelectorAll('input')).filter((el) => {
+            return el.checked || el.value
+        }).forEach((input) => {
+            switch (input.type) {
+                case "text":
+                    input.value = ''
+                    break;
+                case "checkbox":
+                    input.checked = false
+                    break
+                case "select-one":
+                    input.value = ''
+                    break;
+                default:
+                  break
+            }
+        })
+
+        this.submitForm()
     }
 
     get action() {

@@ -1,5 +1,13 @@
 <header id="results-composition" class="gap-4 mt-12">
     <div data-target="archive.formFacade"">
+        @if (count($activeFilterables) || count($activeBirds))
+            <div class="text-right">
+                <button data-action="archive#clearForm">
+                    Clear Curation Filters
+                </button>
+            </div>
+        @endif 
+
         @foreach ($activeFilterables as $filterable)
             <div class="text-center mb-6">
                 <header class="block">

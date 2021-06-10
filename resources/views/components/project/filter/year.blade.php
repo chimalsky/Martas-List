@@ -11,7 +11,11 @@
                 autocomplete="off" 
                     />
             <span class="pl-2">
-                {{ preg_replace("/[^0-9]/", "", $option ) }} 
+                @if ($option == 'Unknown') 
+                    {{ $option }}
+                @else
+                    {{ preg_replace("/[^0-9]/", "", $option ) }} 
+                @endif
             </span>
         </label>
     @endforeach
