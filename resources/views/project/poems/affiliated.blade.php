@@ -1,7 +1,7 @@
 @extends ('layouts.project-shifted')
 
 @section('title')
-    {{ $firstline }} - Afilliated Manuscripts - Dickinson's Birds
+    {{ $firstline }} - Affiliated Manuscripts - Dickinson's Birds
 @endsection
 
 @section('header-anchor')
@@ -44,7 +44,7 @@
 
 <section class="block">
     <h1 style="color: #B45F06;" class="text-3xl font-bold mt-12 mb-10">
-        Affiliated <span class="italic">Bird</span> Manuscripts --
+        Affiliated <span class="italic">Bird</span> Manuscripts —
     </h1>
 
     <main class="flex flex-wrap w-full pt-12">
@@ -84,7 +84,7 @@
 
     <section class="block">
         <h1 style="color: #B45F06;" class="text-3xl font-bold mt-12 mb-4">
-            <span class="italic">Additional</span> Manuscripts Affiliations --
+            <span class="italic">Additional</span> Manuscripts Affiliations —
         </h1>
 
         <aside class="max-w-3xl text-lg italic text-center mb-16">
