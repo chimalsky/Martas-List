@@ -1,24 +1,47 @@
+@php 
+    $chronoScope = request()->query('months') 
+        ? 'months'
+        : 'seasons';
+    $century = request()->query('century');
+@endphp 
 
-<main x-data="{activeChrono: '}} $activeChrono }}', chronoScope: '{{ $activeChronoScope }}'}" class="">
+<main x-data="{century: '{{ $century }}', chronoScope: '{{ $chronoScope }}', uncheckMonths: () => { 
+    document.querySelectorAll('.month').forEach((el) => {
+        if (el.checked) el.checked = false
+    })
+}, uncheckSeasons: () => { 
+    document.querySelectorAll('.season').forEach((el) => {
+        if (el.checked) el.checked = false
+    })
+}}" class="">
     <aside class="col-span-1 text-lg">
         <h1 class="mb-2 text-xl">
             Century
         </h1>
-        @foreach (collect([19,20,21]) as $century)
-            <label class="mb-4 pr-4 block">
-                <input type="radio" name="century" class="" value="{{ $century }}" data-action="change->form#changed" /> 
-                <span class="mr-4 cursor-pointer">
-                    @unless ($loop->index == 2)
-                        {{ $century }}th.
-                    @else
-                        {{ $century }}st.
-                    @endif
+        <div class="grid grid-cols-4 gap-x-2 text-base">
+            <label class="mb-4 pr-4 col-span-1">
+                <input type="radio" name="century" value="" data-action="change->form#changed" @click="century = null" 
+                    @unless (request()->query('century')) checked @endif /> 
+                <span class="cursor-pointer">
+                    All
                 </span>
             </label>
-        @endforeach
+            @foreach (collect([19,20,21]) as $century)
+                <label class="mb-4 pr-4 col-span-1">
+                    <input type="radio" name="century" class="" value="{{ $century }}" data-action="change->form#changed" @click="century = '{{ $century }}'" /> 
+                    <span class="cursor-pointer">
+                        @unless ($loop->index == 2)
+                            {{ $century }}th.
+                        @else
+                            {{ $century }}st.
+                        @endif
+                    </span>
+                </label>
+            @endforeach
+        </div>
     </aside>
-
-    <main class="col-span-1">
+ 
+    <main x-show="century != null" class="col-span-1">
         <header class="mb-4">
             <button @click="chronoScope = 'seasons'" type="button"
                 :class="{ 'border-b border-gray-700': (chronoScope == 'seasons') }"
@@ -42,8 +65,9 @@
                         <input type="checkbox"
                             name="seasons[]"
                             value="{{ $key }}"
-                            class=""
+                            class="season"
                             data-action="change->form#changed" 
+                            @click="uncheckMonths"
                             @if (collect(request()->input('seasons.' . $key))->contains($key))
                                 checked 
                             @endif
@@ -70,8 +94,9 @@
                             <input type="checkbox"
                                 name="months[]"
                                 value="{{ $key }}"
-                                class=""
+                                class="month"
                                 data-action="change->form#changed" 
+                                @click="uncheckSeasons"
                                 @if (collect(request()->input('months.' . $key))->contains($key))
                                     checked 
                                 @endif
@@ -89,8 +114,9 @@
                             <input type="checkbox"
                                 name="months[]"
                                 value="{{ $key }}"
-                                class=""
+                                class="month"
                                 data-action="change->form#changed" 
+                                @click="uncheckSeasons"
                                 @if (collect(request()->input('months.' . $key))->contains($key))
                                     checked 
                                 @endif

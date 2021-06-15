@@ -5989,6 +5989,10 @@ var _default = /*#__PURE__*/function (_Controller) {
             input.value = '';
             break;
 
+          case "radio":
+            input.checked = false;
+            break;
+
           default:
             break;
         }

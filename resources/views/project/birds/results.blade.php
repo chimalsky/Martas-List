@@ -33,10 +33,79 @@
             </div>
         @endforeach 
 
+        {{ $century }}
+        @if (isset($century))
+            <header class="text-center mb-2">
+                @switch ($century)
+                    @case(null)
+                        null city
+                    @case(19)
+                        H. L. Clark’s 
+                        <span class="italic">
+                            The Birds of Amherst & Vicinity, including nearly the whole of Hampshire County 
+                        </span> (1887)
+                        @break 
+                    @case(20)
+                        Aaron Clark Bagg and Samuel Atkins Eliot Jr.’s 
+                        <span class="italic">
+                            Birds of the Connecticut Valley in Massachusetts
+                        </span> (1937)
+                        @break 
+                    @case(21)
+                        <span class="italic">
+                            Mass Audubon | Birds of Massachusetts
+                        </span> (2020)
+                        @break
+                @endswitch
+            </header>
+        @endif
+
+        @if (isset($seasons) && count($seasons))
+            <div class="text-center mb-6">
+                <main class="flex flex-wrap justify-center space-x-2 space-y-1">
+                    @foreach ($seasons as $season)
+                        <label class="text-black inline-block py-1 px-4 cursor-pointer" style="background-color: #F7F5E7">
+                            <input data-action="change->archive#relayAction" type="checkbox"
+                                name="seasons[]"
+                                value="{{ $season }}"
+                                class="hidden"
+                                checked
+                                autocomplete="off" 
+                                    />
+                            <span class="pl-2">
+                                {{ Str::title($season) }}
+                            </span>
+                        </label>
+                    @endforeach
+                </main>
+            </div>
+        @endif
+
+        @if (isset($months) && count($months))
+            <div class="text-center mb-6">
+                <main class="flex flex-wrap justify-center space-x-2 space-y-1">
+                    @foreach ($months as $month)
+                        <label class="text-black inline-block py-1 px-4 cursor-pointer" style="background-color: #F7F5E7">
+                            <input data-action="change->archive#relayAction" type="checkbox"
+                                name="months[]"
+                                value="{{ $month }}"
+                                class="hidden"
+                                checked
+                                autocomplete="off" 
+                                    />
+                            <span class="pl-2">
+                                {{ Str::title($month) }}
+                            </span>
+                        </label>
+                    @endforeach
+                </main>
+            </div>
+        @endif
+
         @if (count($activeBirds))
             <section class="bg-yellow-100 p-4">
                 <header class="text-2xl text-center">
-                    Bird Categories
+                    Dickinson's Bird Lists
                 </header>
 
                 <main class="flex flex-wrap justify-center space-x-2 space-y-1">

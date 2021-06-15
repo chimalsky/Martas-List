@@ -51,34 +51,49 @@
         @if (request()->input('query')) value="{{ request()->input('query') }}" @endif
         class="block mb-4 border-4 border-gray-700 text-black rounded-full pl-4 p-2 placeholder-gray-800" />
     
-    @foreach(App\ResourceType::find(App\Project\Bird::$resource_type_id)->attributes->where('visibility', 1) as $key => $filterable)
-        <section class="block mb-1" x-data="{open: false}">
-            <button type="button" @click="open = !open"
-                class="p-1 flex justify-between items-stretch w-full">
-                <span class="self-center" :class="{ 'font-black': open }">
-                    {{ $filterable->title }} 
-                </span>
-                <span class="text-3xl self-center">
-                    <span x-show="!open">
-                        +
-                    </span>
-                    <span x-show="open">
-                        -
-                    </span>
-                </span>
-            </button>
+    <label class="cursor-pointer p-1 self-center">
+        Sorted by <span class="font-bold">Bird Name</span>
 
-            <div x-show="open" class="w-full">
-                <div class="text-gray-600 italic mb-2">
-                    {{ $filterable->subtitle }} 
-                </div>
+        <select name="sort_direction" data-action="change->form#changed"> 
+            <option value="asc">
+                A -> Z
+            </option>
+            <option value="desc">
+                Z -> A
+            </option>
+        </select>
+     </label>
 
-                <div class="pl-6 overflow-y-scroll" style="max-height: 8rem;">
-                    <x-project.filter.panel :filterable="$filterable" />
+    <div class="mt-4">
+        @foreach(App\ResourceType::find(App\Project\Bird::$resource_type_id)->attributes->where('visibility', 1) as $key => $filterable)
+            <section class="block mb-1" x-data="{open: false}">
+                <button type="button" @click="open = !open"
+                    class="p-1 flex justify-between items-stretch w-full">
+                    <span class="self-center" :class="{ 'font-black': open }">
+                        {{ $filterable->title }} 
+                    </span>
+                    <span class="text-3xl self-center">
+                        <span x-show="!open">
+                            +
+                        </span>
+                        <span x-show="open">
+                            -
+                        </span>
+                    </span>
+                </button>
+
+                <div x-show="open" class="w-full">
+                    <div class="text-gray-600 italic mb-2">
+                        {{ $filterable->subtitle }} 
+                    </div>
+
+                    <div class="pl-6 overflow-y-scroll" style="max-height: 8rem;">
+                        <x-project.filter.panel :filterable="$filterable" />
+                    </div>
                 </div>
-            </div>
-        </section>
-    @endforeach
+            </section>
+        @endforeach
+    </div>
 
     @php
         $activeSeasons = collect([]);
@@ -91,7 +106,7 @@
         <button type="button" @click="open = !open"
             class="p-1 flex justify-between items-stretch w-full">
             <span class="self-center" :class="{ 'font-black': open }">
-                Seasons
+                Presence
             </span>
             <span class="text-3xl self-center">
                 <span x-show="!open">
@@ -114,7 +129,7 @@
         <button type="button" @click="open = !open"
             class="p-1 flex justify-between items-stretch w-full">
             <span class="self-center" :class="{ 'font-black': open }">
-                Birds
+                Dickinson's Bird List
             </span>
             <span class="text-3xl self-center">
                 <span x-show="!open">

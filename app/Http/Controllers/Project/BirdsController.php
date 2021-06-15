@@ -35,7 +35,7 @@ class BirdsController extends Controller
             ->with(['xc_citation', 'meta' => function ($query) use ($activeFilterables) {
                 $query->whereIn('resource_attribute_id', $activeFilterables->pluck('id'));
             }])
-            ->orderBy('name', 'desc');
+            ->orderBy('name', $request->query('sort_direction') ?? 'asc');
 
         if ($query = $request->query('query')) {
             $birds = $birds->where('name', 'like', "%$query%");
@@ -68,77 +68,86 @@ class BirdsController extends Controller
             '21' => ChronoBird::twentyFirstCenturyResourceType()
         ];
 
-        $chronoResourceType = $chronoDict[$request->query('century') ?? '19'];
+        $century = $request->query('century');
 
-        $fooBirds = $birds;
+        if ($century) {
+            $chronoResourceType = $chronoDict[$century];
 
-        $presenceConnections = $fooBirds->with('chronoConnections')->get()
-            ->pluck('chronoConnections')
-            ->flatten()
-            ->filter(function($connection) use ($chronoResourceType) { 
-                $bird = $connection->otherBird;
+            $fooBirds = $birds;
 
-                if (is_null($bird)) {
-                    return;
-                }
-                
-                if ($bird->resource_type_id !== $chronoResourceType) {
-                    return;
-                }
-
-                
-                return $bird->presenceMeta; 
-            });
-
-        if ($seasons = $request->query('seasons')) {
-            $filteredBirdsByPresence = $presenceConnections
-                ->filter(function($connection) use ($seasons) {
+            $presenceConnections = $fooBirds->with('chronoConnections')->get()
+                ->pluck('chronoConnections')
+                ->flatten()
+                ->filter(function($connection) use ($chronoResourceType) { 
                     $bird = $connection->otherBird;
 
-                    $presence = $bird->presenceMeta->value;
+                    if (is_null($bird)) {
+                        return;
+                    }
+                    
+                    if ($bird->resource_type_id !== $chronoResourceType) {
+                        return;
+                    }
 
-                    $months = collect(array_map('trim', explode(',', $presence)));
+                    
+                    return $bird->presenceMeta; 
+                });
 
-                    foreach ($seasons as $season) {
-                        foreach (SeasonMonthsEnum::getConstant($season) as $month) {
-                            if ($months->contains($month)) {
+            if ($seasons = $request->query('seasons')) {
+                $filteredBirdsByPresence = $presenceConnections
+                    ->filter(function($connection) use ($seasons) {
+                        $bird = $connection->otherBird;
+
+                        $presence = $bird->presenceMeta->value;
+
+                        $months = collect(array_map('trim', explode(',', $presence)));
+
+                        foreach ($seasons as $season) {
+                            foreach (SeasonMonthsEnum::getConstant($season) as $month) {
+                                if ($months->contains($month)) {
+                                    return true;
+                                }
+                            }
+                        }
+                    });
+            }
+
+            if ($months = $request->query('months')) {
+                $filteredBirdsByPresence = $presenceConnections
+                    ->filter(function($connection) use ($months) {
+                        $bird = $connection->otherBird;
+
+                        $stints = collect(explode(';', $bird->presenceMeta->value));
+
+                        $segments = $stints->map(function($stint) {
+                            return collect(explode(',', $stint))
+                                ->map(function($month) { 
+                                    return (int) $month; 
+                                });
+                            })->flatten();
+
+                        foreach ($months as $month) {
+                            $month = MonthEnum::getConstant($month);
+
+                            if ($segments->contains($month)) {
                                 return true;
                             }
                         }
-                    }
-                });
+                    });
+            }
+
+            $birds = $birds->whereIn('id', isset($filteredBirdsByPresence)
+                ? $filteredBirdsByPresence->pluck('primary_bird_id')
+                : $presenceConnections->pluck('primary_bird_id'));
+        } else {
+            $months = [];
+            $seasons = [];
         }
-
-        if ($months = $request->query('months')) {
-            $filteredBirdsByPresence = $presenceConnections
-                ->filter(function($connection) use ($months) {
-                    $bird = $connection->otherBird;
-
-                    $stints = collect(explode(';', $bird->presenceMeta->value));
-
-                    $segments = $stints->map(function($stint) {
-                        return collect(explode(',', $stint))
-                            ->map(function($month) { 
-                                return (int) $month; 
-                            });
-                        })->flatten();
-
-                    foreach ($months as $month) {
-                        $month = MonthEnum::getConstant($month);
-
-                        if ($segments->contains($month)) {
-                            return true;
-                        }
-                    }
-                });
-        }
-
-        $birds = $birds->whereIn('id', $filteredBirdsByPresence->pluck('primary_bird_id'));
 
 
         $results = $birds->paginate(6);
 
-        return view('project.birds.results', compact('results', 'activeFilterables', 'activeBirds'));
+        return view('project.birds.results', compact('results', 'activeFilterables', 'activeBirds', 'months', 'seasons', 'century'));
     }
 
     public function show(Request $request, Bird $bird)

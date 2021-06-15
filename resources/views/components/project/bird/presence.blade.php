@@ -32,15 +32,17 @@
     @endphp 
     
     <div {{ $attributes }}>
-        <p class="not-italic">
-            @if ($century != 21)
-                {{ $century }}th.
-            @else
-                {{ $century }}st.
-            @endif
-            Century
-        </p> 
-        @if ($occurence)
+        @unless (isset($hideCentury))
+            <p class="not-italic">
+                @if ($century != 21)
+                    {{ $century }}th.
+                @else
+                    {{ $century }}st.
+                @endif
+                Century
+            </p> 
+        @endif
+        @if ($occurence && !isset($hideOccurence))
             <p class="italic">
                 {{ trim($occurence->value) }};
             </p>

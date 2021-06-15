@@ -18,7 +18,7 @@
         @endphp
 
         @if ($chronoBird)
-            <x-project.bird.presence class="mb-8 text-lg" :century="$century" :bird="$chronoBird" />
+            <x-project.bird.presence class="mb-8 text-lg" :century="$century" :bird="$chronoBird" hideOccurence hideCentury/>
         @endif
     @endif 
 

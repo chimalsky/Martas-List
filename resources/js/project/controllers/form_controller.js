@@ -114,7 +114,10 @@ export default class extends Controller {
                     break
                 case "select-one":
                     input.value = ''
-                    break;
+                    break
+                case "radio":
+                    input.checked = false 
+                    break
                 default:
                   break
             }
