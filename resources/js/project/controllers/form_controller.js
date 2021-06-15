@@ -69,7 +69,7 @@ export default class extends Controller {
         for (const [ key, value ] of new URLSearchParams(params)) {
             const input = this.element.elements[key]
             console.log(input, key, value, input.type)
-
+            
             if (NodeList.prototype.isPrototypeOf(input)) {
                 input.forEach((el) => {
                     if (el.value == value) {
@@ -86,6 +86,9 @@ export default class extends Controller {
                         break
                     case "select-one":
                         input.value = value
+                        break;
+                    case "radio":
+                        console.log(input, value)
                         break;
                     default:
                       break

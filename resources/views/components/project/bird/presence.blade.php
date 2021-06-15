@@ -53,7 +53,11 @@
                     $departure = date("F", mktime(0, 0, 0, $stint->last(), 1));
                 @endphp
                 <p class="text-center mt-2 italic">
-                    {{ $arrival }} - {{ $departure }}
+                    @if ($arrival == $departure)
+                        {{ $arrival }}
+                    @else 
+                        {{ $arrival }} - {{ $departure }}
+                    @endif
                 </p>
             @endforeach
         @endif

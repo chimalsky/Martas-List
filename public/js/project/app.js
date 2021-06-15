@@ -5950,6 +5950,10 @@ var _default = /*#__PURE__*/function (_Controller) {
                 input.value = value;
                 break;
 
+              case "radio":
+                console.log(input, value);
+                break;
+
               default:
                 break;
             }

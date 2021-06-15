@@ -80,6 +80,36 @@
         </section>
     @endforeach
 
+    @php
+        $activeSeasons = collect([]);
+        $activeMonths = collect([]);
+        $activeChrono = null;
+        $activeChronoScope = 'seasons';
+    @endphp 
+
+    <section class="block mb-1" x-data="{open: false}">
+        <button type="button" @click="open = !open"
+            class="p-1 flex justify-between items-stretch w-full">
+            <span class="self-center" :class="{ 'font-black': open }">
+                Seasons
+            </span>
+            <span class="text-3xl self-center">
+                <span x-show="!open">
+                    +
+                </span>
+                <span x-show="open">
+                    -
+                </span>
+            </span>
+        </button>
+
+        <div x-show="open" class="w-full overflow-y-auto">
+            <x-project.filter.presence :activeSeasons="$activeSeasons" 
+                :activeMonths="$activeMonths" :activeChrono="$activeChrono"
+                :activeChronoScope="$activeChronoScope" />
+        </div>
+    </section>
+
     <section class="block mb-1" x-data="{open: false}">
         <button type="button" @click="open = !open"
             class="p-1 flex justify-between items-stretch w-full">
