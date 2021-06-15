@@ -18,8 +18,6 @@ export default class extends Controller {
     }
 
     async changed(event) {
-        console.log(event.target.checked)
-
         window.dispatchEvent(new CustomEvent('form-updated'))
 
         if (event.target.name == 'sort') {
@@ -51,10 +49,9 @@ export default class extends Controller {
         this.submitting = true
 
         response.html.then((html) => { 
-            document.querySelector('#results-section').innerHTML = html
             this.submitting = false
 
-            window.dispatchEvent(new CustomEvent('results-updated'))
+            window.dispatchEvent(new CustomEvent('results-updating', {'detail': html}))
         })
     }
 

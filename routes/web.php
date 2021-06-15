@@ -49,6 +49,7 @@ Route::prefix('project')->name('project.')->namespace('Project')->group(function
     });
     
     Route::get('/birds', 'BirdsController@index')->name('birds.index');
+    Route::get('/birds/fetch', 'BirdsController@indexFetch')->name('birds.index-fetch');
     Route::get('/birds/{bird}', 'BirdsController@show')->name('birds.show');
     Route::get('/birds/{bird}/poems', 'BirdPoemsController')->name('bird.poems');
     Route::get('/birds/{bird}/data', 'BirdsDataController')->name('birds.data');

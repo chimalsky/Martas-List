@@ -45,17 +45,9 @@ class Bird extends ResourceModel
             ->whereIn('resource_id', $chronoBirds->pluck('id'))->get();
     }
 
-    /*public function nineteenthCenturyPresenceFoo()
+    public function xc_citation()
     {
-        return $this->belongsTo(ResourceMeta::class, 'nineteenth_century_presence_id');
+        return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 502);
     }
-
-    public function scopeWithNineteenthCenturyPresenceFoo($query)
-    {
-        return $query->addSelect(['nineteenth_century_presence_id' =>  ResourceMeta::select('id')
-            ->whereIn('resource_id', 'resources.id')
-            ->where('resource_attribute_id', 538)
-            ->latest()->take(1)
-        ]);
-    }*/
 }

@@ -11,7 +11,7 @@
 @push('stimulus-attributes')
     data-action="form-updated@window->archive#loading 
         form-submitted@window->archive#loading 
-        results-updated@window->archive#loadingComplete"
+        results-updating@window->archive#loadingComplete"
 @endpush
 
 @section('header-anchor')
@@ -145,7 +145,7 @@
         </p>
     </div>
 
-    <section id="results-section">
+    <section data-archive-target="results" data-action="results-updating@window->archive#replaceResults"">
     </section>
 </main>
 @endsection

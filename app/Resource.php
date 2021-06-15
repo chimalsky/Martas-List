@@ -258,4 +258,18 @@ class Resource extends Model implements HasMedia
                 ->latest()->take(1);
             }]);
     }
+
+    public function scopeWithFilterableValues($query, ResourceAttribute $filterable, $values)
+    {
+        return $query->whereHas('meta', function ($query) use ($filterable, $values) {
+            if (count($values) === 1 
+                && $filterable->hasOptionBlock($values[0])
+                ) {
+                $values = $filterable->getOptionBlockItems($values[0]);
+            }
+
+            $query = $query->where('resource_attribute_id', $filterable->id)
+                ->whereIn('value', $values);
+        });
+    }
 }

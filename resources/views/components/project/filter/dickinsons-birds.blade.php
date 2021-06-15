@@ -1,3 +1,8 @@
+@php
+    $dickinsonsBirds = App\ResourceCategory::with('connections')
+        ->where('resource_type_id', App\Project\Bird::$resource_type_id)->get();
+@endphp
+
 <div class="grid grid-cols-2 w-full gap-4">
     @foreach ($dickinsonsBirds->sortBy('name') as $bird)
         <label class="col-span-1 text-center cursor-pointer">

@@ -5,6 +5,7 @@ export default class extends Controller {
         'form',
         'formFacade',
         'resultsContainer',
+        'results',
         'hide'
     ]
 
@@ -15,6 +16,10 @@ export default class extends Controller {
         let formInput = this.formTarget.querySelector('[name="'+target.name+'"][value="'+target.value+'"]')
         
         formInput.click()
+    }
+
+    async replaceResults(data) {
+        this.resultsTarget.innerHTML = data.detail
     }
 
     clearForm(event) {
