@@ -59,7 +59,7 @@
 <section id="birds" class="mt-10 mb-10 text-center">
     @if ($birds->count())
     <h1 class="text-2xl text-orange-700 mb-6">
-        Birds circulating in this MS --
+        Birds circulating in this MS —
     </h1>
     
     <main class="flex flex-wrap justify-center">
