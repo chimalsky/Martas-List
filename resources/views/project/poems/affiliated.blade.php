@@ -73,7 +73,7 @@
                             @if ($poem->doesMentionBirds())
                                 <span class="font-bold italic">Mentions</span>: 
                                 @foreach ($poem->birdCategories as $bird)
-                                    {{ $bird->name }} @unless($loop->last),@endunless
+                                    {{ $bird->name }}@unless($loop->last),@endunless
                                 @endforeach 
                             @else 
                                 Sans Birds
