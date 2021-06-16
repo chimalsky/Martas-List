@@ -33,7 +33,6 @@
             </div>
         @endforeach 
 
-        {{ $century }}
         @if (isset($century))
             <header class="text-center mb-2">
                 @switch ($century)

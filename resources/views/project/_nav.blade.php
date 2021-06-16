@@ -32,7 +32,7 @@
         class="origin-top-left absolute left-0 rounded-md shadow-2xl flex-1 z-50"
         style="width: 24rem">
         <div class="rounded-md bg-white shadow-xs">
-        <div class="py-1">
+        <div class="py-1 text-base">
             @include('project._nav-items')
         </div>
         </div>
