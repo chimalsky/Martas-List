@@ -1,4 +1,4 @@
-<header id="results-composition" class="gap-4 mt-12">
+<header id="results-composition" class="gap-4 mt-12 px-6">
     <div data-target="archive.formFacade"">
         @if (count($activeFilterables) || count($activeBirds))
             <div class="text-right">
@@ -34,7 +34,7 @@
         @endforeach 
 
         @if (count($activeBirds))
-            <section class="bg-yellow-100 p-4">
+            <section class="p-4">
                 <header class="text-2xl text-center">
                     Birds
                 </header>
@@ -66,7 +66,7 @@
     @endif
 </header>
 
-<section id="results-list">
+<section id="results-list px-6">
     <main class="flex flex-wrap w-full pt-12">
         @if ($results->count())
             <x-project.poem.list :poems="$results" showYear />

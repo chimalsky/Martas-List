@@ -1,4 +1,4 @@
-<header id="results-composition" class="gap-4 mt-12">
+<header id="results-composition" class="gap-4 mt-12 px-6">
     <div data-target="archive.formFacade"">
         @if (count($activeFilterables) || count($activeBirds))
             <div class="text-right">
@@ -102,7 +102,7 @@
         @endif
 
         @if (count($activeBirds))
-            <section class="bg-yellow-100 p-4">
+            <section class="p-4">
                 <header class="text-2xl text-center">
                     Dickinson's Bird Lists
                 </header>
@@ -134,7 +134,7 @@
     @endif
 </header>
 
-<section id="results-list">
+<section id="results-list" class="px-6">
     <main class="w-full pt-12">
         @if ($results->count())
             <div data-controller="pagination">
