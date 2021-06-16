@@ -68,6 +68,17 @@
                                 {{ $line }}
                             </p>
                         @endforeach
+
+                        <p>
+                            @if ($poem->doesMentionBirds())
+                                <span class="font-bold italic">Mentions</span>: 
+                                @foreach ($poem->birdCategories as $bird)
+                                    {{ $bird->name }} @unless($loop->last),@endunless
+                                @endforeach 
+                            @else 
+                                Sans Birds
+                            @endif 
+                        </p>
                     </div>
                 </div>
             </article> 
@@ -117,5 +128,11 @@
         </style>
     </section>
 @endif
+
+
+
+<footer class="flex justify-center">
+    <img src="{{ asset('img/string.png') }}" class="mx-auto w-64" />
+</footer>
 
 @endsection

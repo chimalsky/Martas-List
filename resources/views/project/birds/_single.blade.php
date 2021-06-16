@@ -22,19 +22,21 @@
         @endif
     @endif 
 
-    @if ($bird->meta)
-        <footer class="text-center mt-4">
-            @foreach ($bird->meta->groupBy('resource_attribute_id') as $metaGroup)
-                @foreach ($metaGroup as $meta) 
-                    @if ($loop->index > 0) 
-                        +
-                    @endif
+    @if (!isset($hideMeta))
+        @if ($bird->meta)
+            <footer class="text-center mt-4">
+                @foreach ($bird->meta->groupBy('resource_attribute_id') as $metaGroup)
+                    @foreach ($metaGroup as $meta) 
+                        @if ($loop->index > 0) 
+                            +
+                        @endif
 
-                    {{ $meta->value }}
+                        {{ $meta->value }}
+                    @endforeach
+                    <br>
                 @endforeach
-                <br>
-            @endforeach
-        </footer>
+            </footer>
+        @endif
     @endif
 </a>
 </div>

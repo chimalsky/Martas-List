@@ -98,7 +98,9 @@ class PoemsController extends Controller
             ->find($poemId);
 
         $birdCategories = $poem->categories()->where('resource_type_id', 19)->get();
-        $birds = $birdCategories->pluck('resources')->flatten();
+        $birdIds = $birdCategories->pluck('resources')->flatten()->pluck('id');
+
+        $birds = Bird::with('xc_citation')->whereIn('id', $birdIds)->get();
 
         $variants = $poem->resources->where('resource_type_id', 3);
         $firstline = $poem->meta->firstWhere('resource_attribute_id', 84)->value ?? null;

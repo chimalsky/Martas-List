@@ -73,15 +73,25 @@ class Poem extends Resource
         return $query->whereIn('id', $transcriptions->pluck('resource_id'));
     }
 
-    public function scopeHasBirds($query){
+    public function scopeHasBirds($query)
+    {
         return $query->whereDoesntHave('meta', function($query) {
             $query->where('resource_attribute_id', 624);
         });
     }
 
-    public function scopeDoesntHaveBirds($query){
+    public function scopeDoesntHaveBirds($query)
+    {
         return $query->whereHas('meta', function($query) {
             $query->where('resource_attribute_id', 624);
         });
     }
+
+    public function doesMentionBirds()
+    {
+        return $this->firstMetaByAttribute(624)
+            ? false 
+            : true;
+    }
+
 }
