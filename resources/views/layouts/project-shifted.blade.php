@@ -30,7 +30,7 @@
 
         @stack('scripts')
     </head>
-    <body data-controller="application @stack('stimulus-controllers')" 
+    <body data-controller="application @stack('stimulus-controllers')" id="body"
         @stack('stimulus-attributes') class="mt-8 px-2 flex flex-wrap loading" style="max-width: 2400px">
         <aside class="flex-shrink max-w-xs">
             <h1 class="text-xl -mb-3 tracking-wide flex">
@@ -39,7 +39,7 @@
 
             @yield('aside')
 
-            <div class="sticky top-0 w-full pt-16">
+            <div class="pt-16 relative" style="max-width: 240px;">
                 @yield('sticky-aside')
             </div>
         </aside>

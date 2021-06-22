@@ -1,4 +1,4 @@
-<div>
+<div class="text-xs">
     @if ($filterable->id == 131)
         <x-project.filter.year :filterable="$filterable" />
     @elseif ($filterable->hasOptionBlocks()) 

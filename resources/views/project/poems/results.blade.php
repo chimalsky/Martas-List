@@ -16,7 +16,7 @@
 
                 <main class="flex flex-wrap justify-center space-x-2 space-y-1">
                     @foreach(request()->input('filterable.' . $filterable->id) as $selectedValue)
-                        <label class="text-black inline-block py-1 px-4 cursor-pointer" style="background-color: #F7F5E7">
+                        <label class="text-black inline-block py-1 px-4 cursor-pointer relative" style="background-color: #F7F5E7">
                             <input data-action="change->archive#relayAction" type="checkbox"
                                 name="filterable[{{ $filterable->id }}][]"
                                 value="{{ $selectedValue }}"
@@ -24,8 +24,12 @@
                                 checked
                                 autocomplete="off" 
                                     />
-                            <span class="pl-2">
+                            <span class="pl-2"> 
                                 {{ $selectedValue }}
+                            </span>
+
+                            <span class="absolute top-0 right-0 pr-1 pt-1 text-xs text-gray-500">
+                                X
                             </span>
                         </label>
                     @endforeach
@@ -36,12 +40,12 @@
         @if (count($activeBirds))
             <section class="p-4">
                 <header class="text-2xl text-center">
-                    Birds
+                    Bird Species
                 </header>
 
                 <main class="flex flex-wrap justify-center space-x-2 space-y-1">
                     @foreach ($activeBirds as $bird) 
-                        <label class="text-black text-center inline-block py-6 px-4 cursor-pointer" style="background-color: #F7F5E7">
+                        <label class="text-black text-center inline-block py-6 px-4 cursor-pointer relative" style="background-color: #F7F5E7">
                             <input data-action="change->archive#relayAction" type="checkbox"
                                 name="filterableBird[{{ $bird->id }}][]"
                                 value="{{ $bird->id }}"
@@ -51,6 +55,9 @@
                                     />
                             <span class="pl-2">
                                 {{ $bird->name }}
+                            </span>
+                            <span class="absolute top-0 right-0 pr-1 pt-1 text-xs text-gray-500">
+                                X
                             </span>
                         </label>
                     @endforeach

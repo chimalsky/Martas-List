@@ -41,13 +41,13 @@
 <form id="js-main-form" data-target="archive.form" data-controller="form" 
     data-action="filter-value-updated@window->form#changed curation-cleared@window->form#clearState" 
     action="@route('project.poems.index-fetch')" method="get">
-    <input placeholder="Transcription text search..." name="query" data-action="input->form#changed"
+    <input placeholder="Search transcription text" name="query" data-action="input->form#changed"
         @if (request()->input('query')) value="{{ request()->input('query') }}" @endif
-        class="block mb-4 border-4 border-gray-700 text-black rounded-full pl-4 p-2 placeholder-gray-800" />
+        class="block mb-4 border-4 border-gray-500 text-black rounded-full pl-4 p-2 placeholder-gray-800" />
 
-    <div class="flex justify-between items-stretch w-full">
-        <label class="cursor-pointer p-2 self-center">
-            Sorted by
+    <div class="flex justify-between items-stretch w-full text-xs py-2">
+        <label class="cursor-pointer self-center">
+            Sorted by: 
             <select name="sortable" data-action="change->form#changed">
                 <option value="firstline">
                     First Line
@@ -61,10 +61,10 @@
         <label class="cursor-pointer self-center">
             <select name="sort_direction" data-action="change->form#changed"> 
                 <option value="asc">
-                    Forward
+                    Ascending
                 </option>
                 <option value="desc">
-                    Reverse
+                    Descending
                 </option>
             </select>
         </label>
@@ -76,7 +76,7 @@
             <section class="block mb-1" x-data="{open: false}">
                 <button type="button" @click="open = !open"
                     class="p-1 flex justify-between items-stretch w-full">
-                    <span class="self-center" :class="{ 'font-black': open }">
+                    <span class="self-center text-sm" :class="{ 'font-black': open }">
                         Birds
                     </span>
                     <span class="text-3xl self-center">
@@ -103,7 +103,7 @@
         <section class="block mb-1" x-data="{open: false}">
             <button type="button" @click="open = !open"
                 class="p-1 flex justify-between items-stretch w-full">
-                <span class="self-center" :class="{ 'font-black': open }">
+                <span class="self-center text-sm" :class="{ 'font-black': open }">
                     {{ $filterable->title }} 
                 </span>
                 <span class="text-3xl self-center">

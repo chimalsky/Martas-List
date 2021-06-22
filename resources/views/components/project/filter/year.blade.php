@@ -10,7 +10,7 @@
                 @endif
                 autocomplete="off" 
                     />
-            <span class="pl-2">
+            <span class="pl-1">
                 @if ($option == 'Unknown') 
                     {{ $option }}
                 @else

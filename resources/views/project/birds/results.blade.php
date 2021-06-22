@@ -16,7 +16,7 @@
 
                 <main class="flex flex-wrap justify-center space-x-2 space-y-1">
                     @foreach(request()->input('filterable.' . $filterable->id) as $selectedValue)
-                        <label class="text-black inline-block py-1 px-4 cursor-pointer" style="background-color: #F7F5E7">
+                        <label class="text-black inline-block py-1 px-4 cursor-pointer relative" style="background-color: #F7F5E7">
                             <input data-action="change->archive#relayAction" type="checkbox"
                                 name="filterable[{{ $filterable->id }}][]"
                                 value="{{ $selectedValue }}"
@@ -26,6 +26,9 @@
                                     />
                             <span class="pl-2">
                                 {{ $selectedValue }}
+                            </span>
+                            <span class="absolute top-0 right-0 pr-1 pt-1 text-xs text-gray-500">
+                                X
                             </span>
                         </label>
                     @endforeach
@@ -63,7 +66,7 @@
             <div class="text-center mb-6">
                 <main class="flex flex-wrap justify-center space-x-2 space-y-1">
                     @foreach ($seasons as $season)
-                        <label class="text-black inline-block py-1 px-4 cursor-pointer" style="background-color: #F7F5E7">
+                        <label class="text-black inline-block py-1 px-4 cursor-pointer relative" style="background-color: #F7F5E7">
                             <input data-action="change->archive#relayAction" type="checkbox"
                                 name="seasons[]"
                                 value="{{ $season }}"
@@ -73,6 +76,9 @@
                                     />
                             <span class="pl-2">
                                 {{ Str::title($season) }}
+                            </span>
+                            <span class="absolute top-0 right-0 pr-1 pt-1 text-xs text-gray-500">
+                                X
                             </span>
                         </label>
                     @endforeach
@@ -84,7 +90,7 @@
             <div class="text-center mb-6">
                 <main class="flex flex-wrap justify-center space-x-2 space-y-1">
                     @foreach ($months as $month)
-                        <label class="text-black inline-block py-1 px-4 cursor-pointer" style="background-color: #F7F5E7">
+                        <label class="text-black inline-block py-1 px-4 cursor-pointer relative" style="background-color: #F7F5E7">
                             <input data-action="change->archive#relayAction" type="checkbox"
                                 name="months[]"
                                 value="{{ $month }}"
@@ -94,6 +100,9 @@
                                     />
                             <span class="pl-2">
                                 {{ Str::title($month) }}
+                            </span>
+                            <span class="absolute top-0 right-0 pr-1 pt-1 text-xs text-gray-500">
+                                X
                             </span>
                         </label>
                     @endforeach
@@ -109,7 +118,7 @@
 
                 <main class="flex flex-wrap justify-center space-x-2 space-y-1">
                     @foreach ($activeBirds as $bird) 
-                        <label class="text-black text-center inline-block py-6 px-4 cursor-pointer" style="background-color: #F7F5E7">
+                        <label class="text-black text-center inline-block py-6 px-4 cursor-pointer relative" style="background-color: #F7F5E7">
                             <input data-action="change->archive#relayAction" type="checkbox"
                                 name="filterableBird[{{ $bird->id }}][]"
                                 value="{{ $bird->id }}"
@@ -119,6 +128,9 @@
                                     />
                             <span class="pl-2">
                                 {{ $bird->name }}
+                            </span>
+                            <span class="absolute top-0 right-0 pr-1 pt-1 text-xs text-gray-500">
+                                X
                             </span>
                         </label>
                     @endforeach
