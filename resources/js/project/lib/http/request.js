@@ -16,7 +16,8 @@ export class Request {
       : this.url;
 
     if (this.queryString) {
-      history.replaceState(null, null, "?"+this.queryString);
+      console.log(location, this.queryString)
+      history.replaceState(null, null, location.pathname + "?"+this.queryString);
     }
 
     const response = new Response(await fetch(url, this.fetchOptions))

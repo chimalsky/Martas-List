@@ -1,5 +1,5 @@
 <div>
-    <a href="@route('project.poems.show', $poem)"">
+    <a href="@route('project.poems.show', $poem)" target="_blank">
         <header class="text-center text-xl text-black cursor-pointer">
             {{ $poem->firstLine->value ?? $poem->name }}
         </header>
