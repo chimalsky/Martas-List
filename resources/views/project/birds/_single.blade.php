@@ -1,5 +1,5 @@
 <div>
-<a href="@route('project.birds.show', $bird)"">
+<a href="@route('project.birds.show', $bird)" ç>
     <header class="block text-2xl text-center hover:underline mb-3">
         {{ $bird->name }}
     </header>
