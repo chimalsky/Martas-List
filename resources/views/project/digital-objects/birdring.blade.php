@@ -1,14 +1,7 @@
 @extends ('layouts.project-shifted')
 
-@section('header-anchor')
-<div>
-    <span class="text-4xl">B</span>IRD
-
-    <span class="text-4xl">R</span>ING
-</div>
-@endsection 
-
-@section ('content')
-
-<livewire:project.digital-objects.bird-ring />
+@section('content')
+<main class="max-w-2xl mx-auto text-gray-700 text-lg page-content" data-style="red">
+    {!! optional(App\ResourceMeta::find(46378))->value ?? 'No content yet' !!}
+</main>
 @endsection

@@ -47,11 +47,15 @@
         <main class="flex-1">
             <header class="">
                 <div class="flex justify-center space-x-4 max-w-xs mx-auto">
-                    <img class="object-cover w-16 h-16 rounded-full" src="{{ asset('img/do-1.jpg') }}" />
-                    <a href="@route('project.digital-objects.index')">
-                        <img class="object-cover w-16 h-16 rounded-full" src="{{ asset('img/do-2.jpg') }}" />
+                    <a href="@route('project.digital-objects.timeline')">
+                        <img class="object-cover w-16 h-16 rounded-full" src="{{ asset('img/do-1.png') }}" />
                     </a>
-                    <img class="object-cover w-16 h-16 rounded-full" src="{{ asset('img/do-3.png') }}" />
+                    <a href="@route('project.digital-objects.map')">
+                        <img class="object-cover w-16 h-16 rounded-full" src="{{ asset('img/do-2.png') }}" />
+                    </a>
+                    <a href="@route('project.digital-objects.birdring')">
+                        <img class="object-cover w-16 h-16 rounded-full" src="{{ asset('img/do-3.png') }}" />
+                    </a>
                 </div>
 
                 <nav class="text-4xl text-center flex justify-center mt-16" style="font-family: Cormorant SC;">

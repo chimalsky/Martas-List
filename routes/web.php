@@ -54,8 +54,9 @@ Route::prefix('project')->name('project.')->namespace('Project')->group(function
     Route::get('/birds/{bird}/poems', 'BirdPoemsController')->name('bird.poems');
     Route::get('/birds/{bird}/data', 'BirdsDataController')->name('birds.data');
 
-    Route::get('/digital-objects', 'DigitalObjects\IndexController')->name('digital-objects.index');
-
+    //Route::get('/digital-objects', 'DigitalObjects\IndexController')->name('digital-objects.index');
+    Route::get('/digital-objects/timeline', 'DigitalObjects\TimelineController')->name('digital-objects.timeline');
+    Route::get('/digital-objects/map', 'DigitalObjects\MapController')->name('digital-objects.map');
     Route::get('/digital-object/birdring', 'DigitalObjects\BirdRingController')->name('digital-objects.birdring');
 });
 

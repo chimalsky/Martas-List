@@ -14,11 +14,15 @@
 
 <section>
     <main class="block mt-12 mb-32 max-w-2xl flex flex-wrap justify-center mx-auto space-x-4">
-        <img class="w-32 h-32 lg:w-48 lg:h-48 object-cover rounded-full" src="{{ asset('img/timeline.jpeg') }}" />
-        <a href="@route('project.digital-objects.index')">
-            <img class="w-32 h-32 lg:w-48 lg:h-48 object-cover rounded-full" src="{{ asset('img/birdring.jpg') }}" />
+        <a href="@route('project.digital-objects.timeline')">
+            <img class="w-32 h-32 object-cover rounded-full" src="{{ asset('img/do-1.png') }}" />
         </a>
-        <img class="w-32 h-32 lg:w-48 lg:h-48 object-cover rounded-full" src="{{ asset('img/map-ma.png') }}" />
+        <a href="@route('project.digital-objects.map')">
+            <img class="w-32 h-32 object-cover rounded-full" src="{{ asset('img/do-2.png') }}" />
+        </a>
+        <a href="@route('project.digital-objects.birdring')">
+            <img class="w-32 h-32 object-cover rounded-full" src="{{ asset('img/do-3.png') }}" />
+        </a>
     </main>
 
     <footer class="block text-center max-w-3xl mx-auto text-gray-600 italic">
