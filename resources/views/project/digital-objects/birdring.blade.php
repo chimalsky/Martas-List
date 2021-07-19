@@ -1,4 +1,4 @@
-@extends ('layouts.project')
+@extends ('layouts.project-shifted')
 
 @section('content')
 <main class="max-w-2xl mx-auto text-gray-700 text-lg page-content" data-style="red">
