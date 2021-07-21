@@ -57,6 +57,12 @@
                     class="ml-6">
                     <p class="underline cursor-pointer">
                         {{ $birdList->name }}
+                        <span x-show="!expanded">
+                            <x-heroicon-o-arrow-down class="w-4 inline-block" />
+                        </span>
+                        <span x-show="expanded">
+                            <x-heroicon-o-arrow-up class="w-4 inline-block" />
+                        </span>
                     </p>
                     @php 
                         $otherBird = $bird->resources->firstWhere('resource_type_id', $birdList->id);
@@ -71,7 +77,7 @@
 
                                 @if ($otherBirdMeta)
                                     <li class="mb-4">
-                                        <span class="italic text-xm mr-2">
+                                        <span class="italic text-xm mr-2 font-bold">
                                             {{ $attribute->name }}
                                         </span>
 

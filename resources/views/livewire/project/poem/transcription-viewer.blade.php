@@ -1,6 +1,6 @@
 <div class="border-b border-gray-200">
     <nav class="-mb-px space-x-4 mx-auto max-w-xs flex justify-center">
-        @foreach ($medias as $medium)
+        @foreach ($medias as $index => $medium)
             @if (Str::contains($medium->mime_type, 'image'))
                 <button 
                     @if ($loop->index === 0)
@@ -11,6 +11,7 @@
                         @if ($media->id == $medium->id) border-indigo-500 @endif
                         hover:shadow-lg">
                         <img class="object-contain" src="{{ $medium->getUrl('thumb') }}" />
+                        {{ $index + 1}}
                 </button>
             @endif
         @endforeach
