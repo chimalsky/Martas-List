@@ -151,6 +151,17 @@
         </div>
     </section>
 </form>
+
+<script>
+    document.querySelector('#js-main-form').addEventListener('keydown', function(event) {
+        if (event.key === "Enter") {
+            if (event.target.type !== 'submit') {
+                event.preventDefault();
+                return false;
+            }
+        }
+    })
+</script>
 @endsection
 
 @section ('content')
