@@ -147,7 +147,7 @@ class BirdsController extends Controller
 
         $results = $birds->paginate(6);
 
-        return view('project.birds.results', compact('results', 'activeFilterables', 'activeBirds', 'months', 'seasons', 'century'));
+        return view('project.birds.results', compact('results', 'activeFilterables', 'activeBirds', 'months', 'seasons', 'century', 'query'));
     }
 
     public function show(Request $request, Bird $bird)

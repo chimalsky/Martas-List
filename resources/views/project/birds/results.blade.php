@@ -1,10 +1,24 @@
 <header id="results-composition" class="gap-4 mt-12 px-6">
     <div data-target="archive.formFacade"">
-        @if (count($activeFilterables) || count($activeBirds))
-            <div class="text-right">
-                <button data-action="archive#clearForm">
+        @if (count($activeFilterables) || count($activeBirds) || isset($query))
+            <div class="text-right mb-12 flex justify-center">
+                <x-hollow-button data-action="archive#clearForm">
                     Clear Curation Filters
-                </button>
+                </x-hollow-button>
+            </div>
+        @endif 
+
+        @if (isset($query))
+            <div class="text-center mb-6">
+                Bird Species Query:
+                
+                <span data-action="click->archive#relayClearQuery" class="text-black inline-block py-1 px-4 cursor-pointer relative" style="background-color: #F7F5E7">
+                    {{ $query }}
+
+                    <span class="absolute top-0 right-0 pr-1 pt-1 text-xs text-gray-500">
+                        X
+                    </span>
+                </span>
             </div>
         @endif 
 

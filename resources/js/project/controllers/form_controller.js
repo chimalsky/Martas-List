@@ -92,7 +92,9 @@ export default class extends Controller {
         }
     }
 
-    clearState() {
+    async clearState() {
+        this.submitting = true 
+
         localStorage.removeItem(this.key)
 
         let checked = Array.from(this.element.querySelectorAll('input')).filter((el) => {
@@ -117,6 +119,13 @@ export default class extends Controller {
         })
 
         this.submitForm(false)
+    }
+
+    clearQuery() {
+        let queryInput = this.element.querySelector('[name="query"]')
+        queryInput.value = ''
+
+        this.submitForm()
     }
 
     get action() {

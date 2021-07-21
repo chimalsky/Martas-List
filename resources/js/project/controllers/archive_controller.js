@@ -11,11 +11,18 @@ export default class extends Controller {
 
     relayAction(event) {
         let target = event.target
+
+        console.log(target) 
+
         target.setAttribute('disabled', 1)
 
         let formInput = this.formTarget.querySelector('[name="'+target.name+'"][value="'+target.value+'"]')
         
         formInput.click()
+    }
+
+    relayClearQuery() {
+        window.dispatchEvent(new CustomEvent('query-cleared'))
     }
 
     async replaceResults(data) {

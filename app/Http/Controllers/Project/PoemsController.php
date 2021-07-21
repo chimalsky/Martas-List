@@ -89,7 +89,7 @@ class PoemsController extends Controller
 
         $results = $poems;
 
-        return view('project.poems.results', compact('results', 'activeFilterables', 'birds', 'activeBirds'));
+        return view('project.poems.results', compact('results', 'query', 'activeFilterables', 'birds', 'activeBirds'));
     }
 
     public function show(Request $request, $poemId)
