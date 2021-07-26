@@ -44,11 +44,80 @@
 @endauth
 
 <section class="text-center max-w-2xl mx-auto mt-10">
-    @foreach ($poem->metaByAttribute(597)->pluck('value') as $line)
-        <p>
-            {{ $line }}
+    @php
+            $time = $poem->year->value;
+            if ($poem->season && $poem->season->value != 'Unknown') {
+                $time .= ', ' . $poem->season->value;
+            }
+
+            if ($poem->month && $poem->month->value != 'Unknown') {
+                $time .= ', ' . $poem->month->value;
+            }
+    @endphp 
+
+    @if ($poem->doesMentionBirds())
+        <p class="font-bold">
+            {{ $poem->msId->value }} 
+            ({{ $poem->franklinId->value }})
         </p>
-    @endforeach
+
+        <p class="mb-4">
+            {{ $time }}
+        </p>
+
+        <p>
+            {{ $poem->medium->value }}, {{ $poem->manuscriptState->value }} copy.
+        </p>
+
+        @if ($poem->manuscriptSetting) 
+            <p>
+                <span class="italic">
+                    Preserved in Dickinson's private archive;
+                </span>
+                @if ($poem->isBound())
+                    Bound 
+                @else 
+                    Unbound 
+                @endif 
+                ({{ $poem->manuscriptSetting->value }}).
+                @if ($poem->enclosures)
+                    Contains {{ $poem->enclosures->value }}
+                @endif
+            </p>
+        @endif
+
+        @if ($poem->custody)
+            <p>
+                Current custody: {{ $poem->custody->value }}
+            </p>
+        @endif
+    @else 
+        <div class="mx-auto w-16 h-16">
+            <img src="{{ asset('img/birdless.png') }}" class="object-fit" />
+        </div>
+
+        <p class="font-bold text-xl">
+            {{ $time }}
+        </p>
+
+        <p>
+            {{ $poem->manuscriptState->value }} copy, in {{ $poem->medium->value }}
+        </p>
+
+        @if ($poem->manuscriptSetting) 
+            <p>
+                <span class="italic">
+                    Preserved in Dickinson's private archive;
+                </span>
+                @if ($poem->isBound())
+                    Bound 
+                @else 
+                    Unbound 
+                @endif 
+                ({{ $poem->manuscriptSetting->value }}).
+            </p>
+        @endif
+    @endif
 </section>
 
 

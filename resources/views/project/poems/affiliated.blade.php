@@ -57,26 +57,69 @@
                 <div class="mt-4 flex justify-center">
                     <div class="w-2/3 text-left">
                         <header class="text-black font-bold mb-2" style="font-family: Cormorant Upright;">
-                            {{ $poem->firstMetaByAttribute(84)->value }}
+                            <a href="@route('project.poems.show', $poem)" class="inline-block text-xl">
+                                {{ $poem->firstLine->value }} 
+                            </a>
+
+                            @unless ($poem->doesMentionBirds()) 
+                                <div class="inline-block w-8 h-8">
+                                    <img src="{{ asset('img/birdless.png') }}" class="object-fit mt-1" />
+                                </div>
+                            @endunless
                         </header>
 
-                        @foreach ($poem->metaByAttribute(597)->pluck('value') as $line)
-                            <p @if ($loop->index === 2)
-                                class="italic"
-                                @endif
-                                style="font-family: Cormorant; margin-bottom: .1rem;">
-                                {{ $line }}
+                        <main>
+                            <p class="">
+                                ({{ $poem->franklinId->value }})
                             </p>
-                        @endforeach
+
+                            <p class="">
+                                @php
+                                    $time = $poem->year->value;
+
+                                    if ($poem->season && $poem->season->value != 'Unknown') {
+                                        $time .= ', ' . $poem->season->value;
+                                    }
+
+                                    if ($poem->month && $poem->month->value != 'Unknown') {
+                                        $time .= ', ' . $poem->month->value;
+                                    }
+
+                                @endphp 
+
+                                {{ $time }}
+                            </p>
+
+                            <p class="italic">
+                                @if ( $poem->custody )
+                                    Sent
+                                @else 
+                                    Retained
+                                @endif
+                            </p>
+
+                            <p>
+                                {{ $poem->medium->value }}, 
+                                @if ($poem->isBound())
+                                    Bound 
+                                @else 
+                                    Unbound 
+                                @endif 
+                            </p>
+                        </main>
 
                         <p>
                             @if ($poem->doesMentionBirds())
                                 <span class="font-bold italic">Mentions</span>: 
-                                @foreach ($poem->birdCategories as $bird)
+                                @forelse ($poem->birdCategories as $bird)
                                     {{ $bird->name }}@unless($loop->last),@endunless
-                                @endforeach 
+                                @empty
+                                    Unnamed Birds
+                                @endforelse 
                             @else 
-                                Sans Birds
+                                <span class="font-bold italic">
+                                    Sans Birds
+                                </span>
                             @endif 
                         </p>
                     </div>

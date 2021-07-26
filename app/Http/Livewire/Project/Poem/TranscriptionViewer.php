@@ -21,7 +21,7 @@ class TranscriptionViewer extends Component
         $this->poem = $poem; 
         $this->medias = $poem->facsimiles;
 
-        $this->transcription = $poem->firstMetaByAttribute(78)->value;
+        $this->transcription = optional($poem->transcription)->value ?? 'Transcription coming soon';
 
         //$transcription = str_replace('{/pb}', '{/pb} </div>', $transcription);
         $exploded = collect(explode('{/pb}', $this->transcription));

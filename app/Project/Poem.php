@@ -3,6 +3,7 @@
 namespace App\Project;
 
 use App\Resource;
+use App\ResourceAttribute;
 use App\ResourceMeta;
 use Illuminate\Database\Eloquent\Builder;
 use Spatie\MediaLibrary\Models\Media;
@@ -35,6 +36,18 @@ class Poem extends Resource
         return $this->hasOne(Transcription::class, 'resource_id');
     } 
 
+    public function franklinId()
+    {
+        return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 384);
+    }
+
+    public function msId()
+    {
+        return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 127);
+    }
+
     public function facsimiles()
     {
         return $this->hasMany(Media::class, 'model_id', 'id')
@@ -51,6 +64,72 @@ class Poem extends Resource
     {
         return $this->hasOne(ResourceMeta::class, 'resource_id')
             ->where('resource_attribute_id', 131);
+    }
+
+    public function season()
+    {
+        return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 138);
+    }
+
+    public function month()
+    {
+        return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 623);
+    }
+
+    public function medium()
+    {
+        return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 142);
+    }
+
+    public function manuscriptState()
+    {
+        return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 89);
+    }
+
+    public function manuscriptSetting()
+    {
+        return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 103);
+    }
+
+    public function isBound()
+    {
+        $attribute = ResourceAttribute::find(103);
+        $manuscriptSetting = $this->manuscriptSetting;
+
+        if (!$manuscriptSetting) {
+            return false;
+        }
+
+        return collect($attribute->getOptionBlockItems($attribute->optionBlocks->first()))
+            ->contains($manuscriptSetting->value);
+    }
+
+    public function isUnbound()
+    {
+        return !$this->isBound();
+    }
+
+    public function circulation()
+    {
+        return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 113);
+    }
+
+    public function enclosures()
+    {
+        return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 100);
+    }
+
+    public function custody()
+    {
+        return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 116);
     }
 
     public function placeholder()
@@ -89,9 +168,9 @@ class Poem extends Resource
 
     public function doesMentionBirds()
     {
-        return $this->firstMetaByAttribute(624)
-            ? false 
-            : true;
+        return is_null($this->firstMetaByAttribute(624))
+            ? true 
+            : false;
     }
 
 }
