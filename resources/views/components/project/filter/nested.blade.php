@@ -3,7 +3,7 @@
         <section>
             @if ($group['_items'])
                 <header>
-                    <label data-nested-filter-target="block" class="block mb-4 border border-gray-700 p-2"
+                    <label data-nested-filter-target="block" class="cursor-pointer block mb-4 border border-gray-700 p-2"
                         data-block-name="{{ $group['_name'] }}">
                         <input data-action="click->nested-filter#blockSelected" 
                             @if (collect(request()->input('filterable.' . $filterable->id))->contains($group['_name']))
@@ -21,7 +21,11 @@
                     @endforeach
                 </main>
             @else 
-                <x-project.filter.input :filterable="$filterable" :option="$group['_name']" data-action="click->nested-filter#optionSelected" />
+                <main data-nested-filter-target="pseudoBlock">
+                    <x-project.filter.button-input :filterable="$filterable" 
+                        :option="$group['_name']" 
+                        data-action="click->nested-filter#optionSelected" />
+                </main>
             @endif
         </section>
     @endforeach

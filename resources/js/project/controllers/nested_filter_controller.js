@@ -4,6 +4,7 @@ export default class extends Controller {
     static targets = [
         'block',
         'blockOptions',
+        'pseudoBlock',
         'back'
     ]
 
@@ -45,6 +46,8 @@ export default class extends Controller {
 
             this.blockOptionsTargets.forEach(el => el.classList.add('hidden'))
 
+            this.pseudoBlockTargets.forEach(el => el.classList.remove('hidden'))
+
             this.backTarget.classList.add('hidden')
         }
 
@@ -56,6 +59,8 @@ export default class extends Controller {
             this.blockOptionsTargets.filter(
                 element => element.getAttribute('data-block') != this.selectedBlockValue
             ).forEach(el => el.classList.add('hidden'))
+
+            this.pseudoBlockTargets.forEach(el => el.classList.add('hidden'))
     
             this.blockTargets.forEach(el => el.classList.add('hidden'))
 
@@ -69,6 +74,7 @@ export default class extends Controller {
         this.clearSelectedBlockOptions()
 
         this.clearSelectedBlocks()
+        this.clearSelectedPseudoBlocks()
 
         this.dispatchUpdate()
     }
@@ -83,6 +89,14 @@ export default class extends Controller {
 
     clearSelectedBlocks() {
         this.blockTargets.forEach((element) => {
+            let input = element.querySelector('input')
+
+            input.checked = false
+        }) 
+    }
+
+    clearSelectedPseudoBlocks() {
+        this.pseudoBlockTargets.forEach((element) => {
             let input = element.querySelector('input')
 
             input.checked = false

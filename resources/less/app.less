@@ -6,17 +6,13 @@ html {
     @apply font-body;
 }
 
-.project-filter {
-    input[type=checkbox] {
-    }
-    input[type=checkbox] + label {
-        @apply px-2 py-4 flex-1 leading-5 cursor-pointer text-xl;
-    }
-    input[type=checkbox]:checked + label {
-        @apply bg-indigo-300 font-bold border-4 border-black;
-    }
+.button-input input {
+    @apply hidden;
+}
 
- }
+.button-input input:checked {
+    @apply inline-block;    
+}
 
 .btn {
     @apply font-bold py-2 px-4 rounded;
@@ -264,39 +260,6 @@ html {
             @apply bg-blue-900;
         }
     }
-}
-
-.slick-track {
-    @apply flex items-center;
-}
-
-.slick-carousel button.slick-arrow {
-    position: absolute;
-    top: 50%;
-    display: block;
-    cursor: pointer;
-    @apply text-gray-500;
-    @apply text-5xl;
-    @apply font-thin;
-}
-
-.slick-carousel button.previous {
-    @apply -ml-10;
-    transform: translate(0, -50%);
-}
-
-.slick-carousel button.next {
-    right:0;
-    @apply -mr-10;
-    transform: translate(0, -50%);
-}
-
-.slick-center article.bird {
-    @apply p-16;
-}
-
-.slick-dots li button::before {
-    font-size: 12px;
 }
 
 @tailwind utilities;
