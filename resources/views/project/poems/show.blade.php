@@ -66,7 +66,7 @@
         </p>
 
         <p>
-            {{ $poem->medium->value }}, {{ $poem->manuscriptState->value }}
+            {{ $poem->medium->value }}, {{ $poem->manuscriptState->value }}.
         </p>
 
         @if ($poem->manuscriptSetting) 
