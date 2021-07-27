@@ -16,6 +16,10 @@
             @foreach ($poem->meta->where('resource_attribute_id', '!=', 131)
                 ->groupBy('resource_attribute_id') as $metaGroup)
                 @foreach ($metaGroup as $meta) 
+                    @if ($meta->resource_attribute_id == 113)
+                        Sent to,
+                    @endif
+
                     @if ($loop->index > 0) 
                         +
                     @endif
