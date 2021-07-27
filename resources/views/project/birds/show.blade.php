@@ -54,17 +54,19 @@
 
     <x-project.bird.notebook.entry header="Nest Materials" class="text-lg" :data="$bird->firstMetaByAttribute(505)" />
 
-    @php 
-        $fieldNotes = $nineteenthBird  
-            ? $nineteenthBird->firstMetaByAttribute(590)
-            : null;
-    @endphp
-    @if ($fieldNotes)
-    <x-project.bird.notebook.entry header="19th-20th Century Field Notes" class="text-lg" :noSmallCaps="true" :data="$fieldNotes">
-        <p class="text-right">
-            —H.L. Clark, 1887
-        </p>
-    </x-project.bird.notebook.entry>
+    @if ($birdCategory)
+        @php 
+            $fieldNotes = $nineteenthBird  
+                ? $nineteenthBird->firstMetaByAttribute(590)
+                : null;
+        @endphp
+        @if ($fieldNotes)
+        <x-project.bird.notebook.entry header="19th-20th Century Field Notes" class="text-lg" :noSmallCaps="true" :data="$fieldNotes">
+            <p class="text-right">
+                —H.L. Clark, 1887
+            </p>
+        </x-project.bird.notebook.entry>
+        @endif
     @endif
 
     <x-project.bird.notebook.entry header="21st Century Conservation Notes" :noSmallCaps="true" :data="$bird->firstMetaByAttribute(37)">
@@ -72,10 +74,6 @@
             {{ optional($bird->firstMetaByAttribute(596))->value.'*' ?? 'Information Coming Soon' }}
         </p>
     </x-project.bird.notebook.entry>
-
-    <p class="mt-4">
-        (*data from the online Audubon Guide to North American Birds <a href="https://www.audubon.org/birds">https://www.audubon.org/birds</a>)    
-    </p>
 </main>
 
 
@@ -102,9 +100,7 @@
 
             <x-project.bird.notebook.entry header="Habitat" :data="$bird->firstMetaByAttribute(504)" />
 
-            <x-project.bird.notebook.entry header="Nest Material" :data="$bird->firstMetaByAttribute(505)" />
-
-            
+            <x-project.bird.notebook.entry header="Nest Material" :data="$bird->firstMetaByAttribute(505)" />   
         </div>
 
 
@@ -118,6 +114,7 @@
                 </p>
             </x-project.bird.notebook.entry>
 
+            @
             @php 
                 $fieldNotes = $nineteenthBird  
                     ? $nineteenthBird->firstMetaByAttribute(590)
