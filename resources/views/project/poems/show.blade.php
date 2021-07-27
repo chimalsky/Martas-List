@@ -72,14 +72,20 @@
         @if ($poem->manuscriptSetting) 
             <p>
                 <span class="italic">
-                    Preserved in Dickinson's private archive;
+                    MS Retained
                 </span>
                 @if ($poem->isBound())
                     Bound 
                 @else 
                     Unbound 
                 @endif 
-                ({{ $poem->manuscriptSetting->value }}).
+
+                @unless ($poem->manuscriptSetting->value == 'Unknown')
+                    ({{ $poem->manuscriptSetting->value }}).
+                @else 
+                    Unknown setting.
+                @endunless 
+
                 @if ($poem->enclosures)
                     Contains {{ $poem->enclosures->value }}
                 @endif
@@ -88,7 +94,7 @@
 
         @if ($poem->custody)
             <p>
-                Current custody: {{ $poem->custody->value }}
+                {{ $poem->custody->value }}
             </p>
         @endif
     @else 
