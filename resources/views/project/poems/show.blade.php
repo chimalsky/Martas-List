@@ -69,28 +69,34 @@
             {{ $poem->medium->value }}, {{ $poem->manuscriptState->value }}.
         </p>
 
-        @if ($poem->manuscriptSetting) 
-            <p>
-                <span class="italic">
-                    MS Retained
-                </span>
-                @if ($poem->isBound())
-                    Bound 
-                @else 
-                    Unbound 
-                @endif 
+        <p>
+            @if ($poem->isRetained()) 
+                    <span class="italic">
+                        MS Retained
+                    </span>
+                    @if ($poem->isBound())
+                        Bound 
+                    @else 
+                        Unbound 
+                    @endif 
 
-                @unless ($poem->manuscriptSetting->value == 'Unknown')
-                    ({{ $poem->manuscriptSetting->value }}).
-                @else 
-                    Unknown setting.
-                @endunless 
+                    @unless ($poem->manuscriptSetting->value == 'Unknown')
+                        ({{ $poem->manuscriptSetting->value }}).
+                    @else 
+                        Unknown setting.
+                    @endunless 
 
-                @if ($poem->enclosures)
-                    Contains {{ $poem->enclosures->value }}
-                @endif
-            </p>
-        @endif
+                    @if ($poem->enclosures)
+                        Contains {{ $poem->enclosures->value }}
+                    @endif
+            @endif 
+            
+            @if ($poem->wasCirculated())
+                MS Sent,                   
+                
+                to {{ $poem->circulation->value }}.
+            @endif
+        </p>
 
         @if ($poem->custody)
             <p>

@@ -114,6 +114,27 @@ class Poem extends Resource
         return !$this->isBound();
     }
 
+    public function isRetained()
+    {
+        $attribute = ResourceAttribute::find(103);
+
+        if (!$this->manuscriptSetting) {
+            return false;
+        }
+
+        return $this->manuscriptSetting->value != 'Sent';
+    }
+
+    public function wasSent()
+    {
+        return !$this->isRetained();
+    }
+
+    public function wasCirculated()
+    {
+        return $this->circulation;
+    }
+
     public function circulation()
     {
         return $this->hasOne(ResourceMeta::class, 'resource_id')
