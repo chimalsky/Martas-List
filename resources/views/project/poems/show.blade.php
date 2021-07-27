@@ -72,7 +72,7 @@
         <p>
             @if ($poem->isRetained()) 
                     <span class="italic">
-                        MS Retained
+                        MS Retained,
                     </span>
                     @if ($poem->isBound())
                         Bound 
@@ -92,7 +92,9 @@
             @endif 
             
             @if ($poem->wasCirculated())
-                MS Sent,                   
+                <span class="italic">
+                    MS Sent,   
+                </span>                
                 
                 to {{ $poem->circulation->value }}.
             @endif
