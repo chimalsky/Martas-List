@@ -141,7 +141,7 @@
             <span class="italic">Additional</span> Manuscripts Affiliations —
         </h1>
 
-        <aside class="max-w-3xl text-lg italic text-center mb-16">
+        <aside class="max-w-3xl text-lg italic text-center mb-16 mx-auto">
             <x-project.section-break class="mx-auto max-w-lg" />
 
             <i>Dickinson’s Birds</i> shelters digital surrogates of only those manuscripts by Dickinson that contain
@@ -155,13 +155,86 @@
             <x-project.section-break class="mx-auto max-w-lg" />
         </aside>
 
-        @foreach ($additionalAffiliations as $additional) 
-            <article class="mb-10 block text-xl max-w-3xl additional-affiliation">
-                @php 
-                    echo make_links_clickable($additional->value);
-                @endphp
-            </article> 
-        @endforeach
+        <main class="flex flex-wrap w-full pt-12">
+            @foreach ($additionalAffiliations as $poem) 
+                <article class="pb-32 px-4 w-full lg:w-1/2 xl:w-1/3">
+                    <a href="@route('project.poems.show', $poem)">
+                        <x-project.poem.image :poem="$poem" />
+                    </a>
+
+                    <div class="mt-4 flex justify-center">
+                        <div class="w-2/3 text-left">
+                            <header class="text-black font-bold mb-2" style="font-family: Cormorant Upright;">
+                                <a href="@route('project.poems.show', $poem)" class="inline-block text-xl">
+                                    {{ $poem->firstLine->value }} 
+                                </a>
+
+                                @unless ($poem->doesMentionBirds()) 
+                                    <div class="inline-block w-8 h-8">
+                                        <img src="{{ asset('img/birdless.png') }}" class="object-fit mt-1" />
+                                    </div>
+                                @endunless
+                            </header>
+
+                            <main>
+                                <p class="">
+                                    ({{ $poem->franklinId->value }})
+                                </p>
+
+                                <p class="">
+                                    @php
+                                        $time = $poem->year->value;
+
+                                        if ($poem->season && $poem->season->value != 'Unknown') {
+                                            $time .= ', ' . $poem->season->value;
+                                        }
+
+                                        if ($poem->month && $poem->month->value != 'Unknown') {
+                                            $time .= ', ' . $poem->month->value;
+                                        }
+
+                                    @endphp 
+
+                                    {{ $time }}
+                                </p>
+
+                                <p class="italic">
+                                    @if ( $poem->custody )
+                                        Sent
+                                    @else 
+                                        Retained
+                                    @endif
+                                </p>
+
+                                <p>
+                                    {{ $poem->medium->value }}, 
+                                    @if ($poem->isBound())
+                                        Bound 
+                                    @else 
+                                        Unbound 
+                                    @endif 
+                                </p>
+                            </main>
+
+                            <p>
+                                @if ($poem->doesMentionBirds())
+                                    <span class="font-bold italic">Mentions</span>: 
+                                    @forelse ($poem->birdCategories as $bird)
+                                        {{ $bird->name }}@unless($loop->last),@endunless
+                                    @empty
+                                        Unnamed Birds
+                                    @endforelse 
+                                @else 
+                                    <span class="font-bold italic">
+                                        Sans Birds
+                                    </span>
+                                @endif 
+                            </p>
+                        </div>
+                    </div>
+                </article> 
+            @endforeach
+        </main>
 
         <style>
             .additional-affiliation a {

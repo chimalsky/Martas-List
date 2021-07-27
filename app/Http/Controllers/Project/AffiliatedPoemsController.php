@@ -22,14 +22,19 @@ class AffiliatedPoemsController extends Controller
 
         $category = $poem->category;
 
-        $poems = Poem::where('resource_category_id', $category->id)
+        $poems = Poem::hasBirds()
+            ->where('resource_category_id', $category->id)
             ->where('id', '!=', $poem->id)
             ->with('facsimiles')
             ->get();
         
         $firstline = $poems->first()->firstMetaByAttribute(84)->value ?? $poems->first()->name;
 
-        $additionalAffiliations = $poem->metaByAttribute(611);
+        $additionalAffiliations = Poem::doesntHaveBirds()
+            ->where('resource_category_id', $category->id)
+            ->where('id', '!=', $poem->id)
+            ->with('facsimiles')
+            ->get();
 
         return view('project.poems.affiliated', compact('category', 'poems', 'poem', 'firstline', 'additionalAffiliations'));
     }
