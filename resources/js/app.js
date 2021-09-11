@@ -57,10 +57,9 @@ function bootstrap() {
                 if (destination.classList.contains('block-options')) {
                     let blockId = destination.getAttribute('data-block-id')
                     input.setAttribute('name', `options[${blockId}][]`)
-
-                    console.log(input)
                 } else {
-                    input.setAttribute('name', 'options[]')
+                    if (input.value != 'BLOCK-EMPTY-VALUE')
+                        input.setAttribute('name', 'options[]');
                 }
             }
         });

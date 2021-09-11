@@ -24,7 +24,7 @@
                                     {{ html()->hidden("optionBlocks[block-{$index}]", $option['_name'])->id("attribute-option-block-{$option['_name']}") }}
                                     
                                     <div class="sortable block-options" data-block-id="block-{{ $index }}">
-                                        @foreach ($option['_items'] as $item)
+                                        @forelse ($option['_items'] as $item)
                                             <article class="attribute-option block my-2 mx-2 cursor-move hover:bg-indigo-900 py-1">
                                                 <span class="text-gray-500">
                                                     {{ $index + 1 }}
@@ -32,7 +32,11 @@
                                                 {{ html()->hidden("options[block-{$index}][]", $item)->id("attribute-option-{$index}")->class('option') }}
                                                 {{ $item }}
                                             </article>
-                                        @endforeach
+                                        @empty
+                                            <article class="attribute-option hidden">
+                                                {{ html()->hidden("options[block-{$index}][]", 'BLOCK-EMPTY-VALUE')->id("attribute-option-{$index}")->class('option') }}
+                                            </article>
+                                        @endforelse
                                     </div>
                                 </header>
                             @else

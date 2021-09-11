@@ -36,6 +36,10 @@ class ResourceAttributeOptionsSortController extends Controller
                 ];
 
                 foreach ($option as $item) {
+                    if ($item == 'BLOCK-EMPTY-VALUE') {
+                        continue;
+                    }
+
                     $block['_items'][] = $item;
                 }
 
