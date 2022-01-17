@@ -58,6 +58,7 @@ Route::prefix('project')->name('project.')->namespace('Project')->group(function
     Route::get('/digital-objects/timeline', 'DigitalObjects\TimelineController')->name('digital-objects.timeline');
     Route::get('/digital-objects/map', 'DigitalObjects\MapController')->name('digital-objects.map');
     Route::get('/digital-object/birdring', 'DigitalObjects\BirdRingController')->name('digital-objects.birdring');
+	Route::get('/digital-object/birdring/fetch', 'DigitalObjects\BirdRingFetchController')->name('digital-objects.birdring.fetch');
 });
 
 Route::group(['middleware' => 'auth'], function() {

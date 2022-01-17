@@ -28,25 +28,16 @@
 
 @php
     $nineteenthBird = $bird->resources->firstWhere('resource_type_id', 8);
+    
     $twentiethBird = $bird->resources->firstWhere('resource_type_id', 14);
     $twentyfirstBird = $bird->resources->firstWhere('resource_type_id', 15);
-
     $migrationMapLink = $bird->firstMetaByAttribute(506)
 @endphp
 
 <main class="text-center max-w-sm mx-auto">
     <x-project.bird.notebook.entry header="Occurrence in Amherst & Connecticut Valley, Mass.">
-        @isset ($nineteenthBird)
-            <x-project.bird.presence class="mb-8 text-lg" century="19" :bird="$nineteenthBird" />
-        @endisset 
-
-        @isset ($twentiethBird)
-            <x-project.bird.presence class="mb-8 text-lg" century="20" :bird="$twentiethBird" />
-        @endisset 
-        
-        @isset ($twentyfirstBird)
-            <x-project.bird.presence class="mb-8 text-lg" century="21" :bird="$twentyfirstBird" />
-        @endisset 
+        @unless (is_null($nineteenthBird))
+        @endif 
 
     </x-project.bird.notebook.entry>
 
@@ -84,9 +75,8 @@
     <section class="absolute inset-0 flex flex-wrap py-32 pr-48 pl-48">
         <div class="w-2/5 pr-18 overflow-auto" style="max-height: 80%;">
             <x-project.bird.notebook.entry header="Occurrence in Amherst & Connecticut Valley, Mass.">
-                @isset ($nineteenthBird)
-                    <x-project.bird.presence class="mb-4" century="19" :bird="$nineteenthBird" />
-                @endisset 
+                <x-project.bird.presence class="mb-4" century="19" :bird="$nineteenthBird" />
+                {{ $nineteenthBird }} 
 
                 @isset ($twentiethBird)
                     <x-project.bird.presence class="mb-4" century="20" :bird="$twentiethBird" />
@@ -114,7 +104,6 @@
                 </p>
             </x-project.bird.notebook.entry>
 
-            @
             @php 
                 $fieldNotes = $nineteenthBird  
                     ? $nineteenthBird->firstMetaByAttribute(590)

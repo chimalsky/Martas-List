@@ -24,6 +24,12 @@ class Bird extends ResourceModel
         return $this->belongsTo(DickinsonsBird::class, 'resource_category_id');
     }
 
+	public function universalSpeciesId()
+    {
+        return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 499);
+    }
+
     public function chronoConnections()
     {
         return $this->belongsToMany(
@@ -37,7 +43,8 @@ class Bird extends ResourceModel
     {
         $chronoBirds = $this->chronoConnections->pluck('otherBird');
 
-        /*return $this->meta()
+        /*  why not use this implementation? investigate
+			return $this->meta()
             ->whereIn('resource_attribute_id', ChronoBird::presence_meta_ids)
             ->whereIn('resource_id', $chronoBirds->pluck('id'));*/
 
@@ -50,4 +57,13 @@ class Bird extends ResourceModel
         return $this->hasOne(ResourceMeta::class, 'resource_id')
             ->where('resource_attribute_id', 502);
     }
+
+	// WIth Birdring we wanted to handstich presence data and attach it directly 
+	// to this primary bird model instead of querying through exterior resource-types
+	// these are the functions :
+	public function nineteenthCenturyPresenceMeta()
+	{
+		return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 688);
+	}
 }

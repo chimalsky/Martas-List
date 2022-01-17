@@ -259,6 +259,14 @@ class Resource extends Model implements HasMedia
             }]);
     }
 
+	public function scopeWithFilterableValue($query, ResourceAttribute $filterable, $value)
+    {
+        return $query->whereHas('meta', function ($query) use ($filterable, $value) {
+            $query = $query->where('resource_attribute_id', $filterable->id)
+                ->where('value', $value);
+        });
+    }
+
     public function scopeWithFilterableValues($query, ResourceAttribute $filterable, $values)
     {
         return $query->whereHas('meta', function ($query) use ($filterable, $values) {

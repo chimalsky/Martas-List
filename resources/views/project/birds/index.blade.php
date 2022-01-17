@@ -49,7 +49,7 @@
         curation-cleared@window->form#clearState
         query-cleared@window->form#clearQuery" 
     action="@route('project.birds.index-fetch')" method="get">
-    <input placeholder="Search bird sspecies" name="query" data-action="input->form#changed"
+    <input placeholder="Search bird species" name="query" data-action="input->form#changed"
         @if (request()->input('query')) value="{{ request()->input('query') }}" @endif
         class="block mb-4 border-4 border-gray-500 text-black rounded-full pl-4 p-2 placeholder-gray-800" />
     
