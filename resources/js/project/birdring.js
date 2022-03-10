@@ -2,8 +2,15 @@ import {data as chronoData} from './temporal-data.js';
 import {getBirdsByChrono} from './birdring-data.js';
 import birdhorizon from './birdhorizon.js';
 
-const width = 500;
-const radius = width / 8;
+const width = 900;
+const height = 900;
+const centerRadius = width / 18;
+let loopActivated = false;
+let selectedChrono;
+const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+const getSelectedChronoIndex = () => {
+    return months.findIndex(m =>  m === selectedChrono);
+}
 
 const partition = () => {
     const root = d3.hierarchy(chronoData)
@@ -15,12 +22,12 @@ const partition = () => {
 const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, chronoData.children.length + 1));
 
 const arc = d3.arc()
-    .startAngle(d => d.x0)
+    .startAngle(d => {return d.x0})
     .endAngle(d => d.x1)
-    .padAngle(d => Math.min((d.x1 - d.x0) / 2, 0.039))
-    .padRadius(radius * .25)
-    .innerRadius(d => d.y0 * (radius * 1.25))
-    .outerRadius(d => Math.max(d.y0 * (radius * 1.25), d.y1 * (radius * 1.25) - 1));
+    .padAngle(d => Math.min((d.x1 - d.x0), 0.02))
+    .padRadius(10)
+    .innerRadius(d => d.y0 * (centerRadius * 1.5))
+    .outerRadius(d => Math.max(d.y0 * (centerRadius * 1.5), d.y1 * (centerRadius * 1.5) - 1));
 
 const arcVisible = d => { return d.y1 <= 3 && d.y0 >= 1 && d.x1 > d.x0 };
 
@@ -30,78 +37,73 @@ const labelVisible = d => {
 
 const labelTransform = d => {
     const x = (d.x0 + d.x1) / 2 * 180 / Math.PI;
-    const y = (d.y0 + d.y1) / 2 * (radius * 1.25);
+    const y = (d.y0 + d.y1) / 2 * (centerRadius * 1.5);
     return `rotate(${x - 90}) translate(${y},0) rotate(${x < 180 ? 0 : 180})`;
 };
 
-const format = d3.format(",d");
-
 function birdring() {
-    const root = partition(chronoData);
-    root.each(d => d.current = d);
-
+    const root = partition(chronoData).each(d => d.current = d);
+    console.log(root);
+    
     const svg = d3.select('#birdring')
         .append("svg")
-        .attr("viewBox", [0, 0, width, width])
-        .attr('fill', 'white')
-        .style("font", "12px sans-serif");
+        .attr("viewBox", [0, 0, width, height])
+        .attr('fill', 'white');
 
-    const g = svg.append("g").attr("transform", `translate(${width / 2},${width / 2})`);
+    const g = svg.append("g").attr("transform", `translate(${width*.5},${height*.3})`);
 
     const path = g.append("g")
         .selectAll("path")
-        .data(root.descendants().slice(1))
-        .join("path")
-            .style("cursor", "pointer")
-            .attr("fill", d => { while (d.depth > 1) d = d.parent; return color(d.data.name); })
-            .attr("fill-opacity", d => arcVisible(d.current) ? (d.children ? 0.6 : 0.4) : 0)
-            .attr("d", d => arc(d.current))
-			.on('mouseover', function(d, i) {
-				const el = d3.select(this);
-				el.attr('original-fill', el.attr('fill'))
-				el.attr('fill', 'orange');
-			})
-			.on('mouseout', function(d, i) {
-				const el = d3.select(this);
-				el.attr('fill', el.attr('original-fill'));
-			})
-            .on("click", chronoSelected);
+        .data(root.descendants())
+        .join(enter => {
+            enter.append("path")
+                .style("cursor", "pointer")
+                .attr("data-chrono", d => d.data.name)
+                .attr("fill", d => { while (d.depth > 1) d = d.parent; return color(d.data.name); })
+                .attr("fill-opacity", d => arcVisible(d.current) ? (d.children ? 0.6 : 0.4) : 0)
+                .attr("d", d => arc(d.current))
+                .on('mouseover', function(d, i) {
+                    const el = d3.select(this);
+                    el.attr('original-fill', el.attr('fill'))
+                    el.attr('fill', 'orange');
+                })
+                .on('mouseout', function(d, i) {
+                    const el = d3.select(this);
+                    el.attr('fill', el.attr('original-fill'));
+                })
+                .on("click", chronoSelected);
+        });
         
     path.filter(d => d.children)
         .style("cursor", "pointer")
         .on("click", chronoSelected);
 
-    path.append("title")
-        .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.value)}`);
-
     const label = g.append("g")
         .attr("pointer-events", "none")
         .attr("text-anchor", "middle")
         .style("user-select", "none")
-        .selectAll("text").data(root.descendants().slice(1)).join("text")
-            .attr("dy", "0.35em")
-            .attr('fill', '#333')
-            .attr("fill-opacity", d => +labelVisible(d.current))
-            .attr("transform", d => labelTransform(d.current))
-            .style('text-transform', 'capitalize')
-            .text(d => d.data.name);
+        .selectAll("text").data(root.descendants()).join(enter => 
+            enter.append("text")
+                .attr("dy", "0.35em")
+                .attr('fill', '#333')
+                .attr("fill-opacity", d => +labelVisible(d.current))
+                .attr("transform", d => labelTransform(d.current))
+                .style('text-transform', 'capitalize')
+                .style('font-size', '28px')
+                .text(d => d.data.name.slice(0, 3))
+        );
 
-    const center = g.append("circle")
+    /*const center = g.append("circle")
         .datum(root)
-        .attr("r", radius * 1.25)
+        .attr("r", centerRadius)
         .attr("pointer-events", "all")
         .attr("text-anchor", "middle")
 		.style("cursor", "pointer")
-        .on("click", chronoSelected)
-		.append('g')
-			.append('text')
-			.text('foo')
-			.attr('dx', -20)
-			.attr('fill', 'black');
+        .on("click", chronoSelected);*/
 
     function chronoSelected(event, p) {
         window.dispatchEvent(new CustomEvent("chronoSelected", {detail: p}));
-        center.datum(p.parent || root);
+        //center.datum(p.parent || root);
     
         root.each(d => d.target = {
             x0: Math.max(0, Math.min(1, (d.x0 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
@@ -113,15 +115,14 @@ function birdring() {
         const t = g.transition().duration(700);
 
         if (p.depth === 0) {
-            showData(t);
+            showBirds(t);
         }
         if (p.depth === 1) {
-            showData(t);
-			showBackYear();
+            showBirds(t);
         }
     }
 
-    function showData(t) {
+    function showBirds(t) {
         // Transition the data on all arcs, even the ones that aren’t visible,
         // so that if this transition is interrupted, entering arcs will start
         // the next transition from the desired position.
@@ -130,41 +131,39 @@ function birdring() {
             	const i = d3.interpolate(d.current, d.target);
                 return t => d.current = i(t);
             })
-            .filter(function(d) {
-                return +this.getAttribute("fill-opacity") || arcVisible(d.target);
-            })
-            .attr("fill-opacity", d => arcVisible(d.target) ? (d.children ? 0.6 : 0.4) : 0)
+            //.attr("fill-opacity", d => arcVisible(d.target) ? (d.children ? 0.6 : 0.4) : 0)
             .attrTween("d", d => () => arc(d.current));
     
         label.filter(function(d) {
-                return +this.getAttribute("fill-opacity") || labelVisible(d.target);
-            }).transition(t)
-            .attr("fill-opacity", d => +labelVisible(d.target))
-            .attrTween("transform", d => () => labelTransform(d.current));
+            return +this.getAttribute("fill-opacity") || labelVisible(d.target);
+        }).transition(t)
+            //.attr("fill-opacity", d => +labelVisible(d.target))
+            //.attrTween("transform", d => () => labelTransform(d.current));
     }
-
-	function showBackYear() {
-		center.select('text')
-			.attr('opacity', 1);
-	}
 }
 
 document.addEventListener('turbolinks:load', () => {
     birdring();
 
-	const selectedDatumEl = document.querySelector('#selectedDatum');
+    const selectedDatumEl = document.querySelector('#selectedDatum');
 	const container = d3.select("#birdhorizon");
-	const canvas = document.querySelector('#birdhorizoncanvas');
+	const canvas = d3.select('#birdhorizoncanvas');
+    const chronoPlayerPlayButton = document.querySelector('#play');
+    const chronoPlayerPauseButton = document.querySelector('#pause');
 
 	window.addEventListener('chronoSelected', ev => {
-		const selection = ev.detail.data.name;
-		selectedDatumEl.style.opacity = .25;
-		selectedDatumEl.innerHTML = selection;
-		setTimeout(()=> {selectedDatumEl.style.opacity = 1}, 300);
+        selectedChrono = ev.detail.data.name;
 
-		getBirdsByChrono(selection).then(res => res.json())
+		selectedDatumEl.innerHTML = selectedChrono;
+
+		getBirdsByChrono(selectedChrono).then(res => res.json())
 			.then(json => {
-				birdhorizon(container, canvas, json, selection);
+                //container.style('visibility', 'visible');
+                const items = [];
+                for (let index in json) {
+                    items.push(json[index]);
+                }
+				birdhorizon(canvas, items);
 			});
-	})
-})
+	});
+});
