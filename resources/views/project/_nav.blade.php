@@ -2,11 +2,11 @@
     <span class="flex-1 flex justify-between space-x-2">
         <div class="">
             <a href="/">
-                <img src="{{ asset('img/bird-icon.png') }}" class="h-12 w-12 mb-1" />
+                <img src="{{ asset('img/bird-icon.png') }}" class="h-10 w-10 mb-1" />
             </a>
 
             <button @click="open = !open" type="button" id="menu-toggle"
-            class="h-10 w-10 ml-1 border border-transparent p-1 hover:border-gray-700">
+            class="h-8 w-8 ml-1 border border-transparent p-1 hover:border-gray-700">
                 <img src="{{ asset('img/hamburger.png') }}" />
             </button>
         </div>
@@ -17,8 +17,8 @@
                     Dickinson's Birds
                 </h1>
             </a>
-            <h2 class="block font-serif italic mt-1" style="font-size: 19.5pt;">
-                A Public Listening Project
+            <h2 class="block italic tracking-widest font-thin" style="font-family: 'Cormorant SC'; font-size: 13.5pt;">
+                A Listening Machine
             </h2>
         </div>
     </span>
@@ -30,7 +30,7 @@
         x-transition:leave-start="transform opacity-100 scale-100" 
         x-transition:leave-end="transform opacity-0 scale-95" 
         class="origin-top-left absolute left-0 rounded-md shadow-2xl flex-1 z-50"
-        style="width: 24rem">
+        style="width: 16rem">
         <div class="rounded-md bg-white shadow-xs">
         <div class="py-1 text-base">
             @include('project._nav-items')
