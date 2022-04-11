@@ -1,10 +1,10 @@
 {
-    "name": "laravel/laravel",
+    "name": "chimalsky/martas-list",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "A Listening Machine.",
     "keywords": [
-        "framework",
-        "laravel"
+        "Emily Dickinson",
+        "Digital Humanities"
     ],
     "license": "MIT",
     "require": {
