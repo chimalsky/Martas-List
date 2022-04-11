@@ -1,7 +1,7 @@
 @extends ('layouts.project')
 
 @section ('content')
-<section class="max-w-6xl mx-auto">
+<section class="max-w-2xl mx-auto mt-12">
     <header class="mx-auto">
         @include('project._nav')
 
@@ -12,15 +12,15 @@
 </section>
 
 <section>
-    <main class="block mt-24 mb-32 max-w-4xl flex flex-wrap justify-center mx-auto gap-32">
+    <main class="block mt-48 mb-64 max-w-2xl flex flex-wrap justify-center mx-auto gap-32">
         <a href="@route('project.digital-objects.timeline')">
-            <img class="w-48 h-48 object-cover rounded-full" src="{{ asset('img/do-1.png') }}" />
+            <img class="w-32 h-32 object-cover rounded-full" src="{{ asset('img/do-1.png') }}" />
         </a>
         <a href="@route('project.digital-objects.map')">
-            <img class="w-48 h-48 object-cover rounded-full" src="{{ asset('img/do-2.png') }}" />
+            <img class="w-32 h-32 object-cover rounded-full" src="{{ asset('img/do-2.png') }}" />
         </a>
         <a href="@route('project.digital-objects.birdring')">
-            <img class="w-48 h-48 object-cover rounded-full" src="{{ asset('img/do-3.png') }}" />
+            <img class="w-32 h-32 object-cover rounded-full" src="{{ asset('img/do-3.png') }}" />
         </a>
     </main>
 </section>
