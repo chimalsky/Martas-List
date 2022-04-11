@@ -31,7 +31,6 @@
         "spatie/eloquent-sortable": "^3.11",
         "spatie/laravel-activitylog": "^3.17",
         "spatie/laravel-backup": "^6.16",
-        "spatie/laravel-db-snapshots": "^2.2",
         "spatie/laravel-html": "^2.30",
         "spatie/laravel-medialibrary": "^7.20",
         "spatie/laravel-schemaless-attributes": "^1.8",
