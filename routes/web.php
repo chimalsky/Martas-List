@@ -61,7 +61,7 @@ Route::prefix('project')->name('project.')->namespace('Project')->group(function
     Route::get('/digital-object/birdring/fetch', 'DigitalObjects\BirdRingFetchController')->name('digital-objects.birdring.fetch');
 });
 
-Route::group(['middleware' => 'auth'], function () {
+Route::middleware('auth')->group(function () {
     Route::get('/home', function () {
         return redirect()->route('resource-types.index');
     })->name('home');
