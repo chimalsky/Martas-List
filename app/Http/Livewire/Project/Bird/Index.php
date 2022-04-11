@@ -2,33 +2,47 @@
 
 namespace App\Http\Livewire\Project\Bird;
 
-use App\ResourceType;
-use App\ResourceCategory;
 use App\Project\Bird;
 use App\Project\ChronoBird;
-use Livewire\Component;
 use App\Project\MonthEnum;
 use App\Project\SeasonMonthsEnum;
+use App\ResourceCategory;
+use App\ResourceType;
 use Illuminate\Support\Facades\Validator;
+use Livewire\Component;
 
 class Index extends Component
 {
     public $birdDefinition;
+
     public $birds;
+
     public $birdIds;
+
     public $chronoBirds;
+
     public $perPage = 6;
 
     public $filterQuery;
+
     public $filterThreatQuery;
+
     public $filterChronoScope;
+
     public $filterOrderable;
+
     public $filterOrderableDirection = 'asc';
+
     public $filterCategoryBirds;
+
     public $filterFilterables;
+
     public $filterMonths;
+
     public $filterSeasons;
+
     public $filterChrono;
+
     public $filterConservationStates;
 
     public $readyToLoad = false;
@@ -43,7 +57,7 @@ class Index extends Component
         'bird.filter:season-updated' => 'updateBySeason',
         'bird.filter:chrono-updated' => 'updateByChrono',
         'bird.filter:conservation-updated' => 'updateByConservationState',
-        'bird.filter:threatQuery-cleared' => 'updateThreatQuery'
+        'bird.filter:threatQuery-cleared' => 'updateThreatQuery',
     ];
 
     public function mount()
@@ -62,13 +76,14 @@ class Index extends Component
     public function updateByQuery($query)
     {
         $validator = Validator::make([
-            'query' => $query
+            'query' => $query,
         ], [
-            'query' => ['required', 'string', 'min:2']
+            'query' => ['required', 'string', 'min:2'],
         ]);
 
         if ($validator->fails()) {
             $this->filterQuery = null;
+
             return;
         }
 
@@ -78,13 +93,14 @@ class Index extends Component
     public function updateByThreatQuery($query)
     {
         $validator = Validator::make([
-            'query' => $query
+            'query' => $query,
         ], [
-            'query' => ['required', 'string', 'min:2']
+            'query' => ['required', 'string', 'min:2'],
         ]);
 
         if ($validator->fails()) {
             $this->filterThreatQuery = null;
+
             return;
         }
 
@@ -135,14 +151,14 @@ class Index extends Component
 
     public function getChronoResourceTypeProperty()
     {
-        if (!$this->filterChrono || $this->filterChrono == 'null') {
+        if (! $this->filterChrono || $this->filterChrono == 'null') {
             return;
         }
 
         $chronoDict = [
             '19' => ChronoBird::nineteenthCenturyResourceType(),
             '20' => ChronoBird::twentiethCenturyResourceType(),
-            '21' => ChronoBird::twentyFirstCenturyResourceType()
+            '21' => ChronoBird::twentyFirstCenturyResourceType(),
         ];
 
         return $chronoDict[$this->filterChrono];
@@ -151,7 +167,7 @@ class Index extends Component
     public function getBirdsFilteredProperty()
     {
         $birds = $this->potentialBirds::select(
-            'id', 'resource_category_id', 'name','resource_type_id'
+            'id', 'resource_category_id', 'name', 'resource_type_id'
         );
 
         if ($this->filterCategoryBirds && $this->filterCategoryBirds->count()) {
@@ -185,7 +201,7 @@ class Index extends Component
                         } else {
                             $q->where('value', 'like', '%'.$state.'%');
                         }
-                    };
+                    }
                 });
             });
         }
@@ -193,11 +209,11 @@ class Index extends Component
         $presenceBirdsConnections = $this->getPresenceConnections($birds);
 
         if ($presenceBirdsConnections) {
-            if (($this->filterChronoScope == 'seasons') && optional($this->filterSeasons)->count()) {            
+            if (($this->filterChronoScope == 'seasons') && optional($this->filterSeasons)->count()) {
                 $filterSeasons = $this->filterSeasons;
 
                 $filteredBirdsByPresence = $presenceBirdsConnections
-                    ->filter(function($connection) use ($filterSeasons) {
+                    ->filter(function ($connection) use ($filterSeasons) {
                         $bird = $connection->otherBird;
 
                         $presence = $bird->presenceMeta->value;
@@ -212,22 +228,21 @@ class Index extends Component
                             }
                         }
                     });
-            } 
-            else if (($this->filterChronoScope == 'months') && optional($this->filterMonths)->count()) {            
+            } elseif (($this->filterChronoScope == 'months') && optional($this->filterMonths)->count()) {
                 $filterMonths = $this->filterMonths;
 
                 $filteredBirdsByPresence = $presenceBirdsConnections
-                    ->filter(function($connection) use ($filterMonths) {
+                    ->filter(function ($connection) use ($filterMonths) {
                         $bird = $connection->otherBird;
 
                         $stints = collect(explode(';', $bird->presenceMeta->value));
 
-                        $months = $stints->map(function($stint) {
+                        $months = $stints->map(function ($stint) {
                             return collect(explode(',', $stint))
-                                ->map(function($month) { 
-                                    return (int) $month; 
+                                ->map(function ($month) {
+                                    return (int) $month;
                                 });
-                            })->flatten();
+                        })->flatten();
 
                         foreach ($filterMonths as $month) {
                             $month = MonthEnum::getConstant($month);
@@ -263,25 +278,25 @@ class Index extends Component
     {
         $chronoResourceType = $this->chronoResourceType;
 
-        if (!$chronoResourceType) {
+        if (! $chronoResourceType) {
             return;
         }
 
         return $query->with('chronoConnections')->get()
             ->pluck('chronoConnections')
             ->flatten()
-            ->filter(function($connection) use ($chronoResourceType) { 
+            ->filter(function ($connection) use ($chronoResourceType) {
                 $bird = $connection->otherBird;
 
                 if (is_null($bird)) {
                     return;
                 }
-                
+
                 if ($bird->resource_type_id !== $chronoResourceType) {
                     return;
                 }
-                
-                return $bird->presenceMeta; 
+
+                return $bird->presenceMeta;
             });
     }
 

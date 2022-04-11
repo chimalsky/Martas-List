@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Excel;
-use App\ResourceType;
-use Illuminate\Http\Request;
 use App\Imports\ResourcesImport;
+use App\ResourceType;
+use Excel;
+use Illuminate\Http\Request;
 
 class ResourceSpreadsheetImportController extends Controller
 {
@@ -17,7 +17,7 @@ class ResourceSpreadsheetImportController extends Controller
     public function store(Request $request, ResourceType $resourceType)
     {
         $request->validate([
-            'spreadsheet' => 'required | file'
+            'spreadsheet' => 'required | file',
         ]);
 
         $resourcesImport = new ResourcesImport;

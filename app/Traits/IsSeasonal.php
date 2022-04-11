@@ -1,17 +1,18 @@
-<?php 
+<?php
+
 namespace App\Traits;
 
-use Str;
 use App\ResourceMeta;
+use Str;
 
-trait IsSeasonal 
-{   
+trait IsSeasonal
+{
     public function season()
     {
         return $this->belongsTo(ResourceMeta::class);
     }
 
-    public function scopeWithSeason($query) 
+    public function scopeWithSeason($query)
     {
         return $query->addSubSelect('season_id', ResourceMeta::select('id')
             ->whereColumn('resource_id', 'resources.id')

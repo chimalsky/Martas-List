@@ -19,7 +19,7 @@ class ResourceLineagesController extends Controller
         }
 
         if ($request->query('children')) {
-            $resource->children()->each(function($child) use ($resource) {
+            $resource->children()->each(function ($child) use ($resource) {
                 $child->parent_id = null;
                 $child->save();
             });
@@ -27,7 +27,7 @@ class ResourceLineagesController extends Controller
             if ($children = $request->input('child')) {
                 $children = Resource::whereIn('id', $children);
 
-                $children->each(function($child) use ($resource) {
+                $children->each(function ($child) use ($resource) {
                     $child->parent()->associate($resource);
                     $child->save();
                 });

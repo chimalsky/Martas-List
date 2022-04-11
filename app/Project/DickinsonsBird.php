@@ -2,8 +2,8 @@
 
 namespace App\Project;
 
-use App\Resource;
 use App\CategoryConnection;
+use App\Resource;
 use App\ResourceCategory;
 use App\ResourceMeta;
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +14,7 @@ class DickinsonsBird extends ResourceCategory
 
     const seasonIds = [
         538, // clarks
-        574 // MA Audubon
+        574, // MA Audubon
     ];
 
     public function birds()
@@ -29,5 +29,4 @@ class DickinsonsBird extends ResourceCategory
         return ResourceMeta::whereIn('resource_attribute_id', self::seasonIds)
             ->whereIn('resource_id', $birdIds);
     }
-
 }

@@ -18,7 +18,7 @@ class ResourceAttributeOptionsSortController extends Controller
         $request->validate([
             'options' => 'required | array',
             'optionBlocks' => 'array',
-            'optionBlocks.*' => 'string'
+            'optionBlocks.*' => 'string',
         ]);
 
         $currentOptions = collect($attribute->options);
@@ -27,12 +27,12 @@ class ResourceAttributeOptionsSortController extends Controller
         $options = collect($request->options);
 
         $newOptions = collect();
-        
+
         foreach ($request->options as $key => $option) {
             if (is_array($option)) {
                 $block = [
                     '_name' => $optionBlocks[$key],
-                    '_items' => []
+                    '_items' => [],
                 ];
 
                 foreach ($option as $item) {
@@ -50,12 +50,12 @@ class ResourceAttributeOptionsSortController extends Controller
         }
 
         $attribute->update([
-            'options' => $newOptions
+            'options' => $newOptions,
         ]);
 
         $resourceType = $attribute->resourceType;
 
         return redirect()->route('resource-type.attributes.edit', [$resourceType, $attribute])
-            ->with('status', "The order of options has been changed!");    
+            ->with('status', 'The order of options has been changed!');
     }
 }

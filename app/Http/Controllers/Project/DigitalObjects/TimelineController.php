@@ -15,6 +15,6 @@ class TimelineController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view ('project.digital-objects.timeline');
+        return view('project.digital-objects.timeline');
     }
 }

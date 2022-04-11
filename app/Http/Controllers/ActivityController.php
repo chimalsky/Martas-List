@@ -11,7 +11,6 @@ class ActivityController extends Controller
     {
         $type = $request->query('type');
 
-
         /*$activities = Activity::inLog($type)->get()->filter(function($a) {
             return $a->subject;
         }); */

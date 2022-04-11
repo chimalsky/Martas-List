@@ -1,9 +1,9 @@
 <?php
 
 use App\ResourceType;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class MergeTsToMs extends Migration
 {
@@ -18,7 +18,7 @@ class MergeTsToMs extends Migration
         $transcriptionsArchive = ResourceType::find(4);
         $transcriptions = $transcriptionsArchive->resources;
 
-        
+
         $transcriptions->map(function($t) {
             $manuscripts = $t->connections->pluck('resource')->filter(function($resource) {
                 if (!$resource) { return; }
@@ -35,6 +35,6 @@ class MergeTsToMs extends Migration
                 $manuscript->meta()->createMany($params);
             });
         });
-        */ 
+        */
     }
 }

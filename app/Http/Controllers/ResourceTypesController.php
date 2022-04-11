@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Resource;
-use App\ResourceType;
-use App\ResourceMeta;
 use App\ResourceAttribute;
+use App\ResourceMeta;
+use App\ResourceType;
 use Illuminate\Http\Request;
 
 class ResourceTypesController extends Controller
@@ -51,7 +51,7 @@ class ResourceTypesController extends Controller
         $validated['project_id'] = 0;
 
         $resourceType = ResourceType::create($validated);
-        
+
         return redirect()->route('resource-types.show', $resourceType)
             ->with('status', "A new type of resource -- $resourceType->name -- was created.");
     }
@@ -68,7 +68,7 @@ class ResourceTypesController extends Controller
 
         $enabledAttributes = ResourceAttribute::whereIn('id', $enabledAttributes)->get();
         $filteredAttributeOptions = collect($request->query('attributeOption'));
-        
+
         $reverse = $request->query('reverse') ? 'desc' : 'asc';
         $sortMeta = $request->query('sortMeta') ?? $enabledAttributes[0] ?? null;
         $sortName = $request->query('sortName') ?? null;
@@ -89,13 +89,13 @@ class ResourceTypesController extends Controller
             }
         }
 
-        $resources->with(['media', 'meta' => function($query) use ($enabledAttributes) {
+        $resources->with(['media', 'meta' => function ($query) use ($enabledAttributes) {
             return $query->whereNotNull('value')
                 ->whereIn('resource_attribute_id', $enabledAttributes->pluck('id'));
-            }]);
-                
+        }]);
+
         if ($sortMeta) {
-            $resources = $resources->addSelect(['queries_meta_value' => function($query) use ($sortMeta) {
+            $resources = $resources->addSelect(['queries_meta_value' => function ($query) use ($sortMeta) {
                 $query->select('value')
                     ->from('resource_metas')
                     ->whereColumn('resource_id', 'resources.id')
@@ -110,7 +110,7 @@ class ResourceTypesController extends Controller
         $resources = $resources
             ->paginate(40);
 
-        return view('resource-types.show', compact('resourceType', 
+        return view('resource-types.show', compact('resourceType',
             'enabledAttributes',
             'filteredAttributeOptions',
             'resources'
@@ -140,11 +140,11 @@ class ResourceTypesController extends Controller
         $validated = $request->validate([
             'name' => 'required',
             'subtitle' => 'nullable | string | max:255',
-            'description' => 'nullable'
+            'description' => 'nullable',
         ]);
 
         $resourceType->update($validated);
-        
+
         return redirect()->route('resource-types.show', $resourceType)
             ->with('status', "An existing type of resource -- $resourceType->name -- was updated.");
     }

@@ -15,31 +15,34 @@ class PoemsList extends Component
     public $poemIds = [];
 
     public $perPage;
+
     public $page;
 
     protected $listeners = [
-        'filterUpdated'
+        'filterUpdated',
     ];
 
     protected $casts = [
-        'poemIds' => 'collection'
+        'poemIds' => 'collection',
     ];
 
-    public function mount($poemIds = null, $perPage = 18, $page = 1) {
+    public function mount($poemIds = null, $perPage = 18, $page = 1)
+    {
         $this->poemDefinition = ResourceType::find(3);
         $this->perPage = $perPage;
         $this->page = $page;
-        
+
         if ($poemIds) {
             $this->poems = $this->poemDefinition->resources()->whereIn('id', $poemIds);
             $this->poemIds = collect($poemIds);
-        } else {    
+        } else {
             $this->poems = $this->poemDefinition->resources();
             $this->poemIds = $this->poems->pluck('id');
         }
     }
 
-    public function filterUpdated($poemIds) {
+    public function filterUpdated($poemIds)
+    {
         $this->poems = $this->poemDefinition->resources()->whereIn('id', $poemIds);
         $this->poemIds = collect($poemIds);
     }

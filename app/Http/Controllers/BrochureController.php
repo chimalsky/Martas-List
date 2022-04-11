@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class BrochureController extends Controller
 {
-    public function index() 
+    public function index()
     {
         return view('project.index');
     }
@@ -19,6 +19,7 @@ class BrochureController extends Controller
         $birds = $birdResource->resources;
 
         dd($birds, $birdResource);
+
         return view('brochure.show');
     }
 }

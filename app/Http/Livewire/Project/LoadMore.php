@@ -14,28 +14,29 @@ class LoadMore extends Component
     public $poemIds;
 
     public $perPage;
+
     public $page;
 
     public $loadMore;
 
     protected $casts = [
-        'poemIds' => 'collection'
+        'poemIds' => 'collection',
     ];
 
     protected $listeners = [
-        'loadMore'
+        'loadMore',
     ];
 
-    public function mount($poemIds = null, $page, $perPage = 15)
+    public function mount($poemIds, $page, $perPage = 15)
     {
         $this->poemDefinition = ResourceType::find(3);
         $this->perPage = $perPage;
         $this->page = $page + 1;
-                
+
         if ($poemIds) {
             $this->poems = $this->poemDefinition->resources()->whereIn('id', $poemIds);
             $this->poemIds = $poemIds;
-        } else {    
+        } else {
             $this->poems = $this->poemDefinition->resources();
             $this->poemIds = $this->poems->pluck('id');
         }
@@ -47,7 +48,7 @@ class LoadMore extends Component
 
         if ($this->poemIds) {
             $this->poems = $this->poemDefinition->resources()->whereIn('id', $this->poemIds);
-        } else {    
+        } else {
             $this->poems = $this->poemDefinition->resources();
         }
     }

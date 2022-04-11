@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Project;
 
-use App\Resource;
-use App\ResourceType;
-use App\ResourceAttribute;
 use App\Http\Controllers\Controller;
 use App\Project\Bird;
 use App\Project\ChronoBird;
 use App\Project\MonthEnum;
 use App\Project\SeasonMonthsEnum;
+use App\Resource;
+use App\ResourceAttribute;
 use App\ResourceCategory;
+use App\ResourceType;
 use Illuminate\Http\Request;
 
 class BirdsController extends Controller
@@ -42,7 +42,7 @@ class BirdsController extends Controller
         }
 
         $filterableBirds = collect($request->query('filterableBird'));
-        
+
         if ($filterableBirds->count()) {
             $activeBirds = ResourceCategory::with('connections')
                 ->where('resource_type_id', Bird::$resource_type_id)
@@ -65,7 +65,7 @@ class BirdsController extends Controller
         $chronoDict = [
             '19' => ChronoBird::nineteenthCenturyResourceType(),
             '20' => ChronoBird::twentiethCenturyResourceType(),
-            '21' => ChronoBird::twentyFirstCenturyResourceType()
+            '21' => ChronoBird::twentyFirstCenturyResourceType(),
         ];
 
         $century = $request->query('century');
@@ -78,24 +78,23 @@ class BirdsController extends Controller
             $presenceConnections = $fooBirds->with('chronoConnections')->get()
                 ->pluck('chronoConnections')
                 ->flatten()
-                ->filter(function($connection) use ($chronoResourceType) { 
+                ->filter(function ($connection) use ($chronoResourceType) {
                     $bird = $connection->otherBird;
 
                     if (is_null($bird)) {
                         return;
                     }
-                    
+
                     if ($bird->resource_type_id !== $chronoResourceType) {
                         return;
                     }
 
-                    
-                    return $bird->presenceMeta; 
+                    return $bird->presenceMeta;
                 });
 
             if ($seasons = $request->query('seasons')) {
                 $filteredBirdsByPresence = $presenceConnections
-                    ->filter(function($connection) use ($seasons) {
+                    ->filter(function ($connection) use ($seasons) {
                         $bird = $connection->otherBird;
 
                         $presence = $bird->presenceMeta->value;
@@ -114,17 +113,17 @@ class BirdsController extends Controller
 
             if ($months = $request->query('months')) {
                 $filteredBirdsByPresence = $presenceConnections
-                    ->filter(function($connection) use ($months) {
+                    ->filter(function ($connection) use ($months) {
                         $bird = $connection->otherBird;
 
                         $stints = collect(explode(';', $bird->presenceMeta->value));
 
-                        $segments = $stints->map(function($stint) {
+                        $segments = $stints->map(function ($stint) {
                             return collect(explode(',', $stint))
-                                ->map(function($month) { 
-                                    return (int) $month; 
+                                ->map(function ($month) {
+                                    return (int) $month;
                                 });
-                            })->flatten();
+                        })->flatten();
 
                         foreach ($months as $month) {
                             $month = MonthEnum::getConstant($month);
@@ -143,7 +142,6 @@ class BirdsController extends Controller
             $months = [];
             $seasons = [];
         }
-
 
         $results = $birds->paginate(6);
 

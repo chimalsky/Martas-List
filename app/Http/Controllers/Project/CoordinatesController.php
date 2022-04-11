@@ -13,6 +13,5 @@ class CoordinatesController extends Controller
         $content = optional(ResourceMeta::find(42070))->value ?? 'No Content Yet';
 
         return view('project.coordinates', compact('content'));
-
     }
 }

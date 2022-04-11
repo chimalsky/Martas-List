@@ -17,31 +17,28 @@ class AddSearchableIndexToResourceMetasTable extends Migration
             $table->text('searchable_index')->nullable();
         });
 
-
         // migrate over current transcriptions + first-line meta
 
         $meta = App\ResourceAttribute::find(78)->meta;
         $meta2 = App\ResourceAttribute::find(84)->meta;
 
-        $meta->each(function($m) {
+        $meta->each(function ($m) {
             $html = new \Html2Text\Html2Text($m->value);
             $text = $html->getText();
-            
+
             $stripped = preg_replace('/[^\da-z\s]/i', '', $text);
-            
+
             $m->update(['searchable_index' => $stripped]);
         });
 
-        $meta2->each(function($m) {
+        $meta2->each(function ($m) {
             $html = new \Html2Text\Html2Text($m->value);
             $text = $html->getText();
-            
+
             $stripped = preg_replace('/[^\da-z\s]/i', '', $text);
-            
+
             $m->update(['searchable_index' => $stripped]);
         });
-
-
     }
 
     /**

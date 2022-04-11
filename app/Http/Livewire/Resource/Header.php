@@ -19,7 +19,6 @@ class Header extends Component
     {
         $this->resource = $resource;
 
-
         $this->name = $resource->name;
         $this->citation = ($resource->citation) ? $resource->citation->citation : null;
         $this->resource_category_id = $resource->resource_category_id;
@@ -30,12 +29,12 @@ class Header extends Component
         $this->validateOnly($field, [
             'name' => 'required | string | min:1 | max:255',
             'citation' => 'sometimes | string | min:1 | max:255',
-            'resource_category_id' => 'nullable | exists:resource_categories,id'
+            'resource_category_id' => 'nullable | exists:resource_categories,id',
         ]);
 
         if ($field == 'citation') {
             $this->resource->citation->update([
-                'citation' => $this->citation
+                'citation' => $this->citation,
             ]);
         } else {
             $this->resource->$field = $this->$field ? $this->$field : null;

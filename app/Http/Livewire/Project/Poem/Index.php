@@ -4,27 +4,36 @@ namespace App\Http\Livewire\Project\Poem;
 
 use App\Project\Poem;
 use App\Project\Transcription;
-use App\ResourceType;
-use App\ResourceCategory;
 use App\ResourceAttribute;
+use App\ResourceCategory;
+use App\ResourceType;
 use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 
 class Index extends Component
 {
     public $poemDefinition;
+
     public $poems;
+
     public $poemIds;
+
     public $perPage = 15;
+
     public $titleMeta = 84;
 
     public $filterQuery;
+
     public $filterOrderable;
+
     public $filterOrderableDirection = 'asc';
+
     public $filterCategoryBirds;
+
     public $filterFilterables;
-    
+
     public $orderablesAndPoems;
+
     public $activeOrderableValue;
 
     public $readyToLoad = false;
@@ -71,12 +80,12 @@ class Index extends Component
             foreach ($this->filterFilterables as $filterable) {
                 $poems = $poems->whereHas('meta', function ($query) use ($filterable) {
                     $query = $query->where('resource_attribute_id', $filterable['id']);
-    
+
                     if ($filterable['activeValues']) {
                         $query = $query->whereIn('value', $filterable['activeValues']);
                     }
                 });
-            } 
+            }
         }
 
         if ($this->filterQuery) {
@@ -111,13 +120,14 @@ class Index extends Component
     public function updatePoemsByQuery(string $query)
     {
         $validator = Validator::make([
-            'query' => $query
+            'query' => $query,
         ], [
-            'query' => ['required', 'string', 'min:2']
+            'query' => ['required', 'string', 'min:2'],
         ]);
 
         if ($validator->fails()) {
             $this->filterQuery = null;
+
             return;
         }
 
@@ -129,7 +139,7 @@ class Index extends Component
         $this->filterOrderable = ResourceAttribute::find($orderableId);
         $this->filterOrderableDirection = $orderableDirection;
     }
-    
+
     public function updatePoemsByBirds(array $activeBirds)
     {
         $this->filterCategoryBirds = ResourceCategory::whereIn('id', $activeBirds)->get();
@@ -164,13 +174,13 @@ class Index extends Component
             $this->poems = [];
         }
 
-        $this->poemIds = $this->poems 
+        $this->poemIds = $this->poems
             ? $this->poems->pluck('id')
             : [];
 
         /*$this->orderablesAndPoems = collect($this->poems)
             ->take($this->perPage)
-            ->groupBy('queryable_meta_value') 
+            ->groupBy('queryable_meta_value')
             ->filter(function($group) {
                 return $group->count();
             }); */

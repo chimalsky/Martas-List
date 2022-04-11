@@ -2,23 +2,23 @@
 
 namespace App;
 
-use Str;
 use App\Connection;
 use App\Project\Transcription;
 use App\ResourceType;
+use App\Traits\HasCitations;
+use App\Traits\HasMediaTrait;
 use App\Traits\HasMeta;
 use App\Traits\IsSeasonal;
 use App\Traits\IsTemporal;
-use App\Traits\HasCitations;
-use App\Traits\HasMediaTrait;
-use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\Models\Media;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\Models\Media;
+use Str;
 
 class Resource extends Model implements HasMedia
 {
-    use HasMeta, IsSeasonal, IsTemporal, 
+    use HasMeta, IsSeasonal, IsTemporal,
         HasCitations, HasMediaTrait,
         \Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
@@ -31,7 +31,7 @@ class Resource extends Model implements HasMedia
 
     public function parent()
     {
-        return $this->belongsTo(Resource::class, 'parent_id');
+        return $this->belongsTo(self::class, 'parent_id');
     }
 
     public function category()
@@ -41,14 +41,14 @@ class Resource extends Model implements HasMedia
 
     public function children()
     {
-        return $this->hasMany(Resource::class, 'parent_id');
+        return $this->hasMany(self::class, 'parent_id');
     }
 
     // TODO : figure out how to do this dynamically
     public function transcription()
     {
         return $this->hasOne(Transcription::class);
-    } 
+    }
 
     public function queriedMeta()
     {
@@ -78,7 +78,7 @@ class Resource extends Model implements HasMedia
     public function connections()
     {
         return $this->belongsToMany(Connection::class, 'connection_resource', 'resource_id')
-            ->with(['resources' => function($query) {
+            ->with(['resources' => function ($query) {
                 $query->where('resource_id', '<>', $this->id);
             }]);
     }
@@ -98,8 +98,8 @@ class Resource extends Model implements HasMedia
 
     public function firstMetaByAttribute($resourceAttribute)
     {
-        $attributeId = is_int($resourceAttribute) 
-            ? $resourceAttribute 
+        $attributeId = is_int($resourceAttribute)
+            ? $resourceAttribute
             : $resourceAttribute->id;
 
         return $this->meta->firstWhere('resource_attribute_id', $attributeId);
@@ -115,6 +115,7 @@ class Resource extends Model implements HasMedia
     public function getMainAttributesAttribute()
     {
         $definition = $this->definition;
+
         return $definition->attributes;
     }
 
@@ -135,18 +136,17 @@ class Resource extends Model implements HasMedia
             $value = $mainField->value;
         }
 
-    
         return Str::limit($value, 70);
     }
 
     public function getResourcesAttribute()
     {
-        $connections = $this->connections()->with(['resources' => function($query) {
+        $connections = $this->connections()->with(['resources' => function ($query) {
             $query->where('resource_id', '<>', $this->id);
         }]);
 
         return $connections->get()->pluck('resources')->flatten();
-    } 
+    }
 
     public function getConnectedResourcesIdsAttribute()
     {
@@ -155,7 +155,7 @@ class Resource extends Model implements HasMedia
 
     public function getResourcesGroupedAttribute()
     {
-        return $this->resources->groupBy(function($r) {
+        return $this->resources->groupBy(function ($r) {
             return $r->definition->name;
         });
     }
@@ -171,10 +171,9 @@ class Resource extends Model implements HasMedia
     }
 
     /**
-     *  Methods 
+     *  Methods
      */
-
-    public function syncConnectionWithResource(Resource $otherResource)
+    public function syncConnectionWithResource(self $otherResource)
     {
         if ($this->getConnectionWithResource($otherResource)) {
             return $this->disconnectFromResource($otherResource);
@@ -183,21 +182,21 @@ class Resource extends Model implements HasMedia
         $this->connectWithResource($otherResource);
     }
 
-    public function getConnectionWithResource(Resource $otherResource)
+    public function getConnectionWithResource(self $otherResource)
     {
-        return $this->connections()->whereHas('resources', function(Builder $query) use ($otherResource) {
+        return $this->connections()->whereHas('resources', function (Builder $query) use ($otherResource) {
             $query->where('resource_id', $otherResource->id);
         })->first();
     }
 
-    public function connectWithResource(Resource $otherResource)
+    public function connectWithResource(self $otherResource)
     {
         $connection = $this->connections()->create([]);
 
         $connection->resources()->attach($otherResource);
     }
 
-    public function disconnectFromResource(Resource $otherResource)
+    public function disconnectFromResource(self $otherResource)
     {
         $connection = $this->getConnectionWithResource($otherResource);
 
@@ -211,35 +210,35 @@ class Resource extends Model implements HasMedia
 
     public function scopeWithHeadlineValue($query, $metaId)
     {
-        return $query->addSelect(['headline_value' => function($subQuery) use ($metaId) {
+        return $query->addSelect(['headline_value' => function ($subQuery) use ($metaId) {
             $subQuery->select('value')
                 ->from('resource_metas')
                 ->whereColumn('resource_id', 'resources.id')
                 ->where('resource_attribute_id', $metaId)
                 ->latest()->take(1);
-            }]);
+        }]);
     }
 
     public function scopeWithDynamicValue($query, $metaId, $keyName)
     {
-        return $query->addSelect([$keyName => function($subQuery) use ($metaId) {
+        return $query->addSelect([$keyName => function ($subQuery) use ($metaId) {
             $subQuery->select('value')
                 ->from('resource_metas')
                 ->whereColumn('resource_id', 'resources.id')
                 ->where('resource_attribute_id', $metaId)
                 ->latest()->take(1);
-            }]);
+        }]);
     }
 
     public function scopeWithQueryableMeta($query, $queryableId)
     {
-        return $query->addSelect(['queryable_meta_id' => function($subQuery) use ($queryableId) {
+        return $query->addSelect(['queryable_meta_id' => function ($subQuery) use ($queryableId) {
             $subQuery->select('id')
                 ->from('resource_metas')
                 ->whereColumn('resource_id', 'resources.id')
                 ->where('resource_attribute_id', $queryableId)
                 ->latest()->take(1);
-            }])
+        }])
             ->with('queryableMeta');
     }
 
@@ -250,16 +249,16 @@ class Resource extends Model implements HasMedia
             ? 'searchable_index'
             : 'value';
 
-        return $query->addSelect(['queryable_meta_value' => function($subQuery) use ($queryableId, $value) {
+        return $query->addSelect(['queryable_meta_value' => function ($subQuery) use ($queryableId, $value) {
             $subQuery->select($value)
                 ->from('resource_metas')
                 ->whereColumn('resource_id', 'resources.id')
                 ->where('resource_attribute_id', $queryableId)
                 ->latest()->take(1);
-            }]);
+        }]);
     }
 
-	public function scopeWithFilterableValue($query, ResourceAttribute $filterable, $value)
+    public function scopeWithFilterableValue($query, ResourceAttribute $filterable, $value)
     {
         return $query->whereHas('meta', function ($query) use ($filterable, $value) {
             $query = $query->where('resource_attribute_id', $filterable->id)
@@ -270,7 +269,7 @@ class Resource extends Model implements HasMedia
     public function scopeWithFilterableValues($query, ResourceAttribute $filterable, $values)
     {
         return $query->whereHas('meta', function ($query) use ($filterable, $values) {
-            if (count($values) === 1 
+            if (count($values) === 1
                 && $filterable->hasOptionBlock($values[0])
                 ) {
                 $values = $filterable->getOptionBlockItems($values[0]);

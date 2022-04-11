@@ -20,7 +20,7 @@ class CreateCollaboratorsTable extends Migration
                 ->references('id')->on('users');
             $table->unsignedBigInteger('project_id')
                 ->references('id')->on('projects');
-                
+
             $table->timestamps();
         });
     }

@@ -2,26 +2,27 @@
 
 namespace App\Http\Livewire\Project\DigitalObjects;
 
-use App\ResourceType;
 use App\Project\Bird;
-use Livewire\Component;
-use App\Project\MonthEnum;
 use App\Project\ChronoBird;
+use App\Project\MonthEnum;
+use App\ResourceType;
 use Illuminate\Support\Str;
+use Livewire\Component;
 
 class BirdRing extends Component
 {
     public $months;
+
     public $activeMonth;
 
     public $activeChrono = 19;
-    
+
     public function mount()
     {
         $this->months = MonthEnum::getConstants();
 
         $currentMonth = Str::upper(now()->format('F'));
-        
+
         $this->activeMonth = MonthEnum::getConstant($currentMonth);
     }
 
@@ -30,7 +31,7 @@ class BirdRing extends Component
         if ($this->activeMonth == MonthEnum::JANUARY) {
             return MonthEnum::DECEMBER;
         }
-        
+
         return $this->activeMonth - 1;
     }
 
@@ -39,7 +40,7 @@ class BirdRing extends Component
         $chronoDict = [
             '19' => ChronoBird::nineteenthCenturyResourceType(),
             '20' => ChronoBird::twentiethCenturyResourceType(),
-            '21' => ChronoBird::twentyFirstCenturyResourceType()
+            '21' => ChronoBird::twentyFirstCenturyResourceType(),
         ];
 
         return ResourceType::firstWhere('id', $chronoDict[$this->activeChrono]);
@@ -57,7 +58,7 @@ class BirdRing extends Component
         $filteredBirdsByPresence = $chronoBirds
             ->withDynamicValue(538, 'presence')
             ->get()
-            ->filter(function($bird) {
+            ->filter(function ($bird) {
                 $months = collect(array_map('trim', explode(',', $bird->presence)));
 
                 if ($months->contains($this->previousMonth)) {
@@ -77,10 +78,10 @@ class BirdRing extends Component
         $filteredBirdsByPresence = $chronoBirds
             ->withDynamicValue(538, 'presence')
             ->get()
-            ->filter(function($bird) {
+            ->filter(function ($bird) {
                 $months = collect(array_map('trim', explode(',', $bird->presence)));
 
-                if (!$months->contains($this->previousMonth)) {
+                if (! $months->contains($this->previousMonth)) {
                     return false;
                 }
 
@@ -92,7 +93,6 @@ class BirdRing extends Component
 
     public function getMigrants()
     {
-
     }
 
     public function getBirds()
@@ -100,13 +100,13 @@ class BirdRing extends Component
         $presenceBirdConnections = $this->getPresenceConnections();
 
         $filteredBirdsByPresence = $presenceBirdConnections
-            ->filter(function($connection) {
+            ->filter(function ($connection) {
                 $bird = $connection->otherBird;
 
                 $presence = $bird->presenceMeta->value;
 
                 $months = collect(array_map('trim', explode(',', $presence)));
-                
+
                 if ($months->contains($this->activeMonth)) {
                     return true;
                 }

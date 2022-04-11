@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateResourceMetasTable extends Migration
 {
@@ -15,12 +15,12 @@ class CreateResourceMetasTable extends Migration
     {
         Schema::create('resource_metas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            
+
             $table->unsignedBigInteger('resource_id')
                 ->references('id')
                 ->on('encodings')
                 ->onDelete('cascade');
-            
+
             $table->string('key');
             $table->text('value');
             $table->string('type')->nullable();

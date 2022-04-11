@@ -42,7 +42,7 @@ class EncodingMetasController extends Controller
 
         $metaKey = $request->input('key');
 
-        return back()->with('status', "Encoding Tag ($metaKey) was added! Good job, Marta!");    
+        return back()->with('status', "Encoding Tag ($metaKey) was added! Good job, Marta!");
     }
 
     /**
@@ -77,8 +77,8 @@ class EncodingMetasController extends Controller
     public function update(Request $request, Encoding $encoding, EncodingMeta $meta)
     {
         $meta->update($request->all());
-        
-        return back()->with('status', "Encoding Tag ($meta->key) was updated! The world is now a cleaner place"); 
+
+        return back()->with('status', "Encoding Tag ($meta->key) was updated! The world is now a cleaner place");
     }
 
     /**
@@ -90,7 +90,7 @@ class EncodingMetasController extends Controller
     public function destroy(Encoding $encoding, EncodingMeta $meta)
     {
         $meta->delete();
-        
-        return back()->with('status', "Encoding Tag ($meta->key) was deleted! RIP the old, Welcome the new!"); 
+
+        return back()->with('status', "Encoding Tag ($meta->key) was deleted! RIP the old, Welcome the new!");
     }
 }

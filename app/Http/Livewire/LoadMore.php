@@ -8,7 +8,9 @@ use Livewire\Component;
 class LoadMore extends Component
 {
     public $resourceType;
+
     public $page;
+
     public $perPage;
 
     public function mount($resourceType, $page, $perPage)
@@ -25,7 +27,7 @@ class LoadMore extends Component
 
         return view('livewire.load-more', [
             'rows' => $rows,
-            'page' => $this->page
+            'page' => $this->page,
         ]);
     }
 }

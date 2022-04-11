@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Connection extends Model
 {
-    public function resources() 
+    public function resources()
     {
         return $this->belongsToMany(Resource::class);
     }
@@ -16,5 +16,4 @@ class Connection extends Model
     {
         return $this->resources->first();
     }
-
 }

@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers\Project;
 
-use App\ResourceType;
-use App\ResourceAttribute;
 use App\Http\Controllers\Controller;
 use App\Project\Bird;
 use App\Project\Poem;
+use App\ResourceAttribute;
 use App\ResourceCategory;
+use App\ResourceType;
 use Illuminate\Http\Request;
 
 class PoemsController extends Controller
-{ 
+{
     public function index(Request $request)
     {
         $filterables = collect($request->query('filterable'));
 
         $activeFilterables = ResourceAttribute::ordered()->whereIn('id', $filterables->keys()->toArray())->get();
-        $displayableFilterables = $activeFilterables->reject(function($filterable) {
+        $displayableFilterables = $activeFilterables->reject(function ($filterable) {
             return $filterable->id == 84;
         });
 
@@ -25,7 +25,7 @@ class PoemsController extends Controller
                 ->where('resource_type_id', Bird::$resource_type_id)->get();
 
         $filterableBirds = collect($request->query('filterableBird'));
-        
+
         $activeBirds = $birds->whereIn('id', $filterableBirds->keys());
 
         return view('project.poems.index', compact('activeFilterables', 'birds', 'activeBirds'));
@@ -36,16 +36,16 @@ class PoemsController extends Controller
         $filterables = collect($request->query('filterable'));
 
         $activeFilterables = ResourceAttribute::ordered()->whereIn('id', $filterables->keys()->toArray())->get();
-        $displayableFilterables = $activeFilterables->reject(function($filterable) {
+        $displayableFilterables = $activeFilterables->reject(function ($filterable) {
             return $filterable->id == 84;
         });
 
         $poems = Poem::hasBirds()
             ->whereHas('firstLine')
-            ->with(['facsimiles', 'firstLine', 'placeholder', 'year', 'birdCategories.resources', 
+            ->with(['facsimiles', 'firstLine', 'placeholder', 'year', 'birdCategories.resources',
                 'meta' => function ($query) use ($displayableFilterables) {
                     $query->whereIn('resource_attribute_id', $displayableFilterables->pluck('id'));
-                }]);
+                }, ]);
 
         if ($query = $request->query('query')) {
             $poems = $poems->byTranscriptionText($query);
@@ -55,7 +55,7 @@ class PoemsController extends Controller
                 ->where('resource_type_id', Bird::$resource_type_id)->get();
 
         $filterableBirds = collect($request->query('filterableBird'));
-        
+
         $activeBirds = $birds->whereIn('id', $filterableBirds->keys());
 
         if ($filterableBirds->count()) {
@@ -114,9 +114,9 @@ class PoemsController extends Controller
         $setting = $poem->meta->firstWhere('resource_attribute_id', 103)->value ?? null;
         $circulation = $poem->meta->firstWhere('resource_attribute_id', 113)->value ?? null;
 
-        return view('project.poems.show', 
+        return view('project.poems.show',
             compact(
-                'poem', 'birds', 'variants', 
+                'poem', 'birds', 'variants',
                 'firstline', 'year', 'season',
                 'state', 'medium', 'paper',
                 'setting', 'circulation'

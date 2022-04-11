@@ -10,7 +10,9 @@ class BirdsIndex extends Component
     public $birdDefinition;
 
     public $birds;
+
     public $dickinsonsBirds;
+
     public $activeBirdCategories;
 
     public $activeBirds;
@@ -18,7 +20,7 @@ class BirdsIndex extends Component
     public $query;
 
     protected $casts = [
-        'activeBirdCategories' => 'collection'
+        'activeBirdCategories' => 'collection',
     ];
 
     public function mount()
@@ -32,8 +34,8 @@ class BirdsIndex extends Component
     }
 
     public function filterByBird($birdId)
-    {       
-        if (! $this->activeBirdCategories->contains($birdId) ) {
+    {
+        if (! $this->activeBirdCategories->contains($birdId)) {
             $this->activeBirdCategories->push(
                 $birdId
             );

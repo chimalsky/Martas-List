@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateTemporalitiesTable extends Migration
 {
@@ -20,7 +20,7 @@ class CreateTemporalitiesTable extends Migration
             $table->unsignedBigInteger('resource_id')
                 ->references('id')->on('resources')
                 ->onDelete('cascade');
-            
+
             $table->date('start')->nullable();
             $table->unsignedTinyInteger('start_precision')->nullable();
 

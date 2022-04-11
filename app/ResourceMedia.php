@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Spatie\MediaLibrary\Models\Media;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\MediaLibrary\Models\Media;
 
 class ResourceMedia extends Media
 {

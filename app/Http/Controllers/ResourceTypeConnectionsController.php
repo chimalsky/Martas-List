@@ -11,12 +11,12 @@ class ResourceTypeConnectionsController extends Controller
     {
         $connections = $request->input('resourceTypeConnections') ?? [];
         $connectionsParams = ResourceType::whereIn('id', $connections)->get()
-            ->map(function($rt) {
+            ->map(function ($rt) {
                 return [
                     'key' => $rt->id,
-                    'type' => 'connection'
+                    'type' => 'connection',
                 ];
-            })->toArray();  
+            })->toArray();
 
         $resourceType->connections()->delete();
 

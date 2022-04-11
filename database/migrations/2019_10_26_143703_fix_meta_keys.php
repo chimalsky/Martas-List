@@ -2,9 +2,9 @@
 
 use App\ResourceMeta;
 use App\ResourceType;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class FixMetaKeys extends Migration
 {
@@ -15,10 +15,8 @@ class FixMetaKeys extends Migration
      */
     public function up()
     {
-        
-
-        $meta = ResourceMeta::where('id', '>', 0)->get(); 
-        $meta->each(function($m) {
+        $meta = ResourceMeta::where('id', '>', 0)->get();
+        $meta->each(function ($m) {
             $m->save();
         });
     }

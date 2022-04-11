@@ -2,13 +2,14 @@
 
 namespace App\Http\Livewire;
 
-use App\OptionCategory;
 use App\AttributeOption;
+use App\OptionCategory;
 use Livewire\Component;
 
 class SortableOptions extends Component
 {
     public $category;
+
     public $options;
 
     public function mount(OptionCategory $category)

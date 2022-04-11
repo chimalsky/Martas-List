@@ -8,7 +8,8 @@ class TestThing extends Component
 {
     public $attribute;
 
-    public function mount($attribute) {
+    public function mount($attribute)
+    {
         $this->attribute = $attribute;
     }
 

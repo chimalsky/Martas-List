@@ -3,8 +3,8 @@
 namespace App\Http\Livewire\Project;
 
 use App\Resource;
-use App\ResourceType;
 use App\ResourceAttribute;
+use App\ResourceType;
 use Livewire\Component;
 
 class PoemFilter extends Component
@@ -12,10 +12,13 @@ class PoemFilter extends Component
     public $definition;
 
     public $sortedAttribute;
+
     public $filteredAttributeOptions;
+
     public $filteredAttributes;
-    
+
     public $poems;
+
     public $birds;
 
     protected $casts = [
@@ -28,7 +31,7 @@ class PoemFilter extends Component
     protected $updatesQueryString = [
         'sortedAttribute',
         'filteredAttributeOptions',
-        'filteredAttributes'
+        'filteredAttributes',
     ];
 
     public function mount()
@@ -51,14 +54,14 @@ class PoemFilter extends Component
     {
         $filteredAttributes = $this->filteredAttributes;
 
-        $poems = Resource::with(['media', 'meta' => function($query) use ($filteredAttributes) {
-            // 84 == first line 
+        $poems = Resource::with(['media', 'meta' => function ($query) use ($filteredAttributes) {
+            // 84 == first line
             // 149 == needs placeholder image for facs?
             $attributeIds = [84, 149];
 
             foreach ($filteredAttributes as $a) {
                 $attributeIds[] = $a->id;
-            }            
+            }
             $query->whereIn('resource_attribute_id', $attributeIds);
         }])
             ->where('resource_type_id', $this->definition->id);
@@ -79,18 +82,15 @@ class PoemFilter extends Component
             }
         }
 
-
         $this->poems = $poems->get()->groupBy('queries_meta_value');
     }
 
     public function inputChanged($attributeId, $option)
     {
-        
     }
 
     public function resetAttributeProperties()
     {
-       
     }
 
     public function render()

@@ -20,7 +20,7 @@ trait HasCitations
                 $citeableModel->queuedCitations = [];
             }
         });
-        
+
         static::deleted(function (Model $deletedModel) {
             $citations = $deletedModel->citations()->get();
             //$deletedModel->detachCitations($citations);
@@ -44,7 +44,7 @@ trait HasCitations
      */
     public function attachCitations($citations)
     {
-        // This one bugs out for update/store for different reasons. weird 
+        // This one bugs out for update/store for different reasons. weird
         // interaction with how collections work.
         $citations = Citation::findOrCreate($citations);
         $this->citations()->sync(isset($citations->id) ? $citations->id : $citations->pluck('id')->toArray());
@@ -62,6 +62,7 @@ trait HasCitations
         $className = static::getTagClassName();
         $tags = collect($className::findOrCreate($tags));
         $this->tags()->syncWithoutDetaching($tags->pluck('id')->toArray());
+
         return $this;
     }
 
@@ -70,19 +71,18 @@ trait HasCitations
         return $this->citations->first();
     }
 
-
     public function setCitationAttribute($citations)
     {
-        if (!$citations) {
+        if (! $citations) {
             return;
         }
-        
+
         if (! $this->exists) {
             $this->queuedCitations = [$citations];
+
             return;
         }
 
         $this->attachCitations($citations);
     }
-
 }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Project;
 
-use App\Resource;
 use App\Http\Controllers\Controller;
+use App\Resource;
 use Illuminate\Http\Request;
 
 class BirdsDataController extends Controller
@@ -17,7 +17,7 @@ class BirdsDataController extends Controller
     public function __invoke(Request $request, Resource $bird)
     {
         $birdLists = $bird->resources->pluck('definition');
-        
+
         return view('project.birds.data', compact('bird', 'birdLists'));
     }
 }

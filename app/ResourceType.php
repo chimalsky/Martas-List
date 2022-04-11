@@ -2,15 +2,15 @@
 
 namespace App;
 
-use Str;
 use App\Resource;
 use App\ResourceAttribute;
-use Spatie\Activitylog\Models\Activity;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Models\Activity;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Spatie\SchemalessAttributes\SchemalessAttributes;
+use Str;
 
 class ResourceType extends Model implements Sortable
 {
@@ -31,11 +31,11 @@ class ResourceType extends Model implements Sortable
     public $availableTypes = [
         'default' => 'Regular attribute type -- same as tags',
         'dropdown' => 'Dropdown List',
-        'rich-text' => 'Rich Text', 
+        'rich-text' => 'Rich Text',
         'encoding' => 'encoding',
         'link' => 'Link to another Webpage',
         'external-media__audio' => 'Audio on another Website',
-        'external-media__image' => 'Image on another Website'
+        'external-media__image' => 'Image on another Website',
     ];
 
     public function project()
@@ -96,6 +96,7 @@ class ResourceType extends Model implements Sortable
     public function getMainAttributesAttribute()
     {
         $attributes = collect($this->extra_attributes->get('attributes', []));
+
         return $attributes->mapInto(ResourceAttribute::class);
     }
 
@@ -113,5 +114,4 @@ class ResourceType extends Model implements Sortable
     {
         return SchemalessAttributes::scopeWithSchemalessAttributes('extra_attributes');
     }
-
 }

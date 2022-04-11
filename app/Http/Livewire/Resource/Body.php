@@ -10,6 +10,7 @@ class Body extends Component
     public $resource;
 
     public $definition;
+
     public $attributes;
 
     public $metas;
@@ -21,7 +22,6 @@ class Body extends Component
         $this->attributes = $this->definition->attributes;
 
         $this->metas = $this->resource->meta;
-
     }
 
     public function emitChange($metaId, $value)

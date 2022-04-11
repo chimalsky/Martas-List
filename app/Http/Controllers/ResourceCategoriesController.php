@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\ResourceType;
 use App\ResourceCategory;
+use App\ResourceType;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -21,16 +21,16 @@ class ResourceCategoriesController extends Controller
     {
         $request->validate([
             'name' => [
-                'required', 
-                'max:255', 
+                'required',
+                'max:255',
                 Rule::unique('resource_categories')->where(function ($query) use ($resourceType) {
                     return $query->where('resource_type_id', $resourceType->id);
-                })
-            ]
+                }),
+            ],
         ]);
 
         $category = $resourceType->categories()->create([
-            'name' => $request->name
+            'name' => $request->name,
         ]);
 
         return back()->with('status', "{$category->name} category was created");

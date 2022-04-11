@@ -34,7 +34,7 @@ class Poem extends Resource
     public function transcription()
     {
         return $this->hasOne(Transcription::class, 'resource_id');
-    } 
+    }
 
     public function franklinId()
     {
@@ -101,7 +101,7 @@ class Poem extends Resource
         $attribute = ResourceAttribute::find(103);
         $manuscriptSetting = $this->manuscriptSetting;
 
-        if (!$manuscriptSetting) {
+        if (! $manuscriptSetting) {
             return false;
         }
 
@@ -111,14 +111,14 @@ class Poem extends Resource
 
     public function isUnbound()
     {
-        return !$this->isBound();
+        return ! $this->isBound();
     }
 
     public function isRetained()
     {
         $attribute = ResourceAttribute::find(103);
 
-        if (!$this->manuscriptSetting) {
+        if (! $this->manuscriptSetting) {
             return false;
         }
 
@@ -127,7 +127,7 @@ class Poem extends Resource
 
     public function wasSent()
     {
-        return !$this->isRetained();
+        return ! $this->isRetained();
     }
 
     public function wasCirculated()
@@ -162,7 +162,7 @@ class Poem extends Resource
     public function getFirstlineStrippedAttribute()
     {
         return strtolower(
-            preg_replace("/[^A-Za-z0-9 ]/", '', $this->firstLine->value)
+            preg_replace('/[^A-Za-z0-9 ]/', '', $this->firstLine->value)
         );
     }
 
@@ -175,14 +175,14 @@ class Poem extends Resource
 
     public function scopeHasBirds($query)
     {
-        return $query->whereDoesntHave('meta', function($query) {
+        return $query->whereDoesntHave('meta', function ($query) {
             $query->where('resource_attribute_id', 624);
         });
     }
 
     public function scopeDoesntHaveBirds($query)
     {
-        return $query->whereHas('meta', function($query) {
+        return $query->whereHas('meta', function ($query) {
             $query->where('resource_attribute_id', 624);
         });
     }
@@ -190,8 +190,7 @@ class Poem extends Resource
     public function doesMentionBirds()
     {
         return is_null($this->firstMetaByAttribute(624))
-            ? true 
+            ? true
             : false;
     }
-
 }
