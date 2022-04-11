@@ -9,6 +9,6 @@ class BirdRingController extends Controller
 {
     public function __invoke(Request $request)
     {
-        return view ('project.digital-objects.birdring');
+        return view('project.digital-objects.birdring');
     }
 }

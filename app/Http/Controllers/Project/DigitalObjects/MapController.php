@@ -15,6 +15,6 @@ class MapController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view ('project.digital-objects.map');
+        return view('project.digital-objects.map');
     }
 }

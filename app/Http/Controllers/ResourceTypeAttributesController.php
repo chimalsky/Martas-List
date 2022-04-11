@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Str;
-use DB;
+use App\ResourceAttribute;
 use App\ResourceMeta;
 use App\ResourceType;
-use App\ResourceAttribute;
+use DB;
 use Illuminate\Http\Request;
+use Str;
 
 class ResourceTypeAttributesController extends Controller
 {
@@ -41,7 +41,7 @@ class ResourceTypeAttributesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, ResourceType $resourceType)
-    {        
+    {
         $request->validate([
             'title' => 'required | string | max:255',
             'subtitle' => 'nullable | string | max:255',
@@ -51,9 +51,9 @@ class ResourceTypeAttributesController extends Controller
         $resourceType->allAttributes()->create([
             'key' => $request->title,
             'subtitle' => $request->subtitle,
-            'type' => $request->type
+            'type' => $request->type,
         ]);
-        
+
         return back()->with('status', "Attributes saved for $resourceType->name resource");
     }
 
@@ -94,15 +94,15 @@ class ResourceTypeAttributesController extends Controller
              ->selectRaw("count(case when value = '{$value}' then 1 end) as c_{$id}");
         }
 
-        $aggregate= $aggregate->first();
+        $aggregate = $aggregate->first();
 
-        $uniqueValues = $uniqueValues->map(function($value) use ($aggregate) {
-            $property = "c_".$value->id;
+        $uniqueValues = $uniqueValues->map(function ($value) use ($aggregate) {
+            $property = 'c_'.$value->id;
             $value->resources_count = $aggregate->$property;
+
             return $value;
         });
 
-    
         /*$m = collect($attribute->options)->filter(function($obj) {
             return !is_array($obj);
         });
@@ -129,9 +129,9 @@ class ResourceTypeAttributesController extends Controller
             'type' => 'required',
             'visibility' => 'nullable',
             'options' => 'nullable | array',
-            'optionBlocks' => 'nullable | array'
+            'optionBlocks' => 'nullable | array',
         ]);
-        
+
         $params = [
             'key' => $request->title,
             'subtitle' => $request->subtitle,
@@ -178,6 +178,6 @@ class ResourceTypeAttributesController extends Controller
     {
         ResourceAttribute::setNewOrder($request->input('attributes'));
 
-        return back()->with('status', "Okay new order is here to stay!");
+        return back()->with('status', 'Okay new order is here to stay!');
     }
 }

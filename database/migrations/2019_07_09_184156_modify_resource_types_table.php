@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class ModifyResourceTypesTable extends Migration
 {
@@ -13,7 +13,7 @@ class ModifyResourceTypesTable extends Migration
      */
     public function up()
     {
-        Schema::table('resource_types', function(Blueprint $table) {
+        Schema::table('resource_types', function (Blueprint $table) {
             $table->schemalessAttributes('extra_attributes');
         });
     }

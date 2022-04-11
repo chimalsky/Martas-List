@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\ResourceType;
 use App\ResourceAttribute;
+use App\ResourceType;
 use Illuminate\Http\Request;
 
 class ResourceTypeActivitiesController extends Controller

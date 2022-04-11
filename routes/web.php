@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function(Request $request) {
+Route::get('/', function (Request $request) {
     return redirect()->route('project.index');
 });
 
@@ -32,7 +32,7 @@ Route::prefix('project')->name('project.')->namespace('Project')->group(function
     Route::get('/poems/{poem}/affiliated', 'AffiliatedPoemsController')->name('affiliated.poems');
     Route::get('/poems/{poem}/commentary', 'PoemCommentaryController')->name('poems.commentary');
 
-    Route::get('/partials/poems', function() {
+    Route::get('/partials/poems', function () {
         $poems = App\Resource::where('resource_type_id', 3)
             ->get()
             ->groupBy('queries_meta_value');
@@ -40,14 +40,14 @@ Route::prefix('project')->name('project.')->namespace('Project')->group(function
         return view('project.poems._list', ['poems' => $poems, 'query' => request()->query('query')]);
     });
 
-    Route::get('/partials/birds', function() {
+    Route::get('/partials/birds', function () {
         $birds = App\Resource::where('resource_type_id', 2)
             ->get()
             ->groupBy('queries_meta_value');
 
         return view('project.birds._index', ['birds' => $birds]);
     });
-    
+
     Route::get('/birds', 'BirdsController@index')->name('birds.index');
     Route::get('/birds/fetch', 'BirdsController@indexFetch')->name('birds.index-fetch');
     Route::get('/birds/{bird}', 'BirdsController@show')->name('birds.show');
@@ -58,12 +58,11 @@ Route::prefix('project')->name('project.')->namespace('Project')->group(function
     Route::get('/digital-objects/timeline', 'DigitalObjects\TimelineController')->name('digital-objects.timeline');
     Route::get('/digital-objects/map', 'DigitalObjects\MapController')->name('digital-objects.map');
     Route::get('/digital-object/birdring', 'DigitalObjects\BirdRingController')->name('digital-objects.birdring');
-	Route::get('/digital-object/birdring/fetch', 'DigitalObjects\BirdRingFetchController')->name('digital-objects.birdring.fetch');
+    Route::get('/digital-object/birdring/fetch', 'DigitalObjects\BirdRingFetchController')->name('digital-objects.birdring.fetch');
 });
 
-Route::group(['middleware' => 'auth'], function() {
-
-    Route::get('/home', function() {
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', function () {
         return redirect()->route('resource-types.index');
     })->name('home');
 
@@ -81,7 +80,6 @@ Route::group(['middleware' => 'auth'], function() {
     /**
      *  Resource Category Routes
      */
-
     Route::get('/resource-type/{resource_type}/categories', 'ResourceCategoriesController@index')
         ->name('resource.categories.index');
     Route::post('/resource-type/{resource_type}/category', 'ResourceCategoriesController@store')
@@ -90,7 +88,7 @@ Route::group(['middleware' => 'auth'], function() {
         ->name('resource.category.show');
     Route::post('/resource-category/{resource_category}/resource', 'AttachResourceToCategoryController')
         ->name('resourceCategory.attach.resource');
-    
+
     Route::resource('resources', 'ResourcesController');
     Route::resource('resource-types', 'ResourceTypesController');
 
@@ -101,23 +99,23 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::resource('resource-type.attributes', 'ResourceTypeAttributesController');
 
-    Route::get('resource-type/{resource_type}/attribute/{attribute}/options/edit', 
+    Route::get('resource-type/{resource_type}/attribute/{attribute}/options/edit',
         'ResourceTypeAttributeOptionsController@edit')
         ->name('resource-type.attribute.options.edit');
 
-    Route::put('resource-type/{resource_type}/attribute/{attribute}/options', 
+    Route::put('resource-type/{resource_type}/attribute/{attribute}/options',
         'ResourceTypeAttributeOptionsController@update')
         ->name('resource-type.attribute.options.update');
-    
-    Route::delete('resource-type/{resource_type}/attribute/{attribute}/options', 
+
+    Route::delete('resource-type/{resource_type}/attribute/{attribute}/options',
         'ResourceTypeAttributeOptionsController@destroy')
         ->name('resource-type.attribute.options.destroy');
-    
-    Route::post('resource-type/{resource_type}/attribute/{attribute}/options/sort', 
+
+    Route::post('resource-type/{resource_type}/attribute/{attribute}/options/sort',
         'ResourceTypeAttributeOptionsController@sort')
         ->name('resource-type.attribute.options.sort');
-    
-    Route::post('/resource-attribute/{attribute}/options/sort', 
+
+    Route::post('/resource-attribute/{attribute}/options/sort',
         'ResourceAttributeOptionsSortController')
         ->name('attribute.options.sort');
 
@@ -146,9 +144,9 @@ Route::group(['middleware' => 'auth'], function() {
      */
     Route::post('/attribute/{attribute}/options/block', 'AttributeOptionsBlockStore')
         ->name('attribute.options.block.store');
-        
+
     Route::resource('resource.connections', 'ResourceConnectionsController');
-    
+
     Route::resource('resource.metas', 'ResourceMetasController');
     Route::resource('resource.media', 'ResourceMediaController');
     Route::resource('resource.temporalities', 'ResourceTemporalitiesController');

@@ -14,7 +14,7 @@ class ResourceTypeResourcesController extends Controller
         $this->authorize('update', $resourceType);
         $resource = new Resource;
         $resource->definition()->associate($resourceType);
-        
+
         return view('resource-type.resources.create', compact('resourceType', 'resource'));
     }
 
@@ -24,29 +24,29 @@ class ResourceTypeResourcesController extends Controller
             'name' => 'required | string | max:255',
             'citation' => 'nullable | max:255',
             'attribute' => 'nullable',
-            'newAttribute' => 'nullable'
+            'newAttribute' => 'nullable',
         ]);
-        
+
         $resource = $resourceType->resources()->create([
             'name' => $request->name,
-            'citation' => $request->citation
+            'citation' => $request->citation,
         ]);
-        
-        $attributes = collect($request->newAttribute)->filter(function($value, $key) {
+
+        $attributes = collect($request->newAttribute)->filter(function ($value, $key) {
             // TODO handle the null update value more resiliently
             return $value;
-        })->map(function($item, $key) {
+        })->map(function ($item, $key) {
             $key = explode('-', $key)[1];
 
             return [
                 'resource_attribute_id' => $key,
-                'value' => $item
+                'value' => $item,
             ];
         })->toArray();
 
         $resource->meta()->createMany($attributes);
-    
+
         return redirect()->route('resources.edit', $resource)
-            ->with('status', "$resource->name was created!");  
+            ->with('status', "$resource->name was created!");
     }
 }

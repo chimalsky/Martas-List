@@ -10,15 +10,17 @@ class Enum
     {
         // "static::class" here does the magic
         $reflectionClass = new ReflectionClass(static::class);
+
         return $reflectionClass->getConstants();
     }
 
-    static function getConstant($const)
+    public static function getConstant($const)
     {
         $reflectionClass = new ReflectionClass(static::class);
-        return $reflectionClass->getConstant($const); 
+
+        return $reflectionClass->getConstant($const);
     }
-    
+
     /**
      * Get the constant name itself when you have the value.
      * Note: this will only work when values are unique
@@ -26,11 +28,11 @@ class Enum
      * @param  mixed  $value
      * @return  string
      */
-    static function getConstantNameByValue($value) 
+    public static function getConstantNameByValue($value)
     {
         $flippedConstants = array_flip(static::getConstants());
 
-        if (!array_key_exists($value, $flippedConstants)) {
+        if (! array_key_exists($value, $flippedConstants)) {
             return null;
         }
 

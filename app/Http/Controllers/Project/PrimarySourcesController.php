@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Project;
 
-use App\ResourceMeta;
 use App\Http\Controllers\Controller;
+use App\ResourceMeta;
 use Illuminate\Http\Request;
 
 class PrimarySourcesController extends Controller

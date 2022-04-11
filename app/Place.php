@@ -2,19 +2,19 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Grimzy\LaravelMysqlSpatial\Eloquent\SpatialTrait;
+use Illuminate\Database\Eloquent\Model;
 
 class Place extends Model
 {
     use SpatialTrait;
 
     protected $fillable = [
-        'name'
+        'name',
     ];
 
     protected $spatialFields = [
         'location',
-        'area'
+        'area',
     ];
 }

@@ -12,20 +12,21 @@ class LoadMore extends Component
     public $resourceIds;
 
     public $perPage;
+
     public $page;
 
     public $loadMore;
 
     protected $casts = [
-        'resourceIds' => 'collection'
+        'resourceIds' => 'collection',
     ];
 
     protected $listeners = [
         'loadMore',
-        'bird.index:rendering' => 'refreshResourceIds'
+        'bird.index:rendering' => 'refreshResourceIds',
     ];
 
-    public function mount($resourceIds = [], $page, $perPage = 6)
+    public function mount($resourceIds, $page, $perPage = 6)
     {
         $this->resourceIds = $resourceIds;
 

@@ -39,11 +39,11 @@ class ResourceMetasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Resource $resource, Request $request)
-    {        
+    {
         $request->validate([
-            'value' => 'required'
+            'value' => 'required',
         ]);
-        
+
         $meta = new ResourceMeta($request->except('attribute'));
         $resource->meta()->save($meta);
 
@@ -51,11 +51,11 @@ class ResourceMetasController extends Controller
 
         if ($request->query('attribute')) {
             $status = "$metaKey Attribute saved";
-        } else {    
+        } else {
             $status = "Resource Tag ($metaKey) was added!";
         }
 
-        return back()->with('status', $status);    
+        return back()->with('status', $status);
     }
 
     /**
@@ -93,11 +93,11 @@ class ResourceMetasController extends Controller
 
         if ($request->query('attribute')) {
             $status = "$meta->key Attribute saved";
-        } else {    
+        } else {
             $status = "Resource Tag ($meta->key) was updated! The world is now a better place";
         }
-        
-        return back()->with('status', $status); 
+
+        return back()->with('status', $status);
     }
 
     /**
@@ -110,7 +110,7 @@ class ResourceMetasController extends Controller
     public function destroy(Resource $resource, ResourceMeta $meta)
     {
         $meta->delete();
-        
-        return back()->with('status', "Attribute information for ($meta->key) was deleted! RIP the old, Welcome the new!"); 
+
+        return back()->with('status', "Attribute information for ($meta->key) was deleted! RIP the old, Welcome the new!");
     }
 }

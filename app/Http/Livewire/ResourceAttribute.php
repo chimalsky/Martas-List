@@ -30,7 +30,7 @@ class ResourceAttribute extends Component
         $resource = $this->meta->resource;
         $meta = $this->meta;
 
-        $message = $meta->name . " was deleted.";
+        $message = $meta->name.' was deleted.';
         $this->meta->delete();
 
         $eventLogView = view('event.show', compact('message'));

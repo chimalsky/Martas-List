@@ -2,16 +2,16 @@
 
 namespace App;
 
-use Str;
-use App\Resource;
 use App\EncodingMeta;
 use App\EncodingResource;
+use App\Resource;
 use Illuminate\Database\Eloquent\Model;
+use Str;
 
 class Encoding extends Model
 {
     protected $guarded = ['id'];
-    
+
     public function meta()
     {
         return $this->hasMany(EncodingMeta::class);

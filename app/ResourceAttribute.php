@@ -5,16 +5,17 @@ namespace App;
 use App\Resource;
 use App\ResourceMeta;
 use App\ResourceType;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Spatie\EloquentSortable\Sortable;
-use Illuminate\Database\Eloquent\Model;
 use Spatie\EloquentSortable\SortableTrait;
 
 class ResourceAttribute extends Model implements Sortable
 {
     use SortableTrait;
-    
+
     protected $table = 'resource_type_attributes';
+
     protected $guarded = ['id'];
 
     public $sortable = [
@@ -23,7 +24,7 @@ class ResourceAttribute extends Model implements Sortable
     ];
 
     protected $casts = [
-        'options' => 'array'
+        'options' => 'array',
     ];
 
     public static function boot()
@@ -31,9 +32,8 @@ class ResourceAttribute extends Model implements Sortable
         parent::boot();
 
         static::saving(function ($attribute) {
-           // $attribute->key = Str::snake($attribute->key);
+            // $attribute->key = Str::snake($attribute->key);
         });
-        
     }
 
     public function buildSortQuery()
@@ -74,28 +74,28 @@ class ResourceAttribute extends Model implements Sortable
 
     public function getOptionsGroupedAttribute()
     {
-        return $this->nonNullOptions->map(function($item) {
+        return $this->nonNullOptions->map(function ($item) {
             if (is_array($item)) {
                 return $item;
             }
 
             return [
                 '_name' => $item,
-                '_items' => []
+                '_items' => [],
             ];
         });
     }
 
     public function getNonNullOptionsAttribute()
     {
-        return collect($this->options)->reject(function($option) {
+        return collect($this->options)->reject(function ($option) {
             return is_null($option);
         });
     }
 
     public function getNonNullOptionsFlattenedAttribute()
     {
-        return $this->nonNullOptions->map(function($item) {
+        return $this->nonNullOptions->map(function ($item) {
             if (is_array($item)) {
                 return $item['_items'];
             }
@@ -106,8 +106,8 @@ class ResourceAttribute extends Model implements Sortable
 
     public function getOptionBlocksAttribute()
     {
-        return $this->optionsGrouped->filter(function($block) {
-            if (!is_array($block)) {
+        return $this->optionsGrouped->filter(function ($block) {
+            if (! is_array($block)) {
                 return false;
             }
 
@@ -117,7 +117,7 @@ class ResourceAttribute extends Model implements Sortable
 
     public function getOptionsDropdownAttribute()
     {
-        return $this->nonNullOptionsFlattened->mapWithKeys(function($option) {
+        return $this->nonNullOptionsFlattened->mapWithKeys(function ($option) {
             return [$option => $option];
         })->toArray();
     }
@@ -129,7 +129,7 @@ class ResourceAttribute extends Model implements Sortable
 
     public function hasOptionBlocks()
     {
-        return $this->optionBlocks->count(); 
+        return $this->optionBlocks->count();
     }
 
     public function hasOptionBlock($optionBlock)
@@ -139,7 +139,7 @@ class ResourceAttribute extends Model implements Sortable
 
     public function getOptionBlock($optionBlock)
     {
-        return $this->optionsGrouped->first(function($group) use ($optionBlock) {
+        return $this->optionsGrouped->first(function ($group) use ($optionBlock) {
             return $group['_name'] == $optionBlock;
         });
     }

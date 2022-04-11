@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Resource;
 use App\Connection;
+use App\Resource;
 use App\ResourceType;
 use Illuminate\Http\Request;
 
@@ -44,13 +44,12 @@ class ResourceConnectionsController extends Controller
         $existingConnectedResources = $resource->resources
             ->where('resource_type_id', '!=', $resource->definition->id)
             ->pluck('id');
-        
-        $filteredIds = collect($request->input('resources'))->filter(function($resourceId) 
-            use ($existingConnectedResources) {
-                return !$existingConnectedResources->contains($resourceId);
+
+        $filteredIds = collect($request->input('resources'))->filter(function ($resourceId) use ($existingConnectedResources) {
+            return ! $existingConnectedResources->contains($resourceId);
         });
 
-        $filteredIds->each(function($connectedResourceId) use ($resource) {
+        $filteredIds->each(function ($connectedResourceId) use ($resource) {
             $connection = $resource->connections()->create([]);
 
             $connection->resources()->attach($connectedResourceId);

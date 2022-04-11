@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 class ChronoBird extends Bird
 {
     const resource_type_ids = [8, 14, 15];
+
     const presence_meta_ids = [538, 565, 574]; // 8 - clark 19th, 14 - bagg 20th, 15 -- mass 21st
 
     protected $table = 'resources';
@@ -29,7 +30,7 @@ class ChronoBird extends Bird
     public function presenceMeta()
     {
         return $this->hasOne(ResourceMeta::class, 'resource_id')
-            ->whereIn('resource_attribute_id', ChronoBird::presence_meta_ids);
+            ->whereIn('resource_attribute_id', self::presence_meta_ids);
     }
 
     public static function nineteenthCenturyResourceType()

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateResourceTypesTable extends Migration
 {
@@ -16,7 +16,7 @@ class CreateResourceTypesTable extends Migration
         Schema::create('resource_types', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->string('name')->default("An Unnamed Type of Resource");
+            $table->string('name')->default('An Unnamed Type of Resource');
             $table->text('description')->nullable();
 
             $table->timestamps();

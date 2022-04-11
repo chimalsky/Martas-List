@@ -3,9 +3,9 @@
 namespace App\Http\Livewire\Project\Bird;
 
 use App\Project\ChronoBird;
+use App\ResourceAttribute;
 use App\ResourceMeta;
 use App\ResourceType;
-use App\ResourceAttribute;
 use Livewire\Component;
 
 class Filter extends Component
@@ -13,17 +13,25 @@ class Filter extends Component
     public $birdDefinition;
 
     public $birds;
+
     public $dickinsonsBirds;
+
     public $activeBirdCategories;
+
     public $activeChrono;
+
     public $activeChronoScope;
+
     public $activeMonths;
+
     public $activeSeasons;
+
     public $activeConservationStates;
 
     public $activeBirds;
 
     public $query;
+
     public $threatQuery;
 
     public $filterables;
@@ -41,7 +49,7 @@ class Filter extends Component
         'activeSeasonRemoved' => 'updateSeason',
         'activeMonthRemoved' => 'updateMonth',
         'activeConservationStateRemoved' => 'updateConservationState',
-        'activeThreatQueryCleared' => 'clearThreatQuery'
+        'activeThreatQueryCleared' => 'clearThreatQuery',
     ];
 
     public function mount()
@@ -61,22 +69,22 @@ class Filter extends Component
 
     public function updatedQuery()
     {
-        $this->emit('bird.filter:query-updated', $this->query);        
+        $this->emit('bird.filter:query-updated', $this->query);
     }
 
     public function updatedThreatQuery()
     {
-        $this->emit('bird.filter:threatQuery-updated', $this->threatQuery);        
+        $this->emit('bird.filter:threatQuery-updated', $this->threatQuery);
     }
 
     public function updatedActiveChronoScope()
     {
-        $this->emit('bird.filter:activeChronoScope-updated', $this->activeChronoScope);        
+        $this->emit('bird.filter:activeChronoScope-updated', $this->activeChronoScope);
     }
 
     public function updateSelectedBird($birdId)
     {
-        if (! $this->activeBirdCategories->contains($birdId) ) {
+        if (! $this->activeBirdCategories->contains($birdId)) {
             $this->activeBirdCategories->push(
                 $birdId
             );
@@ -91,7 +99,7 @@ class Filter extends Component
 
     public function updateMonth($month)
     {
-        if (! $this->activeMonths->contains($month) ) {
+        if (! $this->activeMonths->contains($month)) {
             $this->activeMonths->push(
                 $month
             );
@@ -106,7 +114,7 @@ class Filter extends Component
 
     public function updateSeason($season)
     {
-        if (! $this->activeSeasons->contains($season) ) {
+        if (! $this->activeSeasons->contains($season)) {
             $this->activeSeasons->push(
                 $season
             );
@@ -123,7 +131,7 @@ class Filter extends Component
 
     public function updateConservationState($state)
     {
-        if (! $this->activeConservationStates->contains($state) ) {
+        if (! $this->activeConservationStates->contains($state)) {
             $this->activeConservationStates->push(
                 $state
             );

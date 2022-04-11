@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateEncodingsTable extends Migration
 {
@@ -20,7 +20,6 @@ class CreateEncodingsTable extends Migration
             $table->text('encoding')->nullable();
             $table->text('mock_encoding')->nullable();
 
-            
             $table->timestamps();
         });
     }

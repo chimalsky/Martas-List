@@ -16,26 +16,26 @@ class FilterableAttribute extends Component
     public $expanded;
 
     protected $casts = [
-        'activeOptions' => 'collection'
+        'activeOptions' => 'collection',
     ];
 
     protected $listeners = [
         'filterCleared',
         'activeAttributeRemoved',
         'poem.index:resetted' => 'filterCleared',
-        'poem.filter:resetted' => 'filterCleared'
+        'poem.filter:resetted' => 'filterCleared',
     ];
 
     public function mount(ResourceAttribute $attribute, $expanded = false)
     {
         $this->attribute = $attribute;
         $this->options = $attribute->options;
-        $this->expanded = $expanded; 
+        $this->expanded = $expanded;
     }
 
     public function toggleDropdown()
     {
-        $this->expanded = !($this->expanded);
+        $this->expanded = ! ($this->expanded);
     }
 
     public function syncOptions($option)
@@ -43,7 +43,7 @@ class FilterableAttribute extends Component
         $options = collect($this->activeOptions);
 
         if ($options->contains($option)) {
-            $options = $options->reject(function($value) use ($option) {
+            $options = $options->reject(function ($value) use ($option) {
                 return $value == $option;
             });
         } else {
@@ -53,7 +53,7 @@ class FilterableAttribute extends Component
         $this->activeOptions = $options;
 
         $this->emitUp('filterable-attribute:activeOptionsUpdated', $this->attribute->id, $this->activeOptions->toArray());
-        
+
         //$this->emitUp('filterable-attribute.activeOptions.changed', $this->attribute->id, $this->activeOptions->toArray());
     }
 
@@ -84,12 +84,12 @@ class FilterableAttribute extends Component
     public function activeAttributeRemoved($attributeId, $value)
     {
         if ($attributeId == $this->attribute->id) {
-            $options = $this->activeOptions->reject(function($activeOption) use ($value) {
+            $options = $this->activeOptions->reject(function ($activeOption) use ($value) {
                 return $activeOption == $value;
             });
-    
-            $this->activeOptions = $options; 
-    
+
+            $this->activeOptions = $options;
+
             $this->emitUp('filterable-attribute:activeOptionsUpdated', $this->attribute->id, $this->activeOptions->toArray());
         }
     }

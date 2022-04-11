@@ -11,7 +11,7 @@ class AboutController extends Controller
     public function __invoke(Request $request)
     {
         $content = optional(ResourceMeta::find(44501))->value ?? 'No Content Yet';
-    
+
         return view('project.about', compact('content'));
     }
 }

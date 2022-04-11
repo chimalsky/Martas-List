@@ -8,7 +8,7 @@ class Citation extends Model
 {
     protected $guarded = [];
 
-     /**
+    /**
      * @param string|array|\ArrayAccess $values
      * @param string|null $type
      *
@@ -20,29 +20,30 @@ class Citation extends Model
             if ($value instanceof self) {
                 return $value;
             }
+
             return static::findOrCreateFromString($value);
         });
-        
+
         return is_string($values) ? $citations->first() : $citations;
     }
 
     public static function findFromString(string $citation)
     {
         return static::query()
-            ->where("citation", $citation)
+            ->where('citation', $citation)
             ->first();
     }
 
     protected static function findOrCreateFromString(string $citationString)
     {
         $citation = static::findFromString($citationString);
-        
+
         if (! $citation) {
             $citation = static::create([
-                'citation' => $citationString
+                'citation' => $citationString,
             ]);
         }
-        
+
         return $citation;
     }
 }

@@ -22,7 +22,7 @@ class CreateProjectsTable extends Migration
 
             $table->unsignedTinyInteger('visibility')
                 ->default(1);
-                
+
             $table->timestamps();
         });
     }

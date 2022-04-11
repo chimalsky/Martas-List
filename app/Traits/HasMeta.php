@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Traits;
 
@@ -15,8 +15,8 @@ trait HasMeta
 
     public function firstMetaByAttribute($resourceAttribute)
     {
-        $attributeId = is_int($resourceAttribute) 
-            ? $resourceAttribute 
+        $attributeId = is_int($resourceAttribute)
+            ? $resourceAttribute
             : $resourceAttribute->id;
 
         return $this->meta->firstWhere('resource_attribute_id', $attributeId);

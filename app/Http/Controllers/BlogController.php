@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Wink\WinkPost;
 use Illuminate\Http\Request;
+use Wink\WinkPost;
 
 class BlogController extends Controller
 {
@@ -13,8 +13,9 @@ class BlogController extends Controller
             ->live()
             ->orderBy('publish_date', 'DESC')
             ->simplePaginate(12);
+
         return view('blog.index', [
-            'posts' => $posts
+            'posts' => $posts,
         ]);
     }
 }

@@ -8,19 +8,21 @@ use Livewire\Component;
 class LoadMoreButton extends Component
 {
     protected $poemIds;
+
     protected $poems;
 
     public $page;
+
     public $perPage;
+
     public $loadMore;
 
-    public function mount($page = 1, $perPage = 1, $poemIds)
+    public function mount($page, $perPage, $poemIds)
     {
         $this->poemIds = $poemIds;
         $this->page = $page + 1; //increment the page
         $this->perPage = $perPage;
         $this->loadMore = false; //show the button
-
     }
 
     public function loadMore()

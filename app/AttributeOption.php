@@ -21,5 +21,4 @@ class AttributeOption extends Model implements Sortable
     {
         return $this->belongsTo(OptionCategory::class, 'category_id');
     }
-
 }

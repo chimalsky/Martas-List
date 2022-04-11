@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\User;
 use App\ResourceType;
+use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ResourceTypePolicy
@@ -20,7 +20,7 @@ class ResourceTypePolicy
         //
     }
 
-    public function update(User $user, ResourceType $resourceType) 
+    public function update(User $user, ResourceType $resourceType)
     {
         return true;
     }

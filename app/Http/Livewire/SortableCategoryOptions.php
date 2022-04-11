@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class SortableCategoryOptions extends Component
 {
-    public $attribute; 
+    public $attribute;
 
     public $categories;
 
@@ -46,10 +46,10 @@ class SortableCategoryOptions extends Component
                     $fail($attribute.' already exists.');
                 }
             },
-        ]]);
+            ], ]);
 
         $this->attribute->categories()->create([
-            'name' => $this->newCategory
+            'name' => $this->newCategory,
         ]);
 
         $this->categories = $this->attribute->categories;
@@ -60,14 +60,11 @@ class SortableCategoryOptions extends Component
     public function addOption($categoryId, $value)
     {
         $category = $this->categories->find($categoryId);
-      
 
         $category->options()->create([
             'value' => $value,
-            'attribute_id' => $this->attribute->id
+            'attribute_id' => $this->attribute->id,
         ]);
-
-
     }
 
     public function render()

@@ -26,7 +26,6 @@ class CreateAttributeOptionsTable extends Migration
             $table->text('value');
             $table->timestamps();
         });
-
     }
 
     /**

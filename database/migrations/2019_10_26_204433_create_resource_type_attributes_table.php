@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateResourceTypeAttributesTable extends Migration
 {
@@ -18,12 +18,12 @@ class CreateResourceTypeAttributesTable extends Migration
 
             $table->string('key');
             $table->string('type')->nullable();
-            
+
             $table->unsignedBigInteger('resource_type_id')
                 ->references('id')
                 ->on('encodings')
                 ->onDelete('cascade');
-            
+
             $table->tinyInteger('order')->nullable();
 
             $table->timestamps();

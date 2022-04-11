@@ -16,18 +16,18 @@ class AttributeOptionsBlockStore extends Controller
                 if ($currentOptions->contains($value)) {
                     $fail($attribute.' already exists.');
                 }
-            }]
+            }],
         ]);
 
         $resourceAttribute->update([
             'options' => $currentOptions->push(
                [
-                    '_name' => $request->block,
-                    '_items' => []
+                   '_name' => $request->block,
+                   '_items' => [],
                ]
-            )->toArray()
+            )->toArray(),
         ]);
 
-        return back()->with("status", "Block {$request->block} was added");
+        return back()->with('status', "Block {$request->block} was added");
     }
 }

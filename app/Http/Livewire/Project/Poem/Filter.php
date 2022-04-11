@@ -11,19 +11,25 @@ class Filter extends Component
     public $open = false;
 
     public $poemDefinition;
+
     public $birdDefinition;
 
     public $birds;
+
     public $dickinsonsBirds;
+
     public $activeBirdCategories;
 
     public $query;
 
     public $orderables;
+
     public $orderable;
+
     public $orderableDirection;
 
     public $filterables;
+
     public $activeFilterables;
 
     public $renderCount;
@@ -40,7 +46,7 @@ class Filter extends Component
         'filterable-attribute:activeOptionsUpdated' => 'filterByAttribute',
         'poem.index:resetted' => 'indexResetted',
         'poem.index:rendering' => 'indexRendering',
-        'activeBirdRemoved' => 'updateSelectedBird'
+        'activeBirdRemoved' => 'updateSelectedBird',
     ];
 
     public function mount()
@@ -63,7 +69,7 @@ class Filter extends Component
     public function updatedQuery()
     {
         $this->emit('poem.filter:updated');
-        $this->emit('poem.filter:query-updated', $this->query);        
+        $this->emit('poem.filter:query-updated', $this->query);
     }
 
     public function orderableClicked($orderableId)
@@ -72,32 +78,32 @@ class Filter extends Component
             $this->orderableDirection = ('asc' == $this->orderableDirection)
                 ? 'desc'
                 : 'asc';
-        } 
+        }
 
         $this->orderable = ResourceAttribute::find($orderableId);
-        
+
         $this->emit('poem.filter:updated');
         $this->emit('poem.filter:orderable-updated', $orderableId, $this->orderableDirection);
     }
 
     public function filterByAttribute($attributeId, $optionValues)
-    {        
-        if (! $this->activeFilterables->where('id', $attributeId)->count() ) {
+    {
+        if (! $this->activeFilterables->where('id', $attributeId)->count()) {
             $this->activeFilterables->push(
-                [ 
+                [
                     'id' => $attributeId,
-                    'activeValues' => $optionValues
+                    'activeValues' => $optionValues,
                 ]
             );
         } else {
-            $index = $this->activeFilterables->search(function($item, $key) use ($attributeId) {
+            $index = $this->activeFilterables->search(function ($item, $key) use ($attributeId) {
                 return $item['id'] == $attributeId;
             });
 
             if (count($optionValues)) {
                 $this->activeFilterables[$index] = [
                     'id' => $attributeId,
-                    'activeValues' => $optionValues
+                    'activeValues' => $optionValues,
                 ];
             } else {
                 $this->activeFilterables->splice($index, 1);
@@ -110,7 +116,7 @@ class Filter extends Component
 
     public function updateSelectedBird($birdId)
     {
-        if (! $this->activeBirdCategories->contains($birdId) ) {
+        if (! $this->activeBirdCategories->contains($birdId)) {
             $this->activeBirdCategories->push(
                 $birdId
             );

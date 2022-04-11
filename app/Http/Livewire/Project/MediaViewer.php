@@ -9,12 +9,14 @@ use Spatie\MediaLibrary\Models\Media;
 class MediaViewer extends Component
 {
     public $resource;
+
     public $media;
+
     public $medias;
 
     public function mount(Resource $resource)
     {
-        $this->resource = $resource; 
+        $this->resource = $resource;
         $this->medias = $resource->media;
 
         $this->setMedia($this->medias->first()->id);

@@ -15,6 +15,7 @@ class EncodingsController extends Controller
     public function index()
     {
         $encodings = Encoding::with('resources')->get();
+
         return view('encodings.index', compact('encodings'));
     }
 
@@ -37,7 +38,7 @@ class EncodingsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'encoder_assigned_id' => 'required'
+            'encoder_assigned_id' => 'required',
         ]);
 
         $encoding = Encoding::create($request->all());
@@ -78,7 +79,7 @@ class EncodingsController extends Controller
     public function update(Request $request, Encoding $encoding)
     {
         $request->validate([
-            'encoder_assigned_id' => 'required'
+            'encoder_assigned_id' => 'required',
         ]);
 
         $encoding = $encoding->update($request->all());

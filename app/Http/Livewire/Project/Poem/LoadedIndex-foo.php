@@ -12,13 +12,14 @@ class LoadedIndex extends Component
     public $poemIds;
 
     public $perPage;
+
     public $page;
 
     protected $casts = [
-        'poemIds' => 'collection'
+        'poemIds' => 'collection',
     ];
 
-    public function mount($poemIds = [], $page, $perPage = 15)
+    public function mount($poemIds, $page, $perPage = 15)
     {
         $this->poemIds = $poemIds;
 

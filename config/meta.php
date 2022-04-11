@@ -26,9 +26,9 @@ return [
         // custom tables list
 
         'custom'  => [
-            'encodings_meta'
+            'encodings_meta',
             // example : 'posts_meta' , 'users_meta'
 
         ],
-    ]
+    ],
 ];

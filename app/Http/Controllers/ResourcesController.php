@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Resource;
-use App\ResourceType;
 use App\ResourceMeta;
+use App\ResourceType;
 use Illuminate\Http\Request;
 
 class ResourcesController extends Controller
@@ -47,11 +47,11 @@ class ResourcesController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required',
-            'resource_type_id' => 'exists:resource_types,id'
+            'resource_type_id' => 'exists:resource_types,id',
         ]);
 
         $resource = Resource::create($validated);
-        
+
         return redirect()->route('resources.edit', $resource)
             ->with('status', "$resource->name was created!");
     }
@@ -89,15 +89,15 @@ class ResourcesController extends Controller
             'attribute' => 'nullable | max:255',
             'attributeCitation' => 'nullable | max:255',
             'newAttribute' => 'nullable',
-            'newAttributeCitation' => 'nullable | max:255'
+            'newAttributeCitation' => 'nullable | max:255',
         ]);
-        
+
         $resource->update($request->except('attribute', 'attributeCitation', 'newAttribute', 'newAttributeCitation'));
 
-        $attributes = collect($request->attribute)->filter(function($value, $key) {
+        $attributes = collect($request->attribute)->filter(function ($value, $key) {
             // TODO handle the null update value more resiliently
             return $value;
-        })->each(function($value, $key) use ($resource) {
+        })->each(function ($value, $key) use ($resource) {
             $key = explode('-', $key)[1];
 
             if ($meta = ResourceMeta::find($key)) {
@@ -107,52 +107,49 @@ class ResourcesController extends Controller
                 $meta = new ResourceMeta;
                 $meta->resource_attribute_id = $key;
                 $meta->value = $value;
-    
+
                 $resource->meta()->save($meta);
             }
-           
         });
 
-        $attributeCitations = collect($request->attributeCitation)->filter(function($value, $key) {
+        $attributeCitations = collect($request->attributeCitation)->filter(function ($value, $key) {
             // TODO handle the null update value more resiliently
             return $value;
-        })->each(function($value, $key) use ($resource) {
+        })->each(function ($value, $key) use ($resource) {
             $key = explode('-', $key)[1];
 
             $meta = ResourceMeta::find($key);
             $meta->update(['citation' => $value]);
         });
 
-        $newCitations = collect($request->newAttributeCitation)->filter(function($value) {
+        $newCitations = collect($request->newAttributeCitation)->filter(function ($value) {
             return $value;
-        })->map(function($value, $key) {
-            return [ 
+        })->map(function ($value, $key) {
+            return [
                 'key' => $key = explode('-', $key)[1],
-                'value' => $value 
+                'value' => $value,
             ];
         });
 
-        $newAttributes = collect($request->newAttribute)->filter(function($value, $key) {
+        $newAttributes = collect($request->newAttribute)->filter(function ($value, $key) {
             // TODO handle the null update value more resiliently
             return $value;
-        })->each(function($value, $key) use ($resource, $newCitations) {
+        })->each(function ($value, $key) use ($resource, $newCitations) {
             $key = explode('-', $key)[1];
-            
+
             $attribute = $resource->meta()->create([
                 'resource_attribute_id' => $key,
-                'value' => $value
+                'value' => $value,
             ]);
 
             if ($citation = $newCitations->firstWhere('key', $key)) {
                 $attribute->citation = $citation['value'];
                 $attribute->save();
             }
-
         });
 
-    
         return redirect()->route('resources.edit', $resource)
-            ->with('status', "$resource->name was updated!");  
+            ->with('status', "$resource->name was updated!");
     }
 
     /**
@@ -166,6 +163,6 @@ class ResourcesController extends Controller
         $resource->delete();
 
         return redirect()->route('resource-types.show', $resource->definition)
-            ->with('status', "Resource ($resource->name) was deleted! RIP the old..."); 
+            ->with('status', "Resource ($resource->name) was deleted! RIP the old...");
     }
 }

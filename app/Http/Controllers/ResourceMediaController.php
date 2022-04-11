@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Resource;
-use Illuminate\Http\Request;
 use App\ResourceMedia as Media;
+use Illuminate\Http\Request;
 
 class ResourceMediaController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * 
+     *
      * @param  \App\Resource  $resource
      * @return \Illuminate\Http\Response
      */
@@ -37,7 +37,7 @@ class ResourceMediaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Resource $resource)
-    {        
+    {
         $request->validate([
             'name' => 'nullable|string|max:255',
             'media' => 'required|file',
@@ -47,13 +47,13 @@ class ResourceMediaController extends Controller
             'location' => 'nullable|string|max:255',
             'sound_type' => 'nullable|string|max:255',
             'background_sounds' => 'nullable|string|max:255',
-            'citation' => 'nullable'
+            'citation' => 'nullable',
         ]);
-        
+
         $media = $resource->addMediaFromRequest('media')
             ->usingName($request->name ?? 'unnamed')
             ->toMediaCollection($request->collection ?? 'default');
-        
+
         $media->date = $request->date;
         $media->time = $request->time;
         $media->location = $request->location;
@@ -105,7 +105,7 @@ class ResourceMediaController extends Controller
             'location' => 'nullable|string|max:255',
             'sound_type' => 'nullable|string|max:255',
             'background_sounds' => 'nullable|string|max:255',
-            'citation' => 'nullable'
+            'citation' => 'nullable',
         ]);
 
         /*$media->name = $request->name;
@@ -117,7 +117,7 @@ class ResourceMediaController extends Controller
         $media->citation = $request->citation; */
 
         $media->update([
-            'name' => $request->name
+            'name' => $request->name,
         ]);
 
         return back()->with('status', "Media $media->name was updated, bro!");
@@ -133,6 +133,7 @@ class ResourceMediaController extends Controller
     public function destroy(Resource $resource, Media $media)
     {
         $media->delete();
-        return back()->with('status', "Media ($media->name) was deleted! RIP the old, Welcome the new!"); 
+
+        return back()->with('status', "Media ($media->name) was deleted! RIP the old, Welcome the new!");
     }
 }

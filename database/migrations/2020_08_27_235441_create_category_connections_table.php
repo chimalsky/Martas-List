@@ -30,15 +30,15 @@ class CreateCategoryConnectionsTable extends Migration
         $oldBirds = $oldBirdsType->resources;
         $oldCategories = $oldBirdsType->categories;
 
-        $oldCategories->each(function($cat, $index) {
+        $oldCategories->each(function ($cat, $index) {
             $manuscripts = $cat->resources->pluck('resources')->flatten()
             ->unique('id')
-            ->filter(function($r) {
+            ->filter(function ($r) {
                 return $r->resource_type_id === 3;
             });
-        
+
             $newCat = \App\ResourceType::find(19)->categories()->firstWhere('name', $cat->name);
-            
+
             $newCat->connections()->sync($manuscripts->pluck('id'));
         });
     }

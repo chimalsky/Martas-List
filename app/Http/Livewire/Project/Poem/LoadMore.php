@@ -13,17 +13,19 @@ class LoadMore extends Component
     public $poemIds;
 
     public $perPage;
+
     public $page;
 
     public $loadMore;
 
     public $filterOrderable;
+
     public $filterOrderableDirection;
 
     public $orderablesAndPoems;
 
     protected $casts = [
-        'poemIds' => 'collection'
+        'poemIds' => 'collection',
     ];
 
     protected $listeners = [
@@ -32,7 +34,7 @@ class LoadMore extends Component
         'poem.filter:orderable-updated' => 'orderableUpdated',
     ];
 
-    public function mount($poemIds = [], $page, $perPage = 15)
+    public function mount($poemIds, $page, $perPage = 15)
     {
         $this->poemIds = $poemIds;
 
@@ -72,8 +74,8 @@ class LoadMore extends Component
 
     public function getPoemsRemainingProperty()
     {
-        return $this->poemsPaginated->total() 
-            - ($this->poemsPaginated->perPage() 
+        return $this->poemsPaginated->total()
+            - ($this->poemsPaginated->perPage()
             * $this->poemsPaginated->currentPage() - $this->poemsPaginated->perPage());
     }
 
@@ -87,7 +89,7 @@ class LoadMore extends Component
             ->get();*/
 
         /*$this->orderablesAndPoems = collect($poems->items())
-            ->groupBy('queryable_meta_value') 
+            ->groupBy('queryable_meta_value')
             ->filter(function($group) {
                 return $group->count();
             });*/

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Project;
 
-use App\Resource;
 use App\Http\Controllers\Controller;
 use App\Project\Poem;
+use App\Resource;
 use Illuminate\Http\Request;
 
 class BirdPoemsController extends Controller

@@ -1,10 +1,10 @@
 <?php
 
-use App\ResourceMeta;
 use App\ResourceAttribute;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
+use App\ResourceMeta;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class FixMetaTypes extends Migration
 {
@@ -20,7 +20,6 @@ class FixMetaTypes extends Migration
 
         $rm->update(['type' => 'default']);
         $ra->update(['type' => 'default']);
-        
     }
 
     /**

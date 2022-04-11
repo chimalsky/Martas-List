@@ -14,7 +14,7 @@ class AttributeOptionValueScope implements Scope
         $query->addSelect(['attribute_option_value' => AttributeOption::select('value')
                 ->whereColumn('attribute_option_id', 'attribute_options.id')
                 ->latest()
-                ->take(1)
-            ]);
+                ->take(1),
+        ]);
     }
 }

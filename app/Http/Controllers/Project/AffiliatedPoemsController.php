@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Project;
 
-use App\Resource;
 use App\Http\Controllers\Controller;
 use App\Project\Poem;
+use App\Resource;
 use Illuminate\Http\Request;
 
 class AffiliatedPoemsController extends Controller
@@ -27,7 +27,7 @@ class AffiliatedPoemsController extends Controller
             ->where('id', '!=', $poem->id)
             ->with('facsimiles')
             ->get();
-        
+
         $firstline = $poems->first()->firstMetaByAttribute(84)->value ?? $poems->first()->name;
 
         $additionalAffiliations = Poem::doesntHaveBirds()
