@@ -1,28 +1,28 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AttachResourceToCategoryController;
 use App\Http\Controllers\AttributeOptionsBlockStore;
-use App\Http\Controllers\ResourceAttributeOptionsSortController;
-use App\Http\Controllers\ResourceConnectionsController;
-use App\Http\Controllers\ResourceLineagesController;
-use App\Http\Controllers\ResourceMediaController;
-use App\Http\Controllers\ResourceMetasController;
-use App\Http\Controllers\ResourceTemporalitiesController;
-use App\Http\Controllers\ResourceTypesController;
-use App\Http\Controllers\ResourcesController;
-use App\Http\Controllers\XenoController;
-use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Dearchived;
 use App\Http\Controllers\Project;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ResourceAttributeOptionsSortController;
 use App\Http\Controllers\ResourceCategoriesController;
+use App\Http\Controllers\ResourceConnectionsController;
+use App\Http\Controllers\ResourceLineagesController;
+use App\Http\Controllers\ResourceMediaController;
+use App\Http\Controllers\ResourceMetasController;
+use App\Http\Controllers\ResourcesController;
 use App\Http\Controllers\ResourceSpreadsheetImportController;
+use App\Http\Controllers\ResourceTemporalitiesController;
 use App\Http\Controllers\ResourceTypeActivitiesController;
 use App\Http\Controllers\ResourceTypeAttributeOptionsController;
 use App\Http\Controllers\ResourceTypeAttributesController;
 use App\Http\Controllers\ResourceTypeConnectionsController;
 use App\Http\Controllers\ResourceTypeResourcesController;
+use App\Http\Controllers\ResourceTypesController;
+use App\Http\Controllers\XenoController;
 use Illuminate\Support\Facades\Route;
 
 /*
