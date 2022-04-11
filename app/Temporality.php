@@ -8,10 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Temporality extends Model
 {
     protected $guarded = ['id'];
-
-    protected $dates = [
-        'start',
-        'end',
+    protected $casts = [
+        'start' => 'datetime',
+        'end' => 'datetime',
     ];
 
     private $precisionFormats = [
