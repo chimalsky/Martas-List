@@ -33,9 +33,7 @@
     <body data-controller="application @stack('stimulus-controllers')" id="body"
         @stack('stimulus-attributes') class="mt-8 px-2 flex flex-wrap loading" style="max-width: 2400px">
         <aside class="flex-shrink max-w-xs">
-            <h1 class="text-xl -mb-3 tracking-wide flex">
-                @include('project._nav')
-            </h1>
+            @include('project._nav')
 
             @yield('aside')
 
@@ -46,20 +44,6 @@
 
         <main class="flex-1">
             <header class="">
-                <!--
-                <div class="flex justify-center space-x-4 max-w-xs mx-auto hidden">
-                    <a href="@route('project.digital-objects.timeline')">
-                        <img class="object-cover w-16 h-16 rounded-full" src="{{ asset('img/do-1.png') }}" />
-                    </a>
-                    <a href="@route('project.digital-objects.map')">
-                        <img class="object-cover w-16 h-16 rounded-full" src="{{ asset('img/do-2.png') }}" />
-                    </a>
-                    <a href="@route('project.digital-objects.birdring')">
-                        <img class="object-cover w-16 h-16 rounded-full" src="{{ asset('img/do-3.png') }}" />
-                    </a>
-                </div>
-                -->
-
                 <nav class="text-4xl text-center flex justify-center" style="font-family: Cormorant SC;">
                     @yield('header-anchor')
                 </nav>
