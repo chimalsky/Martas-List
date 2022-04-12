@@ -30,7 +30,7 @@
         x-transition:leave-start="transform opacity-100 scale-100" 
         x-transition:leave-end="transform opacity-0 scale-95" 
         class="origin-top-left absolute left-0 rounded-md shadow-2xl flex-1 z-50"
-        style="width: 16rem">
+        style="width: 16rem; display: none;">
         <div class="rounded-md bg-white shadow-xs">
         <div class="py-1 text-base">
             @include('project._nav-items')
