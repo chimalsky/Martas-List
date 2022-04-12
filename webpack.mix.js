@@ -1,6 +1,7 @@
 const mix = require('laravel-mix');
 const tailwindcss = require('tailwindcss')
-const path = require('path')
+const path = require('path');
+const { react } = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -34,4 +35,5 @@ mix.js('resources/js/app.js', 'public/js')
 mix.js('resources/js/project/app.js', 'public/js/project')
     .version();
 mix.js('resources/js/project/birdring.js', 'public/js/project')
+    .react()
 	.version();

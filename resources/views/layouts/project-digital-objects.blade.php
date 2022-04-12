@@ -9,9 +9,6 @@
             @yield('title', "Dickinson's Birds")
         </title>
 
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-
         <link rel="stylesheet" type="text/css" href="/css/trix.css">
         <link href="{{ mix('css/app.css') }}" rel="stylesheet">
         <link href="/css/caroline-styles.css" rel="stylesheet">

@@ -1,6 +1,90 @@
+import React, {useEffect, useState} from 'react';
+import ReactDOM from 'react-dom';
 import {data as chronoData} from './temporal-data.js';
 import {getBirdsByChrono} from './birdring-data.js';
-import birdhorizon from './birdhorizon.js';
+import AudioEmbed from './AudioEmbed.js';
+import BirdHorizon from './BirdHorizon.js';
+
+const chronoDict = [
+    'january',
+    'february',
+    'march',
+    'april',
+    'may',
+    'june',
+    'july',
+    'august',
+    'september',
+    'october',
+    'november',
+    'december'
+];
+    
+const chronoContextDict = {
+    month: 'month',
+    season: 'season',
+};
+
+const BirdRing = function() {
+    const [chrono, setChrono] = useState(chronoDict[0]);
+    const [chronoContext, setChronoContext] = useState(chronoContextDict.month);
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const monthClicked = month => {
+        setChrono(month);
+    };
+
+    useEffect(() => {
+        if (!isPlaying) return;
+        return;
+        const interval = setInterval(() => {
+            const literalNextIndex = chronoDict.findIndex(item => item === chrono);
+            const nextChronoIndex = (literalNextIndex === (chronoDict.length - 1))
+                ? 0
+                : literalNextIndex+1;
+
+            setChrono(chronoDict[nextChronoIndex]);
+        }, 1000);
+        return () => clearInterval(interval);
+    }, [isPlaying]);
+
+    return <div className="mt-12 mx-auto max-w-xl">
+        {chronoDict.map(month => 
+            <button key={month} onClick={() => monthClicked(month)} className="mx-10">
+                {month}
+            </button>
+        )}
+        
+        <div className="font-bold my-12">
+            {chrono}
+        </div>
+
+        <BirdHorizon chrono={chrono}/>
+
+        <AudioEmbed chrono={chrono} />
+
+        <div id="chrono-player" className="flex justify-center">
+            <button onClick={() => setIsPlaying(true)}>
+                Play
+            </button>
+            <button onClick={() => setIsPlaying(false)}>
+                Pause
+            </button>
+        </div>
+        <div className="mx-auto max-w-sm">
+        </div>
+        <section className="bg-yellow-300 p-24 mt-20">
+            Notes
+        </section>
+    </div>;
+};
+
+ReactDOM.render(
+    <React.StrictMode>
+      <BirdRing />
+    </React.StrictMode>,
+    document.getElementById('birdring-wrapper')
+);
 
 const width = 900;
 const height = 900;
