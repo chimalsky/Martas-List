@@ -9,7 +9,7 @@
     $header = true;
 @endphp
 @section ('header')
-    <div class="mt-6 max-w-2xl mx-auto">
+    <div class="mt-8 max-w-2xl mx-auto">
         @include('project._nav', ['title' => 'About the Project'])
     </div>
 @endsection
