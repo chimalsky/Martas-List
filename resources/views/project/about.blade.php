@@ -5,8 +5,13 @@
     About the Project - Dickinson's Birds
 @endsection
 
+@php
+    $header = true;
+@endphp
 @section ('header')
-    @include('project._nav', ['title' => 'About the Project'])
+    <div class="mt-6 max-w-2xl mx-auto">
+        @include('project._nav', ['title' => 'About the Project'])
+    </div>
 @endsection
 
 @section ('content')
