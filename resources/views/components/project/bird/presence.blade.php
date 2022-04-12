@@ -10,7 +10,6 @@
         20 => 565,
         21 => 574
     ];
-    
     $occurence = $bird->firstMetaByAttribute($occurenceIds[$century]);
     if ($century == 19 && !$occurence) {
         $occurence = $bird->firstMetaByAttribute(544);

@@ -31,7 +31,7 @@
     
     $twentiethBird = $bird->resources->firstWhere('resource_type_id', 14);
     $twentyfirstBird = $bird->resources->firstWhere('resource_type_id', 15);
-    $migrationMapLink = $bird->firstMetaByAttribute(506)
+    $migrationMapLink = $bird->firstMetaByAttribute(506);
 @endphp
 
 <main class="text-center max-w-sm mx-auto">
@@ -75,8 +75,10 @@
     <section class="absolute inset-0 flex flex-wrap py-32 pr-48 pl-48">
         <div class="w-2/5 pr-18 overflow-auto" style="max-height: 80%;">
             <x-project.bird.notebook.entry header="Occurrence in Amherst & Connecticut Valley, Mass.">
-                <x-project.bird.presence class="mb-4" century="19" :bird="$nineteenthBird" />
-                {{ $nineteenthBird }} 
+                @isset ($nineteenthBird)
+                    <x-project.bird.presence class="mb-4" century="19" :bird="$nineteenthBird" />
+                    {{ $nineteenthBird }}
+                @endisset 
 
                 @isset ($twentiethBird)
                     <x-project.bird.presence class="mb-4" century="20" :bird="$twentiethBird" />
