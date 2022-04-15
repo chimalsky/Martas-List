@@ -48,7 +48,7 @@
                     @yield('header-anchor')
                 </nav>
 
-                <div class="text-center text-4xl block" style="font-family: Cormorant Upright; color:#806102;">
+                <div class="text-center text-4xl block mt-2" style="font-family: Cormorant Upright; color:#806102;">
                     @yield('header-info')
                 </div>
             </header>

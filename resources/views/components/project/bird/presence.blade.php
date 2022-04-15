@@ -31,9 +31,12 @@
 @endphp
 
 <div {{ $attributes }}>
-    <header style="color: #B45F06; font-family: Cormorant SC; font-style: normal;" class="text-2xl">
-        C{{ $century }}
-    </header> 
+    @if(!isset($hideOccurence))
+        <header style="color: #B45F06; font-family: Cormorant SC; font-style: normal;" class="text-2xl">
+            C{{ $century }}
+        </header>
+    @endif
+    
     @if ($occurence || $presence)
         @php
             $punctuation = '.';

@@ -21,7 +21,6 @@
 @endsection 
 
 @section('header-info')
-
 <x-project.archive-notes title="Poem">
     <x-slot name="content">
         @php
@@ -33,7 +32,6 @@
         {!! $content !!}
     </x-slot>
 </x-project.archive-notes>
-
 @endsection
 
 @section('sticky-aside')
