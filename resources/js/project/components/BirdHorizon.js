@@ -65,18 +65,13 @@ export function BirdHorizon({chrono}) {
     }
         
     return <>
-        <div style={{transform: 'translateY(-120px)', width: "33%", height: "80%"}}>
+        <div style={{transform: 'translateY(-120px) rotate(-14deg)', width: "33%", height: "80%"}}>
             <ResponsiveContainer width="100%" height="100%">
                 <ScatterChart margin={styles.scatterMargin}>
                     <XAxis type="number" dataKey="x" hide />
                     <YAxis type="number" dataKey="y" hide />
                     <ZAxis type="number" dataKey="bodymass" unit="g" domain={parseDomain()} range={range} />
                     <Tooltip content={CustomTooltip} cursor={{ strokeDasharray: '3 3' }} />
-                    <Scatter name="A dool" data={getDepartingBirds()}>
-                        {getDepartingBirds().map(departing => {
-                            <Cell key={`cell-${departing.id}`} fill={customFill(departing)} />
-                        })}
-                    </Scatter>
                     <Scatter name="A bool" data={getArrivingBirds()}>
                         {getArrivingBirds().map(arriving => (
                             <Cell key={`cell-${arriving.id}`} fill={customFill(arriving)} />
@@ -102,7 +97,7 @@ export function BirdHorizon({chrono}) {
             </ResponsiveContainer>
         </div>
 
-        <div style={{transform: 'translateY(-120px)', width: "33%", height: "80%"}}>
+        <div style={{transform: 'translateY(-120px) rotate(14deg)', width: "33%", height: "80%"}}>
             <ResponsiveContainer width="100%" height="100%">
                 <ScatterChart margin={styles.scatterMargin}>
                     <XAxis type="number" dataKey="x" hide />
