@@ -6,14 +6,9 @@
 @endpush
 
 @section('content')
-<style>
-    path[data-chrono] {
-        font-size: 32px;
-    }
-</style>
 <main id="birdring-wrapper" 
     class="max-w-5xl mx-auto text-gray-700 text-lg page-content" 
-    style="margin-top: -80px;" 
+    style="margin-top: -105px;" 
     data-style="red">
 </main>
 @endsection

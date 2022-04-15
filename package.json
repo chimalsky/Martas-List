@@ -37,9 +37,9 @@
         "@github/time-elements": "^3.1.0",
         "alpinejs": "^2.X.X",
         "flatpickr": "^4.6.3",
-        "react": "^18.0.0",
-        "react-dom": "^18.0.0",
-        "slick-carousel": "^1.8.1",
+        "react": "^17.0.0",
+        "react-dom": "^17.0.0",
+        "recharts": "^2.1.9",
         "sortablejs": "^1.13.0",
         "trix": "^1.2.3",
         "turbolinks": "^5.2.0"
