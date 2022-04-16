@@ -17,6 +17,7 @@
                 ->groupBy('resource_attribute_id') as $metaGroup)
                 @foreach ($metaGroup as $meta) 
                     @if ($meta->resource_attribute_id == 113)
+                        @if ($meta->value !== 'Retained')
                         Sent to,
                     @endif
 
