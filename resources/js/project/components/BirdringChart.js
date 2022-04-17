@@ -1,19 +1,19 @@
 import React from 'react';
-import { PieChart, Pie, Cell, LabelList, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Cell, Label, LabelList, ResponsiveContainer } from 'recharts';
 
 const monthDict = [
-    {name: 'january', value: 1, fill: '#B7CBD8'},
-    {name: 'february', value: 1, fill: '#B7CBD8'},
-    {name: 'march', value: 1, fill: '#D2ACAE'},
-    {name: 'april', value: 1, fill: '#D2ACAE'},
-    {name: 'may', value: 1, fill: '#D2ACAE'},
-    {name:'june', value: 1, fill: '#CFD8C6'},
-    {name:'july', value: 1, fill: '#CFD8C6'},
-    {name:'august', value: 1, fill: '#CFD8C6'},
-    {name:'september', value: 1, fill: '#E3B388'},
-    {name:'october', value: 1, fill: '#E3B388'},
-    {name: 'november', value: 1, fill: '#E3B388'},
-    {name: 'december', value: 1, fill: '#B7CBD8'}
+    {name: 'january', shortName: 'jan', value: 1, fill: '#B7CBD8'},
+    {name: 'february', shortName: 'feb', value: 1, fill: '#B7CBD8'},
+    {name: 'march', shortName: 'mar', value: 1, fill: '#D2ACAE'},
+    {name: 'april', shortName: 'apr', value: 1, fill: '#D2ACAE'},
+    {name: 'may', shortName: 'may', value: 1, fill: '#D2ACAE'},
+    {name:'june', shortName: 'jun', value: 1, fill: '#CFD8C6'},
+    {name:'july', shortName: 'jul', value: 1, fill: '#CFD8C6'},
+    {name:'august', shortName: 'aug', value: 1, fill: '#CFD8C6'},
+    {name:'september', shortName: 'sep', value: 1, fill: '#E3B388'},
+    {name:'october', shortName: 'oct', value: 1, fill: '#E3B388'},
+    {name: 'november', shortName: 'nov', value: 1, fill: '#E3B388'},
+    {name: 'december', shortName: 'dec', value: 1, fill: '#B7CBD8'}
 ].reverse();
 
 const seasonDict = [
@@ -25,12 +25,12 @@ const seasonDict = [
 
 
 const renderCustomizedLabel = props => {
+    console.log(props);
     const { cx, cy, width, height, value } = props;
     const radius = 10;
     return <g>
-        <circle cx={cx} cy={cy - radius} r={radius} fill="#8884d8" />
         <text x={cx + width / 2} y={cy - radius} fill="#fff" textAnchor="middle" dominantBaseline="middle">
-            {value.split(' ')[1]}
+            {name}
         </text>
     </g>;
 };
@@ -38,25 +38,32 @@ const renderCustomizedLabel = props => {
 export function BirdringChart({setChronoContext, setChrono}) {
     return <ResponsiveContainer width="100%" height="100%">
         <PieChart>
+            <Pie data={[{name: '19th Century', value: 1}]} 
+            dataKey="value" innerRadius={0} outerRadius={35}
+            paddingAngle={0}>
+                <Cell key={`cell-century`} style={{fill: '#fff'}} />
+                <LabelList dataKey="name" position="center" style={{fontSize: '11px', stroke: '#666'}} />
+            </Pie>
+
             <Pie data={seasonDict} 
             startAngle={-180}
             dataKey="value" 
-            innerRadius={45} outerRadius={90}>
+            innerRadius={35} outerRadius={90}>
                 {seasonDict.map((season, index) => (
                     <Cell key={`cell-${index}`} fill={season.fill} style={styles.cell} onClick={() => {setChronoContext('season'); setChrono(season.name);} } />
                 ))}
-                <LabelList dataKey="name" position="top" />
+                <LabelList dataKey="name" position='inside' style={{fontFamily: 'Alegreya SC', fontSize: '10px', fontWeight:400, letterSpacing: 3, textTransform: 'uppercase', stroke: 'white'}} />
             </Pie>
 
             <Pie data={monthDict}
             startAngle={-210}
-            innerRadius={90} outerRadius={165}
-            paddingAngle={.25}
+            innerRadius={90} outerRadius={158}
+            paddingAngle={2.4}
             dataKey="value">
                 {monthDict.map((month, index) => (
                     <Cell key={`cell-${index}`} fill={month.fill} style={styles.cell} onClick={() => {setChronoContext('month'); setChrono(month.name);} } />
                 ))}
-                <LabelList dataKey="name" position="top" />
+                <LabelList dataKey="shortName" style={{textTransform: 'capitalize'}} />
             </Pie>
         </PieChart>
     </ResponsiveContainer>;
