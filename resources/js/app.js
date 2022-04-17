@@ -6,8 +6,6 @@ import trix from 'trix'
 
 import $ from 'jquery'
 
-import turbolinks from 'turbolinks'
-
 import '@github/time-elements'
 
 import 'livewire-sortable'
@@ -16,16 +14,17 @@ import Alpine from 'alpinejs'
 
 import Sortable from 'sortablejs';
 
-turbolinks.start()  
+//turbolinks.start()  
 
 const application = new Application.start()
 const context = require.context("./controllers", true, /\.js$/)
 application.load(definitionsFromContext(context))
 
+/*
 document.addEventListener('turbolinks:load', () => {
     window.livewire.rescan()
     bootstrap()
-})
+})*/
 
 const eventLog = document.querySelector('.event-log')
 
