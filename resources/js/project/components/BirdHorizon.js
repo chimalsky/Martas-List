@@ -31,7 +31,7 @@ export function BirdHorizon({chrono}) {
         ),
         ),
     ];
-    const range = [60, 120];
+    const range = [60, 200];
     const colors = ['red', 'blue', 'green', 'yellow']
 
     const getArrivingBirds = () => birds.filter(b => b.migratoryStatus === 'arriving')
@@ -44,9 +44,10 @@ export function BirdHorizon({chrono}) {
     const CustomTooltip = ({ active, payload, label }) => {
         if (active && payload && payload.length) {
             return <div className="bg-white text-xs p-4">
-                <p className="label">{payload[0].payload.name}</p>
-                <p className="intro">{payload[2].name}: {payload[2].value} g</p>
-                <p className="intro">appearance: {payload[0].payload.appearance}</p>
+                <p className="font-semibold">{payload[0].payload.name}</p>
+                <p className="mb-1">Appearance: {payload[0].payload.appearance}</p>
+                <p className="mb-1 capitalize">Migratory Status: {payload[0].payload.migratoryStatus ?? "Remaining"}</p>
+                <p className="mb-1">Bodymass: {payload[2].value} g</p>
             </div>;
         }
         
@@ -54,13 +55,11 @@ export function BirdHorizon({chrono}) {
     };
 
     const customFill = bird => {
-        console.log(bird)
         const dict = {
             'Common': '#544B32',
             'Uncommon': '#847653',
             'Rare': '#D7D1C4'
         };
-        console.log(dict[bird.appearance])
         return dict[bird.appearance] ?? 'pink';
     }
         
@@ -71,10 +70,13 @@ export function BirdHorizon({chrono}) {
                     <XAxis type="number" dataKey="x" hide />
                     <YAxis type="number" dataKey="y" hide />
                     <ZAxis type="number" dataKey="bodymass" unit="g" domain={parseDomain()} range={range} />
-                    <Tooltip content={CustomTooltip} cursor={{ strokeDasharray: '3 3' }} />
-                    <Scatter name="A bool" data={getArrivingBirds()}>
+                    <Tooltip content={CustomTooltip} cursor={{ stroke: '0' }} />
+                    <Scatter name="A bool" data={getArrivingBirds()} animationDuration={500}>
                         {getArrivingBirds().map(arriving => (
-                            <Cell key={`cell-${arriving.id}`} fill={customFill(arriving)} />
+                            <Cell key={`cell-${arriving.id}`} fill={customFill(arriving)} style={{cursor: 'pointer'}}
+                            onClick={(ev) => {
+                                window.open(`/project/birds/${ev.target.id}`, '_blank');
+                            }} />
                         ))}
                     </Scatter>
                 </ScatterChart>
@@ -87,10 +89,13 @@ export function BirdHorizon({chrono}) {
                         <XAxis type="number" dataKey="x" hide />
                         <YAxis type="number" dataKey="y" hide />
                         <ZAxis type="number" dataKey="bodymass" unit="g" domain={parseDomain()} range={range} />
-                        <Tooltip content={CustomTooltip} cursor={{ strokeDasharray: '3 3' }} />
-                        <Scatter name="A bool" data={getRemainingBirds()}>
+                        <Tooltip content={CustomTooltip} cursor={{ stroke: '0' }} />
+                        <Scatter name="A bool" data={getRemainingBirds()} animationDuration={500}>
                             {getRemainingBirds().map(remaining => (
-                                <Cell key={`cell-${remaining.id}`} fill={customFill(remaining)} />
+                                <Cell key={`cell-${remaining.id}`} fill={customFill(remaining)} style={{cursor: 'pointer'}}
+                                onClick={(ev) => {
+                                    window.open(`/project/birds/${ev.target.id}`, '_blank');
+                                }} />
                             ))}
                         </Scatter>
                     </ScatterChart>
@@ -103,10 +108,13 @@ export function BirdHorizon({chrono}) {
                     <XAxis type="number" dataKey="x" hide />
                     <YAxis type="number" dataKey="y" hide />
                     <ZAxis type="number" dataKey="bodymass" unit="g" domain={parseDomain()} range={range} />
-                    <Tooltip content={CustomTooltip} cursor={{ strokeDasharray: '3 3' }} />
-                    <Scatter name="A bool" data={getDepartingBirds()}>
+                    <Tooltip content={CustomTooltip} cursor={{ stroke: '0' }} />
+                    <Scatter name="A bool" data={getDepartingBirds()} animationDuration={500}>
                         {getDepartingBirds().map(departing => (
-                            <Cell key={`cell-${departing.id}`} fill={customFill(departing)} />
+                            <Cell key={`cell-${departing.id}`} fill={customFill(departing)} style={{cursor: 'pointer'}}
+                            onClick={(ev) => {
+                                window.open(`/project/birds/${ev.target.id}`, '_blank');
+                            }} />
                         ))}
                     </Scatter>
                 </ScatterChart>

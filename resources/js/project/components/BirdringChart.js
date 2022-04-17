@@ -1,7 +1,7 @@
 import React from 'react';
 import { PieChart, Pie, Cell, Label, LabelList, ResponsiveContainer } from 'recharts';
 
-const monthDict = [
+export const monthDict = [
     {name: 'january', shortName: 'jan', value: 1, fill: '#B7CBD8'},
     {name: 'february', shortName: 'feb', value: 1, fill: '#B7CBD8'},
     {name: 'march', shortName: 'mar', value: 1, fill: '#D2ACAE'},
@@ -16,24 +16,12 @@ const monthDict = [
     {name: 'december', shortName: 'dec', value: 1, fill: '#B7CBD8'}
 ].reverse();
 
-const seasonDict = [
+export const seasonDict = [
     {name: 'winter', value: 1, fill: '#638193'},
     {name: 'spring', value: 1, fill: '#A56265'},
     {name: 'summer', value: 1, fill: '#6D7F5C'},
     {name: 'fall', value: 1, fill: '#B05E24'},
 ].reverse();
-
-
-const renderCustomizedLabel = props => {
-    console.log(props);
-    const { cx, cy, width, height, value } = props;
-    const radius = 10;
-    return <g>
-        <text x={cx + width / 2} y={cy - radius} fill="#fff" textAnchor="middle" dominantBaseline="middle">
-            {name}
-        </text>
-    </g>;
-};
 
 export function BirdringChart({setChronoContext, setChrono}) {
     return <ResponsiveContainer width="100%" height="100%">

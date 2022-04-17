@@ -2,9 +2,9 @@ const audioEndpointDict = {
     january: '1250766259',
     march: '1250765719',
     april: '1250766481',
+    may: '1250887828',
     july: '1250765872',
 };
-
 
 export function AudioEmbed({chrono}) {
     const apiEndpoint = audioEndpointDict[chrono];
