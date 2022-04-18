@@ -28,6 +28,8 @@
     </head>
     <body data-controller="application @stack('stimulus-controllers')" id="body"
         @stack('stimulus-attributes') class="mt-8 px-2 flex flex-wrap loading" style="max-width: 2400px">
+        
+        </header>
         <main class="flex-1">
             <span x-data="{ open: false }" @keydown.window.escape="open = false" @click.away="open = false" class="relative inline-block text-left">
                 <span class="flex-1 flex justify-between space-x-2">
@@ -47,7 +49,7 @@
                     x-transition:leave-start="transform opacity-100 scale-100" 
                     x-transition:leave-end="transform opacity-0 scale-95" 
                     class="origin-top-left absolute left-0 rounded-md shadow-2xl flex-1 z-50"
-                    style="width: 24rem">
+                    style="width: 16rem; display: none">
                     <div class="rounded-md bg-white shadow-xs">
                     <div class="py-1 text-base">
                         @include('project._nav-items')
@@ -56,6 +58,9 @@
                 </span>
             </span>
             <main class="">
+                <header>
+                    @yield('header-info')
+                </header>
                 <div class="mx-auto">
                     @yield('content')
                 </div>

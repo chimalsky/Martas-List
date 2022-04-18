@@ -32,7 +32,7 @@ const BirdRing = function() {
             <BirdringChart chrono={chrono} setChrono={setChrono} setChronoContext={setChronoContext} />
         </header>
 
-        <div id="chrono-player" className="flex justify-center mb-2">
+        <div id="chrono-player" className="justify-center mb-2 hidden">
             {isPlaying ?
                 <button className="w-8 h-8" onClick={() => setIsPlaying(false)}>
                     <img src="/img/pause.png" />
@@ -47,6 +47,8 @@ const BirdRing = function() {
         <div className="max-w-full flex flex-wrap" style={{height: 500}}>
             <BirdHorizon chrono={chrono} />
         </div>
+
+        <img src="/img/birdline.png" className="w-full" /> 
 
         <AudioEmbed chrono={chrono} />
     </div>;

@@ -5,6 +5,18 @@
 	<script src="{{ mix('js/project/birdring.js') }}" defer="true"></script>
 @endpush
 
+@section('header-info')
+<x-project.digital-object-notes title="Birdring">
+    <x-slot name="content">
+        @php
+            $content = optional(App\ResourceMeta::find(46377))->value ?? 'No content yet';
+        @endphp
+
+        {!! $content !!}
+    </x-slot>
+</x-project.digital-object-notes>
+@endsection
+
 @section('content')
 <main id="birdring-wrapper" 
     class="max-w-5xl mx-auto text-gray-700 text-lg page-content" 
