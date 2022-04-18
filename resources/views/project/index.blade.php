@@ -12,15 +12,15 @@
 </section>
 
 <section>
-    <main class="block mt-24 mb-32 max-w-2xl flex flex-wrap justify-center mx-auto gap-32">
+    <main class="block mt-24 mb-32 max-w-2xl flex flex-wrap justify-center mx-auto gap-24">
         <a href="@route('project.digital-objects.timeline')">
-            <img class="w-32 h-32 object-cover rounded-full" src="{{ asset('img/do-1.png') }}" />
+            <img class="w-40 h-40 object-cover rounded-full" src="{{ asset('img/do-1.png') }}" />
         </a>
         <a href="@route('project.digital-objects.map')">
-            <img class="w-32 h-32 object-cover rounded-full" src="{{ asset('img/do-2.png') }}" />
+            <img class="w-40 h-40 object-cover rounded-full" src="{{ asset('img/do-2.png') }}" />
         </a>
         <a href="@route('project.digital-objects.birdring')">
-            <img class="w-32 h-32 object-cover rounded-full" src="{{ asset('img/do-3.png') }}" />
+            <img class="w-40 h-40 object-cover rounded-full" src="{{ asset('img/do-3.png') }}" />
         </a>
     </main>
 </section>

@@ -3,14 +3,14 @@
         <i>Dickinson’s Birds</i> &#169; {{ carbon()->format('Y') }}
     </p>
 
-    <p>
+    <p class="text-gray-600">
         Web development and hosting by Abe Kim
     </p>
 
     <p class="mt-4">
         Support for this project has been provided by the Office of Research Services 
         and the Center for Textual Studies and Digital Humanities,
-        Loyola University Chicago
+        Loyola University Chicago.
     </p>
 
     <p class="text-gray-600">

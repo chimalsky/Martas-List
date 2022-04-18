@@ -31,20 +31,20 @@
         @stack('scripts')
     </head>
     <body data-controller="application @stack('stimulus-controllers')" id="body"
-        @stack('stimulus-attributes') class="mt-8 px-2 flex flex-wrap loading" style="max-width: 2400px">
+        @stack('stimulus-attributes') class="mt-2 px-2 flex flex-wrap loading" style="max-width: 2400px">
         <aside class="flex-shrink max-w-xs">
             @include('project._nav')
 
             @yield('aside')
 
-            <div class="pt-16 relative" style="max-width: 240px;">
+            <div class="pt-8 relative" style="max-width: 240px;">
                 @yield('sticky-aside')
             </div>
         </aside>
 
         <main class="flex-1">
             <header class="">
-                <nav class="text-4xl text-center flex justify-center" style="font-family: Cormorant SC;">
+                <nav class="text-4xl text-center flex justify-center mt-28" style="font-family: Cormorant SC;">
                     @yield('header-anchor')
                 </nav>
 
@@ -59,7 +59,7 @@
                 </div>
             </main>
 
-            <footer class="pt-4 pb-12 mt-24 border-t-4 border-gray-300">
+            <footer class="pt-4 pb-12 mt-24 border-t border-gray-600">
                 @yield('footer')
                 @include('project._footer')
             </footer>

@@ -51,7 +51,7 @@
     action="@route('project.birds.index-fetch')" method="get">
     <input placeholder="Search bird species" name="query" data-action="input->form#changed"
         @if (request()->input('query')) value="{{ request()->input('query') }}" @endif
-        class="block mb-4 border-4 border-gray-500 text-black rounded-full pl-4 p-2 placeholder-gray-800" />
+        class="w-full block mb-4 border-4 border-gray-500 text-black rounded-full pl-4 p-2 placeholder-gray-800" />
     
     <label class="cursor-pointer p-1 self-center text-xs py-2">
         Sorted by: <span class="font-bold">Bird Name</span>
