@@ -46,7 +46,7 @@ Route::prefix('dearchived')->name('dearchived.')->group(function () {
 
 Route::prefix('project')->name('project.')->group(function () {
     Route::get('/', Project\IndexController::class)->name('index');
-    Route::get('/about', [Project\AboutOverviewController::class, 'index'])->name('about');
+    Route::get('/about', [Project\AboutController::class, 'index'])->name('about');
     Route::get('/about-overview', [Project\AboutController::class, 'overview'])->name('about-overview');
     Route::get('/coordinates', Project\CoordinatesController::class)->name('coordinates');
     Route::get('/primary-sources', Project\PrimarySourcesController::class)->name('primary-sources');
