@@ -42,6 +42,6 @@ class AboutController extends Controller
 
     public function colophon()
     {
-        return view('project.about-colophon')l
+        return view('project.about-colophon');
     }
 }
