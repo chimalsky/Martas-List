@@ -12,7 +12,7 @@
 </section>
 
 <section>
-    <main class="block mt-48 mb-64 max-w-2xl flex flex-wrap justify-center mx-auto gap-32">
+    <main class="block mt-24 mb-32 max-w-2xl flex flex-wrap justify-center mx-auto gap-32">
         <a href="@route('project.digital-objects.timeline')">
             <img class="w-32 h-32 object-cover rounded-full" src="{{ asset('img/do-1.png') }}" />
         </a>
