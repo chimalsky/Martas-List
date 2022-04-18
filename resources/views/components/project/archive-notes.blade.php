@@ -4,7 +4,7 @@
         + Archive Notes
     </button>
 
-    <aside x-show="notesOpen" 
+    <aside x-show="notesOpen" style="display: none"
         x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700"
         x-transition:enter-start="translate-x-full"
         x-transition:enter-end="translate-x-0"
