@@ -24,4 +24,9 @@ class AboutController extends Controller
     {
         return view('project.about-navigation');
     }
+
+    public function documentation()
+    {
+        return view('project.about-documentation');
+    }
 }

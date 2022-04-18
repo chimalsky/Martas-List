@@ -49,6 +49,8 @@ Route::prefix('project')->name('project.')->group(function () {
     Route::get('/about', [Project\AboutController::class, 'index'])->name('about');
     Route::get('/about-overview', [Project\AboutController::class, 'overview'])->name('about-overview');
     Route::get('/about-navigation', [Project\AboutController::class, 'navigation'])->name('about-navigation');
+    Route::get('/about-documentation', [Project\AboutController::class, 'documentation'])->name('about-documentation');
+
     Route::get('/coordinates', Project\CoordinatesController::class)->name('coordinates');
     Route::get('/primary-sources', Project\PrimarySourcesController::class)->name('primary-sources');
     Route::get('/poems', [Project\PoemsController::class, 'index'])->name('poems.index');
