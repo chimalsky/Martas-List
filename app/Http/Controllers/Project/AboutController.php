@@ -29,4 +29,19 @@ class AboutController extends Controller
     {
         return view('project.about-documentation');
     }
+
+    public function sources()
+    {
+        return view('project.about-sources');
+    }
+
+    public function visitors()
+    {
+        return view('project.about-visitors');
+    }
+
+    public function colophon()
+    {
+        return view('project.about-colophon')l
+    }
 }
