@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 use Livewire\WithPagination;
 
+// Remove: This seems not longer in use.
+
 class PoemsIndex extends Component
 {
     use WithPagination;

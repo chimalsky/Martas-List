@@ -22,7 +22,7 @@ class Transcription extends ResourceMeta
     public function toSearchableArray()
     {
         return[
-            'text' => html_entity_decode(strip_tags($this->value)),
+            'value' => html_entity_decode(strip_tags($this->value)),
         ];
     }
 }

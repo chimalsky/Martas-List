@@ -161,14 +161,16 @@ class Poem extends Resource
 
     public function getFirstlineStrippedAttribute()
     {
-        return strtolower(
-            preg_replace('/[^A-Za-z0-9 ]/', '', $this->firstLine->value)
+        return preg_replace('/\s\s+/', ' ',
+            strtolower(
+                preg_replace('/[^A-Za-z0-9 ]/', '', $this->firstLine->value)
+            )
         );
     }
 
     public function scopeByTranscriptionText($query, $transcriptionQuery)
     {
-        $transcriptions = Transcription::search($transcriptionQuery)->get();
+        $transcriptions = Transcription::where('value', 'regexp', '\\b' . $transcriptionQuery . '\\b')->get();
 
         return $query->whereIn('id', $transcriptions->pluck('resource_id'));
     }

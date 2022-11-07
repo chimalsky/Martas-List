@@ -66,7 +66,7 @@
         </p>
 
         <p>
-            {{ $poem->medium->value }}, {{ $poem->manuscriptState->value }}.
+            {{ $poem->medium ? $poem->medium->value : $medium }}, {{ $poem->manuscriptState->value }}.
         </p>
 
         <p>

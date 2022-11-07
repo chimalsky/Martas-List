@@ -28,7 +28,9 @@ class PoemsController extends Controller
 
         $activeBirds = $birds->whereIn('id', $filterableBirds->keys());
 
-        return view('project.poems.index', compact('activeFilterables', 'birds', 'activeBirds'));
+        $filterables = ResourceType::find(Poem::$resource_type_id)->attributes->where('visibility', 1);
+
+        return view('project.poems.index', compact('activeFilterables', 'filterables', 'birds', 'activeBirds'));
     }
 
     public function indexFetch(Request $request)
@@ -89,7 +91,9 @@ class PoemsController extends Controller
 
         $results = $poems;
 
-        return view('project.poems.results', compact('results', 'query', 'activeFilterables', 'birds', 'activeBirds'));
+        $filterables = ResourceType::find(Poem::$resource_type_id)->attributes->where('visibility', 1);
+
+        return view('project.poems.results', compact('results', 'query', 'filterables', 'activeFilterables', 'birds', 'activeBirds'));
     }
 
     public function show(Request $request, $poemId)
