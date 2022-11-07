@@ -174,7 +174,7 @@
             </div>
         @else 
             <h1 class="text-2xl text-center w-full">
-                No Poems match your curation
+                No Birds match your curation
             </h1>
         @endif
     </main>

@@ -82,7 +82,7 @@
 
     @if ($results->count())
         <div class="block mx-auto max-w-md text-xl text-center">
-            {{ $results->flatten()->count() }} {{ Str::of('Poem')->plural($results->flatten()->count()) }}
+            {{ $results->flatten()->count() }} Poem {{ Str::of('Manuscript')->plural($results->flatten()->count()) }} 
         </div>
     @endif
 </header>
