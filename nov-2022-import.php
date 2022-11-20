@@ -26,7 +26,7 @@ while ($csvLine = fgetcsv($csv, 1000, ",")) {
         $headers = $csvLine;
         $envAttributeCategory->update(['options' => array_slice($headers, 2, 8)]);
     } else {
-        $options = array_slice($csvLine, 2, 8);
+        $options = array_slice($csvLine, 2, 10);
         $uniqueIdValue = $csvLine[$indices['msId'][0]];
         $poem = Poem::withDynamicValue($indices['msId'][1], 'msId')
             ->whereHas('msId', function($query) use ($uniqueIdValue) {
