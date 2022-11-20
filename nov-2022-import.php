@@ -37,7 +37,7 @@ while ($csvLine = fgetcsv($csv, 1000, ",")) {
 
         foreach ($options as $key => $value) {
             if ($value == 'YES') {
-                $categoriesValue->push($headers[$key]);
+                $categoriesValue->push($headers[$key+2]);
             }
         }
 
