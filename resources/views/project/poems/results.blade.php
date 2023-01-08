@@ -90,7 +90,7 @@
 <section id="results-list px-6">
     <main class="flex flex-wrap w-full pt-12">
         @if ($results->count())
-            <x-project.poem.list :poems="$results" showYear />
+            <x-project.poem.list :poems="$results" showYear :attributeOrder="$attributeOrder" />
         @else 
             <h1 class="text-2xl text-center w-full">
                 No Poems match your curation

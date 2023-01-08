@@ -91,9 +91,11 @@ class PoemsController extends Controller
 
         $results = $poems;
 
-        $filterables = ResourceType::find(Poem::$resource_type_id)->attributes->where('visibility', 1);
+        $resourceType = ResourceType::find(Poem::$resource_type_id);
+        $filterables = $resourceType->attributes->where('visibility', 1);
+        $attributeOrder = $filterables->pluck('id')->toArray();
 
-        return view('project.poems.results', compact('results', 'query', 'filterables', 'activeFilterables', 'birds', 'activeBirds'));
+        return view('project.poems.results', compact('results', 'query', 'filterables', 'activeFilterables', 'birds', 'activeBirds', 'attributeOrder'));
     }
 
     public function show(Request $request, $poemId)
