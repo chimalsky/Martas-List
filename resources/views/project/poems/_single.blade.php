@@ -16,7 +16,7 @@
             @foreach ($poem->meta->where('resource_attribute_id', '!=', 131)
                 ->groupBy('resource_attribute_id') as $metaGroup)
                 @foreach ($metaGroup->sortBy(function ($group) use ($attributeOrder) {
-                    return array_search($group->id, $attributeOrder);
+                    return array_search($group->resource_attribute_id, $attributeOrder);
                 }) as $meta) 
                     @if ($meta->resource_attribute_id == 113)
                         @if ($meta->value !== 'Retained')
