@@ -18,13 +18,7 @@
 <a class="font-bold" style="color: #B45F06;">
     Affiliated Manuscripts
 </a>
-<span>
-    |
-</span>
-<a href="@route('project.poems.commentary', $poem)" class="text-gray-500 italic">
-    Commentary
-</a>
-    
+
 <x-project.poem.state />
 
 

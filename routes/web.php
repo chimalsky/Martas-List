@@ -48,6 +48,7 @@ Route::prefix('project')->name('project.')->group(function () {
     Route::get('/', Project\IndexController::class)->name('index');
     Route::get('/about', [Project\AboutController::class, 'index'])->name('about');
     Route::get('/about-overview', [Project\AboutController::class, 'overview'])->name('about-overview');
+    Route::get('/about-dedication', [Project\AboutController::class, 'dedication'])->name('about-dedication');
     Route::get('/about-navigation', [Project\AboutController::class, 'navigation'])->name('about-navigation');
     Route::get('/about-documentation', [Project\AboutController::class, 'documentation'])->name('about-documentation');
     Route::get('/about-sources', [Project\AboutController::class, 'sources'])->name('about-sources');

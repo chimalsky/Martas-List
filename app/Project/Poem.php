@@ -153,6 +153,24 @@ class Poem extends Resource
             ->where('resource_attribute_id', 116);
     }
 
+    public function formOfSentPoem()
+    {
+        return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 589);
+    }
+
+    public function missingLeaves()
+    {
+        return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 630);
+    }
+
+    public function mutilated()
+    {
+        return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 629);
+    }
+
     public function placeholder()
     {
         return $this->hasOne(ResourceMeta::class, 'resource_id')
