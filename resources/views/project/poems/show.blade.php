@@ -254,10 +254,10 @@
             </div>
         </div>
     </div>
-</section
+</section>
 
 @if ($poem->wasSent() && $recipients->count())
-    <section class="text-center max-w-2xl mx-auto mt-10">
+    <section class="text-center max-w-2xl mx-auto mt-10 justify-center">
         <header class="text-2xl" style="color: #CC9A00;">
             Recipient
         </header>
