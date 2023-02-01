@@ -191,8 +191,14 @@
         </p>
 
         <p>
-            Original MS lost or destroyed | 
-            {{ $poem->meta()->firstWhere('resource_attribute_id', 150)->value }}
+            @php
+                $transcript19th = $poem->meta()->firstWhere('resource_attribute_id', 150)
+            @endphp
+
+            Original MS lost or destroyed
+            @if ($transcript19th) 
+                | {{ $transcript19th->value }}
+            @endif
         </p>
 
         @if ($poem->enclosures)
