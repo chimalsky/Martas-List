@@ -1,7 +1,26 @@
 <div class="border-b border-gray-200" x-data="{
-    transcriptionOn: false,
+    transcriptionOn: new URLSearchParams(location.search).get('transcription'),
     transcriptionX: new URLSearchParams(location.search).get('x'),
-    transcriptionY: new URLSearchParams(location.search).get('y')
+    transcriptionY: new URLSearchParams(location.search).get('y'),
+    activateTranscription: function() {
+        const currentUrl = new URL(window.location.href)
+        const searchParams = new URLSearchParams(currentUrl.search)
+        searchParams.set('transcription', true)
+        currentUrl.search = searchParams.toString()
+        window.history.pushState({}, '', currentUrl.toString())
+        this.transcriptionOn = true
+    },
+    deactivateTranscription: function() {
+        const currentUrl = new URL(window.location.href)
+        const searchParams = new URLSearchParams(currentUrl.search)
+        searchParams.delete('transcription')
+        currentUrl.search = searchParams.toString()
+        window.history.pushState({}, '', currentUrl.toString())
+        this.transcriptionOn = false
+    },
+    toggleTranscription: function() {
+        this.transcriptionOn ? this.deactivateTranscription() : this.activateTranscription()
+    }
 }">
     <nav class="-mb-px space-x-4 flex justify-center">
         @if ($medias->count() > 1)
@@ -24,14 +43,19 @@
         @if ($medias->count())
             <script>
                 setTimeout(function() {
-                    document.querySelector('#first-media-button').click();
-                }, 600);
+                    // Hacky way of activating the first manuscript as default
+                    document.querySelector('#first-media-button').click()
+                }, 600)
+                setTimeout(function() {
+                    // Hacky way of hiding fouc when transcription is on
+                    document.querySelector('#js-transcription-display').classList.remove('invisible')
+                }, 1000)
             </script>
         @endif
 
         <div class="flex items-center">
             <span class="italic">Transcription</span>
-            <button @click="transcriptionOn = !transcriptionOn" 
+            <button @click="toggleTranscription" 
                 type="button"
                 :class="transcriptionOn ? 'bg-gray-600' : 'bg-gray-200'" 
                 class="ml-2 relative inline-flex h-5 w-10 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" 
@@ -83,7 +107,7 @@
             @endif
 
             <div x-show="transcriptionOn"
-                id="js-transcription-display" class="absolute min-w-lg w-96 p-12 mx-auto"
+                id="js-transcription-display" class="absolute min-w-lg w-96 p-12 mx-auto invisible"
                 style="font-family: Alegreya; font-weight: 500; background: #f8f3e8; opacity: .72; top:0;
                     clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 33%, 72% 0);">
                 <img id="transcription-icon" src="{{ asset('img/bird-icon.png') }}" class="h-10 w-10 mb-4 mx-auto mt-4 hover:cursor-move" />
