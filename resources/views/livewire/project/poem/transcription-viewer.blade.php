@@ -94,7 +94,7 @@
             @endif
             @if ($medias->count())
                 <div wire:loading.remove class="max-h-screen">
-                    <img class="max-h-full" src="{{ 'https://dickinsonsbirds.org/storage/915/A-816.jpg' /*$media->getUrl()*/ }}" />
+                    <img class="max-h-full" src="{{ $media->getUrl() }}" />
                 </div>
 
                 <div wire:loading.class.remove="hidden" class="justify-center flex hidden">
