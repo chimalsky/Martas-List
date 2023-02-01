@@ -211,7 +211,7 @@
 </section>
 
 <section class="xl:flex xl:justify-center">
-    <div class="xl:w-4/5 mt-12 xl:flex">
+    <div class="xl:w-4/5 2xl:w-3/5 mt-12 xl:flex">
         <div class="flex-1 max-w-md">
             <livewire:project.poem.transcription-viewer :poem="$poem" />
         </div>
