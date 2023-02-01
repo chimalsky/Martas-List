@@ -101,7 +101,7 @@
                 </span>
             @endif
 
-            @if ($poem->circulation->value == 'unknown')
+            @if ($poem->circulation && $poem->circulation->value == 'unknown')
                 <span class="italic">Circulation status unknown.</span>
             @else
                 @if ($poem->formOfSentPoem)
@@ -231,10 +231,17 @@
                     </div>
                 @endif
                 @if ($birds->count())
-                <main class="flex flex-wrap justify-center gap-4 lg:gap-12">
+                <main class="flex flex-wrap justify-center gap-4 lg:gap-8">
                     @foreach ($birds as $bird)
-                        <article class="bird pt-2 pb-6 px-4 w-full lg:w-1/2 xl:w-1/3">
-                            @include('project.birds._single', [$bird, 'hideMeta' => true])
+                        <article class="bird w-full lg:w-1/3">
+                            @include('project.birds._single', 
+                                [
+                                    $bird, 
+                                    'hideMeta' => true,
+                                    'width' => 200,
+                                    'height' => 170
+                                ]
+                            )
                         </article>
                     @endforeach
                 </main>

@@ -4,7 +4,12 @@
         {{ $bird->name }}
     </header>
 
-    <x-project.bird.xc :bird="$bird" />
+    @php
+        $width = $width ?? 340;
+        $height = $height ?? 220;
+    @endphp
+
+    <x-project.bird.xc :bird="$bird" :width="$width" :height="$height" />
 
     @if ($century = request()->query('century'))
 

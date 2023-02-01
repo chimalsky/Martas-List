@@ -1,4 +1,4 @@
-@props(['bird'])
+@props(['bird', 'width', 'height'])
 
 @if ($bird->xc_citation)
     @php 
@@ -10,6 +10,6 @@
     @endphp
 
     <div {{ $attributes->merge(['class' => 'flex justify-center']) }}>
-        <iframe src='{{ $url }}/embed' scrolling='no' frameborder='0' width='340' height='220' loading="lazy"></iframe>
+        <iframe src='{{ $url }}/embed' scrolling='no' frameborder='0' width='{{ $width }}' height='{{ $height }}' loading="lazy"></iframe>
     </div>
 @endif 

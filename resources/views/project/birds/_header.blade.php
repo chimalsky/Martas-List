@@ -45,7 +45,7 @@
             @endif 
         </div>
 
-        <x-project.bird.xc :bird="$bird" class="col-span-1" />
+        <x-project.bird.xc :bird="$bird" class="col-span-1" width="340" height="220" />
     </div>
 </header>
 @endrouteIsnt
