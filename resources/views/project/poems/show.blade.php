@@ -238,8 +238,8 @@
                                 [
                                     $bird, 
                                     'hideMeta' => true,
-                                    'width' => 200,
-                                    'height' => 170
+                                    'width' => $birds->count() == 1 ? 340 : 200,
+                                    'height' => $birds->count() == 1 ? 220 : 170
                                 ]
                             )
                         </article>
