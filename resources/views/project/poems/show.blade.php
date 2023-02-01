@@ -210,50 +210,51 @@
     @endif
 </section>
 
-
-<section class="mt-12 xl:flex">
-    <div class="flex-1 max-w-md">
-        <livewire:project.poem.transcription-viewer :poem="$poem" />
-    </div>
-    <div id="birds" class="mt-10 mb-10 text-center flex-1 flex items-center">
-        <div class="mx-auto">
-            @if ($poem->environmentalPhenomenaSpecific()->count())
-                <div class="text-3xl italic mb-12 max-w-md mx-auto">
-                    @foreach ($poem->environmentalPhenomenaSpecific as $phenomenon)
-                        <a href="@route('project.poems.index', ['filterable[701]' => $phenomenon->value])" target="_blank"
-                            class="hover:underline">
-                            {{ ucfirst($phenomenon->value) }}
-                        </a>
-                        @if (!$loop->last)
-                            +
-                        @endif
+<section class="xl:flex xl:justify-center">
+    <div class="xl:w-4/5 mt-12 xl:flex">
+        <div class="flex-1 max-w-md">
+            <livewire:project.poem.transcription-viewer :poem="$poem" />
+        </div>
+        <div id="birds" class="mt-10 mb-10 text-center flex-1 flex items-center">
+            <div class="mx-auto">
+                @if ($poem->environmentalPhenomenaSpecific()->count())
+                    <div class="text-3xl italic mb-12 max-w-md mx-auto">
+                        @foreach ($poem->environmentalPhenomenaSpecific as $phenomenon)
+                            <a href="@route('project.poems.index', ['filterable[701]' => $phenomenon->value])" target="_blank"
+                                class="hover:underline">
+                                {{ ucfirst($phenomenon->value) }}
+                            </a>
+                            @if (!$loop->last)
+                                +
+                            @endif
+                        @endforeach
+                    </div>
+                @endif
+                @if ($birds->count())
+                <main class="flex flex-wrap justify-center gap-4 lg:gap-12">
+                    @foreach ($birds as $bird)
+                        <article class="bird pt-2 pb-6 px-4 w-full lg:w-1/2 xl:w-1/3">
+                            @include('project.birds._single', [$bird, 'hideMeta' => true])
+                        </article>
                     @endforeach
-                </div>
-            @endif
-            @if ($birds->count())
-            <main class="flex flex-wrap justify-center gap-4 lg:gap-12">
-                @foreach ($birds as $bird)
-                    <article class="bird pt-2 pb-6 px-4 w-full lg:w-1/2 xl:w-1/3">
-                        @include('project.birds._single', [$bird, 'hideMeta' => true])
-                    </article>
-                @endforeach
-            </main>
-            @else 
-                <h1 class="text-xl text-orange-700">
-                    <span class="italic">
-                        {{ $firstline }}
-                    </span> mentions Unnamed Birds.
-                </h1>
+                </main>
+                @else 
+                    <h1 class="text-xl text-orange-700">
+                        <span class="italic">
+                            {{ $firstline }}
+                        </span> mentions Unnamed Birds.
+                    </h1>
 
-                <div class="my-4 text-2xl">
-                    View the <a class="underline" href="@route('project.birds.index')">
-                        Bird Archive
-                    </a>
-                </div>
-            @endif
+                    <div class="my-4 text-2xl">
+                        View the <a class="underline" href="@route('project.birds.index')">
+                            Bird Archive
+                        </a>
+                    </div>
+                @endif
+            </div>
         </div>
     </div>
-</section>
+</section
 
 @if ($poem->wasSent() && $recipients->count())
     <section class="text-center max-w-2xl mx-auto mt-10">

@@ -12,7 +12,7 @@
                             id="first-media-button"
                         @endif
                         wire:click="setMedia({{ $medium->id }})"
-                        class="w-4 hover:bg-indigo-100 border-b-2 border-transparent pb-2
+                        class="w-4 hover:bg-indigo-100 border-b-2 border-transparent pb-1
                             @if ($media->id == $medium->id) border-indigo-500 @endif
                             hover:shadow-lg">
                             <img class="object-contain" src="{{ $medium->getUrl('thumb') }}" />
