@@ -19,11 +19,11 @@ $(function () {
         const transcriptionX = new URLSearchParams(location.search).get('x')
         const transcriptionY = new URLSearchParams(location.search).get('y')
 
-        console.log(transcriptionX, transcriptionY)
         if (transcriptionX && transcriptionY) {
             transcription.style.left = transcriptionX
             transcription.style.top = transcriptionY
         }
+        document.querySelector('#js-transcription-display').classList.remove('invisible')
     })
 
     const transcription = $( "#js-transcription-display" )
@@ -31,17 +31,16 @@ $(function () {
     transcription.draggable({
         handle: "#transcription-icon",
         stop: function(event) {
-            const currentUrl = new URL(window.location.href);
-            const searchParams = new URLSearchParams(currentUrl.search);
+            const currentUrl = new URL(window.location.href)
+            const searchParams = new URLSearchParams(currentUrl.search)
 
             const parentEl = document.querySelector('#js-transcription-display')
-            searchParams.set('x', parentEl.style.left);
-            searchParams.set('y', parentEl.style.top);
+            searchParams.set('x', parentEl.style.left)
+            searchParams.set('y', parentEl.style.top)
 
-            currentUrl.search = searchParams.toString();
+            currentUrl.search = searchParams.toString()
 
-            window.history.pushState({}, '', currentUrl.toString());
+            window.history.pushState({}, '', currentUrl.toString())
         }
-    });
+    })
 })
-
