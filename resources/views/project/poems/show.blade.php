@@ -49,15 +49,15 @@
 
 <section class="text-center max-w-4xl mx-auto mt-10">
     @php
-            $time = $poem->year->value;
+        $time = $poem->year->value;
 
-            if ($poem->month && $poem->month->value != 'Unknown') {
-                $time .= ', ' . $poem->month->value;
-            } else {
-                if ($poem->season && $poem->season->value != 'Unknown') {
-                    $time .= ', ' . $poem->season->value;
-                }
+        if ($poem->month && $poem->month->value != 'Unknown') {
+            $time .= ', ' . $poem->month->value;
+        } else {
+            if ($poem->season && $poem->season->value != 'Unknown') {
+                $time .= ', ' . $poem->season->value;
             }
+        }
     @endphp 
 
     @if ($poem->manuscriptSetting)
@@ -140,6 +140,23 @@
         <p class="">
             {{ $time }}
         </p>
+        
+        <p>
+            {{ $poem->medium ? $poem->medium->value : $medium }} | 
+            {{ $poem->manuscriptState->value }}
+            @if ($poem->mutilated)
+                (mutilated)
+            @endif
+            @if ($poem->missingLeaves)
+                (missing leaves)
+            @endif
+            |
+            @if ($poem->isBound())
+                Bound 
+            @else 
+                Unbound 
+            @endif 
+        </p>
 
         <p>
             @if ($poem->circulation && str_contains($poem->circulation->value, 'unknown'))
@@ -173,6 +190,11 @@
             @endif
         </p>
 
+        <p>
+            Original MS lost or destroyed | 
+            {{ $poem->meta()->firstWhere('resource_attribute_id', 150)->value }}
+        </p>
+
         @if ($poem->enclosures)
             <p>
                 <span class="font-bold">Enclosures:</span>
@@ -183,36 +205,98 @@
 </section>
 
 
-<section class="mt-12 max-w-4xl mx-auto">
-    <livewire:project.poem.transcription-viewer :poem="$poem" />
-</section>
+<section class="mt-12 xl:flex">
+    <div class="flex-1 max-w-md">
+        <livewire:project.poem.transcription-viewer :poem="$poem" />
+    </div>
+    <div id="birds" class="mt-10 mb-10 text-center flex-1 flex items-center">
+        <div class="mx-auto">
+            @if ($poem->environmentalPhenomenaSpecific()->count())
+                <div class="text-3xl italic mb-12 max-w-md mx-auto">
+                    @foreach ($poem->environmentalPhenomenaSpecific as $phenomenon)
+                        <a href="@route('project.poems.index', ['filterable[701]' => $phenomenon->value])" target="_blank"
+                            class="hover:underline">
+                            {{ ucfirst($phenomenon->value) }}
+                        </a>
+                        @if (!$loop->last)
+                            +
+                        @endif
+                    @endforeach
+                </div>
+            @endif
+            @if ($birds->count())
+            <main class="flex flex-wrap justify-center gap-4 lg:gap-12">
+                @foreach ($birds as $bird)
+                    <article class="bird pt-2 pb-6 px-4 w-full lg:w-1/2 xl:w-1/3">
+                        @include('project.birds._single', [$bird, 'hideMeta' => true])
+                    </article>
+                @endforeach
+            </main>
+            @else 
+                <h1 class="text-xl text-orange-700">
+                    <span class="italic">
+                        {{ $firstline }}
+                    </span> mentions Unnamed Birds.
+                </h1>
 
-<section id="birds" class="mt-10 mb-10 text-center">
-    @if ($birds->count())
-    <h1 class="text-2xl text-orange-700 mb-6">
-        Birds circulating in this MS —
-    </h1>
-    
-    <main class="flex flex-wrap justify-center">
-        @foreach ($birds as $bird)
-            <article class="bird pt-2 pb-6 px-4 w-full lg:w-1/2 xl:w-1/3">
-                @include('project.birds._single', [$bird, 'hideMeta' => true])
-            </article>
-        @endforeach
-    </main>
-    @else 
-        <h1 class="text-xl text-orange-700">
-            <span class="italic">
-                {{ $firstline }}
-            </span> mentions Unnamed Birds.
-        </h1>
-
-        <div class="my-4 text-2xl">
-            View the <a class="underline" href="@route('project.birds.index')">
-                Bird Archive
-            </a>
+                <div class="my-4 text-2xl">
+                    View the <a class="underline" href="@route('project.birds.index')">
+                        Bird Archive
+                    </a>
+                </div>
+            @endif
         </div>
-    @endif
+    </div>
 </section>
+
+@if ($poem->wasSent() && $recipients->count())
+    <section class="text-center max-w-2xl mx-auto mt-10">
+        <header class="text-2xl" style="color: #CC9A00;">
+            Recipient
+        </header>
+        @foreach ($recipients as $recipient)
+            <p class="font-bold text-lg">{{ $recipient->name }}</p>
+            
+            <p class="italic">
+                @php
+                    $relationship = $recipient->meta()->where('resource_attribute_id', 286)->first();
+                    $datesOfCorrespondence = $recipient->meta()->where('resource_attribute_id', 287)->first();
+                    $connections = $recipient->connections->pluck('resources')->flatten();
+                    $addresses = $connections->where('resource_type_id', 10);
+                    $address = $addresses->first();
+                    if ($address) {
+                        $addressMeta = $address->meta()->firstWhere('resource_attribute_id', 254);
+                        $transit = $poem->connections->pluck('resources')->flatten()->firstWhere('resource_type_id', 9);
+                        $distanceTravelled = $transit->meta()->firstWhere('resource_attribute_id', 592);
+                    }
+                @endphp
+                @if ($relationship)
+                    {{ $relationship->value }}
+                @endif
+            </p>
+
+            @if ($datesOfCorrespondence)
+                <p>
+                    <span class="font-bold">Inclusive dates of correspondence:</span>
+                    {{ $datesOfCorrespondence->value }}
+                </p>
+            @endif
+
+            @if ($address)
+                <p>
+                    <span class="font-bold">Address:</span>
+                    {{ $addressMeta->value }}
+                </p>
+
+                @if ($distanceTravelled)
+                    <p>
+                        <span class="font-bold">Distance Travelled:</span>
+                        {{ $distanceTravelled->value }}
+                    </p>
+                @endif
+            @endif
+        @endforeach
+    </section>
+@endif
 
 @endsection

@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Project;
 use App\Http\Controllers\Controller;
 use App\Project\Bird;
 use App\Project\Poem;
-use App\ResourceAttribute;
+use App\Resource;
 use App\ResourceCategory;
 use App\ResourceType;
+use App\ResourceAttribute;
 use Illuminate\Http\Request;
 
 class PoemsController extends Controller
@@ -120,12 +121,34 @@ class PoemsController extends Controller
         $setting = $poem->meta->firstWhere('resource_attribute_id', 103)->value ?? null;
         $circulation = $poem->meta->firstWhere('resource_attribute_id', 113)->value ?? null;
 
+        $circulationHistory = $poem->circulationHistory;
+        
+        $recipients = $circulationHistory->map(function($item) {
+            $exploded = explode(' ', $item->value);
+            $firstName = reset($exploded);
+            $lastName = end($exploded);
+            // People Resource attribute = 11
+            // not that many so we can fetch them all for each request
+            if ($lastName == 'Bowles') {
+                $person = Resource::where('resource_type_id', 11)
+                    ->where('name', 'like', '%'.$firstName.'%')
+                    ->where('name', 'like', '%'.$lastName.'%');
+            } else {
+                $person = Resource::where('resource_type_id', 11)
+                    ->where('name', 'like', '%'.$lastName.'%');
+            }
+            return $person->first();
+        })->reject(function($value) {
+            return is_null($value);
+        });
+        
         return view('project.poems.show',
             compact(
                 'poem', 'birds', 'variants',
                 'firstline', 'year', 'season',
                 'state', 'medium', 'paper',
-                'setting', 'circulation'
+                'setting', 'circulation',
+                'recipients'
             )
         );
     }

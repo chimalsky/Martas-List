@@ -1,20 +1,25 @@
-<div class="border-b border-gray-200">
-    <nav class="-mb-px space-x-4 mx-auto max-w-xs flex justify-center">
-        @foreach ($medias as $index => $medium)
-            @if (Str::contains($medium->mime_type, 'image'))
-                <button 
-                    @if ($loop->index === 0)
-                        id="first-media-button"
-                    @endif
-                    wire:click="setMedia({{ $medium->id }})"
-                    class="w-12 hover:bg-indigo-100 border-b-2 border-transparent pb-2
-                        @if ($media->id == $medium->id) border-indigo-500 @endif
-                        hover:shadow-lg">
-                        <img class="object-contain" src="{{ $medium->getUrl('thumb') }}" />
-                        {{ $index + 1}}
-                </button>
-            @endif
-        @endforeach
+<div class="border-b border-gray-200" x-data="{
+    transcriptionOn: false,
+    transcriptionX: new URLSearchParams(location.search).get('x'),
+    transcriptionY: new URLSearchParams(location.search).get('y')
+}">
+    <nav class="-mb-px space-x-4 flex justify-center">
+        @if ($medias->count() > 1)
+            @foreach ($medias as $index => $medium)
+                @if (Str::contains($medium->mime_type, 'image'))
+                    <button 
+                        @if ($loop->index === 0)
+                            id="first-media-button"
+                        @endif
+                        wire:click="setMedia({{ $medium->id }})"
+                        class="w-4 hover:bg-indigo-100 border-b-2 border-transparent pb-2
+                            @if ($media->id == $medium->id) border-indigo-500 @endif
+                            hover:shadow-lg">
+                            <img class="object-contain" src="{{ $medium->getUrl('thumb') }}" />
+                    </button>
+                @endif
+            @endforeach
+        @endif
 
         @if ($medias->count())
             <script>
@@ -23,18 +28,29 @@
                 }, 600);
             </script>
         @endif
+
+        <div class="flex items-center">
+            <span class="italic">Transcription</span>
+            <button @click="transcriptionOn = !transcriptionOn" 
+                type="button"
+                :class="transcriptionOn ? 'bg-gray-600' : 'bg-gray-200'" 
+                class="ml-2 relative inline-flex h-5 w-10 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" 
+                role="switch" aria-checked="false">
+                <span class="sr-only">Use setting</span>
+                <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
+                <span aria-hidden="true" :class="transcriptionOn ? 'translate-x-5' : 'translate-x-0'"
+                    class="pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+            </button>
+        </div>
     </nav>
 
-    <main class="mt-4 flex flex-wrap">
-        <div id="js-transcription-display" class="w-full md:w-1/3 lg:w-1/2 text-2xl md:pl-10 italic" style="font-family: Alegreya; font-weight: 500;">
-            {!! $this->activePage !!}
-        </div>
 
-        <div class="w-full md:w-2/3 lg:w-1/2 md:pl-4">
+    <main class="mt-1 flex flex-wrap">
+        <div class="w-full relative">
             @if($placeholderMeta = $poem->meta()->firstWhere('resource_attribute_id', 149))
                 <section class="mb-4 italic">
                     @if ($placeholderMeta->value == 'placeholder for LOST or DESTROYED MS')
-                        <div class="flex justify-center">
+                        <div class="flex justify-center mt-12">
                             <img class="w-20 h-20" src="/img/lost-or-destroyed.png" />
                         </div>
                         
@@ -43,7 +59,7 @@
                         </p>
                     @elseif ($placeholderMeta->value == 'placeholder for MS we need to request digital image for')
                         <div class="flex justify-center">
-                            <img class="w-16 h-16 align-center" src="/img/coming-soon.jpg" />
+                            <img class="w-16 h-16 align-center mt-12" src="/img/coming-soon.jpg" />
                         </div>
                         
                         <p class="text-center">
@@ -65,6 +81,14 @@
                     </div>
                 </div>
             @endif
+
+            <div x-show="transcriptionOn"
+                id="js-transcription-display" class="absolute min-w-lg w-96 p-12 mx-auto"
+                style="font-family: Alegreya; font-weight: 500; background: #f8f3e8; opacity: .72; top:0;
+                    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 33%, 72% 0);">
+                <img id="transcription-icon" src="{{ asset('img/bird-icon.png') }}" class="h-10 w-10 mb-4 mx-auto mt-4 hover:cursor-move" />
+                <div>{!! $this->activePage !!}</div>
+            </div>
         </div>
     </main>
 </div>

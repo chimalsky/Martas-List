@@ -36,6 +36,12 @@ class Poem extends Resource
         return $this->hasOne(Transcription::class, 'resource_id');
     }
 
+    public function environmentalPhenomenaSpecific()
+    {
+        return $this->hasMany(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 701);
+    }
+
     public function franklinId()
     {
         return $this->hasOne(ResourceMeta::class, 'resource_id')
@@ -138,6 +144,12 @@ class Poem extends Resource
     public function circulation()
     {
         return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 113);
+    }
+
+    public function circulationHistory()
+    {
+        return $this->hasMany(ResourceMeta::class, 'resource_id')
             ->where('resource_attribute_id', 113);
     }
 
