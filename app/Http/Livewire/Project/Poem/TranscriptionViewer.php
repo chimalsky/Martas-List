@@ -3,9 +3,8 @@
 namespace App\Http\Livewire\Project\Poem;
 
 use App\Resource;
-use Illuminate\Support\Str;
 use Livewire\Component;
-use Spatie\MediaLibrary\Models\Media;
+use GuzzleHttp\Client;
 
 class TranscriptionViewer extends Component
 {
@@ -26,10 +25,17 @@ class TranscriptionViewer extends Component
         $this->poem = $poem;
         $this->medias = $poem->facsimiles;
 
-        $this->transcription = optional($poem->transcription)->value ?? 'Transcription coming soon';
+        $franklinId = $poem->franklinId->value;
+        $url = "https://birdpress.adagia.org/wp-json/wp/v2/transcriptions?slug=$franklinId";
+        $client = new Client();
+        $res = $client->request('GET', $url);
+        $content = strval(
+            json_decode($res->getBody()->getContents())[0]->content->rendered
+        );
 
-        //$transcription = str_replace('{/pb}', '{/pb} </div>', $transcription);
-        $exploded = collect(explode('{/pb}', $this->transcription));
+        $this->transcription = $content ?? 'Transcription coming soon';
+
+        $exploded = collect(explode('¦', $this->transcription));
 
         $this->pages = $exploded->map(function ($page) {
             return $this->forceBalanceTags($page);

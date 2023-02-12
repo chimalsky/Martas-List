@@ -273,14 +273,13 @@
             
             <p class="italic">
                 @php
-                    $relationship = $recipient->meta()->where('resource_attribute_id', 286)->first();
-                    $datesOfCorrespondence = $recipient->meta()->where('resource_attribute_id', 287)->first();
-                    $connections = $recipient->connections->pluck('resources')->flatten();
-                    $addresses = $connections->where('resource_type_id', 10);
-                    $address = $addresses->first();
+                    $relationship = $recipient->meta()->firstWhere('resource_attribute_id', 286);
+                    $datesOfCorrespondence = $recipient->meta()->firstWhere('resource_attribute_id', 287);
+                    $resources = $recipient->resources;
+                    $address = $resources->firstWhere('resource_type_id', 10);
                     if ($address) {
                         $addressMeta = $address->meta()->firstWhere('resource_attribute_id', 254);
-                        $transit = $poem->connections->pluck('resources')->flatten()->firstWhere('resource_type_id', 9);
+                        $transit = $resources->firstWhere('resource_type_id', 9);
                         $distanceTravelled = $transit->meta()->firstWhere('resource_attribute_id', 592);
                     }
                 @endphp
