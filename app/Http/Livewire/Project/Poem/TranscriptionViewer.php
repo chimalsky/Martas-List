@@ -29,13 +29,19 @@ class TranscriptionViewer extends Component
         $url = "https://birdpress.adagia.org/wp-json/wp/v2/transcriptions?slug=$franklinId";
         $client = new Client();
         $res = $client->request('GET', $url);
-        $content = strval(
-            json_decode($res->getBody()->getContents())[0]->content->rendered
-        );
+        $json = json_decode($res->getBody()->getContents());
+        if (count($json)) {
+            $content = $json[0]->content->rendered;
+            $htmlString = $content;
+            $delimeter = '¦';
+        } else {
+            $htmlString = optional($poem->transcription)->value ?? 'Transcription coming soon';
+            $delimeter = '{/pb}';
+        }
+        
+        $this->transcription = $htmlString;
 
-        $this->transcription = $content ?? 'Transcription coming soon';
-
-        $exploded = collect(explode('¦', $this->transcription));
+        $exploded = collect(explode($delimeter, $this->transcription));
 
         $this->pages = $exploded->map(function ($page) {
             return $this->forceBalanceTags($page);
