@@ -20,7 +20,7 @@
                 }) as $meta) 
                     @if ($meta->resource_attribute_id == 113)
                         @if ($meta->value !== 'Retained')
-                            Sent to,
+                            Sent to
                         @endif
                     @endif
 
