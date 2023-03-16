@@ -51,7 +51,7 @@
         @endforeach 
 
         @if (isset($century))
-            <header class="text-center mb-2" style="color: #999999">
+            <header class="text-center mb-4" style="color: #999999">
                 @switch ($century)
                     @case(null)
                         null city
@@ -80,7 +80,8 @@
             <div class="text-center mb-6">
                 <main class="flex flex-wrap justify-center gap-2">
                     @foreach ($seasons as $season)
-                        <label class="text-black inline-block py-1 px-4 cursor-pointer relative" style="background-color: #F7F5E7">
+                        <label class="text-center inline-block py-1 px-4 cursor-pointer relative"
+                            style="color: #666; border: 1px solid #dfe7d7; background-color: #F7F5E7">
                             <input data-action="change->archive#relayAction" type="checkbox"
                                 name="seasons[]"
                                 value="{{ $season }}"
@@ -91,9 +92,7 @@
                             <span class="pl-2">
                                 {{ Str::title($season) }}
                             </span>
-                            <span class="absolute top-0 right-0 pr-1 pt-1 text-xs text-gray-500">
-                                X
-                            </span>
+                            @include('project._filter_x')
                         </label>
                     @endforeach
                 </main>
@@ -104,7 +103,8 @@
             <div class="text-center mb-6">
                 <main class="flex flex-wrap justify-center gap-2">
                     @foreach ($months as $month)
-                        <label class="text-black inline-block py-1 px-4 cursor-pointer relative" style="background-color: #F7F5E7">
+                        <label class="text-center inline-block py-1 px-4 cursor-pointer relative"
+                            style="color: #666; border: 1px solid #dfe7d7; background-color: #F7F5E7">
                             <input data-action="change->archive#relayAction" type="checkbox"
                                 name="months[]"
                                 value="{{ $month }}"
@@ -124,14 +124,14 @@
 
         @if (count($activeBirds))
             <section class="p-4">
-                <header class="text-2xl text-center mb-3">
+                <header class="text-2xl text-center mb-4">
                     Dickinson's Bird List
                 </header>
 
-                <main class="flex flex-wrap justify-center space-x-2 space-y-1">
+                <main class="flex flex-wrap justify-center gap-2">
                     @foreach ($activeBirds as $bird)
-                        <label class="text-black text-center inline-block py-1 px-4 cursor-pointer relative"
-                            style="color: #666; border: 1px solid #dfe7d7; background-color: #F7F5E7">
+                        <label class="text-center inline-block py-1 px-4 cursor-pointer relative"
+                            style="color: #666; border: 1px solid #dfe7d7; background-color: #F7F5E7"">
                             <input data-action="change->archive#relayAction" type="checkbox"
                                 name="filterableBird[{{ $bird->id }}][]"
                                 value="{{ $bird->id }}"
