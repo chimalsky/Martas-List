@@ -1,8 +1,7 @@
-<a href="@route('project.about')" 
-    class="font-semibold block px-4 py-2 leading-5 focus:outline-none cursor-text"
+<p class="font-semibold block px-4 py-2 leading-5 focus:outline-none cursor-text"
     style="color: #7f7f7f">
     About
-</a>
+</p>
 <div class="mr-4 italic text-gray-700 mb-1">
     <a href="@route('project.about-dedication')" class="pl-10 block hover:bg-gray-100 hover:text-gray-900">+ Dedication</a>
     <a href="@route('project.about-overview')" class="pl-10 block hover:bg-gray-100 hover:text-gray-900">+ Project Overview</a>
