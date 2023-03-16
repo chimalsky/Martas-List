@@ -37,7 +37,7 @@ class AboutController extends Controller
 
     public function sources()
     {
-        $res = $this->getHtml('https://birdpress.adagia.org/143-2/');
+        $res = $this->getHtml('https://birdpress.adagia.org/about-project-overview-coordinates/');
         $body = $res['body'];
         $styles = $res['styles'];
         return view('project.about-sources', compact('body', 'styles'));

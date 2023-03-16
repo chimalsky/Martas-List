@@ -15,6 +15,8 @@
 
 @section ('content')
 
+@include('project._about-subheader')
+
 <main class="max-w-2xl mx-auto text-gray-700 text-lg page-content" data-style="red">
     {!! optional(App\ResourceMeta::find(59411))->value ?? 'No content yet' !!}
 </main> 

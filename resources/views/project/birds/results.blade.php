@@ -51,7 +51,7 @@
         @endforeach 
 
         @if (isset($century))
-            <header class="text-center mb-2">
+            <header class="text-center mb-2" style="color: #999999">
                 @switch ($century)
                     @case(null)
                         null city
@@ -127,7 +127,7 @@
         @if (count($activeBirds))
             <section class="p-4">
                 <header class="text-2xl text-center">
-                    Dickinson's Bird Lists
+                    Dickinson's Bird List
                 </header>
 
                 <main class="flex flex-wrap justify-center space-x-2 space-y-1">
@@ -144,7 +144,7 @@
                                 {{ $bird->name }}
                             </span>
                             <span class="absolute top-0 right-0 pr-1 pt-1 text-xs text-gray-500">
-                                X
+                                <img src="/img/x-box.png" />
                             </span>
                         </label>
                     @endforeach

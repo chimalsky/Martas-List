@@ -42,7 +42,7 @@
     action="@route('project.poems.index-fetch')" method="get">
     <input placeholder="Search transcription text" name="query" data-action="input->form#changed"
         @if (request()->input('query')) value="{{ request()->input('query') }}" @endif
-        class="w-full block mb-4 border-4 border-gray-500 text-black rounded-full pl-4 p-2 placeholder-gray-800" />
+        class="w-full block mb-4 border-4 border-gray-500 rounded-full pl-4 p-2 placeholder-gray-800" />
 
     <div class="flex justify-between items-stretch w-full text-xs py-2">
         <label class="cursor-pointer self-center">

@@ -220,13 +220,11 @@
                 @if ($poem->environmentalPhenomenaSpecific()->count())
                     <div class="text-3xl italic mb-12 max-w-md mx-auto">
                         @foreach ($poem->environmentalPhenomenaSpecific as $phenomenon)
+                            +
                             <a href="@route('project.poems.index', ['filterable[701]' => $phenomenon->value])" target="_blank"
                                 class="hover:underline">
                                 {{ ucfirst($phenomenon->value) }}
                             </a>
-                            @if (!$loop->last)
-                                +
-                            @endif
                         @endforeach
                     </div>
                 @endif
@@ -264,7 +262,7 @@
 </section>
 
 @if ($poem->wasSent() && $recipients->count())
-    <section class="text-center max-w-2xl mx-auto mt-10 justify-center">
+    <section class="text-center max-w-2xl mx-auto mt-10 justify-center relative z-50">
         <header class="text-2xl" style="color: #CC9A00;">
             Recipient
         </header>

@@ -15,22 +15,21 @@
                 <span data-action="click->archive#relayClearQuery" class="text-black inline-block py-1 px-4 cursor-pointer relative" style="background-color: #F7F5E7">
                     {{ $query }}
 
-                    <span class="absolute top-0 right-0 pr-1 pt-1 text-xs text-gray-500">
-                        X
-                    </span>
+                    @include('project._filter_x')
                 </span>
             </div>
         @endif 
 
         @foreach ($activeFilterables as $filterable)
             <div class="text-center mb-6">
-                <header class="block">
+                <header class="block mb-2">
                     {{ $filterable->title }}
                 </header>
 
-                <main class="flex flex-wrap justify-center space-x-2 space-y-1">
+                <main class="flex flex-wrap justify-center gap-2">
                     @foreach(request()->input('filterable.' . $filterable->id) as $selectedValue)
-                        <label class="text-black inline-block py-1 px-4 cursor-pointer relative" style="background-color: #F7F5E7">
+                        <label class="text-black inline-block py-1 px-4 cursor-pointer relative"
+                            style="color: #666; border: 1px solid #dfe7d7; background-color: #F7F5E7">
                             <input data-action="change->archive#relayAction" type="checkbox"
                                 name="filterable[{{ $filterable->id }}][]"
                                 value="{{ $selectedValue }}"
@@ -42,9 +41,7 @@
                                 {{ $selectedValue }}
                             </span>
 
-                            <span class="absolute top-0 right-0 pr-1 pt-1 text-xs text-gray-500">
-                                X
-                            </span>
+                            @include('project._filter_x')
                         </label>
                     @endforeach
                 </main>
@@ -53,13 +50,14 @@
 
         @if (count($activeBirds))
             <section class="p-4">
-                <header class="text-2xl text-center">
+                <header class="text-2xl text-center mb-3">
                     Bird Species
                 </header>
 
-                <main class="flex flex-wrap justify-center space-x-2 space-y-1">
+                <main class="flex flex-wrap justify-center gap-2">
                     @foreach ($activeBirds as $bird) 
-                        <label class="text-black text-center inline-block py-6 px-4 cursor-pointer relative" style="background-color: #F7F5E7">
+                        <label class="text-black text-center inline-block py-1 px-4 cursor-pointer relative"
+                            style="color: #666; border: 1px solid #dfe7d7; background-color: #F7F5E7">
                             <input data-action="change->archive#relayAction" type="checkbox"
                                 name="filterableBird[{{ $bird->id }}][]"
                                 value="{{ $bird->id }}"
@@ -70,9 +68,7 @@
                             <span class="pl-2">
                                 {{ $bird->name }}
                             </span>
-                            <span class="absolute top-0 right-0 pr-1 pt-1 text-xs text-gray-500">
-                                X
-                            </span>
+                            @include('project._filter_x')
                         </label>
                     @endforeach
                 </main>
