@@ -78,7 +78,7 @@
 
         @if (isset($seasons) && count($seasons))
             <div class="text-center mb-6">
-                <main class="flex flex-wrap justify-center space-x-2 space-y-1">
+                <main class="flex flex-wrap justify-center gap-2">
                     @foreach ($seasons as $season)
                         <label class="text-black inline-block py-1 px-4 cursor-pointer relative" style="background-color: #F7F5E7">
                             <input data-action="change->archive#relayAction" type="checkbox"
@@ -102,7 +102,7 @@
 
         @if (isset($months) && count($months))
             <div class="text-center mb-6">
-                <main class="flex flex-wrap justify-center space-x-2 space-y-1">
+                <main class="flex flex-wrap justify-center gap-2">
                     @foreach ($months as $month)
                         <label class="text-black inline-block py-1 px-4 cursor-pointer relative" style="background-color: #F7F5E7">
                             <input data-action="change->archive#relayAction" type="checkbox"
