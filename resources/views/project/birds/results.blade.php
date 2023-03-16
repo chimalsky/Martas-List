@@ -170,8 +170,8 @@
                 @endif
             </div>
         @else 
-            <h1 class="text-2xl text-center w-full">
-                No Birds match your curation
+            <h1 style="color: #96a9a9" class="text-2xl text-center w-full">
+                No birds match your curation
             </h1>
         @endif
     </main>

@@ -88,8 +88,8 @@
         @if ($results->count())
             <x-project.poem.list :poems="$results" showYear :attributeOrder="$attributeOrder" />
         @else 
-            <h1 class="text-2xl text-center w-full">
-                No Poems match your curation
+            <h1 style="color: #96a9a9" class="text-2xl text-center w-full">
+                No poems match your curation
             </h1>
         @endif
     </main>
