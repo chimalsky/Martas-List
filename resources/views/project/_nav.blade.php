@@ -17,8 +17,8 @@
                     Dickinson's Birds
                 </h1>
             </a>
-            <h2 class="block italic tracking-widest font-thin" style="font-family: 'Cormorant SC'; font-size: 13.5pt;">
-                A Listening Machine
+            <h2 style="font-family: Josefin Sans; letter-spacing: 2.5px" class="text-sm uppercase mt-2">
+                A listening machine
             </h2>
         </div>
     </span>
