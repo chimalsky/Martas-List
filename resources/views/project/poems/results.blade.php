@@ -77,7 +77,7 @@
     </div>
 
     @if ($results->count())
-        <div class="block mx-auto max-w-md text-xl text-center">
+        <div style="color: #96a9a9" class="block mx-auto max-w-md text-xl text-center">
             {{ $results->flatten()->count() }} Poem {{ Str::of('Manuscript')->plural($results->flatten()->count()) }} 
         </div>
     @endif

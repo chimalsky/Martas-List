@@ -37,7 +37,7 @@
 
 
 <section class="block">
-    <h1 style="color: #B45F06;" class="text-3xl font-bold mt-12 mb-10">
+    <h1 style="color: #B45F06;" class="text-3xl font-bold mt-0 mb-10">
         Affiliated <span class="italic">Bird</span> Manuscripts —
     </h1>
 
