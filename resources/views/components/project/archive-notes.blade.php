@@ -1,6 +1,7 @@
 <section class="hidden lg:flex justify-end -mt-8" x-data="{notesOpen: false}">
-    <button x-show="!notesOpen" @click="notesOpen = true" 
-        class="text-lg border-t border-gray-700 pl-20">
+    <button x-show="!notesOpen" @click="notesOpen = true"
+        style="color: #96A9A9"
+        class="text-lg border-t border-gray-700 pr-16">
         + Archive Notes
     </button>
 

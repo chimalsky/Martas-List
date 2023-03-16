@@ -15,7 +15,7 @@
 <a href="@route('project.poems.show', $poem)">
     {{ $firstline }} 
 </a> | 
-<a class="font-bold" style="color: #B45F06;">
+<a class="font-bold" style="color: #bf9000;">
     Affiliated Manuscripts
 </a>
 

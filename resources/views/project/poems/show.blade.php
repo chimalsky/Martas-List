@@ -12,7 +12,7 @@
 
 
 @section('header-info')
-<span class="font-bold" style="color:#B45F06">
+<span class="font-bold" style="color:#bf9000">
     {{ $firstline }}
 </span> | 
 @if($poem->category) 

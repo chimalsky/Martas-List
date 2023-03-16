@@ -44,11 +44,11 @@
 
         <main class="flex-1">
             <header class="">
-                <nav class="text-4xl text-center flex justify-center mt-28" style="font-family: Cormorant SC;">
+                <nav class="text-4xl text-center flex justify-center mt-20 mb-10" style="font-family: Cormorant SC;">
                     @yield('header-anchor')
                 </nav>
 
-                <div class="text-center text-4xl block mt-2" style="font-family: Cormorant Upright; color:#806102;">
+                <div class="text-md md:text-lg md:text-xl lg:text-3xl text-center mb-2" style="font-family: Cormorant Upright; color:#806102;">
                     @yield('header-info')
                 </div>
             </header>
