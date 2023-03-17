@@ -91,7 +91,7 @@
                 @endif 
                 ({{ $poem->manuscriptSetting->value }})
                 @if ($poem->isOnPaper())
-                    | <span style="font-family: 'Cormorant SC">On {{ $poem->paper->first()->value }}</span>
+                    | On {{ $poem->paper->first()->value }}
                 @endif
             </p>
 
