@@ -91,7 +91,7 @@
                 @endif 
                 ({{ $poem->manuscriptSetting->value }})
                 @if ($poem->isOnPaper())
-                    | On {{ $poem->paper->first()->value }}
+                    | On {{ $poem->paper->value }}
                 @endif
             </p>
 
