@@ -24,13 +24,51 @@
 }
 
 
-[data-style='red'] h1 {
-    font-family: "Cormorant SC";
-    font-size: 1.8rem;
-    color: #403838;
+[data-style='red'] h1,
+[data-style='red'] h1 *
+{
+    font-family: "Cormorant SC" !important;
+    font-size: 1.8rem !important;
+    color: #403838 !important;
+    letter-spacing: .4px !important;
+    font-weight: 400 !important;
 }
 
-[data-style='red'] > div {
-    font-family: 'Cormorant';
-    font-size: 1.3rem;
+[data-style='red'] h2,
+[data-style='red'] h2 *
+{
+    font-family: "Cormorant" !important;
+    font-size: 1.5rem !important;
+    color: #6d8159 !important;
+    letter-spacing: .4px !important;
+    font-weight: 700;
+    font-style: italic;
+}
+
+[data-style='red'] h3,
+[data-style='red'] h3 *
+{
+    font-family: "Cormorant Garamond" !important;
+    font-size: 1.3rem !important;
+    color: #b45f06 !important;
+    letter-spacing: .4px !important;
+    font-weight: 700 !important;
+    font-style: normal !important;
+}
+
+[data-style='red'] h4,
+[data-style='red'] h4 *
+{
+    font-family: "Cormorant" !important;
+    font-size: 1.3rem !important;
+    color: #999 !important;
+    letter-spacing: .4px !important;
+}
+
+[data-style='red'] > div
+[data-style='red'] > div p,
+[data-style='red'] > div p * {
+    color: black !important;
+    font-family: 'Cormorant' !important;
+    font-size: 1.2rem !important; 
 }
