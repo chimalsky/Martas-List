@@ -58,81 +58,68 @@
                 $time .= ', ' . $poem->season->value;
             }
         }
-    @endphp 
 
-    @if ($poem->manuscriptSetting)
-        <p class="font-bold">
-            {{ $poem->msId->value }} 
-            ({{ $poem->franklinId->value }})
-        </p>
+        $state = $poem->manuscriptState->value;
 
-        <p class="">
-            {{ $time }}
-        </p>
+        if ($poem->mutilated) {
+            $state .= ' (mutilated)';
+        }
+        if ($poem->missingLeaves) {
+            $state .= ' (missing leaves)';
+        }
+    @endphp
+ 
+    @if (!$poem->wasDestroyed())
+        @if ($poem->isRetained())
+            <p class="font-bold">
+                {{ $poem->msId->value }} 
+                ({{ $poem->franklinId->value }})
+            </p>
 
-        <p>
-            {{ $poem->medium ? $poem->medium->value : $medium }} | 
-            {{ $poem->manuscriptState->value }}
-            @if ($poem->mutilated)
-                (mutilated)
-            @endif
-            @if ($poem->missingLeaves)
-                (missing leaves)
-            @endif
-            |
-            @if ($poem->isBound())
-                Bound 
-            @else 
-                Unbound 
-            @endif 
-            ({{ $poem->manuscriptSetting->value }})
-        </p>
+            <p class="">
+                {{ $time }}
+            </p>
+            
+            <p>
+                {{ $poem->medium ? $poem->medium->value : $medium }} | 
+                {{ $state }}
+                |
+                @if ($poem->isBound())
+                    Bound 
+                @else 
+                    Unbound 
+                @endif 
+                ({{ $poem->manuscriptSetting->value }})
+                @if ($poem->isOnPaper())
+                    | <span style="font-family: 'Cormorant SC">On {{ $poem->paper->first()->value }}</span>
+                @endif
+            </p>
 
-        <p>
             @if ($poem->isRetained()) 
                 <span class="italic">
                     Retained in Dickinson's archive.
                 </span>
             @endif 
-            
-            @if ($poem->circulation && str_contains($poem->circulation->value, 'unknown'))
-                <span class="italic">
-                    Circulation status unknown.
-                </span>
-            @endif
-
-            @if ($poem->circulation && $poem->circulation->value == 'unknown')
-                <span class="italic">Circulation status unknown.</span>
-            @else
-                @if ($poem->formOfSentPoem)
-                    @if (strtolower($poem->formOfSentPoem->value) == 'poem-message')
-                        <span class="italic">Poem-message to</span>
-                    @endif
-                    @if (strtolower($poem->formOfSentPoem->value) == 'poem')
-                        <span class="italic">Poem sent to</span>
-                    @endif
-                    @if (strtolower($poem->formOfSentPoem->value) == 'poem embedded in a message')
-                        <span class="italic">Poem embedded in a message to</span>
-                    @endif
-                    @if (strtolower($poem->formOfSentPoem->value) == 'poem enclosed in a message')
-                        <span class="italic">Poem enclosed in a message to</span>
-                    @endif
-                    @if (strtolower($poem->formOfSentPoem->value) == 'poem embedded in a letter draft (uncirculated)')
-                        <span class="italic">Poem embedded in a letter draft (uncirculated) to</span>
-                    @endif
-
-                    Circulation History ({{ $poem->circulation->value }}).
-                @endif
-            @endif
-        </p>
-
-        @if ($poem->enclosures)
-            <p>
-                <span class="font-bold">Enclosures:</span>
-                {{ $poem->enclosures->value }}
-            </p>
         @endif
-    @else 
+
+        @if (!$poem->isRetained())
+            <p class="font-bold">
+                {{ $poem->msId->value }} 
+                ({{ $poem->franklinId->value }})
+            </p>
+
+            <p class="">
+                {{ $time }}
+            </p>
+
+            <p>
+                {{ $poem->medium ? $poem->medium->value : $medium }} | 
+                {{ $state }}
+            </p>
+
+            @include('project.poems._circulation', $poem)
+        @endif
+    @elseif ($poem->wasDestroyed())
         <p class="font-bold">
             ({{ $poem->franklinId->value }})
         </p>
@@ -140,73 +127,22 @@
         <p class="">
             {{ $time }}
         </p>
-        
-        <p>
-            {{ $poem->medium ? $poem->medium->value : $medium }} | 
-            {{ $poem->manuscriptState->value }}
-            @if ($poem->mutilated)
-                (mutilated)
-            @endif
-            @if ($poem->missingLeaves)
-                (missing leaves)
-            @endif
-            |
-            @if ($poem->isBound())
-                Bound 
-            @else 
-                Unbound 
-            @endif 
-        </p>
 
         <p>
-            @if ($poem->circulation && str_contains($poem->circulation->value, 'unknown'))
-                <span class="italic">
-                    Circulation status unknown.
-                </span>
-            @endif
-
-            @if ($poem->circulation->value == 'unknown')
-                <span class="italic">Circulation status unknown.</span>
-            @else
-                @if ($poem->formOfSentPoem)
-                    @if (strtolower($poem->formOfSentPoem->value) == 'poem-message')
-                        <span class="italic">Poem-message to</span>
-                    @endif
-                    @if (strtolower($poem->formOfSentPoem->value) == 'poem')
-                        <span class="italic">Poem sent to</span>
-                    @endif
-                    @if (strtolower($poem->formOfSentPoem->value) == 'poem embedded in a message')
-                        <span class="italic">Poem embedded in a message to</span>
-                    @endif
-                    @if (strtolower($poem->formOfSentPoem->value) == 'poem enclosed in a message')
-                        <span class="italic">Poem enclosed in a message to</span>
-                    @endif
-                    @if (strtolower($poem->formOfSentPoem->value) == 'poem embedded in a letter draft (uncirculated)')
-                        <span class="italic">Poem embedded in a letter draft (uncirculated) to</span>
-                    @endif
-
-                    Circulation History ({{ $poem->circulation->value }}).
-                @endif
+            {{ $state }}
+            @if ($poem->transcript19c)
+                | {{ $poem->transcript19c->value }}
             @endif
         </p>
 
+        @include('project.poems._circulation', $poem)
+    @endif
+
+    @if ($poem->enclosures)
         <p>
-            @php
-                $transcript19th = $poem->meta()->firstWhere('resource_attribute_id', 150)
-            @endphp
-
-            Original MS lost or destroyed
-            @if ($transcript19th) 
-                | {{ $transcript19th->value }}
-            @endif
+            <span class="font-bold">Enclosures:</span>
+            {{ $poem->enclosures->value }}
         </p>
-
-        @if ($poem->enclosures)
-            <p>
-                <span class="font-bold">Enclosures:</span>
-                {{ $poem->enclosures->value }}
-            </p>
-        @endif
     @endif
 </section>
 

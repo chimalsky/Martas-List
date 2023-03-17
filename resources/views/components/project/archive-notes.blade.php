@@ -1,11 +1,11 @@
 <section class="hidden lg:flex justify-end -mt-8" x-data="{notesOpen: false}">
     <button x-show="!notesOpen" @click="notesOpen = true"
-        style="color: #96A9A9"
+        style="color: #96A9A9;"
         class="text-lg border-t border-gray-700 pr-16">
         + Archive Notes
     </button>
 
-    <aside x-show="notesOpen" style="display: none"
+    <aside x-show="notesOpen" style="display: none; z-index: 999;"
         x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700"
         x-transition:enter-start="translate-x-full"
         x-transition:enter-end="translate-x-0"

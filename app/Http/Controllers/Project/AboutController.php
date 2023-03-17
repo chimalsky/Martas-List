@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Project;
 use App\Http\Controllers\Controller;
 use App\ResourceMeta;
 use Illuminate\Http\Request;
-use GuzzleHttp\Client;
+use App\Project\WordPressHtmlGetter;
 
 class AboutController extends Controller
 {
@@ -16,7 +16,7 @@ class AboutController extends Controller
 
     public function overview()
     {
-        $res = $this->getHtml('https://birdpress.adagia.org/about-project-overview-coordinates');
+        $res = WordPressHtmlGetter::execute('https://birdpress.adagia.org/about-project-overview-coordinates');
         $body = $res['body'];
         $styles = $res['styles'];
         return view('project.about-overview', compact('body', 'styles'));
@@ -24,7 +24,7 @@ class AboutController extends Controller
 
     public function navigation()
     {
-        $res = $this->getHtml('https://birdpress.adagia.org/about-navigating-in-the-archives');
+        $res = WordPressHtmlGetter::execute('https://birdpress.adagia.org/about-navigating-in-the-archives');
         $body = $res['body'];
         $styles = $res['styles'];
         return view('project.about-navigation', compact('body', 'styles'));
@@ -37,7 +37,7 @@ class AboutController extends Controller
 
     public function sources()
     {
-        $res = $this->getHtml('https://birdpress.adagia.org/143-2/');
+        $res = WordPressHtmlGetter::execute('https://birdpress.adagia.org/143-2/');
         $body = $res['body'];
         $styles = $res['styles'];
         return view('project.about-sources', compact('body', 'styles'));
@@ -50,7 +50,7 @@ class AboutController extends Controller
 
     public function colophon()
     {
-        $res = $this->getHtml('https://birdpress.adagia.org/about');
+        $res = WordPressHtmlGetter::execute('https://birdpress.adagia.org/about');
         $body = $res['body'];
         $styles = $res['styles'];
         return view('project.about-colophon', compact('body', 'styles'));
@@ -58,22 +58,9 @@ class AboutController extends Controller
 
     public function dedication()
     {
-        $res = $this->getHtml('https://birdpress.adagia.org/dedication');
+        $res = WordPressHtmlGetter::execute('https://birdpress.adagia.org/dedication');
         $body = $res['body'];
         $styles = $res['styles'];
         return view('project.about-dedication', compact('body', 'styles'));
-    }
-
-    protected function getHtml($url)
-    {
-        $client = new Client();
-        $res = $client->request('GET', $url);
-        $html = $res->getBody()->getContents();
-        $dom = new \DOMDocument;
-        @$dom->loadHTML($html);
-        $xpath = new \DOMXPath($dom);
-        $body = $xpath->query("//div[contains(@class, 'entry-content')]");
-        $styles = $xpath->query("//style[starts-with(@id, 'wp-block')]");
-        return compact('body', 'styles');
     }
 }

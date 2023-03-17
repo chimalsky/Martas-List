@@ -39,6 +39,9 @@
                     <button @click="open = !open" type="button" id="menu-toggle"
                     class="h-10 w-10 ml-1 border border-transparent p-1 hover:border-gray-700">
                         <img src="{{ asset('img/hamburger.png') }}" />
+                        <h2 style="font-family: Josefin Sans; letter-spacing: 2.5px; color: #806f68;" class="text-sm uppercase mt-2">
+                            Under construction
+                        </h2>
                     </button>
                 </span>
                 <span x-show="open" 

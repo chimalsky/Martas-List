@@ -36,6 +36,18 @@ class Poem extends Resource
         return $this->hasOne(Transcription::class, 'resource_id');
     }
 
+    public function transcript19c()
+    {
+        return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 150);
+    }
+
+    public function paper()
+    {
+        return $this->hasOne(ResourceMeta::class, 'resource_id')
+            ->where('resource_attribute_id', 87);
+    }
+    
     public function environmentalPhenomenaSpecific()
     {
         return $this->hasMany(ResourceMeta::class, 'resource_id')
@@ -122,13 +134,29 @@ class Poem extends Resource
 
     public function isRetained()
     {
-        $attribute = ResourceAttribute::find(103);
-
-        if (! $this->manuscriptSetting) {
+        if (! $this->circulation) {
             return false;
         }
 
-        return $this->manuscriptSetting->value != 'Sent';
+        return $this->circulation->value == 'Retained';
+    }
+
+    public function isOnPaper()
+    {
+        if (! $this->paper) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function wasDestroyed()
+    {
+        if (!$this->manuscriptState) {
+            return false;
+        }
+
+        return $this->manuscriptState->value == 'Original MS lost or destroyed';
     }
 
     public function wasSent()
