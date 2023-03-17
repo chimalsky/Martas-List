@@ -38,7 +38,7 @@ class BirdsController extends Controller
             ->orderBy('name', $request->query('sort_direction') ?? 'asc');
 
         if ($query = $request->query('query')) {
-            $birds = $birds->where('name', 'regexp', '\\b' . $query . '\\b');
+            $birds = $birds->where('name', 'like', '%' . $query . '%');
         }
 
         $filterableBirds = collect($request->query('filterableBird'));
