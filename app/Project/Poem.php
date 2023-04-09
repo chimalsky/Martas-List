@@ -147,6 +147,10 @@ class Poem extends Resource
             return false;
         }
 
+        if ($this->paper == strtolower('Unknown')) {
+            return false;
+        }
+
         return true;
     }
 
