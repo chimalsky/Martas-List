@@ -33,7 +33,7 @@ class TranscriptionViewer extends Component
         if (count($json)) {
             $content = $json[0]->content->rendered;
             $htmlString = $content;         
-            $exploded = collect(preg_split('/\x{00A6}(?!\s*\])/u', $htmlString));
+            $exploded = collect(preg_split('/[\x{00A6}\x{FFE4}](?!\s*\])/u', $htmlString));
         } else {
             $htmlString = optional($poem->transcription)->value ?? 'Transcription coming soon';
             $exploded = collect(explode('{/pb}', $htmlString));
