@@ -32,16 +32,14 @@ class TranscriptionViewer extends Component
         $json = json_decode($res->getBody()->getContents());
         if (count($json)) {
             $content = $json[0]->content->rendered;
-            $htmlString = $content;
-            $delimeter = '¦';
+            $htmlString = $content;         
+            $exploded = collect(preg_split('/\x{00A6}(?!\s*\])/u', $htmlString));
         } else {
             $htmlString = optional($poem->transcription)->value ?? 'Transcription coming soon';
-            $delimeter = '{/pb}';
+            $exploded = collect(explode('{/pb}', $htmlString));
         }
         
         $this->transcription = $htmlString;
-
-        $exploded = collect(explode($delimeter, $this->transcription));
 
         $this->pages = $exploded->map(function ($page) {
             return $this->forceBalanceTags($page);

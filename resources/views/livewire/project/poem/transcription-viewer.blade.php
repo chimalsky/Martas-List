@@ -110,9 +110,20 @@
                 id="js-transcription-display" class="absolute min-w-lg w-96 p-12 mx-auto invisible"
                 style="font-family: Alegreya; font-weight: 500; background: #f8f3e8; opacity: .72; top:0;
                     clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 33%, 72% 0);">
-                <img id="transcription-icon" src="{{ asset('img/bird-icon.png') }}" class="h-10 w-10 mb-4 mx-auto mt-4 hover:cursor-move" />
+                <img id="transcription-icon" src="{{ asset('img/bird-icon.png') }}" class="h-10 w-10 mb-4 mx-auto mt-4 hover:cursor-pointer" />
                 <div>{!! $this->activePage !!}</div>
             </div>
+
+            <script>
+                const transcriptionIcon = document.querySelector('#transcription-icon');
+                transcriptionIcon.addEventListener("mouseover", function() {
+                    transcriptionIcon.src = "{{ asset('img/bird-icon-hover.png') }}";
+                });
+
+                transcriptionIcon.addEventListener("mouseout", function() {
+                    transcriptionIcon.src = "{{ asset('img/bird-icon.png') }}";
+                });
+            </script>
         </div>
     </main>
 </div>

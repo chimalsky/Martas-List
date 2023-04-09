@@ -51,7 +51,15 @@ class PoemsController extends Controller
                 }, ]);
 
         if ($query = $request->query('query')) {
-            $poems = $poems->byTranscriptionText($query);
+            $franklinQueryResult = Poem::whereHas('franklinId', function ($q) use ($query) {
+                $q->where('value', $query);
+            });
+            
+            if ($franklinQueryResult->count()) {
+                $poems = $poems->whereIn('id', $franklinQueryResult->pluck('id'));
+            } else {
+                $poems = $poems->byTranscriptionText($query);
+            }
         }
 
         $birds = ResourceCategory::with('connections')
