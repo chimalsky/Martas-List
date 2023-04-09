@@ -90,10 +90,12 @@
                     Unbound 
                 @endif
                 ({{ $poem->manuscriptSetting->value }})
-                @if ($poem->isOnPaper())
-                    | On {{ $poem->paper->value }}
-                @endif
             </p>
+            @if ($poem->isOnPaper())
+                <p>
+                    On {{ $poem->paper->value }}
+                </p>
+            @endif
 
             @if ($poem->isRetained()) 
                 <span class="italic">
@@ -116,6 +118,12 @@
                 {{ $poem->medium ? $poem->medium->value : $medium }} | 
                 {{ $state }}
             </p>
+
+            @if ($poem->isOnPaper())
+                <p>
+                    On {{ $poem->paper->value }}
+                </p>
+            @endif
 
             @include('project.poems._circulation', $poem)
         @endif

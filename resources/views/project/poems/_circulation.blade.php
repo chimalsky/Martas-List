@@ -20,7 +20,7 @@
                 @endif
             @endif
 
-            ({{ $poem->circulation->value }}).
+            {{ $poem->circulation->value }}.
         @endif
     @endif
 @endif
