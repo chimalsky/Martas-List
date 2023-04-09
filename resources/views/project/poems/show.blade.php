@@ -88,7 +88,7 @@
                     Bound 
                 @else 
                     Unbound 
-                @endif 
+                @endif
                 ({{ $poem->manuscriptSetting->value }})
                 @if ($poem->isOnPaper())
                     | On {{ $poem->paper->value }}

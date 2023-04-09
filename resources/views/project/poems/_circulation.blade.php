@@ -1,7 +1,7 @@
 @if ($poem->circulation && $poem->circulation->value == 'unknown')
     <span class="italic">Circulation status unknown.</span>
 @else
-    @if ($poem->formOfSentPoem))
+    @if ($poem->formOfSentPoem)
         @if (strtolower($poem->formOfSentPoem->value) == 'poem embedded in a letter draft (uncirculated)')
             <span class="italic">Retained in Dickinson's archive.</span>
         @else
