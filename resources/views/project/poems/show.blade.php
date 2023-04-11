@@ -173,15 +173,15 @@
                     </div>
                 @endif
                 @if ($birds->count())
-                <main class="flex flex-wrap justify-center gap-4 lg:gap-8">
+                <main class="">
                     @foreach ($birds as $bird)
-                        <article class="bird w-full lg:w-1/3">
+                        <article class="bird w-full">
                             @include('project.birds._single', 
                                 [
                                     $bird, 
                                     'hideMeta' => true,
-                                    'width' => $birds->count() == 1 ? 340 : 200,
-                                    'height' => $birds->count() == 1 ? 220 : 170
+                                    'width' => 340,
+                                    'height' => 220
                                 ]
                             )
                         </article>
