@@ -86,7 +86,7 @@
                             <img class="w-16 h-16 align-center mt-12" src="/img/coming-soon.jpg" />
                         </div>
                         
-                        <p class="text-center mt-12">
+                        <p class="text-center mt-8">
                             Manuscript facsimile coming soon
                         </p>
                     @endif
