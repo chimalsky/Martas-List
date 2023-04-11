@@ -18,16 +18,18 @@
             {{ $bird->name }} 
         </label>
     @endforeach
-    <label class="cursor-pointer block">
-        <input data-action="change->form#changed" type="checkbox"
-            name="filterableBird[unnamed][]"
-            value="unnamed"
-            class=""
-            @if (collect(request()->input('filterableBird.unnamed'))->contains('unnamed'))
-                checked 
-            @endif
-            autocomplete="off" 
-                />
-        Unnamed bird(s) 
-    </label>
+    @routeIsnt('project.birds.index')
+        <label class="cursor-pointer block">
+            <input data-action="change->form#changed" type="checkbox"
+                name="filterableBird[unnamed][]"
+                value="unnamed"
+                class=""
+                @if (collect(request()->input('filterableBird.unnamed'))->contains('unnamed'))
+                    checked 
+                @endif
+                autocomplete="off" 
+                    />
+            Unnamed bird(s) 
+        </label>
+    @endrouteIsnt
 </div>
