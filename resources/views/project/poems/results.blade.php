@@ -59,14 +59,14 @@
                         <label class="text-black text-center inline-block py-1 px-4 cursor-pointer relative"
                             style="color: #666; border: 1px solid #dfe7d7; background-color: #F7F5E7">
                             <input data-action="change->archive#relayAction" type="checkbox"
-                                name="filterableBird[{{ $bird->id }}][]"
-                                value="{{ $bird->id }}"
+                                name="filterableBird[{{ $bird->id ?? 'unnamed' }}][]"
+                                value="{{ $bird->id ?? 'unnamed' }}"
                                 class="hidden"
                                 checked
                                 autocomplete="off" 
                                     />
                             <span class="pl-2">
-                                {{ $bird->name }}
+                                {{ $bird->name ?? 'Unnamed bird(s)' }}
                             </span>
                             @include('project._filter_x')
                         </label>

@@ -188,15 +188,9 @@
                     @endforeach
                 </main>
                 @else 
-                    <h1 class="text-xl text-orange-700">
-                        <span class="italic">
-                            {{ $firstline }}
-                        </span> mentions Unnamed Birds.
-                    </h1>
-
-                    <div class="my-4 text-2xl">
-                        View the <a class="underline" href="@route('project.birds.index')">
-                            Bird Archive
+                    <div class="my-4">
+                        <a class="underline" href="@route('project.birds.index')">
+                            <img class="w-64 mx-auto" src="{{ asset('/img/Unnamed-Birds.png') }}" />
                         </a>
                     </div>
                 @endif

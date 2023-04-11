@@ -251,6 +251,13 @@ class Poem extends Resource
         });
     }
 
+    public function scopeMentionsUnnamedBirds($query)
+    {
+        return $query->whereDoesntHave('categories', function ($query) {
+            $query->where('resource_type_id', 19);
+        });
+    }
+
     public function doesMentionBirds()
     {
         return is_null($this->firstMetaByAttribute(624))

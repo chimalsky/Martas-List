@@ -40,6 +40,7 @@ class PoemsController extends Controller
 
         $activeFilterables = ResourceAttribute::ordered()->whereIn('id', $filterables->keys()->toArray())->get();
         $displayableFilterables = $activeFilterables->reject(function ($filterable) {
+            // Ignore the first-line attribute
             return $filterable->id == 84;
         });
 
@@ -66,12 +67,22 @@ class PoemsController extends Controller
                 ->where('resource_type_id', Bird::$resource_type_id)->get();
 
         $filterableBirds = collect($request->query('filterableBird'));
+        $filteringByUnnamedBirds = $filterableBirds->flatten()->contains('unnamed');
+        
+        if ($filteringByUnnamedBirds) {
+            $filterableBirds = $filterableBirds->reject(function($item, $key) {
+                return $key == 'unnamed';
+            });
+        }
 
         $activeBirds = $birds->whereIn('id', $filterableBirds->keys());
 
         if ($filterableBirds->count()) {
+            if ($filteringByUnnamedBirds) {
+                $unnamedBirdPoemsQuery = clone $poems;
+                $unnamedBirdPoems = $unnamedBirdPoemsQuery->mentionsUnnamedBirds()->get();
+            }
             $connectedPoemsIds = $activeBirds->pluck('connections')->flatten()->pluck('id');
-
             $poems = $poems->whereIn('id', $connectedPoemsIds);
         }
 
@@ -88,7 +99,18 @@ class PoemsController extends Controller
             }
         }
 
-        $poems = $poems->get();
+        if ($filteringByUnnamedBirds) {
+            if ($filterableBirds->count()) {
+                $poems = $poems->get();
+                $poems = $poems->merge($unnamedBirdPoems);
+            } else {
+                $poems = $poems->mentionsUnnamedBirds()->get();
+            }
+            $activeBirds = $activeBirds->push('Unnamed bird(s)');
+        } else {
+            $poems = $poems->get();
+        }
+
         $sortable = $request->query('sortable') ?? 'firstline';
         $sortDirection = $request->query('sort_direction') ?? 'asc';
 
