@@ -73,3 +73,16 @@
     font-family: 'Cormorant' !important;
     font-size: 1.2rem !important; 
 }
+
+*[data-editorial] {
+    color: #000;
+}
+
+div[data-panel='parent'] {
+    display: flex;
+    gap: 24px;
+}
+
+div[data-panel='parent'] > div[data-panel] {
+    
+}
