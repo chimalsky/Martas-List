@@ -23,7 +23,14 @@ $(function () {
             transcription.style.left = transcriptionX
             transcription.style.top = transcriptionY
         }
-        document.querySelector('#js-transcription-display').classList.remove('invisible')
+        transcription.classList.remove('invisible')
+
+        const children = transcription.getElementsByTagName('div')
+        const hasOrientation = Array.from(children).some(div => div.hasAttribute('data-transcription-orientation'))
+        const orientation = hasOrientation 
+            ? document.querySelector("div[data-transcription-orientation]").getAttribute('data-transcription-orientation')
+            : 'portrait';
+        transcription.setAttribute('data-transcription-orientation', orientation);
     })
 
     const transcription = $( "#js-transcription-display" )

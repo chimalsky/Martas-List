@@ -78,11 +78,19 @@
     color: #000;
 }
 
+#js-transcription-display[data-transcription-orientation='portrait'] {
+    width: 320px;
+}
+
+#js-transcription-display[data-transcription-orientation='landscape'] {
+    width: 600px;
+}
+
 div[data-panel='parent'] {
     display: flex;
     gap: 24px;
 }
 
 div[data-panel='parent'] > div[data-panel] {
-    
+    flex-grow: 1;
 }
