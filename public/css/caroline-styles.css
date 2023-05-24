@@ -88,7 +88,7 @@
 
 div[data-panel='parent'] {
     display: flex;
-    gap: 24px;
+    gap: 10px;
 }
 
 div[data-panel='parent'] > div[data-panel] {
