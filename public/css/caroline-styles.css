@@ -79,7 +79,7 @@
 }
 
 #js-transcription-display[data-transcription-orientation='portrait'] {
-    width: 320px;
+    width: 360px;
 }
 
 #js-transcription-display[data-transcription-orientation='landscape'] {
