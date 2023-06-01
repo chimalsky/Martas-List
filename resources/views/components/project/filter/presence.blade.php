@@ -15,7 +15,7 @@
     })
 }}" class="">
     <aside class="col-span-1 text-lg">
-        <h1 class="mb-2 text-base" style="color: #999">
+        <h1 class="filter-subtitle">
             Century
         </h1>
         <div class="grid grid-cols-4 gap-x-2 text-base">

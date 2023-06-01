@@ -1,20 +1,15 @@
 <div class="text-center text-sm">
-    <p class="mb-1">
-        <i>Dickinson’s Birds</i> &#169; {{ carbon()->format('Y') }}
+    <p>
+        <i>Dickinson’s Birds</i> &#169; {{ carbon()->format('Y') }} <br/>
+        Marta Werner, Abe Kim, Caroline McCraw, and Danielle Richards, with Will Sikich
     </p>
 
-    <p class="text-gray-600">
-        Web development and hosting by Abe Kim
-    </p>
-
-    <p class="mt-4">
-        Support for this project has been provided by the Office of Research Services 
-        and the Center for Textual Studies and Digital Humanities,
-        Loyola University Chicago.
-    </p>
-
-    <p class="text-gray-600">
+    <p class="text-gray-600 mt-1">
         Licensed under Creative Commons Attribution 4.0 International License, {{ carbon()->format('Y') }}
+    </p>
+
+    <p class="text-gray-600 mt-2">
+        Web development and hosting by Abe Kim
     </p>
 </div>
 

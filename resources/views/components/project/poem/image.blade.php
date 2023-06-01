@@ -1,10 +1,10 @@
-<div>
+<div @routeIs('project.affiliated.poems') style="min-height: 120px;" @endrouteIs>
     @if($poem->placeholder)
         <section class="flex justify-center">
             @if ($poem->placeholder->value == 'placeholder for LOST or DESTROYED MS')
-                <img class="w-20 h-20 inline-block" loading="lazy" src="/img/lost-or-destroyed.png" />
+                <img class="w-20 h-20 inline-block @routeIs('project.affiliated.poems') mt-6 @endrouteIs" loading="lazy" src="/img/lost-or-destroyed.png" alt="placeholder image for LOST or DESTROYED MS" />
             @elseif ($poem->placeholder->value == 'placeholder for MS we need to request digital image for')
-                <img class="w-16 h-24 inline-block" loading="lazy" src="/img/coming-soon.jpg" />
+                <img class="w-16 h-24 inline-block" loading="lazy" src="/img/coming-soon.jpg" alt="placeholder image for MS we need to request digital image for" />
             @endif
         </section>
     @else

@@ -12,7 +12,7 @@
                     />
             <span class="pl-1">
                 @if ($option == 'Year unknown') 
-                    Date unknown
+                    Year unknown
                 @else
                     {{ preg_replace("/[^0-9]/", "", $option ) }} 
                 @endif

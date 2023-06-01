@@ -41,28 +41,28 @@
 
 @section('content')
 
-<main class="relative max-w-3xl mx-auto flex flex-wrap pl-40">
+<main class="relative max-w-4xl mx-auto flex flex-wrap mt-10">
     <section class="w-2/5">
-        <img class="w-64 mt-8 object-scale-down" src="{{ asset('img/dale.jpg') }}" />
+        <img class="w-96 object-scale-down" src="{{ asset('img/dale.jpg') }}" />
+        <p class="text-xs px-4 font-serif" style="color: #666666">
+            “Topography of a Bird,” from Elliot Coues, Key to North American Birds
+            (Boston: Estes and Lauriat, 1884)
+        </p>
     </section>
 
     <section class="w-3/5">
-        <h1 class="text-3xl italic">
-            Bird Lists 
-        </h1>
-
-        <ul class="text-xl space-y-4">
+        <ul class="text-xl space-y-4 mt-10">
             @foreach ($birdLists as $birdList)
                 <li x-data="{expanded: false}" @click="expanded = !expanded" 
                     class="ml-6">
                     <p class="underline cursor-pointer">
-                        {{ $birdList->name }}
                         <span x-show="!expanded">
-                            <x-heroicon-o-arrow-down class="w-4 inline-block" />
+                            <x-heroicon-o-plus class="w-4 inline-block" />
                         </span>
                         <span x-show="expanded">
-                            <x-heroicon-o-arrow-up class="w-4 inline-block" />
+                            <x-heroicon-o-minus class="w-4 inline-block" />
                         </span>
+                        {{ $birdList->name }}
                     </p>
                     @php 
                         $otherBird = $bird->resources->firstWhere('resource_type_id', $birdList->id);
@@ -77,7 +77,7 @@
 
                                 @if ($otherBirdMeta)
                                     <li class="mb-4">
-                                        <span class="italic text-xm mr-2 font-bold">
+                                        <span class="italic text-xm mr-2 font-bold" style="color: #b45f06">
                                             {{ $attribute->name }}
                                         </span>
 

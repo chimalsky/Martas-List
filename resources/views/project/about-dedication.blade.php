@@ -1,7 +1,7 @@
 @extends ('layouts.project')
 
 @section('title')
-    Colophon - Dickinson's Birds
+    Dedication - Dickinson's Birds
 @endsection
 
 @php

@@ -31,18 +31,6 @@
 <header class="my-8 flex">
     <div class="mx-auto">
         <div style="color: #b8b6b9" class="inline-block text-lg align-middle italic mb-4">
-            @if ($birdCategory)
-                "{{ $birdCategory->name }}" appears in {{ $poems->count() }} 
-                <a href="@route('project.bird.poems', $bird)" class="underline" style="color: #96a9a9">
-                    @if ($poems->count() === 1)
-                        Poem
-                    @else 
-                        Poems
-                    @endif
-                </a>
-            @else 
-                "{{ $bird->name }}" is not named in Dickinson's writings.
-            @endif 
         </div>
 
         <x-project.bird.xc :bird="$bird" class="col-span-1" width="340" height="220" />

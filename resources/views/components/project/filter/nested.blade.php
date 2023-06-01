@@ -32,7 +32,7 @@
 
     <footer class="mt-4">
         <button type="button" data-action="click->nested-filter#back" data-nested-filter-target="back" class="block mb-4 border border-gray-700 p-2">
-            <- Back
+          ← Back
         </button>
     </footer>
 </div>

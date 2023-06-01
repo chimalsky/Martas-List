@@ -17,7 +17,10 @@
 @section('content')
 <section id="poems" class="mt-10 lg:mt-24">
     <h1 style="color: #B45F06;" class="text-3xl font-bold text-center mb-10">
-        Dickinson's <span class="italic">{{ Str::plural($bird->category->name) }}</psan>
+        Dickinson's <span class="italic">{{ Str::plural($bird->category->name) }}</span>
+        @if($poems->count())
+            <span style="color: #96a9a9;">({{ $poems->count() }})</span>
+        @endif
     </h1>
 
     <main class="mt-4 flex flex-wrap">

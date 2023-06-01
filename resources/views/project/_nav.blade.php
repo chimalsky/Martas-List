@@ -10,17 +10,19 @@
                 <img src="{{ asset('img/hamburger.png') }}" />
             </button>
         </div>
-
-        <div>
-            <a href="/">
-                <h1 class="" style="font-family: 'IM Fell Double Pica', serif; color: #707A5E; font-size: 22pt;">
-                    Dickinson's Birds
-                </h1>
-            </a>
-            <h2 style="font-family: Josefin Sans; letter-spacing: 2.5px; color: #806f68;" class="text-sm uppercase mt-2">
-                A listening machine
-            </h2>
-        </div>
+        
+        @routeIsnt('project.index')
+            <div>
+                <a href="/">
+                    <h1 class="" style="font-family: 'IM Fell Double Pica', serif; color: #707A5E; font-size: 22pt;">
+                        Dickinson's Birds
+                    </h1>
+                </a>
+                <h2 style="font-family: Josefin Sans; letter-spacing: 2.5px; color: #806f68;" class="text-sm uppercase mt-2">
+                    A listening machine
+                </h2>
+            </div>
+        @endrouteIsnt('project.index')
     </span>
     <span x-show="open" 
         x-transition:enter="transition ease-out duration-300" 

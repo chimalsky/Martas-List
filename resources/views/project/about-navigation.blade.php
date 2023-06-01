@@ -1,7 +1,7 @@
 @extends ('layouts.project')
 
 @section('title')
-    About: Navigation - Dickinson's Birds
+    Navigation - Dickinson's Birds
 @endsection
 
 @php

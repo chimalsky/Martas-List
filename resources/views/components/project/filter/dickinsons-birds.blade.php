@@ -3,7 +3,7 @@
         ->where('resource_type_id', App\Project\Bird::$resource_type_id)->get();
 @endphp
 
-<div class="w-full gap-4 text-sm" style="padding-left: 24px">
+<div class="w-full gap-4 text-xs" style="padding-left: 24px">
     @foreach ($dickinsonsBirds->sortBy('name') as $bird)
         <label class="cursor-pointer block">
             <input data-action="change->form#changed" type="checkbox"

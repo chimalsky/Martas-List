@@ -1,7 +1,7 @@
 @extends ('layouts.project')
 
 @section('title')
-    Mesh-Works: Sources + Resources - Dickinson's Birds
+    Sources + Resources - Dickinson's Birds
 @endsection
 
 @php

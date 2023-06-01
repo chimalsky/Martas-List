@@ -85,7 +85,7 @@
                 </button>
 
                 <div x-show="open" class="w-full">
-                    <div class="text-gray-600 italic mb-2">
+                    <div class="filter-subtitle">
                         {{ $filterable->subtitle }} 
                     </div>
 
@@ -144,7 +144,7 @@
         </button>
 
         <div x-show="open" class="w-full overflow-y-auto">
-            <div class="text-gray-600 italic mb-2">
+            <div class="filter-subtitle">
                 Birds referenced
             </div>
             <div class="overflow-y" style="max-height: 10rem;">
