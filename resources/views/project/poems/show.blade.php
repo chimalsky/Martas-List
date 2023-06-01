@@ -162,7 +162,7 @@
         <div id="birds" class="mt-10 mb-10 text-center flex-1 flex items-center">
             <div class="mx-auto">
                 @if ($poem->environmentalPhenomenaSpecific()->count())
-                    <div class="text-3xl italic mb-12 max-w-md mx-auto">
+                    <div class="text-3xl mb-12 max-w-md mx-auto" style="font-family: 'Cormorant Unicase'; color: #a7bbbf;">
                         @foreach ($poem->environmentalPhenomenaSpecific as $phenomenon)
                             +
                             <a href="@route('project.poems.index', ['filterable[701]' => $phenomenon->value])" target="_blank"
