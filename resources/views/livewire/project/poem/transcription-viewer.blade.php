@@ -94,7 +94,7 @@
             @endif
             @if ($medias->count())
                 <div wire:loading.remove class="max-h-screen">
-                    <img class="max-h-full" src="{{ $media->getUrl() }}" />
+                    <img id="js-manuscript" class="max-h-full" src="{{ $media->getUrl() }}" />
                 </div>
 
                 <div wire:loading.class.remove="hidden" class="justify-center flex hidden">
@@ -110,10 +110,10 @@
                 id="js-transcription-display" class="absolute min-w-lg p-12 mx-auto"
                 style="font-family: Alegreya; font-weight: 500; background: #f8f3e8;
                     opacity: .72; top:0; clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 33%, 72% 0);
-                    white-space: nowrap; word-break: keep-all; min-width: 400px;">
+                    white-space: nowrap; word-break: keep-all;">
                 <img id="transcription-icon" src="{{ asset('img/bird-icon.png') }}" class="h-10 w-10 mb-4 mx-auto mt-4" 
                     style="cursor: grab;" />
-                <div>{!! $this->activePage !!}</div>
+                <div id="js-transcription-display-content">{!! $this->activePage !!}</div>
             </div>
 
             <script>

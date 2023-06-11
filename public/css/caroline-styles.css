@@ -79,11 +79,15 @@
 }
 
 #js-transcription-display[data-transcription-orientation='portrait'] {
-    width: 360px;
+    width: 390px;
 }
 
 #js-transcription-display[data-transcription-orientation='landscape'] {
     width: 600px;
+}
+
+#js-transcription-display[data-transcription-orientation='landscape'][data-columns-tight] {
+    width: 400px;
 }
 
 div[data-panel='parent'] {
