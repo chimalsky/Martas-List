@@ -22,7 +22,7 @@ class BirdRingFetchController extends Controller
         $months = $this->getMonthsForChrono($chrono);
 
         $birds = Bird::with(['meta' => function ($query) {
-            $query->whereIn('resource_attribute_id', [690, 691, 687, 686, 499])
+            $query->whereIn('resource_attribute_id', [690, 691, 687, 686, 501, 499])
                 ->where('value', '<>', '');
         }])->withDynamicValue(688, 'presence')->get();
 
@@ -46,6 +46,7 @@ class BirdRingFetchController extends Controller
                 'id' => $bird->id,
                 'universalSpeciesId' => $bird->meta->firstWhere('resource_attribute_id', 499) ? $bird->meta->firstWhere('resource_attribute_id', 499)->value : null,
                 'name' => $bird->name,
+                'scientificName' => $bird->meta->firstWhere('resource_attribute_id', 501) ? $bird->meta->firstWhere('resource_attribute_id', 501)->value : null,
                 'presence' => $bird->presence,
                 'arrival' => $bird->meta->firstWhere('resource_attribute_id', 690) ? $bird->meta->firstWhere('resource_attribute_id', 690)->value : null,
                 'departure' => $bird->meta->firstWhere('resource_attribute_id', 691) ? $bird->meta->firstWhere('resource_attribute_id', 691)->value : null,
